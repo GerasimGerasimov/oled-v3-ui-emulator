@@ -14,7 +14,9 @@
 #define BASIC_COLOR  15//1
 #define NEG_COLOR    2//0
 
+extern void console_init();
 extern void set_console(HANDLE dest_console);
+extern HANDLE get_console();
 
 struct TTextProps {
 	s16 left;

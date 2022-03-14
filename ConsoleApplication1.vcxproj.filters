@@ -22,6 +22,9 @@
     <Filter Include="Исходные файлы\fonts">
       <UniqueIdentifier>{5c1fb907-54d2-4a67-9c83-62c92729531a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Исходные файлы\threads">
+      <UniqueIdentifier>{74685138-b6b9-4d27-a21e-501d92172e35}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ConsoleApplication1.cpp">
@@ -39,13 +42,25 @@
     <ClCompile Include="graphics.cpp">
       <Filter>Исходные файлы\Components</Filter>
     </ClCompile>
+    <ClCompile Include="Source.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="threads\key_boad_thread.cpp">
+      <Filter>Исходные файлы\threads</Filter>
+    </ClCompile>
+    <ClCompile Include="threads\mutexes.cpp">
+      <Filter>Исходные файлы\threads</Filter>
+    </ClCompile>
+    <ClCompile Include="threads\timer_thread.cpp">
+      <Filter>Исходные файлы\threads</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="fonts\fonts.h">
       <Filter>Исходные файлы\fonts</Filter>
     </ClInclude>
-    <ClInclude Include="Header.h">
-      <Filter>Исходные файлы\Components</Filter>
+    <ClInclude Include="Header1.h">
+      <Filter>Исходные файлы</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

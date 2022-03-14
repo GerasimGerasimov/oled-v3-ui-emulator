@@ -11,60 +11,19 @@
 #include <string>
 #include "stm32f4xx.h"
 #include "msg.h"
+#include "key_board_thread.h"
+#include "timer_thread.h"
 #include "fonts.h"
 #include "menu.h"
 #include "graphics.h"
-
-#define KEY_F1 49
-#define KEY_F2 50
-#define KEY_F3 51
-
-#define KEY_ECS 27
-#define KEY_OK 13
-
-#define KEY_UP 72
-#define KEY_DOWN 80
-#define KEY_LEFT 75
-#define KEY_RIGHT 77
-
-HANDLE console = NULL;
-
-std::mutex mu;
+#include "mutexes.h"
 
 static TMenu menu("", true, {});
-
-void key_board_control() {
-    int key = 0;
-    do {
-       key = _getch_nolock();
-       mu.lock();
-       SetConsoleTextAttribute(console, 15);// FOREGROUND_INTENSITY);
-       COORD start = { 20, 0 };
-       ::SetConsoleCursorPosition(console, start);
-       std::cout <<"key:"<< key <<"\n";
-       send_message(KEYBOARD, key, 0);
-       mu.unlock();
-    } while (key != 8);
-    std::cout << "Leave the Thread!\n";
-}
-
-void timer_control() {
-    u16 count = 0;
-    while (true) {
-        mu.lock();
-        SetConsoleTextAttribute(console, FOREGROUND_GREEN);
-        COORD start = { 0, 0 };
-        ::SetConsoleCursorPosition(console, start);
-        std::cout << "time:" << count++ << "\n";
-        mu.unlock();
-        std::this_thread::sleep_for(std::chrono::seconds(1));
-    }
-}
-
 
 std::vector<std::string> Menu = std::vector<std::string>({"a","b","c"});
 
 void outList() {
+    HANDLE console = get_console();
     COORD start = { 0, 2 };
     ::SetConsoleCursorPosition(console, start);
     for (const auto item : Menu) {
@@ -82,6 +41,7 @@ void runApp(TMessage* m) {
 
 void processMessage() {
     TMessage m;
+    HANDLE console = get_console();
     while (true) {
         if (get_message(&m)) {
             mu.lock();
@@ -97,10 +57,8 @@ void processMessage() {
 
 int main()
 {
-    console = GetStdHandle(STD_OUTPUT_HANDLE);
-    SetConsoleOutputCP(1251);
-    SetConsoleCP(1251);
-    set_console(console);
+    console_init();
+
     menu.Top = 10;
     menu.AddList({  new TLabel("1-пункт меню номер один"),
                     new TMenu("Mеню", false, {

@@ -88,7 +88,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(ProjectDir);$(ProjectDir)Components;$(ProjectDir)fonts;$(ProjectDir)msg</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir);$(ProjectDir)Components;$(ProjectDir)fonts;$(ProjectDir)threads;$(ProjectDir)msg</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -117,7 +117,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(ProjectDir);$(ProjectDir)Components;$(ProjectDir)fonts;$(ProjectDir)msg</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir);$(ProjectDir)Components;$(ProjectDir)fonts;$(ProjectDir)threads;$(ProjectDir)msg</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -146,10 +146,14 @@
     <ClCompile Include="fonts\mSReferenceSansSerif6pt.cpp" />
     <ClCompile Include="msg\msg.cpp" />
     <ClCompile Include="graphics.cpp" />
+    <ClCompile Include="Source.cpp" />
+    <ClCompile Include="threads\key_boad_thread.cpp" />
+    <ClCompile Include="threads\mutexes.cpp" />
+    <ClCompile Include="threads\timer_thread.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="fonts\fonts.h" />
-    <ClInclude Include="Header.h" />
+    <ClInclude Include="Header1.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
