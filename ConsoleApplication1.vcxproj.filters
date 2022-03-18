@@ -27,7 +27,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="ConsoleApplication1.cpp">
+    <ClCompile Include="main.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
     <ClCompile Include="msg\msg.cpp">
@@ -42,9 +42,6 @@
     <ClCompile Include="graphics.cpp">
       <Filter>Исходные файлы\Components</Filter>
     </ClCompile>
-    <ClCompile Include="Source.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
     <ClCompile Include="threads\key_boad_thread.cpp">
       <Filter>Исходные файлы\threads</Filter>
     </ClCompile>
@@ -54,13 +51,16 @@
     <ClCompile Include="threads\timer_thread.cpp">
       <Filter>Исходные файлы\threads</Filter>
     </ClCompile>
+    <ClCompile Include="Components\Pages.cpp">
+      <Filter>Исходные файлы\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="Components\common.cpp">
+      <Filter>Исходные файлы\Components</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="fonts\fonts.h">
       <Filter>Исходные файлы\fonts</Filter>
-    </ClInclude>
-    <ClInclude Include="Header1.h">
-      <Filter>Исходные файлы</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

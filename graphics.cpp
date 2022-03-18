@@ -1,7 +1,7 @@
 #include "graphics.h"
 #include <iostream>
 
-static HANDLE console = NULL;
+HANDLE console = NULL;
 
 void console_init() {
 	HANDLE console = GetStdHandle(STD_OUTPUT_HANDLE);

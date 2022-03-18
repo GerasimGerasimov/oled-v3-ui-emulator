@@ -141,12 +141,6 @@ TVisualObjectsList::TVisualObjectsList () {};
 TVisualObjectsList::~TVisualObjectsList() {};
 
 ///////////////////////////////////////////////////////////////////////////////
-//бaзовый класс визуальных объектов
-void TVisualObject::View(){};
-TVisualObject::TVisualObject () {};
-TVisualObject::~TVisualObject() {};
-
-///////////////////////////////////////////////////////////////////////////////
 const char LabelInitCaptionText[]="TLabel";
 
 //класс "строка текста"

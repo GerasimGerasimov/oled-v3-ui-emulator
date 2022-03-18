@@ -141,19 +141,19 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Components\common.cpp" />
     <ClCompile Include="Components\menu.cpp" />
-    <ClCompile Include="ConsoleApplication1.cpp" />
+    <ClCompile Include="Components\Pages.cpp" />
+    <ClCompile Include="main.cpp" />
     <ClCompile Include="fonts\mSReferenceSansSerif6pt.cpp" />
     <ClCompile Include="msg\msg.cpp" />
     <ClCompile Include="graphics.cpp" />
-    <ClCompile Include="Source.cpp" />
     <ClCompile Include="threads\key_boad_thread.cpp" />
     <ClCompile Include="threads\mutexes.cpp" />
     <ClCompile Include="threads\timer_thread.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="fonts\fonts.h" />
-    <ClInclude Include="Header1.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

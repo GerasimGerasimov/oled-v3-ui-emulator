@@ -3,23 +3,10 @@
 
 #include <string>
 #include <vector>
+#include "common.h"
 #include "stm32f4xx.h"
 #include "msg.h"
 #include "fonts.h"
-
-class TVisualObject{//базовый класс визуальных объектов
-  public:
-    //нахождение визуального объекта в фокусе
-    bool Focus;//false-не в фокусе true-в фокусе
-    //область вывода (откуда начинать и контроль границ)
-    s16 Left;  //
-    s16 Top;   //
-    u16 Height;//
-    u16 Width; //
-    virtual void View();//вывести объект на экране
-    TVisualObject ();//конструктор
-    virtual ~TVisualObject();//деструктор
-};
 
 class TVisualObjectsList{//список визуальных объектов (контейнер)
   public:
