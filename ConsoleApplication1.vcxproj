@@ -142,6 +142,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Components\common.cpp" />
+    <ClCompile Include="Components\Label.cpp" />
     <ClCompile Include="Components\menu.cpp" />
     <ClCompile Include="Components\Pages.cpp" />
     <ClCompile Include="main.cpp" />

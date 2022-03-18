@@ -60,7 +60,7 @@ int main()
     console_init();
 
     menu.Top = 10;
-    menu.AddList({  new TLabel("1-пункт меню номер один"),
+    menu.AddList({  new TLabel("***1-пункт меню номер один"),
                     new TMenu("Mеню", false, {
                         new TLabel("1-пункт вложенного меню номер один"),
                         new TLabel("2-пункт вложенного меню номер два")
