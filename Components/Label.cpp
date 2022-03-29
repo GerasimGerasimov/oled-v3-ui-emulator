@@ -38,9 +38,9 @@ void  TLabel::View() {//вывести строку на экране
 
     //TextProperty.Color = text_color;
     TFillRect rect{ Left, Top, MAX_RIGHT, Height, fone_color };
-    fillRect(rect);
+    TGrahics::fillRect(rect);
     TTextProps textProps{ Left, Top, text_color, fone_color };
-    outText(textProps, Caption);
+    TGrahics::outText(textProps, Caption);
 }
 
 u16 GetStrWidth(std::string s, const FONT_INFO* font) {//возвращает ширину строки

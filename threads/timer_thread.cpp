@@ -7,16 +7,21 @@
 #include "graphics.h"
 #include "mutexes.h"
 
+void timer_out_log(u16 count) {
+    mu.lock();
+    HANDLE console = TGrahics::get_console();
+    SetConsoleTextAttribute(console, FOREGROUND_GREEN);
+    COORD start = { 0, 0 };
+    ::SetConsoleCursorPosition(console, start);
+    std::cout << "time:" << count++ << "\n";
+    mu.unlock();
+}
+
 void timer_control() {
     u16 count = 0;
-    HANDLE console = get_console();
+    
     while (true) {
-        mu.lock();
-        SetConsoleTextAttribute(console, FOREGROUND_GREEN);
-        COORD start = { 0, 0 };
-        ::SetConsoleCursorPosition(console, start);
-        std::cout << "time:" << count++ << "\n";
-        mu.unlock();
+        //timer_out_log(count++);
         std::this_thread::sleep_for(std::chrono::seconds(1));
     }
 }

@@ -14,10 +14,6 @@
 #define BASIC_COLOR  15//1
 #define NEG_COLOR    2//0
 
-extern void console_init();
-extern void set_console(HANDLE dest_console);
-extern HANDLE get_console();
-
 struct TTextProps {
 	s16 left;
 	s16 top;
@@ -25,7 +21,11 @@ struct TTextProps {
 	u16 foreground;
 };
 
-extern void outText(TTextProps& props, std::string s);
+struct TPixel {
+	s16 x;
+	s16 y;
+	u16 color;
+};
 
 struct TFillRect {
 	s16 left;
@@ -35,6 +35,19 @@ struct TFillRect {
 	u16 color;
 };
 
-extern void fillRect(TFillRect& props);
+struct TGrahics {
+	public:
+		static void console_init();
+		static void set_console(HANDLE dest_console);
+		static HANDLE get_console();
+		static void outText(TTextProps& props, std::string s);
+		static void fillRect(TFillRect& props);
+		static void setPixel(TPixel& props);
+		static void rect();
+	private:
+		static HANDLE console;
+		static HDC dc;
+		static HBRUSH brush;
+};
 
 #endif

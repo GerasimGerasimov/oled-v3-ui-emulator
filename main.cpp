@@ -23,41 +23,59 @@ static TMenu menu("", true, {});
 std::vector<std::string> Menu = std::vector<std::string>({"a","b","c"});
 
 void outList() {
-    HANDLE console = get_console();
+    HANDLE console = TGrahics::get_console();
     COORD start = { 0, 2 };
-    ::SetConsoleCursorPosition(console, start);
+    //::SetConsoleCursorPosition(console, start);
     for (const auto item : Menu) {
-        SetConsoleTextAttribute(console, 11);
-        std::cout << "item:" << item << "\n";
+        //SetConsoleTextAttribute(console, 11);
+        //std::cout << "item:" << item << "\n";
         start.Y++;
-        ::SetConsoleCursorPosition(console, start);
+        //::SetConsoleCursorPosition(console, start);
     }
 }
 
 void runApp(TMessage* m) {
     menu.ProcessMessage(m);
-    menu.View();
+    //menu.View();
 }
 
 void processMessage() {
     TMessage m;
-    HANDLE console = get_console();
+    HANDLE console = TGrahics::get_console();
     while (true) {
         if (get_message(&m)) {
             mu.lock();
-            SetConsoleTextAttribute(console, 10);
-            COORD start = { 0, 1 };
-            ::SetConsoleCursorPosition(console, start);
-            std::cout << "msg:" << m.p1 << "\n";
+            //SetConsoleTextAttribute(console, 10);
+            //COORD start = { 0, 1 };
+            //::SetConsoleCursorPosition(console, start);
+            //std::cout << "msg:" << m.p1 << "\n";
             runApp(&m);
             mu.unlock();
         }
     }
 }
+/*
+for (счетчик = значение; счетчик < значение; шаг цикла) {
+    тело цикла;
+}
+*/
+u16 out_128_64() {
+    u16 count = 0;
+    TPixel p = {0, 0, 1};
+    for (int y = 0; y < 64; y++) {
+        for (int x = 0; x < 128; x++) {
+            p.x = x;
+            p.y = y;
+            TGrahics::setPixel(p);
+            count++;
+        }
+    }
+    return count;
+}
 
 int main()
 {
-    console_init();
+    TGrahics::console_init();
 
     menu.Top = 10;
     menu.AddList({  new TLabel("***1-пункт меню номер один"),
@@ -73,7 +91,9 @@ int main()
                     new TLabel("8-пункт меню номер восемь"),
                     new TLabel("9-пункт меню номер девять"),
                     new TLabel("A-пункт меню номер десять"), });
-    menu.View();
+    //menu.View();
+    out_128_64();
+    TGrahics::rect();
     std::thread key_control_thr(key_board_control);
     std::thread timer_control_thr(timer_control);
     std::thread proc_msg_thr(processMessage);

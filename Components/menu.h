@@ -9,23 +9,6 @@
 #include "fonts.h"
 #include "Label.h"
 
-class TVisualObjectsList{//список визуальных объектов (контейнер)
-  public:
-    //область вывода (откуда начинать и контроль границ)
-    u16 Left;  //
-    u16 Top;   //
-    u16 Height;//
-    u16 Width; //
-    u16 Count;//количество объектов в списке
-    void View();//вывести объект на экране
-    void Add(TVisualObject* pVisualObject);//добавить объект в список
-    void Clear();//очистит список
-    TVisualObjectsList ();//конструктор
-    virtual ~TVisualObjectsList();//деструктор
-  private:
-    std::vector <TVisualObject*> List;
-};
-
 class TMenu : public TVisualObject 
 {
   public:
@@ -54,4 +37,23 @@ class TMenu : public TVisualObject
     //u16 Items;//количество объектов в списке
 };
 
+
+/*
+class TVisualObjectsList{//список визуальных объектов (контейнер)
+  public:
+    //область вывода (откуда начинать и контроль границ)
+    u16 Left;  //
+    u16 Top;   //
+    u16 Height;//
+    u16 Width; //
+    u16 Count;//количество объектов в списке
+    void View();//вывести объект на экране
+    void Add(TVisualObject* pVisualObject);//добавить объект в список
+    void Clear();//очистит список
+    TVisualObjectsList ();//конструктор
+    virtual ~TVisualObjectsList();//деструктор
+  private:
+    std::vector <TVisualObject*> List;
+};
+*/
 #endif
