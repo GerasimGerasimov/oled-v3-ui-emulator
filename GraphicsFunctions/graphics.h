@@ -33,7 +33,9 @@ struct TFillRect {
 
 struct TGrahics {
 	public:
+		static void Line(u8 X1, u8 Y1, u8 X2, u8 Y2, u8 Color);
 		static void setPixel(TPixel& props);
+		static void setPixel(u8 x, u8 y, u8 color);
 		static u8 screen[128][64];
 };
 

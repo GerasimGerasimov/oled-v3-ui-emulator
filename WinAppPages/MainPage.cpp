@@ -169,7 +169,7 @@ VOID CALLBACK MainPage::MyTimerProc(
 
 u16 out_128_64() {
     u16 count = 0;
-    TPixel p = { 0, 0, 1 };
+    TPixel p = { 0, 0, 0 };
     for (int y = 0; y < 64; y++) {
         for (int x = 0; x < 128; x++) {
             p.x = x;
@@ -199,6 +199,7 @@ LRESULT CALLBACK MainPage::WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARA
         //TGrahics::console_init(GetDC(hwndButton));// hWnd));
         // TODO: Добавьте сюда любой код прорисовки, использующий HDC...
         out_128_64();
+        TGrahics::Line(0, 0, 127, 63, 1);
         break;
     case WM_COMMAND:
     {
