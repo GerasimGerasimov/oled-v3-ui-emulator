@@ -2,7 +2,6 @@
 #ifndef MSG_H
 #define MSG_H
 
-//includes
 #include "stm32f4xx.h"
 
 //defines
