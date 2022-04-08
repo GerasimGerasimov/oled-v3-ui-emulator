@@ -4,6 +4,10 @@
 #include "display_driver.h"
 #include "graphics.h"
 
+
+#include "emb_fonts.h"
+#include <MSSansSerifBold14.cpp>
+
 HINSTANCE MainPage::hInst = NULL;                                // текущий экземпляр
 WCHAR MainPage::szTitle[MAX_LOADSTRING];                  // Текст строки заголовка
 WCHAR MainPage::szWindowClass[MAX_LOADSTRING];            // имя класса главного окна
@@ -196,8 +200,6 @@ LRESULT CALLBACK MainPage::WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARA
     switch (message)
     {
     case WM_CREATE:
-        //TGrahics::console_init(GetDC(hwndButton));// hWnd));
-        // TODO: Добавьте сюда любой код прорисовки, использующий HDC...
         out_128_64();
         TGrahics::Line(0, 0, 127, 63, 1);
         break;
@@ -232,6 +234,8 @@ LRESULT CALLBACK MainPage::WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARA
             HDC hdc_dem = BeginPaint(hwndDisplayEmulator, &ps_dem);
                 TDisplayDriver::setDC(hdc_dem);
                 TDisplayDriver::out();
+                int w = MSSansSerifBold14.chars[1].height;
+                uint8_t b = MSSansSerifBold14.chars[1].image[1];
                 EndPaint(hwndDisplayEmulator, &ps_dem);
         EndPaint(hWnd, &ps);
     }

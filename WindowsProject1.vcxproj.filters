@@ -25,6 +25,9 @@
     <Filter Include="GraphicsFunstions">
       <UniqueIdentifier>{4fdaf7f8-6d44-472f-82f5-bf8928236b4a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Fonts">
+      <UniqueIdentifier>{89b8feb4-48c4-4228-93b5-13ea6c338119}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -64,6 +67,9 @@
     </ClCompile>
     <ClCompile Include="GraphicsFunctions\display_driver.cpp">
       <Filter>GraphicsFunstions</Filter>
+    </ClCompile>
+    <ClCompile Include="Fonts\MSSansSerifBold14.cpp">
+      <Filter>Fonts</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

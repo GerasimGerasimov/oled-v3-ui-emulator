@@ -89,7 +89,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(ProjectDir)GraphicsFunctions;$(ProjectDir)WinAppPages;$(ProjectDir)Msg;$(ProjectDir)Components;$(ProjectDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)GraphicsFunctions;$(ProjectDir)WinAppPages;$(ProjectDir)Msg;$(ProjectDir)Components;$(ProjectDir)Fonts;$(ProjectDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -118,7 +118,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(ProjectDir)GraphicsFunctions;$(ProjectDir)WinAppPages;$(ProjectDir)Msg;$(ProjectDir)Components;$(ProjectDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)GraphicsFunctions;$(ProjectDir)WinAppPages;$(ProjectDir)Msg;$(ProjectDir)Components;$(ProjectDir)Fonts;$(ProjectDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -151,6 +151,7 @@
   <ItemGroup>
     <ClCompile Include="Components\common.cpp" />
     <ClCompile Include="Components\Pages.cpp" />
+    <ClCompile Include="Fonts\MSSansSerifBold14.cpp" />
     <ClCompile Include="GraphicsFunctions\display_driver.cpp" />
     <ClCompile Include="GraphicsFunctions\graphics.cpp" />
     <ClCompile Include="Msg\msg.cpp" />
