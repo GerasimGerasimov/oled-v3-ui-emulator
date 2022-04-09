@@ -5,7 +5,7 @@
 
 typedef struct {
 	const u16 BytesByWidth;
-	const u16 WidthByBits;
+	const u16 BitsByWidth;
 } TCharProps;
 
 struct TEmbeddedFonts {

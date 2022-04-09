@@ -35,7 +35,7 @@ struct TGrahics {
 		static void setPixel(TPixel& props);
 		static void setPixel(u8 x, u8 y, u8 color);
 		static void outText(std::string text, u16 x, u16 y, u16 color);
-		static bool putChar(u8 Code, u16& x, u16 y, u16 color);
+		static void putChar(u8 Code, u16& x, u16 y, u16 color);
 		static u8 screen[128][64];
 };
 

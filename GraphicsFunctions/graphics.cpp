@@ -13,32 +13,32 @@ void TGrahics::setPixel(u8 x, u8 y, u8 color) {
 }
 
 void TGrahics::outText(std::string text, u16 x, u16 y, u16 color) {
+    u16 height = TEmbeddedFonts::setFont();
     for (auto& code : text) {
         putChar(code, x, y, color);
     }
 }
 
-bool TGrahics::putChar(u8 Code, u16& x, u16 y, u16 color) {
-    u16 height = TEmbeddedFonts::setFont();
+void TGrahics::putChar(u8 Code, u16& x, u16 y, u16 color) {
     TCharProps CharProps = TEmbeddedFonts::setSimbol(Code);
     u16 bitsCnt = 0;
     u32 bits = 0;
     u16 start_x = x;
     u32 mask = (1 << (CharProps.BytesByWidth * 8 - 1));
     while (TEmbeddedFonts::getBitsLine(bits)) {
-        bitsCnt = CharProps.WidthByBits;
+        if (y >= VIEW_PORT_MAX_HEIGHT) continue;
+        bitsCnt = CharProps.BitsByWidth;
         x = start_x;
         while (bitsCnt--) {
+            if (x >= VIEW_PORT_MAX_WIDTH) continue;
             if ((bits & mask) == 0) {
                 setPixel(x, y, color);
             }
-            bits = bits << 1;
-            x++; //TODO проверка предела заданного пространства
+            bits <<= 1;
+            x++;
         }
-        y++;//TODO проверка предела заданного пространства
+        y++;
     };
-
-    return true;
 }
 
 

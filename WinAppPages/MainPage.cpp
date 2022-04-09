@@ -197,11 +197,8 @@ LRESULT CALLBACK MainPage::WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARA
     switch (message)
     {
     case WM_CREATE:
-        //out_128_64();
         //TGrahics::Line(0, 0, 127, 63, 1);
-        TGrahics::putChar(0x0de, x,  0, 1);
-        TGrahics::putChar(0x0be, x, 0, 1);
-        TGrahics::outText("Привет!!123", 0, 32, 1);
+        TGrahics::outText("123", 10, 0, 1);
         break;
     case WM_COMMAND:
     {
