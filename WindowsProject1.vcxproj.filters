@@ -74,6 +74,9 @@
     <ClCompile Include="Fonts\TEmbeddedFonts.cpp">
       <Filter>Fonts</Filter>
     </ClCompile>
+    <ClCompile Include="Fonts\Verdana12.cpp">
+      <Filter>Fonts</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="WindowsProject1.rc">
