@@ -4,14 +4,14 @@
 #include <stdint.h>
 
  typedef struct {
-     long int code;
+     const int code;
      const uint8_t* image;
      const int width;
-     const int height;
      } tChar;
 
  typedef struct {
-     int length;
+     const int length;
+     const int height;
      const tChar *chars;
      } tFont;
 

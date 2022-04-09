@@ -39,10 +39,10 @@ $(end_block_images_table)
 
 static const tChar $(doc_name_ws)_array[] = {
 $(start_block_images_table)
-  {0x$(out_char_code), image_data_$(doc_name_ws)_0x$(out_char_code), $(out_image_width), $(out_image_height) }$(out_comma)
+  {0x$(out_char_code), image_data_$(doc_name_ws)_0x$(out_char_code), $(out_image_width)}$(out_comma)
 $(end_block_images_table)
 };
 
 $(start_block_font_def)
-const tFont $(doc_name_ws) = { $(out_images_count), $(doc_name_ws)_array };
+const tFont $(doc_name_ws) = { $(out_images_count), $(out_image_height), $(doc_name_ws)_array };
 $(end_block_font_def)

@@ -4,8 +4,6 @@
 #include <string>
 #include <vector>
 #include "stm32f4xx.h"
-#include "msg.h"
-//#include "fonts.h"
 
 #define VIEW_PORT_MAX_WIDTH  128 //ширина
 #define VIEW_PORT_MAX_HEIGHT 64  //высота
@@ -36,6 +34,8 @@ struct TGrahics {
 		static void Line(u8 X1, u8 Y1, u8 X2, u8 Y2, u8 Color);
 		static void setPixel(TPixel& props);
 		static void setPixel(u8 x, u8 y, u8 color);
+		static void outText(std::string text, u16 x, u16 y, u16 color);
+		static bool putChar(u8 Code, u16& x, u16 y, u16 color);
 		static u8 screen[128][64];
 };
 

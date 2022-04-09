@@ -4,10 +4,6 @@
 #include "display_driver.h"
 #include "graphics.h"
 
-
-#include "emb_fonts.h"
-#include <MSSansSerifBold14.cpp>
-
 HINSTANCE MainPage::hInst = NULL;                                // текущий экземпляр
 WCHAR MainPage::szTitle[MAX_LOADSTRING];                  // Текст строки заголовка
 WCHAR MainPage::szWindowClass[MAX_LOADSTRING];            // имя класса главного окна
@@ -197,11 +193,15 @@ u16 out_128_64() {
 //
 LRESULT CALLBACK MainPage::WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 {
+    u16 x = 0;
     switch (message)
     {
     case WM_CREATE:
-        out_128_64();
-        TGrahics::Line(0, 0, 127, 63, 1);
+        //out_128_64();
+        //TGrahics::Line(0, 0, 127, 63, 1);
+        TGrahics::putChar(0x0de, x,  0, 1);
+        TGrahics::putChar(0x0be, x, 0, 1);
+        TGrahics::outText("Привет!!123", 0, 32, 1);
         break;
     case WM_COMMAND:
     {
@@ -234,8 +234,7 @@ LRESULT CALLBACK MainPage::WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARA
             HDC hdc_dem = BeginPaint(hwndDisplayEmulator, &ps_dem);
                 TDisplayDriver::setDC(hdc_dem);
                 TDisplayDriver::out();
-                int w = MSSansSerifBold14.chars[1].height;
-                uint8_t b = MSSansSerifBold14.chars[1].image[1];
+
                 EndPaint(hwndDisplayEmulator, &ps_dem);
         EndPaint(hWnd, &ps);
     }

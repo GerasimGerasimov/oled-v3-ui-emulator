@@ -1,5 +1,6 @@
 #include "graphics.h"
 #include <iostream>
+#include "TEmbeddedFonts.h"
 
 u8 TGrahics::screen[128][64];
 
@@ -10,6 +11,36 @@ void TGrahics::setPixel(TPixel& props) {
 void TGrahics::setPixel(u8 x, u8 y, u8 color) {
     screen[x][y] = color;
 }
+
+void TGrahics::outText(std::string text, u16 x, u16 y, u16 color) {
+    for (auto& code : text) {
+        putChar(code, x, y, color);
+    }
+}
+
+bool TGrahics::putChar(u8 Code, u16& x, u16 y, u16 color) {
+    u16 height = TEmbeddedFonts::setFont();
+    TCharProps CharProps = TEmbeddedFonts::setSimbol(Code);
+    u16 bitsCnt = 0;
+    u32 bits = 0;
+    u16 start_x = x;
+    u32 mask = (1 << (CharProps.BytesByWidth * 8 - 1));
+    while (TEmbeddedFonts::getBitsLine(bits)) {
+        bitsCnt = CharProps.WidthByBits;
+        x = start_x;
+        while (bitsCnt--) {
+            if ((bits & mask) == 0) {
+                setPixel(x, y, color);
+            }
+            bits = bits << 1;
+            x++; //TODO проверка предела заданного пространства
+        }
+        y++;//TODO проверка предела заданного пространства
+    };
+
+    return true;
+}
+
 
 void TGrahics::Line(u8 X1, u8 Y1, u8 X2, u8 Y2, u8 Color) {
     int deltaX = abs(X2 - X1);
