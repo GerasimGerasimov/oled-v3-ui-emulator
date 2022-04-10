@@ -71,10 +71,13 @@
     <ClCompile Include="Fonts\MSSansSerifBold14.cpp">
       <Filter>Fonts</Filter>
     </ClCompile>
-    <ClCompile Include="Fonts\TEmbeddedFonts.cpp">
+    <ClCompile Include="Fonts\TMCUText.cpp">
       <Filter>Fonts</Filter>
     </ClCompile>
     <ClCompile Include="Fonts\Verdana12.cpp">
+      <Filter>Fonts</Filter>
+    </ClCompile>
+    <ClCompile Include="Fonts\TMCUFonts.cpp">
       <Filter>Fonts</Filter>
     </ClCompile>
   </ItemGroup>

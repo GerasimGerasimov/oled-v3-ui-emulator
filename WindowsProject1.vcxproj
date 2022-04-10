@@ -152,7 +152,8 @@
     <ClCompile Include="Components\common.cpp" />
     <ClCompile Include="Components\Pages.cpp" />
     <ClCompile Include="Fonts\MSSansSerifBold14.cpp" />
-    <ClCompile Include="Fonts\TEmbeddedFonts.cpp" />
+    <ClCompile Include="Fonts\TMCUFonts.cpp" />
+    <ClCompile Include="Fonts\TMCUText.cpp" />
     <ClCompile Include="Fonts\Verdana12.cpp" />
     <ClCompile Include="GraphicsFunctions\display_driver.cpp" />
     <ClCompile Include="GraphicsFunctions\graphics.cpp" />

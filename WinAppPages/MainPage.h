@@ -10,6 +10,7 @@ class MainPage {
 		static WCHAR szTitle[MAX_LOADSTRING];                  // “екст строки заголовка
 		static WCHAR szWindowClass[MAX_LOADSTRING];            // им€ класса главного окна
 
+		static HWND hWndMain;
 		static HWND hwndButton;
 		static HWND hwndKeyCodeText;
 		static HWND hwndDisplayEmulator;

@@ -1,31 +1,57 @@
 #include "graphics.h"
 #include <iostream>
-#include "TEmbeddedFonts.h"
+#include "TMCUFonts.h"
+#include "TMCUText.h"
 
 u8 TGrahics::screen[128][64];
 
-void TGrahics::setPixel(TPixel& props) {
+void TGrahics::init(void) {
+    TMCUFonts::init();
+}
+
+void TGrahics::fillRect(TFillRect props) {
+    TPixel pixel = {
+        props.left,
+        props.top,
+        props.color
+    };
+    u16 w = props.width;
+    u16 h = props.height;
+    while (h--) {
+        if (pixel.y >= VIEW_PORT_MAX_HEIGHT) break;
+        w = props.width;
+        pixel.x = props.left;
+        while (w--) {
+            if (pixel.x >= VIEW_PORT_MAX_WIDTH) continue;
+            setPixel(pixel);
+            pixel.x++;
+        }
+        pixel.y++;
+    }
+}
+
+inline void TGrahics::setPixel(TPixel& props) {
 	screen[props.x][props.y] = props.color;
 }
 
-void TGrahics::setPixel(u8 x, u8 y, u8 color) {
+inline void TGrahics::setPixel(u8 x, u8 y, u8 color) {
     screen[x][y] = color;
 }
 
-void TGrahics::outText(std::string text, u16 x, u16 y, u16 color) {
-    u16 height = TEmbeddedFonts::setFont();
+void TGrahics::outText(std::string text, u16 x, u16 y, u16 color, std::string FontName) {
+    u16 height = TMCUText::setFont(FontName);
     for (auto& code : text) {
         putChar(code, x, y, color);
     }
 }
 
 void TGrahics::putChar(u8 Code, u16& x, u16 y, u16 color) {
-    TCharProps CharProps = TEmbeddedFonts::setSimbol(Code);
+    TCharProps CharProps = TMCUText::setSimbol(Code);
     u16 bitsCnt = 0;
     u32 bits = 0;
     u16 start_x = x;
     u32 mask = (1 << (CharProps.BytesByWidth * 8 - 1));
-    while (TEmbeddedFonts::getBitsLine(bits)) {
+    while (TMCUText::getBitsLine(bits)) {
         if (y >= VIEW_PORT_MAX_HEIGHT) continue;
         bitsCnt = CharProps.BitsByWidth;
         x = start_x;

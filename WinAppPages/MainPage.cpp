@@ -8,6 +8,7 @@ HINSTANCE MainPage::hInst = NULL;                                // текущий экзе
 WCHAR MainPage::szTitle[MAX_LOADSTRING];                  // Текст строки заголовка
 WCHAR MainPage::szWindowClass[MAX_LOADSTRING];            // имя класса главного окна
 
+HWND MainPage::hWndMain = NULL;
 HWND MainPage::hwndButton = NULL;
 HWND MainPage::hwndKeyCodeText = NULL;
 HWND MainPage::hwndDisplayEmulator = NULL;
@@ -21,6 +22,8 @@ UINT MainPage::IDT_TIMER1 = 0;
 //
 ATOM MainPage::MyRegisterClass(HINSTANCE hInstance)
 {
+    TGrahics::init();
+    
     WNDCLASSEXW wcex;
 
     wcex.cbSize = sizeof(WNDCLASSEX);
@@ -54,16 +57,16 @@ BOOL MainPage::InitInstance(HINSTANCE hInstance, int nCmdShow)
 {
     hInst = hInstance; // Сохранить маркер экземпляра в глобальной переменной
 
-    HWND hWnd = CreateWindowW(szWindowClass, szTitle, WS_OVERLAPPEDWINDOW,
+    hWndMain = CreateWindowW(szWindowClass, szTitle, WS_OVERLAPPEDWINDOW,
         CW_USEDEFAULT, 0,
         480,
         248,
         nullptr, nullptr, hInstance, nullptr);
 
-    if (!hWnd)
+    if (!hWndMain)
     {
         return FALSE;
-    }
+    };
 
     HWND hwndLedLnk = CreateWindow(
         L"BUTTON",  // Predefined class; Unicode assumed 
@@ -73,9 +76,9 @@ BOOL MainPage::InitInstance(HINSTANCE hInstance, int nCmdShow)
         4,         // y position 
         32,        // Button width
         16,        // Button height
-        hWnd,     // Parent window
+        hWndMain,     // Parent window
         NULL,       // No menu.
-        (HINSTANCE)GetWindowLongPtr(hWnd, GWLP_HINSTANCE),
+        (HINSTANCE)GetWindowLongPtr(hWndMain, GWLP_HINSTANCE),
         NULL);      // Pointer not needed.
 
     HWND hwndLedWrn = CreateWindow(
@@ -86,9 +89,9 @@ BOOL MainPage::InitInstance(HINSTANCE hInstance, int nCmdShow)
         4,         // y position 
         32,        // Button width
         16,        // Button height
-        hWnd,     // Parent window
+        hWndMain,     // Parent window
         NULL,       // No menu.
-        (HINSTANCE)GetWindowLongPtr(hWnd, GWLP_HINSTANCE),
+        (HINSTANCE)GetWindowLongPtr(hWndMain, GWLP_HINSTANCE),
         NULL);      // Pointer not needed.
 
     HWND hwndLedAlrm = CreateWindow(
@@ -99,9 +102,9 @@ BOOL MainPage::InitInstance(HINSTANCE hInstance, int nCmdShow)
         4,         // y position 
         32,        // Button width
         16,        // Button height
-        hWnd,     // Parent window
+        hWndMain,     // Parent window
         NULL,       // No menu.
-        (HINSTANCE)GetWindowLongPtr(hWnd, GWLP_HINSTANCE),
+        (HINSTANCE)GetWindowLongPtr(hWndMain, GWLP_HINSTANCE),
         NULL);      // Pointer not needed.
 
     hwndDisplayEmulator = CreateWindow(
@@ -112,9 +115,9 @@ BOOL MainPage::InitInstance(HINSTANCE hInstance, int nCmdShow)
         4+20,         // y position 
         128 * 2,        // Button width
         64 * 2,        // Button height
-        hWnd,     // Parent window
+        hWndMain,     // Parent window
         NULL,       // No menu.
-        (HINSTANCE)GetWindowLongPtr(hWnd, GWLP_HINSTANCE),
+        (HINSTANCE)GetWindowLongPtr(hWndMain, GWLP_HINSTANCE),
         NULL);      // Pointer not needed.
 
     hwndButton = CreateWindow(
@@ -125,9 +128,9 @@ BOOL MainPage::InitInstance(HINSTANCE hInstance, int nCmdShow)
         138+20,         // y position 
         100,        // Button width
         24,        // Button height
-        hWnd,     // Parent window
+        hWndMain,     // Parent window
         NULL,       // No menu.
-        (HINSTANCE)GetWindowLongPtr(hWnd, GWLP_HINSTANCE),
+        (HINSTANCE)GetWindowLongPtr(hWndMain, GWLP_HINSTANCE),
         NULL);      // Pointer not needed.
 
     hwndKeyCodeText = CreateWindow(
@@ -138,18 +141,18 @@ BOOL MainPage::InitInstance(HINSTANCE hInstance, int nCmdShow)
         138+20,         // y position 
         100,        // Button width
         24,        // Button height
-        hWnd,     // Parent window
+        hWndMain,     // Parent window
         NULL,       // No menu.
-        (HINSTANCE)GetWindowLongPtr(hWnd, GWLP_HINSTANCE),
+        (HINSTANCE)GetWindowLongPtr(hWndMain, GWLP_HINSTANCE),
         NULL);      // Pointer not needed.
 
-    SetTimer(hWnd,             // handle to main window 
+    SetTimer(hWndMain,             // handle to main window 
         IDT_TIMER1,            // timer identifier 
         1000,                 // 10-second interval 
         (TIMERPROC)MyTimerProc);     // no timer callback 
 
-    ShowWindow(hWnd, nCmdShow);
-    UpdateWindow(hWnd);
+    ShowWindow(hWndMain, nCmdShow);
+    UpdateWindow(hWndMain);
 
     return TRUE;
 }
@@ -162,8 +165,19 @@ VOID CALLBACK MainPage::MyTimerProc(
     DWORD dwTime)     // current system time 
 {
     COUNT++;
+    TGrahics::fillRect({ 10,36, 24, 12, 1 });
+    TGrahics::outText(std::to_string(COUNT), 10, 36, 0, "Verdana12");
+    TGrahics::fillRect({ 10,48, 24, 12, 0 });
+    TGrahics::outText(std::to_string(COUNT), 10, 48, 1, "Verdana12");
+
+    HDC hdc_dem = GetDC(hwndDisplayEmulator);
+    TDisplayDriver::setDC(hdc_dem);
+    TDisplayDriver::out();
+    ReleaseDC(hwndDisplayEmulator, hdc_dem);
+
     std::wstring s = std::to_wstring(COUNT);
     SetWindowText(hwndKeyCodeText, (LPCWSTR)s.c_str()); // выводим результат в статическое поле
+
 }
 
 
@@ -197,8 +211,9 @@ LRESULT CALLBACK MainPage::WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARA
     switch (message)
     {
     case WM_CREATE:
-        //TGrahics::Line(0, 0, 127, 63, 1);
-        TGrahics::outText("123", 10, 0, 1);
+        TGrahics::outText("Привет! 012345678", 0, 0, 1, "Verdana12");
+        TGrahics::outText("Привет! 012345678", 0, 16, 1, "MSSansSerifBold14");
+        
         break;
     case WM_COMMAND:
     {
