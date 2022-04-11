@@ -165,21 +165,30 @@ VOID CALLBACK MainPage::MyTimerProc(
     DWORD dwTime)     // current system time 
 {
     COUNT++;
-    TGrahics::fillRect({ 10,36, 24, 12, 1 });
-    TGrahics::outText(std::to_string(COUNT), 10, 36, 0, "Verdana12");
-    TGrahics::fillRect({ 10,48, 24, 12, 0 });
-    TGrahics::outText(std::to_string(COUNT), 10, 48, 1, "Verdana12");
+    std::string scount = std::to_string(COUNT);
 
-    HDC hdc_dem = GetDC(hwndDisplayEmulator);
-    TDisplayDriver::setDC(hdc_dem);
-    TDisplayDriver::out();
-    ReleaseDC(hwndDisplayEmulator, hdc_dem);
+    TTextSizes tsize;
+    tsize = TMCUFonts::getTextSizes(scount, "Verdana12");
+    TGrahics::fillRect({ 10,36, tsize.width, tsize.height, 0 });
+    TGrahics::outText(scount, 10, 36, 1, "Verdana12");
+
+    tsize = TMCUFonts::getTextSizes(scount, "MSSansSerifBold14");
+    TGrahics::fillRect({ 40,36, tsize.width, tsize.height, 1 });
+    TGrahics::outText(scount, 40, 36, 0, "MSSansSerifBold14");
+
+    updateEmulatorView();
 
     std::wstring s = std::to_wstring(COUNT);
     SetWindowText(hwndKeyCodeText, (LPCWSTR)s.c_str()); // выводим результат в статическое поле
 
 }
 
+void MainPage::updateEmulatorView(void) {
+    HDC hdc_dem = GetDC(hwndDisplayEmulator);
+    TDisplayDriver::setDC(hdc_dem);
+    TDisplayDriver::out();
+    ReleaseDC(hwndDisplayEmulator, hdc_dem);
+}
 
 u16 out_128_64() {
     u16 count = 0;

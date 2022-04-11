@@ -1,8 +1,6 @@
 #include "graphics.h"
 #include <iostream>
 #include "TMCUFonts.h"
-#include "TMCUText.h"
-
 u8 TGrahics::screen[128][64];
 
 void TGrahics::init(void) {

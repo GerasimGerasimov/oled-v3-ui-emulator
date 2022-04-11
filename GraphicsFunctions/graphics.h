@@ -4,6 +4,7 @@
 #include <string>
 #include <vector>
 #include "stm32f4xx.h"
+#include "TMCUText.h"
 
 #define VIEW_PORT_MAX_WIDTH  128 //ширина
 #define VIEW_PORT_MAX_HEIGHT 64  //высота

@@ -8,10 +8,16 @@
 
 typedef tFont* pMCUFont;
 
+struct TTextSizes {
+	u16 width;
+	u16 height;
+};
+
 struct TMCUFonts {
 	public:
 		static void init(void);
 		static pMCUFont getFont(std::string name);
+		static TTextSizes getTextSizes(std::string text, std::string FontName);
 		static std::map<std::string, pMCUFont > fonts;
 };
 
