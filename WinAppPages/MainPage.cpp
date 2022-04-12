@@ -220,9 +220,7 @@ LRESULT CALLBACK MainPage::WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARA
     switch (message)
     {
     case WM_CREATE:
-        TGrahics::outText("Привет! 012345678", 0, 0, 1, "Verdana12");
-        TGrahics::outText("Привет! 012345678", 0, 16, 1, "MSSansSerifBold14");
-        
+       
         break;
     case WM_COMMAND:
     {
@@ -237,7 +235,8 @@ LRESULT CALLBACK MainPage::WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARA
         switch (wmId)
         {
         case IDM_ABOUT:
-            DialogBox(hInst, MAKEINTRESOURCE(IDD_ABOUTBOX), hWnd, About);
+            //DialogBox(hInst, MAKEINTRESOURCE(IDD_ABOUTBOX), hWnd, About);
+            DialogBox(hInst, MAKEINTRESOURCE(IDD_MAINWINDOW), hWnd, About);
             break;
         case IDM_EXIT:
             DestroyWindow(hWnd);
