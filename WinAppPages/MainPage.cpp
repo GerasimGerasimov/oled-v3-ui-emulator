@@ -14,6 +14,7 @@ HWND MainPage::hwndKeyCodeText = NULL;
 HWND MainPage::hwndDisplayEmulator = NULL;
 HWND MainPage::hwndTimer = NULL;
 UINT MainPage::IDT_TIMER1 = 0;
+bool MainPage::isHadlersFilled = false;
 
 //
 //  ‘”Ќ ÷»я: MyRegisterClass()
@@ -31,13 +32,13 @@ ATOM MainPage::MyRegisterClass(HINSTANCE hInstance)
     wcex.style = CS_HREDRAW | CS_VREDRAW;
     wcex.lpfnWndProc = WndProc;
     wcex.cbClsExtra = 0;
-    wcex.cbWndExtra = 0;
+    wcex.cbWndExtra =  DLGWINDOWEXTRA;//0;
     wcex.hInstance = hInstance;
     wcex.hIcon = LoadIcon(hInstance, MAKEINTRESOURCE(IDI_WINDOWSPROJECT1));
     wcex.hCursor = LoadCursor(nullptr, IDC_ARROW);
     wcex.hbrBackground = (HBRUSH)(COLOR_WINDOW + 1);
     wcex.lpszMenuName = MAKEINTRESOURCEW(IDC_WINDOWSPROJECT1);
-    wcex.lpszClassName = szWindowClass;
+    wcex.lpszClassName = (LPCWSTR)L"MainWndClass";
     wcex.hIconSm = LoadIcon(wcex.hInstance, MAKEINTRESOURCE(IDI_SMALL));
 
     return RegisterClassExW(&wcex);
@@ -57,98 +58,15 @@ BOOL MainPage::InitInstance(HINSTANCE hInstance, int nCmdShow)
 {
     hInst = hInstance; // —охранить маркер экземпл€ра в глобальной переменной
 
-    hWndMain = CreateWindowW(szWindowClass, szTitle, WS_OVERLAPPEDWINDOW,
-        CW_USEDEFAULT, 0,
-        480,
-        248,
-        nullptr, nullptr, hInstance, nullptr);
-
+    hWndMain = CreateDialog(hInstance, MAKEINTRESOURCE(IDD_MAINWINDOW), NULL, WndProc);
     if (!hWndMain)
     {
         return FALSE;
     };
 
-    HWND hwndLedLnk = CreateWindow(
-        L"BUTTON",  // Predefined class; Unicode assumed 
-        L"LNK",      // Button text 
-        WS_TABSTOP | WS_VISIBLE | WS_CHILD | BS_DEFPUSHBUTTON,  // Styles 
-        10,         // x position 
-        4,         // y position 
-        32,        // Button width
-        16,        // Button height
-        hWndMain,     // Parent window
-        NULL,       // No menu.
-        (HINSTANCE)GetWindowLongPtr(hWndMain, GWLP_HINSTANCE),
-        NULL);      // Pointer not needed.
-
-    HWND hwndLedWrn = CreateWindow(
-        L"BUTTON",  // Predefined class; Unicode assumed 
-        L"WRN",      // Button text 
-        WS_TABSTOP | WS_VISIBLE | WS_CHILD | BS_DEFPUSHBUTTON,  // Styles 
-        10 + 32 + 4,         // x position 
-        4,         // y position 
-        32,        // Button width
-        16,        // Button height
-        hWndMain,     // Parent window
-        NULL,       // No menu.
-        (HINSTANCE)GetWindowLongPtr(hWndMain, GWLP_HINSTANCE),
-        NULL);      // Pointer not needed.
-
-    HWND hwndLedAlrm = CreateWindow(
-        L"BUTTON",  // Predefined class; Unicode assumed 
-        L"ALR",      // Button text 
-        WS_TABSTOP | WS_VISIBLE | WS_CHILD | BS_DEFPUSHBUTTON,  // Styles 
-        10 + 32 + 32 + 4 + 4,         // x position 
-        4,         // y position 
-        32,        // Button width
-        16,        // Button height
-        hWndMain,     // Parent window
-        NULL,       // No menu.
-        (HINSTANCE)GetWindowLongPtr(hWndMain, GWLP_HINSTANCE),
-        NULL);      // Pointer not needed.
-
-    hwndDisplayEmulator = CreateWindow(
-        L"STATIC",  // Predefined class; Unicode assumed 
-        L"",      // Button text 
-        WS_TABSTOP | WS_VISIBLE | WS_CHILD | BS_DEFPUSHBUTTON | WS_BORDER,  // Styles 
-        10,         // x position 
-        4+20,         // y position 
-        128 * 2,        // Button width
-        64 * 2,        // Button height
-        hWndMain,     // Parent window
-        NULL,       // No menu.
-        (HINSTANCE)GetWindowLongPtr(hWndMain, GWLP_HINSTANCE),
-        NULL);      // Pointer not needed.
-
-    hwndButton = CreateWindow(
-        L"BUTTON",  // Predefined class; Unicode assumed 
-        L"OK",      // Button text 
-        WS_TABSTOP | WS_VISIBLE | WS_CHILD | BS_DEFPUSHBUTTON,  // Styles 
-        10,         // x position 
-        138+20,         // y position 
-        100,        // Button width
-        24,        // Button height
-        hWndMain,     // Parent window
-        NULL,       // No menu.
-        (HINSTANCE)GetWindowLongPtr(hWndMain, GWLP_HINSTANCE),
-        NULL);      // Pointer not needed.
-
-    hwndKeyCodeText = CreateWindow(
-        L"STATIC",  // Predefined class; Unicode assumed 
-        L"- - -",      // Button text 
-        WS_TABSTOP | WS_VISIBLE | WS_CHILD | BS_DEFPUSHBUTTON | WS_BORDER,  // Styles 
-        166,         // x position 
-        138+20,         // y position 
-        100,        // Button width
-        24,        // Button height
-        hWndMain,     // Parent window
-        NULL,       // No menu.
-        (HINSTANCE)GetWindowLongPtr(hWndMain, GWLP_HINSTANCE),
-        NULL);      // Pointer not needed.
-
     SetTimer(hWndMain,             // handle to main window 
         IDT_TIMER1,            // timer identifier 
-        1000,                 // 10-second interval 
+        1,                 // 10-second interval 
         (TIMERPROC)MyTimerProc);     // no timer callback 
 
     ShowWindow(hWndMain, nCmdShow);
@@ -178,8 +96,8 @@ VOID CALLBACK MainPage::MyTimerProc(
 
     updateEmulatorView();
 
-    std::wstring s = std::to_wstring(COUNT);
-    SetWindowText(hwndKeyCodeText, (LPCWSTR)s.c_str()); // выводим результат в статическое поле
+    //std::wstring s = std::to_wstring(COUNT);
+    //SetWindowText(hwndKeyCodeText, (LPCWSTR)s.c_str()); // выводим результат в статическое поле
 
 }
 
@@ -190,30 +108,17 @@ void MainPage::updateEmulatorView(void) {
     ReleaseDC(hwndDisplayEmulator, hdc_dem);
 }
 
-u16 out_128_64() {
-    u16 count = 0;
-    TPixel p = { 0, 0, 0 };
-    for (int y = 0; y < 64; y++) {
-        for (int x = 0; x < 128; x++) {
-            p.x = x;
-            p.y = y;
-            TGrahics::setPixel(p);
-            count++;
-        }
-    }
-    return count;
+void MainPage::fillHandlersByID(void) {
+    if (isHadlersFilled) return;
+    hwndDisplayEmulator = GetDlgItem(hWndMain, ID_DISPLAY_EMULATOR);
+    isHadlersFilled = true;
 }
 
-//
 //  ‘”Ќ ÷»я: WndProc(HWND, UINT, WPARAM, LPARAM)
-//
 //  ÷≈Ћ№: ќбрабатывает сообщени€ в главном окне.
-//
 //  WM_COMMAND  - обработать меню приложени€
 //  WM_PAINT    - ќтрисовка главного окна
 //  WM_DESTROY  - отправить сообщение о выходе и вернутьс€
-//
-//
 LRESULT CALLBACK MainPage::WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 {
     u16 x = 0;
@@ -222,6 +127,10 @@ LRESULT CALLBACK MainPage::WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARA
     case WM_CREATE:
        
         break;
+    case WM_SHOWWINDOW:
+        fillHandlersByID();
+        break;
+
     case WM_COMMAND:
     {
         if (lParam == (LPARAM)hwndButton) {
@@ -250,12 +159,11 @@ LRESULT CALLBACK MainPage::WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARA
     {
         PAINTSTRUCT ps;
         HDC hdc = BeginPaint(hWnd, &ps);
-            PAINTSTRUCT ps_dem;
-            HDC hdc_dem = BeginPaint(hwndDisplayEmulator, &ps_dem);
-                TDisplayDriver::setDC(hdc_dem);
-                TDisplayDriver::out();
-
-                EndPaint(hwndDisplayEmulator, &ps_dem);
+            //PAINTSTRUCT ps_dem;
+            //HDC hdc_dem = BeginPaint(hwndDisplayEmulator, &ps_dem);
+            //    TDisplayDriver::setDC(hdc_dem);
+            //    TDisplayDriver::out();
+            //    EndPaint(hwndDisplayEmulator, &ps_dem);
         EndPaint(hWnd, &ps);
     }
     break;

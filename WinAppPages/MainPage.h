@@ -7,6 +7,7 @@
 class MainPage {
 	public:
 		static void updateEmulatorView(void);
+		static void fillHandlersByID(void);
 		static HINSTANCE hInst;                                // текущий экземпляр
 		static WCHAR szTitle[MAX_LOADSTRING];                  // Текст строки заголовка
 		static WCHAR szWindowClass[MAX_LOADSTRING];            // имя класса главного окна
@@ -27,6 +28,7 @@ class MainPage {
 			UINT message,     // WM_TIMER message 
 			UINT idTimer,     // timer identifier 
 			DWORD dwTime);     // current system time 
+		static bool isHadlersFilled;
 };
 
 #endif
