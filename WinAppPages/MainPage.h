@@ -20,6 +20,7 @@ class MainPage {
 		static HWND hwndTimer;
 		static UINT IDT_TIMER1;
 
+		static void keyBoardControlMCU(int cmd);
 		static ATOM MyRegisterClass(HINSTANCE hInstance);
 		static BOOL InitInstance(HINSTANCE hInstance, int nCmdShow);
 		static LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam);

@@ -3,6 +3,7 @@
 HWND console::hwnd = NULL;
 
 void console::log(std::wstring text) {
+    if (hwnd == NULL) return;
     int strLen = SendMessage(hwnd, WM_GETTEXTLENGTH, 0, 0);
     SendMessage(hwnd, EM_SETSEL, (WPARAM)strLen, (LPARAM)strLen);    
     SendMessage(hwnd, EM_REPLACESEL, (WPARAM)FALSE, (LPARAM)text.c_str());

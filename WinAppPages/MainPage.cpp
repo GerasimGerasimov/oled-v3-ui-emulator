@@ -99,7 +99,7 @@ VOID CALLBACK MainPage::MyTimerProc(
     updateEmulatorView();
 
     std::wstring s = std::to_wstring(COUNT) + L"Привет\n";
-    console::log(s);
+    //console::log(s);
 }
 
 
@@ -143,6 +143,7 @@ LRESULT CALLBACK MainPage::WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARA
         }
 
         int wmId = LOWORD(wParam);
+        keyBoardControlMCU(wmId);
         // Разобрать выбор в меню:
         switch (wmId)
         {
@@ -161,11 +162,6 @@ LRESULT CALLBACK MainPage::WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARA
     {
         PAINTSTRUCT ps;
         HDC hdc = BeginPaint(hWnd, &ps);
-            //PAINTSTRUCT ps_dem;
-            //HDC hdc_dem = BeginPaint(hwndDisplayEmulator, &ps_dem);
-            //    TDisplayDriver::setDC(hdc_dem);
-            //    TDisplayDriver::out();
-            //    EndPaint(hwndDisplayEmulator, &ps_dem);
         EndPaint(hWnd, &ps);
     }
     break;
@@ -176,6 +172,38 @@ LRESULT CALLBACK MainPage::WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARA
         return DefWindowProc(hWnd, message, wParam, lParam);
     }
     return 0;
+}
+
+void MainPage::keyBoardControlMCU(int cmd) {
+    switch (LOWORD(cmd)) {
+        case ID_BUTTON_F1 : 
+            console::log(L"ID_BUTTON_F1\n");
+            break;
+        case ID_BUTTON_F2:
+            console::log(L"ID_BUTTON_F2\n");
+            break;
+        case ID_BUTTON_F3:
+            console::log(L"ID_BUTTON_F3\n");
+            break;
+        case ID_BUTTON_ESC:
+            console::log(L"ID_BUTTON_ESC\n");
+            break;
+        case ID_BUTTON_UP:
+            console::log(L"ID_BUTTON_UP\n");
+            break;
+        case ID_BUTTON_OK:
+            console::log(L"ID_BUTTON_OK\n");
+            break;
+        case ID_BUTTON_LEFT:
+            console::log(L"ID_BUTTON_LEFT\n");
+            break;
+        case ID_BUTTON_DOWN:
+            console::log(L"ID_BUTTON_DOWN\n");
+            break;
+        case ID_BUTTON_RIGHT:
+            console::log(L"ID_BUTTON_RIGHT\n");
+            break;
+    }
 }
 
 // Обработчик сообщений для окна "О программе".
