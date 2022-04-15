@@ -3,6 +3,7 @@
 #include <string> 
 #include "display_driver.h"
 #include "graphics.h"
+#include "consolelog.h"
 
 HINSTANCE MainPage::hInst = NULL;                                // текущий экземпляр
 WCHAR MainPage::szTitle[MAX_LOADSTRING];                  // Текст строки заголовка
@@ -97,13 +98,10 @@ VOID CALLBACK MainPage::MyTimerProc(
 
     updateEmulatorView();
 
-    std::wstring s = std::to_wstring(COUNT) + L"\n";
-
-    //SetWindowText(hwndKeyCodeText, (LPCWSTR)s.c_str()); // выводим результат в статическое поле
-    int strLen = SendMessage(hwndMemoLogger, WM_GETTEXTLENGTH, 0, 0);
-    SendMessage(hwndMemoLogger, EM_SETSEL, (WPARAM)strLen, (LPARAM)strLen);    
-    SendMessage(hwndMemoLogger, EM_REPLACESEL, (WPARAM)FALSE, (LPARAM)s.c_str());
+    std::wstring s = std::to_wstring(COUNT) + L"Привет\n";
+    console::log(s);
 }
+
 
 void MainPage::updateEmulatorView(void) {
     HDC hdc_dem = GetDC(hwndDisplayEmulator);
@@ -115,7 +113,7 @@ void MainPage::updateEmulatorView(void) {
 void MainPage::fillHandlersByID(void) {
     if (isHadlersFilled) return;
     hwndDisplayEmulator = GetDlgItem(hWndMain, ID_DISPLAY_EMULATOR);
-    hwndMemoLogger = GetDlgItem(hWndMain, ID_MEMO_LOGGER);
+    console::hwnd = hwndMemoLogger = GetDlgItem(hWndMain, ID_MEMO_LOGGER);
     isHadlersFilled = true;
 }
 

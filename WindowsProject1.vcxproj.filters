@@ -80,6 +80,9 @@
     <ClCompile Include="Fonts\TMCUFonts.cpp">
       <Filter>Fonts</Filter>
     </ClCompile>
+    <ClCompile Include="WinAppPages\consolelog.cpp">
+      <Filter>WinAppPages</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="WindowsProject1.rc">

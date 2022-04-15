@@ -158,6 +158,7 @@
     <ClCompile Include="GraphicsFunctions\display_driver.cpp" />
     <ClCompile Include="GraphicsFunctions\graphics.cpp" />
     <ClCompile Include="Msg\msg.cpp" />
+    <ClCompile Include="WinAppPages\consolelog.cpp" />
     <ClCompile Include="WinAppPages\MainPage.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
