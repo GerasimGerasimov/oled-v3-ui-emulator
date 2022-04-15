@@ -9,6 +9,9 @@ void console::log(std::wstring text) {
     SendMessage(hwnd, EM_REPLACESEL, (WPARAM)FALSE, (LPARAM)text.c_str());
 }
 
+void console::clear(void) {
+    SetWindowText(hwnd, 0);
+}
 //How convert std::string to std::wstring in C++?
 //std::string str("Hello world!");
 //std::wstring wstr(str.begin(), str.end());

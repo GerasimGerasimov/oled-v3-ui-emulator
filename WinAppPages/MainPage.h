@@ -8,6 +8,8 @@ class MainPage {
 	public:
 		static void updateEmulatorView(void);
 		static void fillHandlersByID(void);
+		static void keyBoardControlMCU(int cmd);
+
 		static HINSTANCE hInst;                                // текущий экземпляр
 		static WCHAR szTitle[MAX_LOADSTRING];                  // Текст строки заголовка
 		static WCHAR szWindowClass[MAX_LOADSTRING];            // имя класса главного окна
@@ -20,7 +22,6 @@ class MainPage {
 		static HWND hwndTimer;
 		static UINT IDT_TIMER1;
 
-		static void keyBoardControlMCU(int cmd);
 		static ATOM MyRegisterClass(HINSTANCE hInstance);
 		static BOOL InitInstance(HINSTANCE hInstance, int nCmdShow);
 		static LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam);

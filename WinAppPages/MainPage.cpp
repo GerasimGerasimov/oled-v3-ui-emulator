@@ -147,6 +147,10 @@ LRESULT CALLBACK MainPage::WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARA
         // Разобрать выбор в меню:
         switch (wmId)
         {
+        case ID_BUTTON_CLEAR: 
+            console::clear();
+            console::log(L"ID_BUTTON_CLEAR\n");
+            break;
         case IDM_ABOUT:
             DialogBox(hInst, MAKEINTRESOURCE(IDD_ABOUTBOX), hWnd, About);
             break;
