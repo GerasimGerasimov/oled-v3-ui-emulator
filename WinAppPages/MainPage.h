@@ -16,6 +16,7 @@ class MainPage {
 		static HWND hwndButton;
 		static HWND hwndKeyCodeText;
 		static HWND hwndDisplayEmulator;
+		static HWND hwndMemoLogger;
 		static HWND hwndTimer;
 		static UINT IDT_TIMER1;
 

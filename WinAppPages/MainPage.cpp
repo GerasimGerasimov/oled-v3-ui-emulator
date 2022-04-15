@@ -12,6 +12,7 @@ HWND MainPage::hWndMain = NULL;
 HWND MainPage::hwndButton = NULL;
 HWND MainPage::hwndKeyCodeText = NULL;
 HWND MainPage::hwndDisplayEmulator = NULL;
+HWND MainPage::hwndMemoLogger = NULL;
 HWND MainPage::hwndTimer = NULL;
 UINT MainPage::IDT_TIMER1 = 0;
 bool MainPage::isHadlersFilled = false;
@@ -58,7 +59,7 @@ BOOL MainPage::InitInstance(HINSTANCE hInstance, int nCmdShow)
 {
     hInst = hInstance; // —охранить маркер экземпл€ра в глобальной переменной
 
-    hWndMain = CreateDialog(hInstance, MAKEINTRESOURCE(IDD_MAINWINDOW), NULL, WndProc);
+    hWndMain = CreateDialog(hInstance, MAKEINTRESOURCE(IDD_MAINWINDOW), NULL, (DLGPROC)WndProc);
     if (!hWndMain)
     {
         return FALSE;
@@ -96,9 +97,12 @@ VOID CALLBACK MainPage::MyTimerProc(
 
     updateEmulatorView();
 
-    //std::wstring s = std::to_wstring(COUNT);
-    //SetWindowText(hwndKeyCodeText, (LPCWSTR)s.c_str()); // выводим результат в статическое поле
+    std::wstring s = std::to_wstring(COUNT) + L"\n";
 
+    //SetWindowText(hwndKeyCodeText, (LPCWSTR)s.c_str()); // выводим результат в статическое поле
+    int strLen = SendMessage(hwndMemoLogger, WM_GETTEXTLENGTH, 0, 0);
+    SendMessage(hwndMemoLogger, EM_SETSEL, (WPARAM)strLen, (LPARAM)strLen);    
+    SendMessage(hwndMemoLogger, EM_REPLACESEL, (WPARAM)FALSE, (LPARAM)s.c_str());
 }
 
 void MainPage::updateEmulatorView(void) {
@@ -111,6 +115,7 @@ void MainPage::updateEmulatorView(void) {
 void MainPage::fillHandlersByID(void) {
     if (isHadlersFilled) return;
     hwndDisplayEmulator = GetDlgItem(hWndMain, ID_DISPLAY_EMULATOR);
+    hwndMemoLogger = GetDlgItem(hWndMain, ID_MEMO_LOGGER);
     isHadlersFilled = true;
 }
 
@@ -144,8 +149,7 @@ LRESULT CALLBACK MainPage::WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARA
         switch (wmId)
         {
         case IDM_ABOUT:
-            //DialogBox(hInst, MAKEINTRESOURCE(IDD_ABOUTBOX), hWnd, About);
-            DialogBox(hInst, MAKEINTRESOURCE(IDD_MAINWINDOW), hWnd, About);
+            DialogBox(hInst, MAKEINTRESOURCE(IDD_ABOUTBOX), hWnd, About);
             break;
         case IDM_EXIT:
             DestroyWindow(hWnd);
