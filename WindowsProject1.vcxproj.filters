@@ -28,6 +28,9 @@
     <Filter Include="Fonts">
       <UniqueIdentifier>{89b8feb4-48c4-4228-93b5-13ea6c338119}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Divers">
+      <UniqueIdentifier>{4a5f3fa7-b023-4fb2-b8b7-c6a413b0815b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -53,35 +56,35 @@
     <ClCompile Include="WinAppPages\MainPage.cpp">
       <Filter>WinAppPages</Filter>
     </ClCompile>
-    <ClCompile Include="Components\common.cpp">
-      <Filter>Components</Filter>
-    </ClCompile>
-    <ClCompile Include="Msg\msg.cpp">
-      <Filter>Msg</Filter>
-    </ClCompile>
-    <ClCompile Include="Components\Pages.cpp">
-      <Filter>Components</Filter>
-    </ClCompile>
-    <ClCompile Include="GraphicsFunctions\graphics.cpp">
-      <Filter>GraphicsFunstions</Filter>
-    </ClCompile>
-    <ClCompile Include="GraphicsFunctions\display_driver.cpp">
-      <Filter>GraphicsFunstions</Filter>
-    </ClCompile>
-    <ClCompile Include="Fonts\MSSansSerifBold14.cpp">
-      <Filter>Fonts</Filter>
-    </ClCompile>
-    <ClCompile Include="Fonts\TMCUText.cpp">
-      <Filter>Fonts</Filter>
-    </ClCompile>
-    <ClCompile Include="Fonts\Verdana12.cpp">
-      <Filter>Fonts</Filter>
-    </ClCompile>
-    <ClCompile Include="Fonts\TMCUFonts.cpp">
-      <Filter>Fonts</Filter>
-    </ClCompile>
     <ClCompile Include="WinAppPages\consolelog.cpp">
       <Filter>WinAppPages</Filter>
+    </ClCompile>
+    <ClCompile Include="MCU\Components\common.cpp">
+      <Filter>Components</Filter>
+    </ClCompile>
+    <ClCompile Include="MCU\Components\Pages.cpp">
+      <Filter>Components</Filter>
+    </ClCompile>
+    <ClCompile Include="MCU\Fonts\MSSansSerifBold14.cpp">
+      <Filter>Fonts</Filter>
+    </ClCompile>
+    <ClCompile Include="MCU\Fonts\Verdana12.cpp">
+      <Filter>Fonts</Filter>
+    </ClCompile>
+    <ClCompile Include="MCU\Fonts\TMCUFonts.cpp">
+      <Filter>Fonts</Filter>
+    </ClCompile>
+    <ClCompile Include="MCU\Fonts\TMCUText.cpp">
+      <Filter>Fonts</Filter>
+    </ClCompile>
+    <ClCompile Include="Drivers\display_driver.cpp">
+      <Filter>Divers</Filter>
+    </ClCompile>
+    <ClCompile Include="MCU\GraphicsFunctions\graphics.cpp">
+      <Filter>GraphicsFunstions</Filter>
+    </ClCompile>
+    <ClCompile Include="MCU\Msg\msg.cpp">
+      <Filter>Msg</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
