@@ -6,7 +6,7 @@
 
 class MainPage {
 	public:
-		static void updateEmulatorView(void);
+		//static void updateEmulatorView(void);
 		static void fillHandlersByID(void);
 		static void keyBoardControlMCU(int cmd);
 

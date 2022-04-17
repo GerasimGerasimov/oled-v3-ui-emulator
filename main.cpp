@@ -6,6 +6,8 @@
 #include "main.h"
 #include <string> 
 #include "MainPage.h"
+#include <thread>
+#include "mcu_main_thread.h"
 
 int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
                      _In_opt_ HINSTANCE hPrevInstance,
@@ -32,6 +34,8 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 
     MSG msg;
 
+    create_mcu_main_thread();
+
     // Цикл основного сообщения:
     while (GetMessage(&msg, nullptr, 0, 0))
     {
@@ -42,5 +46,6 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
         }
     }
 
+    close_mcu_main_thread();
     return (int) msg.wParam;
 }

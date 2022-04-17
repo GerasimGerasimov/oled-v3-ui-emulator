@@ -84,35 +84,23 @@ VOID CALLBACK MainPage::MyTimerProc(
     UINT idTimer,     // timer identifier 
     DWORD dwTime)     // current system time 
 {
-    COUNT++;
-    std::string scount = std::to_string(COUNT);
-
-    TTextSizes tsize;
-    tsize = TMCUFonts::getTextSizes(scount, "Verdana12");
-    TGrahics::fillRect({ 10,36, tsize.width, tsize.height, 0 });
-    TGrahics::outText(scount, 10, 36, 1, "Verdana12");
-
-    tsize = TMCUFonts::getTextSizes(scount, "MSSansSerifBold14");
-    TGrahics::fillRect({ 40,36, tsize.width, tsize.height, 1 });
-    TGrahics::outText(scount, 40, 36, 0, "MSSansSerifBold14");
-
-    updateEmulatorView();
-
-    std::wstring s = std::to_wstring(COUNT) + L"Привет\n";
-    //console::log(s);
+    //updateEmulatorView();
 }
 
 
+/*
 void MainPage::updateEmulatorView(void) {
     HDC hdc_dem = GetDC(hwndDisplayEmulator);
     TDisplayDriver::setDC(hdc_dem);
-    TDisplayDriver::out();
     ReleaseDC(hwndDisplayEmulator, hdc_dem);
 }
+*/
 
 void MainPage::fillHandlersByID(void) {
     if (isHadlersFilled) return;
     hwndDisplayEmulator = GetDlgItem(hWndMain, ID_DISPLAY_EMULATOR);
+    HDC hdc_dem = GetDC(hwndDisplayEmulator);
+    TDisplayDriver::setDC(hdc_dem);
     console::hwnd = hwndMemoLogger = GetDlgItem(hWndMain, ID_MEMO_LOGGER);
     isHadlersFilled = true;
 }

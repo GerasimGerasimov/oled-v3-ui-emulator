@@ -18,6 +18,10 @@ struct TDisplayDriver {
 		static void out(void);
 	private:
 		static HDC dc;
+		static HBRUSH Br_Light;
+		static HBRUSH Br_Empty;
+		static HBITMAP b;
+		static HDC memDC;
 };
 
 #endif

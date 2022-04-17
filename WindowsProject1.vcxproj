@@ -89,7 +89,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(ProjectDir)MCU\GraphicsFunctions;$(ProjectDir)WinAppPages;$(ProjectDir)MCU\Msg;$(ProjectDir)MCU\Components;$(ProjectDir)Drivers;$(ProjectDir)MCU\Fonts;$(ProjectDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)MCU\GraphicsFunctions;$(ProjectDir)WinAppPages;$(ProjectDir)MCU\Msg;$(ProjectDir)MCU\Components;$(ProjectDir)threads;$(ProjectDir)MCU\App;$(ProjectDir)Drivers;$(ProjectDir)MCU\Fonts;$(ProjectDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -118,7 +118,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(ProjectDir)MCU\GraphicsFunctions;$(ProjectDir)WinAppPages;$(ProjectDir)MCU\Msg;$(ProjectDir)MCU\Components;$(ProjectDir)Drivers;$(ProjectDir)MCU\Fonts;$(ProjectDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)MCU\GraphicsFunctions;$(ProjectDir)WinAppPages;$(ProjectDir)MCU\Msg;$(ProjectDir)MCU\Components;$(ProjectDir)threads;$(ProjectDir)MCU\App;$(ProjectDir)Drivers;$(ProjectDir)MCU\Fonts;$(ProjectDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -150,6 +150,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Drivers\display_driver.cpp" />
+    <ClCompile Include="MCU\App\app.cpp" />
     <ClCompile Include="MCU\Components\common.cpp" />
     <ClCompile Include="MCU\Components\Pages.cpp" />
     <ClCompile Include="MCU\Fonts\MSSansSerifBold14.cpp" />
@@ -158,6 +159,8 @@
     <ClCompile Include="MCU\Fonts\Verdana12.cpp" />
     <ClCompile Include="MCU\GraphicsFunctions\graphics.cpp" />
     <ClCompile Include="MCU\Msg\msg.cpp" />
+    <ClCompile Include="threads\mcu_main_thread.cpp" />
+    <ClCompile Include="threads\mutexes.cpp" />
     <ClCompile Include="WinAppPages\consolelog.cpp" />
     <ClCompile Include="WinAppPages\MainPage.cpp" />
     <ClCompile Include="main.cpp" />
