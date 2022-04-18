@@ -3,13 +3,22 @@
 #include "graphics.h"
 #include "display_driver.h"
 
-void App::init(void) {
+#include "Label.h"
 
+TLabelInitStructure LabelInit;
+TLabel* pLabel;
+
+void App::init(void) {
+    LabelInit.caption = "Привет";
+    pLabel = new TLabel(LabelInit);
 }
 
 static u32 COUNT = 0;
 
 void App::run(void) {
+
+    pLabel->view();
+
     COUNT++;
     std::string scount = std::to_string(COUNT);
 

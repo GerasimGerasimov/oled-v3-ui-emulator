@@ -101,6 +101,9 @@
     <ClCompile Include="threads\mcu_main_thread.cpp">
       <Filter>Threads</Filter>
     </ClCompile>
+    <ClCompile Include="MCU\Components\Label.cpp">
+      <Filter>Components</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="WindowsProject1.rc">

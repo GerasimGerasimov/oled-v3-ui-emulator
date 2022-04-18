@@ -3,15 +3,19 @@
 
 #include <stm32f4xx.h>
 
-class TVisualObject {//базовый класс визуальных объектов
-public:
-    //нахождение визуального объекта в фокусе
-    bool Focus = false;//false-не в фокусе true-в фокусе
-    //область вывода (откуда начинать и контроль границ)
+struct TElementRect {
     s16 Left;  //
     s16 Top;   //
     u16 Height;//
     u16 Width; //
+};
+
+class TVisualObject {//базовый класс визуальных объектов
+public:
+    //нахождение визуального объекта в фокусе
+    bool inFocus = false;//false-не в фокусе true-в фокусе
+    //область вывода (откуда начинать и контроль границ)
+    TElementRect ElementRect;
     virtual void View();//вывести объект на экране
     TVisualObject();//конструктор
     ~TVisualObject();//деструктор

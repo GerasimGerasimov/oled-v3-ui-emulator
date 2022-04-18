@@ -9,6 +9,9 @@
 #define VIEW_PORT_MAX_WIDTH  128 //ширина
 #define VIEW_PORT_MAX_HEIGHT 64  //высота
 
+#define PRIMARY_COLOR  1
+#define BACKGROUND_COLOR 0
+
 struct TPixel {
 	s16 x;
 	s16 y;
