@@ -12,7 +12,7 @@ void App::init(void) {
     LabelInit.caption = "Привет";
     LabelInit.style = LabelsStyle::LS_DINAMIC;
     LabelInit.focused = true;
-    LabelInit.Rect = { 110, 60, 10, 10 };
+    LabelInit.Rect = { 10, 10, 10, 10 };
     pLabel = new TLabel(LabelInit);
 }
 

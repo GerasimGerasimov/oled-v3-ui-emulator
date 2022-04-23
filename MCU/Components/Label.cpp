@@ -6,10 +6,15 @@ void  TLabel::view() {//вывести строку на экране
         ? SelectedColor
         : PrimaryColor;
 
-    TTextSizes tsizes = getSize();
-    TFillRect rect {ElementRect.Left, ElementRect.Top, tsizes.width, tsizes.height, ColorScheme.BackGround };
-    TGrahics::fillRect(rect);
+    fillBackGround(ColorScheme);
     TGrahics::outText(Caption, ElementRect.Left, ElementRect.Top, ColorScheme.Color, Font);
+}
+
+void TLabel::fillBackGround(TColorScheme ColorScheme) {
+    if (Style & (int)LabelsStyle::LS_BGRN_TRANSPARENT) return;
+    TTextSizes tsizes = getSize();
+    TFillRect rect{ ElementRect.Left, ElementRect.Top, tsizes.width, tsizes.height, ColorScheme.BackGround };
+    TGrahics::fillRect(rect);
 }
 
 void TLabel::setCaption(std::string caption) {//добавить/изменить текст в строке
@@ -21,7 +26,7 @@ void TLabel::setFont(std::string font) {//добавить/изменить текст в строке
 }
 
 TTextSizes TLabel::getSize(void) {
-    if (Style == LabelsStyle::LS_DINAMIC) {
+    if (Style == (int)LabelsStyle::LS_DINAMIC) {
         return TMCUFonts::getTextSizes(Caption, Font);
     }
     else {
@@ -34,7 +39,7 @@ TLabel::TLabel(TLabelInitStructure init) {//конструктор
     setFont((init.font != "") ? init.font : "Verdana12");
     PrimaryColor = init.PrimaryColor;
     SelectedColor = init.SelectedColor;
-    Style = init.style;
+    Style = (int)init.style;
     ElementRect = init.Rect;
     setCaption(init.caption);
 }

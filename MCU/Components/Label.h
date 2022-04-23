@@ -12,7 +12,8 @@ struct TColorScheme {
 
 enum class LabelsStyle {
     LS_DINAMIC = 1,
-    LS_FIXED   = 2
+    LS_FIXED   = 2,
+    LS_BGRN_TRANSPARENT = 4
 };
 
 
@@ -40,7 +41,8 @@ private:
     std::string Caption;
     TColorScheme PrimaryColor; //основная цветовая схема 
     TColorScheme SelectedColor;//цветовая схема при выделении
-    LabelsStyle Style;
+    int Style;
+    void fillBackGround(TColorScheme ColorScheme);
 };
 
 #endif
