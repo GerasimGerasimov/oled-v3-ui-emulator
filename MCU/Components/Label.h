@@ -10,19 +10,17 @@ struct TColorScheme {
     u16 BackGround;
 };
 
-typedef union {
-    u16	   i;
-    struct {//флаги стилей
-        unsigned Dinamic : 1;
-        unsigned Fixed : 1;
-    } bits;
-} LabelStyle;//флаги управления и индикации;
+enum class LabelsStyle {
+    LS_DINAMIC = 1,
+    LS_FIXED   = 2
+};
+
 
 struct TLabelInitStructure {
     bool focused = false;
     std::string caption = "";
     std::string font = "Verdana12";
-    LabelStyle style = { 0 };
+    LabelsStyle style = LabelsStyle::LS_FIXED;
     TColorScheme PrimaryColor = { PRIMARY_COLOR , BACKGROUND_COLOR }; //основная цветовая схема 
     TColorScheme SelectedColor = { BACKGROUND_COLOR, PRIMARY_COLOR };//цветовая схема при выделении
     TElementRect Rect = { 0, 0, 64, 10 };
@@ -42,7 +40,7 @@ private:
     std::string Caption;
     TColorScheme PrimaryColor; //основная цветовая схема 
     TColorScheme SelectedColor;//цветовая схема при выделении
-    LabelStyle Style;
+    LabelsStyle Style;
 };
 
 #endif

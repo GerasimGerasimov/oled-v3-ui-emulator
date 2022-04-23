@@ -7,7 +7,7 @@ void  TLabel::view() {//вывести строку на экране
         : PrimaryColor;
 
     TTextSizes tsizes = getSize();
-    TFillRect rect {ElementRect.Left, ElementRect.Top, ElementRect.Width, ElementRect.Height, ColorScheme.BackGround };
+    TFillRect rect {ElementRect.Left, ElementRect.Top, tsizes.width, tsizes.height, ColorScheme.BackGround };
     TGrahics::fillRect(rect);
     TGrahics::outText(Caption, ElementRect.Left, ElementRect.Top, ColorScheme.Color, Font);
 }
@@ -21,7 +21,7 @@ void TLabel::setFont(std::string font) {//добавить/изменить текст в строке
 }
 
 TTextSizes TLabel::getSize(void) {
-    if (Style.bits.Dinamic) {
+    if (Style == LabelsStyle::LS_DINAMIC) {
         return TMCUFonts::getTextSizes(Caption, Font);
     }
     else {

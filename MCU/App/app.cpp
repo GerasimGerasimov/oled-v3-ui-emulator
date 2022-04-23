@@ -10,6 +10,9 @@ TLabel* pLabel;
 
 void App::init(void) {
     LabelInit.caption = "Привет";
+    LabelInit.style = LabelsStyle::LS_DINAMIC;
+    LabelInit.focused = true;
+    LabelInit.Rect = { 110, 60, 10, 10 };
     pLabel = new TLabel(LabelInit);
 }
 
@@ -17,10 +20,11 @@ static u32 COUNT = 0;
 
 void App::run(void) {
 
-    pLabel->view();
-
     COUNT++;
     std::string scount = std::to_string(COUNT);
+
+    pLabel->setCaption(scount);
+    pLabel->view();
 
     TTextSizes tsize;
     tsize = TMCUFonts::getTextSizes(scount, "Verdana12");
