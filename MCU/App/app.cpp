@@ -3,17 +3,31 @@
 #include "graphics.h"
 #include "display_driver.h"
 
+#include "TComponentListVertical.h"
 #include "Label.h"
 
+TComponentListVertical* MainMenu;
 TLabelInitStructure LabelInit;
-TLabel* pLabel;
+TLabel* pLabel1;
+TLabel* pLabel2;
+TLabel* pLabel3;
+TLabel* pLabel4;
+TLabel* pLabel5;
 
 void App::init(void) {
     LabelInit.caption = "Привет";
     LabelInit.style = LabelsStyle::LS_DINAMIC;
     LabelInit.focused = true;
     LabelInit.Rect = { 10, 10, 10, 10 };
-    pLabel = new TLabel(LabelInit);
+    pLabel1 = new TLabel(LabelInit);
+    pLabel2 = new TLabel(LabelInit);
+    LabelInit.caption = "досвидания";
+    LabelInit.focused = true;
+    LabelInit.font = "MSSansSerifBold14";
+    pLabel3 = new TLabel(LabelInit);
+    pLabel4 = new TLabel(LabelInit);
+    pLabel5 = new TLabel(LabelInit);
+    MainMenu = new TComponentListVertical({ pLabel1 , pLabel2 , pLabel3, pLabel4, pLabel5 });
 }
 
 static u32 COUNT = 0;
@@ -23,17 +37,9 @@ void App::run(void) {
     COUNT++;
     std::string scount = std::to_string(COUNT);
 
-    pLabel->setCaption(scount);
-    pLabel->view();
-
-    TTextSizes tsize;
-    tsize = TMCUFonts::getTextSizes(scount, "Verdana12");
-    TGrahics::fillRect({ 10,36, tsize.width, tsize.height, 0 });
-    TGrahics::outText(scount, 10, 36, 1, "Verdana12");
-
-    tsize = TMCUFonts::getTextSizes(scount, "MSSansSerifBold14");
-    TGrahics::fillRect({ 40,36, tsize.width, tsize.height, 1 });
-    TGrahics::outText(scount, 40, 36, 0, "MSSansSerifBold14");
+    pLabel1->setCaption(scount);
+    pLabel4->setCaption(scount);
+    MainMenu->view();
 
     TDisplayDriver::out();
 }

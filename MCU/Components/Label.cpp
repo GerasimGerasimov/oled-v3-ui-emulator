@@ -1,13 +1,18 @@
 #include "Label.h"
 
 //класс "строка текста"
-void  TLabel::view() {//вывести строку на экране
+void  TLabel::view(void) {//вывести строку на экране
     TColorScheme ColorScheme = (inFocus)
         ? SelectedColor
         : PrimaryColor;
 
     fillBackGround(ColorScheme);
     TGrahics::outText(Caption, ElementRect.Left, ElementRect.Top, ColorScheme.Color, Font);
+}
+
+u16 TLabel::getHeight(void) {
+    TTextSizes tsizes = getSize();
+    return tsizes.height;
 }
 
 void TLabel::fillBackGround(TColorScheme ColorScheme) {

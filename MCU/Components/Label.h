@@ -21,7 +21,7 @@ struct TLabelInitStructure {
     bool focused = false;
     std::string caption = "";
     std::string font = "Verdana12";
-    LabelsStyle style = LabelsStyle::LS_FIXED;
+    LabelsStyle style = LabelsStyle::LS_DINAMIC;
     TColorScheme PrimaryColor = { PRIMARY_COLOR , BACKGROUND_COLOR }; //основная цветовая схема 
     TColorScheme SelectedColor = { BACKGROUND_COLOR, PRIMARY_COLOR };//цветовая схема при выделении
     TElementRect Rect = { 0, 0, 64, 10 };
@@ -30,7 +30,8 @@ struct TLabelInitStructure {
 //строка текста
 class TLabel : public TVisualObject {
 public:
-    void view();//вывести строку на экране
+    virtual void view(void);//вывести строку на экране
+    virtual u16 getHeight(void);
     void setCaption(std::string caption);//изменить текст в строке передав её адрес
     void setFont(std::string font);//изменить текст в строке передав её адрес
     TTextSizes getSize(void);

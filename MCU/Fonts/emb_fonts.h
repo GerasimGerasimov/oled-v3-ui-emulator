@@ -1,17 +1,17 @@
 #ifndef EMB_FONTS_H
 #define EMB_FONTS_H
 
-#include <stdint.h>
+#include <stm32f4xx.h>
 
  typedef struct {
-     const int code;
-     const uint8_t* image;
-     const int width;
+     const u8 code;
+     const u8* image;
+     const u8 width;
      } tChar;
 
  typedef struct {
-     const int length;
-     const int height;
+     const u16 length;
+     const u8 height;
      const tChar *chars;
      } tFont;
 

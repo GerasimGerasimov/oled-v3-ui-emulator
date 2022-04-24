@@ -15,7 +15,7 @@
 * compacted: no
 *
 * preset name: Monochrome
-* data block size: 8 bit(s), uint8_t
+* data block size: 8 bit(s), u8
 * RLE compression enabled: no
 * conversion type: Monochrome, Diffuse Dither 128
 * split to rows: yes
@@ -31,7 +31,7 @@
 
 
 
-static const uint8_t image_data_Verdana12_0x00[] = {
+static const u8 image_data_Verdana12_0x00[] = {
     // █
     // █
     // █
@@ -45,7 +45,7 @@ static const uint8_t image_data_Verdana12_0x00[] = {
     0x80, 0x80, 0x80, 0x80, 0x80, 0x80, 0x80, 0x80, 0x80, 0x80
 };
 
-static const uint8_t image_data_Verdana12_0x01[] = {
+static const u8 image_data_Verdana12_0x01[] = {
     // ██
     // ██
     // ██
@@ -59,7 +59,7 @@ static const uint8_t image_data_Verdana12_0x01[] = {
     0xc0, 0xc0, 0xc0, 0xc0, 0xc0, 0xc0, 0xc0, 0xc0, 0xc0, 0xc0
 };
 
-static const uint8_t image_data_Verdana12_0x02[] = {
+static const u8 image_data_Verdana12_0x02[] = {
     // ██
     // ██
     // ██
@@ -73,7 +73,7 @@ static const uint8_t image_data_Verdana12_0x02[] = {
     0xc0, 0xc0, 0xc0, 0xc0, 0xc0, 0xc0, 0xc0, 0xc0, 0xc0, 0xc0
 };
 
-static const uint8_t image_data_Verdana12_0x03[] = {
+static const u8 image_data_Verdana12_0x03[] = {
     // ██
     // ██
     // ██
@@ -87,7 +87,7 @@ static const uint8_t image_data_Verdana12_0x03[] = {
     0xc0, 0xc0, 0xc0, 0xc0, 0xc0, 0xc0, 0xc0, 0xc0, 0xc0, 0xc0
 };
 
-static const uint8_t image_data_Verdana12_0x04[] = {
+static const u8 image_data_Verdana12_0x04[] = {
     // ██
     // ██
     // ██
@@ -101,7 +101,7 @@ static const uint8_t image_data_Verdana12_0x04[] = {
     0xc0, 0xc0, 0xc0, 0xc0, 0xc0, 0xc0, 0xc0, 0xc0, 0xc0, 0xc0
 };
 
-static const uint8_t image_data_Verdana12_0x05[] = {
+static const u8 image_data_Verdana12_0x05[] = {
     // ██
     // ██
     // ██
@@ -115,7 +115,7 @@ static const uint8_t image_data_Verdana12_0x05[] = {
     0xc0, 0xc0, 0xc0, 0xc0, 0xc0, 0xc0, 0xc0, 0xc0, 0xc0, 0xc0
 };
 
-static const uint8_t image_data_Verdana12_0x06[] = {
+static const u8 image_data_Verdana12_0x06[] = {
     // ██
     // ██
     // ██
@@ -129,7 +129,7 @@ static const uint8_t image_data_Verdana12_0x06[] = {
     0xc0, 0xc0, 0xc0, 0xc0, 0xc0, 0xc0, 0xc0, 0xc0, 0xc0, 0xc0
 };
 
-static const uint8_t image_data_Verdana12_0x07[] = {
+static const u8 image_data_Verdana12_0x07[] = {
     // ██
     // ██
     // ██
@@ -143,7 +143,7 @@ static const uint8_t image_data_Verdana12_0x07[] = {
     0xc0, 0xc0, 0xc0, 0xc0, 0xc0, 0xc0, 0xc0, 0xc0, 0xc0, 0xc0
 };
 
-static const uint8_t image_data_Verdana12_0x08[] = {
+static const u8 image_data_Verdana12_0x08[] = {
     // ██
     // ██
     // ██
@@ -157,7 +157,7 @@ static const uint8_t image_data_Verdana12_0x08[] = {
     0xc0, 0xc0, 0xc0, 0xc0, 0xc0, 0xc0, 0xc0, 0xc0, 0xc0, 0xc0
 };
 
-static const uint8_t image_data_Verdana12_0x09[] = {
+static const u8 image_data_Verdana12_0x09[] = {
     // █
     // █
     // █
@@ -171,7 +171,7 @@ static const uint8_t image_data_Verdana12_0x09[] = {
     0x80, 0x80, 0x80, 0x80, 0x80, 0x80, 0x80, 0x80, 0x80, 0x80
 };
 
-static const uint8_t image_data_Verdana12_0x0a[] = {
+static const u8 image_data_Verdana12_0x0a[] = {
     // ██████████
     // ██████████
     // ██████████
@@ -186,7 +186,7 @@ static const uint8_t image_data_Verdana12_0x0a[] = {
     0xff, 0xc0, 0xff, 0xc0
 };
 
-static const uint8_t image_data_Verdana12_0x0b[] = {
+static const u8 image_data_Verdana12_0x0b[] = {
     // ██
     // ██
     // ██
@@ -200,7 +200,7 @@ static const uint8_t image_data_Verdana12_0x0b[] = {
     0xc0, 0xc0, 0xc0, 0xc0, 0xc0, 0xc0, 0xc0, 0xc0, 0xc0, 0xc0
 };
 
-static const uint8_t image_data_Verdana12_0x0c[] = {
+static const u8 image_data_Verdana12_0x0c[] = {
     // ██████████
     // ██████████
     // ██████████
@@ -215,7 +215,7 @@ static const uint8_t image_data_Verdana12_0x0c[] = {
     0xff, 0xc0, 0xff, 0xc0
 };
 
-static const uint8_t image_data_Verdana12_0x0d[] = {
+static const u8 image_data_Verdana12_0x0d[] = {
     // ██████████
     // ██████████
     // ██████████
@@ -230,7 +230,7 @@ static const uint8_t image_data_Verdana12_0x0d[] = {
     0xff, 0xc0, 0xff, 0xc0
 };
 
-static const uint8_t image_data_Verdana12_0x0e[] = {
+static const u8 image_data_Verdana12_0x0e[] = {
     // ██
     // ██
     // ██
@@ -244,7 +244,7 @@ static const uint8_t image_data_Verdana12_0x0e[] = {
     0xc0, 0xc0, 0xc0, 0xc0, 0xc0, 0xc0, 0xc0, 0xc0, 0xc0, 0xc0
 };
 
-static const uint8_t image_data_Verdana12_0x0f[] = {
+static const u8 image_data_Verdana12_0x0f[] = {
     // ██
     // ██
     // ██
@@ -258,7 +258,7 @@ static const uint8_t image_data_Verdana12_0x0f[] = {
     0xc0, 0xc0, 0xc0, 0xc0, 0xc0, 0xc0, 0xc0, 0xc0, 0xc0, 0xc0
 };
 
-static const uint8_t image_data_Verdana12_0x10[] = {
+static const u8 image_data_Verdana12_0x10[] = {
     // ██
     // ██
     // ██
@@ -272,7 +272,7 @@ static const uint8_t image_data_Verdana12_0x10[] = {
     0xc0, 0xc0, 0xc0, 0xc0, 0xc0, 0xc0, 0xc0, 0xc0, 0xc0, 0xc0
 };
 
-static const uint8_t image_data_Verdana12_0x11[] = {
+static const u8 image_data_Verdana12_0x11[] = {
     // ██
     // ██
     // ██
@@ -286,7 +286,7 @@ static const uint8_t image_data_Verdana12_0x11[] = {
     0xc0, 0xc0, 0xc0, 0xc0, 0xc0, 0xc0, 0xc0, 0xc0, 0xc0, 0xc0
 };
 
-static const uint8_t image_data_Verdana12_0x12[] = {
+static const u8 image_data_Verdana12_0x12[] = {
     // ██
     // ██
     // ██
@@ -300,7 +300,7 @@ static const uint8_t image_data_Verdana12_0x12[] = {
     0xc0, 0xc0, 0xc0, 0xc0, 0xc0, 0xc0, 0xc0, 0xc0, 0xc0, 0xc0
 };
 
-static const uint8_t image_data_Verdana12_0x13[] = {
+static const u8 image_data_Verdana12_0x13[] = {
     // ██
     // ██
     // ██
@@ -314,7 +314,7 @@ static const uint8_t image_data_Verdana12_0x13[] = {
     0xc0, 0xc0, 0xc0, 0xc0, 0xc0, 0xc0, 0xc0, 0xc0, 0xc0, 0xc0
 };
 
-static const uint8_t image_data_Verdana12_0x14[] = {
+static const u8 image_data_Verdana12_0x14[] = {
     // ██
     // ██
     // ██
@@ -328,7 +328,7 @@ static const uint8_t image_data_Verdana12_0x14[] = {
     0xc0, 0xc0, 0xc0, 0xc0, 0xc0, 0xc0, 0xc0, 0xc0, 0xc0, 0xc0
 };
 
-static const uint8_t image_data_Verdana12_0x15[] = {
+static const u8 image_data_Verdana12_0x15[] = {
     // ██
     // ██
     // ██
@@ -342,7 +342,7 @@ static const uint8_t image_data_Verdana12_0x15[] = {
     0xc0, 0xc0, 0xc0, 0xc0, 0xc0, 0xc0, 0xc0, 0xc0, 0xc0, 0xc0
 };
 
-static const uint8_t image_data_Verdana12_0x16[] = {
+static const u8 image_data_Verdana12_0x16[] = {
     // ██
     // ██
     // ██
@@ -356,7 +356,7 @@ static const uint8_t image_data_Verdana12_0x16[] = {
     0xc0, 0xc0, 0xc0, 0xc0, 0xc0, 0xc0, 0xc0, 0xc0, 0xc0, 0xc0
 };
 
-static const uint8_t image_data_Verdana12_0x17[] = {
+static const u8 image_data_Verdana12_0x17[] = {
     // ██
     // ██
     // ██
@@ -370,7 +370,7 @@ static const uint8_t image_data_Verdana12_0x17[] = {
     0xc0, 0xc0, 0xc0, 0xc0, 0xc0, 0xc0, 0xc0, 0xc0, 0xc0, 0xc0
 };
 
-static const uint8_t image_data_Verdana12_0x18[] = {
+static const u8 image_data_Verdana12_0x18[] = {
     // ██
     // ██
     // ██
@@ -384,7 +384,7 @@ static const uint8_t image_data_Verdana12_0x18[] = {
     0xc0, 0xc0, 0xc0, 0xc0, 0xc0, 0xc0, 0xc0, 0xc0, 0xc0, 0xc0
 };
 
-static const uint8_t image_data_Verdana12_0x19[] = {
+static const u8 image_data_Verdana12_0x19[] = {
     // ██
     // ██
     // ██
@@ -398,7 +398,7 @@ static const uint8_t image_data_Verdana12_0x19[] = {
     0xc0, 0xc0, 0xc0, 0xc0, 0xc0, 0xc0, 0xc0, 0xc0, 0xc0, 0xc0
 };
 
-static const uint8_t image_data_Verdana12_0x1a[] = {
+static const u8 image_data_Verdana12_0x1a[] = {
     // ██
     // ██
     // ██
@@ -412,7 +412,7 @@ static const uint8_t image_data_Verdana12_0x1a[] = {
     0xc0, 0xc0, 0xc0, 0xc0, 0xc0, 0xc0, 0xc0, 0xc0, 0xc0, 0xc0
 };
 
-static const uint8_t image_data_Verdana12_0x1b[] = {
+static const u8 image_data_Verdana12_0x1b[] = {
     // ██
     // ██
     // ██
@@ -426,7 +426,7 @@ static const uint8_t image_data_Verdana12_0x1b[] = {
     0xc0, 0xc0, 0xc0, 0xc0, 0xc0, 0xc0, 0xc0, 0xc0, 0xc0, 0xc0
 };
 
-static const uint8_t image_data_Verdana12_0x1c[] = {
+static const u8 image_data_Verdana12_0x1c[] = {
     // ██
     // ██
     // ██
@@ -440,7 +440,7 @@ static const uint8_t image_data_Verdana12_0x1c[] = {
     0xc0, 0xc0, 0xc0, 0xc0, 0xc0, 0xc0, 0xc0, 0xc0, 0xc0, 0xc0
 };
 
-static const uint8_t image_data_Verdana12_0x1d[] = {
+static const u8 image_data_Verdana12_0x1d[] = {
     // ██
     // ██
     // ██
@@ -454,7 +454,7 @@ static const uint8_t image_data_Verdana12_0x1d[] = {
     0xc0, 0xc0, 0xc0, 0xc0, 0xc0, 0xc0, 0xc0, 0xc0, 0xc0, 0xc0
 };
 
-static const uint8_t image_data_Verdana12_0x1e[] = {
+static const u8 image_data_Verdana12_0x1e[] = {
     // ██
     // ██
     // ██
@@ -468,7 +468,7 @@ static const uint8_t image_data_Verdana12_0x1e[] = {
     0xc0, 0xc0, 0xc0, 0xc0, 0xc0, 0xc0, 0xc0, 0xc0, 0xc0, 0xc0
 };
 
-static const uint8_t image_data_Verdana12_0x1f[] = {
+static const u8 image_data_Verdana12_0x1f[] = {
     // ██
     // ██
     // ██
@@ -482,7 +482,7 @@ static const uint8_t image_data_Verdana12_0x1f[] = {
     0xc0, 0xc0, 0xc0, 0xc0, 0xc0, 0xc0, 0xc0, 0xc0, 0xc0, 0xc0
 };
 
-static const uint8_t image_data_Verdana12_0x20[] = {
+static const u8 image_data_Verdana12_0x20[] = {
     // ███
     // ███
     // ███
@@ -496,7 +496,7 @@ static const uint8_t image_data_Verdana12_0x20[] = {
     0xe0, 0xe0, 0xe0, 0xe0, 0xe0, 0xe0, 0xe0, 0xe0, 0xe0, 0xe0
 };
 
-static const uint8_t image_data_Verdana12_0x21[] = {
+static const u8 image_data_Verdana12_0x21[] = {
     // ████
     // █∙∙█
     // █∙∙█
@@ -510,7 +510,7 @@ static const uint8_t image_data_Verdana12_0x21[] = {
     0xf0, 0x90, 0x90, 0x90, 0x90, 0x90, 0xf0, 0x90, 0xf0, 0xf0
 };
 
-static const uint8_t image_data_Verdana12_0x22[] = {
+static const u8 image_data_Verdana12_0x22[] = {
     // ∙∙█∙∙█
     // ∙∙█∙∙█
     // ∙∙█∙∙█
@@ -524,7 +524,7 @@ static const uint8_t image_data_Verdana12_0x22[] = {
     0x24, 0x24, 0x24, 0xfc, 0xfc, 0xfc, 0xfc, 0xfc, 0xfc, 0xfc
 };
 
-static const uint8_t image_data_Verdana12_0x23[] = {
+static const u8 image_data_Verdana12_0x23[] = {
     // █████████
     // ████∙█∙██
     // ████∙█∙██
@@ -539,7 +539,7 @@ static const uint8_t image_data_Verdana12_0x23[] = {
     0xff, 0x80, 0xff, 0x80
 };
 
-static const uint8_t image_data_Verdana12_0x24[] = {
+static const u8 image_data_Verdana12_0x24[] = {
     // ███∙███
     // ██∙∙∙██
     // █∙∙∙█∙█
@@ -553,7 +553,7 @@ static const uint8_t image_data_Verdana12_0x24[] = {
     0xee, 0xc6, 0x8a, 0x8e, 0xc6, 0xe2, 0xa2, 0xc6, 0xee, 0xee
 };
 
-static const uint8_t image_data_Verdana12_0x25[] = {
+static const u8 image_data_Verdana12_0x25[] = {
     // █████████████
     // ██∙∙████∙████
     // █∙██∙██∙█████
@@ -568,7 +568,7 @@ static const uint8_t image_data_Verdana12_0x25[] = {
     0xff, 0xf8, 0xff, 0xf8
 };
 
-static const uint8_t image_data_Verdana12_0x26[] = {
+static const u8 image_data_Verdana12_0x26[] = {
     // █████████
     // ██∙∙∙████
     // █∙∙█∙∙███
@@ -583,7 +583,7 @@ static const uint8_t image_data_Verdana12_0x26[] = {
     0xff, 0x80, 0xff, 0x80
 };
 
-static const uint8_t image_data_Verdana12_0x27[] = {
+static const u8 image_data_Verdana12_0x27[] = {
     // ∙∙█
     // ∙∙█
     // ∙∙█
@@ -597,7 +597,7 @@ static const uint8_t image_data_Verdana12_0x27[] = {
     0x20, 0x20, 0x20, 0xe0, 0xe0, 0xe0, 0xe0, 0xe0, 0xe0, 0xe0
 };
 
-static const uint8_t image_data_Verdana12_0x28[] = {
+static const u8 image_data_Verdana12_0x28[] = {
     // ███∙∙
     // ██∙∙█
     // █∙∙██
@@ -611,7 +611,7 @@ static const uint8_t image_data_Verdana12_0x28[] = {
     0xe0, 0xc8, 0x98, 0x98, 0x98, 0x98, 0x98, 0x98, 0xc8, 0xe0
 };
 
-static const uint8_t image_data_Verdana12_0x29[] = {
+static const u8 image_data_Verdana12_0x29[] = {
     // ∙∙███
     // █∙∙██
     // ██∙∙█
@@ -625,7 +625,7 @@ static const uint8_t image_data_Verdana12_0x29[] = {
     0x38, 0x98, 0xc8, 0xc8, 0xc8, 0xc8, 0xc8, 0xc8, 0x98, 0x38
 };
 
-static const uint8_t image_data_Verdana12_0x2a[] = {
+static const u8 image_data_Verdana12_0x2a[] = {
     // ███∙███
     // █∙█∙█∙█
     // ██∙∙∙██
@@ -639,7 +639,7 @@ static const uint8_t image_data_Verdana12_0x2a[] = {
     0xee, 0xaa, 0xc6, 0xaa, 0xee, 0xfe, 0xfe, 0xfe, 0xfe, 0xfe
 };
 
-static const uint8_t image_data_Verdana12_0x2b[] = {
+static const u8 image_data_Verdana12_0x2b[] = {
     // █████████
     // ████∙████
     // ████∙████
@@ -654,7 +654,7 @@ static const uint8_t image_data_Verdana12_0x2b[] = {
     0xff, 0x80, 0xff, 0x80
 };
 
-static const uint8_t image_data_Verdana12_0x2c[] = {
+static const u8 image_data_Verdana12_0x2c[] = {
     // ████
     // ████
     // ████
@@ -668,7 +668,7 @@ static const uint8_t image_data_Verdana12_0x2c[] = {
     0xf0, 0xf0, 0xf0, 0xf0, 0xf0, 0xf0, 0x90, 0x90, 0x90, 0xb0
 };
 
-static const uint8_t image_data_Verdana12_0x2d[] = {
+static const u8 image_data_Verdana12_0x2d[] = {
     // █████
     // █████
     // █████
@@ -682,7 +682,7 @@ static const uint8_t image_data_Verdana12_0x2d[] = {
     0xf8, 0xf8, 0xf8, 0xf8, 0x88, 0xf8, 0xf8, 0xf8, 0xf8, 0xf8
 };
 
-static const uint8_t image_data_Verdana12_0x2e[] = {
+static const u8 image_data_Verdana12_0x2e[] = {
     // ████
     // ████
     // ████
@@ -696,7 +696,7 @@ static const uint8_t image_data_Verdana12_0x2e[] = {
     0xf0, 0xf0, 0xf0, 0xf0, 0xf0, 0xf0, 0x90, 0x90, 0xf0, 0xf0
 };
 
-static const uint8_t image_data_Verdana12_0x2f[] = {
+static const u8 image_data_Verdana12_0x2f[] = {
     // █████∙█
     // █████∙█
     // ████∙██
@@ -710,7 +710,7 @@ static const uint8_t image_data_Verdana12_0x2f[] = {
     0xfa, 0xfa, 0xf6, 0xf6, 0xee, 0xee, 0xde, 0xde, 0xbe, 0xbe
 };
 
-static const uint8_t image_data_Verdana12_0x30[] = {
+static const u8 image_data_Verdana12_0x30[] = {
     // ███████
     // ██∙∙∙██
     // █∙∙█∙∙█
@@ -724,7 +724,7 @@ static const uint8_t image_data_Verdana12_0x30[] = {
     0xfe, 0xc6, 0x92, 0x92, 0x92, 0x92, 0x92, 0xc6, 0xfe, 0xfe
 };
 
-static const uint8_t image_data_Verdana12_0x31[] = {
+static const u8 image_data_Verdana12_0x31[] = {
     // ███████
     // ███∙∙██
     // ██∙∙∙██
@@ -738,7 +738,7 @@ static const uint8_t image_data_Verdana12_0x31[] = {
     0xfe, 0xe6, 0xc6, 0xe6, 0xe6, 0xe6, 0xe6, 0xc2, 0xfe, 0xfe
 };
 
-static const uint8_t image_data_Verdana12_0x32[] = {
+static const u8 image_data_Verdana12_0x32[] = {
     // ███████
     // ██∙∙∙██
     // █∙██∙∙█
@@ -752,7 +752,7 @@ static const uint8_t image_data_Verdana12_0x32[] = {
     0xfe, 0xc6, 0xb2, 0xf2, 0xe6, 0xce, 0x9e, 0x82, 0xfe, 0xfe
 };
 
-static const uint8_t image_data_Verdana12_0x33[] = {
+static const u8 image_data_Verdana12_0x33[] = {
     // ███████
     // ██∙∙∙██
     // █∙██∙∙█
@@ -766,7 +766,7 @@ static const uint8_t image_data_Verdana12_0x33[] = {
     0xfe, 0xc6, 0xb2, 0xf2, 0xc6, 0xf2, 0xb2, 0xc6, 0xfe, 0xfe
 };
 
-static const uint8_t image_data_Verdana12_0x34[] = {
+static const u8 image_data_Verdana12_0x34[] = {
     // ███████
     // ████∙∙█
     // ███∙∙∙█
@@ -780,7 +780,7 @@ static const uint8_t image_data_Verdana12_0x34[] = {
     0xfe, 0xf2, 0xe2, 0xd2, 0xb2, 0x80, 0xf2, 0xf2, 0xfe, 0xfe
 };
 
-static const uint8_t image_data_Verdana12_0x35[] = {
+static const u8 image_data_Verdana12_0x35[] = {
     // ███████
     // █∙∙∙∙∙█
     // █∙∙████
@@ -794,7 +794,7 @@ static const uint8_t image_data_Verdana12_0x35[] = {
     0xfe, 0x82, 0x9e, 0x86, 0xf2, 0xf2, 0xb2, 0xc6, 0xfe, 0xfe
 };
 
-static const uint8_t image_data_Verdana12_0x36[] = {
+static const u8 image_data_Verdana12_0x36[] = {
     // ███████
     // ██∙∙∙██
     // █∙∙████
@@ -808,7 +808,7 @@ static const uint8_t image_data_Verdana12_0x36[] = {
     0xfe, 0xc6, 0x9e, 0x86, 0x92, 0x92, 0x92, 0xc6, 0xfe, 0xfe
 };
 
-static const uint8_t image_data_Verdana12_0x37[] = {
+static const u8 image_data_Verdana12_0x37[] = {
     // ███████
     // █∙∙∙∙∙█
     // ████∙∙█
@@ -822,7 +822,7 @@ static const uint8_t image_data_Verdana12_0x37[] = {
     0xfe, 0x82, 0xf2, 0xe6, 0xe6, 0xce, 0xce, 0x9e, 0xfe, 0xfe
 };
 
-static const uint8_t image_data_Verdana12_0x38[] = {
+static const u8 image_data_Verdana12_0x38[] = {
     // ███████
     // ██∙∙∙██
     // █∙∙█∙∙█
@@ -836,7 +836,7 @@ static const uint8_t image_data_Verdana12_0x38[] = {
     0xfe, 0xc6, 0x92, 0x92, 0xc6, 0x92, 0x92, 0xc6, 0xfe, 0xfe
 };
 
-static const uint8_t image_data_Verdana12_0x39[] = {
+static const u8 image_data_Verdana12_0x39[] = {
     // ███████
     // ██∙∙∙██
     // █∙∙█∙∙█
@@ -850,7 +850,7 @@ static const uint8_t image_data_Verdana12_0x39[] = {
     0xfe, 0xc6, 0x92, 0x92, 0x92, 0xc2, 0xf2, 0xc6, 0xfe, 0xfe
 };
 
-static const uint8_t image_data_Verdana12_0x3a[] = {
+static const u8 image_data_Verdana12_0x3a[] = {
     // ████
     // ████
     // ████
@@ -864,7 +864,7 @@ static const uint8_t image_data_Verdana12_0x3a[] = {
     0xf0, 0xf0, 0xf0, 0x90, 0x90, 0xf0, 0x90, 0x90, 0xf0, 0xf0
 };
 
-static const uint8_t image_data_Verdana12_0x3b[] = {
+static const u8 image_data_Verdana12_0x3b[] = {
     // ████
     // ████
     // ████
@@ -878,7 +878,7 @@ static const uint8_t image_data_Verdana12_0x3b[] = {
     0xf0, 0xf0, 0xf0, 0x90, 0x90, 0xf0, 0x90, 0x90, 0x90, 0xb0
 };
 
-static const uint8_t image_data_Verdana12_0x3c[] = {
+static const u8 image_data_Verdana12_0x3c[] = {
     // █████████
     // ██████∙∙█
     // ████∙∙███
@@ -893,7 +893,7 @@ static const uint8_t image_data_Verdana12_0x3c[] = {
     0xff, 0x80, 0xff, 0x80
 };
 
-static const uint8_t image_data_Verdana12_0x3d[] = {
+static const u8 image_data_Verdana12_0x3d[] = {
     // █████████
     // █████████
     // █████████
@@ -908,7 +908,7 @@ static const uint8_t image_data_Verdana12_0x3d[] = {
     0xff, 0x80, 0xff, 0x80
 };
 
-static const uint8_t image_data_Verdana12_0x3e[] = {
+static const u8 image_data_Verdana12_0x3e[] = {
     // █████████
     // █∙∙██████
     // ███∙∙████
@@ -923,7 +923,7 @@ static const uint8_t image_data_Verdana12_0x3e[] = {
     0xff, 0x80, 0xff, 0x80
 };
 
-static const uint8_t image_data_Verdana12_0x3f[] = {
+static const u8 image_data_Verdana12_0x3f[] = {
     // ██████
     // █∙∙∙██
     // ∙██∙∙█
@@ -937,7 +937,7 @@ static const uint8_t image_data_Verdana12_0x3f[] = {
     0xfc, 0x8c, 0x64, 0xe4, 0xcc, 0x9c, 0xfc, 0x9c, 0xfc, 0xfc
 };
 
-static const uint8_t image_data_Verdana12_0x40[] = {
+static const u8 image_data_Verdana12_0x40[] = {
     // ██████████
     // ███∙∙∙∙███
     // ██∙████∙██
@@ -952,7 +952,7 @@ static const uint8_t image_data_Verdana12_0x40[] = {
     0xe1, 0xc0, 0xff, 0xc0
 };
 
-static const uint8_t image_data_Verdana12_0x41[] = {
+static const u8 image_data_Verdana12_0x41[] = {
     // █████████
     // ███∙∙∙███
     // ███∙∙∙███
@@ -967,7 +967,7 @@ static const uint8_t image_data_Verdana12_0x41[] = {
     0xff, 0x80, 0xff, 0x80
 };
 
-static const uint8_t image_data_Verdana12_0x42[] = {
+static const u8 image_data_Verdana12_0x42[] = {
     // ████████
     // █∙∙∙∙∙██
     // █∙∙██∙∙█
@@ -981,7 +981,7 @@ static const uint8_t image_data_Verdana12_0x42[] = {
     0xff, 0x83, 0x99, 0x99, 0x83, 0x99, 0x99, 0x83, 0xff, 0xff
 };
 
-static const uint8_t image_data_Verdana12_0x43[] = {
+static const u8 image_data_Verdana12_0x43[] = {
     // ███████
     // ██∙∙∙██
     // █∙∙██∙█
@@ -995,7 +995,7 @@ static const uint8_t image_data_Verdana12_0x43[] = {
     0xfe, 0xc6, 0x9a, 0x9e, 0x9e, 0x9e, 0x9a, 0xc6, 0xfe, 0xfe
 };
 
-static const uint8_t image_data_Verdana12_0x44[] = {
+static const u8 image_data_Verdana12_0x44[] = {
     // █████████
     // █∙∙∙∙∙███
     // █∙∙██∙∙██
@@ -1010,7 +1010,7 @@ static const uint8_t image_data_Verdana12_0x44[] = {
     0xff, 0x80, 0xff, 0x80
 };
 
-static const uint8_t image_data_Verdana12_0x45[] = {
+static const u8 image_data_Verdana12_0x45[] = {
     // ███████
     // █∙∙∙∙∙█
     // █∙∙████
@@ -1024,7 +1024,7 @@ static const uint8_t image_data_Verdana12_0x45[] = {
     0xfe, 0x82, 0x9e, 0x9e, 0x82, 0x9e, 0x9e, 0x82, 0xfe, 0xfe
 };
 
-static const uint8_t image_data_Verdana12_0x46[] = {
+static const u8 image_data_Verdana12_0x46[] = {
     // ███████
     // █∙∙∙∙∙█
     // █∙∙████
@@ -1038,7 +1038,7 @@ static const uint8_t image_data_Verdana12_0x46[] = {
     0xfe, 0x82, 0x9e, 0x9e, 0x82, 0x9e, 0x9e, 0x9e, 0xfe, 0xfe
 };
 
-static const uint8_t image_data_Verdana12_0x47[] = {
+static const u8 image_data_Verdana12_0x47[] = {
     // ████████
     // ██∙∙∙∙██
     // █∙∙███∙█
@@ -1052,7 +1052,7 @@ static const uint8_t image_data_Verdana12_0x47[] = {
     0xff, 0xc3, 0x9d, 0x9f, 0x9f, 0x91, 0x99, 0xc1, 0xff, 0xff
 };
 
-static const uint8_t image_data_Verdana12_0x48[] = {
+static const u8 image_data_Verdana12_0x48[] = {
     // ████████
     // █∙∙██∙∙█
     // █∙∙██∙∙█
@@ -1066,7 +1066,7 @@ static const uint8_t image_data_Verdana12_0x48[] = {
     0xff, 0x99, 0x99, 0x99, 0x81, 0x99, 0x99, 0x99, 0xff, 0xff
 };
 
-static const uint8_t image_data_Verdana12_0x49[] = {
+static const u8 image_data_Verdana12_0x49[] = {
     // ██████
     // █∙∙∙∙█
     // ██∙∙██
@@ -1080,7 +1080,7 @@ static const uint8_t image_data_Verdana12_0x49[] = {
     0xfc, 0x84, 0xcc, 0xcc, 0xcc, 0xcc, 0xcc, 0x84, 0xfc, 0xfc
 };
 
-static const uint8_t image_data_Verdana12_0x4a[] = {
+static const u8 image_data_Verdana12_0x4a[] = {
     // ██████
     // █∙∙∙∙█
     // ███∙∙█
@@ -1094,7 +1094,7 @@ static const uint8_t image_data_Verdana12_0x4a[] = {
     0xfc, 0x84, 0xe4, 0xe4, 0xe4, 0xe4, 0xe4, 0x0c, 0xfc, 0xfc
 };
 
-static const uint8_t image_data_Verdana12_0x4b[] = {
+static const u8 image_data_Verdana12_0x4b[] = {
     // ████████
     // █∙∙██∙∙█
     // █∙∙█∙∙██
@@ -1108,7 +1108,7 @@ static const uint8_t image_data_Verdana12_0x4b[] = {
     0xff, 0x99, 0x93, 0x87, 0x8f, 0x87, 0x93, 0x99, 0xff, 0xff
 };
 
-static const uint8_t image_data_Verdana12_0x4c[] = {
+static const u8 image_data_Verdana12_0x4c[] = {
     // ██████
     // █∙∙███
     // █∙∙███
@@ -1122,7 +1122,7 @@ static const uint8_t image_data_Verdana12_0x4c[] = {
     0xfc, 0x9c, 0x9c, 0x9c, 0x9c, 0x9c, 0x9c, 0x80, 0xfc, 0xfc
 };
 
-static const uint8_t image_data_Verdana12_0x4d[] = {
+static const u8 image_data_Verdana12_0x4d[] = {
     // █████████
     // █∙█████∙█
     // █∙∙███∙∙█
@@ -1137,7 +1137,7 @@ static const uint8_t image_data_Verdana12_0x4d[] = {
     0xff, 0x80, 0xff, 0x80
 };
 
-static const uint8_t image_data_Verdana12_0x4e[] = {
+static const u8 image_data_Verdana12_0x4e[] = {
     // ████████
     // █∙████∙█
     // █∙∙███∙█
@@ -1151,7 +1151,7 @@ static const uint8_t image_data_Verdana12_0x4e[] = {
     0xff, 0xbd, 0x9d, 0x8d, 0xa5, 0xb1, 0xb9, 0xbd, 0xff, 0xff
 };
 
-static const uint8_t image_data_Verdana12_0x4f[] = {
+static const u8 image_data_Verdana12_0x4f[] = {
     // █████████
     // ██∙∙∙∙∙██
     // █∙∙███∙∙█
@@ -1166,7 +1166,7 @@ static const uint8_t image_data_Verdana12_0x4f[] = {
     0xff, 0x80, 0xff, 0x80
 };
 
-static const uint8_t image_data_Verdana12_0x50[] = {
+static const u8 image_data_Verdana12_0x50[] = {
     // ████████
     // █∙∙∙∙∙██
     // █∙∙██∙∙█
@@ -1180,7 +1180,7 @@ static const uint8_t image_data_Verdana12_0x50[] = {
     0xff, 0x83, 0x99, 0x99, 0x99, 0x83, 0x9f, 0x9f, 0xff, 0xff
 };
 
-static const uint8_t image_data_Verdana12_0x51[] = {
+static const u8 image_data_Verdana12_0x51[] = {
     // █████████
     // ██∙∙∙∙∙██
     // █∙∙███∙∙█
@@ -1195,7 +1195,7 @@ static const uint8_t image_data_Verdana12_0x51[] = {
     0xf3, 0x80, 0xf8, 0x80
 };
 
-static const uint8_t image_data_Verdana12_0x52[] = {
+static const u8 image_data_Verdana12_0x52[] = {
     // ████████
     // █∙∙∙∙∙██
     // █∙∙██∙∙█
@@ -1209,7 +1209,7 @@ static const uint8_t image_data_Verdana12_0x52[] = {
     0xff, 0x83, 0x99, 0x99, 0x83, 0x93, 0x99, 0x9c, 0xff, 0xff
 };
 
-static const uint8_t image_data_Verdana12_0x53[] = {
+static const u8 image_data_Verdana12_0x53[] = {
     // ███████
     // ██∙∙∙██
     // █∙∙██∙█
@@ -1223,7 +1223,7 @@ static const uint8_t image_data_Verdana12_0x53[] = {
     0xfe, 0xc6, 0x9a, 0x9e, 0xc6, 0xf2, 0xb2, 0xc6, 0xfe, 0xfe
 };
 
-static const uint8_t image_data_Verdana12_0x54[] = {
+static const u8 image_data_Verdana12_0x54[] = {
     // ██████
     // ∙∙∙∙∙∙
     // ██∙∙██
@@ -1237,7 +1237,7 @@ static const uint8_t image_data_Verdana12_0x54[] = {
     0xfc, 0x00, 0xcc, 0xcc, 0xcc, 0xcc, 0xcc, 0xcc, 0xfc, 0xfc
 };
 
-static const uint8_t image_data_Verdana12_0x55[] = {
+static const u8 image_data_Verdana12_0x55[] = {
     // ████████
     // █∙∙██∙∙█
     // █∙∙██∙∙█
@@ -1251,7 +1251,7 @@ static const uint8_t image_data_Verdana12_0x55[] = {
     0xff, 0x99, 0x99, 0x99, 0x99, 0x99, 0x99, 0xc3, 0xff, 0xff
 };
 
-static const uint8_t image_data_Verdana12_0x56[] = {
+static const u8 image_data_Verdana12_0x56[] = {
     // ████████
     // █∙∙██∙∙█
     // █∙∙██∙∙█
@@ -1265,7 +1265,7 @@ static const uint8_t image_data_Verdana12_0x56[] = {
     0xff, 0x99, 0x99, 0x99, 0xc3, 0xc3, 0xc3, 0xe7, 0xff, 0xff
 };
 
-static const uint8_t image_data_Verdana12_0x57[] = {
+static const u8 image_data_Verdana12_0x57[] = {
     // ████████████
     // █∙∙██∙∙██∙∙█
     // █∙∙██∙∙██∙∙█
@@ -1280,7 +1280,7 @@ static const uint8_t image_data_Verdana12_0x57[] = {
     0xff, 0xf0, 0xff, 0xf0
 };
 
-static const uint8_t image_data_Verdana12_0x58[] = {
+static const u8 image_data_Verdana12_0x58[] = {
     // ████████
     // █∙∙██∙∙█
     // █∙∙██∙∙█
@@ -1294,7 +1294,7 @@ static const uint8_t image_data_Verdana12_0x58[] = {
     0xff, 0x99, 0x99, 0xc3, 0xe7, 0xc3, 0x99, 0x99, 0xff, 0xff
 };
 
-static const uint8_t image_data_Verdana12_0x59[] = {
+static const u8 image_data_Verdana12_0x59[] = {
     // ████████
     // █∙∙██∙∙█
     // █∙∙██∙∙█
@@ -1308,7 +1308,7 @@ static const uint8_t image_data_Verdana12_0x59[] = {
     0xff, 0x99, 0x99, 0xc3, 0xe7, 0xe7, 0xe7, 0xe7, 0xff, 0xff
 };
 
-static const uint8_t image_data_Verdana12_0x5a[] = {
+static const u8 image_data_Verdana12_0x5a[] = {
     // ███████
     // █∙∙∙∙∙█
     // ████∙∙█
@@ -1322,7 +1322,7 @@ static const uint8_t image_data_Verdana12_0x5a[] = {
     0xfe, 0x82, 0xf2, 0xe6, 0xce, 0x9e, 0x9e, 0x82, 0xfe, 0xfe
 };
 
-static const uint8_t image_data_Verdana12_0x5b[] = {
+static const u8 image_data_Verdana12_0x5b[] = {
     // █∙∙∙█
     // █∙∙██
     // █∙∙██
@@ -1336,7 +1336,7 @@ static const uint8_t image_data_Verdana12_0x5b[] = {
     0x88, 0x98, 0x98, 0x98, 0x98, 0x98, 0x98, 0x98, 0x98, 0x88
 };
 
-static const uint8_t image_data_Verdana12_0x5c[] = {
+static const u8 image_data_Verdana12_0x5c[] = {
     // █∙█████
     // █∙█████
     // ██∙████
@@ -1350,7 +1350,7 @@ static const uint8_t image_data_Verdana12_0x5c[] = {
     0xbe, 0xbe, 0xde, 0xde, 0xee, 0xee, 0xf6, 0xf6, 0xfa, 0xfa
 };
 
-static const uint8_t image_data_Verdana12_0x5d[] = {
+static const u8 image_data_Verdana12_0x5d[] = {
     // █∙∙∙█
     // ██∙∙█
     // ██∙∙█
@@ -1364,7 +1364,7 @@ static const uint8_t image_data_Verdana12_0x5d[] = {
     0x88, 0xc8, 0xc8, 0xc8, 0xc8, 0xc8, 0xc8, 0xc8, 0xc8, 0x88
 };
 
-static const uint8_t image_data_Verdana12_0x5e[] = {
+static const u8 image_data_Verdana12_0x5e[] = {
     // █████████
     // ████∙████
     // ███∙∙∙███
@@ -1379,7 +1379,7 @@ static const uint8_t image_data_Verdana12_0x5e[] = {
     0xff, 0x80, 0xff, 0x80
 };
 
-static const uint8_t image_data_Verdana12_0x5f[] = {
+static const u8 image_data_Verdana12_0x5f[] = {
     // ███████
     // ███████
     // ███████
@@ -1393,7 +1393,7 @@ static const uint8_t image_data_Verdana12_0x5f[] = {
     0xfe, 0xfe, 0xfe, 0xfe, 0xfe, 0xfe, 0xfe, 0xfe, 0xfe, 0x00
 };
 
-static const uint8_t image_data_Verdana12_0x60[] = {
+static const u8 image_data_Verdana12_0x60[] = {
     // ██∙∙███
     // ███∙∙██
     // ███████
@@ -1407,7 +1407,7 @@ static const uint8_t image_data_Verdana12_0x60[] = {
     0xce, 0xe6, 0xfe, 0xfe, 0xfe, 0xfe, 0xfe, 0xfe, 0xfe, 0xfe
 };
 
-static const uint8_t image_data_Verdana12_0x61[] = {
+static const u8 image_data_Verdana12_0x61[] = {
     // ███████
     // ███████
     // ███████
@@ -1421,7 +1421,7 @@ static const uint8_t image_data_Verdana12_0x61[] = {
     0xfe, 0xfe, 0xfe, 0x86, 0xf2, 0x82, 0x32, 0x82, 0xfe, 0xfe
 };
 
-static const uint8_t image_data_Verdana12_0x62[] = {
+static const u8 image_data_Verdana12_0x62[] = {
     // ∙∙█████
     // ∙∙█████
     // ∙∙█████
@@ -1435,7 +1435,7 @@ static const uint8_t image_data_Verdana12_0x62[] = {
     0x3e, 0x3e, 0x3e, 0x06, 0x32, 0x32, 0x32, 0x06, 0xfe, 0xfe
 };
 
-static const uint8_t image_data_Verdana12_0x63[] = {
+static const u8 image_data_Verdana12_0x63[] = {
     // ██████
     // ██████
     // ██████
@@ -1449,7 +1449,7 @@ static const uint8_t image_data_Verdana12_0x63[] = {
     0xfc, 0xfc, 0xfc, 0x84, 0x3c, 0x3c, 0x3c, 0x84, 0xfc, 0xfc
 };
 
-static const uint8_t image_data_Verdana12_0x64[] = {
+static const u8 image_data_Verdana12_0x64[] = {
     // ████∙∙█
     // ████∙∙█
     // ████∙∙█
@@ -1463,7 +1463,7 @@ static const uint8_t image_data_Verdana12_0x64[] = {
     0xf2, 0xf2, 0xf2, 0x82, 0x32, 0x32, 0x32, 0x82, 0xfe, 0xfe
 };
 
-static const uint8_t image_data_Verdana12_0x65[] = {
+static const u8 image_data_Verdana12_0x65[] = {
     // ███████
     // ███████
     // ███████
@@ -1477,7 +1477,7 @@ static const uint8_t image_data_Verdana12_0x65[] = {
     0xfe, 0xfe, 0xfe, 0x86, 0x32, 0x02, 0x3e, 0x82, 0xfe, 0xfe
 };
 
-static const uint8_t image_data_Verdana12_0x66[] = {
+static const u8 image_data_Verdana12_0x66[] = {
     // ██∙∙∙
     // █∙∙██
     // █∙∙██
@@ -1491,7 +1491,7 @@ static const uint8_t image_data_Verdana12_0x66[] = {
     0xc0, 0x98, 0x98, 0x00, 0x98, 0x98, 0x98, 0x98, 0xf8, 0xf8
 };
 
-static const uint8_t image_data_Verdana12_0x67[] = {
+static const u8 image_data_Verdana12_0x67[] = {
     // ███████
     // ███████
     // ███████
@@ -1505,7 +1505,7 @@ static const uint8_t image_data_Verdana12_0x67[] = {
     0xfe, 0xfe, 0xfe, 0x82, 0x32, 0x32, 0x32, 0x82, 0xf2, 0x86
 };
 
-static const uint8_t image_data_Verdana12_0x68[] = {
+static const u8 image_data_Verdana12_0x68[] = {
     // ∙∙█████
     // ∙∙█████
     // ∙∙█████
@@ -1519,7 +1519,7 @@ static const uint8_t image_data_Verdana12_0x68[] = {
     0x3e, 0x3e, 0x3e, 0x06, 0x32, 0x32, 0x32, 0x32, 0xfe, 0xfe
 };
 
-static const uint8_t image_data_Verdana12_0x69[] = {
+static const u8 image_data_Verdana12_0x69[] = {
     // ███
     // ∙∙█
     // ███
@@ -1533,7 +1533,7 @@ static const uint8_t image_data_Verdana12_0x69[] = {
     0xe0, 0x20, 0xe0, 0x20, 0x20, 0x20, 0x20, 0x20, 0xe0, 0xe0
 };
 
-static const uint8_t image_data_Verdana12_0x6a[] = {
+static const u8 image_data_Verdana12_0x6a[] = {
     // ████
     // █∙∙█
     // ████
@@ -1547,7 +1547,7 @@ static const uint8_t image_data_Verdana12_0x6a[] = {
     0xf0, 0x90, 0xf0, 0x10, 0x90, 0x90, 0x90, 0x90, 0x90, 0x30
 };
 
-static const uint8_t image_data_Verdana12_0x6b[] = {
+static const u8 image_data_Verdana12_0x6b[] = {
     // ∙∙█████
     // ∙∙█████
     // ∙∙█████
@@ -1561,7 +1561,7 @@ static const uint8_t image_data_Verdana12_0x6b[] = {
     0x3e, 0x3e, 0x3e, 0x32, 0x26, 0x0e, 0x26, 0x32, 0xfe, 0xfe
 };
 
-static const uint8_t image_data_Verdana12_0x6c[] = {
+static const u8 image_data_Verdana12_0x6c[] = {
     // ∙∙█
     // ∙∙█
     // ∙∙█
@@ -1575,7 +1575,7 @@ static const uint8_t image_data_Verdana12_0x6c[] = {
     0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0xe0, 0xe0
 };
 
-static const uint8_t image_data_Verdana12_0x6d[] = {
+static const u8 image_data_Verdana12_0x6d[] = {
     // ███████████
     // ███████████
     // ███████████
@@ -1590,7 +1590,7 @@ static const uint8_t image_data_Verdana12_0x6d[] = {
     0xff, 0xe0, 0xff, 0xe0
 };
 
-static const uint8_t image_data_Verdana12_0x6e[] = {
+static const u8 image_data_Verdana12_0x6e[] = {
     // ███████
     // ███████
     // ███████
@@ -1604,7 +1604,7 @@ static const uint8_t image_data_Verdana12_0x6e[] = {
     0xfe, 0xfe, 0xfe, 0x06, 0x32, 0x32, 0x32, 0x32, 0xfe, 0xfe
 };
 
-static const uint8_t image_data_Verdana12_0x6f[] = {
+static const u8 image_data_Verdana12_0x6f[] = {
     // ███████
     // ███████
     // ███████
@@ -1618,7 +1618,7 @@ static const uint8_t image_data_Verdana12_0x6f[] = {
     0xfe, 0xfe, 0xfe, 0x86, 0x32, 0x32, 0x32, 0x86, 0xfe, 0xfe
 };
 
-static const uint8_t image_data_Verdana12_0x70[] = {
+static const u8 image_data_Verdana12_0x70[] = {
     // ███████
     // ███████
     // ███████
@@ -1632,7 +1632,7 @@ static const uint8_t image_data_Verdana12_0x70[] = {
     0xfe, 0xfe, 0xfe, 0x06, 0x32, 0x32, 0x32, 0x06, 0x3e, 0x3e
 };
 
-static const uint8_t image_data_Verdana12_0x71[] = {
+static const u8 image_data_Verdana12_0x71[] = {
     // ███████
     // ███████
     // ███████
@@ -1646,7 +1646,7 @@ static const uint8_t image_data_Verdana12_0x71[] = {
     0xfe, 0xfe, 0xfe, 0x82, 0x32, 0x32, 0x32, 0x82, 0xf2, 0xf2
 };
 
-static const uint8_t image_data_Verdana12_0x72[] = {
+static const u8 image_data_Verdana12_0x72[] = {
     // █████
     // █████
     // █████
@@ -1660,7 +1660,7 @@ static const uint8_t image_data_Verdana12_0x72[] = {
     0xf8, 0xf8, 0xf8, 0x20, 0x00, 0x38, 0x38, 0x38, 0xf8, 0xf8
 };
 
-static const uint8_t image_data_Verdana12_0x73[] = {
+static const u8 image_data_Verdana12_0x73[] = {
     // ██████
     // ██████
     // ██████
@@ -1674,7 +1674,7 @@ static const uint8_t image_data_Verdana12_0x73[] = {
     0xfc, 0xfc, 0xfc, 0x84, 0x3c, 0x04, 0xe4, 0x0c, 0xfc, 0xfc
 };
 
-static const uint8_t image_data_Verdana12_0x74[] = {
+static const u8 image_data_Verdana12_0x74[] = {
     // █████
     // █∙∙██
     // █∙∙██
@@ -1688,7 +1688,7 @@ static const uint8_t image_data_Verdana12_0x74[] = {
     0xf8, 0x98, 0x98, 0x00, 0x98, 0x98, 0x98, 0xc0, 0xf8, 0xf8
 };
 
-static const uint8_t image_data_Verdana12_0x75[] = {
+static const u8 image_data_Verdana12_0x75[] = {
     // ███████
     // ███████
     // ███████
@@ -1702,7 +1702,7 @@ static const uint8_t image_data_Verdana12_0x75[] = {
     0xfe, 0xfe, 0xfe, 0x32, 0x32, 0x32, 0x32, 0x82, 0xfe, 0xfe
 };
 
-static const uint8_t image_data_Verdana12_0x76[] = {
+static const u8 image_data_Verdana12_0x76[] = {
     // ███████
     // ███████
     // ███████
@@ -1716,7 +1716,7 @@ static const uint8_t image_data_Verdana12_0x76[] = {
     0xfe, 0xfe, 0xfe, 0x32, 0x32, 0x86, 0x86, 0xce, 0xfe, 0xfe
 };
 
-static const uint8_t image_data_Verdana12_0x77[] = {
+static const u8 image_data_Verdana12_0x77[] = {
     // █████████
     // █████████
     // █████████
@@ -1731,7 +1731,7 @@ static const uint8_t image_data_Verdana12_0x77[] = {
     0xff, 0x80, 0xff, 0x80
 };
 
-static const uint8_t image_data_Verdana12_0x78[] = {
+static const u8 image_data_Verdana12_0x78[] = {
     // ███████
     // ███████
     // ███████
@@ -1745,7 +1745,7 @@ static const uint8_t image_data_Verdana12_0x78[] = {
     0xfe, 0xfe, 0xfe, 0x32, 0x86, 0xce, 0x86, 0x32, 0xfe, 0xfe
 };
 
-static const uint8_t image_data_Verdana12_0x79[] = {
+static const u8 image_data_Verdana12_0x79[] = {
     // ███████
     // ███████
     // ███████
@@ -1759,7 +1759,7 @@ static const uint8_t image_data_Verdana12_0x79[] = {
     0xfe, 0xfe, 0xfe, 0x32, 0x32, 0x86, 0x86, 0xce, 0xce, 0x9e
 };
 
-static const uint8_t image_data_Verdana12_0x7a[] = {
+static const u8 image_data_Verdana12_0x7a[] = {
     // ██████
     // ██████
     // ██████
@@ -1773,7 +1773,7 @@ static const uint8_t image_data_Verdana12_0x7a[] = {
     0xfc, 0xfc, 0xfc, 0x04, 0xcc, 0x9c, 0x3c, 0x04, 0xfc, 0xfc
 };
 
-static const uint8_t image_data_Verdana12_0x7b[] = {
+static const u8 image_data_Verdana12_0x7b[] = {
     // ████∙∙█
     // ███∙∙██
     // ███∙∙██
@@ -1787,7 +1787,7 @@ static const uint8_t image_data_Verdana12_0x7b[] = {
     0xf2, 0xe6, 0xe6, 0xe6, 0x8e, 0xe6, 0xe6, 0xe6, 0xe6, 0xf2
 };
 
-static const uint8_t image_data_Verdana12_0x7c[] = {
+static const u8 image_data_Verdana12_0x7c[] = {
     // ██∙██
     // ██∙██
     // ██∙██
@@ -1801,7 +1801,7 @@ static const uint8_t image_data_Verdana12_0x7c[] = {
     0xd8, 0xd8, 0xd8, 0xd8, 0xd8, 0xd8, 0xd8, 0xd8, 0xd8, 0xd8
 };
 
-static const uint8_t image_data_Verdana12_0x7d[] = {
+static const u8 image_data_Verdana12_0x7d[] = {
     // █∙∙████
     // ██∙∙███
     // ██∙∙███
@@ -1815,7 +1815,7 @@ static const uint8_t image_data_Verdana12_0x7d[] = {
     0x9e, 0xce, 0xce, 0xce, 0xe2, 0xce, 0xce, 0xce, 0xce, 0x9e
 };
 
-static const uint8_t image_data_Verdana12_0x7e[] = {
+static const u8 image_data_Verdana12_0x7e[] = {
     // █████████
     // █████████
     // █████████
@@ -1830,7 +1830,7 @@ static const uint8_t image_data_Verdana12_0x7e[] = {
     0xff, 0x80, 0xff, 0x80
 };
 
-static const uint8_t image_data_Verdana12_0x7f[] = {
+static const u8 image_data_Verdana12_0x7f[] = {
     // ██████
     // ██████
     // ██████
@@ -1844,7 +1844,7 @@ static const uint8_t image_data_Verdana12_0x7f[] = {
     0xfc, 0xfc, 0xfc, 0xfc, 0xfc, 0xfc, 0xfc, 0xfc, 0xfc, 0xfc
 };
 
-static const uint8_t image_data_Verdana12_0x80[] = {
+static const u8 image_data_Verdana12_0x80[] = {
     // █████████
     // ∙∙∙∙∙∙███
     // ██∙∙█████
@@ -1859,7 +1859,7 @@ static const uint8_t image_data_Verdana12_0x80[] = {
     0xff, 0x80, 0xff, 0x80
 };
 
-static const uint8_t image_data_Verdana12_0x81[] = {
+static const u8 image_data_Verdana12_0x81[] = {
     // ██████
     // █∙∙∙∙∙
     // █∙∙███
@@ -1873,7 +1873,7 @@ static const uint8_t image_data_Verdana12_0x81[] = {
     0xfc, 0x80, 0x9c, 0x9c, 0x9c, 0x9c, 0x9c, 0x9c, 0xfc, 0xfc
 };
 
-static const uint8_t image_data_Verdana12_0x82[] = {
+static const u8 image_data_Verdana12_0x82[] = {
     // ███
     // ███
     // ███
@@ -1887,7 +1887,7 @@ static const uint8_t image_data_Verdana12_0x82[] = {
     0xe0, 0xe0, 0xe0, 0xe0, 0xe0, 0xe0, 0x20, 0x20, 0x60, 0xe0
 };
 
-static const uint8_t image_data_Verdana12_0x83[] = {
+static const u8 image_data_Verdana12_0x83[] = {
     // ███∙∙
     // ██∙∙█
     // █████
@@ -1901,7 +1901,7 @@ static const uint8_t image_data_Verdana12_0x83[] = {
     0xe0, 0xc8, 0xf8, 0x08, 0x38, 0x38, 0x38, 0x38, 0xf8, 0xf8
 };
 
-static const uint8_t image_data_Verdana12_0x84[] = {
+static const u8 image_data_Verdana12_0x84[] = {
     // ██████
     // ██████
     // ██████
@@ -1915,7 +1915,7 @@ static const uint8_t image_data_Verdana12_0x84[] = {
     0xfc, 0xfc, 0xfc, 0xfc, 0xfc, 0xfc, 0x24, 0x24, 0x6c, 0xfc
 };
 
-static const uint8_t image_data_Verdana12_0x85[] = {
+static const u8 image_data_Verdana12_0x85[] = {
     // ████████████
     // ████████████
     // ████████████
@@ -1930,7 +1930,7 @@ static const uint8_t image_data_Verdana12_0x85[] = {
     0xff, 0xf0, 0xff, 0xf0
 };
 
-static const uint8_t image_data_Verdana12_0x86[] = {
+static const u8 image_data_Verdana12_0x86[] = {
     // ███∙███
     // ███∙███
     // █∙∙∙∙∙█
@@ -1944,7 +1944,7 @@ static const uint8_t image_data_Verdana12_0x86[] = {
     0xee, 0xee, 0x82, 0xee, 0xee, 0xee, 0xee, 0xfe, 0xfe, 0xfe
 };
 
-static const uint8_t image_data_Verdana12_0x87[] = {
+static const u8 image_data_Verdana12_0x87[] = {
     // ███∙███
     // ███∙███
     // █∙∙∙∙∙█
@@ -1958,7 +1958,7 @@ static const uint8_t image_data_Verdana12_0x87[] = {
     0xee, 0xee, 0x82, 0xee, 0x82, 0xee, 0xee, 0xfe, 0xfe, 0xfe
 };
 
-static const uint8_t image_data_Verdana12_0x88[] = {
+static const u8 image_data_Verdana12_0x88[] = {
     // ███████
     // ██∙∙∙██
     // █∙∙██∙█
@@ -1972,7 +1972,7 @@ static const uint8_t image_data_Verdana12_0x88[] = {
     0xfe, 0xc6, 0x9a, 0x0e, 0x9e, 0x0e, 0x9a, 0xc6, 0xfe, 0xfe
 };
 
-static const uint8_t image_data_Verdana12_0x89[] = {
+static const u8 image_data_Verdana12_0x89[] = {
     // ██████████████████
     // ██∙∙████∙█████████
     // █∙██∙██∙██████████
@@ -1987,7 +1987,7 @@ static const uint8_t image_data_Verdana12_0x89[] = {
     0x6b, 0x40, 0xfb, 0x6b, 0x40, 0xf7, 0x9c, 0xc0, 0xff, 0xff, 0xc0, 0xff, 0xff, 0xc0
 };
 
-static const uint8_t image_data_Verdana12_0x8a[] = {
+static const u8 image_data_Verdana12_0x8a[] = {
     // ████████████
     // █∙∙∙∙∙∙█████
     // █∙∙██∙∙█████
@@ -2002,7 +2002,7 @@ static const uint8_t image_data_Verdana12_0x8a[] = {
     0xff, 0xf0, 0xff, 0xf0
 };
 
-static const uint8_t image_data_Verdana12_0x8b[] = {
+static const u8 image_data_Verdana12_0x8b[] = {
     // █████
     // █████
     // ███∙█
@@ -2016,7 +2016,7 @@ static const uint8_t image_data_Verdana12_0x8b[] = {
     0xf8, 0xf8, 0xe8, 0xc8, 0x98, 0xc8, 0xe8, 0xf8, 0xf8, 0xf8
 };
 
-static const uint8_t image_data_Verdana12_0x8c[] = {
+static const u8 image_data_Verdana12_0x8c[] = {
     // ████████████
     // █∙∙██∙∙█████
     // █∙∙██∙∙█████
@@ -2031,7 +2031,7 @@ static const uint8_t image_data_Verdana12_0x8c[] = {
     0xff, 0xf0, 0xff, 0xf0
 };
 
-static const uint8_t image_data_Verdana12_0x8d[] = {
+static const u8 image_data_Verdana12_0x8d[] = {
     // ████████
     // █∙∙██∙∙█
     // █∙∙█∙∙∙█
@@ -2045,7 +2045,7 @@ static const uint8_t image_data_Verdana12_0x8d[] = {
     0xff, 0x99, 0x91, 0x97, 0x87, 0x87, 0x93, 0x99, 0xff, 0xff
 };
 
-static const uint8_t image_data_Verdana12_0x8e[] = {
+static const u8 image_data_Verdana12_0x8e[] = {
     // █████████
     // ∙∙∙∙∙∙███
     // ██∙∙█████
@@ -2060,7 +2060,7 @@ static const uint8_t image_data_Verdana12_0x8e[] = {
     0xff, 0x80, 0xff, 0x80
 };
 
-static const uint8_t image_data_Verdana12_0x8f[] = {
+static const u8 image_data_Verdana12_0x8f[] = {
     // ████████
     // █∙∙██∙∙█
     // █∙∙██∙∙█
@@ -2074,7 +2074,7 @@ static const uint8_t image_data_Verdana12_0x8f[] = {
     0xff, 0x99, 0x99, 0x99, 0x99, 0x99, 0x99, 0x81, 0xe7, 0xe7
 };
 
-static const uint8_t image_data_Verdana12_0x90[] = {
+static const u8 image_data_Verdana12_0x90[] = {
     // ∙∙█████
     // ∙∙∙∙███
     // ∙∙█████
@@ -2088,7 +2088,7 @@ static const uint8_t image_data_Verdana12_0x90[] = {
     0x3e, 0x0e, 0x3e, 0x06, 0x32, 0x32, 0x32, 0x32, 0xe6, 0xce
 };
 
-static const uint8_t image_data_Verdana12_0x91[] = {
+static const u8 image_data_Verdana12_0x91[] = {
     // ∙∙█
     // ∙∙█
     // █∙█
@@ -2102,7 +2102,7 @@ static const uint8_t image_data_Verdana12_0x91[] = {
     0x20, 0x20, 0xa0, 0xe0, 0xe0, 0xe0, 0xe0, 0xe0, 0xe0, 0xe0
 };
 
-static const uint8_t image_data_Verdana12_0x92[] = {
+static const u8 image_data_Verdana12_0x92[] = {
     // █∙∙
     // █∙∙
     // █∙█
@@ -2116,7 +2116,7 @@ static const uint8_t image_data_Verdana12_0x92[] = {
     0x80, 0x80, 0xa0, 0xe0, 0xe0, 0xe0, 0xe0, 0xe0, 0xe0, 0xe0
 };
 
-static const uint8_t image_data_Verdana12_0x93[] = {
+static const u8 image_data_Verdana12_0x93[] = {
     // ∙∙█∙∙█
     // ∙∙█∙∙█
     // █∙██∙█
@@ -2130,7 +2130,7 @@ static const uint8_t image_data_Verdana12_0x93[] = {
     0x24, 0x24, 0xb4, 0xfc, 0xfc, 0xfc, 0xfc, 0xfc, 0xfc, 0xfc
 };
 
-static const uint8_t image_data_Verdana12_0x94[] = {
+static const u8 image_data_Verdana12_0x94[] = {
     // █∙∙█∙∙
     // █∙∙█∙∙
     // █∙██∙█
@@ -2144,7 +2144,7 @@ static const uint8_t image_data_Verdana12_0x94[] = {
     0x90, 0x90, 0xb4, 0xfc, 0xfc, 0xfc, 0xfc, 0xfc, 0xfc, 0xfc
 };
 
-static const uint8_t image_data_Verdana12_0x95[] = {
+static const u8 image_data_Verdana12_0x95[] = {
     // ███████
     // ███████
     // ██∙∙∙██
@@ -2158,7 +2158,7 @@ static const uint8_t image_data_Verdana12_0x95[] = {
     0xfe, 0xfe, 0xc6, 0x82, 0x82, 0x82, 0xc6, 0xfe, 0xfe, 0xfe
 };
 
-static const uint8_t image_data_Verdana12_0x96[] = {
+static const u8 image_data_Verdana12_0x96[] = {
     // ███████
     // ███████
     // ███████
@@ -2172,7 +2172,7 @@ static const uint8_t image_data_Verdana12_0x96[] = {
     0xfe, 0xfe, 0xfe, 0xfe, 0x82, 0xfe, 0xfe, 0xfe, 0xfe, 0xfe
 };
 
-static const uint8_t image_data_Verdana12_0x97[] = {
+static const u8 image_data_Verdana12_0x97[] = {
     // ██████████
     // ██████████
     // ██████████
@@ -2187,7 +2187,7 @@ static const uint8_t image_data_Verdana12_0x97[] = {
     0xff, 0xc0, 0xff, 0xc0
 };
 
-static const uint8_t image_data_Verdana12_0x99[] = {
+static const u8 image_data_Verdana12_0x99[] = {
     // ██████████
     // ∙∙∙█∙∙█∙∙█
     // █∙██∙█∙█∙█
@@ -2202,7 +2202,7 @@ static const uint8_t image_data_Verdana12_0x99[] = {
     0xff, 0xc0, 0xff, 0xc0
 };
 
-static const uint8_t image_data_Verdana12_0x9a[] = {
+static const u8 image_data_Verdana12_0x9a[] = {
     // ███████████
     // ███████████
     // ███████████
@@ -2217,7 +2217,7 @@ static const uint8_t image_data_Verdana12_0x9a[] = {
     0xff, 0xe0, 0xff, 0xe0
 };
 
-static const uint8_t image_data_Verdana12_0x9b[] = {
+static const u8 image_data_Verdana12_0x9b[] = {
     // █████
     // █████
     // █∙███
@@ -2231,7 +2231,7 @@ static const uint8_t image_data_Verdana12_0x9b[] = {
     0xf8, 0xf8, 0xb8, 0x98, 0xc8, 0x98, 0xb8, 0xf8, 0xf8, 0xf8
 };
 
-static const uint8_t image_data_Verdana12_0x9c[] = {
+static const u8 image_data_Verdana12_0x9c[] = {
     // ███████████
     // ███████████
     // ███████████
@@ -2246,7 +2246,7 @@ static const uint8_t image_data_Verdana12_0x9c[] = {
     0xff, 0xe0, 0xff, 0xe0
 };
 
-static const uint8_t image_data_Verdana12_0x9d[] = {
+static const u8 image_data_Verdana12_0x9d[] = {
     // ███∙∙██
     // ██∙∙███
     // ███████
@@ -2260,7 +2260,7 @@ static const uint8_t image_data_Verdana12_0x9d[] = {
     0xe6, 0xce, 0xfe, 0x32, 0x26, 0x0e, 0x26, 0x32, 0xfe, 0xfe
 };
 
-static const uint8_t image_data_Verdana12_0x9e[] = {
+static const u8 image_data_Verdana12_0x9e[] = {
     // ∙∙██████
     // ∙∙∙∙████
     // ∙∙██████
@@ -2274,7 +2274,7 @@ static const uint8_t image_data_Verdana12_0x9e[] = {
     0x3f, 0x0f, 0x3f, 0x03, 0x39, 0x39, 0x39, 0x39, 0xff, 0xff
 };
 
-static const uint8_t image_data_Verdana12_0x9f[] = {
+static const u8 image_data_Verdana12_0x9f[] = {
     // ███████
     // ███████
     // ███████
@@ -2288,7 +2288,7 @@ static const uint8_t image_data_Verdana12_0x9f[] = {
     0xfe, 0xfe, 0xfe, 0x32, 0x32, 0x32, 0x32, 0x02, 0xce, 0xfe
 };
 
-static const uint8_t image_data_Verdana12_0xa0[] = {
+static const u8 image_data_Verdana12_0xa0[] = {
     // ███
     // ███
     // ███
@@ -2302,7 +2302,7 @@ static const uint8_t image_data_Verdana12_0xa0[] = {
     0xe0, 0xe0, 0xe0, 0xe0, 0xe0, 0xe0, 0xe0, 0xe0, 0xe0, 0xe0
 };
 
-static const uint8_t image_data_Verdana12_0xa1[] = {
+static const u8 image_data_Verdana12_0xa1[] = {
     // ████████
     // █∙∙██∙∙█
     // █∙∙██∙∙█
@@ -2316,7 +2316,7 @@ static const uint8_t image_data_Verdana12_0xa1[] = {
     0xff, 0x99, 0x99, 0xc3, 0xc3, 0xe7, 0x87, 0x8f, 0xff, 0xff
 };
 
-static const uint8_t image_data_Verdana12_0xa2[] = {
+static const u8 image_data_Verdana12_0xa2[] = {
     // ∙████∙█
     // █∙∙∙∙██
     // ███████
@@ -2330,7 +2330,7 @@ static const uint8_t image_data_Verdana12_0xa2[] = {
     0x7a, 0x86, 0xfe, 0x32, 0x32, 0x86, 0x86, 0xce, 0xce, 0x9e
 };
 
-static const uint8_t image_data_Verdana12_0xa3[] = {
+static const u8 image_data_Verdana12_0xa3[] = {
     // ██████
     // █∙∙∙∙█
     // ███∙∙█
@@ -2344,7 +2344,7 @@ static const uint8_t image_data_Verdana12_0xa3[] = {
     0xfc, 0x84, 0xe4, 0xe4, 0xe4, 0xe4, 0xe4, 0x0c, 0xfc, 0xfc
 };
 
-static const uint8_t image_data_Verdana12_0xa4[] = {
+static const u8 image_data_Verdana12_0xa4[] = {
     // ███████
     // ███████
     // █∙████∙
@@ -2358,7 +2358,7 @@ static const uint8_t image_data_Verdana12_0xa4[] = {
     0xfe, 0xfe, 0xbc, 0xc2, 0xda, 0xda, 0xc2, 0xbc, 0xfe, 0xfe
 };
 
-static const uint8_t image_data_Verdana12_0xa5[] = {
+static const u8 image_data_Verdana12_0xa5[] = {
     // █████∙∙
     // █∙∙∙∙∙∙
     // █∙∙████
@@ -2372,7 +2372,7 @@ static const uint8_t image_data_Verdana12_0xa5[] = {
     0xf8, 0x80, 0x9e, 0x9e, 0x9e, 0x9e, 0x9e, 0x9e, 0xfe, 0xfe
 };
 
-static const uint8_t image_data_Verdana12_0xa6[] = {
+static const u8 image_data_Verdana12_0xa6[] = {
     // ██∙██
     // ██∙██
     // ██∙██
@@ -2386,7 +2386,7 @@ static const uint8_t image_data_Verdana12_0xa6[] = {
     0xd8, 0xd8, 0xd8, 0xd8, 0xf8, 0xf8, 0xd8, 0xd8, 0xd8, 0xd8
 };
 
-static const uint8_t image_data_Verdana12_0xa7[] = {
+static const u8 image_data_Verdana12_0xa7[] = {
     // ███████
     // ██∙∙∙██
     // █∙∙██∙█
@@ -2400,7 +2400,7 @@ static const uint8_t image_data_Verdana12_0xa7[] = {
     0xfe, 0xc6, 0x9a, 0x9e, 0x86, 0x92, 0xc2, 0xf2, 0xb2, 0xc6
 };
 
-static const uint8_t image_data_Verdana12_0xa8[] = {
+static const u8 image_data_Verdana12_0xa8[] = {
     // ███████
     // █∙∙∙∙∙█
     // █∙∙████
@@ -2414,7 +2414,7 @@ static const uint8_t image_data_Verdana12_0xa8[] = {
     0xfe, 0x82, 0x9e, 0x9e, 0x82, 0x9e, 0x9e, 0x82, 0xfe, 0xfe
 };
 
-static const uint8_t image_data_Verdana12_0xa9[] = {
+static const u8 image_data_Verdana12_0xa9[] = {
     // ██████████
     // ███∙∙∙∙███
     // ██∙████∙██
@@ -2429,7 +2429,7 @@ static const uint8_t image_data_Verdana12_0xa9[] = {
     0xe1, 0xc0, 0xff, 0xc0
 };
 
-static const uint8_t image_data_Verdana12_0xaa[] = {
+static const u8 image_data_Verdana12_0xaa[] = {
     // ███████
     // ██∙∙∙██
     // █∙∙██∙█
@@ -2443,7 +2443,7 @@ static const uint8_t image_data_Verdana12_0xaa[] = {
     0xfe, 0xc6, 0x9a, 0x9e, 0x86, 0x9e, 0x9a, 0xc6, 0xfe, 0xfe
 };
 
-static const uint8_t image_data_Verdana12_0xab[] = {
+static const u8 image_data_Verdana12_0xab[] = {
     // █████████
     // █████████
     // ███∙███∙█
@@ -2458,7 +2458,7 @@ static const uint8_t image_data_Verdana12_0xab[] = {
     0xff, 0x80, 0xff, 0x80
 };
 
-static const uint8_t image_data_Verdana12_0xac[] = {
+static const u8 image_data_Verdana12_0xac[] = {
     // █████████
     // █████████
     // █████████
@@ -2473,7 +2473,7 @@ static const uint8_t image_data_Verdana12_0xac[] = {
     0xff, 0x80, 0xff, 0x80
 };
 
-static const uint8_t image_data_Verdana12_0xad[] = {
+static const u8 image_data_Verdana12_0xad[] = {
     // █████
     // █████
     // █████
@@ -2487,7 +2487,7 @@ static const uint8_t image_data_Verdana12_0xad[] = {
     0xf8, 0xf8, 0xf8, 0xf8, 0xf8, 0xf8, 0xf8, 0xf8, 0xf8, 0xf8
 };
 
-static const uint8_t image_data_Verdana12_0xae[] = {
+static const u8 image_data_Verdana12_0xae[] = {
     // ██████████
     // ███∙∙∙∙███
     // ██∙████∙██
@@ -2502,7 +2502,7 @@ static const uint8_t image_data_Verdana12_0xae[] = {
     0xe1, 0xc0, 0xff, 0xc0
 };
 
-static const uint8_t image_data_Verdana12_0xaf[] = {
+static const u8 image_data_Verdana12_0xaf[] = {
     // ██████
     // █∙∙∙∙█
     // ██∙∙██
@@ -2516,7 +2516,7 @@ static const uint8_t image_data_Verdana12_0xaf[] = {
     0xfc, 0x84, 0xcc, 0xcc, 0xcc, 0xcc, 0xcc, 0x84, 0xfc, 0xfc
 };
 
-static const uint8_t image_data_Verdana12_0xb0[] = {
+static const u8 image_data_Verdana12_0xb0[] = {
     // ██████
     // ██∙∙██
     // █∙██∙█
@@ -2530,7 +2530,7 @@ static const uint8_t image_data_Verdana12_0xb0[] = {
     0xfc, 0xcc, 0xb4, 0xb4, 0xcc, 0xfc, 0xfc, 0xfc, 0xfc, 0xfc
 };
 
-static const uint8_t image_data_Verdana12_0xb1[] = {
+static const u8 image_data_Verdana12_0xb1[] = {
     // ████∙████
     // ████∙████
     // ████∙████
@@ -2545,7 +2545,7 @@ static const uint8_t image_data_Verdana12_0xb1[] = {
     0xff, 0x80, 0xff, 0x80
 };
 
-static const uint8_t image_data_Verdana12_0xb2[] = {
+static const u8 image_data_Verdana12_0xb2[] = {
     // ██████
     // █∙∙∙∙█
     // ██∙∙██
@@ -2559,7 +2559,7 @@ static const uint8_t image_data_Verdana12_0xb2[] = {
     0xfc, 0x84, 0xcc, 0xcc, 0xcc, 0xcc, 0xcc, 0x84, 0xfc, 0xfc
 };
 
-static const uint8_t image_data_Verdana12_0xb3[] = {
+static const u8 image_data_Verdana12_0xb3[] = {
     // ███
     // ∙∙█
     // ███
@@ -2573,7 +2573,7 @@ static const uint8_t image_data_Verdana12_0xb3[] = {
     0xe0, 0x20, 0xe0, 0x20, 0x20, 0x20, 0x20, 0x20, 0xe0, 0xe0
 };
 
-static const uint8_t image_data_Verdana12_0xb4[] = {
+static const u8 image_data_Verdana12_0xb4[] = {
     // █████
     // ███∙∙
     // ███∙∙
@@ -2587,7 +2587,7 @@ static const uint8_t image_data_Verdana12_0xb4[] = {
     0xf8, 0xe0, 0xe0, 0x00, 0x38, 0x38, 0x38, 0x38, 0xf8, 0xf8
 };
 
-static const uint8_t image_data_Verdana12_0xb5[] = {
+static const u8 image_data_Verdana12_0xb5[] = {
     // ███████
     // ███████
     // ███████
@@ -2601,7 +2601,7 @@ static const uint8_t image_data_Verdana12_0xb5[] = {
     0xfe, 0xfe, 0xfe, 0x32, 0x32, 0x32, 0x32, 0x02, 0x3e, 0x3e
 };
 
-static const uint8_t image_data_Verdana12_0xb6[] = {
+static const u8 image_data_Verdana12_0xb6[] = {
     // ███████
     // ██∙∙∙∙█
     // █∙∙∙█∙█
@@ -2615,7 +2615,7 @@ static const uint8_t image_data_Verdana12_0xb6[] = {
     0xfe, 0xc2, 0x8a, 0x8a, 0xca, 0xea, 0xea, 0xea, 0xea, 0xea
 };
 
-static const uint8_t image_data_Verdana12_0xb7[] = {
+static const u8 image_data_Verdana12_0xb7[] = {
     // ████
     // ████
     // ████
@@ -2629,7 +2629,7 @@ static const uint8_t image_data_Verdana12_0xb7[] = {
     0xf0, 0xf0, 0xf0, 0xf0, 0x90, 0x90, 0xf0, 0xf0, 0xf0, 0xf0
 };
 
-static const uint8_t image_data_Verdana12_0xb8[] = {
+static const u8 image_data_Verdana12_0xb8[] = {
     // ███████
     // █∙██∙██
     // ███████
@@ -2643,7 +2643,7 @@ static const uint8_t image_data_Verdana12_0xb8[] = {
     0xfe, 0xb6, 0xfe, 0x86, 0x32, 0x02, 0x3e, 0x82, 0xfe, 0xfe
 };
 
-static const uint8_t image_data_Verdana12_0xb9[] = {
+static const u8 image_data_Verdana12_0xb9[] = {
     // █████████████
     // █∙∙███∙██∙∙██
     // █∙∙∙██∙█∙██∙█
@@ -2658,7 +2658,7 @@ static const uint8_t image_data_Verdana12_0xb9[] = {
     0xff, 0xf8, 0xff, 0xf8
 };
 
-static const uint8_t image_data_Verdana12_0xba[] = {
+static const u8 image_data_Verdana12_0xba[] = {
     // ██████
     // ██████
     // ██████
@@ -2672,7 +2672,7 @@ static const uint8_t image_data_Verdana12_0xba[] = {
     0xfc, 0xfc, 0xfc, 0x84, 0x3c, 0x0c, 0x3c, 0x84, 0xfc, 0xfc
 };
 
-static const uint8_t image_data_Verdana12_0xbb[] = {
+static const u8 image_data_Verdana12_0xbb[] = {
     // █████████
     // █████████
     // █∙███∙███
@@ -2687,7 +2687,7 @@ static const uint8_t image_data_Verdana12_0xbb[] = {
     0xff, 0x80, 0xff, 0x80
 };
 
-static const uint8_t image_data_Verdana12_0xbc[] = {
+static const u8 image_data_Verdana12_0xbc[] = {
     // ████
     // █∙∙█
     // ████
@@ -2701,7 +2701,7 @@ static const uint8_t image_data_Verdana12_0xbc[] = {
     0xf0, 0x90, 0xf0, 0x10, 0x90, 0x90, 0x90, 0x90, 0x90, 0x30
 };
 
-static const uint8_t image_data_Verdana12_0xbd[] = {
+static const u8 image_data_Verdana12_0xbd[] = {
     // ███████
     // ██∙∙∙██
     // █∙∙██∙█
@@ -2715,7 +2715,7 @@ static const uint8_t image_data_Verdana12_0xbd[] = {
     0xfe, 0xc6, 0x9a, 0x9e, 0xc6, 0xf2, 0xb2, 0xc6, 0xfe, 0xfe
 };
 
-static const uint8_t image_data_Verdana12_0xbe[] = {
+static const u8 image_data_Verdana12_0xbe[] = {
     // ██████
     // ██████
     // ██████
@@ -2729,7 +2729,7 @@ static const uint8_t image_data_Verdana12_0xbe[] = {
     0xfc, 0xfc, 0xfc, 0x84, 0x3c, 0x04, 0xe4, 0x0c, 0xfc, 0xfc
 };
 
-static const uint8_t image_data_Verdana12_0xbf[] = {
+static const u8 image_data_Verdana12_0xbf[] = {
     // ███
     // ██∙
     // ███
@@ -2743,7 +2743,7 @@ static const uint8_t image_data_Verdana12_0xbf[] = {
     0xe0, 0xc0, 0xe0, 0x20, 0x20, 0x20, 0x20, 0x20, 0xe0, 0xe0
 };
 
-static const uint8_t image_data_Verdana12_0xc0[] = {
+static const u8 image_data_Verdana12_0xc0[] = {
     // █████████
     // ███∙∙∙███
     // ███∙∙∙███
@@ -2758,7 +2758,7 @@ static const uint8_t image_data_Verdana12_0xc0[] = {
     0xff, 0x80, 0xff, 0x80
 };
 
-static const uint8_t image_data_Verdana12_0xc1[] = {
+static const u8 image_data_Verdana12_0xc1[] = {
     // ████████
     // █∙∙∙∙∙██
     // █∙∙█████
@@ -2772,7 +2772,7 @@ static const uint8_t image_data_Verdana12_0xc1[] = {
     0xff, 0x83, 0x9f, 0x9f, 0x83, 0x99, 0x99, 0x83, 0xff, 0xff
 };
 
-static const uint8_t image_data_Verdana12_0xc2[] = {
+static const u8 image_data_Verdana12_0xc2[] = {
     // ████████
     // █∙∙∙∙∙██
     // █∙∙██∙∙█
@@ -2786,7 +2786,7 @@ static const uint8_t image_data_Verdana12_0xc2[] = {
     0xff, 0x83, 0x99, 0x99, 0x83, 0x99, 0x99, 0x83, 0xff, 0xff
 };
 
-static const uint8_t image_data_Verdana12_0xc3[] = {
+static const u8 image_data_Verdana12_0xc3[] = {
     // ██████
     // █∙∙∙∙∙
     // █∙∙███
@@ -2800,7 +2800,7 @@ static const uint8_t image_data_Verdana12_0xc3[] = {
     0xfc, 0x80, 0x9c, 0x9c, 0x9c, 0x9c, 0x9c, 0x9c, 0xfc, 0xfc
 };
 
-static const uint8_t image_data_Verdana12_0xc4[] = {
+static const u8 image_data_Verdana12_0xc4[] = {
     // █████████
     // ██∙∙∙∙∙██
     // ██∙∙█∙∙██
@@ -2815,7 +2815,7 @@ static const uint8_t image_data_Verdana12_0xc4[] = {
     0x3c, 0x80, 0x3c, 0x80
 };
 
-static const uint8_t image_data_Verdana12_0xc5[] = {
+static const u8 image_data_Verdana12_0xc5[] = {
     // ███████
     // █∙∙∙∙∙█
     // █∙∙████
@@ -2829,7 +2829,7 @@ static const uint8_t image_data_Verdana12_0xc5[] = {
     0xfe, 0x82, 0x9e, 0x9e, 0x82, 0x9e, 0x9e, 0x82, 0xfe, 0xfe
 };
 
-static const uint8_t image_data_Verdana12_0xc6[] = {
+static const u8 image_data_Verdana12_0xc6[] = {
     // ████████████
     // █∙∙██∙∙██∙∙█
     // █∙∙∙█∙∙█∙∙∙█
@@ -2844,7 +2844,7 @@ static const uint8_t image_data_Verdana12_0xc6[] = {
     0xff, 0xf0, 0xff, 0xf0
 };
 
-static const uint8_t image_data_Verdana12_0xc7[] = {
+static const u8 image_data_Verdana12_0xc7[] = {
     // ███████
     // ██∙∙∙██
     // █∙██∙∙█
@@ -2858,7 +2858,7 @@ static const uint8_t image_data_Verdana12_0xc7[] = {
     0xfe, 0xc6, 0xb2, 0xf2, 0xc6, 0xf2, 0xb2, 0xc6, 0xfe, 0xfe
 };
 
-static const uint8_t image_data_Verdana12_0xc8[] = {
+static const u8 image_data_Verdana12_0xc8[] = {
     // ████████
     // █∙████∙█
     // █∙███∙∙█
@@ -2872,7 +2872,7 @@ static const uint8_t image_data_Verdana12_0xc8[] = {
     0xff, 0xbd, 0xb9, 0xb1, 0xa5, 0x8d, 0x9d, 0xbd, 0xff, 0xff
 };
 
-static const uint8_t image_data_Verdana12_0xc9[] = {
+static const u8 image_data_Verdana12_0xc9[] = {
     // ████████
     // █∙████∙█
     // █∙███∙∙█
@@ -2886,7 +2886,7 @@ static const uint8_t image_data_Verdana12_0xc9[] = {
     0xff, 0xbd, 0xb9, 0xb1, 0xa5, 0x8d, 0x9d, 0xbd, 0xff, 0xff
 };
 
-static const uint8_t image_data_Verdana12_0xca[] = {
+static const u8 image_data_Verdana12_0xca[] = {
     // ████████
     // █∙∙██∙∙█
     // █∙∙█∙∙∙█
@@ -2900,7 +2900,7 @@ static const uint8_t image_data_Verdana12_0xca[] = {
     0xff, 0x99, 0x91, 0x97, 0x87, 0x87, 0x93, 0x99, 0xff, 0xff
 };
 
-static const uint8_t image_data_Verdana12_0xcb[] = {
+static const u8 image_data_Verdana12_0xcb[] = {
     // ████████
     // █∙∙∙∙∙∙█
     // █∙∙██∙∙█
@@ -2914,7 +2914,7 @@ static const uint8_t image_data_Verdana12_0xcb[] = {
     0xff, 0x81, 0x99, 0x99, 0x99, 0x99, 0x99, 0x39, 0xff, 0xff
 };
 
-static const uint8_t image_data_Verdana12_0xcc[] = {
+static const u8 image_data_Verdana12_0xcc[] = {
     // █████████
     // █∙█████∙█
     // █∙∙███∙∙█
@@ -2929,7 +2929,7 @@ static const uint8_t image_data_Verdana12_0xcc[] = {
     0xff, 0x80, 0xff, 0x80
 };
 
-static const uint8_t image_data_Verdana12_0xcd[] = {
+static const u8 image_data_Verdana12_0xcd[] = {
     // ████████
     // █∙∙██∙∙█
     // █∙∙██∙∙█
@@ -2943,7 +2943,7 @@ static const uint8_t image_data_Verdana12_0xcd[] = {
     0xff, 0x99, 0x99, 0x99, 0x81, 0x99, 0x99, 0x99, 0xff, 0xff
 };
 
-static const uint8_t image_data_Verdana12_0xce[] = {
+static const u8 image_data_Verdana12_0xce[] = {
     // █████████
     // ██∙∙∙∙∙██
     // █∙∙███∙∙█
@@ -2958,7 +2958,7 @@ static const uint8_t image_data_Verdana12_0xce[] = {
     0xff, 0x80, 0xff, 0x80
 };
 
-static const uint8_t image_data_Verdana12_0xcf[] = {
+static const u8 image_data_Verdana12_0xcf[] = {
     // ████████
     // █∙∙∙∙∙∙█
     // █∙∙██∙∙█
@@ -2972,7 +2972,7 @@ static const uint8_t image_data_Verdana12_0xcf[] = {
     0xff, 0x81, 0x99, 0x99, 0x99, 0x99, 0x99, 0x99, 0xff, 0xff
 };
 
-static const uint8_t image_data_Verdana12_0xd0[] = {
+static const u8 image_data_Verdana12_0xd0[] = {
     // ████████
     // █∙∙∙∙∙██
     // █∙∙██∙∙█
@@ -2986,7 +2986,7 @@ static const uint8_t image_data_Verdana12_0xd0[] = {
     0xff, 0x83, 0x99, 0x99, 0x99, 0x83, 0x9f, 0x9f, 0xff, 0xff
 };
 
-static const uint8_t image_data_Verdana12_0xd1[] = {
+static const u8 image_data_Verdana12_0xd1[] = {
     // ███████
     // ██∙∙∙██
     // █∙∙██∙█
@@ -3000,7 +3000,7 @@ static const uint8_t image_data_Verdana12_0xd1[] = {
     0xfe, 0xc6, 0x9a, 0x9e, 0x9e, 0x9e, 0x9a, 0xc6, 0xfe, 0xfe
 };
 
-static const uint8_t image_data_Verdana12_0xd2[] = {
+static const u8 image_data_Verdana12_0xd2[] = {
     // ██████
     // ∙∙∙∙∙∙
     // ██∙∙██
@@ -3014,7 +3014,7 @@ static const uint8_t image_data_Verdana12_0xd2[] = {
     0xfc, 0x00, 0xcc, 0xcc, 0xcc, 0xcc, 0xcc, 0xcc, 0xfc, 0xfc
 };
 
-static const uint8_t image_data_Verdana12_0xd3[] = {
+static const u8 image_data_Verdana12_0xd3[] = {
     // ████████
     // █∙∙██∙∙█
     // █∙∙██∙∙█
@@ -3028,7 +3028,7 @@ static const uint8_t image_data_Verdana12_0xd3[] = {
     0xff, 0x99, 0x99, 0xc3, 0xc3, 0xe7, 0x87, 0x8f, 0xff, 0xff
 };
 
-static const uint8_t image_data_Verdana12_0xd4[] = {
+static const u8 image_data_Verdana12_0xd4[] = {
     // ██████████
     // ████∙∙████
     // ██∙∙∙∙∙∙██
@@ -3043,7 +3043,7 @@ static const uint8_t image_data_Verdana12_0xd4[] = {
     0xff, 0xc0, 0xff, 0xc0
 };
 
-static const uint8_t image_data_Verdana12_0xd5[] = {
+static const u8 image_data_Verdana12_0xd5[] = {
     // ████████
     // █∙∙██∙∙█
     // █∙∙██∙∙█
@@ -3057,7 +3057,7 @@ static const uint8_t image_data_Verdana12_0xd5[] = {
     0xff, 0x99, 0x99, 0xc3, 0xe7, 0xc3, 0x99, 0x99, 0xff, 0xff
 };
 
-static const uint8_t image_data_Verdana12_0xd6[] = {
+static const u8 image_data_Verdana12_0xd6[] = {
     // █████████
     // █∙∙██∙∙██
     // █∙∙██∙∙██
@@ -3072,7 +3072,7 @@ static const uint8_t image_data_Verdana12_0xd6[] = {
     0xfc, 0x80, 0xfc, 0x80
 };
 
-static const uint8_t image_data_Verdana12_0xd7[] = {
+static const u8 image_data_Verdana12_0xd7[] = {
     // ████████
     // █∙∙██∙∙█
     // █∙∙██∙∙█
@@ -3086,7 +3086,7 @@ static const uint8_t image_data_Verdana12_0xd7[] = {
     0xff, 0x99, 0x99, 0x99, 0x99, 0xc1, 0xf9, 0xf9, 0xff, 0xff
 };
 
-static const uint8_t image_data_Verdana12_0xd8[] = {
+static const u8 image_data_Verdana12_0xd8[] = {
     // ████████████
     // █∙∙██∙∙██∙∙█
     // █∙∙██∙∙██∙∙█
@@ -3101,7 +3101,7 @@ static const uint8_t image_data_Verdana12_0xd8[] = {
     0xff, 0xf0, 0xff, 0xf0
 };
 
-static const uint8_t image_data_Verdana12_0xd9[] = {
+static const u8 image_data_Verdana12_0xd9[] = {
     // █████████████
     // █∙∙██∙∙██∙∙██
     // █∙∙██∙∙██∙∙██
@@ -3116,7 +3116,7 @@ static const uint8_t image_data_Verdana12_0xd9[] = {
     0xff, 0xc8, 0xff, 0xc8
 };
 
-static const uint8_t image_data_Verdana12_0xda[] = {
+static const u8 image_data_Verdana12_0xda[] = {
     // █████████
     // ∙∙∙∙█████
     // ██∙∙█████
@@ -3131,7 +3131,7 @@ static const uint8_t image_data_Verdana12_0xda[] = {
     0xff, 0x80, 0xff, 0x80
 };
 
-static const uint8_t image_data_Verdana12_0xdb[] = {
+static const u8 image_data_Verdana12_0xdb[] = {
     // ███████████
     // █∙∙█████∙∙█
     // █∙∙█████∙∙█
@@ -3146,7 +3146,7 @@ static const uint8_t image_data_Verdana12_0xdb[] = {
     0xff, 0xe0, 0xff, 0xe0
 };
 
-static const uint8_t image_data_Verdana12_0xdc[] = {
+static const u8 image_data_Verdana12_0xdc[] = {
     // ████████
     // █∙∙█████
     // █∙∙█████
@@ -3160,7 +3160,7 @@ static const uint8_t image_data_Verdana12_0xdc[] = {
     0xff, 0x9f, 0x9f, 0x9f, 0x83, 0x99, 0x99, 0x83, 0xff, 0xff
 };
 
-static const uint8_t image_data_Verdana12_0xdd[] = {
+static const u8 image_data_Verdana12_0xdd[] = {
     // ███████
     // ██∙∙∙██
     // █∙██∙∙█
@@ -3174,7 +3174,7 @@ static const uint8_t image_data_Verdana12_0xdd[] = {
     0xfe, 0xc6, 0xb2, 0xf2, 0xc2, 0xf2, 0xb2, 0xc6, 0xfe, 0xfe
 };
 
-static const uint8_t image_data_Verdana12_0xde[] = {
+static const u8 image_data_Verdana12_0xde[] = {
     // █████████████
     // █∙∙███∙∙∙∙∙██
     // █∙∙██∙∙███∙∙█
@@ -3189,7 +3189,7 @@ static const uint8_t image_data_Verdana12_0xde[] = {
     0xff, 0xf8, 0xff, 0xf8
 };
 
-static const uint8_t image_data_Verdana12_0xdf[] = {
+static const u8 image_data_Verdana12_0xdf[] = {
     // ████████
     // ██∙∙∙∙∙█
     // █∙∙██∙∙█
@@ -3203,7 +3203,7 @@ static const uint8_t image_data_Verdana12_0xdf[] = {
     0xff, 0xc1, 0x99, 0x99, 0xc1, 0xc9, 0x99, 0x39, 0xff, 0xff
 };
 
-static const uint8_t image_data_Verdana12_0xe0[] = {
+static const u8 image_data_Verdana12_0xe0[] = {
     // ███████
     // ███████
     // ███████
@@ -3217,7 +3217,7 @@ static const uint8_t image_data_Verdana12_0xe0[] = {
     0xfe, 0xfe, 0xfe, 0x86, 0xf2, 0x82, 0x32, 0x82, 0xfe, 0xfe
 };
 
-static const uint8_t image_data_Verdana12_0xe1[] = {
+static const u8 image_data_Verdana12_0xe1[] = {
     // ██∙∙∙∙█
     // █∙∙████
     // ∙∙█████
@@ -3231,7 +3231,7 @@ static const uint8_t image_data_Verdana12_0xe1[] = {
     0xc2, 0x9e, 0x3e, 0x06, 0x32, 0x32, 0x32, 0x86, 0xfe, 0xfe
 };
 
-static const uint8_t image_data_Verdana12_0xe2[] = {
+static const u8 image_data_Verdana12_0xe2[] = {
     // ███████
     // ███████
     // ███████
@@ -3245,7 +3245,7 @@ static const uint8_t image_data_Verdana12_0xe2[] = {
     0xfe, 0xfe, 0xfe, 0x06, 0x32, 0x06, 0x32, 0x06, 0xfe, 0xfe
 };
 
-static const uint8_t image_data_Verdana12_0xe3[] = {
+static const u8 image_data_Verdana12_0xe3[] = {
     // █████
     // █████
     // █████
@@ -3259,7 +3259,7 @@ static const uint8_t image_data_Verdana12_0xe3[] = {
     0xf8, 0xf8, 0xf8, 0x08, 0x38, 0x38, 0x38, 0x38, 0xf8, 0xf8
 };
 
-static const uint8_t image_data_Verdana12_0xe4[] = {
+static const u8 image_data_Verdana12_0xe4[] = {
     // ███████
     // ███████
     // ███████
@@ -3273,7 +3273,7 @@ static const uint8_t image_data_Verdana12_0xe4[] = {
     0xfe, 0xfe, 0xfe, 0x82, 0x92, 0x92, 0x32, 0x00, 0x38, 0xfe
 };
 
-static const uint8_t image_data_Verdana12_0xe5[] = {
+static const u8 image_data_Verdana12_0xe5[] = {
     // ███████
     // ███████
     // ███████
@@ -3287,7 +3287,7 @@ static const uint8_t image_data_Verdana12_0xe5[] = {
     0xfe, 0xfe, 0xfe, 0x86, 0x32, 0x02, 0x3e, 0x82, 0xfe, 0xfe
 };
 
-static const uint8_t image_data_Verdana12_0xe6[] = {
+static const u8 image_data_Verdana12_0xe6[] = {
     // ███████████
     // ███████████
     // ███████████
@@ -3302,7 +3302,7 @@ static const uint8_t image_data_Verdana12_0xe6[] = {
     0xff, 0xe0, 0xff, 0xe0
 };
 
-static const uint8_t image_data_Verdana12_0xe7[] = {
+static const u8 image_data_Verdana12_0xe7[] = {
     // ██████
     // ██████
     // ██████
@@ -3316,7 +3316,7 @@ static const uint8_t image_data_Verdana12_0xe7[] = {
     0xfc, 0xfc, 0xfc, 0x0c, 0xe4, 0x8c, 0xe4, 0x0c, 0xfc, 0xfc
 };
 
-static const uint8_t image_data_Verdana12_0xe8[] = {
+static const u8 image_data_Verdana12_0xe8[] = {
     // ██████
     // ██████
     // ██████
@@ -3330,7 +3330,7 @@ static const uint8_t image_data_Verdana12_0xe8[] = {
     0xfc, 0xfc, 0xfc, 0x64, 0x44, 0x14, 0x34, 0x74, 0xfc, 0xfc
 };
 
-static const uint8_t image_data_Verdana12_0xe9[] = {
+static const u8 image_data_Verdana12_0xe9[] = {
     // █∙█∙██
     // █∙∙∙██
     // ██████
@@ -3344,7 +3344,7 @@ static const uint8_t image_data_Verdana12_0xe9[] = {
     0xac, 0x8c, 0xfc, 0x64, 0x44, 0x14, 0x34, 0x74, 0xfc, 0xfc
 };
 
-static const uint8_t image_data_Verdana12_0xea[] = {
+static const u8 image_data_Verdana12_0xea[] = {
     // ███████
     // ███████
     // ███████
@@ -3358,7 +3358,7 @@ static const uint8_t image_data_Verdana12_0xea[] = {
     0xfe, 0xfe, 0xfe, 0x32, 0x26, 0x0e, 0x26, 0x32, 0xfe, 0xfe
 };
 
-static const uint8_t image_data_Verdana12_0xeb[] = {
+static const u8 image_data_Verdana12_0xeb[] = {
     // ████████
     // ████████
     // ████████
@@ -3372,7 +3372,7 @@ static const uint8_t image_data_Verdana12_0xeb[] = {
     0xff, 0xff, 0xff, 0x81, 0x99, 0x99, 0x99, 0x39, 0xff, 0xff
 };
 
-static const uint8_t image_data_Verdana12_0xec[] = {
+static const u8 image_data_Verdana12_0xec[] = {
     // ████████
     // ████████
     // ████████
@@ -3386,7 +3386,7 @@ static const uint8_t image_data_Verdana12_0xec[] = {
     0xff, 0xff, 0xff, 0x39, 0x11, 0x49, 0x49, 0x79, 0xff, 0xff
 };
 
-static const uint8_t image_data_Verdana12_0xed[] = {
+static const u8 image_data_Verdana12_0xed[] = {
     // ███████
     // ███████
     // ███████
@@ -3400,7 +3400,7 @@ static const uint8_t image_data_Verdana12_0xed[] = {
     0xfe, 0xfe, 0xfe, 0x32, 0x32, 0x02, 0x32, 0x32, 0xfe, 0xfe
 };
 
-static const uint8_t image_data_Verdana12_0xee[] = {
+static const u8 image_data_Verdana12_0xee[] = {
     // ███████
     // ███████
     // ███████
@@ -3414,7 +3414,7 @@ static const uint8_t image_data_Verdana12_0xee[] = {
     0xfe, 0xfe, 0xfe, 0x86, 0x32, 0x32, 0x32, 0x86, 0xfe, 0xfe
 };
 
-static const uint8_t image_data_Verdana12_0xef[] = {
+static const u8 image_data_Verdana12_0xef[] = {
     // ███████
     // ███████
     // ███████
@@ -3428,7 +3428,7 @@ static const uint8_t image_data_Verdana12_0xef[] = {
     0xfe, 0xfe, 0xfe, 0x02, 0x32, 0x32, 0x32, 0x32, 0xfe, 0xfe
 };
 
-static const uint8_t image_data_Verdana12_0xf0[] = {
+static const u8 image_data_Verdana12_0xf0[] = {
     // ███████
     // ███████
     // ███████
@@ -3442,7 +3442,7 @@ static const uint8_t image_data_Verdana12_0xf0[] = {
     0xfe, 0xfe, 0xfe, 0x06, 0x32, 0x32, 0x32, 0x06, 0x3e, 0x3e
 };
 
-static const uint8_t image_data_Verdana12_0xf1[] = {
+static const u8 image_data_Verdana12_0xf1[] = {
     // ██████
     // ██████
     // ██████
@@ -3456,7 +3456,7 @@ static const uint8_t image_data_Verdana12_0xf1[] = {
     0xfc, 0xfc, 0xfc, 0x84, 0x3c, 0x3c, 0x3c, 0x84, 0xfc, 0xfc
 };
 
-static const uint8_t image_data_Verdana12_0xf2[] = {
+static const u8 image_data_Verdana12_0xf2[] = {
     // █████
     // █████
     // █████
@@ -3470,7 +3470,7 @@ static const uint8_t image_data_Verdana12_0xf2[] = {
     0xf8, 0xf8, 0xf8, 0x00, 0x98, 0x98, 0x98, 0x98, 0xf8, 0xf8
 };
 
-static const uint8_t image_data_Verdana12_0xf3[] = {
+static const u8 image_data_Verdana12_0xf3[] = {
     // ███████
     // ███████
     // ███████
@@ -3484,7 +3484,7 @@ static const uint8_t image_data_Verdana12_0xf3[] = {
     0xfe, 0xfe, 0xfe, 0x32, 0x32, 0x86, 0x86, 0xce, 0xce, 0x9e
 };
 
-static const uint8_t image_data_Verdana12_0xf4[] = {
+static const u8 image_data_Verdana12_0xf4[] = {
     // ███∙∙████
     // ███∙∙████
     // ███∙∙████
@@ -3499,7 +3499,7 @@ static const uint8_t image_data_Verdana12_0xf4[] = {
     0xe7, 0x80, 0xe7, 0x80
 };
 
-static const uint8_t image_data_Verdana12_0xf5[] = {
+static const u8 image_data_Verdana12_0xf5[] = {
     // ███████
     // ███████
     // ███████
@@ -3513,7 +3513,7 @@ static const uint8_t image_data_Verdana12_0xf5[] = {
     0xfe, 0xfe, 0xfe, 0x32, 0x86, 0xce, 0x86, 0x32, 0xfe, 0xfe
 };
 
-static const uint8_t image_data_Verdana12_0xf6[] = {
+static const u8 image_data_Verdana12_0xf6[] = {
     // ████████
     // ████████
     // ████████
@@ -3527,7 +3527,7 @@ static const uint8_t image_data_Verdana12_0xf6[] = {
     0xff, 0xff, 0xff, 0x33, 0x33, 0x33, 0x33, 0x01, 0xf9, 0xff
 };
 
-static const uint8_t image_data_Verdana12_0xf7[] = {
+static const u8 image_data_Verdana12_0xf7[] = {
     // ███████
     // ███████
     // ███████
@@ -3541,7 +3541,7 @@ static const uint8_t image_data_Verdana12_0xf7[] = {
     0xfe, 0xfe, 0xfe, 0x32, 0x32, 0x82, 0xf2, 0xf2, 0xfe, 0xfe
 };
 
-static const uint8_t image_data_Verdana12_0xf8[] = {
+static const u8 image_data_Verdana12_0xf8[] = {
     // █████████
     // █████████
     // █████████
@@ -3556,7 +3556,7 @@ static const uint8_t image_data_Verdana12_0xf8[] = {
     0xff, 0x80, 0xff, 0x80
 };
 
-static const uint8_t image_data_Verdana12_0xf9[] = {
+static const u8 image_data_Verdana12_0xf9[] = {
     // ██████████
     // ██████████
     // ██████████
@@ -3571,7 +3571,7 @@ static const uint8_t image_data_Verdana12_0xf9[] = {
     0xfe, 0x40, 0xff, 0xc0
 };
 
-static const uint8_t image_data_Verdana12_0xfa[] = {
+static const u8 image_data_Verdana12_0xfa[] = {
     // ████████
     // ████████
     // ████████
@@ -3585,7 +3585,7 @@ static const uint8_t image_data_Verdana12_0xfa[] = {
     0xff, 0xff, 0xff, 0x1f, 0x83, 0x99, 0x99, 0x83, 0xff, 0xff
 };
 
-static const uint8_t image_data_Verdana12_0xfb[] = {
+static const u8 image_data_Verdana12_0xfb[] = {
     // ██████████
     // ██████████
     // ██████████
@@ -3600,7 +3600,7 @@ static const uint8_t image_data_Verdana12_0xfb[] = {
     0xff, 0xc0, 0xff, 0xc0
 };
 
-static const uint8_t image_data_Verdana12_0xfc[] = {
+static const u8 image_data_Verdana12_0xfc[] = {
     // ███████
     // ███████
     // ███████
@@ -3614,7 +3614,7 @@ static const uint8_t image_data_Verdana12_0xfc[] = {
     0xfe, 0xfe, 0xfe, 0x3e, 0x06, 0x32, 0x32, 0x06, 0xfe, 0xfe
 };
 
-static const uint8_t image_data_Verdana12_0xfd[] = {
+static const u8 image_data_Verdana12_0xfd[] = {
     // ██████
     // ██████
     // ██████
@@ -3628,7 +3628,7 @@ static const uint8_t image_data_Verdana12_0xfd[] = {
     0xfc, 0xfc, 0xfc, 0x0c, 0xe4, 0x84, 0xe4, 0x0c, 0xfc, 0xfc
 };
 
-static const uint8_t image_data_Verdana12_0xfe[] = {
+static const u8 image_data_Verdana12_0xfe[] = {
     // ██████████
     // ██████████
     // ██████████
@@ -3643,7 +3643,7 @@ static const uint8_t image_data_Verdana12_0xfe[] = {
     0xff, 0xc0, 0xff, 0xc0
 };
 
-static const uint8_t image_data_Verdana12_0xff[] = {
+static const u8 image_data_Verdana12_0xff[] = {
     // ███████
     // ███████
     // ███████

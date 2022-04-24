@@ -154,6 +154,7 @@
     <ClCompile Include="MCU\Components\common.cpp" />
     <ClCompile Include="MCU\Components\Label.cpp" />
     <ClCompile Include="MCU\Components\Pages.cpp" />
+    <ClCompile Include="MCU\Components\TComponentListVertical.cpp" />
     <ClCompile Include="MCU\Fonts\MSSansSerifBold14.cpp" />
     <ClCompile Include="MCU\Fonts\TMCUFonts.cpp" />
     <ClCompile Include="MCU\Fonts\TMCUText.cpp" />

@@ -16,9 +16,10 @@ public:
     bool inFocus = false;//false-не в фокусе true-в фокусе
     //область вывода (откуда начинать и контроль границ)
     TElementRect ElementRect;
-    virtual void View();//вывести объект на экране
-    TVisualObject();//конструктор
-    ~TVisualObject();//деструктор
+    virtual void view(void) = 0;//вывести объект на экране
+    virtual u16 getHeight(void) = 0;//вывести объект на экране
+    //TVisualObject();//конструктор
+    //~TVisualObject();//деструктор
 };
 
 #endif
