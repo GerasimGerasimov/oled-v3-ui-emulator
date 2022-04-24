@@ -17,9 +17,8 @@ public:
     //область вывода (откуда начинать и контроль границ)
     TElementRect ElementRect;
     virtual void view(void) = 0;//вывести объект на экране
-    virtual u16 getHeight(void) = 0;//вывести объект на экране
-    //TVisualObject();//конструктор
-    //~TVisualObject();//деструктор
+    virtual const u16 getHeight(void) = 0;//вывести объект на экране
+    ~TVisualObject();//деструктор
 };
 
 #endif

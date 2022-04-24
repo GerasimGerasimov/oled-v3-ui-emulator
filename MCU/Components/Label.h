@@ -31,7 +31,7 @@ struct TLabelInitStructure {
 class TLabel : public TVisualObject {
 public:
     virtual void view(void);//вывести строку на экране
-    virtual u16 getHeight(void);
+    virtual const u16 getHeight(void);
     void setCaption(std::string caption);//изменить текст в строке передав её адрес
     void setFont(std::string font);//изменить текст в строке передав её адрес
     TTextSizes getSize(void);

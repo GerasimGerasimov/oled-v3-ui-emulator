@@ -51,7 +51,7 @@ void TComponentListVertical::view(void){//вывести объект на экране
     }
 }
 
-u16 TComponentListVertical::getHeight(void) {
+const u16 TComponentListVertical::getHeight(void) {
     return ElementRect.Height;
 }
 
@@ -79,16 +79,8 @@ u16 TComponentListVertical::GetViewObjectsCount(){//кол-во объектов умещающихся 
   return c;
 }
 
-void TComponentListVertical::Add(TVisualObject* pVisualObject){//добавить объект в список
-  List.push_back(pVisualObject);
-}
-
-void TComponentListVertical::AddList(std::vector <TVisualObject*> Source) {//добавить список объектов в список
-    List.assign(Source.begin(), Source.end());
-}
-
 void  TComponentListVertical::Clear(){//очистит список
-  List.clear();
+  TComponentsContainer::Clear();
   FocusLine = LastPosition = FirstPosition = 0;
 }
 
@@ -99,10 +91,6 @@ TComponentListVertical::TComponentListVertical (std::vector <TVisualObject*> Sou
   LastPosition = 1;
   ElementRect = { 0, 0, VIEW_PORT_MAX_WIDTH, VIEW_PORT_MAX_HEIGHT };
   AddList(Source);
-}
-
-const u16 TComponentListVertical::ItemsCount() const {
-    return List.size();
 }
 
 TComponentListVertical::~TComponentListVertical() {

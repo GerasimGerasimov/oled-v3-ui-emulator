@@ -10,7 +10,7 @@ void  TLabel::view(void) {//вывести строку на экране
     TGrahics::outText(Caption, ElementRect.Left, ElementRect.Top, ColorScheme.Color, Font);
 }
 
-u16 TLabel::getHeight(void) {
+const u16 TLabel::getHeight(void) {
     TTextSizes tsizes = getSize();
     return tsizes.height;
 }

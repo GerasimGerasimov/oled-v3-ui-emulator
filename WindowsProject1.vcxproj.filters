@@ -107,6 +107,9 @@
     <ClCompile Include="MCU\Components\TComponentListVertical.cpp">
       <Filter>Components</Filter>
     </ClCompile>
+    <ClCompile Include="MCU\Components\TComponentsContainer.cpp">
+      <Filter>Components</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="WindowsProject1.rc">

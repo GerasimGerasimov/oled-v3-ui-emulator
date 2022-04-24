@@ -1,27 +1,22 @@
-#ifndef PAGES_H
-#define PAGES_H
+#ifndef T_PAGE_H
+#define T_PAGE_H
 
-#include <vector>
-#include "common.h"
+#include "TComponentsContainer.h"
 #include "stm32f4xx.h"
 #include "msg.h"
 
-class TPage : public TVisualObject
+class TPage : public TComponentsContainer
 {
 public:
     bool isOpen;
     //с какой по какую строку меню выводить, если кол-во строк не помещается на дисплее
     TVisualObject* pFocusedElement;//строка находящаяся в фокусе
-    void View();//вывести объект на экране
-    void Add(TVisualObject* pVisualObject);//добавить объект в список
-    void AddList(std::vector <TVisualObject*> Source);//добавить список объектов в список
-    void Clear();//очистит список
+    virtual void view();//вывести объект на экране
+    virtual const u16 getHeight(void) { return 0; };
+    void clear();//очистит список
     void ProcessMessage(TMessage* m);//обработчик сообщений
     TPage(bool isOpenState, std::vector <TVisualObject*> Source = {});//конструктор
     ~TPage();//деструктор
-private:
-    std::vector <TVisualObject*> List;
-    u16 GetViewObjectsCount();//кол-во объектов умещающихся в высоту меню от FirstPosition до нижнего края
 };
 
 #endif
