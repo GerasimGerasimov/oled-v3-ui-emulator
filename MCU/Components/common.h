@@ -18,7 +18,7 @@ public:
     TElementRect ElementRect;
     virtual void view(void) = 0;//вывести объект на экране
     virtual const u16 getHeight(void) = 0;//вывести объект на экране
-    ~TVisualObject();//деструктор
+    virtual ~TVisualObject();//деструктор
 };
 
 #endif

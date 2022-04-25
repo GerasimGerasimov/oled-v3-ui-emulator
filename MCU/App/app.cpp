@@ -3,6 +3,7 @@
 #include "graphics.h"
 #include "display_driver.h"
 
+#include "PageMainMenu.h"
 #include "TComponentListVertical.h"
 #include "Label.h"
 
@@ -13,6 +14,9 @@ TLabel* pLabel2;
 TLabel* pLabel3;
 TLabel* pLabel4;
 TLabel* pLabel5;
+
+TPageMainMenu* PageMainMenu;
+
 
 void App::init(void) {
     LabelInit.caption = "Привет";
@@ -28,6 +32,8 @@ void App::init(void) {
     pLabel4 = new TLabel(LabelInit);
     pLabel5 = new TLabel(LabelInit);
     MainMenu = new TComponentListVertical({ pLabel1 , pLabel2 , pLabel3, pLabel4, pLabel5 });
+
+    PageMainMenu = new TPageMainMenu(false, { MainMenu });
 }
 
 static u32 COUNT = 0;

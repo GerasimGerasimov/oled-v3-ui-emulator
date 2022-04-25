@@ -10,7 +10,7 @@ class TPage : public TComponentsContainer
 public:
     bool isOpen;
     //с какой по какую строку меню выводить, если кол-во строк не помещается на дисплее
-    TVisualObject* pFocusedElement;//строка находящаяся в фокусе
+    TVisualObject* pFocusedElement;//элемент находящийся в фокусе
     virtual void view();//вывести объект на экране
     virtual const u16 getHeight(void) { return 0; };
     void clear();//очистит список
