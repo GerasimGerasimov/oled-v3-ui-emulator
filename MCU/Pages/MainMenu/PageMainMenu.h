@@ -2,6 +2,8 @@
 #define T_PAGE_MAIN_MENU_H
 
 #include "Pages.h"
+#include "TComponentListVertical.h"
+#include "Label.h"
 
 class TPageMainMenu : public TPage
 {
@@ -10,8 +12,16 @@ public:
     virtual const u16 getHeight(void) { return 0; };
     void clear();//очистит список
     void ProcessMessage(TMessage* m);//обработчик сообщений
-    TPageMainMenu(bool isOpenState, std::vector <TVisualObject*> Source = {});//конструктор
+    TPageMainMenu();//конструктор
     ~TPageMainMenu();//деструктор
+private:
+    TComponentListVertical* MainMenu;
+    TLabelInitStructure LabelInit;
+    TLabel* pLabel1;
+    TLabel* pLabel2;
+    TLabel* pLabel3;
+    TLabel* pLabel4;
+    TLabel* pLabel5;
 };
 
 #endif

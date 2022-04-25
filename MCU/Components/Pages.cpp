@@ -9,6 +9,11 @@ void TPage::clear() {
 void TPage::ProcessMessage(TMessage* m) {//обработчик сообщений
 }
 
+TPage::TPage()
+	:TComponentsContainer(),
+	isOpen(false) {
+}
+
 TPage::TPage(bool isOpenState, std::vector <TVisualObject*> Source) 
 	: TComponentsContainer(Source),
 	isOpen(isOpenState) {
