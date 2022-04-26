@@ -2,8 +2,8 @@
 #include "resource.h"
 #include <string> 
 #include "display_driver.h"
-#include "graphics.h"
 #include "consolelog.h"
+#include "msg.h"
 
 HINSTANCE MainPage::hInst = NULL;                                // текущий экземпляр
 WCHAR MainPage::szTitle[MAX_LOADSTRING];                  // Текст строки заголовка
@@ -182,6 +182,7 @@ void MainPage::keyBoardControlMCU(int cmd) {
             break;
         case ID_BUTTON_UP:
             console::log(L"ID_BUTTON_UP\n");
+            send_message(KEYBOARD, kbUp, 0);
             break;
         case ID_BUTTON_OK:
             console::log(L"ID_BUTTON_OK\n");
@@ -191,6 +192,7 @@ void MainPage::keyBoardControlMCU(int cmd) {
             break;
         case ID_BUTTON_DOWN:
             console::log(L"ID_BUTTON_DOWN\n");
+            send_message(KEYBOARD, kbDown, 0);
             break;
         case ID_BUTTON_RIGHT:
             console::log(L"ID_BUTTON_RIGHT\n");

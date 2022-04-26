@@ -4,9 +4,9 @@ static u32 COUNT = 0;
 
 void TPageMainMenu::view() {
     COUNT++;
-    std::string scount = std::to_string(COUNT);
-    pLabel1->setCaption(scount);
-    pLabel4->setCaption(scount);
+    //std::string scount = std::to_string(COUNT);
+    //pLabel1->setCaption(scount);
+    //pLabel4->setCaption(scount);
     MainMenu->view();
 };
 
@@ -14,23 +14,40 @@ void TPageMainMenu::clear() {
 }
 
 void TPageMainMenu::ProcessMessage(TMessage* m) {
+    for (auto& element : List) {
+        element->ProcessMessage(m);
+    }
 };
 
 TPageMainMenu::TPageMainMenu()
     :TPage() {
-    LabelInit.caption = "Привет";
     LabelInit.style = LabelsStyle::LS_DINAMIC;
-    LabelInit.focused = true;
     LabelInit.Rect = { 10, 10, 10, 10 };
-    pLabel1 = new TLabel(LabelInit);
-    pLabel2 = new TLabel(LabelInit);
-    LabelInit.caption = "досвидания";
+    LabelInit.caption = "1 Привет";
     LabelInit.focused = true;
+    pLabel1 = new TLabel(LabelInit);
+    LabelInit.focused = false;
+    LabelInit.caption = "2 Привет";
+    pLabel2 = new TLabel(LabelInit);
+    LabelInit.caption = "3 Привет";
     LabelInit.font = "MSSansSerifBold14";
     pLabel3 = new TLabel(LabelInit);
+    LabelInit.caption = "4 Привет";
     pLabel4 = new TLabel(LabelInit);
+    LabelInit.caption = "5 Привет";
     pLabel5 = new TLabel(LabelInit);
-    MainMenu = new TComponentListVertical({ pLabel1 , pLabel2 , pLabel3, pLabel4, pLabel5 });
+    LabelInit.caption = "6 Привет";
+    LabelInit.font = "Verdana12";
+    pLabel6 = new TLabel(LabelInit);
+    LabelInit.caption = "7 Привет";
+    pLabel7 = new TLabel(LabelInit);
+    LabelInit.caption = "8 Привет";
+    pLabel8 = new TLabel(LabelInit);
+    LabelInit.caption = "9 Привет";
+    pLabel9 = new TLabel(LabelInit);
+    MainMenu = new TComponentListVertical({ pLabel1 , pLabel2 , pLabel3, 
+                                            pLabel4, pLabel5, pLabel6,
+                                            pLabel7, pLabel8, pLabel9 });
     AddList({ MainMenu });
 };
 

@@ -22,6 +22,10 @@ private:
     TLabel* pLabel3;
     TLabel* pLabel4;
     TLabel* pLabel5;
+    TLabel* pLabel6;
+    TLabel* pLabel7;
+    TLabel* pLabel8;
+    TLabel* pLabel9;
 };
 
 #endif

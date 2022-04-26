@@ -31,7 +31,7 @@ void TComponentListVertical::ProcessMessage(TMessage* m){//обработчик сообщений
 
 void TComponentListVertical::view(void){//вывести объект на экране
     if (ItemsCount() == 0) return;//рисовать нечего
-    //FillRect(Left, Top, Width, Height, 0);
+    TGrahics::fillRect({ ElementRect.Left, ElementRect.Top , ElementRect.Width, ElementRect.Height, 0});
     //подсчитать, сколько объектов(строк) умещаются в высоту TMenu начиная с FirstPosition
     //при этом, FocusLine входит в множество между FirstPosition и LastPosition
     u16 c = GetViewObjectsCount();//кол-во объектов умещающихся в высоту меню от FirstPosition до нижнего края
@@ -64,7 +64,7 @@ u16 TComponentListVertical::GetViewObjectsCount(){//кол-во объектов умещающихся 
   u16 h = 0; //высота объекта
   while (h <= ElementRect.Height) {//
     if (i < ItemsCount()) {
-      h += List[i]->ElementRect.Height;//увеличиваю высоту
+      h += List[i]->getHeight();//увеличиваю высоту
       i++; //увеличиваю указатель на объект
       c++; //приращение кол-ва строк умещающихся в видимой части списка
     }
@@ -89,7 +89,7 @@ TComponentListVertical::TComponentListVertical (std::vector <TVisualObject*> Sou
   inFocus = false;
   FocusLine = FirstPosition = 0;
   LastPosition = 1;
-  ElementRect = { 0, 0, VIEW_PORT_MAX_WIDTH, VIEW_PORT_MAX_HEIGHT };
+  ElementRect = { 0, 0, VIEW_PORT_MAX_HEIGHT, VIEW_PORT_MAX_WIDTH };
   AddList(Source);
 }
 

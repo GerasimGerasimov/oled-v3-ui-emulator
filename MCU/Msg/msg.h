@@ -24,6 +24,8 @@
 #define LISTCLICK   MAXMESSAGE-15
 #define COLLSTEXIT  MAXMESSAGE-16
 #define OPENWINDOW  MAXMESSAGE-17
+#define REPAINT		MAXMESSAGE-18
+#define TIMER		MAXMESSAGE-19
 
 //Клавиатура
 /*коды клавиатуры
