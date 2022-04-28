@@ -40,6 +40,9 @@
     <Filter Include="App\Msg">
       <UniqueIdentifier>{acaf84c6-fbb1-45ed-a82a-8635dc2fe6e1}</UniqueIdentifier>
     </Filter>
+    <Filter Include="App\Router">
+      <UniqueIdentifier>{72e87f74-fc12-428a-897b-4d6098a45f6e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -115,6 +118,15 @@
     </ClCompile>
     <ClCompile Include="MCU\Pages\MainMenu\PageMainMenu.cpp">
       <Filter>App\Pages</Filter>
+    </ClCompile>
+    <ClCompile Include="MCU\Pages\Counters\PageCounters.cpp">
+      <Filter>App\Pages</Filter>
+    </ClCompile>
+    <ClCompile Include="MCU\Components\LinkLabel.cpp">
+      <Filter>App\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="MCU\Router\Router.cpp">
+      <Filter>App\Router</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

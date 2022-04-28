@@ -5,7 +5,7 @@ static u32 COUNT = 0;
 void TPageMainMenu::view() {
     COUNT++;
     //std::string scount = std::to_string(COUNT);
-    //pLabel1->setCaption(scount);
+    //pLabel2->setCaption(scount);
     //pLabel4->setCaption(scount);
     MainMenu->view();
 };
@@ -19,13 +19,13 @@ void TPageMainMenu::ProcessMessage(TMessage* m) {
     }
 };
 
-TPageMainMenu::TPageMainMenu()
-    :TPage() {
+TPageMainMenu::TPageMainMenu(std::string Name)
+    :TPage(Name) {
     LabelInit.style = LabelsStyle::LS_DINAMIC;
     LabelInit.Rect = { 10, 10, 10, 10 };
-    LabelInit.caption = "1 Привет";
+    LabelInit.caption = "Counters";
     LabelInit.focused = true;
-    pLabel1 = new TLabel(LabelInit);
+    pLabel1 = new TLinkLabel("Counters",LabelInit);
     LabelInit.focused = false;
     LabelInit.caption = "2 Привет";
     pLabel2 = new TLabel(LabelInit);

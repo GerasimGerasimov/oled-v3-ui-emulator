@@ -37,7 +37,7 @@ public:
     TTextSizes getSize(void);
     TLabel(TLabelInitStructure init);//конструктор
     ~TLabel();//деструктор
-private:
+protected:
     std::string Font;
     std::string Caption;
     TColorScheme PrimaryColor; //основная цветовая схема 

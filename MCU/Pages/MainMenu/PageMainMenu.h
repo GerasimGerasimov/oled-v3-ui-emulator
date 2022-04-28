@@ -3,6 +3,7 @@
 
 #include "Pages.h"
 #include "TComponentListVertical.h"
+#include "LinkLabel.h"
 #include "Label.h"
 
 class TPageMainMenu : public TPage
@@ -12,12 +13,12 @@ public:
     virtual const u16 getHeight(void) { return 0; };
     void clear();//очистит список
     void ProcessMessage(TMessage* m);//обработчик сообщений
-    TPageMainMenu();//конструктор
+    TPageMainMenu(std::string Name);//конструктор
     ~TPageMainMenu();//деструктор
 private:
     TComponentListVertical* MainMenu;
     TLabelInitStructure LabelInit;
-    TLabel* pLabel1;
+    TLinkLabel* pLabel1;
     TLabel* pLabel2;
     TLabel* pLabel3;
     TLabel* pLabel4;
