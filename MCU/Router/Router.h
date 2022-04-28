@@ -1,22 +1,21 @@
 #ifndef T_ROUTER_H
 #define T_ROUTER_H
 
-#include "TComponentsContainer.h"
+#include <map>
 #include "Pages.h"
 #include "stm32f4xx.h"
 #include "msg.h"
 
-class TRouter : public TComponentsContainer
-{
+class TRouter {
 public:
-    void view(void) {};
-    const u16 getHeight(void) { return 0; };
-    void ProcessMessage(TMessage* m);
+    static void ProcessMessage(TMessage* m);
     static void Init(void);
     TRouter();
     ~TRouter();
+    static TPage* setActivePage(std::string PageName);
+    static TPage* Page;
 private:
-    static TPage* pActivePage;
+    static std::map<std::string, TPage*> Pages;
 };
 
 #endif
