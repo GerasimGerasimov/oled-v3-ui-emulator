@@ -9,9 +9,14 @@
 class TRouter : public TComponentsContainer
 {
 public:
-    TPage* pActivePage;
-    TRouter(std::vector <TVisualObject*> Source = {});
+    void view(void) {};
+    const u16 getHeight(void) { return 0; };
+    void ProcessMessage(TMessage* m);
+    static void Init(void);
+    TRouter();
     ~TRouter();
+private:
+    static TPage* pActivePage;
 };
 
 #endif
