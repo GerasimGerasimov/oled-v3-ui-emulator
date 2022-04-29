@@ -1,12 +1,17 @@
 #include "PageMainMenu.h"
+#include "Router.h"
 
 static u32 COUNT = 0;
 
+bool TPageMainMenu::onEnter(void) {
+    return false;
+}
+
 void TPageMainMenu::view() {
     COUNT++;
-    //std::string scount = std::to_string(COUNT);
-    //pLabel2->setCaption(scount);
-    //pLabel4->setCaption(scount);
+    std::string scount = std::to_string(COUNT);
+    pLabel2->setCaption(scount);
+    pLabel4->setCaption(scount);
     MainMenu->view();
 };
 
@@ -14,6 +19,16 @@ void TPageMainMenu::clear() {
 }
 
 bool TPageMainMenu::ProcessMessage(TMessage* m) {
+    switch (m->Event) {
+        case KEYBOARD: {
+            switch (m->p1) {
+            case kbESC:
+                TRouter::goBack();
+                break;
+            }
+        }
+    }
+
     for (auto& element : List) {
         element->ProcessMessage(m);
     }

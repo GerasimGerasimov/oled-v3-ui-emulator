@@ -13,7 +13,9 @@ public:
     TRouter();
     ~TRouter();
     static TPage* setActivePage(std::string PageName);
+    static TPage* goBack(void);
     static TPage* Page;
+    static TPage* BackPage;
 private:
     static std::map<std::string, TPage*> Pages;
 };

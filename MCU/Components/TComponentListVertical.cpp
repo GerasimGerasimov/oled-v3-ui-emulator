@@ -1,8 +1,12 @@
 #include "TComponentListVertical.h"
 
+bool TComponentListVertical::onEnter(void) {
+    return true;
+}
+
 bool TComponentListVertical::ProcessMessage(TMessage* m){//обработчик сообщений
   u16 Count = ItemsCount();
-  if ( Count == 0) return false;//рисовать нечего
+  if ( Count == 0) return false;//список пуст
     switch (m->Event) {
         case KEYBOARD:{//сообщения от клавиатуры
             switch (m->p1) {
@@ -20,6 +24,7 @@ bool TComponentListVertical::ProcessMessage(TMessage* m){//обработчик сообщений
                 }
                 case kbENT: {
                     TVisualObject* p = List[FocusLine];
+                    p->onEnter();
                     break;
                 }
 

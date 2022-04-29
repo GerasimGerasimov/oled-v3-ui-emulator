@@ -68,7 +68,7 @@ BOOL MainPage::InitInstance(HINSTANCE hInstance, int nCmdShow)
 
     SetTimer(hWndMain,             // handle to main window 
         IDT_TIMER1,            // timer identifier 
-        1,                 // 10-second interval 
+        1000,                 // 10-second interval 
         (TIMERPROC)MyTimerProc);     // no timer callback 
 
     ShowWindow(hWndMain, nCmdShow);
@@ -84,7 +84,8 @@ VOID CALLBACK MainPage::MyTimerProc(
     UINT idTimer,     // timer identifier 
     DWORD dwTime)     // current system time 
 {
-    //updateEmulatorView();
+    send_message(TIMER, 0, 0);
+    console::log(L"TIMER\n");
 }
 
 
@@ -179,6 +180,7 @@ void MainPage::keyBoardControlMCU(int cmd) {
             break;
         case ID_BUTTON_ESC:
             console::log(L"ID_BUTTON_ESC\n");
+            send_message(KEYBOARD, kbESC, 0);
             break;
         case ID_BUTTON_UP:
             console::log(L"ID_BUTTON_UP\n");
@@ -186,6 +188,7 @@ void MainPage::keyBoardControlMCU(int cmd) {
             break;
         case ID_BUTTON_OK:
             console::log(L"ID_BUTTON_OK\n");
+            send_message(KEYBOARD, kbENT, 0);
             break;
         case ID_BUTTON_LEFT:
             console::log(L"ID_BUTTON_LEFT\n");

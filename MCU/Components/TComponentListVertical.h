@@ -20,6 +20,7 @@ class TComponentListVertical : public TComponentsContainer
     bool ProcessMessage(TMessage* m);//обработчик сообщений
     TComponentListVertical(std::vector <TVisualObject*> Source = {});//конструктор
     ~TComponentListVertical();//деструктор
+    virtual bool onEnter(void);
   private:
     u16 GetViewObjectsCount();//кол-во объектов умещающихся в высоту меню от FirstPosition до нижнего края
 };

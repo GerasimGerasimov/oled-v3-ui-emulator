@@ -37,6 +37,7 @@ public:
     TTextSizes getSize(void);
     TLabel(TLabelInitStructure init);//конструктор
     ~TLabel();//деструктор
+    virtual bool onEnter(void);
 protected:
     std::string Font;
     std::string Caption;

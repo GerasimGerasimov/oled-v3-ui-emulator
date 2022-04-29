@@ -1,5 +1,9 @@
 #include "Label.h"
 
+bool TLabel::onEnter(void) {
+    return false;
+}
+
 //класс "строка текста"
 void  TLabel::view(void) {//вывести строку на экране
     TColorScheme ColorScheme = (inFocus)
