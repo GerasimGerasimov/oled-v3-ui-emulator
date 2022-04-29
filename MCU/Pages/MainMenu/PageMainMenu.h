@@ -18,7 +18,6 @@ public:
     virtual bool onEnter(void);
 private:
     TComponentListVertical* MainMenu;
-    TLabelInitStructure LabelInit;
     TLinkLabel* pLabel1;
     TLabel* pLabel2;
     TLabel* pLabel3;

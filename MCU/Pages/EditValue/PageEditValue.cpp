@@ -1,20 +1,19 @@
-#include "PageCounters.h"
+#include "PageEditValue.h"
 #include "Router.h"
 
-static u32 COUNT = 0;
 
-bool TPageCounters::onEnter(void) {
+bool TPageEditValue::onEnter(void) {
     return false;
 }
 
-void TPageCounters::view() {
+void TPageEditValue::view() {
     Container->view();
 };
 
-void TPageCounters::clear() {
+void TPageEditValue::clear() {
 }
 
-bool TPageCounters::ProcessMessage(TMessage* m) {
+bool TPageEditValue::ProcessMessage(TMessage* m) {
     switch (m->Event) {
         case KEYBOARD: {
             switch (m->p1) {
@@ -31,21 +30,21 @@ bool TPageCounters::ProcessMessage(TMessage* m) {
     return false;
 };
 
-TPageCounters::TPageCounters(std::string Name)
+TPageEditValue::TPageEditValue(std::string Name)
     :TPage(Name) {
     TLabelInitStructure LabelInit;
     LabelInit.style = LabelsStyle::LS_DINAMIC;
     LabelInit.Rect = { 10, 10, 10, 10 };
-    LabelInit.caption = "1 Привет";
+    LabelInit.caption = "1 Привет Edit";
     LabelInit.focused = false;
     pLabel1 = new TLabel(LabelInit);
-    LabelInit.caption = "2 Привет";
+    LabelInit.caption = "2 Привет Edit";
     pLabel2 = new TLabel(LabelInit);
-    LabelInit.caption = "EditValue";
-    pLabel3 = new TLinkLabel("EditValue", LabelInit);
+    LabelInit.caption = "Values";
+    pLabel3 = new TLinkLabel("Values", LabelInit);
     Container = new TComponentListVertical({ pLabel1, pLabel2, pLabel3});
     AddList({ Container });
 };
 
-TPageCounters::~TPageCounters() {
+TPageEditValue::~TPageEditValue() {
 };

@@ -7,9 +7,11 @@
 //строка текста
 class TLinkLabel : public TLabel {
 public:
-    virtual bool onEnter(void);
+    virtual bool ProcessMessage(TMessage* m);
     TLinkLabel(std::string url, TLabelInitStructure init);//конструктор
     ~TLinkLabel();//деструктор
+protected:
+    virtual bool onEnter(void);
 private:
     std::string URL;
 };

@@ -128,6 +128,9 @@
     <ClCompile Include="MCU\Router\Router.cpp">
       <Filter>App\Router</Filter>
     </ClCompile>
+    <ClCompile Include="MCU\Pages\EditValue\PageEditValue.cpp">
+      <Filter>App\Pages</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="WindowsProject1.rc">

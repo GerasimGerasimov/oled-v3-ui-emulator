@@ -1,20 +1,20 @@
-#ifndef T_PAGE_COUNTERS_H
-#define T_PAGE_COUNTERS_H
+#ifndef T_PAGE_EDIT_VALUE_H
+#define T_PAGE_EDIT_VALUE_H
 
 #include "Pages.h"
 #include "TComponentListVertical.h"
 #include "LinkLabel.h"
 #include "Label.h"
 
-class TPageCounters : public TPage
+class TPageEditValue : public TPage
 {
 public:
     virtual void view();//вывести объект на экране
     virtual const u16 getHeight(void) { return 0; };
     void clear();//очистит список
     bool ProcessMessage(TMessage* m);//обработчик сообщений
-    TPageCounters(std::string Name);//конструктор
-    ~TPageCounters();//деструктор
+    TPageEditValue(std::string Name);//конструктор
+    ~TPageEditValue();//деструктор
     virtual bool onEnter(void);
 private:
     TLabel* pLabel1;

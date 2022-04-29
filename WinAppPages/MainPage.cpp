@@ -85,7 +85,7 @@ VOID CALLBACK MainPage::MyTimerProc(
     DWORD dwTime)     // current system time 
 {
     send_message(TIMER, 0, 0);
-    console::log(L"TIMER\n");
+    //console::log(L"TIMER\n");
 }
 
 

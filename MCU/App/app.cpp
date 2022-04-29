@@ -6,10 +6,8 @@
 #include "Router.h"
 #include "msg.h"
 
-TRouter Router;
-
 void App::init(void) {
-    Router.Init();
+    TRouter::Init();
     send_message(REPAINT, 0, 0);
 }
 
@@ -18,9 +16,9 @@ void App::run(void) {
     TMessage m;
     while (true) {
         if (get_message(&m)) {
-            if (Router.Page) {
-                Router.Page->ProcessMessage(&m);
-                Router.Page->view();
+            if (TRouter::Page) {
+                TRouter::Page->ProcessMessage(&m);
+                TRouter::Page->view();
             }
         }
         TDisplayDriver::out();

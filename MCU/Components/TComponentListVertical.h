@@ -23,6 +23,8 @@ class TComponentListVertical : public TComponentsContainer
     virtual bool onEnter(void);
   private:
     u16 GetViewObjectsCount();//кол-во объектов умещающихся в высоту меню от FirstPosition до нижнего края
+    void goUp(void);
+    void goDown(void);
 };
 
 #endif

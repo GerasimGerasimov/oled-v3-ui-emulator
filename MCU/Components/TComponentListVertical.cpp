@@ -5,34 +5,39 @@ bool TComponentListVertical::onEnter(void) {
 }
 
 bool TComponentListVertical::ProcessMessage(TMessage* m){//обработчик сообщений
-  u16 Count = ItemsCount();
-  if ( Count == 0) return false;//список пуст
+  if (ItemsCount() == 0) return false;//список пуст
     switch (m->Event) {
         case KEYBOARD:{//сообщения от клавиатуры
             switch (m->p1) {
                 case kbUp:{//кнопка вверх
-                    List[FocusLine]->inFocus = false;//расфокусировка предыдущей строки
-                    if (FocusLine > 0) FocusLine--;
-                    List[FocusLine]->inFocus = true;//фокусировка строки
+                    goUp();
                     break;
                 }
                 case kbDown:{//кнопка вниз
-                    List[FocusLine]->inFocus = false;//расфокусировка предыдущей строки
-                    if ((FocusLine < (Count -1)) && (Count !=0)) FocusLine++;
-                    List[FocusLine]->inFocus = true;//фокусировка строки
+                    goDown();
                     break;
                 }
-                case kbENT: {
-                    TVisualObject* p = List[FocusLine];
-                    p->onEnter();
-                    break;
-                }
-
             }
             break;
         }
     }
+    for (auto& element : List) {
+        element->ProcessMessage(m);
+    }
     return false;
+}
+
+void TComponentListVertical::goUp(void) {
+    List[FocusLine]->inFocus = false;//расфокусировка предыдущей строки
+    if (FocusLine > 0) FocusLine--;
+    List[FocusLine]->inFocus = true;//фокусировка строки
+}
+
+void TComponentListVertical::goDown(void) {
+    u16 Count = ItemsCount();
+    List[FocusLine]->inFocus = false;//расфокусировка предыдущей строки
+    if ((FocusLine < (Count - 1)) && (Count != 0)) FocusLine++;
+    List[FocusLine]->inFocus = true;//фокусировка строки
 }
 
 void TComponentListVertical::view(void){//вывести объект на экране

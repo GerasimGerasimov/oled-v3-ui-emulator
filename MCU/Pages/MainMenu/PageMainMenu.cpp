@@ -37,6 +37,7 @@ bool TPageMainMenu::ProcessMessage(TMessage* m) {
 
 TPageMainMenu::TPageMainMenu(std::string Name)
     :TPage(Name) {
+    TLabelInitStructure LabelInit;
     LabelInit.style = LabelsStyle::LS_DINAMIC;
     LabelInit.Rect = { 10, 10, 10, 10 };
     LabelInit.caption = "Counters";
