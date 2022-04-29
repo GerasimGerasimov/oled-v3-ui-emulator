@@ -9,10 +9,11 @@ void TPageCounters::view() {
 void TPageCounters::clear() {
 }
 
-void TPageCounters::ProcessMessage(TMessage* m) {
+bool TPageCounters::ProcessMessage(TMessage* m) {
     for (auto& element : List) {
         element->ProcessMessage(m);
     }
+    return false;
 };
 
 TPageCounters::TPageCounters(std::string Name)

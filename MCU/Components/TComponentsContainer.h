@@ -14,7 +14,7 @@ class TComponentsContainer : public TVisualObject
     void Add(TVisualObject* pVisualObject);//добавить объект в список
     void AddList(std::vector <TVisualObject*> Source);//добавить список объектов в список
     virtual void Clear(void);//очистит список
-    virtual void ProcessMessage(TMessage* m) = 0;
+    virtual bool ProcessMessage(TMessage* m) = 0;
     TComponentsContainer(std::vector <TVisualObject*> Source = {});
     ~TComponentsContainer();
     const u16 ItemsCount() const;

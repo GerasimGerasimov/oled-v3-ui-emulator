@@ -1,8 +1,8 @@
 #include "TComponentListVertical.h"
 
-void TComponentListVertical::ProcessMessage(TMessage* m){//обработчик сообщений
+bool TComponentListVertical::ProcessMessage(TMessage* m){//обработчик сообщений
   u16 Count = ItemsCount();
-  if ( Count == 0) return;//рисовать нечего
+  if ( Count == 0) return false;//рисовать нечего
     switch (m->Event) {
         case KEYBOARD:{//сообщения от клавиатуры
             switch (m->p1) {
@@ -27,6 +27,7 @@ void TComponentListVertical::ProcessMessage(TMessage* m){//обработчик сообщений
             break;
         }
     }
+    return false;
 }
 
 void TComponentListVertical::view(void){//вывести объект на экране

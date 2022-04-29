@@ -18,7 +18,7 @@ public:
     //область вывода (откуда начинать и контроль границ)
     TElementRect ElementRect;
     virtual void view(void) = 0;//вывести объект на экране
-    virtual void ProcessMessage(TMessage* m) {};
+    virtual bool ProcessMessage(TMessage* m) { return true; };
     virtual const u16 getHeight(void) = 0;//вывести объект на экране
     virtual ~TVisualObject();//деструктор
 };

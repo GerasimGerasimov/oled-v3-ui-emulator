@@ -13,10 +13,11 @@ void TPageMainMenu::view() {
 void TPageMainMenu::clear() {
 }
 
-void TPageMainMenu::ProcessMessage(TMessage* m) {
+bool TPageMainMenu::ProcessMessage(TMessage* m) {
     for (auto& element : List) {
         element->ProcessMessage(m);
     }
+    return false;
 };
 
 TPageMainMenu::TPageMainMenu(std::string Name)

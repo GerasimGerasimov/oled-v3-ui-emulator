@@ -12,7 +12,7 @@ public:
     virtual void view();//вывести объект на экране
     virtual const u16 getHeight(void) { return 0; };
     void clear();//очистит список
-    void ProcessMessage(TMessage* m);//обработчик сообщений
+    bool ProcessMessage(TMessage* m);//обработчик сообщений
     TPageMainMenu(std::string Name);//конструктор
     ~TPageMainMenu();//деструктор
 private:

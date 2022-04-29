@@ -6,7 +6,8 @@ void TPage::clear() {
 
 }
 
-void TPage::ProcessMessage(TMessage* m) {//обработчик сообщений
+bool TPage::ProcessMessage(TMessage* m) {//обработчик сообщений
+	return true;
 }
 
 TPage::TPage(std::string name)
