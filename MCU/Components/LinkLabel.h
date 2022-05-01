@@ -2,6 +2,8 @@
 #define LINK_LABEL_H
 
 #include "Label.h"
+#include <functional>
+//#include "Delegate.hpp"
 
 
 //строка текста
@@ -10,8 +12,8 @@ public:
     virtual bool ProcessMessage(TMessage* m);
     TLinkLabel(std::string url, TLabelInitStructure init);//конструктор
     ~TLinkLabel();//деструктор
-protected:
-    virtual bool onEnter(void);
+    using type_one_arg_handler = std::function<void(int)>;
+    type_one_arg_handler onEnterPressed;
 private:
     std::string URL;
 };

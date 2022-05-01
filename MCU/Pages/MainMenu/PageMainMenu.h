@@ -15,7 +15,6 @@ public:
     bool ProcessMessage(TMessage* m);//обработчик сообщений
     TPageMainMenu(std::string Name);//конструктор
     ~TPageMainMenu();//деструктор
-    virtual bool onEnter(void);
 private:
     TComponentListVertical* MainMenu;
     TLinkLabel* pLabel1;
@@ -27,6 +26,7 @@ private:
     TLabel* pLabel7;
     TLabel* pLabel8;
     TLabel* pLabel9;
+    void onEnter(int a);
 };
 
 #endif

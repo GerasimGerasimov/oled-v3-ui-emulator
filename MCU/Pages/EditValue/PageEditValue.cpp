@@ -2,10 +2,6 @@
 #include "Router.h"
 
 
-bool TPageEditValue::onEnter(void) {
-    return false;
-}
-
 void TPageEditValue::view() {
     Container->view();
 };

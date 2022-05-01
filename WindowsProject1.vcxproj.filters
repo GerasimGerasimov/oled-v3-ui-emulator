@@ -43,6 +43,9 @@
     <Filter Include="App\Router">
       <UniqueIdentifier>{72e87f74-fc12-428a-897b-4d6098a45f6e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="App\Delegate">
+      <UniqueIdentifier>{1d9a565b-0403-4ee4-986a-1fa4da92f80f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -60,6 +63,9 @@
     <ClInclude Include="MainPage.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
+    <ClInclude Include="MCU\Delegate\Delegate.hpp">
+      <Filter>App\Delegate</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -72,9 +78,6 @@
       <Filter>WinAppPages</Filter>
     </ClCompile>
     <ClCompile Include="MCU\Components\common.cpp">
-      <Filter>App\Components</Filter>
-    </ClCompile>
-    <ClCompile Include="MCU\Components\Pages.cpp">
       <Filter>App\Components</Filter>
     </ClCompile>
     <ClCompile Include="MCU\Fonts\MSSansSerifBold14.cpp">
@@ -129,6 +132,9 @@
       <Filter>App\Router</Filter>
     </ClCompile>
     <ClCompile Include="MCU\Pages\EditValue\PageEditValue.cpp">
+      <Filter>App\Pages</Filter>
+    </ClCompile>
+    <ClCompile Include="MCU\Components\Pages.cpp">
       <Filter>App\Pages</Filter>
     </ClCompile>
   </ItemGroup>

@@ -20,6 +20,7 @@ public:
     ~TPage();//деструктор
 private:
     std::string Name;
+    std::string BackPage;
 };
 
 #endif

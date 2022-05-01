@@ -15,7 +15,6 @@ public:
     bool ProcessMessage(TMessage* m);//обработчик сообщений
     TPageCounters(std::string Name);//конструктор
     ~TPageCounters();//деструктор
-    virtual bool onEnter(void);
 private:
     TLabel* pLabel1;
     TLabel* pLabel2;

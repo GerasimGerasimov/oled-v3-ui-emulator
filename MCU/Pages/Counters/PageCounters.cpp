@@ -3,10 +3,6 @@
 
 static u32 COUNT = 0;
 
-bool TPageCounters::onEnter(void) {
-    return false;
-}
-
 void TPageCounters::view() {
     Container->view();
 };

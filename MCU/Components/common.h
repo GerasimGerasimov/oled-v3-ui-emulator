@@ -21,7 +21,7 @@ public:
     virtual bool ProcessMessage(TMessage* m) { return true; };
     virtual const u16 getHeight(void) = 0;//вывести объект на экране
     virtual ~TVisualObject();//деструктор
-    virtual bool onEnter(void) = 0;
+    //virtual bool onEnter(void) = 0;
 };
 
 #endif

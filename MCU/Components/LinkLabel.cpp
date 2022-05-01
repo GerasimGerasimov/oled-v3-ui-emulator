@@ -1,13 +1,20 @@
 #include "LinkLabel.h"
 #include "Router.h"
 
+//void TLinkLabel::onEnterPressed() {
+//
+//}
+
 bool TLinkLabel::ProcessMessage(TMessage* m) {
     switch (m->Event) {
         case KEYBOARD: {//сообщения от клавиатуры
             if (inFocus) {
                 switch (m->p1) {
                 case kbENT: {
-                    onEnter();
+                    if (onEnterPressed != NULL) {
+                        onEnterPressed(10);
+                    }
+                    //if (onEnter != NULL) {onEnter();};
                     break;
                 }
                 }
@@ -17,13 +24,11 @@ bool TLinkLabel::ProcessMessage(TMessage* m) {
     return true;
 }
 
-bool TLinkLabel::onEnter(void) {
-    return (TRouter::setActivePage(URL) == NULL) ? false : true;
-}
-
 TLinkLabel::TLinkLabel(std::string url, TLabelInitStructure init)
     :TLabel(init) {
     URL = url;
+    onEnterPressed = NULL;
+    //onEnter = NULL;
 }
 
 TLinkLabel::~TLinkLabel() {//деструктор

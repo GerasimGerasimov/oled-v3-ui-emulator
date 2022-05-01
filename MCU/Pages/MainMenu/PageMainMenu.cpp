@@ -1,11 +1,8 @@
 #include "PageMainMenu.h"
 #include "Router.h"
+#include <functional>
 
 static u32 COUNT = 0;
-
-bool TPageMainMenu::onEnter(void) {
-    return false;
-}
 
 void TPageMainMenu::view() {
     COUNT++;
@@ -35,14 +32,24 @@ bool TPageMainMenu::ProcessMessage(TMessage* m) {
     return false;
 };
 
+void TPageMainMenu::onEnter(int a) {
+    //return (TRouter::setActivePage(URL) == NULL) ? false : true;
+    TRouter::setActivePage("Counters");
+}
+
 TPageMainMenu::TPageMainMenu(std::string Name)
     :TPage(Name) {
     TLabelInitStructure LabelInit;
     LabelInit.style = LabelsStyle::LS_DINAMIC;
     LabelInit.Rect = { 10, 10, 10, 10 };
-    LabelInit.caption = "Counters";
+    LabelInit.caption = "Counters>";
     LabelInit.focused = true;
     pLabel1 = new TLinkLabel("Counters",LabelInit);
+    //pLabel1->onEnterPressed = &onEnter;
+    pLabel1->onEnterPressed = [this](int arg) { onEnter(arg); };
+    //pLabel1->onEnter = &this->onEnter;
+    //pLabel1->onEnterPressed = std::bind(&this->onEnter, this);
+    //  onEnter = std::bind(pLabel1->onEnterPressed, 3, std::placeholders::_2);
     LabelInit.focused = false;
     LabelInit.caption = "2 Привет";
     pLabel2 = new TLabel(LabelInit);

@@ -15,7 +15,6 @@ public:
     bool ProcessMessage(TMessage* m);//обработчик сообщений
     TPageEditValue(std::string Name);//конструктор
     ~TPageEditValue();//деструктор
-    virtual bool onEnter(void);
 private:
     TLabel* pLabel1;
     TLabel* pLabel2;
