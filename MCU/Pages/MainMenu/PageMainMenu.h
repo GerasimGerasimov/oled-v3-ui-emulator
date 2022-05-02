@@ -26,7 +26,7 @@ private:
     TLabel* pLabel7;
     TLabel* pLabel8;
     TLabel* pLabel9;
-    void onEnter(int a);
+    void goToCountersPage(int a);
 };
 
 #endif

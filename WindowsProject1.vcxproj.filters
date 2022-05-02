@@ -43,7 +43,7 @@
     <Filter Include="App\Router">
       <UniqueIdentifier>{72e87f74-fc12-428a-897b-4d6098a45f6e}</UniqueIdentifier>
     </Filter>
-    <Filter Include="App\Delegate">
+    <Filter Include="App\Events">
       <UniqueIdentifier>{1d9a565b-0403-4ee4-986a-1fa4da92f80f}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
@@ -63,8 +63,8 @@
     <ClInclude Include="MainPage.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="MCU\Delegate\Delegate.hpp">
-      <Filter>App\Delegate</Filter>
+    <ClInclude Include="MCU\Events\Events.hpp">
+      <Filter>App\Events</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

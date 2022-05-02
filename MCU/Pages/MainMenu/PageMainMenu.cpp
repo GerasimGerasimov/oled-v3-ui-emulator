@@ -32,8 +32,7 @@ bool TPageMainMenu::ProcessMessage(TMessage* m) {
     return false;
 };
 
-void TPageMainMenu::onEnter(int a) {
-    //return (TRouter::setActivePage(URL) == NULL) ? false : true;
+void TPageMainMenu::goToCountersPage(int a) {
     TRouter::setActivePage("Counters");
 }
 
@@ -45,11 +44,7 @@ TPageMainMenu::TPageMainMenu(std::string Name)
     LabelInit.caption = "Counters>";
     LabelInit.focused = true;
     pLabel1 = new TLinkLabel("Counters",LabelInit);
-    //pLabel1->onEnterPressed = &onEnter;
-    pLabel1->onEnterPressed = [this](int arg) { onEnter(arg); };
-    //pLabel1->onEnter = &this->onEnter;
-    //pLabel1->onEnterPressed = std::bind(&this->onEnter, this);
-    //  onEnter = std::bind(pLabel1->onEnterPressed, 3, std::placeholders::_2);
+    pLabel1->onEnterPressed = [this](int arg) { goToCountersPage(arg); };
     LabelInit.focused = false;
     LabelInit.caption = "2 Привет";
     pLabel2 = new TLabel(LabelInit);
