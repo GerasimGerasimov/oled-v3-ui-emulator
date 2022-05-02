@@ -1,6 +1,6 @@
-#include "LinkLabel.h"
+#include "LinkedTagLabel.h"
 
-bool TLinkLabel::ProcessMessage(TMessage* m) {
+bool TLinkedTagLabel::ProcessMessage(TMessage* m) {
     switch (m->Event) {
         case KEYBOARD: {//сообщения от клавиатуры
             if (inFocus) {
@@ -18,11 +18,10 @@ bool TLinkLabel::ProcessMessage(TMessage* m) {
     return true;
 }
 
-TLinkLabel::TLinkLabel(std::string url, TLabelInitStructure init)
-    : TLabel(init)
-    , URL(url)
-    , onEnterPressed({}) {
+TLinkedTagLabel::TLinkedTagLabel(std::string url, std::string tag, TLabelInitStructure init)
+    : TLinkLabel(url,init)
+    , Tag(tag) {
 }
 
-TLinkLabel::~TLinkLabel() {//деструктор
+TLinkedTagLabel::~TLinkedTagLabel() {//деструктор
 }

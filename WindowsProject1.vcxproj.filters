@@ -137,6 +137,12 @@
     <ClCompile Include="MCU\Components\Pages.cpp">
       <Filter>App\Pages</Filter>
     </ClCompile>
+    <ClCompile Include="MCU\Pages\Home\PageHome.cpp">
+      <Filter>App\Pages</Filter>
+    </ClCompile>
+    <ClCompile Include="MCU\Components\LinkedTagLabel.cpp">
+      <Filter>App\Components</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="WindowsProject1.rc">

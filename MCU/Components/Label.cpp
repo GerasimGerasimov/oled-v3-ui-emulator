@@ -39,14 +39,13 @@ TTextSizes TLabel::getSize(void) {
     }
 }
 
-TLabel::TLabel(TLabelInitStructure init) {//конструктор
-    inFocus = init.focused;
-    setFont((init.font != "") ? init.font : "Verdana12");
-    PrimaryColor = init.PrimaryColor;
-    SelectedColor = init.SelectedColor;
-    Style = (int)init.style;
-    ElementRect = init.Rect;
-    setCaption(init.caption);
+TLabel::TLabel(TLabelInitStructure init)
+    : TVisualObject({init.focused, init.Rect })
+    , PrimaryColor(init.PrimaryColor)
+    , SelectedColor(init.SelectedColor)
+    , Style((int)init.style)
+    , Caption(init.caption)
+    , Font((init.font != "") ? init.font : "Verdana12") {
 }
 
 TLabel::~TLabel() {//деструктор

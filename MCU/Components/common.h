@@ -11,6 +11,11 @@ struct TElementRect {
     u16 Width; //
 };
 
+struct TVisualObjectInitStructure {
+    bool focused = false;
+    TElementRect Rect = { 0, 0, 64, 10 };
+};
+
 class TVisualObject {//базовый класс визуальных объектов
 public:
     //нахождение визуального объекта в фокусе
@@ -20,7 +25,9 @@ public:
     virtual void view(void) = 0;//вывести объект на экране
     virtual bool ProcessMessage(TMessage* m) { return true; };
     virtual const u16 getHeight(void) = 0;//вывести объект на экране
-    virtual ~TVisualObject();//деструктор
+    TVisualObject();
+    TVisualObject(TVisualObjectInitStructure props);
+    virtual ~TVisualObject();
 };
 
 #endif
