@@ -1,15 +1,11 @@
 #include "msg.h"
 
-TMessage Messages[msg_buff_size];//очередь сообщений
-
-void send_message(u32 event, u32 p1, u32 p2);//добавить сообщение в конец очереди
-bool get_message(TMessage* m);//извлечь первое в очереди сообщение
-void ckear_msg_queue();//очистка очереди сообщений
-//void key_board();//отслеживает нажатия клавишь клавиатуры
+TMessage Msg::Messages[msg_buff_size];//очередь сообщений
 
 u32 msg_queue_end = 0;//конец очереди
 u32 msg_queue_beg = 0;//начало очереди
 
+//void key_board();//отслеживает нажатия клавишь клавиатуры
 //key_board отслеживает нажатия клавишь клавиатуры
 //текущее состояние отличается от текущего, добавляет в очередь сообщений
 //сообщение о нажатии клавиши и её код
@@ -25,7 +21,8 @@ void key_board (){
   }
 }
 */
-void ckear_msg_queue(){//очистка очереди сообщений
+
+void Msg::clear_msg_queue(){//очистка очереди сообщений
   u32 i = msg_buff_size;
   msg_queue_end = 0;//конец очереди
   msg_queue_beg = 0;//начало очереди
@@ -43,7 +40,7 @@ void ckear_msg_queue(){//очистка очереди сообщений
 //и если достиг максимального значения (кол-во сообщений в буфере)
 //перескакиваю в "0 значение" - в общем если мессаги из очереди не извлекаются
 //они по кругу затираются более свежими сообщениями
-void send_message(u32 event, u32 p1, u32 p2){
+void Msg::send_message(u32 event, u32 p1, u32 p2){
   Messages[msg_queue_end].Event = event;
   Messages[msg_queue_end].p1 = p1;
   Messages[msg_queue_end].p2 = p2;
@@ -51,7 +48,7 @@ void send_message(u32 event, u32 p1, u32 p2){
   if (msg_queue_end >= msg_buff_size) {msg_queue_end = 0;}
 }
 
-bool get_message(TMessage* m){
+bool Msg::get_message(TMessage* m){
   if (msg_queue_beg == msg_queue_end) {return false;};//очередь пуста, если указатели начала и конца равны
   *m = Messages[msg_queue_beg]; //копирую содержимое первого в очережи сообщения
   msg_queue_beg++; //назначаю следующего

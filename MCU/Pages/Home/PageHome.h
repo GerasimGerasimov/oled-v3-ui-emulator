@@ -15,16 +15,6 @@ public:
     TPageHome(std::string Name);//конструктор
     ~TPageHome();//деструктор
 private:
-    /*
-  {"Uref", "Напряжение задания", "kV", 0x000c, (TWORD+SByte_2), &FLASH_DATA.Koef[2], 0, 2, 0},
-  {"Iref", "Ток задания", "mA", 0x000e, (TWORD+SByte_2), &FLASH_DATA.Koef[1], 0, 1, 0},
-  {"UoutAve", "Среднее значение выходного напряжения", "kV", 0x002c, (TWORD+SByte_2), &FLASH_DATA.Koef[2], 0, 2, 0},
-  {"IoutAve", "Среднее значение выходного напряжения", "mA", 0x002e, (TWORD+SByte_2), &FLASH_DATA.Koef[1], 0, 1, 0},
-  {"SparkFrq", "Частота искр", "pcs", 0x0026, (TWORD+SByte_2), &FLASH_DATA.Koef[2], 0, 2, 0},
-  {"Out", "Сигнал управления преобразователем", "%", 0x0010, (TWORD+SByte_2), &FLASH_DATA.Koef[2], 0, 2, 0},
-    //EFI2.2, 165
-  {"IinAve", "Входной ток", "A", 0x002A, (TWORD+SByte_2), &FLASH_DATA.Koef[1], 0, 1, 1},
-*/
     TComponentListVertical* MainMenu;
     TLinkedTagLabel* pLTagUref;
     TLinkedTagLabel* pLTagIref;
@@ -33,7 +23,7 @@ private:
     TLinkedTagLabel* pLTagSparkFrq;
     TLinkedTagLabel* pLTagOut;
     TLinkedTagLabel* pLTagIinAve;
-    void goToCountersPage(int a);
+    void goToTagInfoPage(int a);
 };
 
 #endif

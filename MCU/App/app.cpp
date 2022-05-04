@@ -8,14 +8,14 @@
 
 void App::init(void) {
     TRouter::Init();
-    send_message(REPAINT, 0, 0);
+    Msg::send_message(REPAINT, 0, 0);
 }
 
 void App::run(void) {
 
     TMessage m;
     while (true) {
-        if (get_message(&m)) {
+        if (Msg::get_message(&m)) {
             if (TRouter::Page) {
                 TRouter::Page->ProcessMessage(&m);
                 TRouter::Page->view();

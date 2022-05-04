@@ -26,6 +26,7 @@
 #define OPENWINDOW  MAXMESSAGE-17
 #define REPAINT		MAXMESSAGE-18
 #define TIMER		MAXMESSAGE-19
+#define DATAUPDATE  MAXMESSAGE-20
 
 //Клавиатура
 /*коды клавиатуры
@@ -60,11 +61,14 @@ typedef struct {//структура сообщения
 } TMessage;
 
 #define msg_buff_size 32 //размер буфера сообщений
-extern TMessage Messages[msg_buff_size];//очередь сообщений
 
-extern void send_message(u32 event, u32 p1, u32 p2);//добавить сообщение в конец очереди
-extern bool get_message(TMessage* m);//извлечь первое в очереди сообщение
-extern void clear_msg_queue();//очистка очереди сообщений
-//extern void key_board ();//обработчик клавиатуры
+class Msg {
+	public:
+		static void send_message(u32 event, u32 p1, u32 p2);//добавить сообщение в конец очереди
+		static bool get_message(TMessage* m);//извлечь первое в очереди сообщение
+		static void clear_msg_queue();//очистка очереди сообщений
+	private:
+		static TMessage Messages[msg_buff_size];//очередь сообщений
+};
 
 #endif
