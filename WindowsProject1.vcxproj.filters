@@ -143,6 +143,9 @@
     <ClCompile Include="MCU\Components\LinkedTagLabel.cpp">
       <Filter>App\Components</Filter>
     </ClCompile>
+    <ClCompile Include="Drivers\com_master_driver.cpp">
+      <Filter>Divers</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="WindowsProject1.rc">

@@ -4,6 +4,7 @@
 #include "display_driver.h"
 #include "consolelog.h"
 #include "msg.h"
+#include "com_master_driver.h"
 
 HINSTANCE MainPage::hInst = NULL;                                // текущий экземпл€р
 WCHAR MainPage::szTitle[MAX_LOADSTRING];                  // “екст строки заголовка
@@ -88,14 +89,19 @@ VOID CALLBACK MainPage::MyTimerProc(
     //console::log(L"TIMER\n");
 }
 
+static u8 combuff[] = { 1, 17, 192, 44 };
 
-/*
-void MainPage::updateEmulatorView(void) {
-    HDC hdc_dem = GetDC(hwndDisplayEmulator);
-    TDisplayDriver::setDC(hdc_dem);
-    ReleaseDC(hwndDisplayEmulator, hdc_dem);
+void comcallback(s16 result, u8* reply) {
+    if (result < 0) {
+        console::log(L"comcallback:Error\n");
+    }
+    else {
+        std::string str((char*)reply, (int)result);
+        str += "\n";
+        std::wstring wstr(str.begin(), str.end());
+        console::log(wstr);
+    }
 }
-*/
 
 void MainPage::fillHandlersByID(void) {
     if (isHadlersFilled) return;
@@ -104,6 +110,9 @@ void MainPage::fillHandlersByID(void) {
     TDisplayDriver::setDC(hdc_dem);
     console::hwnd = hwndMemoLogger = GetDlgItem(hWndMain, ID_MEMO_LOGGER);
     isHadlersFilled = true;
+
+    ComMasterDriver::open();
+    ComMasterDriver::send({ (u8*)&combuff, 4, comcallback });
 }
 
 //  ‘”Ќ ÷»я: WndProc(HWND, UINT, WPARAM, LPARAM)
@@ -111,13 +120,14 @@ void MainPage::fillHandlersByID(void) {
 //  WM_COMMAND  - обработать меню приложени€
 //  WM_PAINT    - ќтрисовка главного окна
 //  WM_DESTROY  - отправить сообщение о выходе и вернутьс€
+
 LRESULT CALLBACK MainPage::WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 {
     u16 x = 0;
     switch (message)
     {
     case WM_CREATE:
-       
+
         break;
     case WM_SHOWWINDOW:
         fillHandlersByID();

@@ -150,6 +150,7 @@
     <ClInclude Include="WindowsProject1.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Drivers\com_master_driver.cpp" />
     <ClCompile Include="Drivers\display_driver.cpp" />
     <ClCompile Include="MCU\App\app.cpp" />
     <ClCompile Include="MCU\Components\common.cpp" />
