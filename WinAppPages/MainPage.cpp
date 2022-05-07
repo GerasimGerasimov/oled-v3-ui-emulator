@@ -4,7 +4,7 @@
 #include "display_driver.h"
 #include "consolelog.h"
 #include "msg.h"
-#include "com_master_driver.h"
+#include <com_master_driver.h>
 
 HINSTANCE MainPage::hInst = NULL;                                // текущий экземпляр
 WCHAR MainPage::szTitle[MAX_LOADSTRING];                  // Текст строки заголовка
@@ -89,20 +89,6 @@ VOID CALLBACK MainPage::MyTimerProc(
     //console::log(L"TIMER\n");
 }
 
-static u8 combuff[] = { 1, 17, 192, 44 };
-
-void comcallback(s16 result, u8* reply) {
-    if (result < 0) {
-        console::log(L"comcallback:Error\n");
-    }
-    else {
-        std::string str((char*)reply, (int)result);
-        str += "\n";
-        std::wstring wstr(str.begin(), str.end());
-        console::log(wstr);
-    }
-}
-
 void MainPage::fillHandlersByID(void) {
     if (isHadlersFilled) return;
     hwndDisplayEmulator = GetDlgItem(hWndMain, ID_DISPLAY_EMULATOR);
@@ -110,9 +96,7 @@ void MainPage::fillHandlersByID(void) {
     TDisplayDriver::setDC(hdc_dem);
     console::hwnd = hwndMemoLogger = GetDlgItem(hWndMain, ID_MEMO_LOGGER);
     isHadlersFilled = true;
-
     ComMasterDriver::open();
-    ComMasterDriver::send({ (u8*)&combuff, 4, comcallback });
 }
 
 //  ФУНКЦИЯ: WndProc(HWND, UINT, WPARAM, LPARAM)

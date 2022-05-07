@@ -5,9 +5,11 @@
 
 #include "Router.h"
 #include "msg.h"
+#include "DevicePollManager.h"
 
 void App::init(void) {
     TRouter::Init();
+    DevicePollManager::init();
     Msg::send_message(REPAINT, 0, 0);
 }
 
@@ -22,5 +24,6 @@ void App::run(void) {
             }
         }
         TDisplayDriver::out();
+        DevicePollManager::execute();
     }
 }

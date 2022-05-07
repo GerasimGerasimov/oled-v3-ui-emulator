@@ -46,6 +46,12 @@
     <Filter Include="App\Events">
       <UniqueIdentifier>{1d9a565b-0403-4ee4-986a-1fa4da92f80f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="App\DevicePollManager">
+      <UniqueIdentifier>{e5620a45-34f1-4e71-a3f5-793e9225b67c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="App\Helpers">
+      <UniqueIdentifier>{fa29a129-4ff5-4d17-b13a-c48df751cb29}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -145,6 +151,15 @@
     </ClCompile>
     <ClCompile Include="Drivers\com_master_driver.cpp">
       <Filter>Divers</Filter>
+    </ClCompile>
+    <ClCompile Include="MCU\DevicePollManager\DevicePollManager.cpp">
+      <Filter>App\DevicePollManager</Filter>
+    </ClCompile>
+    <ClCompile Include="MCU\Helpers\crc16.c">
+      <Filter>App\Helpers</Filter>
+    </ClCompile>
+    <ClCompile Include="MCU\DevicePollManager\Slot.cpp">
+      <Filter>App\DevicePollManager</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

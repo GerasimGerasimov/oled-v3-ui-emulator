@@ -25,7 +25,7 @@ DWORD WINAPI ComMasterDriver::com_thread(LPVOID lpParam) {
         fSuccess = ReadFile(hCom, &reply, ButesToRead, &Count, NULL);
         s16 result = (fSuccess > 0) ? Count : -1;
         if (onReadEdnd) onReadEdnd(result, reply);
-        ::Sleep(1);
+        ::SuspendThread(hComThread);
     }
     return 0;
 }
