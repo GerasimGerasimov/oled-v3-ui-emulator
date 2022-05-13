@@ -52,6 +52,12 @@
     <Filter Include="App\Helpers">
       <UniqueIdentifier>{fa29a129-4ff5-4d17-b13a-c48df751cb29}</UniqueIdentifier>
     </Filter>
+    <Filter Include="IDrivers">
+      <UniqueIdentifier>{61dcc384-7cf6-4a39-bde8-a3cd2b95a01d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Slots">
+      <UniqueIdentifier>{67b38ad9-60be-491b-bd07-a2463cdf03f7}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -71,6 +77,9 @@
     </ClInclude>
     <ClInclude Include="MCU\Events\Events.hpp">
       <Filter>App\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="MCU\IDrivers\icommastert.h">
+      <Filter>IDrivers</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -160,6 +169,9 @@
     </ClCompile>
     <ClCompile Include="MCU\DevicePollManager\Slot.cpp">
       <Filter>App\DevicePollManager</Filter>
+    </ClCompile>
+    <ClCompile Include="MCU\Slots\U1RamUpdate.cpp">
+      <Filter>Slots</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

@@ -1,6 +1,5 @@
 #include "Slot.h"
 #include "crc16.h"
-#include "com_master_driver.h"
 
 Slot::Slot() 
 	: Flags(0)
@@ -8,19 +7,28 @@ Slot::Slot()
 	, cmdLen(0){
 }
 
+void Slot::init(void) {
+
+}
 
 void Slot::addcmd(u8 cmd[], u8 size) {
-	memcpy(OutBuf, cmd, size);
+	std::memcpy(OutBuf, cmd, size);
 	cmdLen = size + 2;
 	FrameEndCrc16((u8*)&OutBuf, cmdLen);
 }
 
-void Slot::send(void) {
-	//ComMasterDriver::send({ (u8*)&OutBuf, cmdLen, [this](s16 result, u8* reply) {checkRespond(result, reply); } });
+bool Slot::isReplyValid(s16 result, u8* reply) {
+	return (result <= 0)
+		   ? false
+		   : (bool)(crc16(reply, result) == 0);
 }
 
 void Slot::checkRespond(s16 result, u8* reply) {
-
+	(isReplyValid(result, reply))
+		? (Flags |= (u16)SlotStateFlags::DATA_VALID)
+		: (Flags &= ~(u16)SlotStateFlags::DATA_VALID);
+	if (onReadEnd)
+		onReadEnd(result, reply);
 }
 
 Slot::~Slot() {}

@@ -4,9 +4,7 @@
 #include <string>
 #include "stm32f4xx.h"
 #include <windows.h>
-#include <functional>
-
-using TComReadEndHandler = std::function<void(s16 result, u8* reply)>;
+#include "icommastert.h"
 //result >= 0 длина ответа
 //result = -1 ошибка
 

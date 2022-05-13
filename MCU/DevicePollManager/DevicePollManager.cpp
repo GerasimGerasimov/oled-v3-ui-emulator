@@ -2,42 +2,80 @@
 #include "crc16.h"
 #include "consolelog.h"
 
-static Slot SlotU1RAM;
+#include "U1RamUpdate.h"
 
-std::vector <Slot> DevicePollManager::Slots = {SlotU1RAM};
-u16 DevicePollManager::Status = (u16)DevicePollManagerStatus::DPMS_WAIT_IDLE;
-static u8 cmd[] = { 1, 17 };
+static U1RAMSlot SlotU1RAM;
+
+std::vector <Slot> DevicePollManager::Slots = {};
+Slot* DevicePollManager::slot = NULL;
+u16 DevicePollManager::idx = 0;
+u16 DevicePollManager::Status = (u16)DevicePollManagerStatus::TOGGLE_SLOT;
+u8 DevicePollManager::Reply[256] = {};
+u16 DevicePollManager::ReplyResult = 0;
 
 void DevicePollManager::init(void) {
-	SlotU1RAM.Flags |= (u16)SlotStateFlags::SSF_SKIP_SLOT;
-	SlotU1RAM.addcmd(cmd, sizeof(cmd));
+	SlotU1RAM.init();
+	Slots = { SlotU1RAM };
 }
+
+/*TODO
+статусы DevicePollManager:
+1) ожидание ответа от текущего слота
+2) обработка получнного ответа текущего слота
+3) выбор следующего слота
+4) отправка запроса от выбранного слота
+*/
 
 void DevicePollManager::execute(void) {
 	switch ((DevicePollManagerStatus)Status)
 	{
-	case DevicePollManagerStatus::DPMS_WAIT_IDLE: {
-				Slot* s = &SlotU1RAM;
-				ComMasterDriver::send({ (u8*)&s->OutBuf, s->cmdLen, {checkRespond} });
-				Status = (u16)DevicePollManagerStatus::DPMS_WAIT_RESPOND;
-			}
-			break;
-		case DevicePollManagerStatus::DPMS_WAIT_RESPOND:
-			break;
-		default:
-			break;
+	case DevicePollManagerStatus::SEND_REQUEST:
+		ComMasterDriver::send({ (u8*)&slot->OutBuf, slot->cmdLen, {checkRespond} });
+		Status = (u16)DevicePollManagerStatus::WAIT_RESPOND;
+		break;
+	case DevicePollManagerStatus::WAIT_RESPOND:
+		break;
+	case DevicePollManagerStatus::PARSE_RESPOND:
+		slot->checkRespond(ReplyResult, (u8*) &Reply);
+ 		Status = (u16)DevicePollManagerStatus::TOGGLE_SLOT;
+		break;
+	case DevicePollManagerStatus::TOGGLE_SLOT:
+		slot = getNextSlot();
+		Status = (u16)setActionBySlot();
+		break;
+	default:
+		break;
 	}
+}
 
+DevicePollManagerStatus DevicePollManager::setActionBySlot(void) {
+	if (slot->Flags == (u16)SlotStateFlags::SKIP_SLOT) {
+		return DevicePollManagerStatus::TOGGLE_SLOT;
+	}
+	else {
+		return DevicePollManagerStatus::SEND_REQUEST;
+	}
+}
+
+Slot* DevicePollManager::getNextSlot(void) {
+	u16 size = Slots.size();//1 и больше если в списке что-то есть
+	u16 tmp_idx = idx;
+	if (size > 0) {
+		idx = (++tmp_idx >= size)
+			? 0
+			: tmp_idx;
+		Slot* s = &Slots[idx];
+		return s;
+	}
+	else {
+		return NULL;
+	}
 }
 
 void DevicePollManager::checkRespond(s16 result, u8* reply) {
-	if (result < 0) {
-		console::log(L"comcallback:Error\n");
-	}
-	else {
-		std::string str((char*)reply, (int)result);
-		str += "\n";
-		std::wstring wstr(str.begin(), str.end());
-		console::log(wstr);
-	}
+	if (result > 0) {
+		std::memcpy(Reply, reply, result);
+	} 
+	ReplyResult = result;
+	Status = (u16)DevicePollManagerStatus::PARSE_RESPOND;
 }

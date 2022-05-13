@@ -10,8 +10,11 @@
 #define MB_MASTER_SLOTS_MAX 24
 
 enum class DevicePollManagerStatus {
-	DPMS_WAIT_IDLE = 1,
-	DPMS_WAIT_RESPOND = 2
+	WAIT_IDLE = 1,
+	WAIT_RESPOND = 2,
+	PARSE_RESPOND = 3,
+	TOGGLE_SLOT = 4,
+	SEND_REQUEST = 5
 };
 
 class DevicePollManager {
@@ -22,6 +25,13 @@ public:
 	static u16 Status;
 private:
 	static void checkRespond(s16 result, u8* reply);
+	static Slot* slot;
+	static u16 idx;
+	static Slot* getNextSlot(void);
+	static DevicePollManagerStatus setActionBySlot(void);
+	static u8 Reply[256];
+	static u16 ReplyResult;
+
 };
 
 #endif
