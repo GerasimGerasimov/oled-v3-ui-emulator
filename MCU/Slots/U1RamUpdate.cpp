@@ -13,9 +13,7 @@ void U1RAMSlot::init(void) {
 void U1RAMSlot::parceRespond(s16 result, u8* reply) {
 	if (result < 0) {
 		//console::log(L"comcallback:Error\n");
-		const char* c = TInternalResources::getID();
-		const int len = std::strlen(c);
-		std::string str(c, len);
+		std::string str = TInternalResources::getID();
 		str += "\n";
 		std::wstring wstr(str.begin(), str.end());
 		console::log(wstr);

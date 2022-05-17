@@ -43,16 +43,16 @@ std::string TInternalResources::getStringFormResource(pItem item) {
   const u32 Addr = item->BinaryDataAddr;
   const u32 Size = item->BinaryDataSize;
   std::string str;
-  u8* p = (u8*) &Root + Addr;
+  u8* p = (u8*) Root+Addr;
   str.assign((char*) p, Size);
   return str;
 }
 
-char * TInternalResources::getID() {
+std::string TInternalResources::getID() {
   pItem item = getItemByName((char*)"ID");
   return (item != NULL)
-    ? (char *)getStringFormResource(item).c_str()
-    : (char *) unknown;
+    ? getStringFormResource(item)
+    : "unknown";
 }
 
 char * TInternalResources::getItemName(u16 idx) {

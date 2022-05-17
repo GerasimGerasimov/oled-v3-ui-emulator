@@ -7,7 +7,7 @@ struct TInternalResources {
   public:
     static void init();
     static char * getItemName(u16 idx);
-    static char * getID();
+    static std::string getID();
   private:
     static pResources Root;// = (pResources)RESOURCES_DATA;//RESOURCES_ADDRESS;
     static std::vector<pItem> ValidItems;
