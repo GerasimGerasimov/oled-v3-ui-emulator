@@ -1,5 +1,5 @@
 #include "mcu_main_thread.h"
-
+#include "os_resources.h"
 #include <iostream>
 #include <conio.h>
 #include "app.h"
@@ -9,6 +9,7 @@ static HANDLE hMCUMainThread = NULL;
 static DWORD  dwMCUMainThreadId = 0;
 
 DWORD WINAPI mcu_main_thread(LPVOID lpParam) {
+    OSResources::init();
     App::init();
     App::run();
     return 0;

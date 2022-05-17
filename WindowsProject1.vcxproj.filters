@@ -58,6 +58,9 @@
     <Filter Include="Slots">
       <UniqueIdentifier>{67b38ad9-60be-491b-bd07-a2463cdf03f7}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Resources">
+      <UniqueIdentifier>{238f6125-5931-4c87-a9f2-15cda37161c6}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -79,6 +82,9 @@
       <Filter>App\Events</Filter>
     </ClInclude>
     <ClInclude Include="MCU\IDrivers\icommastert.h">
+      <Filter>IDrivers</Filter>
+    </ClInclude>
+    <ClInclude Include="MCU\IDrivers\iresources.h">
       <Filter>IDrivers</Filter>
     </ClInclude>
   </ItemGroup>
@@ -172,6 +178,15 @@
     </ClCompile>
     <ClCompile Include="MCU\Slots\U1RamUpdate.cpp">
       <Filter>Slots</Filter>
+    </ClCompile>
+    <ClCompile Include="MCU\Resources\resources.cpp">
+      <Filter>Resources</Filter>
+    </ClCompile>
+    <ClCompile Include="Drivers\Resources\os_resources.cpp">
+      <Filter>Resources</Filter>
+    </ClCompile>
+    <ClCompile Include="MCU\Helpers\utils.cpp">
+      <Filter>App\Helpers</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

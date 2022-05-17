@@ -7,7 +7,10 @@
 #include "msg.h"
 #include "DevicePollManager.h"
 
+#include "resources.h"
+
 void App::init(void) {
+    TInternalResources::init();
     TRouter::Init();
     DevicePollManager::init();
     Msg::send_message(REPAINT, 0, 0);

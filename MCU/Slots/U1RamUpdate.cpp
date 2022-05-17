@@ -1,5 +1,6 @@
 #include "U1RamUpdate.h"
 #include "consolelog.h"
+#include "resources.h"
 
 static const u8 cmdGetID[] = { 1, 17 };
 
@@ -11,7 +12,13 @@ void U1RAMSlot::init(void) {
 
 void U1RAMSlot::parceRespond(s16 result, u8* reply) {
 	if (result < 0) {
-		console::log(L"comcallback:Error\n");
+		//console::log(L"comcallback:Error\n");
+		const char* c = TInternalResources::getID();
+		const int len = std::strlen(c);
+		std::string str(c, len);
+		str += "\n";
+		std::wstring wstr(str.begin(), str.end());
+		console::log(wstr);
 	}
 	else {
 		std::string str((char*)reply, (int)result);
