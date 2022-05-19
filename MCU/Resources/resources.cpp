@@ -20,6 +20,10 @@ void TInternalResources::init() {
   }
 }
 
+char* TInternalResources::getRoot() {
+    return (char*)Root;
+}
+
 bool isRequiredName(char * Name1, char * Name2) {
   return (bool)(strcmp(Name1, Name2) == 0);
 }
