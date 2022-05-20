@@ -2,20 +2,25 @@
 #include "parser.h"
 
 void IniResources::init(void) {
-	const std::vector<std::string> inis = {"INI", "U1"};
+	const std::vector<std::string> inis = {"U1"};
 	//INI - именно такую запись будем парсить, U1 чтобы сгенерить ошибку. Потом все ini для парсинга будут называться Ux
 	const pItem ini = TInternalResources::getItemByName((char*) inis[0].c_str());
-	u32 Offset = ini->BinaryDataAddr;
-	u32 Size = ini->BinaryDataSize;
-	/*TODO осталось парсить
-	как обычно, найти секции RAM, FLASH, CD, vars
-	*/
-	char* Root = TInternalResources::getRoot() + Offset;
-	IniParser::setRoot(Root, Size);
-	char* section = IniParser::SearchSectionBegin((char*)"[RAM]");
-	char* sectionRoot = section;
-	char* tagStr = NULL;
-	while (tagStr = IniParser::getNextTagString(sectionRoot)) {
-
+	if (ini) {
+		u32 Offset = ini->BinaryDataAddr;
+		u32 Size = ini->BinaryDataSize;
+		/*TODO осталось парсить
+		как обычно, найти секции RAM, FLASH, CD, vars
+		*/
+		char* Root = TInternalResources::getRoot() + Offset;
+		IniParser::setRoot(Root, Size);
+		//int lines = IniParser::getSectionLinesCount((char*)"[RAM]");
+		char* section = IniParser::SearchSectionBegin((char*)"[RAM]");
+		char* start = section;
+		IniParser::resetFind(start);
+		char* tag = NULL;
+		int tagSuccess = 0;
+		while (tagSuccess = IniParser::getTagString(tag)) {
+			tag = 0;
+		}
 	}
 }

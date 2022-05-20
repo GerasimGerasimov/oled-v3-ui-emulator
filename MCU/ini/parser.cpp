@@ -2,6 +2,7 @@
 
 char* IniParser::Root = NULL;
 int IniParser::RootSize = 0;
+char* IniParser::SearchPointer = NULL;
 
 void IniParser::init() {
 
@@ -44,6 +45,103 @@ int IniParser::isDelimiter(char** ptr, char Delimiter) {
     return(res);
 }
 
-char* IniParser::getNextTagString(char* sectionRoot) {
-    return NULL;
+void IniParser::resetFind(char* start) {
+    SearchPointer =  start;
+}
+
+int IniParser::getTagString(char* position) {
+    /*TODO в общем надо просто брать строку от начала до CRLN или [ или конца ресурса (дляну-то знаю)
+    а далее смотреть её на предмет информативности
+    - если CRLF - пропускать идти к следущей
+    - если начинается с ";" то это камент - пропустить на дину камента
+    */
+    char* begin = SearchPointer;
+    char* end   = SearchPointer;
+    do {
+        int len = getStringLenght(&end);
+        begin = end;
+        len = 0;
+    } while (true);
+    return -1;
+    //return (len == -1)
+    //       ? NULL
+    //       : start;
+}
+
+bool isNexSymbolValid(char** ptr) {
+    char* c = *ptr;
+    return (bool)((*c == '\n') ||
+                  (*c == '['));
+}
+
+/*
+int skipComment(char** ptr) {
+    char* start = *ptr;
+    char c;
+    int i = 0;
+    do {
+        c = *((*ptr)++);
+        switch (c) {
+            case '\r': //CR (возврат каретки)
+                if (isNexSymbolValid(ptr)) (*ptr)++;
+                i = (int)(*&ptr[0] - &start[0]);
+                return i;
+            case '\n': //LN (конец строки)
+                i = (int)(*&ptr[0] - &start[0]);
+                return i;
+        }
+    } while (true);
+}*/
+
+//GetIniStringLenght сканит строку до нахождния CR или LN
+//возвращает сколько символов насканил
+//если это символы типа CR, LN возвращает ноль
+//если EOF то "-1"
+int IniParser::getStringLenght(char** ptr) {
+    int res = 0;
+    char c;
+    do {
+        c = *((*ptr)++);
+        switch (c) {
+        //case 0: return(-1);//конец файла
+        //case ';':
+        //    return skipComment(ptr);
+        case '\r': //CR (возврат каретки)
+            if (isNexSymbolValid(ptr)) (*ptr)++;
+            return res;
+        case '\n': //LN (конец строки)
+            return(res);
+        default:
+            res++;//увеличиваю кол-во символов в строке
+            break;
+        }
+    } while (true);
+    return res;
+}
+
+
+
+int IniParser::getSectionLinesCount(char* SectionName) {//возвращает кол-во строк в секции
+    char* begin;
+    char* ptr;
+    int res = 0;//счётчик строк и результат работы функции
+    int IniStrLenght;
+    //1) находит секцию и переходит к следующей строке
+    //2) считает строки заканчивающиеся на "#13#10" но имеющие длину отличную от "0"
+    //3) заканчивает счёт, когда находит EOF #0
+    ptr = SearchSectionBegin(SectionName);//получил адрес начала данных секции
+    if (ptr != 0) {//секция найдена
+        do {
+            begin = ptr;
+            IniStrLenght = getStringLenght(&ptr);
+            if (IniStrLenght > 0) {//если символы в строке есть
+            //то проверю не является ли она заголовком новой секции
+            //т.е. первый символ "["
+                if (*begin == '[') break;//если наткнулся на новую секцию то прекращаю поиск
+                res++;//а так считаю что это полноценная строка
+                           //(к стати не забываю что ";" это начала камента в ini)
+            }
+        } while (IniStrLenght != -1);
+    };
+    return res;
 }
