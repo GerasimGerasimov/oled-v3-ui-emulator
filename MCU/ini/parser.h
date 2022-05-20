@@ -9,7 +9,7 @@ public:
 	static void setRoot(char* root, int size);
 	static char* SearchSectionBegin(char* SectionName);
 	static void resetFind(char* start);
-	static int getTagString(char* position);
+	static int getTagString(char** position);
 	static int getSectionLinesCount(char* SectionName);
 private:
 	static int isDelimiter(char** ptr, char Delimiter);

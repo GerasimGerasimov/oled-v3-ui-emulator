@@ -19,8 +19,9 @@ void IniResources::init(void) {
 		IniParser::resetFind(start);
 		char* tag = NULL;
 		int tagSuccess = 0;
-		while (tagSuccess = IniParser::getTagString(tag)) {
-			tag = 0;
-		}
+		do {
+			tagSuccess = IniParser::getTagString(&tag);
+			//tag = 0;
+		} while (true);
 	}
 }

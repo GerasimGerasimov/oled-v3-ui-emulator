@@ -49,7 +49,19 @@ void IniParser::resetFind(char* start) {
     SearchPointer =  start;
 }
 
-int IniParser::getTagString(char* position) {
+static bool isValidTagString(char* begin, int len) {
+    return (bool)(*begin == 'p');
+}
+
+static bool isComment(char* begin) {
+    return (bool)(*begin == ';');
+}
+
+static bool isSection(char* begin) {
+    return (bool) (*begin == '[');
+}
+
+int IniParser::getTagString(char** position) {
     /*TODO в общем надо просто брать строку от начала до CRLN или [ или конца ресурса (дляну-то знаю)
     а далее смотреть её на предмет информативности
     - если CRLF - пропускать идти к следущей
@@ -59,19 +71,21 @@ int IniParser::getTagString(char* position) {
     char* end   = SearchPointer;
     do {
         int len = getStringLenght(&end);
+        SearchPointer = end;
+        if (len > 0) {
+            if (isValidTagString(begin, len)) { (*position) = begin;  return len; };
+            if (isComment(begin)) { (*position) = NULL;  return -1; };
+            if (isSection(begin)) { (*position) = NULL;  return -2; };
+        }
+        /*TODO контроль размера ресурса! не должны выходить за его пределы
+        надо останавливать поиск при выходе за заданный размер*/
         begin = end;
-        len = 0;
     } while (true);
-    return -1;
-    //return (len == -1)
-    //       ? NULL
-    //       : start;
 }
 
 bool isNexSymbolValid(char** ptr) {
     char* c = *ptr;
-    return (bool)((*c == '\n') ||
-                  (*c == '['));
+    return (bool)(*c == '\n');
 }
 
 /*
@@ -103,9 +117,6 @@ int IniParser::getStringLenght(char** ptr) {
     do {
         c = *((*ptr)++);
         switch (c) {
-        //case 0: return(-1);//конец файла
-        //case ';':
-        //    return skipComment(ptr);
         case '\r': //CR (возврат каретки)
             if (isNexSymbolValid(ptr)) (*ptr)++;
             return res;
