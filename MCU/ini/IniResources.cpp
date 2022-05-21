@@ -13,15 +13,24 @@ void IniResources::init(void) {
 		*/
 		char* Root = TInternalResources::getRoot() + Offset;
 		IniParser::setRoot(Root, Size);
-		//int lines = IniParser::getSectionLinesCount((char*)"[RAM]");
-		char* section = IniParser::SearchSectionBegin((char*)"[RAM]");
-		char* start = section;
-		IniParser::resetFind(start);
+		char* section = IniParser::SearchSectionBegin((char*)"[vars]");
+		IniParser::resetFind(section);
 		char* tag = NULL;
 		int tagSuccess = 0;
 		do {
 			tagSuccess = IniParser::getTagString(&tag);
-			//tag = 0;
+			//условия завершения парсинга и выхода из цикла
+			if ((tagSuccess == (int)ParcerResult::END) ||
+				(tagSuccess == (int)ParcerResult::SECTION))
+				return;
+			switch (tagSuccess) {
+				case (int)ParcerResult::COMMENT:
+					break;
+				default:
+					tagSuccess = 0;
+					/*TODO парсить полученную строку используя её длину в tagSuccess и указатель на начало */
+					break;
+			};
 		} while (true);
 	}
 }

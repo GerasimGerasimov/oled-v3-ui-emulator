@@ -3,6 +3,13 @@
 
 #include <string>
 
+enum class ParcerResult {
+	COMMENT = -1,
+	SECTION = -2,
+	END     = -3
+};
+
+
 class IniParser  {
 public:
 	static void init(void);
