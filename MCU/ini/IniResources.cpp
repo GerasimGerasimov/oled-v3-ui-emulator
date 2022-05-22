@@ -4,15 +4,12 @@
 void IniResources::init(void) {
 	const std::vector<std::string> inis = {"U1"};
 	//INI - именно такую запись будем парсить, U1 чтобы сгенерить ошибку. ѕотом все ini дл€ парсинга будут называтьс€ Ux
-	const pItem ini = TInternalResources::getItemByName((char*) inis[0].c_str());
-	if (ini) {
-		u32 Offset = ini->BinaryDataAddr;
-		u32 Size = ini->BinaryDataSize;
+	const TItemLimits itemLimits = TInternalResources::getItemLimitsByName((char*)inis[0].c_str());
+	if (itemLimits.RootOffset) {
 		/*TODO осталось парсить
 		как обычно, найти секции RAM, FLASH, CD, vars
 		*/
-		char* Root = TInternalResources::getRoot() + Offset;
-		IniParser::setRoot(Root, Size);
+		IniParser::setRoot(itemLimits.RootOffset, itemLimits.Size);
 		char* section = IniParser::SearchSectionBegin((char*)"[vars]");
 		IniParser::resetFind(section);
 		char* tag = NULL;

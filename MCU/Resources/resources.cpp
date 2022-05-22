@@ -38,6 +38,16 @@ pItem TInternalResources::getItemByName(char* Name) {
   return res;
 }
 
+TItemLimits TInternalResources::getItemLimitsByName(char* Name) {
+    TItemLimits res = { 0,0 };
+    const pItem item = getItemByName(Name);
+    if (item) {
+        res.Size = item->BinaryDataSize;
+        res.RootOffset = (char*)(Root + item->BinaryDataAddr);
+    }
+    return res;
+}
+
 const char * unknown = "unknown";
 
 /*TODO надо не физический адрес в TResourceProps.Addr помещать, а смешение относительно начала ресурсов

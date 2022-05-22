@@ -3,10 +3,16 @@
 
 #include "iresources.h"
 
+typedef struct ItemLimits {
+    char* RootOffset;
+    int Size;
+} TItemLimits;
+
 struct TInternalResources {
   public:
     static void init();
     static pItem getItemByName(char* Name);
+    static TItemLimits getItemLimitsByName(char* Name);
     static std::string getID();
     static char* getRoot();
   private:

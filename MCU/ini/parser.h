@@ -9,7 +9,6 @@ enum class ParcerResult {
 	END     = -3
 };
 
-
 class IniParser  {
 public:
 	static void init(void);
