@@ -43,10 +43,11 @@ TSectionReadResult IniParser::getNextTagString() {
             (tagSuccess == (int)ParcerResult::SECTION))
             return { NULL, 0 };
         switch (tagSuccess) {
-        case (int)ParcerResult::COMMENT:
-            break;
-        default:
-            return { tag, tagSuccess };
+            case (int)ParcerResult::COMMENT:
+            case (int)ParcerResult::NOTKEYVALUE:
+                break;
+            default:
+                return { tag, tagSuccess };
         };
     } while (true);
 }
@@ -81,6 +82,14 @@ static bool isSection(char* begin) {
     return (bool) (*begin == '[');
 }
 
+static bool isNotKeyValueString(char* c, int len) {
+    while (--len) {
+        if (*c++ == '=')
+            return false;
+    }
+    return true;
+}
+
 int IniParser::getTagString(char** position) {
     char* begin = SearchPointer;
     char* end   = SearchPointer;
@@ -90,6 +99,7 @@ int IniParser::getTagString(char** position) {
         if (len > 0) {
             if (isComment(begin)) { (*position) = NULL;  return (int)ParcerResult::COMMENT; };
             if (isSection(begin)) { (*position) = NULL;  return (int)ParcerResult::SECTION; };
+            if (isNotKeyValueString(begin, len)) { (*position) = NULL;  return (int)ParcerResult::NOTKEYVALUE; };
             (*position) = begin;  return len;
         }
         begin = end;

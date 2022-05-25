@@ -6,7 +6,8 @@
 enum class ParcerResult {
 	COMMENT = -1,
 	SECTION = -2,
-	END     = -3
+	END     = -3,
+	NOTKEYVALUE = -4
 };
 
 typedef struct {
