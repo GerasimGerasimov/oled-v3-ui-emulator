@@ -9,17 +9,24 @@ enum class ParcerResult {
 	END     = -3
 };
 
+typedef struct {
+	char* tag;
+	int result;
+} TSectionReadResult;
+
 class IniParser  {
 public:
 	static void init(void);
+	static bool setSectionToRead(char* SectionName);
+	static TSectionReadResult getNextTagString();
 	static void setRoot(char* root, int size);
-	static char* SearchSectionBegin(char* SectionName);
-	static void resetFind(char* start);
-	static int getTagString(char** position);
-	static int getSectionLinesCount(char* SectionName);
 private:
+	static void resetFind(char* start);
+	static char* getSectionEntryPoint(char* SectionName);
+	static int getTagString(char** position);
 	static int isDelimiter(char** ptr, char Delimiter);
 	static int getStringLenght(char** ptr);
+	static int getSectionLinesCount(char* SectionName);
 	static char* Root;
 	static char* SearchPointer;
 	static int RootSize;

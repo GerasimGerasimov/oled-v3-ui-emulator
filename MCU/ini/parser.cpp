@@ -13,10 +13,11 @@ void IniParser::setRoot(char* root, int size) {
     RootSize = size;
 }
 
+
 //возвращает адрес символа следующего за закрывающей квадратной скобкой заданной секции из devece_ini
 //в качестве параметра, передаЄтс€ им€ секции с квадратными скобками (например [RAM])
 //!!! название секции передаЄтс€ в квадратных скобках! "[RAM]"
-char* IniParser::SearchSectionBegin(char* SectionName) {
+char* IniParser::getSectionEntryPoint(char* SectionName) {
     char* ptr = (char*)strstr(Root, SectionName);
     if (ptr != 0) {
         ptr += strlen(SectionName);//если фраза есть в тексте, тогда добавл€ю длину секции
@@ -25,6 +26,29 @@ char* IniParser::SearchSectionBegin(char* SectionName) {
         if (*(ptr) == '\n') { ptr++; }//если LN (конец строки)
     }
     return ptr;
+}
+
+bool IniParser::setSectionToRead(char* SectionName) {
+    char* section = getSectionEntryPoint(SectionName);
+    SearchPointer = section;
+    return (bool)(section != NULL);
+}
+
+TSectionReadResult IniParser::getNextTagString() {
+    do {
+        char* tag = NULL;
+        int tagSuccess = IniParser::getTagString(&tag);
+        //услови€ завершени€ парсинга и выхода из цикла
+        if ((tagSuccess == (int)ParcerResult::END) ||
+            (tagSuccess == (int)ParcerResult::SECTION))
+            return { NULL, 0 };
+        switch (tagSuccess) {
+        case (int)ParcerResult::COMMENT:
+            break;
+        default:
+            return { tag, tagSuccess };
+        };
+    } while (true);
 }
 
 int IniParser::isDelimiter(char** ptr, char Delimiter) {
@@ -110,7 +134,7 @@ int IniParser::getSectionLinesCount(char* SectionName) {//возвращает кол-во стро
     //1) находит секцию и переходит к следующей строке
     //2) считает строки заканчивающиес€ на "#13#10" но имеющие длину отличную от "0"
     //3) заканчивает счЄт, когда находит EOF #0
-    ptr = SearchSectionBegin(SectionName);//получил адрес начала данных секции
+    ptr = getSectionEntryPoint(SectionName);//получил адрес начала данных секции
     if (ptr != 0) {//секци€ найдена
         do {
             begin = ptr;

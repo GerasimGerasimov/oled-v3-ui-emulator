@@ -43,7 +43,7 @@ TItemLimits TInternalResources::getItemLimitsByName(char* Name) {
     const pItem item = getItemByName(Name);
     if (item) {
         res.Size = item->BinaryDataSize;
-        res.RootOffset = (char*)(Root + item->BinaryDataAddr);
+        res.RootOffset = (char*)((char*)Root + item->BinaryDataAddr);
     }
     return res;
 }

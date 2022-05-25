@@ -6,28 +6,15 @@ void IniResources::init(void) {
 	for (auto & device : devices) {
 		TItemLimits itemLimits = TInternalResources::getItemLimitsByName((char*)device.c_str());
 		if (itemLimits.RootOffset) {
+			IniParser::setRoot(itemLimits.RootOffset, itemLimits.Size);
 			/*TODO осталось парсить
 			как обычно, найти секции RAM, FLASH, CD, vars*/
-			IniParser::setRoot(itemLimits.RootOffset, itemLimits.Size);
-			char* section = IniParser::SearchSectionBegin((char*)"[vars]");
-			IniParser::resetFind(section);
-			char* tag = NULL;
-			int tagSuccess = 0;
-			do {
-				tagSuccess = IniParser::getTagString(&tag);
-				//условия завершения парсинга и выхода из цикла
-				if ((tagSuccess == (int)ParcerResult::END) ||
-					(tagSuccess == (int)ParcerResult::SECTION))
-					return;
-				switch (tagSuccess) {
-				case (int)ParcerResult::COMMENT:
-					break;
-				default:
-					tagSuccess = 0;
-					/*TODO парсить полученную строку используя её длину в tagSuccess и указатель на начало */
-					break;
-				};
-			} while (true);
+			if (IniParser::setSectionToRead((char*)"[RAM]")) {
+				TSectionReadResult readResult = { NULL, 0 };
+				while ((readResult = IniParser::getNextTagString()), readResult.result != 0) {
+					//TODO парсить полученную строку используя её длину в tagSuccess и указатель на начало
+				}
+			}
 		}
 	}
 
