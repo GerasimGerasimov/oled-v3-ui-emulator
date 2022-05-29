@@ -64,6 +64,9 @@
     <Filter Include="App\ini">
       <UniqueIdentifier>{80439ef1-861a-4819-8caa-424839095942}</UniqueIdentifier>
     </Filter>
+    <Filter Include="App\Parameters">
+      <UniqueIdentifier>{052a905e-f692-4edd-ba1c-1b59c38c94b6}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -196,6 +199,12 @@
     </ClCompile>
     <ClCompile Include="MCU\ini\IniResources.cpp">
       <Filter>App\ini</Filter>
+    </ClCompile>
+    <ClCompile Include="MCU\Parameters\parameters.cpp">
+      <Filter>App\Parameters</Filter>
+    </ClCompile>
+    <ClCompile Include="MCU\Parameters\vars.cpp">
+      <Filter>App\Parameters</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

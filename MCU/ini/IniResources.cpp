@@ -1,5 +1,6 @@
 #include "IniResources.h"
 #include "parser.h"
+#include "parameters.h"
 
 const std::vector<std::string> sections = { "[vars]", "[RAM]", "[FLASH]", "[CD]"};
 
@@ -16,6 +17,7 @@ void IniResources::init(void) {
 					TSectionReadResult readResult = { NULL, 0 };
 					while ((readResult = IniParser::getNextTagString()), readResult.result != 0) {
 						//TODO парсить полученную строку использу€ еЄ длину в tagSuccess и указатель на начало
+						IParameter* p = new IParameter(readResult.tag, readResult.result);
 					}
 				}
 			}
