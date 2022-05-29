@@ -2,11 +2,14 @@
 #define INI_RESOURCES_H
 
 #include "resources.h"
-#include "vector"
+#include <vector>
+#include <map>
+#include "inistring.h"
 
 class IniResources {
 public:
 	static void init(void);
+	static std::map<std::string, std::map<std::string, std::vector<TIniString*>>> devs;
 };
 
 #endif

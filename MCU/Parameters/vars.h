@@ -4,8 +4,9 @@
 #include "stm32f4xx.h"
 #include <vector>
 #include <string>
+#include "inistring.h"
 
-class IScale {
+class IScale : public TIniString {
 public:
 	IScale(char* source, int scrLen);
 	~IScale();

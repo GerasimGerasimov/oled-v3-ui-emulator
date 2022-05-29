@@ -206,6 +206,9 @@
     <ClCompile Include="MCU\Parameters\vars.cpp">
       <Filter>App\Parameters</Filter>
     </ClCompile>
+    <ClCompile Include="MCU\Parameters\inistring.cpp">
+      <Filter>App\Parameters</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="WindowsProject1.rc">

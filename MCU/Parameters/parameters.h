@@ -5,10 +5,10 @@
 #include <vector>
 #include <string>
 
-class IParameter {
+class TParameter : public TIniString {
 public:
-	IParameter(char* source, int scrLen);
-	~IParameter();
+	TParameter(char* source, int scrLen);
+	~TParameter();
 };
 
 #endif

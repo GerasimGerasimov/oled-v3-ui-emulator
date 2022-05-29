@@ -1,7 +1,7 @@
 #include "parameters.h"
 
-IParameter::IParameter(char* source, int scrLen) {
+TParameter::TParameter(char* source, int scrLen) {
 }
 
-IParameter::~IParameter(){
+TParameter::~TParameter(){
 }

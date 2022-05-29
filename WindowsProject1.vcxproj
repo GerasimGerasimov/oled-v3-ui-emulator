@@ -179,6 +179,7 @@
     <ClCompile Include="MCU\Pages\EditValue\PageEditValue.cpp" />
     <ClCompile Include="MCU\Pages\Home\PageHome.cpp" />
     <ClCompile Include="MCU\Pages\MainMenu\PageMainMenu.cpp" />
+    <ClCompile Include="MCU\Parameters\inistring.cpp" />
     <ClCompile Include="MCU\Parameters\parameters.cpp" />
     <ClCompile Include="MCU\Parameters\vars.cpp" />
     <ClCompile Include="MCU\Resources\resources.cpp" />
