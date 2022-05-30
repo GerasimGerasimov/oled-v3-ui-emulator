@@ -2,8 +2,9 @@
 #include "vars.h"
 #include "parameters.h"
 
-TIniString::TIniString(std::string section, char* source, int scrLen) {
+pSignal TIniString::getSignal(std::string section, char* source, int scrLen) {
+	/*TODO тут надо парсить переданнюу строку и генерить объекты vars, word, bit, float и т.п.*/
+	pSignal s = new ISignal(source, scrLen);
+	return s;
 }
 
-TIniString::~TIniString() {
-}

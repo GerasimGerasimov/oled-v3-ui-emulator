@@ -5,11 +5,12 @@
 #include <vector>
 #include <map>
 #include "inistring.h"
+#include "signal.h"
 
 class IniResources {
 public:
 	static void init(void);
-	static std::map<std::string, std::map<std::string, std::vector<TIniString*>>> devs;
+	static std::map<std::string, std::map<std::string, std::vector<ISignal*>>> devs;
 };
 
 #endif

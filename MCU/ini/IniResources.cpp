@@ -2,7 +2,7 @@
 #include "parser.h"
 
 const std::vector<std::string> sections = { "[vars]", "[RAM]", "[FLASH]", "[CD]"};
-std::map<std::string, std::map<std::string, std::vector<TIniString*>>> IniResources::devs = {};
+std::map<std::string, std::map<std::string, std::vector<ISignal* >>> IniResources::devs = {};
 /*TODO обеспечить такую структуру
 U1
  |-vars
@@ -26,12 +26,12 @@ void IniResources::init(void) {
 			как обычно, найти секции RAM, FLASH, CD, vars*/
 			for (auto& section : sections) {
 				if (IniParser::setSectionToRead((char*)section.c_str())) {
-					std::vector<TIniString*> params = {};
+					std::vector<ISignal*> params = {};
 					TSectionReadResult readResult = { NULL, 0 };
 					while ((readResult = IniParser::getNextTagString()), readResult.result != 0) {
 						//TODO парсить полученную строку используя её длину в tagSuccess и указатель на начало
-						TIniString* p = new TIniString(section, readResult.tag, readResult.result);
-						params.push_back(p);
+						ISignal* s = TIniString::getSignal(section, readResult.tag, readResult.result);
+						params.push_back(s);
 					}
 					devs[device][section] = params;
 				}
