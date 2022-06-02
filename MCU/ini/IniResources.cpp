@@ -22,6 +22,11 @@ U1
  |-CD
 */
 
+void IniResources::init(void) {
+	readSources();
+	readDevices();
+}
+
 bool IniResources::readSources(void)
 {
 	TItemLimits itemLimits = TInternalResources::getItemLimitsByName((char*)"SOURCES");
@@ -52,6 +57,18 @@ bool IniResources::readSources(void)
 	return false;
 }
 
-void IniResources::init(void) {
-	readSources();
+bool IniResources::readDevices(void) {
+	TItemLimits itemLimits = TInternalResources::getItemLimitsByName((char*)"DEVICES");
+	if (itemLimits.RootOffset) {
+		IniParser::setRoot(itemLimits.RootOffset, itemLimits.Size);
+		std::vector<std::string> devices = IniParser::getListOfDelimitedSting(itemLimits.RootOffset, itemLimits.Size);
+		for (auto& dev : devices) {
+			itemLimits = TInternalResources::getItemLimitsByName((char*)dev.c_str());
+			if (itemLimits.RootOffset) {
+				IniParser::setRoot(itemLimits.RootOffset, itemLimits.Size);
+				//TODO осталось парсить строки типа DEV1/COM1/1/RAM:0/FLASH:1000/CD:1000/
+			}
+		}
+	}
+	return false;
 }

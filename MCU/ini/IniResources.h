@@ -13,6 +13,7 @@ public:
 	static std::map<std::string, std::map<std::string, std::vector<ISignal*>>> devs;
 private:
 	static bool readSources(void);
+	static bool readDevices(void);
 };
 
 #endif
