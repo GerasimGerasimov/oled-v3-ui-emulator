@@ -161,7 +161,37 @@ int IniParser::getSectionLinesCount(char* SectionName) {//возвращает кол-во стро
     return res;
 }
 
+int IniParser::isDelimimerSizeLimited(char delimiter, char*& src, int& size) {
+    char c;
+    int count = 0;
+    while (size-- != 0) {
+        count++;
+        c = *src++;
+        if (c == delimiter)
+            return count;
+    };
+    return -1;
+}
 
+std::string IniParser::getElement(char** ptr, int& size) {
+    char* start = *ptr;
+    int pos = isDelimimerSizeLimited('/', *ptr, size);
+    if (pos > 0) {
+        std::string s(start, pos - 1);
+        return s;
+    }
+    return "";
+}
+
+std::vector<std::string> IniParser::getListOfDelimitedSting(char* src, int size) {
+    std::vector<std::string> res = {};
+    std::string s = "";
+    char** ptr = &src;
+    while (s = getElement(ptr, size), size != -1) {
+        res.push_back(s);
+    }
+    return res;
+}
 
 /*
 static bool isValidTagString(char* begin, int len) {

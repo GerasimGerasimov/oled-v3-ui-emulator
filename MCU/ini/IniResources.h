@@ -11,6 +11,8 @@ class IniResources {
 public:
 	static void init(void);
 	static std::map<std::string, std::map<std::string, std::vector<ISignal*>>> devs;
+private:
+	static bool readSources(void);
 };
 
 #endif
