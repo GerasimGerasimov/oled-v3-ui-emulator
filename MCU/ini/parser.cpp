@@ -173,9 +173,9 @@ int IniParser::isDelimimerSizeLimited(char delimiter, char*& src, int& size) {
     return -1;
 }
 
-std::string IniParser::getElement(char** ptr, int& size) {
+std::string IniParser::getElement(char delimiter, char** ptr, int& size) {
     char* start = *ptr;
-    int pos = isDelimimerSizeLimited('/', *ptr, size);
+    int pos = isDelimimerSizeLimited(delimiter, *ptr, size);
     if (pos > 0) {
         std::string s(start, pos - 1);
         return s;
@@ -183,11 +183,11 @@ std::string IniParser::getElement(char** ptr, int& size) {
     return "";
 }
 
-std::vector<std::string> IniParser::getListOfDelimitedSting(char* src, int size) {
+std::vector<std::string> IniParser::getListOfDelimitedSting(char delimiter, char* src, int size) {
     std::vector<std::string> res = {};
     std::string s = "";
     char** ptr = &src;
-    while (s = getElement(ptr, size), size != -1) {
+    while (s = getElement(delimiter, ptr, size), size != -1) {
         res.push_back(s);
     }
     return res;

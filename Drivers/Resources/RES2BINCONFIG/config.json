@@ -9,11 +9,11 @@
         "file":"D:/Project/Projects/!SMFCB/DExSys/FW/CM4/DExS-SMFCB/Devices/DExS SMFCB 1_10_2_short.ini"
       },
 	  "DEV2" : { 
-        "file":"D:/Project/Projects/!SMFCB/DExSys/FW/CM4/DExS-SMFCB/Devices/DExS SMFCB 1_10_2_short.ini"
+        "file":"D:/Project/Projects/!SMFCB/DExSys/FW/CM4/DExS-SMFCB/Devices/DExS SMFCB 1_10_2.ini"
       },
 	  "DEVICES":"U1/U2/",
-	  "U1":"DEV1/COM1/1/RAM:0/FLASH:1000/CD:1000/",
-	  "U2":"DEV2/COM1/2/RAM:0/FLASH:1000/CD:1000/"
+	  "U1":"DEV1/COM1/1/RAM,0x0000,0x0036,0/FLASH,0x2000,0x2069,1000/CD,0xC000,0xC037,1000/",
+	  "U2":"DEV2/COM1/2/RAM,0x0000,0x0036,0/FLASH,0x2000,0x2069,1000/CD,0xC000,0xC037,1000/"
     }
   }
 }
