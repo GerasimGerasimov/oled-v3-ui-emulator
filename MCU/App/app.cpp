@@ -8,11 +8,15 @@
 #include "DevicePollManager.h"
 
 #include "IniResources.h"
+#include "IniSlotsprops.h"
+#include "CreateSlotsByStart.h"
 #include "resources.h"
 
 void App::init(void) {
     TInternalResources::init();
     IniResources::init();
+    IniSlotsProps::init();
+    CreateSlotsByStart::init(IniSlotsProps::Devices);
     TRouter::Init();
     DevicePollManager::init();
     Msg::send_message(REPAINT, 0, 0);

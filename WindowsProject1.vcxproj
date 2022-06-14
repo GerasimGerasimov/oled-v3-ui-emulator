@@ -173,6 +173,7 @@
     <ClCompile Include="MCU\Helpers\crc16.c" />
     <ClCompile Include="MCU\Helpers\utils.cpp" />
     <ClCompile Include="MCU\ini\IniResources.cpp" />
+    <ClCompile Include="MCU\ini\IniSlotsProps.cpp" />
     <ClCompile Include="MCU\ini\parser.cpp" />
     <ClCompile Include="MCU\Msg\msg.cpp" />
     <ClCompile Include="MCU\Pages\Counters\PageCounters.cpp" />
@@ -185,6 +186,7 @@
     <ClCompile Include="MCU\Parameters\vars.cpp" />
     <ClCompile Include="MCU\Resources\resources.cpp" />
     <ClCompile Include="MCU\Router\Router.cpp" />
+    <ClCompile Include="MCU\Slots\CreateSlotsByStart.cpp" />
     <ClCompile Include="MCU\Slots\U1RamUpdate.cpp" />
     <ClCompile Include="threads\mcu_main_thread.cpp" />
     <ClCompile Include="threads\mutexes.cpp" />

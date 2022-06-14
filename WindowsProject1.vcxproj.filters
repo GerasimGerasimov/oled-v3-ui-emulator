@@ -212,6 +212,12 @@
     <ClCompile Include="MCU\Parameters\signal.cpp">
       <Filter>App\Parameters</Filter>
     </ClCompile>
+    <ClCompile Include="MCU\ini\IniSlotsProps.cpp">
+      <Filter>App\ini</Filter>
+    </ClCompile>
+    <ClCompile Include="MCU\Slots\CreateSlotsByStart.cpp">
+      <Filter>App\Slots</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="WindowsProject1.rc">
