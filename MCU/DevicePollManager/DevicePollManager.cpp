@@ -4,7 +4,7 @@
 
 #include "U1RamUpdate.h"
 
-static U1RAMSlot SlotU1RAM;
+//static U1RAMSlot SlotU1RAM;
 
 std::vector <Slot> DevicePollManager::Slots = {};
 Slot* DevicePollManager::slot = NULL;
@@ -13,9 +13,9 @@ u16 DevicePollManager::Status = (u16)DevicePollManagerStatus::TOGGLE_SLOT;
 u8 DevicePollManager::Reply[256] = {};
 u16 DevicePollManager::ReplyResult = 0;
 
-void DevicePollManager::init(void) {
-	SlotU1RAM.init();
-	Slots = { SlotU1RAM };
+void DevicePollManager::init(std::vector <Slot> slots) {
+	//SlotU1RAM.init();
+	Slots = slots;//{ SlotU1RAM };
 }
 
 /*TODO

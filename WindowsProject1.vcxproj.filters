@@ -218,6 +218,9 @@
     <ClCompile Include="MCU\Slots\CreateSlotsByStart.cpp">
       <Filter>App\Slots</Filter>
     </ClCompile>
+    <ClCompile Include="MCU\Slots\CommonSlotHandler.cpp">
+      <Filter>App\Slots</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="WindowsProject1.rc">

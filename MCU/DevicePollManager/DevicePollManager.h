@@ -19,7 +19,7 @@ enum class DevicePollManagerStatus {
 
 class DevicePollManager {
 public:
-	static void init(void);
+	static void init(std::vector <Slot> slots);
 	static void execute(void);
 	static std::vector <Slot> Slots;
 	static u16 Status;

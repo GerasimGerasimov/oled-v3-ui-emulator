@@ -16,9 +16,11 @@ void App::init(void) {
     TInternalResources::init();
     IniResources::init();
     IniSlotsProps::init();
-    CreateSlotsByStart::init(IniSlotsProps::Devices);
+    /*TODO создать слоты на основе подготовленных данных*/
+    /*TODO ещЄ нужен слот дл€ записи, он просто создаЄтс€ и ставитс€ на паузу, ибо его наполненеи будет зависеть от запроса*/
+    /*TODO дл€ управлени€ от встроенных DIO нужен слот*/
+    DevicePollManager::init(CreateSlotsByStart::init(IniSlotsProps::Devices));
     TRouter::Init();
-    DevicePollManager::init();
     Msg::send_message(REPAINT, 0, 0);
 }
 

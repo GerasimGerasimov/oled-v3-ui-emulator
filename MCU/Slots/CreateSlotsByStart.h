@@ -5,7 +5,7 @@
 
 class CreateSlotsByStart {
 public:
-	static void init(std::map<std::string, TDeviceNetworkProps> Devices);
+	static std::vector <Slot> init(std::map<std::string, TDeviceNetworkProps> Devices);
 };
 
 #endif
