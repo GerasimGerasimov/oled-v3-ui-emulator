@@ -30,7 +30,7 @@ private:
 	static Slot* getNextSlot(void);
 	static DevicePollManagerStatus setActionBySlot(void);
 	static u8 Reply[256];
-	static u16 ReplyResult;
+	static s16 ReplyResult;
 
 };
 

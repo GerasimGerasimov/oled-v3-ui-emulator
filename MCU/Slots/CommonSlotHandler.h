@@ -5,7 +5,8 @@
 
 class CommonSlotHandler {
 public:
-	static void parseRespond(s16 result, u8* reply);
+	static void parseRespond(Slot& slot, u8* reply);//u8* reply ещё не скопирован в Слот! это источник данных,
+	                                                //так как требуется обработка, например swap полученных данных для 0х03 команды чтения
 };
 
 #endif

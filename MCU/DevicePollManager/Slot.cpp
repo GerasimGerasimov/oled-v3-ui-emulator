@@ -3,13 +3,15 @@
 
 Slot::Slot() 
 	: Flags(0)
-	, onReadEnd(NULL)
+	, RespondLenght(0)
+	, onData(NULL)
 	, cmdLen(0){
 }
 
 Slot::Slot(std::string device, std::string section)
 	: Flags(0)
-	, onReadEnd(NULL)
+	, RespondLenght(0)
+	, onData(NULL)
 	, cmdLen(0)
 	, Device(device)
 	, Section(section)
@@ -35,18 +37,18 @@ void Slot::addcmd(const std::vector<u8>& v) {
 	FrameEndCrc16((u8*)&OutBuf, cmdLen);
 }
 
-bool Slot::isReplyValid(s16 result, u8* reply) {
+bool Slot::isReplyCRCValid(s16 result, u8* reply) {
 	return (result <= 0)
 		   ? false
 		   : (bool)(crc16(reply, result) == 0);
 }
 
-void Slot::checkRespond(s16 result, u8* reply) {
-	(isReplyValid(result, reply))
-		? (Flags |= (u16)SlotStateFlags::DATA_VALID)
-		: (Flags &= ~(u16)SlotStateFlags::DATA_VALID);
-	if (onReadEnd)
-		onReadEnd(result, reply);
+void Slot::validation(s16 result, u8* reply) {
+	(isReplyCRCValid(result, reply))
+		? (Flags |= (u16)SlotStateFlags::DATA_VALID, RespondLenght = result)
+		: (Flags &= ~(u16)SlotStateFlags::DATA_VALID, RespondLenght = 0);
+	if (onData)
+		onData(*this, reply);
 }
 
 Slot::~Slot() {}

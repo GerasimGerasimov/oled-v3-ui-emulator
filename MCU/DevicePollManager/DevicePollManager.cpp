@@ -11,20 +11,14 @@ Slot* DevicePollManager::slot = NULL;
 u16 DevicePollManager::idx = 0;
 u16 DevicePollManager::Status = (u16)DevicePollManagerStatus::TOGGLE_SLOT;
 u8 DevicePollManager::Reply[256] = {};
-u16 DevicePollManager::ReplyResult = 0;
+s16 DevicePollManager::ReplyResult = 0;
 
 void DevicePollManager::init(std::vector <Slot> slots) {
 	//SlotU1RAM.init();
 	Slots = slots;//{ SlotU1RAM };
 }
 
-/*TODO
-статусы DevicePollManager:
-1) ожидание ответа от текущего слота
-2) обработка получнного ответа текущего слота
-3) выбор следующего слота
-4) отправка запроса от выбранного слота
-*/
+/*TODO обработка интервала считывания (для CD и FLASH)*/
 
 void DevicePollManager::execute(void) {
 	switch ((DevicePollManagerStatus)Status)
@@ -36,7 +30,7 @@ void DevicePollManager::execute(void) {
 	case DevicePollManagerStatus::WAIT_RESPOND:
 		break;
 	case DevicePollManagerStatus::PARSE_RESPOND:
-		slot->checkRespond(ReplyResult, (u8*) &Reply);
+		slot->validation(ReplyResult, (u8*) &Reply);
  		Status = (u16)DevicePollManagerStatus::TOGGLE_SLOT;
 		break;
 	case DevicePollManagerStatus::TOGGLE_SLOT:
@@ -49,7 +43,7 @@ void DevicePollManager::execute(void) {
 }
 
 DevicePollManagerStatus DevicePollManager::setActionBySlot(void) {
-	if (slot->Flags == (u16)SlotStateFlags::SKIP_SLOT) {
+	if (slot->Flags & (u16)SlotStateFlags::SKIP_SLOT) {
 		return DevicePollManagerStatus::TOGGLE_SLOT;
 	}
 	else {

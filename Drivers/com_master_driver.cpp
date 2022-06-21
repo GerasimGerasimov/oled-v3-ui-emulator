@@ -3,7 +3,7 @@
 HANDLE ComMasterDriver::hCom = NULL;
 HANDLE ComMasterDriver::hComThread = NULL;
 DWORD  ComMasterDriver::dwComThreadId = 0;
-TComReadEndHandler ComMasterDriver::onReadEdnd = NULL;
+TDriverComReadEndHandler ComMasterDriver::onReadEdnd = NULL;
 u8* ComMasterDriver::outbuf = NULL;
 u16 ComMasterDriver::OutBufLen = 0;
 u8 ComMasterDriver::reply[256];

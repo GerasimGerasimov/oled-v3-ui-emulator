@@ -23,7 +23,7 @@ std::vector <Slot> CreateSlotsByStart::init(std::map<std::string, TDeviceNetwork
 			/*TODO собственно создать слот для заданного COM порта*/
 			Slot* pSlot = new Slot(devname, section);
 			pSlot->addcmd(getReadCmdFromSettings(slotsprops.NetworkAddr, prop->StartAddr, prop->LastAddr));
-			pSlot->onReadEnd = CommonSlotHandler::parseRespond;
+			pSlot->onData = CommonSlotHandler::parseRespond;
 			res.push_back(*pSlot);
 		}
 	}

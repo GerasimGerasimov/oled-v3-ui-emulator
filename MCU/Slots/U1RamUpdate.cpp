@@ -8,11 +8,11 @@ static const u8 cmdGetID[] = { 1, 3, 0x00, 0x00, 0x00, 0x1F };
 void U1RAMSlot::init(void) {
 	Flags = 0;
 	addcmd((u8*)cmdGetID, sizeof(cmdGetID));
-	onReadEnd = [this](s16 result, u8* reply) { parceRespond(result, reply); };
+	onData = [this](Slot &slot, u8* reply) { parceRespond(slot, reply); };
 }
 
-void U1RAMSlot::parceRespond(s16 result, u8* reply) {
-	if (result < 0) {
+void U1RAMSlot::parceRespond(Slot& slot, u8* reply) {
+	if (slot.RespondLenght == 0) {
 		//console::log(L"comcallback:Error\n");
 		setParametersUnnown();
 		//std::string str = TInternalResources::getID();
@@ -21,8 +21,8 @@ void U1RAMSlot::parceRespond(s16 result, u8* reply) {
 		//console::log(wstr);
 	}
 	else {
-		getPuretDataFromRespond(result, reply);
-		setParametersValue(result, reply);
+		getPuretDataFromRespond(slot.RespondLenght, slot.InputBuf);
+		//setParametersValue(result, reply);
 		//std::string str((char*)reply, (int)result);
 		//str += "\n";
 		//std::wstring wstr(str.begin(), str.end());

@@ -8,7 +8,7 @@ public:
 	U1RAMSlot();
 	~U1RAMSlot();
 private:
-	void parceRespond(s16 result, u8* reply);
+	void parceRespond(Slot& slot, u8* reply);
 	void setParametersValue(s16 result, u8* reply);
 	void setParametersUnnown(void);
 	void getPuretDataFromRespond(s16 result, u8* reply);

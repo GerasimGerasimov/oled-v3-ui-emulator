@@ -11,7 +11,7 @@
 struct TComMasterTask {
 	u8* pbuff;
 	u16 len;
-	TComReadEndHandler callback;
+	TDriverComReadEndHandler callback;
 };
 
 struct ComMasterDriver {
@@ -25,7 +25,7 @@ private:
 	static DWORD  dwComThreadId;
 	static DWORD WINAPI com_thread(LPVOID lpParam);
 	static void create_com_thread(void);
-	static TComReadEndHandler onReadEdnd;
+	static TDriverComReadEndHandler onReadEdnd;
 	static u8* outbuf;
 	static u16 OutBufLen;
 	static u8 reply[256];

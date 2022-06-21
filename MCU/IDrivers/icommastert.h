@@ -4,6 +4,6 @@
 #include <functional>
 #include "stm32f4xx.h"
 
-using TComReadEndHandler = std::function<void(s16 result, u8* reply)>;
+using TDriverComReadEndHandler = std::function<void(s16 result, u8* reply)>;
 
 #endif
