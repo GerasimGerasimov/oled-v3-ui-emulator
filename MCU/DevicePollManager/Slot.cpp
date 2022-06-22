@@ -3,14 +3,14 @@
 
 Slot::Slot() 
 	: Flags(0)
-	, RespondLenght(0)
+	, RespondLenghtOrErrorCode(0)
 	, onData(NULL)
 	, cmdLen(0){
 }
 
 Slot::Slot(std::string device, std::string section)
 	: Flags(0)
-	, RespondLenght(0)
+	, RespondLenghtOrErrorCode(0)
 	, onData(NULL)
 	, cmdLen(0)
 	, Device(device)
@@ -45,8 +45,9 @@ bool Slot::isReplyCRCValid(s16 result, u8* reply) {
 
 void Slot::validation(s16 result, u8* reply) {
 	(isReplyCRCValid(result, reply))
-		? (Flags |= (u16)SlotStateFlags::DATA_VALID, RespondLenght = result)
-		: (Flags &= ~(u16)SlotStateFlags::DATA_VALID, RespondLenght = 0);
+		? (Flags &= ~(u16)SlotStateFlags::CRC_ERR)
+		: (Flags |=  (u16)SlotStateFlags::CRC_ERR);
+	RespondLenghtOrErrorCode = result;
 	if (onData)
 		onData(*this, reply);
 }

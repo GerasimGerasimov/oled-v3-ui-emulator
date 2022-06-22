@@ -21,7 +21,7 @@ class Slot {
 	using TSlotDataHandler = std::function<void(Slot& slot, u8* reply)>;
 public:
 	u16 Flags;
-	u16 RespondLenght;
+	u16 RespondLenghtOrErrorCode;
 	virtual void init(void);
 	void addcmd(u8 cmd[], u8 size);
 	void addcmd(const std::vector<u8> &v);

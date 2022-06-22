@@ -16,8 +16,7 @@ std::wstring s2ws(const std::string& str) {
 //u8   c количество слов! которые необходимо перевернуть
 void swp_copy_u16(u8* s, u16* d, u8 c) {
     bauint w;
-    while (c) {
-        c--;
+    while (c--) {
         //сваплю и копирую
         w.b[1] = *s++;
         w.b[0] = *s++;

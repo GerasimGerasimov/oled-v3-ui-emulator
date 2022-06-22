@@ -12,7 +12,7 @@ void U1RAMSlot::init(void) {
 }
 
 void U1RAMSlot::parceRespond(Slot& slot, u8* reply) {
-	if (slot.RespondLenght == 0) {
+	if (slot.RespondLenghtOrErrorCode == 0) {
 		//console::log(L"comcallback:Error\n");
 		setParametersUnnown();
 		//std::string str = TInternalResources::getID();
@@ -21,7 +21,7 @@ void U1RAMSlot::parceRespond(Slot& slot, u8* reply) {
 		//console::log(wstr);
 	}
 	else {
-		getPuretDataFromRespond(slot.RespondLenght, slot.InputBuf);
+		getPuretDataFromRespond(slot.RespondLenghtOrErrorCode, slot.InputBuf);
 		//setParametersValue(result, reply);
 		//std::string str((char*)reply, (int)result);
 		//str += "\n";
