@@ -67,6 +67,9 @@
     <Filter Include="App\Parameters">
       <UniqueIdentifier>{052a905e-f692-4edd-ba1c-1b59c38c94b6}</UniqueIdentifier>
     </Filter>
+    <Filter Include="App\Modbus">
+      <UniqueIdentifier>{d09c1025-bfce-457b-93de-cb3ae02d9804}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -92,6 +95,9 @@
     </ClInclude>
     <ClInclude Include="MCU\IDrivers\iresources.h">
       <Filter>IDrivers</Filter>
+    </ClInclude>
+    <ClInclude Include="MCU\Modbus\modbus.h">
+      <Filter>App\Modbus</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

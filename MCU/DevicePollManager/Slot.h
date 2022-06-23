@@ -9,6 +9,12 @@
 #define MB_MASTER_BUF_SIZE  256
 #define MB_MASTER_SLOTS_MAX 24
 
+enum class RespondErrorCodes {
+	LNK = -1,
+	CRC = -2,
+	CMD = -3
+};
+
 enum class SlotStateFlags {
 	REPEATING_TRANSMIT = 1,
 	SKIP_SLOT = 2,
