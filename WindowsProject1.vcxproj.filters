@@ -70,6 +70,9 @@
     <Filter Include="App\Modbus">
       <UniqueIdentifier>{d09c1025-bfce-457b-93de-cb3ae02d9804}</UniqueIdentifier>
     </Filter>
+    <Filter Include="App\DevicesValues">
+      <UniqueIdentifier>{c577d28a-ac74-40fd-9769-dd9980121259}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -226,6 +229,9 @@
     </ClCompile>
     <ClCompile Include="MCU\Slots\CommonSlotHandler.cpp">
       <Filter>App\Slots</Filter>
+    </ClCompile>
+    <ClCompile Include="MCU\DevicesValues\DevicesValuesHandler.cpp">
+      <Filter>App\DevicesValues</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

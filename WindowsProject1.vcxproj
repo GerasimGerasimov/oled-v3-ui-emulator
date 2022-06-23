@@ -89,7 +89,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(ProjectDir)MCU\Modbus;$(ProjectDir)MCU\ini;$(ProjectDir)MCU\IDrivers;$(ProjectDir)MCU\Parameters;$(ProjectDir)MCU\Resources;$(ProjectDir)MCU\Slots;$(ProjectDir)MCU\Helpers;$(ProjectDir)MCU\DevicePollManager;$(ProjectDir)MCU\GraphicsFunctions;$(ProjectDir)WinAppPages;$(ProjectDir)MCU\Events;$(ProjectDir)MCU\Msg;$(ProjectDir)MCU\Components;$(ProjectDir)threads;$(ProjectDir)MCU\Pages\;$(ProjectDir)MCU\Pages\Home;$(ProjectDir)MCU\Pages\Counters;$(ProjectDir)MCU\Pages\EditValue;$(ProjectDir)MCU\Pages\MainMenu;$(ProjectDir)MCU\Router;$(ProjectDir)MCU\App;$(ProjectDir)Drivers\Resources;$(ProjectDir)Drivers;$(ProjectDir)MCU\Fonts;$(ProjectDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)MCU\Modbus;$(ProjectDir)MCU\DevicesValues;$(ProjectDir)MCU\ini;$(ProjectDir)MCU\IDrivers;$(ProjectDir)MCU\Parameters;$(ProjectDir)MCU\Resources;$(ProjectDir)MCU\Slots;$(ProjectDir)MCU\Helpers;$(ProjectDir)MCU\DevicePollManager;$(ProjectDir)MCU\GraphicsFunctions;$(ProjectDir)WinAppPages;$(ProjectDir)MCU\Events;$(ProjectDir)MCU\Msg;$(ProjectDir)MCU\Components;$(ProjectDir)threads;$(ProjectDir)MCU\Pages\;$(ProjectDir)MCU\Pages\Home;$(ProjectDir)MCU\Pages\Counters;$(ProjectDir)MCU\Pages\EditValue;$(ProjectDir)MCU\Pages\MainMenu;$(ProjectDir)MCU\Router;$(ProjectDir)MCU\App;$(ProjectDir)Drivers\Resources;$(ProjectDir)Drivers;$(ProjectDir)MCU\Fonts;$(ProjectDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -118,7 +118,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(ProjectDir)MCU\Modbus;$(ProjectDir)MCU\ini;$(ProjectDir)MCU\IDrivers;$(ProjectDir)MCU\Parameters;$(ProjectDir)MCU\Resources;$(ProjectDir)MCU\Slots;$(ProjectDir)MCU\Helpers;$(ProjectDir)MCU\DevicePollManager;$(ProjectDir)MCU\GraphicsFunctions;$(ProjectDir)WinAppPages;$(ProjectDir)MCU\Events;$(ProjectDir)MCU\Msg;$(ProjectDir)MCU\Components;$(ProjectDir)threads;$(ProjectDir)MCU\Pages\;$(ProjectDir)MCU\Pages\Home;$(ProjectDir)MCU\Pages\Counters;$(ProjectDir)MCU\Pages\EditValue;$(ProjectDir)MCU\Pages\MainMenu;$(ProjectDir)MCU\Router;$(ProjectDir)MCU\App;$(ProjectDir)Drivers\Resources;$(ProjectDir)Drivers;$(ProjectDir)MCU\Fonts;$(ProjectDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)MCU\Modbus;$(ProjectDir)MCU\DevicesValues;$(ProjectDir)MCU\ini;$(ProjectDir)MCU\IDrivers;$(ProjectDir)MCU\Parameters;$(ProjectDir)MCU\Resources;$(ProjectDir)MCU\Slots;$(ProjectDir)MCU\Helpers;$(ProjectDir)MCU\DevicePollManager;$(ProjectDir)MCU\GraphicsFunctions;$(ProjectDir)WinAppPages;$(ProjectDir)MCU\Events;$(ProjectDir)MCU\Msg;$(ProjectDir)MCU\Components;$(ProjectDir)threads;$(ProjectDir)MCU\Pages\;$(ProjectDir)MCU\Pages\Home;$(ProjectDir)MCU\Pages\Counters;$(ProjectDir)MCU\Pages\EditValue;$(ProjectDir)MCU\Pages\MainMenu;$(ProjectDir)MCU\Router;$(ProjectDir)MCU\App;$(ProjectDir)Drivers\Resources;$(ProjectDir)Drivers;$(ProjectDir)MCU\Fonts;$(ProjectDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -166,6 +166,7 @@
     <ClCompile Include="MCU\Components\TComponentsContainer.cpp" />
     <ClCompile Include="MCU\DevicePollManager\DevicePollManager.cpp" />
     <ClCompile Include="MCU\DevicePollManager\Slot.cpp" />
+    <ClCompile Include="MCU\DevicesValues\DevicesValuesHandler.cpp" />
     <ClCompile Include="MCU\Fonts\MSSansSerifBold14.cpp" />
     <ClCompile Include="MCU\Fonts\TMCUFonts.cpp" />
     <ClCompile Include="MCU\Fonts\TMCUText.cpp" />
