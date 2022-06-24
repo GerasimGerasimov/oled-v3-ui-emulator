@@ -1,6 +1,7 @@
 #include "CommonSlotHandler.h"
 #include "utils.h"
 #include "modbus.h"
+#include "DevicesValuesHandler.h"
 
 static bool isReadCmdGotAnError(u8 cmdcode) {
 	return (bool)((cmdcode & 0x80) != 0);
@@ -22,8 +23,10 @@ void CommonSlotHandler::parseRespond(Slot& slot, u8* reply) {
 			(u16*)&slot.InputBuf,
 			regs_count);
 		slot.Flags |= (u16)SlotStateFlags::DATA_VALID;
+		DevicesValuesHandler::setValues(slot);
 	}
 	catch (int e) {
 		slot.Flags &= ~(u16)SlotStateFlags::DATA_VALID;
+		DevicesValuesHandler::setDefault(slot);
 	}
 }
