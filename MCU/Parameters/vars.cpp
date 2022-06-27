@@ -1,7 +1,7 @@
 #include "vars.h"
 
-IScale::IScale(char* source, int scrLen) {
+TScale::TScale(char* source, int scrLen) : ISignal(source, scrLen) {
 }
 
-IScale::~IScale(){
+TScale::~TScale(){
 }

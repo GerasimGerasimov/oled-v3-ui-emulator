@@ -23,6 +23,8 @@ public:
 	static TSectionReadResult getNextTagString();
 	static void setRoot(char* root, int size);
 	static std::vector<std::string> getListOfDelimitedSting(char delimiter, char* src, int size);
+	static std::string getElement(char delimiter, char** ptr, int& size);
+	static int isDelimimerSizeLimited(char delimiter, char*& src, int& size);
 private:
 	static void resetFind(char* start);
 	static char* getSectionEntryPoint(char* SectionName);
@@ -30,8 +32,6 @@ private:
 	static int isDelimiter(char** ptr, char Delimiter);
 	static int getStringLenght(char** ptr);
 	static int getSectionLinesCount(char* SectionName);
-	static int isDelimimerSizeLimited(char delimiter, char*& src, int& size);
-	static std::string getElement(char delimiter, char** ptr, int& size);
 	static char* Root;
 	static char* SearchPointer;
 	static int RootSize;

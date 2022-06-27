@@ -41,7 +41,9 @@ bool IniResources::readSources(void)
 						TSectionReadResult readResult = { NULL, 0 };
 						while ((readResult = IniParser::getNextTagString()), readResult.result != 0) {
 							//TODO парсить полученную строку использу€ еЄ длину в tagSuccess и указатель на начало
-							ISignal* s = TIniString::getSignal(section, readResult.tag, readResult.result);
+							 ISignal* s = (section == "vars")
+								? TIniString::getScale(section, readResult.tag, readResult.result)
+								: TIniString::getSignal(section, readResult.tag, readResult.result);
 							params.push_back(s);
 						}
 						Sources[src][section] = params;

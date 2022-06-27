@@ -4,12 +4,12 @@
 #include "stm32f4xx.h"
 #include <vector>
 #include <string>
-#include "inistring.h"
+#include "signal.h"
 
-class IScale : public TIniString {
+class TScale : public ISignal {
 public:
-	IScale(char* source, int scrLen);
-	~IScale();
+	TScale(char* source, int scrLen);
+	~TScale();
 };
 
 #endif
