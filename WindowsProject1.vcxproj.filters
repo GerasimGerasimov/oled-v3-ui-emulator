@@ -233,6 +233,9 @@
     <ClCompile Include="MCU\DevicesValues\DevicesValuesHandler.cpp">
       <Filter>App\DevicesValues</Filter>
     </ClCompile>
+    <ClCompile Include="MCU\Parameters\signalfactory.cpp">
+      <Filter>App\Parameters</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="WindowsProject1.rc">
