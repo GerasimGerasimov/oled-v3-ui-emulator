@@ -28,18 +28,16 @@ TSignalPropsPointers SignalFactoty::getSignalProps(const char* source, const int
 	return res;
 }
 
-typedef pSignal(*createSignal)(TSignalPropsPointers props);
+static const std::map<std::string, std::function<pSignal(TSignalPropsPointers)>> TypeToSignal = {
+	{"TFloat", [](TSignalPropsPointers props) {return new TFloat(props); }},
+	{"TInteger", [](TSignalPropsPointers props) {return new TS16BIT(props); }},
+	{"TBit", [](TSignalPropsPointers props) {return new TBit(props); }},
+	{"TWORD", [](TSignalPropsPointers props) {return new TU16BIT(props); }}
+};
 
 pSignal SignalFactoty::getSignal(TSignalPropsPointers props) {
 	int size = 100;
 	std::string pType = IniParser::getElement('/', &props.pType, size);
-	/*GIST создание объеата из словаря*/
-	const std::map<std::string, std::function<pSignal(TSignalPropsPointers)>> TypeToSignal = {
-		{"TFloat", [](TSignalPropsPointers props) {return new TFloat(props); }},
-		{"TInteger", [](TSignalPropsPointers props) {return new TS16BIT(props); }},
-		{"TBit", [](TSignalPropsPointers props) {return new TBit(props); }},
-		{"TWORD", [](TSignalPropsPointers props) {return new TU16BIT(props); }}
-	};
 	pSignal s = (TypeToSignal.count(pType))
 		? TypeToSignal.at(pType)(props)
 		: NULL;
