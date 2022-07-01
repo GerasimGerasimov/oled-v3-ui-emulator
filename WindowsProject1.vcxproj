@@ -187,6 +187,7 @@
     <ClCompile Include="MCU\Parameters\signal.cpp" />
     <ClCompile Include="MCU\Parameters\signalfactory.cpp" />
     <ClCompile Include="MCU\Parameters\TBit.cpp" />
+    <ClCompile Include="MCU\Parameters\TFloat.cpp" />
     <ClCompile Include="MCU\Parameters\TS16bit.cpp" />
     <ClCompile Include="MCU\Parameters\TU16bit.cpp" />
     <ClCompile Include="MCU\Parameters\vars.cpp" />

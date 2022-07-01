@@ -4,6 +4,7 @@
 #include <functional>
 #include "TU16BIT.h"
 #include "TS16Bit.h"
+#include "TFloat.h"
 #include "TBit.h"
 
 TSignalPropsPointers SignalFactoty::getSignalProps(const char* source, const int srcLen) {
@@ -35,6 +36,7 @@ pSignal SignalFactoty::getSignal(TSignalPropsPointers props) {
 	std::string pType = IniParser::getElement('/', &props.pType, size);
 	/*GIST создание объеата из словаря*/
 	const std::map<std::string, std::function<pSignal(TSignalPropsPointers)>> TypeToSignal = {
+		{"TFloat", [](TSignalPropsPointers props) {return new TFloat(props); }},
 		{"TInteger", [](TSignalPropsPointers props) {return new TS16BIT(props); }},
 		{"TBit", [](TSignalPropsPointers props) {return new TBit(props); }},
 		{"TWORD", [](TSignalPropsPointers props) {return new TU16BIT(props); }}
