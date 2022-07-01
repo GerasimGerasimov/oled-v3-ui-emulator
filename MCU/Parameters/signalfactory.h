@@ -21,8 +21,8 @@ public:
 	static pSignal getSignal(TSignalPropsPointers props);
 	static pSignal getScale(char* source, int scrLen);
 private:
-	pSignal createSignalWORD(TSignalPropsPointers props);
-	pSignal createSignalBit(TSignalPropsPointers props);
+	static pSignal createSignalWORD(TSignalPropsPointers props);
+	static pSignal createSignalBit(TSignalPropsPointers props);
 };
 
 #endif

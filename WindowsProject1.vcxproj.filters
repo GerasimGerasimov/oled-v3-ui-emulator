@@ -236,6 +236,9 @@
     <ClCompile Include="MCU\Parameters\signalfactory.cpp">
       <Filter>App\Parameters</Filter>
     </ClCompile>
+    <ClCompile Include="MCU\Parameters\TU16bit.cpp">
+      <Filter>App\Parameters</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="WindowsProject1.rc">
