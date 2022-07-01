@@ -12,7 +12,7 @@ TSignalPropsPointers SignalFactoty::getSignalProps(const char* source, const int
 	/*отделить номер параметра со знаком "=" от значащей части параметра (те что разделены слэшем)*/
 	char* src = (char*)source;
 	int size = srcLen;
-	//пускай строки будут с символом "слэш" в конце!
+	//строки будут с символом "слэш" в конце!
 	if (IniParser::isDelimimerSizeLimited('=', src, size) != -1) {//нашёл знак "="
 		res.pName = src;
 		if (IniParser::isDelimimerSizeLimited('/', src, size) != -1) {
@@ -31,7 +31,6 @@ TSignalPropsPointers SignalFactoty::getSignalProps(const char* source, const int
 typedef pSignal(*createSignal)(TSignalPropsPointers props);
 
 pSignal SignalFactoty::getSignal(TSignalPropsPointers props) {
-	/*TODO тут надо парсить переданнюу строку и генерить объекты vars, word, bit, float и т.п.*/
 	int size = 100;
 	std::string pType = IniParser::getElement('/', &props.pType, size);
 	/*GIST создание объеата из словаря*/
@@ -52,22 +51,3 @@ pSignal SignalFactoty::getScale (char* source, int scrLen) {
 	  ключ = значение, до сложных типа списков*/
 	return new TScale(source, scrLen);
 }
-
-/*
-	private factory (ini: string): TSignal {
-		const ObjType = this.getObjTypeFromIni(ini);
-		const ObjTypes = {
-			'TBit'  : () => {return new TBit(ini, this.vars)},
-			'TWORD' : () => {return new TU16(ini, this.vars)},
-			'TByte' : () => {return new TU8(ini, this.vars)},
-			'TInteger' : () => {return new TS16(ini, this.vars)},
-			'TFloat'   : () => {return new TF32(ini, this.vars)},
-		'default': () = > {
-			console.log(`${ObjType} not found`)
-				return undefined;
-					}
-				}
-				return (ObjTypes[ObjType] || ObjTypes['default'])()
-			}
-
-*/
