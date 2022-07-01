@@ -3,5 +3,8 @@
 ISignal::ISignal(char* source, int scrLen) {
 }
 
+ISignal::ISignal(TSignalPropsPointers props) {
+}
+
 ISignal::~ISignal(){
 }

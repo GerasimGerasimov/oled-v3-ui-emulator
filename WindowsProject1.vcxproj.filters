@@ -239,6 +239,12 @@
     <ClCompile Include="MCU\Parameters\TU16bit.cpp">
       <Filter>App\Parameters</Filter>
     </ClCompile>
+    <ClCompile Include="MCU\Parameters\TBit.cpp">
+      <Filter>App\Parameters</Filter>
+    </ClCompile>
+    <ClCompile Include="MCU\Parameters\TS16bit.cpp">
+      <Filter>App\Parameters</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="WindowsProject1.rc">

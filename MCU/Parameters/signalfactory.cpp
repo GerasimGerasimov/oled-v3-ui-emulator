@@ -1,7 +1,10 @@
 #include "signalfactory.h"
 #include "parser.h"
 #include <map>
+#include <functional>
 #include "TU16BIT.h"
+#include "TS16Bit.h"
+#include "TBit.h"
 
 TSignalPropsPointers SignalFactoty::getSignalProps(const char* source, const int srcLen) {
 	TSignalPropsPointers res = { NULL, NULL, NULL, NULL };
@@ -24,35 +27,22 @@ TSignalPropsPointers SignalFactoty::getSignalProps(const char* source, const int
 	return res;
 }
 
-
-pSignal SignalFactoty::createSignalWORD(TSignalPropsPointers props) {
-	return NULL;
-}
-
-pSignal SignalFactoty::createSignalBit(TSignalPropsPointers props) {
-	return NULL;
-}
-
 typedef pSignal(*createSignal)(TSignalPropsPointers props);
 
 pSignal SignalFactoty::getSignal(TSignalPropsPointers props) {
 	/*TODO тут надо парсить переданнюу строку и генерить объекты vars, word, bit, float и т.п.*/
-	//props.pType - это ссылка на строку, которая оканчивается на "/" слэш
 	int size = 100;
 	std::string pType = IniParser::getElement('/', &props.pType, size);
-	/*GIST по поводу вызова статического метода объекта из словаря.
-	Пришлось добавлять инициализацию МАР в функцию без это (вне функции) небыло доступа к статическими методам,
-	пришлось бы добавлять их через МАР[ТИП] = метод*/
-	const std::map<std::string, createSignal> TypeToSignal = {
-		{"TBit",  SignalFactoty::createSignalBit},
-		{"TWORD", SignalFactoty::createSignalWORD}
+	/*GIST создание объеата из словаря*/
+	const std::map<std::string, std::function<pSignal(TSignalPropsPointers)>> TypeToSignal = {
+		{"TInteger", [](TSignalPropsPointers props) {return new TS16BIT(props); }},
+		{"TBit", [](TSignalPropsPointers props) {return new TBit(props); }},
+		{"TWORD", [](TSignalPropsPointers props) {return new TU16BIT(props); }}
 	};
-
-	//if (pType == "TWORD") {}
-	return (TypeToSignal.count(pType))
+	pSignal s = (TypeToSignal.count(pType))
 		? TypeToSignal.at(pType)(props)
 		: NULL;
-
+	return s;
 }
 
 pSignal SignalFactoty::getScale (char* source, int scrLen) {

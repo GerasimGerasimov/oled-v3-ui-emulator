@@ -8,21 +8,11 @@
 #include <vector>
 #include <string>
 
-typedef struct {
-	char* pName;
-	char* pComment;
-	char* pType;
-	char* pOptional;
-} TSignalPropsPointers;
-
 class SignalFactoty {
 public:
 	static TSignalPropsPointers getSignalProps(const char* source, const int srcLen);
 	static pSignal getSignal(TSignalPropsPointers props);
 	static pSignal getScale(char* source, int scrLen);
-private:
-	static pSignal createSignalWORD(TSignalPropsPointers props);
-	static pSignal createSignalBit(TSignalPropsPointers props);
 };
 
 #endif

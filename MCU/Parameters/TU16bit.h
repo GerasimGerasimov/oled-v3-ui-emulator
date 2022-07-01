@@ -7,6 +7,7 @@
 class TU16BIT : public ISignal {
 public:
 	TU16BIT(char* source, int scrLen);
+	TU16BIT(TSignalPropsPointers props);
 	~TU16BIT();
 };
 
