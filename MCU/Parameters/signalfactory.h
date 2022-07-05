@@ -11,8 +11,9 @@
 class SignalFactoty {
 public:
 	static TSignalPropsPointers getSignalProps(const char* source, const int srcLen);
+	static TSignalPropsPointers getScaleProps(const char* source, const int srcLen);
 	static pSignal getSignal(TSignalPropsPointers props);
-	static pSignal getScale(char* source, int scrLen);
+	static pSignal getScale(TSignalPropsPointers props);
 };
 
 #endif

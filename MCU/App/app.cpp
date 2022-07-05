@@ -16,7 +16,6 @@ void App::init(void) {
     TInternalResources::init();
     IniResources::init();
     IniSlotsProps::init();
-    /*TODO создать слоты на основе подготовленных данных*/
     /*TODO ещЄ нужен слот дл€ записи, он просто создаЄтс€ и ставитс€ на паузу, ибо его наполненеи будет зависеть от запроса*/
     /*TODO дл€ управлени€ от встроенных DIO нужен слот*/
     DevicePollManager::init(CreateSlotsByStart::init(IniSlotsProps::Devices));

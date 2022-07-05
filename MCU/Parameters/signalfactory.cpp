@@ -13,13 +13,13 @@ TSignalPropsPointers SignalFactoty::getSignalProps(const char* source, const int
 	char* src = (char*)source;
 	int size = srcLen;
 	//строки будут с символом "слэш" в конце!
-	if (IniParser::isDelimimerSizeLimited('=', src, size) != -1) {//нашёл знак "="
+	if (IniParser::isDelimiterSizeLimited('=', src, size) != -1) {//нашёл знак "="
 		res.pName = src;
-		if (IniParser::isDelimimerSizeLimited('/', src, size) != -1) {
+		if (IniParser::isDelimiterSizeLimited('/', src, size) != -1) {
 			res.pComment = src;
-			if (IniParser::isDelimimerSizeLimited('/', src, size) != -1) {
+			if (IniParser::isDelimiterSizeLimited('/', src, size) != -1) {
 				res.pType = src;
-				if (IniParser::isDelimimerSizeLimited('/', src, size) != -1) {
+				if (IniParser::isDelimiterSizeLimited('/', src, size) != -1) {
 					res.pOptional = src;
 				}
 			}
@@ -44,8 +44,20 @@ pSignal SignalFactoty::getSignal(TSignalPropsPointers props) {
 	return s;
 }
 
-pSignal SignalFactoty::getScale (char* source, int scrLen) {
+TSignalPropsPointers SignalFactoty::getScaleProps(const char* source, const int srcLen) {
+	TSignalPropsPointers res = { NULL, NULL, NULL, NULL };
+	/*отделить номер параметра со знаком "=" от значащей части параметра (те что разделены слэшем)*/
+	char* src = (char*)source;
+	int size = srcLen;
+	res.pName = src;//Name заканчивается знаком "="
+	if (IniParser::isDelimiterSizeLimited('=', src, size) != -1) {//нашёл знак "="
+					res.pOptional = src;//строка опций для vars считывается до /r/n/
+	}
+	return res;
+}
+
+pSignal SignalFactoty::getScale (TSignalPropsPointers props) {
 	/*TODO тут надо парсить переданнюу строку и генерить объекты vars а они бывают от простых
 	  ключ = значение, до сложных типа списков*/
-	return new TScale(source, scrLen);
+	return new TScale(props);
 }

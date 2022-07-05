@@ -10,7 +10,8 @@ pSignal TIniString::getSignal(std::string section, char* source, int scrLen) {
 }
 
 pSignal TIniString::getScale(std::string section, char* source, int scrLen) {
-	pSignal s = SignalFactoty::getScale(source, scrLen);
+	TSignalPropsPointers props = SignalFactoty::getScaleProps(source, scrLen);
+	pSignal s = SignalFactoty::getScale(props);
 	return s;
 }
 

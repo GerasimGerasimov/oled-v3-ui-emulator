@@ -18,6 +18,12 @@ public:
 	ISignal(char* source, int scrLen);
 	ISignal(TSignalPropsPointers props);
 	~ISignal();
+	virtual std::string getName();
+	std::string getComment();
+protected:
+	char* Name;
+	char* Comment;
+	char* optional;
 };
 
 typedef ISignal* pSignal;

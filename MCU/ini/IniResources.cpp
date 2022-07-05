@@ -5,7 +5,7 @@ const static std::vector<std::string> SectioNameOrder = { "vars", "RAM", "FLASH"
 
 const static std::map<std::string, std::string> SectionNameMap = { {"vars","[vars]"}, {"RAM","[RAM]"}, {"FLASH","[FLASH]"},{"CD","[CD]"} };
 
-std::map<std::string, std::map<std::string, std::vector<ISignal* >>> IniResources::Sources = {};
+std::map<std::string, std::map<std::string, std::map<std::string,ISignal*>>> IniResources::Sources = {};
 /*TODO обеспечить такую структуру
 U1
  |-vars
@@ -22,6 +22,21 @@ void IniResources::init(void) {
 	readSources();
 }
 
+std::string IniResources::getComment(TValueSearchStruct srch) {
+	if (Sources.count(srch.device)) {
+		std::map<std::string, std::map<std::string, ISignal*>> devmap = Sources.at(srch.device);
+		if (devmap.count(srch.section)) {
+			std::map<std::string, ISignal*> signals = devmap.at(srch.section);
+			if (signals.count(srch.name)) {
+				ISignal* s = signals.at(srch.name);
+			}
+		}
+	}
+	/*
+	ISignal* s = */
+	return std::string();
+}
+
 bool IniResources::readSources(void)
 {
 	TItemLimits itemLimits = TInternalResources::getItemLimitsByName((char*)"SOURCES");
@@ -32,21 +47,20 @@ bool IniResources::readSources(void)
 			itemLimits = TInternalResources::getItemLimitsByName((char*)src.c_str());
 			if (itemLimits.RootOffset) {
 				IniParser::setRoot(itemLimits.RootOffset, itemLimits.Size);
-				/*TODO осталось парсить
-				как обычно, найти секции RAM, FLASH, CD, vars*/
 				for (auto& section : SectioNameOrder) {
 					std::string value = SectionNameMap.at(section);
 					if (IniParser::setSectionToRead((char*)value.c_str())) {
-						std::vector<ISignal*> params = {};
+						//std::vector<ISignal*> params = {};
 						TSectionReadResult readResult = { NULL, 0 };
 						while ((readResult = IniParser::getNextTagString()), readResult.result != 0) {
-							//TODO парсить полученную строку используя её длину в tagSuccess и указатель на начало
 							 ISignal* s = (section == "vars")
 								? TIniString::getScale(section, readResult.tag, readResult.result)
 								: TIniString::getSignal(section, readResult.tag, readResult.result);
-							params.push_back(s);
+							 if (s) {
+								 std::string name = s->getName();
+								 Sources[src][section][name] = s;
+							 }
 						}
-						Sources[src][section] = params;
 					}
 				}
 			}

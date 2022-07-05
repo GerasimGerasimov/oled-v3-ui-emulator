@@ -24,7 +24,8 @@ public:
 	static void setRoot(char* root, int size);
 	static std::vector<std::string> getListOfDelimitedSting(char delimiter, char* src, int size);
 	static std::string getElement(char delimiter, char** ptr, int& size);
-	static int isDelimimerSizeLimited(char delimiter, char*& src, int& size);
+	static std::string getElement(char delimiter, char* ptr);
+	static int isDelimiterSizeLimited(char delimiter, char*& src, int& size);
 private:
 	static void resetFind(char* start);
 	static char* getSectionEntryPoint(char* SectionName);

@@ -161,7 +161,7 @@ int IniParser::getSectionLinesCount(char* SectionName) {//возвращает кол-во стро
     return res;
 }
 
-int IniParser::isDelimimerSizeLimited(char delimiter, char*& src, int& size) {
+int IniParser::isDelimiterSizeLimited(char delimiter, char*& src, int& size) {
     char c;
     int count = 0;
     while (size-- != 0) {
@@ -175,7 +175,18 @@ int IniParser::isDelimimerSizeLimited(char delimiter, char*& src, int& size) {
 
 std::string IniParser::getElement(char delimiter, char** ptr, int& size) {
     char* start = *ptr;
-    int pos = isDelimimerSizeLimited(delimiter, *ptr, size);
+    int pos = isDelimiterSizeLimited(delimiter, *ptr, size);
+    if (pos > 0) {
+        std::string s(start, pos - 1);
+        return s;
+    }
+    return "";
+}
+
+std::string IniParser::getElement(char delimiter, char* ptr) {
+    char* idx = ptr;
+    const char* start = ptr;
+    int pos = isDelimiter(&idx, delimiter);
     if (pos > 0) {
         std::string s(start, pos - 1);
         return s;

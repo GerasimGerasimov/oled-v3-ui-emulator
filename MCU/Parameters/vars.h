@@ -9,7 +9,10 @@
 class TScale : public ISignal {
 public:
 	TScale(char* source, int scrLen);
+	TScale(TSignalPropsPointers props);
 	~TScale();
+protected:
+	std::string getName();
 };
 
 #endif
