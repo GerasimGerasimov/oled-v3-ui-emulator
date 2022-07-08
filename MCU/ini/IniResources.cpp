@@ -37,6 +37,23 @@ std::string IniResources::getComment(TValueSearchStruct srch) {
 	return std::string();
 }
 
+//tag = "U1/RAM/Iexc/"
+ISignal* IniResources::getSignalByTag(std::string tag) {
+	/*
+	TValueSearchStruct srch;
+	if (Sources.count(srch.device)) {
+		std::map<std::string, std::map<std::string, ISignal*>> devmap = Sources.at(srch.device);
+		if (devmap.count(srch.section)) {
+			std::map<std::string, ISignal*> signals = devmap.at(srch.section);
+			if (signals.count(srch.name)) {
+				ISignal* s = signals.at(srch.name);
+			}
+		}
+	}
+	*/
+	return NULL;// std::string();
+}
+
 bool IniResources::readSources(void)
 {
 	TItemLimits itemLimits = TInternalResources::getItemLimitsByName((char*)"SOURCES");

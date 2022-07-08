@@ -1,4 +1,5 @@
 #include "LinkedTagLabel.h"
+#include "IniResources.h"
 
 bool TLinkedTagLabel::ProcessMessage(TMessage* m) {
     switch (m->Event) {
@@ -18,9 +19,9 @@ bool TLinkedTagLabel::ProcessMessage(TMessage* m) {
     return true;
 }
 
-TLinkedTagLabel::TLinkedTagLabel(std::string url, std::string tag, TLabelInitStructure init)
-    : TLinkLabel(url,init)
-    , Tag(tag) {
+TLinkedTagLabel::TLinkedTagLabel(std::string tag, TLabelInitStructure init)
+    : TLinkLabel("", init)
+    , DataSrc(IniResources::getSignalByTag(tag)) {
 }
 
 TLinkedTagLabel::~TLinkedTagLabel() {//деструктор

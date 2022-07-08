@@ -16,6 +16,7 @@ typedef struct {
 class IniResources {
 public:
 	static void init(void);
+	static ISignal* getSignalByTag(std::string tag);
 	static std::string getComment(TValueSearchStruct srch);
 private:
 	static std::map<std::string, std::map<std::string, std::map<std::string, ISignal*>>> Sources;

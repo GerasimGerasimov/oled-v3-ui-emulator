@@ -3,15 +3,16 @@
 
 #include "LinkLabel.h"
 #include "Events.hpp"
+#include "signal.h"
 
 //строка текста
 class TLinkedTagLabel : public TLinkLabel {
 public:
     virtual bool ProcessMessage(TMessage* m);
-    TLinkedTagLabel(std::string url, std::string tag, TLabelInitStructure init);//конструктор
+    TLinkedTagLabel(std::string tag, TLabelInitStructure init);//конструктор
     ~TLinkedTagLabel();//деструктор
 private:
-    std::string Tag;
+    ISignal* DataSrc;
 };
 
 #endif

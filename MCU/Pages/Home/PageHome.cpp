@@ -36,37 +36,29 @@ TPageHome::TPageHome(std::string Name)
     LabelInit.Rect = { 10, 10, 10, 10 };
     LabelInit.focused = false;
 
-    LabelInit.caption = "Uref";
-    pLTagUref = new TLinkedTagLabel("", "U1.RAM.Uref", LabelInit);
+    LabelInit.caption = "Ustat";
+    pLTagUref = new TLinkedTagLabel("U1/RAM/Ustat/", LabelInit);
     pLTagUref->onEnterPressed = [this](int arg) { goToTagInfoPage(arg); };
 
-    LabelInit.caption = "Iref";
-    pLTagIref = new TLinkedTagLabel("", "U1.RAM.Iref", LabelInit);
+    LabelInit.caption = "Istat";
+    pLTagIref = new TLinkedTagLabel("U1/RAM/Istat/", LabelInit);
     pLTagIref->onEnterPressed = [this](int arg) { goToTagInfoPage(arg); };
 
-    LabelInit.caption = "UoutAve";
-    pLTagUoutAve = new TLinkedTagLabel("", "U1.RAM.UoutAve", LabelInit);
+    LabelInit.caption = "DExS_PWR_OK";
+    pLTagUoutAve = new TLinkedTagLabel("U1/RAM/DExS_PWR_OK/", LabelInit);
     pLTagUoutAve->onEnterPressed = [this](int arg) { goToTagInfoPage(arg); };
 
-    LabelInit.caption = "IoutAve";
-    pLTagIoutAve = new TLinkedTagLabel("", "U1.RAM.IoutAve", LabelInit);
+    LabelInit.caption = "SN";
+    pLTagIoutAve = new TLinkedTagLabel("U1/CD/SN/", LabelInit);
     pLTagIoutAve->onEnterPressed = [this](int arg) { goToTagInfoPage(arg); };
 
-    LabelInit.caption = "SparkFrq";
-    pLTagSparkFrq = new TLinkedTagLabel("", "U1.RAM.SparkFrq", LabelInit);
+    LabelInit.caption = "IstStart";
+    pLTagSparkFrq = new TLinkedTagLabel("U1/FLASH/IstStart/", LabelInit);
     pLTagSparkFrq->onEnterPressed = [this](int arg) { goToTagInfoPage(arg); };
 
-    LabelInit.caption = "Out";
-    pLTagOut = new TLinkedTagLabel("", "U1.RAM.Out", LabelInit);
-    pLTagOut->onEnterPressed = [this](int arg) { goToTagInfoPage(arg); };
-
-    LabelInit.caption = "IinAve";
-    pLTagIinAve = new TLinkedTagLabel("", "U1.RAM.IinAve", LabelInit);
-    pLTagIinAve->onEnterPressed = [this](int arg) { goToTagInfoPage(arg); };
-
     MainMenu = new TComponentListVertical({ pLTagUref    , pLTagIref     , pLTagUoutAve ,
-                                            pLTagIoutAve , pLTagSparkFrq , pLTagOut ,
-                                            pLTagIinAve });
+                                            pLTagIoutAve , pLTagSparkFrq /*, pLTagOut ,
+                                            pLTagIinAve */ });
 
     AddList({ MainMenu });
 };

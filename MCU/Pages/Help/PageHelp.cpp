@@ -37,7 +37,7 @@ TPageHelp::TPageHelp(std::string Name)
     LabelInit.focused = false;
 
     LabelInit.caption = "Uref";
-    pLTagUref = new TLinkedTagLabel("", "U1.RAM.Uref", LabelInit);
+    pLTagUref = new TLinkedTagLabel("U1.RAM.Uref", LabelInit);
     pLTagUref->onEnterPressed = [this](int arg) { goToTagInfoPage(arg); };
 
 

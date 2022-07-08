@@ -21,8 +21,8 @@ private:
     TLinkedTagLabel* pLTagUoutAve;
     TLinkedTagLabel* pLTagIoutAve;
     TLinkedTagLabel* pLTagSparkFrq;
-    TLinkedTagLabel* pLTagOut;
-    TLinkedTagLabel* pLTagIinAve;
+    //TLinkedTagLabel* pLTagOut;
+    //TLinkedTagLabel* pLTagIinAve;
     void goToTagInfoPage(int a);
 };
 
