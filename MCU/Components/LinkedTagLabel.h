@@ -1,5 +1,5 @@
 #ifndef LINKED_TAG_LABEL_H
-#define LINK_TAG_LABEL_H
+#define LINKED_TAG_LABEL_H
 
 #include "LinkLabel.h"
 #include "Events.hpp"

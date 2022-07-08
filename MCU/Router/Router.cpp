@@ -3,6 +3,7 @@
 #include "PageCounters.h"
 #include "PageEditValue.h"
 #include "PageHome.h"
+#include "PageHelp.h"
 
 TPage* TRouter::Page = NULL;
 TPage* TRouter::BackPage = NULL;
@@ -11,6 +12,7 @@ std::map<std::string, TPage*> TRouter::Pages = std::map<std::string, TPage*>();
 
 void TRouter::Init(void) {
     Pages["Home"] = new TPageHome("Home");
+    Pages["Help"] = new TPageHelp("Home");
     Pages["MainMenu"] = new TPageMainMenu("MainMenu");
     Pages["Counters"] = new TPageCounters("Counters");
     Pages["EditValue"] = new TPageEditValue("EditValue");
