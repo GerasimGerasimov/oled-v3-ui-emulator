@@ -2,11 +2,10 @@
 #define SIGNED_SHORT_TYPE_SIGNAL_H
 
 #include "stm32f4xx.h"
-#include "parameters.h"
+#include "generalcase.h"
 
-class TS16BIT : public TParameter {
+class TS16BIT : public TGeneralCaseSignal {
 public:
-	TS16BIT(char* source, int scrLen);
 	TS16BIT(TSignalPropsPointers props);
 	~TS16BIT();
 };

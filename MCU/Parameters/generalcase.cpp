@@ -1,23 +1,12 @@
-#include "parameters.h"
+#include "generalcase.h"
 #include <parser.h>
 
-TParameter::TParameter(char* source, int scrLen) 
-	: ISignal(source, scrLen)
-	, Comment(NULL) {
+TGeneralCaseSignal::TGeneralCaseSignal(TSignalPropsPointers props)
+	: TParameter(props)
+	, MSU(IniParser::getElementPtrByNumber(2, '/', props.pOptional)) {
 }
 
-TParameter::TParameter(TSignalPropsPointers props)
-	: ISignal(props)
-	, Comment(props.pComment){
-}
-
-TParameter::~TParameter(){
-}
-
-std::string TParameter::getComment() {
-	return (Comment)
-		? IniParser::getElement('/', Comment)
-		: "";
+TGeneralCaseSignal::~TGeneralCaseSignal(){
 }
 
 /*
@@ -31,6 +20,8 @@ p13321=P/C/TBit    /xF042/mask/r2021.1/1/1/const/ вообще нет MSU
 
 //General case
 //общий случай для MSU.. но TODO сначала надо распарсить option там содержится msu 
+                   |options
+				   |0     1       2
 p65301=P/C/TByte   /xE06A/rC035.L/msu/scale/bytes//const/
 p17100=P/C/TInteger/xF090/r2048  /msu/scale/bytes//const/
 p60200=P/C/TWORD   /xE004/rC002  /msu/scale/bytes//const/
@@ -38,7 +29,9 @@ p60000=P/C/TDWORD  /xE000/rC000  /msu/scale/bytes//const/
 p62800=P/C/TFloat  /xE038/rC01C  /msu/scale/bytes//const/
 */
 
-std::string TParameter::getMSU()
+std::string TGeneralCaseSignal::getMSU()
 {
-	return "";
+	return (MSU)
+		? IniParser::getElement('/', MSU)
+		: "";
 }

@@ -12,9 +12,10 @@ public:
 	TParameter(TSignalPropsPointers props);
 	~TParameter();
 	std::string getComment();
-	virtual std::string getMSU();
+	std::string getMSU();
 protected:
 	char* Comment;
+	char* MSU;
 };
 
 #endif

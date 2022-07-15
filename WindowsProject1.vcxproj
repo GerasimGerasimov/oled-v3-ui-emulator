@@ -184,6 +184,7 @@
     <ClCompile Include="MCU\Pages\Help\PageHelp.cpp" />
     <ClCompile Include="MCU\Pages\Home\PageHome.cpp" />
     <ClCompile Include="MCU\Pages\MainMenu\PageMainMenu.cpp" />
+    <ClCompile Include="MCU\Parameters\generalcase.cpp" />
     <ClCompile Include="MCU\Parameters\inistring.cpp" />
     <ClCompile Include="MCU\Parameters\parameters.cpp" />
     <ClCompile Include="MCU\Parameters\signal.cpp" />

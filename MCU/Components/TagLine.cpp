@@ -38,7 +38,7 @@ void TTagLine::view(void) {
         msu->setCaption(DataSrc->getMSU());
         msu->inFocus = inFocus;
         msu->ElementRect.Top = ElementRect.Top;
-        msu->ElementRect.Left = 95;//ElementRect.Left;
+        msu->ElementRect.Left = 105;//ElementRect.Left;
         msu->view();
     }
 }

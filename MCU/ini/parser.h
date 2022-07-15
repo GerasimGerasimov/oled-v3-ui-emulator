@@ -25,6 +25,7 @@ public:
 	static std::vector<std::string> getListOfDelimitedSting(char delimiter, char* src, int size);
 	static std::string getElement(char delimiter, char** ptr, int& size);
 	static std::string getElement(char delimiter, char* ptr);
+	static char* getElementPtrByNumber(int number, char delimiter, char* src);
 	static int isDelimiterSizeLimited(char delimiter, char*& src, int& size);
 private:
 	static void resetFind(char* start);

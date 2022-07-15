@@ -194,6 +194,19 @@ std::string IniParser::getElement(char delimiter, char* ptr) {
     return "";
 }
 
+char* IniParser::getElementPtrByNumber(int number, char delimiter, char* src) {
+    char c;
+    int idx = 0;
+    do {
+        c = *src++;
+        if (c == delimiter) {
+            if (++idx == number)
+                return src;
+        }
+    } while (c != '\n');
+    return NULL;
+}
+
 std::vector<std::string> IniParser::getListOfDelimitedSting(char delimiter, char* src, int size) {
     std::vector<std::string> res = {};
     std::string s = "";

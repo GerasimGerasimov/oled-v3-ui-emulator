@@ -6,7 +6,6 @@
 
 class TBit : public TParameter {
 public:
-	TBit(char* source, int scrLen);
 	TBit(TSignalPropsPointers props);
 	~TBit();
 };

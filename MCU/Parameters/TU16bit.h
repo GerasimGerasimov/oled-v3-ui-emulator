@@ -2,11 +2,10 @@
 #define WORD_TYPE_SIGNAL_H
 
 #include "stm32f4xx.h"
-#include "parameters.h"
+#include "generalcase.h"
 
-class TU16BIT : public TParameter {
+class TU16BIT : public TGeneralCaseSignal {
 public:
-	TU16BIT(char* source, int scrLen);
 	TU16BIT(TSignalPropsPointers props);
 	~TU16BIT();
 };

@@ -3,12 +3,14 @@
 
 TParameter::TParameter(char* source, int scrLen) 
 	: ISignal(source, scrLen)
-	, Comment(NULL) {
+	, Comment(NULL)
+	, MSU(NULL) {
 }
 
 TParameter::TParameter(TSignalPropsPointers props)
 	: ISignal(props)
-	, Comment(props.pComment){
+	, Comment(props.pComment)
+	, MSU(NULL) {
 }
 
 TParameter::~TParameter(){
@@ -40,5 +42,7 @@ p62800=P/C/TFloat  /xE038/rC01C  /msu/scale/bytes//const/
 
 std::string TParameter::getMSU()
 {
-	return "";
+	return (MSU)
+		? IniParser::getElement('/', MSU)
+		: "";
 }
