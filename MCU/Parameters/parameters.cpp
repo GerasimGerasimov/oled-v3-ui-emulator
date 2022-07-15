@@ -15,10 +15,7 @@ TParameter::TParameter(TSignalPropsPointers props)
 
 TParameter::~TParameter(){
 }
-/// <summary>
-/// 
-/// </summary>
-/// <returns></returns>
+
 std::string TParameter::getComment() {
 	return (Comment)
 		? IniParser::getElement('/', Comment)
@@ -27,9 +24,9 @@ std::string TParameter::getComment() {
 
 /*
 Где находится MSU
-p17802=P/C/TPrmList/xF09E/r204F.L///x00#DI/x01#AIN_DI/x02#EXTAIN_DI/const/
+p19802=P/C/TPrmList/xF0C9/r2064.H/msu//x03#9600/x04#19200/x05#57600/x06#115200/const/
 
-p13321=P/C/TBit    /xF042/mask/r2021.1/1/1/const/
+p13321=P/C/TBit    /xF042/mask/r2021.1/1/1/const/ вообще нет MSU
 
 //общий случай для MSU.. но TODO сначала надо распарсить option 
 p65301=P/C/TByte   /xE06A/rC035.L/msu/scale/bytes//const/
