@@ -2,9 +2,9 @@
 #define FLOAT_TYPE_SIGNAL_H
 
 #include "stm32f4xx.h"
-#include "signal.h"
+#include "parameters.h"
 
-class TFloat : public ISignal {
+class TFloat : public TParameter {
 public:
 	TFloat(char* source, int scrLen);
 	TFloat(TSignalPropsPointers props);

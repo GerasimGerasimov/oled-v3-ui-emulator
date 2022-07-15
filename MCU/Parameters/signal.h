@@ -19,13 +19,9 @@ public:
 	ISignal(TSignalPropsPointers props);
 	~ISignal();
 	virtual std::string getName();
-	std::string getComment();
-	std::string getMSU();
 protected:
 	char* Name;
-	char* Comment;
 	char* optional;
-	char* MSU;
 };
 
 typedef ISignal* pSignal;

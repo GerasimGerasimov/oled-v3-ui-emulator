@@ -4,7 +4,7 @@
 #include "common.h"
 #include "Label.h"
 #include "Events.hpp"
-#include "signal.h"
+#include "parameters.h"
 
 //строка текста
 class TTagLine : public TVisualObject {
@@ -15,7 +15,7 @@ public:
     ~TTagLine();//деструктор
     void view(void);//вывести строку на экране
 private:
-    ISignal* DataSrc;
+    TParameter* DataSrc;
     TLabel* Caption;
     TLabel* Value;
     TLabel* msu;

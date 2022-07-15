@@ -57,7 +57,7 @@ TSignalPropsPointers SignalFactoty::getScaleProps(const char* source, const int 
 }
 
 pSignal SignalFactoty::getScale (TSignalPropsPointers props) {
-	/*TODO тут надо парсить переданнюу строку и генерить объекты vars а они бывают от простых
+	/*TODO тут надо парсить переданную строку и генерить объекты vars а они бывают от простых
 	  ключ = значение, до сложных типа списков*/
 	return new TScale(props);
 }

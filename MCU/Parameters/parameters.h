@@ -9,7 +9,13 @@
 class TParameter : public ISignal{
 public:
 	TParameter(char* source, int scrLen);
+	TParameter(TSignalPropsPointers props);
 	~TParameter();
+	std::string getComment();
+	std::string getMSU();
+protected:
+	char* Comment;
+	char* MSU;
 };
 
 #endif

@@ -6,7 +6,7 @@ bool TTagLine::ProcessMessage(TMessage* m) {
 }
 
 TTagLine::TTagLine(std::string tag, TLabelInitStructure init)
-    : DataSrc(IniResources::getSignalByTag(tag))
+    : DataSrc((TParameter*)IniResources::getSignalByTag(tag))
     , Caption(new TLabel(init))
     , Value(new TLabel(init))
     , msu(new TLabel(init)) {
@@ -34,9 +34,11 @@ void TTagLine::view(void) {
     Value->view();
 
     /*TODO надо вывести ед.изм тега*/
-    msu->setCaption(DataSrc->getMSU());
-    msu->inFocus = inFocus;
-    msu->ElementRect.Top = ElementRect.Top;
-    msu->ElementRect.Left = 95;//ElementRect.Left;
-    msu->view();
+    if (DataSrc) {/*TODO 2-й раз пишу нужен пустой объект для отлавливания несуществующих тегов*/
+        msu->setCaption(DataSrc->getMSU());
+        msu->inFocus = inFocus;
+        msu->ElementRect.Top = ElementRect.Top;
+        msu->ElementRect.Left = 95;//ElementRect.Left;
+        msu->view();
+    }
 }

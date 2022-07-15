@@ -1,9 +1,9 @@
 #include "TBit.h"
 
-TBit::TBit(char* source, int scrLen) : ISignal(source, scrLen) {
+TBit::TBit(char* source, int scrLen) : TParameter(source, scrLen) {
 }
 
-TBit::TBit(TSignalPropsPointers props) : ISignal(props) {
+TBit::TBit(TSignalPropsPointers props) : TParameter(props) {
 	
 }
 

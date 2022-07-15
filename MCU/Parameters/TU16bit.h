@@ -2,9 +2,9 @@
 #define WORD_TYPE_SIGNAL_H
 
 #include "stm32f4xx.h"
-#include "signal.h"
+#include "parameters.h"
 
-class TU16BIT : public ISignal {
+class TU16BIT : public TParameter {
 public:
 	TU16BIT(char* source, int scrLen);
 	TU16BIT(TSignalPropsPointers props);

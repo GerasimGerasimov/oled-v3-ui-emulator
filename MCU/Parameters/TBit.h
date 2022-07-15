@@ -2,9 +2,9 @@
 #define BIT_TYPE_SIGNAL_H
 
 #include "stm32f4xx.h"
-#include "signal.h"
+#include "parameters.h"
 
-class TBit : public ISignal {
+class TBit : public TParameter {
 public:
 	TBit(char* source, int scrLen);
 	TBit(TSignalPropsPointers props);
