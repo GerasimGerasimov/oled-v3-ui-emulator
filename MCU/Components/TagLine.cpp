@@ -6,10 +6,10 @@ bool TTagLine::ProcessMessage(TMessage* m) {
 }
 
 TTagLine::TTagLine(std::string tag, TLabelInitStructure init)
-    : Caption(new TLabel(init))
+    : DataSrc(IniResources::getSignalByTag(tag))
+    , Caption(new TLabel(init))
     , Value(new TLabel(init))
-    , msu(new TLabel(init))
-    , DataSrc(IniResources::getSignalByTag(tag)) {
+    , msu(new TLabel(init)) {
 }
 
 TTagLine::~TTagLine() {//деструктор
@@ -34,7 +34,7 @@ void TTagLine::view(void) {
     Value->view();
 
     /*TODO надо вывести ед.изм тега*/
-    msu->setCaption("KVAr");
+    msu->setCaption(DataSrc->getMSU());
     msu->inFocus = inFocus;
     msu->ElementRect.Top = ElementRect.Top;
     msu->ElementRect.Left = 95;//ElementRect.Left;

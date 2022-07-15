@@ -21,6 +21,7 @@ public:
 private:
 	static std::map<std::string, std::map<std::string, std::map<std::string, ISignal*>>> Sources;
 	static bool readSources(void);
+	static TValueSearchStruct TagToValueSearchStruct(std::string tag);
 };
 
 #endif

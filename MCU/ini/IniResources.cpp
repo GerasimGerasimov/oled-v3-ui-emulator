@@ -1,5 +1,6 @@
 #include "IniResources.h"
 #include "parser.h"
+#include <IniSlotsProps.h>
 
 const static std::vector<std::string> SectioNameOrder = { "vars", "RAM", "FLASH", "CD"};
 
@@ -37,21 +38,46 @@ std::string IniResources::getComment(TValueSearchStruct srch) {
 	return std::string();
 }
 
+/*TODO выдать указатель на сигнал по его тегу*/
 //tag = "U1/RAM/Iexc/"
+//узнать какой DEVx является описанием для Ux цстройства
+//и перекодировать U1/RAM/Iexc/ в DEV1/RAM/Iexc/
+TValueSearchStruct IniResources::TagToValueSearchStruct(std::string tag) {
+	std::vector<std::string> v = IniParser::getListOfDelimitedSting(
+		(const char)'/',
+			(char*)tag.c_str(),
+				tag.size());
+	TValueSearchStruct res;
+	if (v.size() == 3) {
+		/*TODO тут явно плохое место! два взаимозависимых модуля
+		эти модули нельзя переставить местами при инициализации!
+		сначала инициализация IniResources
+		потом я могу инициализировать IniSlotsProps
+		а тут я испольхую данные от обоих модулей, связываю их
+		Эту функцию надо выделить как статический класс*/
+		std::string dev = IniSlotsProps::getSourceOfDev(v[0]);
+		if (dev != "") {
+			return { dev, v[1], v[2] };
+		}
+	}
+	else
+		return { "", "", "" };
+}
+
+
 ISignal* IniResources::getSignalByTag(std::string tag) {
-	/*
-	TValueSearchStruct srch;
+	TValueSearchStruct srch = TagToValueSearchStruct(tag);
 	if (Sources.count(srch.device)) {
 		std::map<std::string, std::map<std::string, ISignal*>> devmap = Sources.at(srch.device);
 		if (devmap.count(srch.section)) {
 			std::map<std::string, ISignal*> signals = devmap.at(srch.section);
 			if (signals.count(srch.name)) {
 				ISignal* s = signals.at(srch.name);
+				return s;
 			}
 		}
 	}
-	*/
-	return NULL;// std::string();
+	return NULL;/*TODO лучше создавать пустой объёкт который будет выводить "???+tag" тогда будет видно несуществующие теги*/
 }
 
 bool IniResources::readSources(void)

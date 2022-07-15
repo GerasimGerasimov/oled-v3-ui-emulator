@@ -23,6 +23,7 @@ typedef struct {
 class IniSlotsProps{
 public:
 	static void init(void);
+	static std::string getSourceOfDev(std::string position);
 	static std::map<std::string, TDeviceNetworkProps> Devices;
 private:
 	static bool readDevices(void);
