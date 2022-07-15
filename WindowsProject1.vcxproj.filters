@@ -251,6 +251,9 @@
     <ClCompile Include="MCU\Pages\Help\PageHelp.cpp">
       <Filter>App\Pages</Filter>
     </ClCompile>
+    <ClCompile Include="MCU\Components\TagLine.cpp">
+      <Filter>App\Components</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="WindowsProject1.rc">

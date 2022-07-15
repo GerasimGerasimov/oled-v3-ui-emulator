@@ -26,3 +26,9 @@ TLinkedTagLabel::TLinkedTagLabel(std::string tag, TLabelInitStructure init)
 
 TLinkedTagLabel::~TLinkedTagLabel() {//деструктор
 }
+
+void TLinkedTagLabel::view(void) {
+    TLinkLabel::view();//выводит Coption
+    /*TODO надо вывести значение тега*/
+    /*TODO надо вывести ед.изм тега*/
+}

@@ -11,6 +11,7 @@ public:
     virtual bool ProcessMessage(TMessage* m);
     TLinkedTagLabel(std::string tag, TLabelInitStructure init);//конструктор
     ~TLinkedTagLabel();//деструктор
+    void view(void);//вывести строку на экране
 private:
     ISignal* DataSrc;
 };

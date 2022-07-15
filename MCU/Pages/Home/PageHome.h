@@ -3,7 +3,7 @@
 
 #include "Pages.h"
 #include "TComponentListVertical.h"
-#include "LinkedTagLabel.h"
+#include "TagLine.h"
 
 class TPageHome : public TPage
 {
@@ -16,11 +16,11 @@ public:
     ~TPageHome();//деструктор
 private:
     TComponentListVertical* MainMenu;
-    TLinkedTagLabel* pLTagUref;
-    TLinkedTagLabel* pLTagIref;
-    TLinkedTagLabel* pLTagUoutAve;
-    TLinkedTagLabel* pLTagIoutAve;
-    TLinkedTagLabel* pLTagSparkFrq;
+    TTagLine* pLTagUref;
+    TTagLine* pLTagIref;
+    TTagLine* pLTagUoutAve;
+    TTagLine* pLTagIoutAve;
+    TTagLine* pLTagSparkFrq;
     //TLinkedTagLabel* pLTagOut;
     //TLinkedTagLabel* pLTagIinAve;
     void goToTagInfoPage(int a);

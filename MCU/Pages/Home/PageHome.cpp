@@ -37,24 +37,19 @@ TPageHome::TPageHome(std::string Name)
     LabelInit.focused = false;
 
     LabelInit.caption = "Ustat";
-    pLTagUref = new TLinkedTagLabel("U1/RAM/Ustat/", LabelInit);
-    pLTagUref->onEnterPressed = [this](int arg) { goToTagInfoPage(arg); };
+    pLTagUref = new TTagLine("U1/RAM/Ustat/", LabelInit);
 
     LabelInit.caption = "Istat";
-    pLTagIref = new TLinkedTagLabel("U1/RAM/Istat/", LabelInit);
-    pLTagIref->onEnterPressed = [this](int arg) { goToTagInfoPage(arg); };
+    pLTagIref = new TTagLine("U1/RAM/Istat/", LabelInit);
 
-    LabelInit.caption = "DExS_PWR_OK";
-    pLTagUoutAve = new TLinkedTagLabel("U1/RAM/DExS_PWR_OK/", LabelInit);
-    pLTagUoutAve->onEnterPressed = [this](int arg) { goToTagInfoPage(arg); };
+    LabelInit.caption = "PWR.OK";
+    pLTagUoutAve = new TTagLine("U1/RAM/DExS_PWR_OK/", LabelInit);
 
     LabelInit.caption = "SN";
-    pLTagIoutAve = new TLinkedTagLabel("U1/CD/SN/", LabelInit);
-    pLTagIoutAve->onEnterPressed = [this](int arg) { goToTagInfoPage(arg); };
+    pLTagIoutAve = new TTagLine("U1/CD/SN/", LabelInit);
 
     LabelInit.caption = "IstStart";
-    pLTagSparkFrq = new TLinkedTagLabel("U1/FLASH/IstStart/", LabelInit);
-    pLTagSparkFrq->onEnterPressed = [this](int arg) { goToTagInfoPage(arg); };
+    pLTagSparkFrq = new TTagLine("U1/FLASH/IstStart/", LabelInit);
 
     MainMenu = new TComponentListVertical({ pLTagUref    , pLTagIref     , pLTagUoutAve ,
                                             pLTagIoutAve , pLTagSparkFrq /*, pLTagOut ,
