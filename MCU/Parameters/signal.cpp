@@ -19,3 +19,7 @@ std::string ISignal::getName() {
 		? IniParser::getElement('/', Name)
 		: "";
 }
+
+std::string ISignal::getValue() {
+	return "unknown";
+}

@@ -27,11 +27,13 @@ void TTagLine::view(void) {
     Caption->view();//выводит Coption
 
     /*TODO надо вывести значение тега*/
-    Value->setCaption("9023.78");
-    Value->inFocus = inFocus;
-    Value->ElementRect.Top = ElementRect.Top;
-    Value->ElementRect.Left = 55;//ElementRect.Left;
-    Value->view();
+    if (DataSrc) {/*TODO 2-й раз пишу нужен пустой объект для отлавливания несуществующих тегов*/
+        Value->setCaption(DataSrc->getValue());
+        Value->inFocus = inFocus;
+        Value->ElementRect.Top = ElementRect.Top;
+        Value->ElementRect.Left = 55;//ElementRect.Left;
+        Value->view();
+    }
 
     /*TODO надо вывести ед.изм тега*/
     if (DataSrc) {/*TODO 2-й раз пишу нужен пустой объект для отлавливания несуществующих тегов*/

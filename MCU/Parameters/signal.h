@@ -19,6 +19,7 @@ public:
 	ISignal(TSignalPropsPointers props);
 	~ISignal();
 	virtual std::string getName();
+	virtual std::string getValue();
 protected:
 	char* Name;
 	char* optional;

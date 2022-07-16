@@ -8,6 +8,8 @@ class TBit : public TParameter {
 public:
 	TBit(TSignalPropsPointers props);
 	~TBit();
+private:
+	TSpecialSignalAddr Addr;
 };
 
 #endif

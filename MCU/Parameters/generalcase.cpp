@@ -4,6 +4,7 @@
 TGeneralCaseSignal::TGeneralCaseSignal(TSignalPropsPointers props)
 	: TParameter(props)
 	, MSU(IniParser::getElementPtrByNumber(2, '/', props.pOptional)) {
+	strAddr = IniParser::getElementPtrByNumber(1, '/', props.pOptional);
 }
 
 TGeneralCaseSignal::~TGeneralCaseSignal(){

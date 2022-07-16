@@ -257,6 +257,9 @@
     <ClCompile Include="MCU\Parameters\generalcase.cpp">
       <Filter>App\Parameters</Filter>
     </ClCompile>
+    <ClCompile Include="MCU\Parameters\TU8BIT.cpp">
+      <Filter>App\Parameters</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="WindowsProject1.rc">

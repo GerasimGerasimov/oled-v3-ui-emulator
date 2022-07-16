@@ -8,6 +8,8 @@ class TS16BIT : public TGeneralCaseSignal {
 public:
 	TS16BIT(TSignalPropsPointers props);
 	~TS16BIT();
+private:
+	u16 Addr;
 };
 
 #endif

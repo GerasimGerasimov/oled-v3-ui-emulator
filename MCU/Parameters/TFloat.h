@@ -8,6 +8,8 @@ class TFloat : public TGeneralCaseSignal {
 public:
 	TFloat(TSignalPropsPointers props);
 	~TFloat();
+private:
+	u16 Addr;
 };
 
 #endif

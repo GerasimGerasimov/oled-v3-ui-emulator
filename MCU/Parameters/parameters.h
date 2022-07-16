@@ -6,6 +6,11 @@
 #include <string>
 #include "signal.h"
 
+typedef struct {
+	u16 Addr;
+	u16 Option;
+} TSpecialSignalAddr;
+
 class TParameter : public ISignal{
 public:
 	TParameter(char* source, int scrLen);
@@ -15,6 +20,8 @@ public:
 	virtual std::string getMSU();
 protected:
 	char* Comment;
+	char* strAddr;
+	bool valid;
 };
 
 #endif

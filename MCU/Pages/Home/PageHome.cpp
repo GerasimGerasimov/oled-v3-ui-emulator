@@ -45,8 +45,8 @@ TPageHome::TPageHome(std::string Name)
     LabelInit.caption = "PWR.OK";
     pLTagUoutAve = new TTagLine("U1/RAM/DExS_PWR_OK/", LabelInit);
 
-    LabelInit.caption = "SN";
-    pLTagIoutAve = new TTagLine("U1/CD/SN/", LabelInit);
+    LabelInit.caption = "DVA";
+    pLTagIoutAve = new TTagLine("U1/CD/Modbus_Local1_DVA/", LabelInit);
 
     LabelInit.caption = "IstStart";
     pLTagSparkFrq = new TTagLine("U1/FLASH/IstStart/", LabelInit);

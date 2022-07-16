@@ -193,6 +193,7 @@
     <ClCompile Include="MCU\Parameters\TFloat.cpp" />
     <ClCompile Include="MCU\Parameters\TS16bit.cpp" />
     <ClCompile Include="MCU\Parameters\TU16bit.cpp" />
+    <ClCompile Include="MCU\Parameters\TU8BIT.cpp" />
     <ClCompile Include="MCU\Parameters\vars.cpp" />
     <ClCompile Include="MCU\Resources\resources.cpp" />
     <ClCompile Include="MCU\Router\Router.cpp" />

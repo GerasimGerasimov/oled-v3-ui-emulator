@@ -2,6 +2,7 @@
 #include "parser.h"
 #include <map>
 #include <functional>
+#include "TU8BIT.h"
 #include "TU16BIT.h"
 #include "TS16Bit.h"
 #include "TFloat.h"
@@ -29,6 +30,7 @@ TSignalPropsPointers SignalFactoty::getSignalProps(const char* source, const int
 }
 
 static const std::map<std::string, std::function<pSignal(TSignalPropsPointers)>> TypeToSignal = {
+	{"TByte", [](TSignalPropsPointers props) {return new TU8BIT(props); }},
 	{"TFloat", [](TSignalPropsPointers props) {return new TFloat(props); }},
 	{"TInteger", [](TSignalPropsPointers props) {return new TS16BIT(props); }},
 	{"TBit", [](TSignalPropsPointers props) {return new TBit(props); }},

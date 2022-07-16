@@ -3,12 +3,16 @@
 
 TParameter::TParameter(char* source, int scrLen) 
 	: ISignal(source, scrLen)
-	, Comment(NULL) {
+	, Comment(NULL)
+	, strAddr(NULL)
+	, valid(false) {
 }
 
 TParameter::TParameter(TSignalPropsPointers props)
 	: ISignal(props)
-	, Comment(props.pComment){
+	, Comment(props.pComment)
+	, strAddr(NULL)
+	, valid(false) {
 }
 
 TParameter::~TParameter(){
