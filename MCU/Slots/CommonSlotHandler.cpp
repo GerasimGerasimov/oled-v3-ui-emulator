@@ -23,10 +23,9 @@ void CommonSlotHandler::parseRespond(Slot& slot, u8* reply) {
 			(u16*)&slot.InputBuf,
 			regs_count);
 		slot.Flags |= (u16)SlotStateFlags::DATA_VALID;
-		DevicesValuesHandler::setValues(slot);
 	}
 	catch (int e) {
 		slot.Flags &= ~(u16)SlotStateFlags::DATA_VALID;
-		DevicesValuesHandler::setDefault(slot);
 	}
+	DevicesValuesHandler::setValues(slot);
 }
