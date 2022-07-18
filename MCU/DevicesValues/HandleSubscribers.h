@@ -19,7 +19,7 @@ public:
 	static void send(Slot& slot);
 
 private:
-	static std::map<std::string, std::map<std::string, std::function<void(bool)>>> Handlers;
+	static std::map<std::string, std::map<std::string, std::vector<std::function<void(bool)>>>> Handlers;
 };
 
 #endif
