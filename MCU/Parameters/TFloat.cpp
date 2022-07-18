@@ -1,8 +1,9 @@
 #include "TFloat.h"
+#include "ParametersUtils.h"
 
 TFloat::TFloat(TSignalPropsPointers props)
 	: TGeneralCaseSignal(props)
-	, Addr(0) {
+	, Addr(ParametersUtils::getByteOffsetFromSlahedAddrStr(strAddr)) {
 	
 }
 

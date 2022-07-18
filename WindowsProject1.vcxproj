@@ -187,6 +187,7 @@
     <ClCompile Include="MCU\Parameters\generalcase.cpp" />
     <ClCompile Include="MCU\Parameters\inistring.cpp" />
     <ClCompile Include="MCU\Parameters\parameters.cpp" />
+    <ClCompile Include="MCU\Parameters\ParametersUtils.cpp" />
     <ClCompile Include="MCU\Parameters\signal.cpp" />
     <ClCompile Include="MCU\Parameters\signalfactory.cpp" />
     <ClCompile Include="MCU\Parameters\TBit.cpp" />
