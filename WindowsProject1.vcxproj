@@ -168,6 +168,7 @@
     <ClCompile Include="MCU\DevicePollManager\DevicePollManager.cpp" />
     <ClCompile Include="MCU\DevicePollManager\Slot.cpp" />
     <ClCompile Include="MCU\DevicesValues\DevicesValuesHandler.cpp" />
+    <ClCompile Include="MCU\DevicesValues\HandleSubscribers.cpp" />
     <ClCompile Include="MCU\Fonts\MSSansSerifBold14.cpp" />
     <ClCompile Include="MCU\Fonts\TMCUFonts.cpp" />
     <ClCompile Include="MCU\Fonts\TMCUText.cpp" />

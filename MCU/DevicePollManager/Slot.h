@@ -33,15 +33,17 @@ public:
 	void addcmd(const std::vector<u8> &v);
 	void validation(s16 result, u8* reply);
 	Slot();
-	Slot(std::string device, std::string section);
+	Slot(std::string device, std::string section, u16 StartAddr, u16 LastAddr);
 	~Slot();
 	u8 cmdLen;
 	u8 OutBuf[MB_MASTER_BUF_SIZE];//буфер сообщения для отправки
 	u8 InputBuf[MB_MASTER_BUF_SIZE];//буфер сообщения для приёма сообщений  
 	TSlotDataHandler onData;//процедура которая вызывается после получения ответа от устройства, если контрольная сумма сошлась
-private:
+	u16 StartAddrOffset;
+	u16 LastAddrOffset;
 	std::string Device;
 	std::string Section;
+private:
 	bool isReplyCRCValid(s16 result, u8* reply);
 };
 

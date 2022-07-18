@@ -24,6 +24,7 @@ private:
     //TLinkedTagLabel* pLTagOut;
     //TLinkedTagLabel* pLTagIinAve;
     void goToTagInfoPage(int a);
+    void SlotDataUpdate(bool valid);
 };
 
 #endif

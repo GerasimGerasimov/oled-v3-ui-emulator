@@ -23,7 +23,6 @@ public:
 protected:
 	char* Comment;
 	char* strAddr;
-	bool valid;
 };
 
 #endif

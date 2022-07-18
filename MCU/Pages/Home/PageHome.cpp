@@ -1,5 +1,6 @@
 #include "PageHome.h"
 #include "Router.h"
+#include "HandleSubscribers.h"
 
 void TPageHome::view() {
     MainMenu->view();
@@ -56,7 +57,13 @@ TPageHome::TPageHome(std::string Name)
                                             pLTagIinAve */ });
 
     AddList({ MainMenu });
+
+    HandlerSubscribers::set("U1/RAM/", [this](bool valid) { SlotDataUpdate(valid); });
 };
+
+void TPageHome::SlotDataUpdate(bool valid) {
+
+}
 
 TPageHome::~TPageHome() {
 };

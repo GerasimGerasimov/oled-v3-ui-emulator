@@ -4,10 +4,11 @@
 #include "Slot.h"
 
 class DevicesValuesHandler {
-	/*TODO превратить данные слота в значнеия параметров*/
 public:
 	static void setValues(Slot& slot);
 	static void setDefault(Slot& slot);
+private:
+
 };
 
 #endif

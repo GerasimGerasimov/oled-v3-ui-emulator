@@ -5,16 +5,20 @@ Slot::Slot()
 	: Flags(0)
 	, RespondLenghtOrErrorCode(0)
 	, onData(NULL)
-	, cmdLen(0){
+	, cmdLen(0)
+	, StartAddrOffset(0)
+	, LastAddrOffset(0) {
 }
 
-Slot::Slot(std::string device, std::string section)
+Slot::Slot(std::string device, std::string section, u16 StartAddr, u16 LastAddr)
 	: Flags(0)
 	, RespondLenghtOrErrorCode(0)
 	, onData(NULL)
 	, cmdLen(0)
 	, Device(device)
 	, Section(section)
+	, StartAddrOffset((StartAddr & 0x00FF) << 1)
+	, LastAddrOffset((LastAddr & 0x00FF) << 1)
 {
 
 }

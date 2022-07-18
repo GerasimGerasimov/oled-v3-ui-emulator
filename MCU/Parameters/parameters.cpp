@@ -4,15 +4,13 @@
 TParameter::TParameter(char* source, int scrLen) 
 	: ISignal(source, scrLen)
 	, Comment(NULL)
-	, strAddr(NULL)
-	, valid(false) {
+	, strAddr(NULL) {
 }
 
 TParameter::TParameter(TSignalPropsPointers props)
 	: ISignal(props)
 	, Comment(props.pComment)
-	, strAddr(NULL)
-	, valid(false) {
+	, strAddr(NULL) {
 }
 
 TParameter::~TParameter(){
@@ -48,9 +46,7 @@ std::string TParameter::getMSU()
 }
 
 void TParameter::setValueNotValid() {
-	valid = false;
 }
 
 void TParameter::setValue() {
-
 }
