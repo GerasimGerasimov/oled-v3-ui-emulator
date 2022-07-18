@@ -11,6 +11,7 @@ public:
 	TGeneralCaseSignal(TSignalPropsPointers props);
 	~TGeneralCaseSignal();
 	std::string getMSU();
+	virtual void setValue();
 protected:
 	char* MSU;
 };

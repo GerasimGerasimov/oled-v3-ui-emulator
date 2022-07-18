@@ -36,3 +36,5 @@ std::string TGeneralCaseSignal::getMSU()
 		? IniParser::getElement('/', MSU)
 		: "";
 }
+
+void TGeneralCaseSignal::setValue() {}

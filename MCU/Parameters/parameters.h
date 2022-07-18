@@ -18,6 +18,8 @@ public:
 	~TParameter();
 	std::string getComment();
 	virtual std::string getMSU();
+	virtual void setValueNotValid();
+	virtual void setValue();
 protected:
 	char* Comment;
 	char* strAddr;

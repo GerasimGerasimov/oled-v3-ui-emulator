@@ -46,3 +46,11 @@ std::string TParameter::getMSU()
 {
 	return "";
 }
+
+void TParameter::setValueNotValid() {
+	valid = false;
+}
+
+void TParameter::setValue() {
+
+}

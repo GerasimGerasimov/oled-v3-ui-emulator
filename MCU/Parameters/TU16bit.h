@@ -9,6 +9,7 @@ public:
 	TU16BIT(TSignalPropsPointers props);
 	~TU16BIT();
 	virtual std::string getValue();
+	virtual void setValue();
 private:
 	s16 Addr;
 };
