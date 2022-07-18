@@ -4,10 +4,10 @@
 
 
 void DevicesValuesHandler::setValues(Slot& slot) {
-	HandlerSubscribers::send();
+	HandlerSubscribers::send(slot);
 }
 
 void DevicesValuesHandler::setDefault(Slot& slot) {
 	/*TODO вызвать функции подписчиков*/
-	HandlerSubscribers::send();
+	HandlerSubscribers::send(slot);
 }
