@@ -65,7 +65,7 @@ TPageHome::TPageHome(std::string Name)
 void TPageHome::SlotU1RAMUpdate(TSlotHandlerArsg args) {
     std::string s = pLTagUref->DataSrc->getValue(args);
     pLTagUref->Value->setCaption(s);
-
+    Msg::send_message(REPAINT, 0, 0);
 }
 
 void TPageHome::SlotU1FLASHUpdate(TSlotHandlerArsg args) {

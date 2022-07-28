@@ -3,7 +3,7 @@
 #include "stm32f4xx.h"
 
 typedef
-  union bauint { // Byte-addressable UINT
+  union _bauint { // Byte-addressable UINT
      u16 i; // int: Var.i
      u8 b[2]; // u char: Var.b[0]:Var.b[1]
   } bauint;

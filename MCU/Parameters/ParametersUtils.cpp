@@ -19,3 +19,11 @@ s16 ParametersUtils::getByteOffsetFromSlahedAddrStr(char* addr) {
 	}
 	return (s16)res;
 }
+
+bool ParametersUtils::isAddrInvalid(s16 Addr) {
+	return (bool)(Addr < 0);
+}
+
+bool ParametersUtils::isAddrValid(s16 Addr) {
+	return (bool)(Addr >= 0);
+}

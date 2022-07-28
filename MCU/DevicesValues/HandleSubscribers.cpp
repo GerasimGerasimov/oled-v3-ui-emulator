@@ -31,7 +31,7 @@ void HandlerSubscribers::send(Slot& slot /*TODO аргумент "U1/RAM/"*/) {
 		if (sections.count(slot.Section)) {
 			std::vector<std::function<void(TSlotHandlerArsg)>> handlers = sections.at(slot.Section);
 				for (auto& handler : handlers) {
-					TSlotHandlerArsg args = { slot.InputBuf, slot.InputBufValidBytes, slot.StartAddrOffset, slot.LastAddrOffset };
+					TSlotHandlerArsg args = { &slot.InputBuf[0], slot.InputBufValidBytes, slot.StartAddrOffset, slot.LastAddrOffset };
 					handler(args);
 				}
 		}
