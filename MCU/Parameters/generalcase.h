@@ -10,7 +10,8 @@ class TGeneralCaseSignal : public TParameter{
 public:
 	TGeneralCaseSignal(TSignalPropsPointers props);
 	~TGeneralCaseSignal();
-	std::string getMSU();
+	std::string getMSU(); 
+	virtual std::string getValue(TSlotHandlerArsg args);
 	virtual void setValue();
 protected:
 	char* MSU;

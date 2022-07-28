@@ -102,6 +102,9 @@
     <ClInclude Include="MCU\Modbus\modbus.h">
       <Filter>App\Modbus</Filter>
     </ClInclude>
+    <ClInclude Include="MCU\Slots\SlotHandlerType.h">
+      <Filter>App\Slots</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">

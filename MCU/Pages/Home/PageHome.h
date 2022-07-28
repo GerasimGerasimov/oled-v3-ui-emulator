@@ -4,6 +4,7 @@
 #include "Pages.h"
 #include "TComponentListVertical.h"
 #include "TagLine.h"
+#include "HandleSubscribers.h"
 
 class TPageHome : public TPage
 {
@@ -24,7 +25,9 @@ private:
     //TLinkedTagLabel* pLTagOut;
     //TLinkedTagLabel* pLTagIinAve;
     void goToTagInfoPage(int a);
-    void SlotDataUpdate(bool valid);
+    void SlotU1RAMUpdate(TSlotHandlerArsg args);
+    void SlotU1FLASHUpdate(TSlotHandlerArsg args);
+    void SlotU1CDUpdate(TSlotHandlerArsg args);
 };
 
 #endif

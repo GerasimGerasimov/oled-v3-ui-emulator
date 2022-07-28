@@ -38,3 +38,7 @@ std::string TGeneralCaseSignal::getMSU()
 }
 
 void TGeneralCaseSignal::setValue() {}
+
+std::string TGeneralCaseSignal::getValue(TSlotHandlerArsg args) {
+	return "TGeneralCaseSignal";
+}

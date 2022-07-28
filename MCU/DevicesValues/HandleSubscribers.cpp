@@ -1,9 +1,9 @@
 #include "HandleSubscribers.h"
 #include <parser.h>
 
-std::map<std::string, std::map<std::string, std::vector<std::function<void(bool)>>>> HandlerSubscribers::Handlers = {};
+std::map<std::string, std::map<std::string, std::vector<std::function<void(TSlotHandlerArsg)>>>> HandlerSubscribers::Handlers = {};
 
-void HandlerSubscribers::set(std::string source, std::function<void(bool)> handler) {
+void HandlerSubscribers::set(std::string source, std::function<void(TSlotHandlerArsg)> handler) {
 	/*source это строка типа "U1/RAM/" тут её распарсю и добавляю в Handlers
 	  чтобы получилось
 	  U1--
@@ -27,11 +27,12 @@ void HandlerSubscribers::remove(std::string source) {
 void HandlerSubscribers::send(Slot& slot /*TODO аргумент "U1/RAM/"*/) {
 	//найти все обработчики соответсвующие аргументу "U1/RAM/" и последовательно вызвать их
 	if (Handlers.count(slot.Device)) {
-		std::map<std::string, std::vector<std::function<void(bool)>>> sections = Handlers.at(slot.Device);
+		std::map<std::string, std::vector<std::function<void(TSlotHandlerArsg)>>> sections = Handlers.at(slot.Device);
 		if (sections.count(slot.Section)) {
-			std::vector<std::function<void(bool)>> handlers = sections.at(slot.Section);
+			std::vector<std::function<void(TSlotHandlerArsg)>> handlers = sections.at(slot.Section);
 				for (auto& handler : handlers) {
-					handler(false);
+					TSlotHandlerArsg args = { slot.InputBuf, slot.InputBufValidBytes, slot.StartAddrOffset, slot.LastAddrOffset };
+					handler(args);
 				}
 		}
 	}

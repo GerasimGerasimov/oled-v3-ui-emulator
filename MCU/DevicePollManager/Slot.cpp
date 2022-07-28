@@ -7,7 +7,8 @@ Slot::Slot()
 	, onData(NULL)
 	, cmdLen(0)
 	, StartAddrOffset(0)
-	, LastAddrOffset(0) {
+	, LastAddrOffset(0)
+	, InputBufValidBytes(0) {
 }
 
 Slot::Slot(std::string device, std::string section, u16 StartAddr, u16 LastAddr)
@@ -19,6 +20,7 @@ Slot::Slot(std::string device, std::string section, u16 StartAddr, u16 LastAddr)
 	, Section(section)
 	, StartAddrOffset((StartAddr & 0x00FF) << 1)
 	, LastAddrOffset((LastAddr & 0x00FF) << 1)
+	, InputBufValidBytes(0)
 {
 
 }

@@ -1,6 +1,5 @@
 #include "PageHome.h"
 #include "Router.h"
-#include "HandleSubscribers.h"
 
 void TPageHome::view() {
     MainMenu->view();
@@ -58,12 +57,25 @@ TPageHome::TPageHome(std::string Name)
 
     AddList({ MainMenu });
 
-    HandlerSubscribers::set("U1/RAM/", [this](bool valid) { SlotDataUpdate(valid); });
+    HandlerSubscribers::set("U1/RAM/", [this](TSlotHandlerArsg args) { SlotU1RAMUpdate(args); });
+    HandlerSubscribers::set("U1/FLASH/", [this](TSlotHandlerArsg args) { SlotU1FLASHUpdate(args); });
+    HandlerSubscribers::set("U1/CD/", [this](TSlotHandlerArsg args) { SlotU1CDUpdate(args); });
 };
 
-void TPageHome::SlotDataUpdate(bool valid) {
+void TPageHome::SlotU1RAMUpdate(TSlotHandlerArsg args) {
+    std::string s = pLTagUref->DataSrc->getValue(args);
+    pLTagUref->Value->setCaption(s);
 
 }
+
+void TPageHome::SlotU1FLASHUpdate(TSlotHandlerArsg args) {
+
+}
+
+void TPageHome::SlotU1CDUpdate(TSlotHandlerArsg args) {
+
+}
+
 
 TPageHome::~TPageHome() {
 };

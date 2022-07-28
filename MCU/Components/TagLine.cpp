@@ -10,6 +10,7 @@ TTagLine::TTagLine(std::string tag, TLabelInitStructure init)
     , Caption(new TLabel(init))
     , Value(new TLabel(init))
     , msu(new TLabel(init)) {
+    Value->setCaption(DataSrc->getDefaultValue());
 }
 
 TTagLine::~TTagLine() {//деструктор
@@ -28,7 +29,7 @@ void TTagLine::view(void) {
 
     /*TODO надо вывести значение тега*/
     if (DataSrc) {/*TODO 2-й раз пишу нужен пустой объект для отлавливания несуществующих тегов*/
-        Value->setCaption(DataSrc->getValue());
+        //Value->setCaption(DataSrc->getValue());
         Value->inFocus = inFocus;
         Value->ElementRect.Top = ElementRect.Top;
         Value->ElementRect.Left = 55;//ElementRect.Left;

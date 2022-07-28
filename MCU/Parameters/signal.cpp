@@ -20,6 +20,10 @@ std::string ISignal::getName() {
 		: "";
 }
 
-std::string ISignal::getValue() {
+std::string ISignal::getValue(TSlotHandlerArsg args) {
 	return "unknown";
+}
+
+std::string ISignal::getDefaultValue() {
+	return "**.**";
 }

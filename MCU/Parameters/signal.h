@@ -4,6 +4,7 @@
 #include "stm32f4xx.h"
 #include <vector>
 #include <string>
+#include "SlotHandlerType.h"
 
 typedef struct {
 	char* pName;
@@ -19,7 +20,8 @@ public:
 	ISignal(TSignalPropsPointers props);
 	~ISignal();
 	virtual std::string getName();
-	virtual std::string getValue();
+	virtual std::string getValue(TSlotHandlerArsg args);
+	std::string getDefaultValue();
 protected:
 	char* Name;
 	char* optional;

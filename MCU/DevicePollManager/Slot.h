@@ -37,7 +37,8 @@ public:
 	~Slot();
 	u8 cmdLen;
 	u8 OutBuf[MB_MASTER_BUF_SIZE];//буфер сообщения для отправки
-	u8 InputBuf[MB_MASTER_BUF_SIZE];//буфер сообщения для приёма сообщений  
+	u8 InputBuf[MB_MASTER_BUF_SIZE];//буфер сообщения для приёма сообщений
+	u8 InputBufValidBytes;
 	TSlotDataHandler onData;//процедура которая вызывается после получения ответа от устройства, если контрольная сумма сошлась
 	u16 StartAddrOffset;
 	u16 LastAddrOffset;

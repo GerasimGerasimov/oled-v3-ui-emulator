@@ -22,9 +22,11 @@ void CommonSlotHandler::parseRespond(Slot& slot, u8* reply) {
 		swp_copy_u16((u8*)&reply[(u8)ModbusReadRegsDefs::ANSW_DATA_POS],
 			(u16*)&slot.InputBuf,
 			regs_count);
+		slot.InputBufValidBytes = regs_count;
 		slot.Flags |= (u16)SlotStateFlags::DATA_VALID;
 	}
 	catch (int e) {
+		slot.InputBufValidBytes = 0;
 		slot.Flags &= ~(u16)SlotStateFlags::DATA_VALID;
 	}
 	DevicesValuesHandler::setValues(slot);

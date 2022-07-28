@@ -14,10 +14,10 @@ public:
     TTagLine(std::string tag, TLabelInitStructure init);//конструктор
     ~TTagLine();//деструктор
     void view(void);//вывести строку на экране
-private:
     TParameter* DataSrc;
-    TLabel* Caption;
     TLabel* Value;
+private:
+    TLabel* Caption;
     TLabel* msu;
 };
 

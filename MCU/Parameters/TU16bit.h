@@ -8,8 +8,7 @@ class TU16BIT : public TGeneralCaseSignal {
 public:
 	TU16BIT(TSignalPropsPointers props);
 	~TU16BIT();
-	virtual std::string getValue();
-	virtual void setValue();
+	virtual std::string getValue(TSlotHandlerArsg args);
 private:
 	s16 Addr;
 };

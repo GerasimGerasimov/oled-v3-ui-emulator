@@ -11,7 +11,7 @@ TU16BIT::TU16BIT(TSignalPropsPointers props)
 TU16BIT::~TU16BIT(){
 }
 
-std::string TU16BIT::getValue()
+std::string TU16BIT::getValue(TSlotHandlerArsg args)
 {
 	if (Addr < 0)
 		return "err.addr";
@@ -19,7 +19,4 @@ std::string TU16BIT::getValue()
 		вычислить смещение в массиве данных слота, забрать эти данные из массива в "сырое" значение
 		и далее по требованию юзера, выдать HEX или Физическое (с учтом коэффициента) значение*/
 	return "*****";
-}
-
-void TU16BIT::setValue() {
 }

@@ -6,6 +6,7 @@
 #include <map>
 #include <functional>
 #include "Slot.h"
+#include "SlotHandlerType.h"
 
 typedef struct {
 	std::string device;
@@ -14,12 +15,12 @@ typedef struct {
 
 class HandlerSubscribers {
 public:
-	static void set(std::string source, std::function<void(bool)> handler);
+	static void set(std::string source, std::function<void(TSlotHandlerArsg)> handler);
 	static void remove(std::string source);
 	static void send(Slot& slot);
 
 private:
-	static std::map<std::string, std::map<std::string, std::vector<std::function<void(bool)>>>> Handlers;
+	static std::map<std::string, std::map<std::string, std::vector<std::function<void(TSlotHandlerArsg)>>>> Handlers;
 };
 
 #endif
