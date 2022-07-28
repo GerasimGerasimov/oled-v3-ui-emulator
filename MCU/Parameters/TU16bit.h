@@ -11,6 +11,8 @@ public:
 	virtual std::string getValue(TSlotHandlerArsg args);
 private:
 	s16 Addr;
+	std::string validation(TSlotHandlerArsg args);
+	std::string value(TSlotHandlerArsg args);
 };
 
 #endif
