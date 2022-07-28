@@ -63,13 +63,17 @@ TPageHome::TPageHome(std::string Name)
 };
 
 void TPageHome::SlotU1RAMUpdate(TSlotHandlerArsg args) {
-    std::string s = pLTagUref->DataSrc->getValue(args);
-    pLTagUref->Value->setCaption(s);
+    pLTagUref->Value->setCaption(pLTagUref->DataSrc->getValue(args) );
+
+    pLTagIref->Value->setCaption(pLTagIref->DataSrc->getValue(args));
+
     Msg::send_message(REPAINT, 0, 0);
 }
 
 void TPageHome::SlotU1FLASHUpdate(TSlotHandlerArsg args) {
+    pLTagSparkFrq->Value->setCaption(pLTagSparkFrq->DataSrc->getValue(args));
 
+    Msg::send_message(REPAINT, 0, 0);
 }
 
 void TPageHome::SlotU1CDUpdate(TSlotHandlerArsg args) {
