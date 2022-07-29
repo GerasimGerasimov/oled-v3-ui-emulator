@@ -20,7 +20,7 @@ public:
 	ISignal(TSignalPropsPointers props);
 	~ISignal();
 	virtual std::string getName();
-	virtual std::string getValue(TSlotHandlerArsg args);
+	virtual std::string getValue(TSlotHandlerArsg args, const char* format);
 	virtual std::string getMSU();
 	std::string getDefaultValue();
 protected:

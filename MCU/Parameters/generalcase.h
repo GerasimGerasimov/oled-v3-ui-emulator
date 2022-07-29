@@ -11,7 +11,7 @@ public:
 	TGeneralCaseSignal(TSignalPropsPointers props);
 	~TGeneralCaseSignal();
 	std::string getMSU(); 
-	virtual std::string getValue(TSlotHandlerArsg args);
+	virtual std::string getValue(TSlotHandlerArsg args, const char* format);
 	virtual void setValue();
 protected:
 	char* MSU;

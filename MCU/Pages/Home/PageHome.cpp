@@ -48,8 +48,8 @@ TPageHome::TPageHome(std::string Name)
     LabelInit.caption = "DVA";
     pLTagIoutAve = new TTagLine("U1/CD/Modbus_Local1_DVA/", LabelInit);
 
-    LabelInit.caption = "IstStart";
-    pLTagSparkFrq = new TTagLine("U1/FLASH/IstStart/", LabelInit);
+    LabelInit.caption = "Un";
+    pLTagSparkFrq = new TTagLine("U1/FLASH/Unominal/", LabelInit);
 
     LabelInit.caption = "Ugen";
     pLTagOut = new TTagLine("U1/RAM/Ugen/", LabelInit);
@@ -66,17 +66,17 @@ TPageHome::TPageHome(std::string Name)
 };
 
 void TPageHome::SlotU1RAMUpdate(TSlotHandlerArsg args) {
-    pLTagUref->Value->setCaption(pLTagUref->DataSrc->getValue(args) );
+    pLTagUref->Value->setCaption(pLTagUref->DataSrc->getValue(args, "%.2f"));
 
-    pLTagIref->Value->setCaption(pLTagIref->DataSrc->getValue(args));
+    pLTagIref->Value->setCaption(pLTagIref->DataSrc->getValue(args, "%.2f"));
 
-    pLTagOut->Value->setCaption(pLTagOut->DataSrc->getValue(args));
+    pLTagOut->Value->setCaption(pLTagOut->DataSrc->getValue(args, "%.2f"));
 
     Msg::send_message(REPAINT, 0, 0);
 }
 
 void TPageHome::SlotU1FLASHUpdate(TSlotHandlerArsg args) {
-    pLTagSparkFrq->Value->setCaption(pLTagSparkFrq->DataSrc->getValue(args));
+    pLTagSparkFrq->Value->setCaption(pLTagSparkFrq->DataSrc->getValue(args, "%.0f"));
 
     Msg::send_message(REPAINT, 0, 0);
 }

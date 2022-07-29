@@ -87,7 +87,7 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;WIN32;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>$(ProjectDir)MCU\Modbus;$(ProjectDir)MCU\DevicesValues;$(ProjectDir)MCU\ini;$(ProjectDir)MCU\IDrivers;$(ProjectDir)MCU\Parameters;$(ProjectDir)MCU\Resources;$(ProjectDir)MCU\Slots;$(ProjectDir)MCU\Helpers;$(ProjectDir)MCU\DevicePollManager;$(ProjectDir)MCU\GraphicsFunctions;$(ProjectDir)WinAppPages;$(ProjectDir)MCU\Events;$(ProjectDir)MCU\Msg;$(ProjectDir)MCU\Components;$(ProjectDir)threads;$(ProjectDir)MCU\Pages\;$(ProjectDir)MCU\Pages\Help;$(ProjectDir)MCU\Pages\Home;$(ProjectDir)MCU\Pages\Counters;$(ProjectDir)MCU\Pages\EditValue;$(ProjectDir)MCU\Pages\MainMenu;$(ProjectDir)MCU\Router;$(ProjectDir)MCU\App;$(ProjectDir)Drivers\Resources;$(ProjectDir)Drivers;$(ProjectDir)MCU\Fonts;$(ProjectDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
@@ -116,7 +116,7 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>$(ProjectDir)MCU\Modbus;$(ProjectDir)MCU\DevicesValues;$(ProjectDir)MCU\ini;$(ProjectDir)MCU\IDrivers;$(ProjectDir)MCU\Parameters;$(ProjectDir)MCU\Resources;$(ProjectDir)MCU\Slots;$(ProjectDir)MCU\Helpers;$(ProjectDir)MCU\DevicePollManager;$(ProjectDir)MCU\GraphicsFunctions;$(ProjectDir)WinAppPages;$(ProjectDir)MCU\Events;$(ProjectDir)MCU\Msg;$(ProjectDir)MCU\Components;$(ProjectDir)threads;$(ProjectDir)MCU\Pages\;$(ProjectDir)MCU\Pages\Help;$(ProjectDir)MCU\Pages\Home;$(ProjectDir)MCU\Pages\Counters;$(ProjectDir)MCU\Pages\EditValue;$(ProjectDir)MCU\Pages\MainMenu;$(ProjectDir)MCU\Router;$(ProjectDir)MCU\App;$(ProjectDir)Drivers\Resources;$(ProjectDir)Drivers;$(ProjectDir)MCU\Fonts;$(ProjectDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
