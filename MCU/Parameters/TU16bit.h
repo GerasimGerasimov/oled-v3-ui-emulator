@@ -11,8 +11,10 @@ public:
 	virtual std::string getValue(TSlotHandlerArsg args, const char* format);
 private:
 	s16 Addr;
+	float Scale;
 	std::string validation(TSlotHandlerArsg args);
 	std::string value(TSlotHandlerArsg args, const char* format);
+	float getScaleFromProps();
 	float scale();
 };
 

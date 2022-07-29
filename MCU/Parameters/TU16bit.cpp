@@ -7,10 +7,39 @@
 
 static const u16 TU16BIT_DATA_SIZE = 2;
 
+void comma_to_dot(char* input) {
+	char* ptr = NULL;
+	while (ptr = strpbrk(input, ",")) { //find the first dot in input
+		*ptr = '.'; //replace the dot with a comma
+	}
+}
+
+float TU16BIT::getScaleFromProps() {
+	char * pScale = IniParser::getElementPtrByNumber(3, '/', optional);
+	std::string s = IniParser::getElement('/', pScale);
+	comma_to_dot((char*) s.c_str());
+	float res = 1.0f;
+	try {
+		res = std::stof(s);
+	}
+	catch (...) {
+
+	};
+	/*TODO если строка без исключения трансформируется во float то на этом останавливаюсь*/
+	/*TODO если возникло исключение, то пробую найти строку в vars
+		если нахожу, то беру её значение
+			если значение переводится без исключения в float на этом останавливаюсь
+			если возникло исключение, то возможно это список!, надо его парсить и из него извлекать значение
+				если в списке нет соответсвующего значения, то возвражаю "1"
+			*/
+	/*TODO если ни каким образом не получилось достать значение коэффициента, то вернуть "1"*/
+	return res;
+}
+
 TU16BIT::TU16BIT(TSignalPropsPointers props)
 	: TGeneralCaseSignal(props)
 	, Addr(ParametersUtils::getByteOffsetFromSlahedAddrStr(strAddr)) {
-	
+	Scale = getScaleFromProps();
 }
 
 TU16BIT::~TU16BIT(){
@@ -37,7 +66,6 @@ std::string TU16BIT::value(TSlotHandlerArsg args, const char* format) {
 	//как-то перевёл в строку.
 	float res = raw.i * scale();
 	
-	/*TODO нужно передавать формат, сколько знаков после запятой*/
 	//"%.2f";
 	int size = std::snprintf(nullptr, 0, format , res);
 	std::string output(size + 1, '\0');
@@ -55,5 +83,5 @@ std::string TU16BIT::validation(TSlotHandlerArsg args) {
 }
 
 float TU16BIT::scale() {
-	return 1.0f;
+	return Scale;
 }
