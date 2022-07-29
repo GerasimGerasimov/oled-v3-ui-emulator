@@ -21,6 +21,7 @@ public:
 	~ISignal();
 	virtual std::string getName();
 	virtual std::string getValue(TSlotHandlerArsg args);
+	virtual std::string getMSU();
 	std::string getDefaultValue();
 protected:
 	char* Name;

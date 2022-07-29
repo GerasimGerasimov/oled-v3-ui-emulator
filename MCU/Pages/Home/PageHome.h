@@ -22,7 +22,7 @@ private:
     TTagLine* pLTagUoutAve;
     TTagLine* pLTagIoutAve;
     TTagLine* pLTagSparkFrq;
-    //TLinkedTagLabel* pLTagOut;
+    TTagLine* pLTagOut;
     //TLinkedTagLabel* pLTagIinAve;
     void goToTagInfoPage(int a);
     void SlotU1RAMUpdate(TSlotHandlerArsg args);

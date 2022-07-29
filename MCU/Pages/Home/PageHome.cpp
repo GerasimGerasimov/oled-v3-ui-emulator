@@ -36,11 +36,11 @@ TPageHome::TPageHome(std::string Name)
     LabelInit.Rect = { 10, 10, 10, 10 };
     LabelInit.focused = false;
 
-    LabelInit.caption = "Ustat";
-    pLTagUref = new TTagLine("U1/RAM/Ustat/", LabelInit);
+    LabelInit.caption = "Fgen";
+    pLTagUref = new TTagLine("U1/RAM/Fgen/", LabelInit);
 
-    LabelInit.caption = "Istat";
-    pLTagIref = new TTagLine("U1/RAM/Istat/", LabelInit);
+    LabelInit.caption = "Phi";
+    pLTagIref = new TTagLine("U1/RAM/Phi/", LabelInit);
 
     LabelInit.caption = "PWR.OK";
     pLTagUoutAve = new TTagLine("U1/RAM/DExS_PWR_OK/", LabelInit);
@@ -51,8 +51,11 @@ TPageHome::TPageHome(std::string Name)
     LabelInit.caption = "IstStart";
     pLTagSparkFrq = new TTagLine("U1/FLASH/IstStart/", LabelInit);
 
+    LabelInit.caption = "Ugen";
+    pLTagOut = new TTagLine("U1/RAM/Ugen/", LabelInit);
+
     MainMenu = new TComponentListVertical({ pLTagUref    , pLTagIref     , pLTagUoutAve ,
-                                            pLTagIoutAve , pLTagSparkFrq /*, pLTagOut ,
+                                            pLTagIoutAve , pLTagSparkFrq , pLTagOut /*,
                                             pLTagIinAve */ });
 
     AddList({ MainMenu });
@@ -66,6 +69,8 @@ void TPageHome::SlotU1RAMUpdate(TSlotHandlerArsg args) {
     pLTagUref->Value->setCaption(pLTagUref->DataSrc->getValue(args) );
 
     pLTagIref->Value->setCaption(pLTagIref->DataSrc->getValue(args));
+
+    pLTagOut->Value->setCaption(pLTagOut->DataSrc->getValue(args));
 
     Msg::send_message(REPAINT, 0, 0);
 }

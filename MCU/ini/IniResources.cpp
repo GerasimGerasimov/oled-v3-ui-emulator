@@ -1,6 +1,7 @@
 #include "IniResources.h"
 #include "parser.h"
-#include <IniSlotsProps.h>
+#include "IniSlotsProps.h"
+#include "signal.h"
 
 const static std::vector<std::string> SectioNameOrder = { "vars", "RAM", "FLASH", "CD"};
 
@@ -77,7 +78,8 @@ ISignal* IniResources::getSignalByTag(std::string tag) {
 			}
 		}
 	}
-	return NULL;/*TODO лучше создавать пустой объёкт который будет выводить "???+tag" тогда будет видно несуществующие теги*/
+	TSignalPropsPointers defaultprops = { NULL, NULL, NULL, NULL }; 
+	return new ISignal(defaultprops);
 }
 
 bool IniResources::readSources(void)

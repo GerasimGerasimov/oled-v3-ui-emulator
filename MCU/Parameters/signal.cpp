@@ -27,3 +27,8 @@ std::string ISignal::getValue(TSlotHandlerArsg args) {
 std::string ISignal::getDefaultValue() {
 	return "**.**";
 }
+
+std::string ISignal::getMSU()
+{
+	return "";
+}
