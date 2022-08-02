@@ -16,12 +16,12 @@ typedef struct {
 class IniResources {
 public:
 	static void init(void);
-	static ISignal* getSignalByTag(std::string tag);
-	static std::string getComment(TValueSearchStruct srch);
+	static ISignal* getSignalByTag(const std::string& tag);
+	static std::string getComment(const TValueSearchStruct& srch);
 private:
 	static std::map<std::string, std::map<std::string, std::map<std::string, ISignal*>>> Sources;
 	static bool readSources(void);
-	static TValueSearchStruct TagToValueSearchStruct(std::string tag);
+	static TValueSearchStruct TagToValueSearchStruct(const std::string& tag);
 };
 
 #endif

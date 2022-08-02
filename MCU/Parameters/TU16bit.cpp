@@ -14,6 +14,10 @@ void comma_to_dot(char* input) {
 	}
 }
 
+std::string getVarValueByKey(std::string key) {
+	return "1.0";
+}
+
 float TU16BIT::getScaleFromProps() {
 	char * pScale = IniParser::getElementPtrByNumber(3, '/', optional);
 	std::string s = IniParser::getElement('/', pScale);
@@ -23,7 +27,10 @@ float TU16BIT::getScaleFromProps() {
 		res = std::stof(s);
 	}
 	catch (...) {
-
+		//попал сюда, потому что строка не преобразовалась в float
+		//возможно это имя ключа из секции [vars] но тогда надо знать к какому DEV это относится. 
+		std::string val = getVarValueByKey(s);
+		
 	};
 	/*TODO если строка без исключения трансформируется во float то на этом останавливаюсь*/
 	/*TODO если возникло исключение, то пробую найти строку в vars
@@ -45,7 +52,7 @@ TU16BIT::TU16BIT(TSignalPropsPointers props)
 TU16BIT::~TU16BIT(){
 }
 
-std::string TU16BIT::getValue(TSlotHandlerArsg args, const char* format)
+std::string TU16BIT::getValue(const TSlotHandlerArsg& args, const char* format)
 {
 	std::string res = validation(args);
 	return (res != "")
@@ -55,7 +62,7 @@ std::string TU16BIT::getValue(TSlotHandlerArsg args, const char* format)
 
 
 
-std::string TU16BIT::value(TSlotHandlerArsg args, const char* format) {
+std::string TU16BIT::value(const TSlotHandlerArsg& args, const char* format) {
 	s16 offset = Addr - args.StartAddrOffset;
 	//получил указатель на данные
 	u8* p = args.InputBuf + offset;
@@ -75,7 +82,7 @@ std::string TU16BIT::value(TSlotHandlerArsg args, const char* format) {
 	//return std::to_string(raw.i);
 }
 
-std::string TU16BIT::validation(TSlotHandlerArsg args) {
+std::string TU16BIT::validation(const TSlotHandlerArsg& args) {
 	if (args.InputBufValidBytes == 0) return "***.**";
 	if (ParametersUtils::isAddrInvalid(Addr)) return "err.addr";
 	if ((Addr < args.StartAddrOffset) || (Addr > args.LastAddrOffset)) return "out.addr";

@@ -24,7 +24,8 @@ void IniResources::init(void) {
 	readSources();
 }
 
-std::string IniResources::getComment(TValueSearchStruct srch) {
+/*TODO Проверить: эта функция ни где не используется?*/
+std::string IniResources::getComment(const TValueSearchStruct& srch) {
 	if (Sources.count(srch.device)) {
 		std::map<std::string, std::map<std::string, ISignal*>> devmap = Sources.at(srch.device);
 		if (devmap.count(srch.section)) {
@@ -43,7 +44,7 @@ std::string IniResources::getComment(TValueSearchStruct srch) {
 //tag = "U1/RAM/Iexc/"
 //узнать какой DEVx является описанием для Ux цстройства
 //и перекодировать U1/RAM/Iexc/ в DEV1/RAM/Iexc/
-TValueSearchStruct IniResources::TagToValueSearchStruct(std::string tag) {
+TValueSearchStruct IniResources::TagToValueSearchStruct(const std::string& tag) {
 	std::vector<std::string> v = IniParser::getListOfDelimitedSting(
 		(const char)'/',
 			(char*)tag.c_str(),
@@ -66,7 +67,7 @@ TValueSearchStruct IniResources::TagToValueSearchStruct(std::string tag) {
 }
 
 
-ISignal* IniResources::getSignalByTag(std::string tag) {
+ISignal* IniResources::getSignalByTag(const std::string& tag) {
 	TValueSearchStruct srch = TagToValueSearchStruct(tag);
 	if (Sources.count(srch.device)) {
 		std::map<std::string, std::map<std::string, ISignal*>> devmap = Sources.at(srch.device);
