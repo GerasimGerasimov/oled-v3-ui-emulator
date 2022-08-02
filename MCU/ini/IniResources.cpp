@@ -101,7 +101,7 @@ bool IniResources::readSources(void)
 						while ((readResult = IniParser::getNextTagString()), readResult.result != 0) {
 							 ISignal* s = (section == "vars")
 								? TIniString::getScale(section, readResult.tag, readResult.result)
-								: TIniString::getSignal(section, readResult.tag, readResult.result);
+								: TIniString::getSignal(src, section, readResult.tag, readResult.result);
 							 if (s) {
 								 std::string name = s->getName();
 								 Sources[src][section][name] = s;

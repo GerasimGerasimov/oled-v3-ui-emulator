@@ -14,11 +14,11 @@ void comma_to_dot(char* input) {
 	}
 }
 
-std::string getVarValueByKey(std::string key) {
+std::string getVarValueByKey(std::string& key, const char* dev) {
 	return "1.0";
 }
 
-float TU16BIT::getScaleFromProps() {
+float TU16BIT::getScaleFromProps(const char* dev) {
 	char * pScale = IniParser::getElementPtrByNumber(3, '/', optional);
 	std::string s = IniParser::getElement('/', pScale);
 	comma_to_dot((char*) s.c_str());
@@ -29,7 +29,7 @@ float TU16BIT::getScaleFromProps() {
 	catch (...) {
 		//попал сюда, потому что строка не преобразовалась в float
 		//возможно это имя ключа из секции [vars] но тогда надо знать к какому DEV это относится. 
-		std::string val = getVarValueByKey(s);
+		std::string val = getVarValueByKey(s, dev);
 		
 	};
 	/*TODO если строка без исключения трансформируется во float то на этом останавливаюсь*/
@@ -46,7 +46,7 @@ float TU16BIT::getScaleFromProps() {
 TU16BIT::TU16BIT(TSignalPropsPointers props)
 	: TGeneralCaseSignal(props)
 	, Addr(ParametersUtils::getByteOffsetFromSlahedAddrStr(strAddr)) {
-	Scale = getScaleFromProps();
+	Scale = getScaleFromProps(props.dev);
 }
 
 TU16BIT::~TU16BIT(){

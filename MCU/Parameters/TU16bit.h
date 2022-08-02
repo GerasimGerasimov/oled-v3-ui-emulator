@@ -14,7 +14,7 @@ private:
 	float Scale;
 	std::string validation(const TSlotHandlerArsg& args);
 	std::string value(const TSlotHandlerArsg& args, const char* format);
-	float getScaleFromProps();
+	float getScaleFromProps(const char* dev);
 	float scale();
 };
 

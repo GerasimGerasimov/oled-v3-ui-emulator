@@ -7,6 +7,7 @@
 #include "SlotHandlerType.h"
 
 typedef struct {
+	char* dev;
 	char* pName;
 	char* pComment;
 	char* pType;

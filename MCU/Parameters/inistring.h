@@ -8,7 +8,7 @@
 
 class TIniString {
 public:
-	static pSignal getSignal(std::string section, char* source, int scrLen);
+	static pSignal getSignal(const std::string& dev, const std::string& section, char* source, int scrLen);
 	static pSignal getScale(std::string section, char* source, int scrLen);
 };
 

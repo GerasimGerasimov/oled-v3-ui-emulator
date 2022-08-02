@@ -10,10 +10,10 @@
 
 class SignalFactoty {
 public:
-	static TSignalPropsPointers getSignalProps(const char* source, const int srcLen);
+	static TSignalPropsPointers getSignalProps(const char* dev, const char* source, const int srcLen);
 	static TSignalPropsPointers getScaleProps(const char* source, const int srcLen);
-	static pSignal getSignal(TSignalPropsPointers props);
-	static pSignal getScale(TSignalPropsPointers props);
+	static pSignal getSignal(const TSignalPropsPointers& props);
+	static pSignal getScale(const TSignalPropsPointers& props);
 };
 
 #endif

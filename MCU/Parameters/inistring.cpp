@@ -3,8 +3,8 @@
 #include "parameters.h"
 #include "signalfactory.h"
 
-pSignal TIniString::getSignal(std::string section, char* source, int scrLen) {
-	TSignalPropsPointers props = SignalFactoty::getSignalProps(source, scrLen);
+pSignal TIniString::getSignal(const std::string& dev, const std::string& section, char* source, int scrLen) {
+	TSignalPropsPointers props = SignalFactoty::getSignalProps(dev.c_str(), source, scrLen);
 	pSignal s = SignalFactoty::getSignal(props);
 	return s;
 }
