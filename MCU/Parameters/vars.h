@@ -21,6 +21,7 @@ public:
 	std::string getValue();
 protected:
 	int	ValueSize;
+	std::string getValueFromList(std::vector<std::string> values);
 };
 
 #endif

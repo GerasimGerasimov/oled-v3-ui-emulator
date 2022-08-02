@@ -10,7 +10,7 @@ void HandlerSubscribers::set(std::string source, std::function<void(TSlotHandler
 	     |-RAM--
 		       |-function*/
 	/*TODO » вернуть bool чтои что бы знать что добавилось или нет*/
-	std::vector<std::string> v = IniParser::getListOfDelimitedSting(
+	std::vector<std::string> v = IniParser::getListOfDelimitedString(
 		(const char)'/',
 		(char*)source.c_str(),
 		source.size());

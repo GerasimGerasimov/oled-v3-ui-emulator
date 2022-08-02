@@ -18,7 +18,7 @@ void comma_to_dot(char* input) {
 std::string getVarStrValueByKey(std::string& key, const char* dev) {
 	std::string _dev(dev);/*GIST преобразование char* в std::string*/
 	std::string sval = IniResources::getScaleValueByKey(key, _dev);
-	return "1.0";
+	return sval;
 }
 
 float TU16BIT::getScaleFromProps(const char* dev) {
@@ -33,6 +33,13 @@ float TU16BIT::getScaleFromProps(const char* dev) {
 		//попал сюда, потому что строка не преобразовалась в float
 		//возможно это имя ключа из секции [vars] но тогда надо знать к какому DEV это относится. 
 		std::string val = getVarStrValueByKey(s, dev);
+		comma_to_dot((char*)val.c_str());
+		try {
+			res = std::stof(val);
+		}
+		catch (...) {
+			//TODO как сюда попал?!
+		}
 		
 	};
 	/*TODO если строка без исключения трансформируется во float то на этом останавливаюсь*/

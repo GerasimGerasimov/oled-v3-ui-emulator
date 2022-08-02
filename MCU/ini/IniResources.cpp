@@ -46,7 +46,7 @@ std::string IniResources::getComment(const TValueSearchStruct& srch) {
 //узнать какой DEVx является описанием для Ux цстройства
 //и перекодировать U1/RAM/Iexc/ в DEV1/RAM/Iexc/
 TValueSearchStruct IniResources::TagToValueSearchStruct(const std::string& tag) {
-	std::vector<std::string> v = IniParser::getListOfDelimitedSting(
+	std::vector<std::string> v = IniParser::getListOfDelimitedString(
 		(const char)'/',
 			(char*)tag.c_str(),
 				tag.size());
@@ -56,7 +56,7 @@ TValueSearchStruct IniResources::TagToValueSearchStruct(const std::string& tag) 
 		эти модули нельзя переставить местами при инициализации!
 		сначала инициализация IniResources
 		потом я могу инициализировать IniSlotsProps
-		а тут я испольхую данные от обоих модулей, связываю их
+		а тут я использую данные от обоих модулей, связываю их
 		Эту функцию надо выделить как статический класс*/
 		std::string dev = IniSlotsProps::getSourceOfDev(v[0]);
 		if (dev != "") {
@@ -79,7 +79,7 @@ std::string IniResources::getScaleValueByKey(const std::string& key, const std::
 			}
 		}
 	}
-	return "";
+	return "1.0";
 }
 
 ISignal* IniResources::getSignalByTag(const std::string& tag) {
@@ -103,7 +103,7 @@ bool IniResources::readSources(void)
 	TItemLimits itemLimits = TInternalResources::getItemLimitsByName((char*)"SOURCES");
 	if (itemLimits.RootOffset) {
 		IniParser::setRoot(itemLimits.RootOffset, itemLimits.Size);
-		std::vector<std::string> sources = IniParser::getListOfDelimitedSting('/', itemLimits.RootOffset, itemLimits.Size);
+		std::vector<std::string> sources = IniParser::getListOfDelimitedString('/', itemLimits.RootOffset, itemLimits.Size);
 		for (auto& src : sources) {
 			itemLimits = TInternalResources::getItemLimitsByName((char*)src.c_str());
 			if (itemLimits.RootOffset) {

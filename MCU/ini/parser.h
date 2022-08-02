@@ -22,7 +22,8 @@ public:
 	static bool setSectionToRead(char* SectionName);
 	static TSectionReadResult getNextTagString();
 	static void setRoot(char* root, int size);
-	static std::vector<std::string> getListOfDelimitedSting(char delimiter, char* src, int size);
+	static std::vector<std::string> getListOfDelimitedString(char delimiter, char* src, int size);
+	static std::vector<std::string> getListOfDelimitedStrInclude(char delimiter, char* src, int size);
 	static std::string getElement(char delimiter, char** ptr, int& size);
 	static std::string getElement(char delimiter, char* ptr);
 	static char* getElementPtrByNumber(int number, char delimiter, char* src);
@@ -34,6 +35,7 @@ private:
 	static int isDelimiter(char** ptr, char Delimiter);
 	static int getStringLenght(char** ptr);
 	static int getSectionLinesCount(char* SectionName);
+	static std::string getElementInclude(char delimiter, char** ptr, int& size);
 	static char* Root;
 	static char* SearchPointer;
 	static int RootSize;

@@ -208,7 +208,7 @@ char* IniParser::getElementPtrByNumber(int number, char delimiter, char* src) {
     return NULL;
 }
 
-std::vector<std::string> IniParser::getListOfDelimitedSting(char delimiter, char* src, int size) {
+std::vector<std::string> IniParser::getListOfDelimitedString(char delimiter, char* src, int size) {
     std::vector<std::string> res = {};
     std::string s = "";
     char** ptr = &src;
@@ -218,26 +218,31 @@ std::vector<std::string> IniParser::getListOfDelimitedSting(char delimiter, char
     return res;
 }
 
-/*
-static bool isValidTagString(char* begin, int len) {
-    return (bool)(*begin == 'p');
-}*/
 
-/*
-int skipComment(char** ptr) {
+std::string IniParser::getElementInclude(char delimiter, char** ptr, int& size) {
+    if ((size == -1) || (size == 0)) {//0 это когда найден разделитель в конце строки
+        size = -2;
+        return "";
+    }
     char* start = *ptr;
-    char c;
-    int i = 0;
-    do {
-        c = *((*ptr)++);
-        switch (c) {
-            case '\r': //CR (возврат каретки)
-                if (isNexSymbolValid(ptr)) (*ptr)++;
-                i = (int)(*&ptr[0] - &start[0]);
-                return i;
-            case '\n': //LN (конец строки)
-                i = (int)(*&ptr[0] - &start[0]);
-                return i;
-        }
-    } while (true);
-}*/
+    int startSize = size;
+    int pos = isDelimiterSizeLimited(delimiter, *ptr, size);
+    if (pos > 0) {
+        std::string s(start, pos - 1);
+        return s;
+    }
+    else {
+        std::string s(start, startSize);
+        return s;
+    }
+}
+
+std::vector<std::string> IniParser::getListOfDelimitedStrInclude(char delimiter, char* src, int size) {
+    std::vector<std::string> res = {};
+    std::string s = "";
+    char** ptr = &src;
+    while (s = getElementInclude(delimiter, ptr, size), size != -2) {
+        res.push_back(s);
+    }
+    return res;
+}
