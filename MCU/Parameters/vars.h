@@ -6,13 +6,21 @@
 #include <string>
 #include "signal.h"
 
+typedef struct {
+	char* pKey;
+	char* pValue;
+	int	ValueSize;
+} TScaleProps;
+
 class TScale : public ISignal {
 public:
 	TScale(char* source, int scrLen);
-	TScale(TSignalPropsPointers props);
+	TScale(TScaleProps props);
 	~TScale();
-protected:
 	std::string getName();
+	std::string getValue();
+protected:
+	int	ValueSize;
 };
 
 #endif

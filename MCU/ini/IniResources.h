@@ -17,6 +17,7 @@ class IniResources {
 public:
 	static void init(void);
 	static ISignal* getSignalByTag(const std::string& tag);
+	static std::string getScaleValueByKey(const std::string& key, const std::string& dev);
 	static std::string getComment(const TValueSearchStruct& srch);
 private:
 	static std::map<std::string, std::map<std::string, std::map<std::string, ISignal*>>> Sources;

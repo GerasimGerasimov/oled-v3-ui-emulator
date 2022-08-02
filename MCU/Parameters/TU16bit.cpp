@@ -2,6 +2,7 @@
 #include "parser.h"
 #include "ParametersUtils.h"
 #include "bastypes.h"
+#include "IniResources.h"
 
 #define _CRT_SECURE_NO_WARNINGS
 
@@ -14,7 +15,9 @@ void comma_to_dot(char* input) {
 	}
 }
 
-std::string getVarValueByKey(std::string& key, const char* dev) {
+std::string getVarStrValueByKey(std::string& key, const char* dev) {
+	std::string _dev(dev);/*GIST преобразование char* в std::string*/
+	std::string sval = IniResources::getScaleValueByKey(key, _dev);
 	return "1.0";
 }
 
@@ -29,7 +32,7 @@ float TU16BIT::getScaleFromProps(const char* dev) {
 	catch (...) {
 		//попал сюда, потому что строка не преобразовалась в float
 		//возможно это имя ключа из секции [vars] но тогда надо знать к какому DEV это относится. 
-		std::string val = getVarValueByKey(s, dev);
+		std::string val = getVarStrValueByKey(s, dev);
 		
 	};
 	/*TODO если строка без исключения трансформируется во float то на этом останавливаюсь*/

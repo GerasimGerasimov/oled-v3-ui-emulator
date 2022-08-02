@@ -48,19 +48,20 @@ pSignal SignalFactoty::getSignal(const TSignalPropsPointers& props) {
 	return s;
 }
 
-TSignalPropsPointers SignalFactoty::getScaleProps(const char* source, const int srcLen) {
-	TSignalPropsPointers res = { NULL, NULL, NULL, NULL };
+TScaleProps SignalFactoty::getScaleProps(const char* source, const int srcLen) {
+	TScaleProps res = { NULL, NULL, 0};
 	/*отделить номер параметра со знаком "=" от значащей части параметра (те что разделены слэшем)*/
 	char* src = (char*)source;
 	int size = srcLen;
-	res.pName = src;//Name заканчивается знаком "="
+	res.pKey = src;//Name заканчивается знаком "="
 	if (IniParser::isDelimiterSizeLimited('=', src, size) != -1) {//нашёл знак "="
-					res.pOptional = src;//строка опций для vars считывается до /r/n/
+					res.pValue = src;//строка опций для vars считывается до /r/n/
+					res.ValueSize = size;//остаток длины строки
 	}
 	return res;
 }
 
-pSignal SignalFactoty::getScale (const TSignalPropsPointers& props) {
+pSignal SignalFactoty::getScale (const TScaleProps& props) {
 	/*TODO тут надо парсить переданную строку и генерить объекты vars а они бывают от простых
 	  ключ = значение, до сложных типа списков*/
 	return new TScale(props);

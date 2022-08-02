@@ -164,6 +164,7 @@ int IniParser::getSectionLinesCount(char* SectionName) {//возвращает кол-во стро
 int IniParser::isDelimiterSizeLimited(char delimiter, char*& src, int& size) {
     char c;
     int count = 0;
+    int startsize = size;
     while (size-- != 0) {
         count++;
         c = *src++;

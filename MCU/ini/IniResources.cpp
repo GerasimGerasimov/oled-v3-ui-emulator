@@ -2,6 +2,7 @@
 #include "parser.h"
 #include "IniSlotsProps.h"
 #include "signal.h"
+#include <vars.h>
 
 const static std::vector<std::string> SectioNameOrder = { "vars", "RAM", "FLASH", "CD"};
 
@@ -66,6 +67,20 @@ TValueSearchStruct IniResources::TagToValueSearchStruct(const std::string& tag) 
 		return { "", "", "" };
 }
 
+/*TODO найти ключ в секции vars заданного DEV и выдать его значние*/
+std::string IniResources::getScaleValueByKey(const std::string& key, const std::string& dev) {
+	if (Sources.count(dev)) {
+		std::map<std::string, std::map<std::string, ISignal*>> devmap = Sources.at(dev);
+		if (devmap.count("vars")) {
+			std::map<std::string, ISignal*> vars = devmap.at("vars");
+			if (vars.count(key)) {
+				TScale* s = (TScale*)vars.at(key);
+				return s->getValue();
+			}
+		}
+	}
+	return "";
+}
 
 ISignal* IniResources::getSignalByTag(const std::string& tag) {
 	TValueSearchStruct srch = TagToValueSearchStruct(tag);
