@@ -1,5 +1,6 @@
 #include "vars.h"
 #include "parser.h"
+#include "IniResources.h"
 
 TScale::TScale(char* source, int scrLen) : ISignal(source, scrLen) {
 }

@@ -2,57 +2,13 @@
 #include "parser.h"
 #include "ParametersUtils.h"
 #include "bastypes.h"
-#include "IniResources.h"
-#include "utils.h"
-
-#define _CRT_SECURE_NO_WARNINGS
-
-static const u16 TU16BIT_DATA_SIZE = 2;
-
-
-
-std::string getVarStrValueByKey(std::string& key, const char* dev) {
-	std::string _dev(dev);/*GIST преобразование char* в std::string*/
-	std::string sval = IniResources::getScaleValueByKey(key, _dev);
-	return sval;
-}
-
-float TU16BIT::getScaleFromProps(const char* dev) {
-	char * pScale = IniParser::getElementPtrByNumber(3, '/', optional);
-	std::string s = IniParser::getElement('/', pScale);
-	Utils::comma_to_dot((char*) s.c_str());
-	float res = 1.0f;
-	try {
-		res = std::stof(s);
-	}
-	catch (...) {
-		//попал сюда, потому что строка не преобразовалась в float
-		//возможно это имя ключа из секции [vars] но тогда надо знать к какому DEV это относится. 
-		std::string val = getVarStrValueByKey(s, dev);
-		Utils::comma_to_dot((char*)val.c_str());
-		try {
-			res = std::stof(val);
-		}
-		catch (...) {
-			//TODO как сюда попал?!
-		}
-		
-	};
-	/*TODO если строка без исключения трансформируется во float то на этом останавливаюсь*/
-	/*TODO если возникло исключение, то пробую найти строку в vars
-		если нахожу, то беру её значение
-			если значение переводится без исключения в float на этом останавливаюсь
-			если возникло исключение, то возможно это список!, надо его парсить и из него извлекать значение
-				если в списке нет соответсвующего значения, то возвражаю "1"
-			*/
-	/*TODO если ни каким образом не получилось достать значение коэффициента, то вернуть "1"*/
-	return res;
-}
+#include "scaleutils.h"
+#include "Utils.h"
 
 TU16BIT::TU16BIT(TSignalPropsPointers props)
 	: TGeneralCaseSignal(props)
-	, Addr(ParametersUtils::getByteOffsetFromSlahedAddrStr(strAddr)) {
-	Scale = getScaleFromProps(props.dev);
+	, Addr(ParametersUtils::getByteOffsetFromSlahedAddrStr(strAddr)) 
+	, Scale(ScaleUtils::getScaleFromProps(props.dev, props.pOptional)) {
 }
 
 TU16BIT::~TU16BIT(){
@@ -66,26 +22,18 @@ std::string TU16BIT::getValue(const TSlotHandlerArsg& args, const char* format)
 		: value(args, format);
 }
 
-
-
 std::string TU16BIT::value(const TSlotHandlerArsg& args, const char* format) {
+	float res = getRawValue(args) * scale();
+	return Utils::getValueAsFormatStr(res, format);
+}
+
+u16 TU16BIT::getRawValue(const TSlotHandlerArsg& args) {
 	s16 offset = Addr - args.StartAddrOffset;
-	//получил указатель на данные
-	u8* p = args.InputBuf + offset;
-	//получил два байта данных
-	bauint raw = { };
+	u8* p = args.InputBuf + offset;//получил указатель на данные
+	bauint raw;//получил два байта данных
 	raw.b[0] = (*p++);
 	raw.b[1] = (*p);
-	//как-то перевёл в строку.
-	float res = raw.i * scale();
-	
-	//"%.2f";
-	int size = std::snprintf(nullptr, 0, format , res);
-	std::string output(size + 1, '\0');
-	std::sprintf(&output[0], format, res);
-	return output;
-
-	//return std::to_string(raw.i);
+	return raw.i;
 }
 
 std::string TU16BIT::validation(const TSlotHandlerArsg& args) {

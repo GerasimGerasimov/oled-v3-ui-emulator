@@ -14,8 +14,8 @@ private:
 	float Scale;
 	std::string validation(const TSlotHandlerArsg& args);
 	std::string value(const TSlotHandlerArsg& args, const char* format);
-	float getScaleFromProps(const char* dev);
 	float scale();
+	u16 getRawValue(const TSlotHandlerArsg& args);
 };
 
 #endif
