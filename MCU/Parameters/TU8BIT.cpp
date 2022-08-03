@@ -1,7 +1,7 @@
 #include "TU8BIT.h"
 
 TU8BIT::TU8BIT(TSignalPropsPointers props)
-	: TGeneralCaseSignal(props)
+	: TParameter(props)
 	, Addr({0,0}) {
 	
 }
