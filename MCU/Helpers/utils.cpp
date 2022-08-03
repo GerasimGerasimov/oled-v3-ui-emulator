@@ -14,12 +14,19 @@ std::wstring s2ws(const std::string& str) {
 //u8  *s адрес буфера - откуда нужно забирать принятые данные
 //u16 *d адрес буфера - куда нужно ложить обработанные данные (пишу по 2 байта)
 //u8   c количество слов! которые необходимо перевернуть
-void swp_copy_u16(u8* s, u16* d, u8 c) {
+void Utils::swp_copy_u16(u8* s, u16* d, u8 c) {
     bauint w;
     while (c--) {
         //сваплю и копирую
         w.b[1] = *s++;
         w.b[0] = *s++;
         *d++ = w.i;
+    }
+}
+
+void Utils::comma_to_dot(char* input) {
+    char* ptr = NULL;
+    while (ptr = strpbrk(input, ",")) { //find the first dot in input
+        *ptr = '.'; //replace the dot with a comma
     }
 }

@@ -3,17 +3,13 @@
 #include "ParametersUtils.h"
 #include "bastypes.h"
 #include "IniResources.h"
+#include "utils.h"
 
 #define _CRT_SECURE_NO_WARNINGS
 
 static const u16 TU16BIT_DATA_SIZE = 2;
 
-void comma_to_dot(char* input) {
-	char* ptr = NULL;
-	while (ptr = strpbrk(input, ",")) { //find the first dot in input
-		*ptr = '.'; //replace the dot with a comma
-	}
-}
+
 
 std::string getVarStrValueByKey(std::string& key, const char* dev) {
 	std::string _dev(dev);/*GIST преобразование char* в std::string*/
@@ -24,7 +20,7 @@ std::string getVarStrValueByKey(std::string& key, const char* dev) {
 float TU16BIT::getScaleFromProps(const char* dev) {
 	char * pScale = IniParser::getElementPtrByNumber(3, '/', optional);
 	std::string s = IniParser::getElement('/', pScale);
-	comma_to_dot((char*) s.c_str());
+	Utils::comma_to_dot((char*) s.c_str());
 	float res = 1.0f;
 	try {
 		res = std::stof(s);
@@ -33,7 +29,7 @@ float TU16BIT::getScaleFromProps(const char* dev) {
 		//попал сюда, потому что строка не преобразовалась в float
 		//возможно это имя ключа из секции [vars] но тогда надо знать к какому DEV это относится. 
 		std::string val = getVarStrValueByKey(s, dev);
-		comma_to_dot((char*)val.c_str());
+		Utils::comma_to_dot((char*)val.c_str());
 		try {
 			res = std::stof(val);
 		}

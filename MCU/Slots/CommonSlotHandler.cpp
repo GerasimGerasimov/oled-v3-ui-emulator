@@ -19,7 +19,7 @@ void CommonSlotHandler::parseRespond(Slot& slot, u8* reply) {
 		if (slot.Flags & (u16)SlotStateFlags::CRC_ERR) throw (int)RespondErrorCodes::CRC;
 		if (isReadCmdGotAnError(reply[(u8)ModbusReadRegsDefs::CMD_POS])) throw (int)RespondErrorCodes::CMD;
 		u8 regs_count = reply[(u8)ModbusReadRegsDefs::ANSW_BYTES_POS] >> 1;
-		swp_copy_u16((u8*)&reply[(u8)ModbusReadRegsDefs::ANSW_DATA_POS],
+		Utils::swp_copy_u16((u8*)&reply[(u8)ModbusReadRegsDefs::ANSW_DATA_POS],
 			(u16*)&slot.InputBuf,
 			regs_count);
 		slot.InputBufValidBytes = regs_count;
