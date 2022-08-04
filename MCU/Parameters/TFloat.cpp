@@ -20,6 +20,5 @@ TGenaralCaseRawReturn TFloat::getRawValue(const TSlotHandlerArsg& args) {
 	TGenaralCaseRawReturn res;
 	res.type = TGeneralCaseReturnType::F;
 	res.raw.f = raw.f;
-	/*TODO кажись не от туда читает*/
 	return res;
 }
