@@ -12,6 +12,7 @@ typedef
 typedef
   union baulong { // Byte-addressable long
      u32 i;
+	 float f;
      u8 b[4];
   } baulong;
 

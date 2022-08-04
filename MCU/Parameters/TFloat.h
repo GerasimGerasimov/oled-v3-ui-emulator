@@ -9,7 +9,7 @@ public:
 	TFloat(TSignalPropsPointers props);
 	~TFloat();
 private:
-	u16 Addr;
+	TGenaralCaseRawReturn getRawValue(const TSlotHandlerArsg& args);
 };
 
 #endif

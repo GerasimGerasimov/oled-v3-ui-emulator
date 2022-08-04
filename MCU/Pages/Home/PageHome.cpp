@@ -45,8 +45,8 @@ TPageHome::TPageHome(std::string Name)
     LabelInit.caption = "PWR.OK";
     pLTagUoutAve = new TTagLine("U1/RAM/DExS_PWR_OK/", LabelInit);
 
-    LabelInit.caption = "DVA";
-    pLTagIoutAve = new TTagLine("U1/CD/Modbus_Local1_DVA/", LabelInit);
+    LabelInit.caption = "DVA";  //"U1/CD/Modbus_Local1_DVA/"
+    pLTagIoutAve = new TTagLine("U1/CD/KadcUbusAB/", LabelInit);
 
     LabelInit.caption = "Un";
     pLTagSparkFrq = new TTagLine("U1/FLASH/Unominal/", LabelInit);
@@ -82,7 +82,9 @@ void TPageHome::SlotU1FLASHUpdate(TSlotHandlerArsg args) {
 }
 
 void TPageHome::SlotU1CDUpdate(TSlotHandlerArsg args) {
+    pLTagIoutAve->Value->setCaption(pLTagIoutAve->DataSrc->getValue(args, "%.4f"));
 
+    Msg::send_message(REPAINT, 0, 0);
 }
 
 
