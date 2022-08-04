@@ -1,10 +1,15 @@
 #include "generalcase.h"
-#include <parser.h>
+#include "parser.h"
+#include "ParametersUtils.h"
+#include "scaleutils.h"
+#include "Utils.h"
 
 TGeneralCaseSignal::TGeneralCaseSignal(TSignalPropsPointers props)
 	: TParameter(props)
 	, MSU(IniParser::getElementPtrByNumber(2, '/', props.pOptional)) {
 	strAddr = IniParser::getElementPtrByNumber(1, '/', props.pOptional);
+	Addr = ParametersUtils::getByteOffsetFromSlahedAddrStr(strAddr);
+	Scale = ScaleUtils::getScaleFromProps(props.dev, props.pOptional);
 }
 
 TGeneralCaseSignal::~TGeneralCaseSignal(){
@@ -40,5 +45,53 @@ std::string TGeneralCaseSignal::getMSU()
 void TGeneralCaseSignal::setValue() {}
 
 std::string TGeneralCaseSignal::getValue(const TSlotHandlerArsg& args, const char* format) {
-	return "TGeneralCaseSignal";
+	std::string res = validation(args);
+	return (res != "")
+		? res
+		: value(args, format);
+}
+
+typedef float (*TFuncRawToFloat) (TGenaralCaseRawReturn& input);
+
+static inline float getFloatFromU(TGenaralCaseRawReturn& input) {
+	float res = (float)input.raw.i;
+	return res;
+}
+
+static inline float getFloatFromS(TGenaralCaseRawReturn& input) {
+	float res = (float)input.raw.s;
+	return res;
+}
+
+static inline float getFloatFromF(TGenaralCaseRawReturn& input) {
+	float res = input.raw.f;
+	return res;
+}
+
+static const TFuncRawToFloat FuncRawToFloat[] = {
+	getFloatFromU,
+	getFloatFromS,
+	getFloatFromF
+};
+
+static inline float RawToFloat(TGenaralCaseRawReturn& input) {
+	float res = FuncRawToFloat[(u8)input.type](input);
+	return res;
+}
+
+std::string TGeneralCaseSignal::value(const TSlotHandlerArsg& args, const char* format) {
+	TGenaralCaseRawReturn input = getRawValue(args);
+	float res =  RawToFloat(input) * Scale;
+	return Utils::getValueAsFormatStr(res, format);
+}
+
+TGenaralCaseRawReturn TGeneralCaseSignal::getRawValue(const TSlotHandlerArsg& args) {
+	return { TGeneralCaseReturnType::U, 0};
+}
+
+std::string TGeneralCaseSignal::validation(const TSlotHandlerArsg& args) {
+	if (args.InputBufValidBytes == 0) return "***.**";
+	if (ParametersUtils::isAddrInvalid(Addr)) return "err.addr";
+	if ((Addr < args.StartAddrOffset) || (Addr > args.LastAddrOffset)) return "out.addr";
+	return "";
 }

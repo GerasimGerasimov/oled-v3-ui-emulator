@@ -9,7 +9,7 @@ public:
 	TS16BIT(TSignalPropsPointers props);
 	~TS16BIT();
 private:
-	u16 Addr;
+	virtual TGenaralCaseRawReturn getRawValue(const TSlotHandlerArsg& args);
 };
 
 #endif
