@@ -21,9 +21,6 @@ TGeneralCaseSignal::~TGeneralCaseSignal(){
 //Special case One
 p19802=P/C/TPrmList/xF0C9/r2064.H/msu//x03#9600/x04#19200/x05#57600/x06#115200/const/
 
-//Special case Two
-p13321=P/C/TBit    /xF042/mask/r2021.1/1/1/const/ вообще нет MSU
-
 //General case
 //общий случай для MSU.. но TODO сначала надо распарсить option там содержится msu 
                    |options

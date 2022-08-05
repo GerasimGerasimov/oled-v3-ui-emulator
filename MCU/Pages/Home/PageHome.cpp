@@ -42,8 +42,8 @@ TPageHome::TPageHome(std::string Name)
     LabelInit.caption = "Phi";
     pLTagIref = new TTagLine("U1/RAM/Phi/", LabelInit);
 
-    LabelInit.caption = "PWR.OK";
-    pLTagUoutAve = new TTagLine("U1/RAM/DExS_PWR_OK/", LabelInit);
+    LabelInit.caption = "UbusOK";
+    pLTagUoutAve = new TTagLine("U1/RAM/UbusOK/", LabelInit);
 
     LabelInit.caption = "DVA";  //"U1/CD/Modbus_Local1_DVA/"
     pLTagIoutAve = new TTagLine("U1/CD/KadcUbusAB/", LabelInit);
@@ -71,6 +71,8 @@ void TPageHome::SlotU1RAMUpdate(TSlotHandlerArsg args) {
     pLTagIref->Value->setCaption(pLTagIref->DataSrc->getValue(args, "%.2f"));
 
     pLTagOut->Value->setCaption(pLTagOut->DataSrc->getValue(args, "%.2f"));
+
+    pLTagUoutAve->Value->setCaption(pLTagUoutAve->DataSrc->getValue(args, ""));
 
     Msg::send_message(REPAINT, 0, 0);
 }

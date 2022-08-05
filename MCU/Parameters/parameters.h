@@ -7,7 +7,7 @@
 #include "signal.h"
 
 typedef struct {
-	u16 Addr;
+	s16 Addr;
 	u16 Option;
 } TSpecialSignalAddr;
 
