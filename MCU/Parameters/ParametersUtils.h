@@ -10,6 +10,7 @@ class ParametersUtils {
 public:
 	static s16 getByteOffsetFromSlahedAddrStr(char* addr);
 	static TSpecialSignalAddr getSpecialAddrForBit(char* addr);
+	static TSpecialSignalAddr getSpecialAddrForByte(char* addr);
 	static bool isAddrInvalid(s16 Addr);
 	static bool isAddrValid(s16 Addr);
 };
