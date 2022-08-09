@@ -13,7 +13,7 @@ bool TPageEditValue::ProcessMessage(TMessage* m) {
     switch (m->Event) {
         case KEYBOARD: {
             switch (m->p1) {
-            case kbESC:
+            case (u32)KeyCodes::ESC:
                 TRouter::goBack();
                 break;
             }

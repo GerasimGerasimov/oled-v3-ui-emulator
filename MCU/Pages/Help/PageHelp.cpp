@@ -8,11 +8,15 @@ void TPageHelp::view() {
 void TPageHelp::clear() {
 }
 
+void TPageHelp::onOpen() {
+    void* p = props;
+}
+
 bool TPageHelp::ProcessMessage(TMessage* m) {
     switch (m->Event) {
         case KEYBOARD: {
             switch (m->p1) {
-            case kbESC:
+            case (u32)KeyCodes::ESC :
                 TRouter::goBack();
                 break;
             }
@@ -26,7 +30,7 @@ bool TPageHelp::ProcessMessage(TMessage* m) {
 };
 
 void TPageHelp::goToTagInfoPage(int a) {
-    TRouter::setActivePage("Counters");
+    TRouter::setActivePage("Counters", NULL);
 }
 
 TPageHelp::TPageHelp(std::string Name)

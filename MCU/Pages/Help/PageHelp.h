@@ -10,6 +10,7 @@ class TPageHelp : public TPage
 public:
     virtual void view();
     virtual const u16 getHeight(void) { return 0; };
+    void onOpen();
     void clear();
     bool ProcessMessage(TMessage* m);
     TPageHelp(std::string Name);

@@ -9,3 +9,8 @@ TVisualObject::TVisualObject(TVisualObjectInitStructure props)
 }
 
 TVisualObject::~TVisualObject() {};
+
+std::vector<TVisualObject*> TVisualObject::getFocusedElements() {
+	std::vector<TVisualObject*> res = {};
+	return res;
+};

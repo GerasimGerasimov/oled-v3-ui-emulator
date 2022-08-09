@@ -165,6 +165,7 @@ void MainPage::keyBoardControlMCU(int cmd) {
     switch (LOWORD(cmd)) {
         case ID_BUTTON_F1 : 
             console::log(L"ID_BUTTON_F1\n");
+            Msg::send_message(KEYBOARD, (u32)KeyCodes::F1, 0);
             break;
         case ID_BUTTON_F2:
             console::log(L"ID_BUTTON_F2\n");
@@ -174,22 +175,22 @@ void MainPage::keyBoardControlMCU(int cmd) {
             break;
         case ID_BUTTON_ESC:
             console::log(L"ID_BUTTON_ESC\n");
-            Msg::send_message(KEYBOARD, kbESC, 0);
+            Msg::send_message(KEYBOARD, (u32)KeyCodes::ESC, 0);
             break;
         case ID_BUTTON_UP:
             console::log(L"ID_BUTTON_UP\n");
-            Msg::send_message(KEYBOARD, kbUp, 0);
+            Msg::send_message(KEYBOARD, (u32)KeyCodes::Up, 0);
             break;
         case ID_BUTTON_OK:
             console::log(L"ID_BUTTON_OK\n");
-            Msg::send_message(KEYBOARD, kbENT, 0);
+            Msg::send_message(KEYBOARD, (u32)KeyCodes::ENT, 0);
             break;
         case ID_BUTTON_LEFT:
             console::log(L"ID_BUTTON_LEFT\n");
             break;
         case ID_BUTTON_DOWN:
             console::log(L"ID_BUTTON_DOWN\n");
-            Msg::send_message(KEYBOARD, kbDown, 0);
+            Msg::send_message(KEYBOARD, (u32)KeyCodes::Down, 0);
             break;
         case ID_BUTTON_RIGHT:
             console::log(L"ID_BUTTON_RIGHT\n");

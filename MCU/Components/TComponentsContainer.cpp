@@ -22,3 +22,8 @@ const u16 TComponentsContainer::ItemsCount() const {
 
 TComponentsContainer::~TComponentsContainer() {
 };
+
+std::vector<TVisualObject*> TComponentsContainer::getFocusedElements() {
+	std::vector<TVisualObject*> res = {};
+	return res;
+};

@@ -12,7 +12,7 @@ public:
     static void Init(void);
     TRouter();
     ~TRouter();
-    static TPage* setActivePage(std::string PageName);
+    static TPage* setActivePage(std::string PageName, void* props);
     static void setBackPage(std::string url);
     static TPage* goBack();
     static TPage* Page;

@@ -13,12 +13,15 @@ public:
     TVisualObject* pFocusedElement;//элемент находящийся в фокусе
     virtual void view();//вывести объект на экране
     virtual const u16 getHeight(void) { return 0; };
+    virtual void onOpen();
     void clear();//очистит список
     bool ProcessMessage(TMessage* m);//обработчик сообщений
     TPage(std::string name);//конструктор
     TPage(std::string name, bool isOpenState, std::vector <TVisualObject*> Source = {});//конструктор
     ~TPage();//деструктор
-private:
+    void setProps(void* _props);
+protected:
+    void* props;
     std::string Name;
     std::string BackPage;
 };

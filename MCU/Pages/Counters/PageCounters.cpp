@@ -14,9 +14,9 @@ bool TPageCounters::ProcessMessage(TMessage* m) {
     switch (m->Event) {
         case KEYBOARD: {
             switch (m->p1) {
-            case kbESC:
-                TRouter::goBack();
-                break;
+                case (u32)KeyCodes::ESC:
+                    TRouter::goBack();
+                    break;
             }
         }
     }
@@ -29,7 +29,7 @@ bool TPageCounters::ProcessMessage(TMessage* m) {
 
 void TPageCounters::goToValueEditPage(int a) {
     //return (TRouter::setActivePage(URL) == NULL) ? false : true;
-    TRouter::setActivePage("EditValue");
+    TRouter::setActivePage("EditValue", NULL);
 }
 
 TPageCounters::TPageCounters(std::string Name)

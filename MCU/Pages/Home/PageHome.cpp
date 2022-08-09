@@ -12,9 +12,13 @@ bool TPageHome::ProcessMessage(TMessage* m) {
     switch (m->Event) {
         case KEYBOARD: {
             switch (m->p1) {
-            case kbESC:
-                TRouter::goBack();
-                break;
+                case (u32)KeyCodes::ESC:
+                    TRouter::setActivePage("MainMenu", NULL); //TRouter::goBack();
+                    return false;
+                case (u32)KeyCodes::F1:
+                    ISignal* p = getSignalOfFocusedChild();
+                    TRouter::setActivePage("Help", p);
+                    return false;
             }
         }
     }
@@ -25,8 +29,18 @@ bool TPageHome::ProcessMessage(TMessage* m) {
     return false;
 };
 
+/*TODO надо получить Сигнал который связан с элементом в фокусе*/
+ISignal* TPageHome::getSignalOfFocusedChild() {
+    for (auto& element : List) {
+        std::vector<TVisualObject*> res = element->getFocusedElements();
+        TVisualObject* e = (res.size() != 0) ? res[0] : NULL;
+
+    }
+    return NULL;
+}
+
 void TPageHome::goToTagInfoPage(int a) {
-    TRouter::setActivePage("Counters");
+    TRouter::setActivePage("Counters", NULL);
 }
 
 TPageHome::TPageHome(std::string Name)
@@ -67,11 +81,8 @@ TPageHome::TPageHome(std::string Name)
 
 void TPageHome::SlotU1RAMUpdate(TSlotHandlerArsg args) {
     pLTagUref->Value->setCaption(pLTagUref->DataSrc->getValue(args, "%.2f"));
-
     pLTagIref->Value->setCaption(pLTagIref->DataSrc->getValue(args, "%.2f"));
-
     pLTagOut->Value->setCaption(pLTagOut->DataSrc->getValue(args, "%.2f"));
-
     pLTagUoutAve->Value->setCaption(pLTagUoutAve->DataSrc->getValue(args, ""));
 
     Msg::send_message(REPAINT, 0, 0);

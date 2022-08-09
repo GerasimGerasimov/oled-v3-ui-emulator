@@ -18,6 +18,7 @@ class TComponentListVertical : public TComponentsContainer
     virtual const u16 getHeight(void);
     virtual void  Clear(void);//очистит список
     bool ProcessMessage(TMessage* m);//обработчик сообщений
+    std::vector<TVisualObject*> getFocusedElements();
     TComponentListVertical(std::vector <TVisualObject*> Source = {});//конструктор
     ~TComponentListVertical();//деструктор
     virtual bool onEnter(void);

@@ -3,6 +3,7 @@
 
 #include <stm32f4xx.h>
 #include "msg.h"
+#include <vector>
 
 struct TElementRect {
     s16 Left;  //
@@ -25,6 +26,7 @@ public:
     virtual void view(void) = 0;//вывести объект на экране
     virtual bool ProcessMessage(TMessage* m) { return true; };
     virtual const u16 getHeight(void) = 0;//вывести объект на экране
+    virtual std::vector<TVisualObject*> getFocusedElements();//для контейнеров
     TVisualObject();
     TVisualObject(TVisualObjectInitStructure props);
     virtual ~TVisualObject();

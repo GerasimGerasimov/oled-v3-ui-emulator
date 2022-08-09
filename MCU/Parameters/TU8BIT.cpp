@@ -49,7 +49,7 @@ u8 TU8BIT::getRawValue(const TSlotHandlerArsg& args) {
 }
 
 const std::string TU8BIT::validation(const TSlotHandlerArsg& args) {
-	if (args.InputBufValidBytes == 0) return "*";
+	if (args.InputBufValidBytes == 0) return "**.*";
 	if (ParametersUtils::isAddrInvalid(Addr.Addr)) return "err.addr";
 	if ((Addr.Addr < args.StartAddrOffset) || (Addr.Addr > args.LastAddrOffset)) return "out.addr";
 	return "";

@@ -36,16 +36,25 @@ LEFT | ENTER | RIGHT
 --------------------
   F1 | DOWN  |   F2
 */
-#define kbNone    0 //ниодна клавиша не нажата
-#define kbESC     1 //отмена (и выход на один уровень меню вверх)
-#define kbUp      72 //2 //стрелка вверх
-#define kbP       3 //вызов меню
-#define kbRight   4 //стрелка вправо
-#define kbENT     13//5 //выбор сделан
-#define kbLeft    6 //стрелка влево
-#define kbF2      7 //функциональная клавиша F2
-#define kbDown    80//8 //стрелка вниз
-#define kbF1      9 //функциональная клавиша F1
+/*
+const enum class ModbusReadRegsDefs {
+	CMD_POS = 1,
+	ANSW_BYTES_POS = 2,
+	ANSW_DATA_POS = 3
+};*/
+
+const enum class KeyCodes : u32 {
+	None    = 0, //ниодна клавиша не нажата
+	ESC     = 1, //отмена (и выход на один уровень меню вверх)
+	Up      = 72, //2 //стрелка вверх
+	P       = 3, //вызов меню
+	Right   = 4, //стрелка вправо
+	ENT     = 13,//5 //выбор сделан
+	Left    = 6, //стрелка влево
+	F2      = 7, //функциональная клавиша F2
+	Down    = 80,//8 //стрелка вниз
+	F1      = 9 //функциональная клавиша F1
+};
 
 typedef struct {//угу, вдруг мышь подключу ;-)
   u16 x;

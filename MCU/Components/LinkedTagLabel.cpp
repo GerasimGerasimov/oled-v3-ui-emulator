@@ -6,7 +6,7 @@ bool TLinkedTagLabel::ProcessMessage(TMessage* m) {
         case KEYBOARD: {//сообщения от клавиатуры
             if (inFocus) {
                 switch (m->p1) {
-                    case kbENT: {
+                    case (u32)KeyCodes::ENT: {
                         if (onEnterPressed != NULL) {
                             onEnterPressed(10);
                         }

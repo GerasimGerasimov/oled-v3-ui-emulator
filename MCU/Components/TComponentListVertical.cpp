@@ -9,11 +9,11 @@ bool TComponentListVertical::ProcessMessage(TMessage* m){//обработчик сообщений
     switch (m->Event) {
         case KEYBOARD:{//сообщения от клавиатуры
             switch (m->p1) {
-                case kbUp:{//кнопка вверх
+                case (u32)KeyCodes::Up:{//кнопка вверх
                     goUp();
                     break;
                 }
-                case kbDown:{//кнопка вниз
+                case (u32)KeyCodes::Down:{//кнопка вниз
                     goDown();
                     break;
                 }
@@ -39,6 +39,13 @@ void TComponentListVertical::goDown(void) {
     if ((FocusLine < (Count - 1)) && (Count != 0)) FocusLine++;
     List[FocusLine]->inFocus = true;//фокусировка строки
 }
+
+std::vector<TVisualObject*> TComponentListVertical::getFocusedElements() {
+    std::vector<TVisualObject*> res = {};
+    TVisualObject* p = List[FocusLine];
+    if (p->inFocus) res.push_back(p);
+    return res;
+};
 
 void TComponentListVertical::view(void){//вывести объект на экране
     if (ItemsCount() == 0) return;//рисовать нечего
