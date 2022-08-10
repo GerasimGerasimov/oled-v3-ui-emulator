@@ -1,16 +1,24 @@
 #include "common.h"
 //бaзовый класс визуальных объектов
-TVisualObject::TVisualObject() {};
+TVisualObject::TVisualObject()
+	: inFocus(false)
+	, ElementRect({0,0,0,0})
+	, DataSrc(NULL) {
+};
 
 TVisualObject::TVisualObject(TVisualObjectInitStructure props)
 	: inFocus(props.focused)
-    , ElementRect(props.Rect) {
+    , ElementRect(props.Rect)
+	, DataSrc(NULL) {
 
 }
 
 TVisualObject::~TVisualObject() {};
 
-std::vector<TVisualObject*> TVisualObject::getFocusedElements() {
-	std::vector<TVisualObject*> res = {};
-	return res;
+TVisualObject* TVisualObject::getFocusedElement() {
+	return NULL;
 };
+
+void* TVisualObject::getDataSrc() {
+	return DataSrc;
+}

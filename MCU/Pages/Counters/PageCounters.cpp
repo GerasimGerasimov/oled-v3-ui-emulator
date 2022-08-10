@@ -28,8 +28,7 @@ bool TPageCounters::ProcessMessage(TMessage* m) {
 };
 
 void TPageCounters::goToValueEditPage(int a) {
-    //return (TRouter::setActivePage(URL) == NULL) ? false : true;
-    TRouter::setActivePage("EditValue", NULL);
+    TRouter::setTask({ false, "EditValue", NULL });
 }
 
 TPageCounters::TPageCounters(std::string Name)

@@ -40,11 +40,13 @@ void TComponentListVertical::goDown(void) {
     List[FocusLine]->inFocus = true;//фокусировка строки
 }
 
-std::vector<TVisualObject*> TComponentListVertical::getFocusedElements() {
-    std::vector<TVisualObject*> res = {};
-    TVisualObject* p = List[FocusLine];
-    if (p->inFocus) res.push_back(p);
-    return res;
+TVisualObject* TComponentListVertical::getFocusedElement() {
+    if (List.size()) {
+        TVisualObject* p = List.at(FocusLine);
+        return p;
+    }
+    
+    return NULL;
 };
 
 void TComponentListVertical::view(void){//вывести объект на экране

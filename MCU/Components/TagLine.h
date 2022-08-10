@@ -14,7 +14,6 @@ public:
     TTagLine(std::string tag, TLabelInitStructure init);//конструктор
     ~TTagLine();//деструктор
     void view(void);//вывести строку на экране
-    TParameter* DataSrc;
     TLabel* Value;
 private:
     TLabel* Caption;

@@ -9,6 +9,7 @@ void TPageHelp::clear() {
 }
 
 void TPageHelp::onOpen() {
+    /*TODO от сюда начинается форсирование инфы для хелпа, TParameter уже присвоен его на обработать*/
     void* p = props;
 }
 
@@ -30,7 +31,7 @@ bool TPageHelp::ProcessMessage(TMessage* m) {
 };
 
 void TPageHelp::goToTagInfoPage(int a) {
-    TRouter::setActivePage("Counters", NULL);
+    TRouter::setTask({ false, "Counters", NULL });
 }
 
 TPageHelp::TPageHelp(std::string Name)

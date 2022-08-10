@@ -27,6 +27,7 @@ void App::run(void) {
 
     TMessage m;
     while (true) {
+        TRouter::chekNextPage();
         if (Msg::get_message(&m)) {
             if (TRouter::Page) {
                 TRouter::Page->ProcessMessage(&m);

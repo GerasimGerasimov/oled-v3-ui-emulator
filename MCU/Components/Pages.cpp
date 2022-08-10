@@ -36,3 +36,11 @@ TPage::TPage(std::string name, bool isOpenState, std::vector <TVisualObject*> So
 }
 
 TPage::~TPage() {};//деструктор
+
+void TPage::startToClose() {
+
+}
+
+bool TPage::isClosed() {
+	return true;
+}

@@ -6,18 +6,30 @@
 #include "stm32f4xx.h"
 #include "msg.h"
 
+typedef struct TRouterTask {
+    bool isDone;
+    std::string NextPage;
+    void* props;
+};
+
+
 class TRouter {
 public:
     static void ProcessMessage(TMessage* m);
     static void Init(void);
     TRouter();
     ~TRouter();
-    static TPage* setActivePage(std::string PageName, void* props);
     static void setBackPage(std::string url);
     static TPage* goBack();
     static TPage* Page;
     static TPage* BackPage;
+    static bool changeToNextPage();
+    static bool chekNextPage();
+    static void setTask(TRouterTask task);
 private:
+    static TPage* setActivePage(std::string PageName, void* props);
+    static void setInitPage();
+    static TRouterTask RouterTask;
     static std::map<std::string, TPage*> Pages;
 };
 

@@ -20,6 +20,8 @@ public:
     TPage(std::string name, bool isOpenState, std::vector <TVisualObject*> Source = {});//конструктор
     ~TPage();//деструктор
     void setProps(void* _props);
+    virtual void startToClose();
+    virtual bool isClosed();
 protected:
     void* props;
     std::string Name;

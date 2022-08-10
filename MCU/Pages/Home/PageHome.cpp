@@ -13,12 +13,12 @@ bool TPageHome::ProcessMessage(TMessage* m) {
         case KEYBOARD: {
             switch (m->p1) {
                 case (u32)KeyCodes::ESC:
-                    TRouter::setActivePage("MainMenu", NULL); //TRouter::goBack();
-                    return false;
+                    TRouter::setTask({ false, "MainMenu", NULL });
+                    break;
                 case (u32)KeyCodes::F1:
                     ISignal* p = getSignalOfFocusedChild();
-                    TRouter::setActivePage("Help", p);
-                    return false;
+                    TRouter::setTask({ false, "Help", p });
+                    break;
             }
         }
     }
@@ -32,15 +32,15 @@ bool TPageHome::ProcessMessage(TMessage* m) {
 /*TODO надо получить Сигнал который связан с элементом в фокусе*/
 ISignal* TPageHome::getSignalOfFocusedChild() {
     for (auto& element : List) {
-        std::vector<TVisualObject*> res = element->getFocusedElements();
-        TVisualObject* e = (res.size() != 0) ? res[0] : NULL;
-
+        TVisualObject* res = element->getFocusedElement();
+        TParameter* e = (res) ? (TParameter*) res->getDataSrc() : NULL;
+        if (e) return e;
     }
     return NULL;
 }
 
 void TPageHome::goToTagInfoPage(int a) {
-    TRouter::setActivePage("Counters", NULL);
+    TRouter::setTask({ false, "Counters", NULL });
 }
 
 TPageHome::TPageHome(std::string Name)
@@ -79,18 +79,19 @@ TPageHome::TPageHome(std::string Name)
     HandlerSubscribers::set("U1/CD/", [this](TSlotHandlerArsg args) { SlotU1CDUpdate(args); });
 };
 
+//        //((TParameter*)DataSrc)
 void TPageHome::SlotU1RAMUpdate(TSlotHandlerArsg args) {
-    pLTagUref->Value->setCaption(pLTagUref->DataSrc->getValue(args, "%.2f"));
-    pLTagIref->Value->setCaption(pLTagIref->DataSrc->getValue(args, "%.2f"));
-    pLTagOut->Value->setCaption(pLTagOut->DataSrc->getValue(args, "%.2f"));
-    pLTagUoutAve->Value->setCaption(pLTagUoutAve->DataSrc->getValue(args, ""));
+    pLTagUref->Value->setCaption(((TParameter*)pLTagUref->getDataSrc())->getValue(args, "%.2f"));
+    pLTagIref->Value->setCaption(((TParameter*)pLTagIref->getDataSrc())->getValue(args, "%.2f"));
+    pLTagOut->Value->setCaption(((TParameter*)pLTagOut->getDataSrc())->getValue(args, "%.2f"));
+    pLTagUoutAve->Value->setCaption(((TParameter*)pLTagUoutAve->getDataSrc())->getValue(args, ""));
 
     Msg::send_message(REPAINT, 0, 0);
 }
 
 void TPageHome::SlotU1FLASHUpdate(TSlotHandlerArsg args) {
-    pLTagSparkFrq->Value->setCaption(pLTagSparkFrq->DataSrc->getValue(args, "%.0f"));
-    pLTagIoutAve->Value->setCaption(pLTagIoutAve->DataSrc->getValue(args, "%.0f"));
+    pLTagSparkFrq->Value->setCaption(((TParameter*)pLTagSparkFrq->getDataSrc())->getValue(args, "%.0f"));
+    pLTagIoutAve->Value->setCaption(((TParameter*)pLTagIoutAve->getDataSrc())->getValue(args, "%.0f"));
     Msg::send_message(REPAINT, 0, 0);
 }
 

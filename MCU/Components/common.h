@@ -26,10 +26,13 @@ public:
     virtual void view(void) = 0;//вывести объект на экране
     virtual bool ProcessMessage(TMessage* m) { return true; };
     virtual const u16 getHeight(void) = 0;//вывести объект на экране
-    virtual std::vector<TVisualObject*> getFocusedElements();//для контейнеров
+    virtual TVisualObject* getFocusedElement();//для контейнеров
     TVisualObject();
     TVisualObject(TVisualObjectInitStructure props);
     virtual ~TVisualObject();
+    void* getDataSrc();
+protected:
+    void* DataSrc;
 };
 
 #endif

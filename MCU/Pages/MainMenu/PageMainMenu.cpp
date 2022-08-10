@@ -20,7 +20,7 @@ bool TPageMainMenu::ProcessMessage(TMessage* m) {
         case KEYBOARD: {
             switch (m->p1) {
             case (u32)KeyCodes::ESC:
-                TRouter::setActivePage("Home", NULL);//TRouter::goBack();
+                TRouter::setTask({ false, "Home", NULL });
                 break;
             }
         }
@@ -33,7 +33,7 @@ bool TPageMainMenu::ProcessMessage(TMessage* m) {
 };
 
 void TPageMainMenu::goToCountersPage(int a) {
-    TRouter::setActivePage("Counters", NULL);
+    TRouter::setTask({ false, "Counters", NULL });
 }
 
 TPageMainMenu::TPageMainMenu(std::string Name)
