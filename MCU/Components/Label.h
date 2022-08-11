@@ -10,10 +10,11 @@ struct TColorScheme {
     u16 BackGround;
 };
 
-enum class LabelsStyle {
+enum class LabelsStyle : u32 {
     LS_DINAMIC = 1,
     LS_FIXED   = 2,
-    LS_BGRN_TRANSPARENT = 4
+    LS_BGRN_TRANSPARENT = 4,
+    ALIGN_CENTER = 8
 };
 
 
@@ -40,10 +41,12 @@ public:
 protected:
     std::string Font;
     std::string Caption;
+    TTextSizes TextSize;
     TColorScheme PrimaryColor; //основная цветовая схема 
     TColorScheme SelectedColor;//цветовая схема при выделении
     int Style;
-    void fillBackGround(TColorScheme ColorScheme);
+    void fillBackGround(TColorScheme& ColorScheme);
+    void outCaption(TColorScheme& ColorScheme);
 };
 
 #endif

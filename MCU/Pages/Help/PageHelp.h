@@ -3,7 +3,8 @@
 
 #include "Pages.h"
 #include "TComponentListVertical.h"
-#include "LinkedTagLabel.h"
+#include "Label.h"
+#include "WrappedText.h"
 
 class TPageHelp : public TPage
 {
@@ -17,8 +18,8 @@ public:
     ~TPageHelp();
 private:
     TComponentListVertical* MainMenu;
-    TLinkedTagLabel* pLTagUref;
-    void goToTagInfoPage(int a);
+    TLabel* pHeader;
+    TWrappedText* pText;
 };
 
 #endif

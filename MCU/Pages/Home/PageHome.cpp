@@ -17,7 +17,9 @@ bool TPageHome::ProcessMessage(TMessage* m) {
                     break;
                 case (u32)KeyCodes::F1:
                     ISignal* p = getSignalOfFocusedChild();
-                    TRouter::setTask({ false, "Help", p });
+                    if (p) {
+                        TRouter::setTask({ false, "Help", p });
+                    }
                     break;
             }
         }
@@ -29,7 +31,6 @@ bool TPageHome::ProcessMessage(TMessage* m) {
     return false;
 };
 
-/*TODO надо получить Сигнал который связан с элементом в фокусе*/
 ISignal* TPageHome::getSignalOfFocusedChild() {
     for (auto& element : List) {
         TVisualObject* res = element->getFocusedElement();

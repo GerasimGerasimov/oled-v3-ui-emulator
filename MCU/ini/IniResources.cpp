@@ -41,7 +41,7 @@ std::string IniResources::getComment(const TValueSearchStruct& srch) {
 	return std::string();
 }
 
-/*TODO выдать указатель на сигнал по его тегу*/
+/*выдать указатель на сигнал по его тегу*/
 //tag = "U1/RAM/Iexc/"
 //узнать какой DEVx является описанием для Ux цстройства
 //и перекодировать U1/RAM/Iexc/ в DEV1/RAM/Iexc/

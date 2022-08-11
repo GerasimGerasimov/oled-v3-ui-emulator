@@ -6,11 +6,11 @@
 #include "stm32f4xx.h"
 #include "msg.h"
 
-typedef struct TRouterTask {
+typedef struct {
     bool isDone;
     std::string NextPage;
     void* props;
-};
+} TRouterTask ;
 
 
 class TRouter {

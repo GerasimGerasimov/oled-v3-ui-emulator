@@ -166,6 +166,7 @@
     <ClCompile Include="MCU\Components\TagLine.cpp" />
     <ClCompile Include="MCU\Components\TComponentListVertical.cpp" />
     <ClCompile Include="MCU\Components\TComponentsContainer.cpp" />
+    <ClCompile Include="MCU\Components\WrappedText.cpp" />
     <ClCompile Include="MCU\DevicePollManager\DevicePollManager.cpp" />
     <ClCompile Include="MCU\DevicePollManager\Slot.cpp" />
     <ClCompile Include="MCU\DevicesValues\DevicesValuesHandler.cpp" />

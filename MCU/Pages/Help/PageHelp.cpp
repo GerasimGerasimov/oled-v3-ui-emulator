@@ -1,5 +1,6 @@
 #include "PageHelp.h"
 #include "Router.h"
+#include "parameters.h"
 
 void TPageHelp::view() {
     MainMenu->view();
@@ -10,7 +11,8 @@ void TPageHelp::clear() {
 
 void TPageHelp::onOpen() {
     /*TODO от сюда начинается форсирование инфы для хелпа, TParameter уже присвоен его на обработать*/
-    void* p = props;
+    TParameter* p = (TParameter*)props;
+    pHeader->setCaption(p->getName());
 }
 
 bool TPageHelp::ProcessMessage(TMessage* m) {
@@ -30,23 +32,20 @@ bool TPageHelp::ProcessMessage(TMessage* m) {
     return false;
 };
 
-void TPageHelp::goToTagInfoPage(int a) {
-    TRouter::setTask({ false, "Counters", NULL });
-}
-
 TPageHelp::TPageHelp(std::string Name)
     :TPage(Name) {
     TLabelInitStructure LabelInit;
-    LabelInit.style = LabelsStyle::LS_DINAMIC;
+    LabelInit.style = (LabelsStyle)((u32) LabelsStyle::LS_FIXED | (u32) LabelsStyle::ALIGN_CENTER);
     LabelInit.Rect = { 10, 10, 10, 10 };
-    LabelInit.focused = false;
+    LabelInit.focused = true;
 
-    LabelInit.caption = "Uref";
-    pLTagUref = new TLinkedTagLabel("U1.RAM.Uref", LabelInit);
-    pLTagUref->onEnterPressed = [this](int arg) { goToTagInfoPage(arg); };
+    LabelInit.caption = "---";
+    pHeader = new TLabel(LabelInit);
+
+    pText = new TWrappedText(LabelInit);
 
 
-    MainMenu = new TComponentListVertical({ pLTagUref });
+    MainMenu = new TComponentListVertical({ pHeader, pText });
 
     AddList({ MainMenu });
 };

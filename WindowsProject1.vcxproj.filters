@@ -272,6 +272,9 @@
     <ClCompile Include="MCU\Parameters\scaleutils.cpp">
       <Filter>App\Parameters</Filter>
     </ClCompile>
+    <ClCompile Include="MCU\Components\WrappedText.cpp">
+      <Filter>App\Components</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="WindowsProject1.rc">
