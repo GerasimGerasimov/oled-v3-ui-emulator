@@ -10,9 +10,10 @@ void TPageHelp::clear() {
 }
 
 void TPageHelp::onOpen() {
-    /*TODO от сюда начинается форсирование инфы для хелпа, TParameter уже присвоен его на обработать*/
     TParameter* p = (TParameter*)props;
     pHeader->setCaption(p->getName());
+    //pText->setText(p->getComment());
+    pText->setText("Частота генератора привет пока !");
 }
 
 bool TPageHelp::ProcessMessage(TMessage* m) {
@@ -36,7 +37,7 @@ TPageHelp::TPageHelp(std::string Name)
     :TPage(Name) {
     TLabelInitStructure LabelInit;
     LabelInit.style = (LabelsStyle)((u32) LabelsStyle::LS_FIXED | (u32) LabelsStyle::ALIGN_CENTER);
-    LabelInit.Rect = { 10, 10, 10, 10 };
+    LabelInit.Rect = { 10, 10, 10, VIEW_PORT_MAX_WIDTH };
     LabelInit.focused = true;
 
     LabelInit.caption = "---";

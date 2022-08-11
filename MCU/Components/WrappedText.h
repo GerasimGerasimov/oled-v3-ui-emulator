@@ -17,6 +17,7 @@ public:
     TWrappedText(TLabelInitStructure init);//конструктор
     ~TWrappedText();//деструктор
 private:
+    std::string Font;
     std::vector<std::string> List;
     void outText();
     void fillBackGround();
