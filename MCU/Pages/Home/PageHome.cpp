@@ -47,7 +47,7 @@ void TPageHome::goToTagInfoPage(int a) {
 TPageHome::TPageHome(std::string Name)
     :TPage(Name) {
     TLabelInitStructure LabelInit;
-    LabelInit.style = LabelsStyle::LS_DINAMIC;
+    LabelInit.style = LabelsStyle::WIDTH_DINAMIC;
     LabelInit.Rect = { 10, 10, 10, 10 };
     LabelInit.focused = false;
 

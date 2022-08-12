@@ -3,7 +3,7 @@
 
 #include "Pages.h"
 #include "TComponentListVertical.h"
-#include "Label.h"
+#include "HeaderLabel.h"
 #include "WrappedText.h"
 
 class TPageHelp : public TPage
@@ -18,7 +18,7 @@ public:
     ~TPageHelp();
 private:
     TComponentListVertical* MainMenu;
-    TLabel* pHeader;
+    THeaderLabel* pHeader;
     TWrappedText* pText;
 };
 

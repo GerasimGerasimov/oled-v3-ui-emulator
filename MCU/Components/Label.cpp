@@ -2,10 +2,12 @@
 
 //класс "строка текста"
 void  TLabel::view(void) {//вывести строку на экране
-    TColorScheme ColorScheme = (inFocus)
+    TColorScheme ColorScheme = 
+        (Style & (int)LabelsStyle::HOLD_SELECTED_STYLE)
         ? SelectedColor
-        : PrimaryColor;
-
+        : (inFocus)
+            ? SelectedColor
+            : PrimaryColor;
     fillBackGround(ColorScheme);
     outCaption(ColorScheme);
 }
@@ -13,7 +15,7 @@ void  TLabel::view(void) {//вывести строку на экране
 void TLabel::outCaption(TColorScheme& ColorScheme) {
     s16 Left = ElementRect.Left;
     s16 Top = ElementRect.Top;
-    if (Style & (int)LabelsStyle::ALIGN_CENTER) {
+    if (Style & (int)LabelsStyle::TEXT_ALIGN_CENTER) {
         /*посчитать середину зная ширину текста и ElementRect.Width*/
         Left = (ElementRect.Width - TextSize.width) / 2;
     }
@@ -26,7 +28,7 @@ const u16 TLabel::getHeight(void) {
 }
 
 void TLabel::fillBackGround(TColorScheme& ColorScheme) {
-    if (Style & (int)LabelsStyle::LS_BGRN_TRANSPARENT) return;
+    if (Style & (int)LabelsStyle::BGRND_TRANSPARENT) return;
     TTextSizes tsizes = getSize();
     TFillRect rect{ ElementRect.Left, ElementRect.Top, tsizes.width, tsizes.height, ColorScheme.BackGround };
     TGrahics::fillRect(rect);
@@ -35,7 +37,7 @@ void TLabel::fillBackGround(TColorScheme& ColorScheme) {
 void TLabel::setCaption(std::string caption) {//добавить/изменить текст в строке
     if (Caption != caption) {
         Caption = caption;
-        if (Style & (int)LabelsStyle::ALIGN_CENTER) {
+        if (Style & (int)LabelsStyle::TEXT_ALIGN_CENTER) {
             TextSize = TMCUFonts::getTextSizes(Caption, Font);
         }
     }
@@ -46,7 +48,7 @@ void TLabel::setFont(std::string font) {//добавить/изменить текст в строке
 }
 
 TTextSizes TLabel::getSize(void) {
-    if (Style == (int)LabelsStyle::LS_DINAMIC) {
+    if (Style == (int)LabelsStyle::WIDTH_DINAMIC) {
         return TMCUFonts::getTextSizes(Caption, Font);
     }
     else {

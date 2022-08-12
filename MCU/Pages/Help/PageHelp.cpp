@@ -12,7 +12,9 @@ void TPageHelp::clear() {
 void TPageHelp::onOpen() {
     TParameter* p = (TParameter*)props;
     pHeader->setCaption(p->getName());
-    pText->setText(p->getComment());
+    //pText->setText(p->getComment());
+    pText->setText("Вот это поведение поменялось? что самое интересное, после того как она заглючит"
+                    "в первый раз потом глючит стабильно даже угол крутить не надо... помогает только долгая перезагрузка");
 }
 
 bool TPageHelp::ProcessMessage(TMessage* m) {
@@ -35,17 +37,18 @@ bool TPageHelp::ProcessMessage(TMessage* m) {
 TPageHelp::TPageHelp(std::string Name)
     :TPage(Name) {
     TLabelInitStructure LabelInit;
-    LabelInit.style = (LabelsStyle)((u32) LabelsStyle::LS_FIXED | (u32) LabelsStyle::ALIGN_CENTER);
+    LabelInit.style = (LabelsStyle)((u32) LabelsStyle::WIDTH_FIXED | (u32) LabelsStyle::TEXT_ALIGN_CENTER);
     LabelInit.Rect = { 10, 10, 10, VIEW_PORT_MAX_WIDTH };
     LabelInit.focused = true;
 
     LabelInit.caption = "---";
-    pHeader = new TLabel(LabelInit);
+    pHeader = new THeaderLabel(LabelInit);
 
     pText = new TWrappedText(LabelInit);
 
-
     MainMenu = new TComponentListVertical({ pHeader, pText });
+
+    pText->ElementRect.Height = MainMenu->ElementRect.Height - pHeader->getHeight();
 
     AddList({ MainMenu });
 };

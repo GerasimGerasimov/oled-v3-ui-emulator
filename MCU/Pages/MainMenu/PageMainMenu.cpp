@@ -39,7 +39,7 @@ void TPageMainMenu::goToCountersPage(int a) {
 TPageMainMenu::TPageMainMenu(std::string Name)
     :TPage(Name) {
     TLabelInitStructure LabelInit;
-    LabelInit.style = LabelsStyle::LS_DINAMIC;
+    LabelInit.style = LabelsStyle::WIDTH_DINAMIC;
     LabelInit.Rect = { 10, 10, 10, 10 };
     LabelInit.caption = "Counters>";
     LabelInit.focused = true;

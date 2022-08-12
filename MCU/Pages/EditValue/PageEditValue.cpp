@@ -29,7 +29,7 @@ bool TPageEditValue::ProcessMessage(TMessage* m) {
 TPageEditValue::TPageEditValue(std::string Name)
     :TPage(Name) {
     TLabelInitStructure LabelInit;
-    LabelInit.style = LabelsStyle::LS_DINAMIC;
+    LabelInit.style = LabelsStyle::WIDTH_DINAMIC;
     LabelInit.Rect = { 10, 10, 10, 10 };
     LabelInit.caption = "1 Привет Edit";
     LabelInit.focused = false;

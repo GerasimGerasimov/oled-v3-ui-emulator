@@ -1,13 +1,29 @@
 #include "WrappedText.h"
 #include "parser.h"
 
+/*TODO Требуется обработка для многострочного текста не помещающегося на одном экране*/
 bool TWrappedText::ProcessMessage(TMessage* m) {
     return true;
 }
 
 void  TWrappedText::view(void) {//вывести строку на экране
-    fillBackGround();
-    outText();
+    if (List.size() == 0) return;//рисовать нечего
+    TGrahics::fillRect({ ElementRect.Left, ElementRect.Top , ElementRect.Width, ElementRect.Height, 0 });
+    //подсчитать, сколько объектов(строк) умещаются в высоту TMenu начиная с FirstPosition
+    //при этом, FocusLine входит в множество между FirstPosition и LastPosition
+    u16 c = GetViewObjectsCount();//кол-во объектов умещающихся в высоту меню от FirstPosition до нижнего края
+                                //это и есть кол-во объектов выводимых на экран (об их высоте уже можно не волноваться)
+    u16 i = FirstPosition;//кол-во объектов выводимых на экран
+    u16 h = ElementRect.Top;//текущая координата Y вывода строки
+    u16 Left = ElementRect.Left;
+    u16 Top = ElementRect.Top;
+    u16 hf = TMCUFonts::getFontHeight(Font);
+    //первая выводимая строка, в качестве начальных координат имеет начальные координаты TMenu
+    while (i != LastPosition) {//отображаю элеменыт если в списке что-то есть 
+        TGrahics::outText(List[i], Left, Top, 1, Font);
+        Top += hf;
+        i++;                    //перехожу к следующей строке
+    }
 }
 
 void TWrappedText::outText() {
@@ -33,7 +49,7 @@ void TWrappedText::fillBackGround() {
     */
 }
 
-/*TODO сюда попадает строка, в которой в т.ч. могут быть и символ переноса строки.
+/*сюда попадает строка, в которой в т.ч. могут быть и символ переноса строки.
 Надо разбить на строки входяшие в ширину экрана. Каждый символ переноса начинает новую строку.
 Начать с разбивки строки на слова разделённые пробелами, потом формировать строки
 Если слово длинное, то его надо тоже разбивать на части, не соблюдая правила переноса*/
@@ -62,16 +78,47 @@ void TWrappedText::setText(std::string text) {//добавить/изменить текст в строке
     }
     List.clear();
     List = res;
+    FocusLine = 0;
+    FirstPosition = 0; //первая отображаемая строка начинаю выводить с неё
+    LastPosition = 0; //последняя отображаемая строка
 }
 
 TTextSizes TWrappedText::getSize(void) {
-    u16 h = List.size() * TMCUFonts::getFontHeight(Font);
-    return { ElementRect.Width, h };
+    //u16 h = List.size() * TMCUFonts::getFontHeight(Font);
+    return { ElementRect.Width, TMCUFonts::getFontHeight(Font) };
+}
+
+u16 TWrappedText::GetViewObjectsCount() {//кол-во строк умещающихся в высоту меню от FirstPosition до нижнего края
+//при этом контролирую границы
+    if (FocusLine <= FirstPosition)  FirstPosition = FocusLine;//если выше верхней
+    if ((FocusLine >= LastPosition) && (FocusLine < List.size()))  FirstPosition++;//если ниже нижней, но не больше чем есть в списке, то подвинуть строчку
+    u16 i = FirstPosition;
+    u16 c = 0;//счётчик строк
+    u16 h = 0; //высота объекта
+    u16 sh = TMCUFonts::getFontHeight(Font);//высота строки
+    while (h <= ElementRect.Height) {//
+        if (i < List.size()) {
+            h += sh;//увеличиваю высоту
+            i++; //увеличиваю указатель на объект
+            c++; //приращение кол-ва строк умещающихся в видимой части списка
+        }
+        else {//кончились строки
+            LastPosition = FirstPosition + c;//вычислю номер последней отображаемой строки
+            return c;
+        }
+    }
+    //высота превысила допустимую
+    if (c > 0) c--;//отступлю назад
+    LastPosition = FirstPosition + c;//вычислю номер последней отображаемой строки
+    return c;
 }
 
 TWrappedText::TWrappedText(TLabelInitStructure init)
     : TVisualObject({init.focused, init.Rect })
     , Font((init.font != "") ? init.font : "Verdana12")
+    , FocusLine(0)
+    , FirstPosition(0)//первая отображаемая строка начинаю выводить с неё
+    , LastPosition(0) //последняя отображаемая строка
     /*
     , PrimaryColor(init.PrimaryColor)
     , SelectedColor(init.SelectedColor)

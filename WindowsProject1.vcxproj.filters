@@ -275,6 +275,9 @@
     <ClCompile Include="MCU\Components\WrappedText.cpp">
       <Filter>App\Components</Filter>
     </ClCompile>
+    <ClCompile Include="MCU\Components\HeaderLabel.cpp">
+      <Filter>App\Components</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="WindowsProject1.rc">

@@ -11,10 +11,11 @@ struct TColorScheme {
 };
 
 enum class LabelsStyle : u32 {
-    LS_DINAMIC = 1,
-    LS_FIXED   = 2,
-    LS_BGRN_TRANSPARENT = 4,
-    ALIGN_CENTER = 8
+    WIDTH_DINAMIC = 1,
+    WIDTH_FIXED   = 2,
+    BGRND_TRANSPARENT = 4,
+    TEXT_ALIGN_CENTER = 8,
+    HOLD_SELECTED_STYLE = 16
 };
 
 
@@ -22,7 +23,7 @@ struct TLabelInitStructure {
     bool focused = false;
     std::string caption = "";
     std::string font = "Verdana12";
-    LabelsStyle style = LabelsStyle::LS_DINAMIC;
+    LabelsStyle style = LabelsStyle::WIDTH_DINAMIC;
     TColorScheme PrimaryColor = { PRIMARY_COLOR , BACKGROUND_COLOR }; //основная цветовая схема 
     TColorScheme SelectedColor = { BACKGROUND_COLOR, PRIMARY_COLOR };//цветовая схема при выделении
     TElementRect Rect = { 0, 0, 64, 10 };
