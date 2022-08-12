@@ -11,14 +11,12 @@ void  TWrappedText::view(void) {//вывести строку на экране
 }
 
 void TWrappedText::outText() {
-    /*
     s16 Left = ElementRect.Left;
     s16 Top = ElementRect.Top;
-    if (Style & (int)LabelsStyle::ALIGN_CENTER) {
-        Left = (ElementRect.Width - TextSize.width) / 2;
+    for (auto const text : List) {
+        TGrahics::outText(text, Left, Top, 1, Font);
+        Top+= TMCUFonts::getFontHeight(Font);
     }
-    TGrahics::outText(Caption, Left, Top, ColorScheme.Color, Font);
-    */
 }
 
 const u16 TWrappedText::getHeight(void) {
@@ -42,38 +40,33 @@ void TWrappedText::fillBackGround() {
 
 void TWrappedText::setText(std::string text) {//добавить/изменить текст в строке
     //теперь группировать по предложениям вмещающимся в ширину этого элемента
-    std::vector<std::string> sentences = {};
+    std::vector<std::string> res = {};
     u16 maxwidth = ElementRect.Width;
     std::string s = "";
     for (const char c: text) {
         if (c == '\n') {
-            sentences.push_back(s);
-            sentences.push_back("");
+            res.push_back(s);
+            res.push_back("");
             s = "";
             continue;
         }
         TTextSizes ts = TMCUFonts::getTextSizes(s+c, Font);
         if (ts.width > maxwidth) {
-            sentences.push_back(s);
+            res.push_back(s);
             s = "";
         }
         s += c;
     }
     if (s != "") {
-        sentences.push_back(s);
+        res.push_back(s);
     }
-
+    List.clear();
+    List = res;
 }
 
 TTextSizes TWrappedText::getSize(void) {
-    /*
-    if (Style == (int)LabelsStyle::LS_DINAMIC) {
-        return TMCUFonts::getTextSizes(Caption, Font);
-    }
-    else {
-        return { ElementRect.Width, ElementRect.Height };
-    }*/
-    return { ElementRect.Width, ElementRect.Height };
+    u16 h = List.size() * TMCUFonts::getFontHeight(Font);
+    return { ElementRect.Width, h };
 }
 
 TWrappedText::TWrappedText(TLabelInitStructure init)

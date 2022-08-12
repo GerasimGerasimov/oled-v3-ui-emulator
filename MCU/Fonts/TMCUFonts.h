@@ -18,6 +18,7 @@ struct TMCUFonts {
 		static void init(void);
 		static pMCUFont getFont(std::string name);
 		static TTextSizes getTextSizes(std::string text, std::string FontName);
+		static u16 getFontHeight(std::string FontName);
 		static std::map<std::string, pMCUFont > fonts;
 };
 

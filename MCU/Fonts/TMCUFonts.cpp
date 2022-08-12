@@ -22,3 +22,11 @@ TTextSizes TMCUFonts::getTextSizes(std::string text, std::string FontName) {
 	}
 	return { width, height };
 }
+
+u16 TMCUFonts::getFontHeight(std::string FontName) {
+	if (fonts.count(FontName)) {
+		pMCUFont font = fonts[FontName];
+		return font->height;
+	}
+	return 0;
+}
