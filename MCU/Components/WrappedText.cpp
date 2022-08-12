@@ -40,16 +40,12 @@ void  TWrappedText::view(void) {//вывести строку на экране
 }
 
 void TWrappedText::goUp(void) {
-    //List[FocusLine]->inFocus = false;//расфокусировка предыдущей строки
-    if (FocusLine > 0) FocusLine--;
-    //List[FocusLine]->inFocus = true;//фокусировка строки
+    if (FirstPosition > 0) FirstPosition --;
 }
 
 void TWrappedText::goDown(void) {
     u16 Count = List.size();
-    //List[FocusLine]->inFocus = false;//расфокусировка предыдущей строки
-    if ((FocusLine < (Count - 1)) && (Count != 0)) FocusLine++;
-    //List[FocusLine]->inFocus = true;//фокусировка строки
+    if ((FirstPosition < (Count - 1)) && (Count != 0)) FirstPosition++;
 }
 
 void TWrappedText::outText() {
@@ -66,14 +62,6 @@ const u16 TWrappedText::getHeight(void) {
     return tsizes.height;
 }
 
-void TWrappedText::fillBackGround() {
-    /*
-    if (Style & (int)LabelsStyle::LS_BGRN_TRANSPARENT) return;
-    TTextSizes tsizes = getSize();
-    TFillRect rect{ ElementRect.Left, ElementRect.Top, tsizes.width, tsizes.height, ColorScheme.BackGround };
-    TGrahics::fillRect(rect);
-    */
-}
 
 /*сюда попадает строка, в которой в т.ч. могут быть и символ переноса строки.
 Ќадо разбить на строки вход€шие в ширину экрана.  аждый символ переноса начинает новую строку.
@@ -104,7 +92,7 @@ void TWrappedText::setText(std::string text) {//добавить/изменить текст в строке
     }
     List.clear();
     List = res;
-    FocusLine = 0;
+    //FocusLine = 0;
     FirstPosition = 0; //перва€ отображаема€ строка начинаю выводить с неЄ
     LastPosition = 0; //последн€€ отображаема€ строка
 }
@@ -115,9 +103,6 @@ TTextSizes TWrappedText::getSize(void) {
 }
 
 u16 TWrappedText::GetViewObjectsCount() {//кол-во строк умещающихс€ в высоту меню от FirstPosition до нижнего кра€
-//при этом контролирую границы
-    if (FocusLine <= FirstPosition)  FirstPosition = FocusLine;//если выше верхней
-    if ((FocusLine >= LastPosition) && (FocusLine < List.size()))  FirstPosition++;//если ниже нижней, но не больше чем есть в списке, то подвинуть строчку
     u16 i = FirstPosition;
     u16 c = 0;//счЄтчик строк
     u16 h = 0; //высота объекта
@@ -142,16 +127,10 @@ u16 TWrappedText::GetViewObjectsCount() {//кол-во строк умещающихс€ в высоту мен
 TWrappedText::TWrappedText(TLabelInitStructure init)
     : TVisualObject({init.focused, init.Rect })
     , Font((init.font != "") ? init.font : "Verdana12")
-    , FocusLine(0)
+    //, FocusLine(0)
     , FirstPosition(0)//перва€ отображаема€ строка начинаю выводить с неЄ
     , LastPosition(0) //последн€€ отображаема€ строка
-    /*
-    , PrimaryColor(init.PrimaryColor)
-    , SelectedColor(init.SelectedColor)
-    , Style((int)init.style)
-    , Caption(init.caption)
-    , TextSize(TMCUFonts::getTextSizes(Caption, Font))
-    */ {
+{
 }
 
 TWrappedText::~TWrappedText() {//деструктор

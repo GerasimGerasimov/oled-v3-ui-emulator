@@ -20,9 +20,8 @@ private:
     std::string Font;
     std::vector<std::string> List;
     void outText();
-    void fillBackGround();
     u16 GetViewObjectsCount();//кол-во объектов умещающихс€ в высоту меню от FirstPosition до нижнего кра€
-    u16 FocusLine;//строка наход€ща€с€ в фокусе
+    //u16 FocusLine;//строка наход€ща€с€ в фокусе
     u16 FirstPosition;//перва€ отображаема€ строка начинаю выводить с неЄ
     u16 LastPosition; //последн€€ отображаема€ строка
     void goUp(void);
