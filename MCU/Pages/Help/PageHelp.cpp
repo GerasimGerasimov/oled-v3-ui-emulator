@@ -12,8 +12,7 @@ void TPageHelp::clear() {
 void TPageHelp::onOpen() {
     TParameter* p = (TParameter*)props;
     pHeader->setCaption(p->getName());
-    //pText->setText(p->getComment());
-    pText->setText("Частота генератора привет пока !");
+    pText->setText(p->getComment());
 }
 
 bool TPageHelp::ProcessMessage(TMessage* m) {

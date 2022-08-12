@@ -37,38 +37,32 @@ void TWrappedText::fillBackGround() {
 
 /*TODO сюда попадает строка, в которой в т.ч. могут быть и символ переноса строки.
 Ќадо разбить на строки вход€шие в ширину экрана.  аждый символ переноса начинает новую строку.
-Ќачать с разбивки строки на слова разделЄнные пробелами, потом формировать строки*/
+Ќачать с разбивки строки на слова разделЄнные пробелами, потом формировать строки
+≈сли слово длинное, то его надо тоже разбивать на части, не соблюда€ правила переноса*/
 
 void TWrappedText::setText(std::string text) {//добавить/изменить текст в строке
-    //на слова разбил
-    std::vector<std::string> words = IniParser::getListOfDelimitedStrInclude(' ', (char*) text.c_str(), text.size());
     //теперь группировать по предложени€м вмещающимс€ в ширину этого элемента
     std::vector<std::string> sentences = {};
-    std::string sentence = "";
     u16 maxwidth = ElementRect.Width;
-    u16 sw, tsw = 0;
-    for (std::string word : words) {
-        word += " ";
-        TTextSizes ts = TMCUFonts::getTextSizes(word, Font);
-        tsw += ts.width;
-        if (tsw < maxwidth) {
-            sentence += word;
-            /*TODO не попадает последнее предложение*/
+    std::string s = "";
+    for (const char c: text) {
+        if (c == '\n') {
+            sentences.push_back(s);
+            sentences.push_back("");
+            s = "";
+            continue;
         }
-        else {
-            sentences.push_back(sentence);
-            sentence = word;
-            tsw = ts.width;
+        TTextSizes ts = TMCUFonts::getTextSizes(s+c, Font);
+        if (ts.width > maxwidth) {
+            sentences.push_back(s);
+            s = "";
         }
+        s += c;
     }
-    /*
-    if (Caption != caption) {
-        Caption = caption;
-        if (Style & (int)LabelsStyle::ALIGN_CENTER) {
-            TextSize = TMCUFonts::getTextSizes(Caption, Font);
-        }
+    if (s != "") {
+        sentences.push_back(s);
     }
-    */
+
 }
 
 TTextSizes TWrappedText::getSize(void) {
