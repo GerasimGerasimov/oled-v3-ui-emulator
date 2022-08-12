@@ -25,6 +25,8 @@ private:
     u16 FocusLine;//строка находящаяся в фокусе
     u16 FirstPosition;//первая отображаемая строка начинаю выводить с неё
     u16 LastPosition; //последняя отображаемая строка
+    void goUp(void);
+    void goDown(void);
 };
 
 #endif

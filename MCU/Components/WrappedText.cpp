@@ -3,7 +3,20 @@
 
 /*TODO Требуется обработка для многострочного текста не помещающегося на одном экране*/
 bool TWrappedText::ProcessMessage(TMessage* m) {
-    return true;
+    if (List.size() == 0) return false;//список пуст
+        switch (m->Event) {
+            case KEYBOARD: {//сообщения от клавиатуры
+                switch (m->p1) {
+                    case (u32)KeyCodes::Up: //кнопка вверх
+                        goUp();
+                        break;
+                    case (u32)KeyCodes::Down: //кнопка вниз
+                        goDown();
+                        break;
+                }
+                break;
+        }
+    }
 }
 
 void  TWrappedText::view(void) {//вывести строку на экране
@@ -24,6 +37,19 @@ void  TWrappedText::view(void) {//вывести строку на экране
         Top += hf;
         i++;                    //перехожу к следующей строке
     }
+}
+
+void TWrappedText::goUp(void) {
+    //List[FocusLine]->inFocus = false;//расфокусировка предыдущей строки
+    if (FocusLine > 0) FocusLine--;
+    //List[FocusLine]->inFocus = true;//фокусировка строки
+}
+
+void TWrappedText::goDown(void) {
+    u16 Count = List.size();
+    //List[FocusLine]->inFocus = false;//расфокусировка предыдущей строки
+    if ((FocusLine < (Count - 1)) && (Count != 0)) FocusLine++;
+    //List[FocusLine]->inFocus = true;//фокусировка строки
 }
 
 void TWrappedText::outText() {
