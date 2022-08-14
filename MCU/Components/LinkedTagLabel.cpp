@@ -7,9 +7,6 @@ bool TLinkedTagLabel::ProcessMessage(TMessage* m) {
             if (inFocus) {
                 switch (m->p1) {
                     case (u32)KeyCodes::ENT: {
-                        if (onEnterPressed != NULL) {
-                            onEnterPressed(10);
-                        }
                         break;
                     }
                 }
@@ -20,7 +17,7 @@ bool TLinkedTagLabel::ProcessMessage(TMessage* m) {
 }
 
 TLinkedTagLabel::TLinkedTagLabel(std::string tag, TLabelInitStructure init)
-    : TLinkLabel("", init)
+    : TLinkLabel(init.caption, "", init)
     , DataSrc(IniResources::getSignalByTag(tag)) {
 }
 

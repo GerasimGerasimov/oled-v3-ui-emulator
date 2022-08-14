@@ -17,16 +17,6 @@ public:
     ~TPageMainMenu();//деструктор
 private:
     TComponentListVertical* MainMenu;
-    TLinkLabel* pLabel1;
-    TLabel* pLabel2;
-    TLabel* pLabel3;
-    TLabel* pLabel4;
-    TLabel* pLabel5;
-    TLabel* pLabel6;
-    TLabel* pLabel7;
-    TLabel* pLabel8;
-    TLabel* pLabel9;
-    void goToCountersPage(int a);
 };
 
 #endif

@@ -27,10 +27,6 @@ bool TPageCounters::ProcessMessage(TMessage* m) {
     return false;
 };
 
-void TPageCounters::goToValueEditPage(int a) {
-    TRouter::setTask({ false, "EditValue", NULL });
-}
-
 TPageCounters::TPageCounters(std::string Name)
     :TPage(Name) {
     TLabelInitStructure LabelInit;
@@ -41,9 +37,8 @@ TPageCounters::TPageCounters(std::string Name)
     pLabel1 = new TLabel(LabelInit);
     LabelInit.caption = "2 Привет";
     pLabel2 = new TLabel(LabelInit);
-    LabelInit.caption = "EditValue";
-    pLabel3 = new TLinkLabel("EditValue", LabelInit);
-    pLabel3->onEnterPressed = [this](int arg) { goToValueEditPage(arg); };
+    pLabel3 = new TLinkLabel("EditValue", "EditValue", LabelInit);
+    //pLabel3->onEnterPressed = [this](int arg) { goToValueEditPage(arg); };
     Container = new TComponentListVertical({ pLabel1, pLabel2, pLabel3});
     AddList({ Container });
 };

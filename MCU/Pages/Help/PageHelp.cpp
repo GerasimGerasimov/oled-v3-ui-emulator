@@ -12,9 +12,7 @@ void TPageHelp::clear() {
 void TPageHelp::onOpen() {
     TParameter* p = (TParameter*)props;
     pHeader->setCaption(p->getName());
-    //pText->setText(p->getComment());
-    pText->setText("Вот это поведение поменялось? что самое интересное, после того как она заглючит "
-                    "в первый раз потом глючит стабильно даже угол крутить не надо... помогает только долгая перезагрузка");
+    pText->setText(p->getComment());
 }
 
 bool TPageHelp::ProcessMessage(TMessage* m) {

@@ -36,8 +36,7 @@ TPageEditValue::TPageEditValue(std::string Name)
     pLabel1 = new TLabel(LabelInit);
     LabelInit.caption = "2 Привет Edit";
     pLabel2 = new TLabel(LabelInit);
-    LabelInit.caption = "Values";
-    pLabel3 = new TLinkLabel("Values", LabelInit);
+    pLabel3 = new TLinkLabel("Values", "Values", LabelInit);
     Container = new TComponentListVertical({ pLabel1, pLabel2, pLabel3});
     AddList({ Container });
 };

@@ -2,13 +2,7 @@
 #include "Router.h"
 #include <functional>
 
-static u32 COUNT = 0;
-
 void TPageMainMenu::view() {
-    COUNT++;
-    std::string scount = std::to_string(COUNT);
-    pLabel2->setCaption(scount);
-    pLabel4->setCaption(scount);
     MainMenu->view();
 };
 
@@ -32,42 +26,28 @@ bool TPageMainMenu::ProcessMessage(TMessage* m) {
     return false;
 };
 
-void TPageMainMenu::goToCountersPage(int a) {
-    TRouter::setTask({ false, "Counters", NULL });
-}
-
 TPageMainMenu::TPageMainMenu(std::string Name)
     :TPage(Name) {
     TLabelInitStructure LabelInit;
     LabelInit.style = LabelsStyle::WIDTH_DINAMIC;
     LabelInit.Rect = { 10, 10, 10, 10 };
-    LabelInit.caption = "Counters>";
-    LabelInit.focused = true;
-    pLabel1 = new TLinkLabel("Counters",LabelInit);
-    pLabel1->onEnterPressed = [this](int arg) { goToCountersPage(arg); };
-    LabelInit.focused = false;
-    LabelInit.caption = "2 Привет";
-    pLabel2 = new TLabel(LabelInit);
-    LabelInit.caption = "3 Привет";
-    LabelInit.font = "MSSansSerifBold14";
-    pLabel3 = new TLabel(LabelInit);
-    LabelInit.caption = "4 Привет";
-    pLabel4 = new TLabel(LabelInit);
-    LabelInit.caption = "5 Привет";
-    pLabel5 = new TLabel(LabelInit);
-    LabelInit.caption = "6 Привет";
-    LabelInit.font = "Verdana12";
-    pLabel6 = new TLabel(LabelInit);
-    LabelInit.caption = "7 Привет";
-    pLabel7 = new TLabel(LabelInit);
-    LabelInit.caption = "8 Привет";
-    pLabel8 = new TLabel(LabelInit);
-    LabelInit.caption = "9 Привет";
-    pLabel9 = new TLabel(LabelInit);
-    MainMenu = new TComponentListVertical({ pLabel1 , pLabel2 , pLabel3, 
-                                            pLabel4, pLabel5, pLabel6,
-                                            pLabel7, pLabel8, pLabel9 });
-    AddList({ MainMenu });
+    AddList({
+        MainMenu = new TComponentListVertical({
+            new TLinkLabel("Основные параметры", "Home",LabelInit),
+            new TLinkLabel("Предупреждения", "Home", LabelInit),
+            new TLinkLabel("Аварии", "Home", LabelInit),
+            new TLinkLabel("Основные уставки работы", "Home", LabelInit),
+            new TLinkLabel("Уставки защит", "Home", LabelInit),
+            new TLinkLabel("Уставки режима очистки", "Home", LabelInit),
+            new TLinkLabel("Уставки ручного режима", "Home", LabelInit),
+            new TLinkLabel("Уставки ВАХ", "Home", LabelInit),
+            new TLinkLabel("Данные прямой ВАХ", "Home", LabelInit),
+            new TLinkLabel("Данные обратной ВАХ", "Home", LabelInit),
+            new TLinkLabel("Уставки интерфейсов", "Home", LabelInit),
+            new TLinkLabel("Данные драйвера", "Home", LabelInit),
+            new TLinkLabel("Настройки панели", "Home", LabelInit)
+           })
+    });
 };
 
 TPageMainMenu::~TPageMainMenu() {

@@ -8,9 +8,8 @@
 class TLinkLabel : public TLabel {
 public:
     virtual bool ProcessMessage(TMessage* m);
-    TLinkLabel(std::string url, TLabelInitStructure init);//конструктор
+    TLinkLabel(std::string caption, std::string url, TLabelInitStructure init);//конструктор
     ~TLinkLabel();//деструктор
-    TEventHandler onEnterPressed;
 private:
     std::string URL;
 };

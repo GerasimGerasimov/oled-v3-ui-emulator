@@ -20,7 +20,6 @@ private:
     TLabel* pLabel2;
     TLinkLabel* pLabel3;
     TComponentListVertical* Container;
-    void goToValueEditPage(int a);
 };
 
 #endif
