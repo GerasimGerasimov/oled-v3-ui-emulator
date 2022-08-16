@@ -11,7 +11,7 @@ void TPageEditValue::clear() {
 
 bool TPageEditValue::ProcessMessage(TMessage* m) {
     switch (m->Event) {
-        case KEYBOARD: {
+        case (u32)EventSrc::KEYBOARD: {
             switch (m->p1) {
             case (u32)KeyCodes::ESC:
                 TRouter::goBack();

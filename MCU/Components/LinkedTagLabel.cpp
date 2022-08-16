@@ -3,7 +3,7 @@
 
 bool TLinkedTagLabel::ProcessMessage(TMessage* m) {
     switch (m->Event) {
-        case KEYBOARD: {//сообщения от клавиатуры
+        case (u32)EventSrc::KEYBOARD: {//сообщения от клавиатуры
             if (inFocus) {
                 switch (m->p1) {
                     case (u32)KeyCodes::ENT: {

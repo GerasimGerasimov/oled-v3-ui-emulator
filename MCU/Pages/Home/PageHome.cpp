@@ -10,7 +10,7 @@ void TPageHome::clear() {
 
 bool TPageHome::ProcessMessage(TMessage* m) {
     switch (m->Event) {
-        case KEYBOARD: {
+        case (u32)EventSrc::KEYBOARD: {
             switch (m->p1) {
                 case (u32)KeyCodes::ESC:
                     TRouter::setTask({ false, "MainMenu", NULL });
@@ -87,13 +87,13 @@ void TPageHome::SlotU1RAMUpdate(TSlotHandlerArsg args) {
     pLTagOut->Value->setCaption(((TParameter*)pLTagOut->getDataSrc())->getValue(args, "%.2f"));
     pLTagUoutAve->Value->setCaption(((TParameter*)pLTagUoutAve->getDataSrc())->getValue(args, ""));
 
-    Msg::send_message(REPAINT, 0, 0);
+    Msg::send_message((u32)EventSrc::REPAINT, 0, 0);
 }
 
 void TPageHome::SlotU1FLASHUpdate(TSlotHandlerArsg args) {
     pLTagSparkFrq->Value->setCaption(((TParameter*)pLTagSparkFrq->getDataSrc())->getValue(args, "%.0f"));
     pLTagIoutAve->Value->setCaption(((TParameter*)pLTagIoutAve->getDataSrc())->getValue(args, "%.0f"));
-    Msg::send_message(REPAINT, 0, 0);
+    Msg::send_message((u32)EventSrc::REPAINT, 0, 0);
 }
 
 void TPageHome::SlotU1CDUpdate(TSlotHandlerArsg args) {

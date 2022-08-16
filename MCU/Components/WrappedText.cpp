@@ -5,7 +5,7 @@
 bool TWrappedText::ProcessMessage(TMessage* m) {
     if (List.size() == 0) return false;//список пуст
         switch (m->Event) {
-            case KEYBOARD: {//сообщения от клавиатуры
+            case (u32)EventSrc::KEYBOARD: {//сообщения от клавиатуры
                 switch (m->p1) {
                     case (u32)KeyCodes::Up: //кнопка вверх
                         goUp();

@@ -11,7 +11,7 @@ void TPageMainMenu::clear() {
 
 bool TPageMainMenu::ProcessMessage(TMessage* m) {
     switch (m->Event) {
-        case KEYBOARD: {
+        case (u32)EventSrc::KEYBOARD: {
             switch (m->p1) {
             case (u32)KeyCodes::ESC:
                 TRouter::setTask({ false, "Home", NULL });

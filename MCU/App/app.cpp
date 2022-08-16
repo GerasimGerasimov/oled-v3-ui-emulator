@@ -20,7 +20,7 @@ void App::init(void) {
     /*TODO для управления от встроенных DIO нужен слот*/
     DevicePollManager::init(CreateSlotsByStart::init(IniSlotsProps::Devices));
     TRouter::Init();
-    Msg::send_message(REPAINT, 0, 0);
+    Msg::send_message((u32)EventSrc::REPAINT, 0, 0);
 }
 
 void App::run(void) {

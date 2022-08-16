@@ -4,6 +4,17 @@
 #include "Label.h"
 #include "Events.hpp"
 
+//Так как меню показываеттлько одно то не делать в каждом объекте свои строки и счётчики
+// а сделать одни переменные на всех
+static const int RETURN_PAUSE = 10;
+
+struct  {
+    std::string shifted;
+    int Shift;
+    int ReturnPause;
+} TLinkLabelVars = {"", 0, RETURN_PAUSE};
+
+// 
 //строка текста
 class TLinkLabel : public TLabel {
 public:
@@ -12,6 +23,8 @@ public:
     ~TLinkLabel();//деструктор
 private:
     std::string URL;
+    std::string SrcCaption;
+    void doShift(void);
 };
 
 #endif
