@@ -1,12 +1,18 @@
 #include "PageEditValue.h"
 #include "Router.h"
-
+#include "parameters.h"
 
 void TPageEditValue::view() {
-    Container->view();
+    MainMenu->view();
 };
 
 void TPageEditValue::clear() {
+}
+
+void TPageEditValue::onOpen() {
+    TParameter* p = (TParameter*)props;
+    pHeader->setCaption(p->getName());
+    pText->setText(p->getComment());
 }
 
 bool TPageEditValue::ProcessMessage(TMessage* m) {
@@ -29,16 +35,20 @@ bool TPageEditValue::ProcessMessage(TMessage* m) {
 TPageEditValue::TPageEditValue(std::string Name)
     :TPage(Name) {
     TLabelInitStructure LabelInit;
-    LabelInit.style = LabelsStyle::WIDTH_DINAMIC;
-    LabelInit.Rect = { 10, 10, 10, 10 };
-    LabelInit.caption = "1 Привет Edit";
-    LabelInit.focused = false;
-    pLabel1 = new TLabel(LabelInit);
-    LabelInit.caption = "2 Привет Edit";
-    pLabel2 = new TLabel(LabelInit);
-    pLabel3 = new TLinkLabel("Values", "Values", LabelInit);
-    Container = new TComponentListVertical({ pLabel1, pLabel2, pLabel3});
-    AddList({ Container });
+    LabelInit.style = (LabelsStyle)((u32)LabelsStyle::WIDTH_FIXED | (u32)LabelsStyle::TEXT_ALIGN_CENTER);
+    LabelInit.Rect = { 10, 10, 10, VIEW_PORT_MAX_WIDTH };
+    LabelInit.focused = true;
+
+    LabelInit.caption = "---";
+    pHeader = new THeaderLabel(LabelInit);
+
+    pText = new TWrappedText(LabelInit);
+
+    MainMenu = new TComponentListVertical({ pHeader, pText });
+
+    pText->ElementRect.Height = MainMenu->ElementRect.Height - pHeader->getHeight();
+
+    AddList({ MainMenu });
 };
 
 TPageEditValue::~TPageEditValue() {

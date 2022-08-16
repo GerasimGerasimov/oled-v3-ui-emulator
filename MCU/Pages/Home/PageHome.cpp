@@ -9,6 +9,7 @@ void TPageHome::clear() {
 }
 
 bool TPageHome::ProcessMessage(TMessage* m) {
+    ISignal* p = NULL;
     switch (m->Event) {
         case (u32)EventSrc::KEYBOARD: {
             switch (m->p1) {
@@ -16,9 +17,16 @@ bool TPageHome::ProcessMessage(TMessage* m) {
                     TRouter::setTask({ false, "MainMenu", NULL });
                     break;
                 case (u32)KeyCodes::F1:
-                    ISignal* p = getSignalOfFocusedChild();
+                    p = getSignalOfFocusedChild();
                     if (p) {
                         TRouter::setTask({ false, "Help", p });
+                    }
+                    break;
+                case (u32)KeyCodes::ENT:
+                    p = getSignalOfFocusedChild();
+                    if (p) {
+                        /*TODO насыщать страницу EditValue*/
+                        TRouter::setTask({ false, "EditValue", p });
                     }
                     break;
             }

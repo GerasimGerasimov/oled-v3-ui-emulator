@@ -4,22 +4,23 @@
 #include "Pages.h"
 #include "TComponentListVertical.h"
 #include "LinkLabel.h"
-#include "Label.h"
+#include "HeaderLabel.h"
+#include "WrappedText.h"
 
 class TPageEditValue : public TPage
 {
 public:
     virtual void view();//вывести объект на экране
     virtual const u16 getHeight(void) { return 0; };
+    void onOpen();
     void clear();//очистит список
     bool ProcessMessage(TMessage* m);//обработчик сообщений
     TPageEditValue(std::string Name);//конструктор
     ~TPageEditValue();//деструктор
 private:
-    TLabel* pLabel1;
-    TLabel* pLabel2;
-    TLinkLabel* pLabel3;
-    TComponentListVertical* Container;
+    TComponentListVertical* MainMenu;
+    THeaderLabel* pHeader;
+    TWrappedText* pText;
 };
 
 #endif
