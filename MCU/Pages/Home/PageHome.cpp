@@ -51,23 +51,12 @@ TPageHome::TPageHome(std::string Name)
     LabelInit.Rect = { 10, 10, 10, 10 };
     LabelInit.focused = false;
 
-    LabelInit.caption = "Fgen";
-    pLTagUref = new TTagLine("U1/RAM/Fgen/", LabelInit);
-
-    LabelInit.caption = "Phi";
-    pLTagIref = new TTagLine("U1/RAM/Phi/", LabelInit);
-
-    LabelInit.caption = "UbusOK";
-    pLTagUoutAve = new TTagLine("U1/RAM/UbusOK/", LabelInit);
-
-    LabelInit.caption = "DVA";  //"U1/CD/Modbus_Local1_DVA/"
-    pLTagIoutAve = new TTagLine("U1/FLASH/Modbus_RS485_DVA/", LabelInit);
-
-    LabelInit.caption = "Un";
-    pLTagSparkFrq = new TTagLine("U1/FLASH/Unominal/", LabelInit);
-
-    LabelInit.caption = "Ugen";
-    pLTagOut = new TTagLine("U1/RAM/Ugen/", LabelInit);
+    pLTagUref     = new TTagLine("Fgen", "U1/RAM/Fgen/", LabelInit);
+    pLTagIref     = new TTagLine("Phi", "U1/RAM/Phi/", LabelInit);
+    pLTagUoutAve  = new TTagLine("UbusOK", "U1/RAM/UbusOK/", LabelInit);
+    pLTagIoutAve  = new TTagLine("DVA", "U1/FLASH/Modbus_RS485_DVA/", LabelInit);
+    pLTagSparkFrq = new TTagLine("Un", "U1/FLASH/Unominal/", LabelInit);
+    pLTagOut      = new TTagLine("Ugen", "U1/RAM/Ugen/", LabelInit);
 
     MainMenu = new TComponentListVertical({ pLTagUref    , pLTagIref     , pLTagUoutAve ,
                                             pLTagIoutAve , pLTagSparkFrq , pLTagOut /*,
@@ -75,9 +64,9 @@ TPageHome::TPageHome(std::string Name)
 
     AddList({ MainMenu });
 
-    HandlerSubscribers::set("U1/RAM/", [this](TSlotHandlerArsg args) { SlotU1RAMUpdate(args); });
+    HandlerSubscribers::set("U1/RAM/",   [this](TSlotHandlerArsg args) { SlotU1RAMUpdate(args); });
     HandlerSubscribers::set("U1/FLASH/", [this](TSlotHandlerArsg args) { SlotU1FLASHUpdate(args); });
-    HandlerSubscribers::set("U1/CD/", [this](TSlotHandlerArsg args) { SlotU1CDUpdate(args); });
+    HandlerSubscribers::set("U1/CD/",    [this](TSlotHandlerArsg args) { SlotU1CDUpdate(args); });
 };
 
 //        //((TParameter*)DataSrc)
