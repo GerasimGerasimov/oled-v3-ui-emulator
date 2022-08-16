@@ -10,9 +10,8 @@ static const int RETURN_PAUSE = 10;
 
 struct  {
     std::string shifted;
-    int Shift;
     int ReturnPause;
-} TLinkLabelVars = {"", 0, RETURN_PAUSE};
+} TLinkLabelVars = {"", RETURN_PAUSE};
 
 // 
 //строка текста
@@ -24,6 +23,7 @@ public:
 private:
     std::string URL;
     std::string SrcCaption;
+    int Shift;
     void doShift(void);
 };
 

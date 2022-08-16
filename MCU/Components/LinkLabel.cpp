@@ -30,10 +30,10 @@ void TLinkLabel::doShift(void) {
         Если в фокусе, и достиг последненг символа, то пауза,
         после паузы быстрый сдвиг вправо до первой буквы, пауза,
         медленный сдвиг влево.*/
-        TLinkLabelVars.shifted = SrcCaption.substr(TLinkLabelVars.Shift);
+        TLinkLabelVars.shifted = SrcCaption.substr(Shift);
         TextSize = TMCUFonts::getTextSizes(Caption, Font);
         if (TextSize.width > ElementRect.Width) {
-            TLinkLabelVars.Shift++;
+            Shift++;
             Caption = TLinkLabelVars.shifted;
             TLinkLabelVars.ReturnPause = RETURN_PAUSE;
         }
@@ -42,8 +42,8 @@ void TLinkLabel::doShift(void) {
                 TLinkLabelVars.ReturnPause--;
                 return;
             }
-            if (TLinkLabelVars.Shift != 0) {
-                TLinkLabelVars.Shift = 0;
+            if (Shift != 0) {
+                Shift = 0;
                 Caption = SrcCaption;
             }
         }
@@ -51,7 +51,7 @@ void TLinkLabel::doShift(void) {
     else {
         if (Caption != SrcCaption) {
             setCaption(SrcCaption);
-            TLinkLabelVars.Shift = 0;
+            Shift = 0;
             TLinkLabelVars.ReturnPause = RETURN_PAUSE;
         }
     }
@@ -60,7 +60,8 @@ void TLinkLabel::doShift(void) {
 TLinkLabel::TLinkLabel(std::string caption, std::string url, TLabelInitStructure init)
     : TLabel(init)
     , URL(url)
-    , SrcCaption(caption) {
+    , SrcCaption(caption)
+    , Shift(0) {
     Caption = caption;
 }
 
