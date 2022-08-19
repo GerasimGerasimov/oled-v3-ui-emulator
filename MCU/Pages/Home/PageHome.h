@@ -6,6 +6,11 @@
 #include "TagLine.h"
 #include "HandleSubscribers.h"
 
+typedef struct {
+    ISignal* signal;
+    TVisualObject* element;
+} TSignalOnFocus;
+
 class TPageHome : public TPage
 {
 public:
@@ -28,7 +33,7 @@ private:
     void SlotU1RAMUpdate(TSlotHandlerArsg args);
     void SlotU1FLASHUpdate(TSlotHandlerArsg args);
     void SlotU1CDUpdate(TSlotHandlerArsg args);
-    ISignal* getSignalOfFocusedChild();
+    TSignalOnFocus getSignalOfFocusedChild();
 };
 
 #endif

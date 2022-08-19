@@ -13,6 +13,7 @@ TPage* TRouter::Page = NULL;
 TPage* TRouter::BackPage = NULL;
 
 TRouterTask TRouter::RouterTask = { false, "", NULL };
+TPageValueEditEntryData TRouter::PageValueEditEntryData = { NULL, "" };
 std::map<std::string, TPage*> TRouter::Pages = std::map<std::string, TPage*>();
 
 void TRouter::Init(void) {

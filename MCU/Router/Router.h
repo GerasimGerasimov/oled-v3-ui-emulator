@@ -5,6 +5,12 @@
 #include "Pages.h"
 #include "stm32f4xx.h"
 #include "msg.h"
+#include "signal.h"
+
+typedef struct {
+    ISignal* signal;
+    std::string value;
+} TPageValueEditEntryData;
 
 typedef struct {
     bool isDone;
@@ -26,6 +32,7 @@ public:
     static bool changeToNextPage();
     static bool chekNextPage();
     static void setTask(TRouterTask task);
+    static TPageValueEditEntryData PageValueEditEntryData;
 private:
     static TPage* setActivePage(std::string PageName, void* props);
     static void setInitPage();

@@ -43,6 +43,10 @@ void TLabel::setCaption(std::string caption) {//добавить/изменить текст в строке
     }
 }
 
+std::string TLabel::getCaption(void) {
+    return Caption;
+}
+
 void TLabel::setFont(std::string font) {//добавить/изменить текст в строке
     Font = font;
 }

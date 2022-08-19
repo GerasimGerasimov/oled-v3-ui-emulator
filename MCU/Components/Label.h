@@ -35,6 +35,7 @@ public:
     virtual void view(void);//вывести строку на экране
     virtual const u16 getHeight(void);
     void setCaption(std::string caption);//изменить текст в строке передав её адрес
+    std::string getCaption(void);
     void setFont(std::string font);//изменить текст в строке передав её адрес
     TTextSizes getSize(void);
     TLabel(TLabelInitStructure init);//конструктор

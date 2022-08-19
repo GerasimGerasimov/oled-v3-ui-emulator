@@ -9,7 +9,7 @@ void TPageHome::clear() {
 }
 
 bool TPageHome::ProcessMessage(TMessage* m) {
-    ISignal* p = NULL;
+    TSignalOnFocus SoF = { NULL, NULL };
     switch (m->Event) {
         case (u32)EventSrc::KEYBOARD: {
             switch (m->p1) {
@@ -17,16 +17,18 @@ bool TPageHome::ProcessMessage(TMessage* m) {
                     TRouter::setTask({ false, "MainMenu", NULL });
                     break;
                 case (u32)KeyCodes::F1:
-                    p = getSignalOfFocusedChild();
-                    if (p) {
-                        TRouter::setTask({ false, "Help", p });
+                    SoF = getSignalOfFocusedChild();
+                    if (SoF.signal) {
+                        TRouter::setTask({ false, "Help", SoF.signal });
                     }
                     break;
                 case (u32)KeyCodes::ENT:
-                    p = getSignalOfFocusedChild();
-                    if (p) {
+                    SoF = getSignalOfFocusedChild();
+                    if (SoF.signal) {
                         /*TODO насыщать страницу EditValue*/
-                        TRouter::setTask({ false, "EditValue", p });
+                        TRouter::PageValueEditEntryData.signal = SoF.signal;
+                        TRouter::PageValueEditEntryData.value = ((TTagLine*)(SoF.element))->Value->getCaption();
+                        TRouter::setTask({ false, "EditValue", NULL });
                     }
                     break;
             }
@@ -39,13 +41,13 @@ bool TPageHome::ProcessMessage(TMessage* m) {
     return false;
 };
 
-ISignal* TPageHome::getSignalOfFocusedChild() {
+TSignalOnFocus TPageHome::getSignalOfFocusedChild() {
     for (auto& element : List) {
-        TVisualObject* res = element->getFocusedElement();
-        TParameter* e = (res) ? (TParameter*) res->getDataSrc() : NULL;
-        if (e) return e;
+        TVisualObject* e = element->getFocusedElement();
+        TParameter* p = (e) ? (TParameter*) e->getDataSrc() : NULL;
+        if (p) return { p , e };
     }
-    return NULL;
+    return { NULL, NULL };
 }
 
 void TPageHome::goToTagInfoPage(int a) {

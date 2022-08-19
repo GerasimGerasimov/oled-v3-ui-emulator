@@ -163,6 +163,7 @@
     <ClCompile Include="MCU\Components\Label.cpp" />
     <ClCompile Include="MCU\Components\LinkedTagLabel.cpp" />
     <ClCompile Include="MCU\Components\LinkLabel.cpp" />
+    <ClCompile Include="MCU\Components\NumericEdit.cpp" />
     <ClCompile Include="MCU\Components\Pages.cpp" />
     <ClCompile Include="MCU\Components\TagLine.cpp" />
     <ClCompile Include="MCU\Components\TComponentListVertical.cpp" />

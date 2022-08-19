@@ -10,9 +10,10 @@ void TPageEditValue::clear() {
 }
 
 void TPageEditValue::onOpen() {
-    TParameter* p = (TParameter*)props;
+    TParameter* p = (TParameter*)TRouter::PageValueEditEntryData.signal;
     pHeader->setCaption(p->getName());
-    pText->setText(p->getComment());
+    //pText->setText(p->getComment());
+    pEdit->setCaption(TRouter::PageValueEditEntryData.value);
 }
 
 bool TPageEditValue::ProcessMessage(TMessage* m) {
@@ -33,6 +34,31 @@ bool TPageEditValue::ProcessMessage(TMessage* m) {
 };
 
 TPageEditValue::TPageEditValue(std::string Name)
+/*TODO в этом окне
+1) Способ редактирования зависит от типа параметра:
+1.1) TBit может принимать начение только "0"/"1"
+1.2) TIPAddr нужно уметь перемещаться между байтами и менять каждый из нх
+1.3) TPrmList - собственно выбор из списка значений
+
+1) должен быть заголовок с названием параметра (есть)
+2) поле с описанием (в самом низу)
+3) текущее значение (TODO с учётом формата, который как-то надо передать) + единицы измерения (если есть)
+4) новое значение которое отредактировал юзер (желательно более крупным шрифтом)
+Варианты релактировония:
+5) Старый: есть шаг изменения: это "1", которая:
+    - уменьшается в 10 раз при каждом нажатии "ВЛЕВО"
+    - увеличивается в 10 раз при каждом нажатии "ВПРАВО"
+    - значение увеличивается на шаг изменения при нажатии "ВВЕРХ"
+    - значение уменьшается на шаг изменения при нажатии "ВНИЗ"
+    TODO предусмотреть автоматическое повторное действие по таймеру, при длительном ужержании кнопок "ВВЕРХ/ВНИЗ"
+6) Новый:
+    - перемещениями "ВЛЕВО/ВПРАВО" перемещаюсь в разряд числа который надо установить, если разряда нет, то он создатся
+      ___.____ крайние разряды в значении НОЛЬ удаляются как только с них уходит курсор
+        - в сторону меньшего разряда для целой части числа
+        - в сторону большего разряда для дробной части числа
+    Нули появляются в пустых местах при продвижении курсора, соотв-но есди юзер не постааит
+    значащее значение то все нули обнулятся
+*/
     :TPage(Name) {
     TLabelInitStructure LabelInit;
     LabelInit.style = (LabelsStyle)((u32)LabelsStyle::WIDTH_FIXED | (u32)LabelsStyle::TEXT_ALIGN_CENTER);
@@ -42,11 +68,13 @@ TPageEditValue::TPageEditValue(std::string Name)
     LabelInit.caption = "---";
     pHeader = new THeaderLabel(LabelInit);
 
-    pText = new TWrappedText(LabelInit);
+    //pText = new TWrappedText(LabelInit);
 
-    MainMenu = new TComponentListVertical({ pHeader, pText });
+    pEdit = new TNumericEdit(LabelInit);
 
-    pText->ElementRect.Height = MainMenu->ElementRect.Height - pHeader->getHeight();
+    MainMenu = new TComponentListVertical({ pHeader, pEdit });
+
+    //pText->ElementRect.Height = MainMenu->ElementRect.Height - pHeader->getHeight() - pEdit->getHeight();
 
     AddList({ MainMenu });
 };

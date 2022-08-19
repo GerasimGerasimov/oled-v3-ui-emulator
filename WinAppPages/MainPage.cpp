@@ -187,6 +187,7 @@ void MainPage::keyBoardControlMCU(int cmd) {
             break;
         case ID_BUTTON_LEFT:
             console::log(L"ID_BUTTON_LEFT\n");
+            Msg::send_message((u32)EventSrc::KEYBOARD, (u32)KeyCodes::Left, 0);
             break;
         case ID_BUTTON_DOWN:
             console::log(L"ID_BUTTON_DOWN\n");
@@ -194,6 +195,7 @@ void MainPage::keyBoardControlMCU(int cmd) {
             break;
         case ID_BUTTON_RIGHT:
             console::log(L"ID_BUTTON_RIGHT\n");
+            Msg::send_message((u32)EventSrc::KEYBOARD, (u32)KeyCodes::Right, 0);
             break;
     }
 }
