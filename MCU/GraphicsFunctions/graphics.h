@@ -35,6 +35,7 @@ struct TGrahics {
 		static void setPixel(u8 x, u8 y, u8 color);
 		static void outText(std::string text, u16 x, u16 y, u16 color, std::string FontName);
 		static void putChar(u8 Code, u16& x, u16 y, u16 color);
+		static void putTextWithSelectedChar(u8* src, u8 len, u16& x, u16 y, u8 Selected, u16 BaseColor, u16 SelectColor);
 		static u8 screen[128][64];
 };
 

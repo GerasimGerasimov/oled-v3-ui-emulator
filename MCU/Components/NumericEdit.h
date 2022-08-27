@@ -35,6 +35,7 @@ protected:
     int Style;
     void fillBackGround(TColorScheme& ColorScheme);
     void outCaption(TColorScheme& ColorScheme);
+    s16 getCaptionLeftPosition(void);
     void blinkCursor(void);
     void shiftCursorLeft(void);
     void shiftCursorRight(void);
@@ -51,6 +52,7 @@ protected:
     int Position;//минус всё что слева от запятой, ноль на месте запятой, положительные всё что дробная часть
     std::array<TCharSignificance, NE_INT_SIZE> Integers;
     std::array<TCharSignificance, NE_FRAC_SIZE> Fractions;
+    std::array<u8, NE_FRAC_SIZE + NE_INT_SIZE + 1> ResultStr;//+1 потому что есть "запятая"
 };
 
 #endif

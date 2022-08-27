@@ -201,21 +201,57 @@ void  TNumericEdit::view(void) {//вывести строку на экране
     outCaption(ColorScheme);
 }
 
-void TNumericEdit::outCaption(TColorScheme& ColorScheme) {
-    s16 Left = ElementRect.Left;
-    s16 Top = ElementRect.Top;
-    /*
-    if (Style & (int)LabelsStyle::TEXT_ALIGN_CENTER) {
-        Left = (ElementRect.Width - TextSize.width) / 2;
+s16 TNumericEdit::getCaptionLeftPosition(void) {
+    u8 ResultLen = 0;
+    u8 SelectedCharIdx = 0;
+
+    u16 Count = Integers.size();
+    while (Count--) {
+        TCharSignificance e = Integers[Count];
+        if (e.sig) {
+            if (Position < 0) {
+                s16 pos = -(Count + 1);
+                if (pos == Position) SelectedCharIdx = ResultLen;
+            }
+            ResultStr[ResultLen++] = e.c;
+        }
     }
-    */
+    /*тут выделится только запятая*/
+    if (Position == 0) SelectedCharIdx = ResultLen;
+    ResultStr[ResultLen++] = '.';
+
+    /*тут выделятся числа после запятой*/
+    Count = 0;
+    for (auto& e : Fractions) {
+        Count++;
+        if (e.sig) {
+            if (Position > 0) {
+                s16 pos = (Count);
+                if (pos == Position) SelectedCharIdx = ResultLen;
+            }
+            ResultStr[ResultLen++] = e.c;
+        }
+    }
+    TTextSizes CharSizes = TMCUFonts::getCharArraySizes(ResultStr.data(), ResultLen, Font);
+
+    s16 Left = ElementRect.Left;
+    if (Style & (int)LabelsStyle::TEXT_ALIGN_CENTER) {
+        Left = (ElementRect.Width - CharSizes.width) / 2;
+    }
+    return Left;
+}
+
+void TNumericEdit::outCaption(TColorScheme& ColorScheme) {
+    s16 Top = ElementRect.Top;
+
     TTextSizes CharSize;
     s16 cTop = Top;
-    s16 cLeft = Left;
+    s16 cLeft = getCaptionLeftPosition();
 
     u16 height = TMCUText::setFont(Font);
     u16 Count = Integers.size();
     ColorScheme = PrimaryColor;
+
     while (Count--) {
         TCharSignificance e = Integers[Count];
         if (e.sig) {
@@ -283,7 +319,7 @@ TNumericEdit::TNumericEdit(TLabelInitStructure init)
     : TVisualObject({init.focused, init.Rect })
     , PrimaryColor(init.PrimaryColor)
     , SelectedColor(init.SelectedColor)
-    , Style((int)init.style)
+    , Style((int)init.style | (int)LabelsStyle::TEXT_ALIGN_CENTER)
     , Font((init.font != "") ? init.font : "Verdana12")
     , Caption(init.caption)
     , TextSize(TMCUFonts::getTextSizes(Caption, Font))

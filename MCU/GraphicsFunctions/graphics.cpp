@@ -65,6 +65,37 @@ void TGrahics::putChar(u8 Code, u16& x, u16 y, u16 color) {
     };
 }
 
+void TGrahics::putTextWithSelectedChar(u8* src, u8 len, u16& x, u16 y, u8 Selected, u16 BaseColor, u16 SelectColor) {
+    u16 start_y = y;
+    u16 idx = 0;
+    u16 Color = BaseColor;
+    while (len--) {
+        u8 c = *src++;
+        TCharProps CharProps = TMCUText::setSimbol(c);
+        u16 bitsCnt = 0;
+        u32 bits = 0;
+        u16 start_x = x;
+        u32 mask = (1 << (CharProps.BytesByWidth * 8 - 1));
+        y = start_y;
+        Color = (idx++ == Selected) ? SelectColor : BaseColor;
+        while (TMCUText::getBitsLine(bits)) {
+            if (y >= VIEW_PORT_MAX_HEIGHT) continue;
+            bitsCnt = CharProps.BitsByWidth;
+            x = start_x;
+            while (bitsCnt--) {
+                if (x >= VIEW_PORT_MAX_WIDTH) continue;
+                if ((bits & mask) == 0) {
+                    setPixel(x, y, Color);
+                }
+                bits <<= 1;
+                x++;
+            }
+            y++;
+        };
+    }
+}
+
+
 
 void TGrahics::Line(u8 X1, u8 Y1, u8 X2, u8 Y2, u8 Color) {
     int deltaX = abs(X2 - X1);
