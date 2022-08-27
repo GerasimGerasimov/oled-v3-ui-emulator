@@ -12,6 +12,7 @@ typedef struct {
     bool sig;
 } TCharSignificance;
 
+static const int NE_CURSOR_DELAY = 4;
 static const int NE_FRAC_SIZE = 5;
 static const int NE_INT_SIZE = 9;
 static const std::array<char, 10> FracPossibleValues = {'0','1','2','3','4','5','6','7','8','9'};
@@ -53,6 +54,8 @@ protected:
     std::array<TCharSignificance, NE_INT_SIZE> Integers;
     std::array<TCharSignificance, NE_FRAC_SIZE> Fractions;
     std::array<u8, NE_FRAC_SIZE + NE_INT_SIZE + 1> ResultStr;//+1 потому что есть "запятая"
+    bool ToggleCursor;
+    u16 ToggleCursorDelay;
 };
 
 #endif

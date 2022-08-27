@@ -193,7 +193,9 @@ void TNumericEdit::doIntShiftCursorRight() {
 }
 
 void TNumericEdit::blinkCursor(void) {
-
+    ToggleCursorDelay = (ToggleCursorDelay)
+        ? --ToggleCursorDelay
+        : (ToggleCursor = !ToggleCursor, NE_CURSOR_DELAY);
 }
 
 void  TNumericEdit::view(void) {//вывести строку на экране
@@ -203,32 +205,19 @@ void  TNumericEdit::view(void) {//вывести строку на экране
 
 s16 TNumericEdit::getCaptionLeftPosition(void) {
     u8 ResultLen = 0;
-    u8 SelectedCharIdx = 0;
 
-    u16 Count = Integers.size();
-    while (Count--) {
-        TCharSignificance e = Integers[Count];
+    /*тут выделятся числа после запятой*/
+    for (auto& e : Integers) {
         if (e.sig) {
-            if (Position < 0) {
-                s16 pos = -(Count + 1);
-                if (pos == Position) SelectedCharIdx = ResultLen;
-            }
             ResultStr[ResultLen++] = e.c;
         }
     }
     /*тут выделится только запятая*/
-    if (Position == 0) SelectedCharIdx = ResultLen;
     ResultStr[ResultLen++] = '.';
 
     /*тут выделятся числа после запятой*/
-    Count = 0;
     for (auto& e : Fractions) {
-        Count++;
         if (e.sig) {
-            if (Position > 0) {
-                s16 pos = (Count);
-                if (pos == Position) SelectedCharIdx = ResultLen;
-            }
             ResultStr[ResultLen++] = e.c;
         }
     }
@@ -258,7 +247,9 @@ void TNumericEdit::outCaption(TColorScheme& ColorScheme) {
             if (Position < 0) {
                 s16 pos = -(Count+1);
                 ColorScheme = (pos == Position)
-                    ? SelectedColor
+                    ? (ToggleCursor)
+                        ? SelectedColor
+                        : PrimaryColor
                     : PrimaryColor;
             }
             CharSize = TMCUFonts::getCharSizes(e.c, Font);
@@ -280,7 +271,9 @@ void TNumericEdit::outCaption(TColorScheme& ColorScheme) {
             if (Position > 0) {
                 s16 pos = (Count);
                 ColorScheme = (pos == Position)
-                    ? SelectedColor
+                    ? (ToggleCursor)
+                        ? SelectedColor
+                        : PrimaryColor
                     : PrimaryColor;
             }
             CharSize = TMCUFonts::getCharSizes(e.c, Font);
@@ -316,7 +309,7 @@ TTextSizes TNumericEdit::getSize(void) {
 }
 
 TNumericEdit::TNumericEdit(TLabelInitStructure init)
-    : TVisualObject({init.focused, init.Rect })
+    : TVisualObject({ init.focused, init.Rect })
     , PrimaryColor(init.PrimaryColor)
     , SelectedColor(init.SelectedColor)
     , Style((int)init.style | (int)LabelsStyle::TEXT_ALIGN_CENTER)
@@ -324,6 +317,8 @@ TNumericEdit::TNumericEdit(TLabelInitStructure init)
     , Caption(init.caption)
     , TextSize(TMCUFonts::getTextSizes(Caption, Font))
     , Position(0)
+    , ToggleCursor(false)
+    , ToggleCursorDelay(NE_CURSOR_DELAY)
     {
     Integers[0] = { '3', true };
     Integers[1] = { '2', true };
