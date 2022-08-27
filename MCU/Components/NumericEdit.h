@@ -12,6 +12,10 @@ typedef struct {
     bool sig;
 } TCharSignificance;
 
+static const int NE_FRAC_SIZE = 5;
+static const int NE_INT_SIZE = 4;
+static const std::array<char, 10> FracPossibleValues = {'0','1','2','3','4','5','6','7','8','9'};
+
 class TNumericEdit : public TVisualObject {
 public:
     virtual void view(void);//вывести строку на экране
@@ -33,9 +37,11 @@ protected:
     void blinkCursor(void);
     void shiftCursorLeft(void);
     void shiftCursorRight(void);
+    void valueUp(void);
+    void valueDown(void);
     int Position;//минус всё что слева от запятой, ноль на месте запятой, положительные всё что дробная часть
-    std::array<TCharSignificance,4> Integers;
-    std::array<TCharSignificance, 2> Fractions;
+    std::array<TCharSignificance, NE_INT_SIZE> Integers;
+    std::array<TCharSignificance, NE_FRAC_SIZE> Fractions;
 };
 
 #endif

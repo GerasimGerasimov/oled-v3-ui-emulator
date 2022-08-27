@@ -12,8 +12,10 @@ bool TNumericEdit::ProcessMessage(TMessage* m) {
                     shiftCursorRight();
                     break;
                 case (u32)KeyCodes::Up:
+                    valueUp();
                     break;
                 case (u32)KeyCodes::Down:
+                    valueDown();
                     break;
                 }
             break;
@@ -24,11 +26,84 @@ bool TNumericEdit::ProcessMessage(TMessage* m) {
     return true;
 }
 
+template <std::size_t SIZE>
+int findIndex(const std::array<char, SIZE>& src, const char trg) {
+    int idx = 0;
+    for (auto& e : src) {
+        if (e == trg) {
+            return idx;
+        }
+        idx++;
+    }
+    return -1;
+}
+
+template <std::size_t SIZE>
+char getNextSimbol(const std::array<char, SIZE>& src, const char trg) {
+    int idx = findIndex(src, trg);
+    if (idx != -1) {
+        return src[(idx+1)%src.size()];
+    }
+    return ' ';
+}
+
+template <std::size_t SIZE>
+char getPrevSimbol(const std::array<char, SIZE>& src, const char trg) {
+    int idx = findIndex(src, trg);
+    if (idx != -1) {
+        idx = ((idx - 1) >= 0) ? idx - 1 : src.size()-1;
+        return src[idx % src.size()];
+    }
+    return ' ';
+}
+
+void TNumericEdit::valueUp(void) {
+    if (Position > 0) {
+        char c = Fractions[Position - 1].c;
+        c = getNextSimbol (FracPossibleValues, c);
+        if (c) {
+            Fractions[Position - 1].c = c;
+        }
+    }
+}
+
+void TNumericEdit::valueDown(void) {
+    if (Position > 0) {
+        char c = Fractions[Position - 1].c;
+        c = getPrevSimbol(FracPossibleValues, c);
+        if (c) {
+            Fractions[Position - 1].c = c;
+        }
+    }
+}
+
 void TNumericEdit::shiftCursorLeft(void) {
     Position--;
+    if (Position > 0) {
+        u16 Count = NE_FRAC_SIZE;
+        while (Count--) {
+            TCharSignificance & e = Fractions[Count];
+            if (e.sig) {
+                if (e.c == '0') {
+                    e.sig = false;
+                    break;
+                }
+                else {
+                    break;
+                }
+            }
+        }
+    }
 }
 void TNumericEdit::shiftCursorRight(void) {
-    Position++;
+    if (Position < NE_FRAC_SIZE) {
+        Position++;
+        if (Position > 0) {
+            if (!Fractions[Position-1].sig) {
+                Fractions[Position-1].sig = true;
+            }
+        }
+    }
 }
 
 void TNumericEdit::blinkCursor(void) {
@@ -138,6 +213,9 @@ TNumericEdit::TNumericEdit(TLabelInitStructure init)
 
     Fractions[0] = { '0', true };
     Fractions[1] = { '1', true };
+    Fractions[2] = { '0', false };
+    Fractions[3] = { '0', false };
+    Fractions[4] = { '0', false };
 }
 
 TNumericEdit::~TNumericEdit() {//деструктор
