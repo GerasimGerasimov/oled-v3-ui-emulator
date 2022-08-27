@@ -111,6 +111,8 @@ void TNumericEdit::downFraction(void) {
 }
 
 void TNumericEdit::shiftCursorLeft(void) {
+    ToggleCursor = true;
+    ToggleCursorDelay = NE_CURSOR_DELAY;
     if (Position > -NE_INT_SIZE) {
         Position--;
         if (Position > 0) {
@@ -124,6 +126,8 @@ void TNumericEdit::shiftCursorLeft(void) {
 }
 
 void TNumericEdit::shiftCursorRight(void) {
+    ToggleCursor = true;
+    ToggleCursorDelay = NE_CURSOR_DELAY;
     if (Position < NE_FRAC_SIZE) {
         Position++;
         if (Position > 0) {
@@ -286,12 +290,6 @@ void TNumericEdit::outCaption(TColorScheme& ColorScheme) {
 const u16 TNumericEdit::getHeight(void) {
     TTextSizes tsizes = getSize();
     return tsizes.height;
-}
-
-void TNumericEdit::fillBackGround(TColorScheme& ColorScheme) {
-    TTextSizes tsizes = getSize();
-    TFillRect rect{ ElementRect.Left, ElementRect.Top, tsizes.width, tsizes.height, ColorScheme.BackGround };
-    TGrahics::fillRect(rect);
 }
 
 void TNumericEdit::setCaption(std::string caption) {
