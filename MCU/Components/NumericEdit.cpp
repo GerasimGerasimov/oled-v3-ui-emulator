@@ -59,42 +59,70 @@ char getPrevSimbol(const std::array<char, SIZE>& src, const char trg) {
 
 void TNumericEdit::valueUp(void) {
     if (Position > 0) {
-        char c = Fractions[Position - 1].c;
-        c = getNextSimbol (FracPossibleValues, c);
-        if (c) {
-            Fractions[Position - 1].c = c;
-        }
+        upFraction();
+        return;
+    }
+    if (Position < 0) {
+        upIntegers();
     }
 }
 
 void TNumericEdit::valueDown(void) {
     if (Position > 0) {
-        char c = Fractions[Position - 1].c;
-        c = getPrevSimbol(FracPossibleValues, c);
-        if (c) {
-            Fractions[Position - 1].c = c;
-        }
+        downFraction();
+        return;
+    }
+    if (Position < 0) {
+        downIntegers();
+    }
+}
+
+void TNumericEdit::upIntegers(void) {
+    int idx = abs(Position) - 1;
+    char c = Integers[idx].c;
+    c = getNextSimbol(IntPossibleValues, c);
+    if (c) {
+        Integers[idx].c = c;
+    }
+}
+
+void TNumericEdit::downIntegers(void) {
+    int idx = abs(Position) - 1;
+    char c = Integers[idx].c;
+    c = getPrevSimbol(IntPossibleValues, c);
+    if (c) {
+        Integers[idx].c = c;
+    }
+}
+
+void TNumericEdit::upFraction(void) {
+    char c = Fractions[Position - 1].c;
+    c = getNextSimbol(FracPossibleValues, c);
+    if (c) {
+        Fractions[Position - 1].c = c;
+    }
+}
+void TNumericEdit::downFraction(void) {
+    char c = Fractions[Position - 1].c;
+    c = getPrevSimbol(FracPossibleValues, c);
+    if (c) {
+        Fractions[Position - 1].c = c;
     }
 }
 
 void TNumericEdit::shiftCursorLeft(void) {
-    Position--;
-    if (Position > 0) {
-        u16 Count = NE_FRAC_SIZE;
-        while (Count--) {
-            TCharSignificance & e = Fractions[Count];
-            if (e.sig) {
-                if (e.c == '0') {
-                    e.sig = false;
-                    break;
-                }
-                else {
-                    break;
-                }
-            }
+    if (Position > -NE_INT_SIZE) {
+        Position--;
+        if (Position > 0) {
+            doFracShiftCursorLeft();
+        }
+        if (Position < 0) {
+            doIntShiftCursorLeft();
         }
     }
+
 }
+
 void TNumericEdit::shiftCursorRight(void) {
     if (Position < NE_FRAC_SIZE) {
         Position++;
@@ -106,11 +134,37 @@ void TNumericEdit::shiftCursorRight(void) {
     }
 }
 
+void TNumericEdit::doFracShiftCursorLeft() {
+    u16 Count = NE_FRAC_SIZE;
+    while (Count--) {
+        TCharSignificance& e = Fractions[Count];
+        if (e.sig) {
+            if (e.c == '0') {
+                e.sig = false;
+                break;
+            }
+            else {
+                break;
+            }
+        }
+    }
+}
+
+void TNumericEdit::doIntShiftCursorLeft() {
+    int idx = abs(Position) - 1;
+    if (!Integers[idx].sig) {
+        Integers[idx].sig = true;
+    }
+}
+
+void TNumericEdit::doFracShiftCursorRight() {
+
+}
+
 void TNumericEdit::blinkCursor(void) {
 
 }
 
-//класс "строка текста"
 void  TNumericEdit::view(void) {//вывести строку на экране
     TColorScheme ColorScheme = PrimaryColor;
     //fillBackGround(ColorScheme);
@@ -210,6 +264,11 @@ TNumericEdit::TNumericEdit(TLabelInitStructure init)
     Integers[1] = { '2', true };
     Integers[2] = { '1', true };
     Integers[3] = { '-', true };
+    Integers[4] = { '0', false };
+    Integers[5] = { '0', false };
+    Integers[6] = { '0', false };
+    Integers[7] = { '0', false };
+    Integers[8] = { '0', false };
 
     Fractions[0] = { '0', true };
     Fractions[1] = { '1', true };
