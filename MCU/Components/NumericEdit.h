@@ -47,6 +47,7 @@ protected:
     void doFracShiftCursorLeft();
     void doFracShiftCursorRight();
     void doIntShiftCursorLeft();
+    void doIntShiftCursorRight();
     int Position;//минус всё что слева от запятой, ноль на месте запятой, положительные всё что дробная часть
     std::array<TCharSignificance, NE_INT_SIZE> Integers;
     std::array<TCharSignificance, NE_FRAC_SIZE> Fractions;

@@ -127,9 +127,10 @@ void TNumericEdit::shiftCursorRight(void) {
     if (Position < NE_FRAC_SIZE) {
         Position++;
         if (Position > 0) {
-            if (!Fractions[Position-1].sig) {
-                Fractions[Position-1].sig = true;
-            }
+            doFracShiftCursorRight();
+        }
+        if (Position < 0) {
+            doIntShiftCursorRight();
         }
     }
 }
@@ -152,13 +153,43 @@ void TNumericEdit::doFracShiftCursorLeft() {
 
 void TNumericEdit::doIntShiftCursorLeft() {
     int idx = abs(Position) - 1;
+    int pred = ((idx - 1) < 0) ? 0 : (idx - 1);
+    char cpred = Integers[pred].c;
     if (!Integers[idx].sig) {
         Integers[idx].sig = true;
+        //Если число имеет знак минус, то при перемещении курсора влево минус передвигается влево
+        //а его ячейка заменяется НУЛЁМ
+        if (cpred == '-') {
+            Integers[idx].c = '-';
+            Integers[pred].c = '0';
+        }
     }
 }
 
 void TNumericEdit::doFracShiftCursorRight() {
+    int idx = Position - 1;
+    if (!Fractions[idx].sig) {
+        Fractions[idx].sig = true;
+    }
+}
 
+void TNumericEdit::doIntShiftCursorRight() {
+    /*удаление лишних нулей перед числом*/
+    /*TODO и надо удалить двойные минусы, один оставить*/
+    u16 Count = NE_INT_SIZE;
+    while (Count--) {
+        TCharSignificance& e = Integers[Count];
+        if (e.sig) {
+            if (e.c == '0') {
+                e.sig = false;
+                break;
+            }
+            else {
+                break;
+            }
+        }
+    }
+    /*TODO и надо удалить нули после минуса, кроме последнего нуля (перед запятой)*/
 }
 
 void TNumericEdit::blinkCursor(void) {
@@ -167,7 +198,6 @@ void TNumericEdit::blinkCursor(void) {
 
 void  TNumericEdit::view(void) {//вывести строку на экране
     TColorScheme ColorScheme = PrimaryColor;
-    //fillBackGround(ColorScheme);
     outCaption(ColorScheme);
 }
 
@@ -189,7 +219,6 @@ void TNumericEdit::outCaption(TColorScheme& ColorScheme) {
     while (Count--) {
         TCharSignificance e = Integers[Count];
         if (e.sig) {
-            /*TODO не выделяется первое целое перед запятой*/
             if (Position < 0) {
                 s16 pos = -(Count+1);
                 ColorScheme = (pos == Position)
@@ -201,13 +230,13 @@ void TNumericEdit::outCaption(TColorScheme& ColorScheme) {
             TGrahics::putChar(e.c, (u16&) cLeft, cTop, ColorScheme.Color);
         }
     }
-    /*TODO тут должна выделится только запятая*/
+    /*тут выделится только запятая*/
     ColorScheme = PrimaryColor;
     CharSize = TMCUFonts::getCharSizes('.', Font);
     TGrahics::fillRect({ cLeft, cTop , CharSize.width, CharSize.height, (u16)((Position == 0) ? 1 : 0) });
     TGrahics::putChar('.', (u16&)cLeft, cTop, (Position == 0)?0:1);
 
-    /*TODO тут должнны выделятся числа после запятой*/
+    /*тут выделятся числа после запятой*/
     Count = 0;
     for (auto& e : Fractions) {
         Count++;
@@ -236,7 +265,7 @@ void TNumericEdit::fillBackGround(TColorScheme& ColorScheme) {
     TGrahics::fillRect(rect);
 }
 
-void TNumericEdit::setCaption(std::string caption) {//добавить/изменить текст в строке
+void TNumericEdit::setCaption(std::string caption) {
     if (Caption != caption) {
         Caption = caption;
         if (Style & (int)LabelsStyle::TEXT_ALIGN_CENTER) {
