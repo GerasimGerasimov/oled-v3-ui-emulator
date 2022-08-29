@@ -23,6 +23,7 @@ private:
     THeaderLabel* pHeader;
     //TWrappedText* pText;
     TNumericEdit* pEdit;
+    TNumericEdit* pEdit1;
 };
 
 #endif

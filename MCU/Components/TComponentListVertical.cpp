@@ -5,24 +5,26 @@ bool TComponentListVertical::onEnter(void) {
 }
 
 bool TComponentListVertical::ProcessMessage(TMessage* m){//обработчик сообщений
-  if (ItemsCount() == 0) return false;//список пуст
+    if (ItemsCount() == 0) return false;//список пуст
+
+    for (auto& element : List) {
+        element->ProcessMessage(m);
+    }
+
     switch (m->Event) {
         case (u32)EventSrc::KEYBOARD:{//сообщения от клавиатуры
             switch (m->p1) {
                 case (u32)KeyCodes::Up:{//кнопка вверх
                     goUp();
-                    break;
+                    return true;
                 }
                 case (u32)KeyCodes::Down:{//кнопка вниз
                     goDown();
-                    break;
+                    return true;
                 }
             }
-            break;
+            return false;
         }
-    }
-    for (auto& element : List) {
-        element->ProcessMessage(m);
     }
     return false;
 }

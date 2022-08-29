@@ -4,26 +4,36 @@
 bool TNumericEdit::ProcessMessage(TMessage* m) { 
     switch (m->Event) {
         case (u32)EventSrc::KEYBOARD:
-            switch (m->p1) {
+            if (inFocus) {
+                switch (m->p1) {
                 case (u32)KeyCodes::Left:
                     shiftCursorLeft();
-                    break;
+                    m->Event = (u32) EventSrc::NONE;
+                    return true;
                 case (u32)KeyCodes::Right:
                     shiftCursorRight();
-                    break;
+                    m->Event = (u32)EventSrc::NONE;
+                    return true;
                 case (u32)KeyCodes::Up:
                     valueUp();
-                    break;
+                    m->Event = (u32)EventSrc::NONE;
+                    return true;
                 case (u32)KeyCodes::Down:
                     valueDown();
-                    break;
+                    m->Event = (u32)EventSrc::NONE;
+                    return true;
+                case (u32)KeyCodes::ESC:
+                    inFocus = false;
+                    m->Event = (u32)EventSrc::NONE;
+                    return true;
                 }
-            break;
+            }
+            return false;
         case (u32)EventSrc::TIMER:
                 blinkCursor();
-            break;
+                return false;
     }
-    return true;
+    return false;
 }
 
 template <std::size_t SIZE>
@@ -96,17 +106,19 @@ void TNumericEdit::downIntegers(void) {
 }
 
 void TNumericEdit::upFraction(void) {
-    char c = Fractions[Position - 1].c;
+    u16 idx = Position - 1;
+    char c = Fractions[idx].c;
     c = getNextSimbol(FracPossibleValues, c);
     if (c) {
-        Fractions[Position - 1].c = c;
+        Fractions[idx].c = c;
     }
 }
 void TNumericEdit::downFraction(void) {
-    char c = Fractions[Position - 1].c;
+    u16 idx = Position - 1;
+    char c = Fractions[idx].c;
     c = getPrevSimbol(FracPossibleValues, c);
     if (c) {
-        Fractions[Position - 1].c = c;
+        Fractions[idx].c = c;
     }
 }
 
@@ -197,9 +209,15 @@ void TNumericEdit::doIntShiftCursorRight() {
 }
 
 void TNumericEdit::blinkCursor(void) {
-    ToggleCursorDelay = (ToggleCursorDelay)
-        ? --ToggleCursorDelay
-        : (ToggleCursor = !ToggleCursor, NE_CURSOR_DELAY);
+    if (inFocus) {
+        ToggleCursorDelay = (ToggleCursorDelay)
+            ? --ToggleCursorDelay
+            : (ToggleCursor = !ToggleCursor, NE_CURSOR_DELAY);
+    }
+    else {
+        ToggleCursorDelay = NE_CURSOR_DELAY;
+        ToggleCursor = false;
+    }
 }
 
 void  TNumericEdit::view(void) {//вывести строку на экране
@@ -262,10 +280,14 @@ void TNumericEdit::outCaption(TColorScheme& ColorScheme) {
         }
     }
     /*тут выделится только запятая*/
-    ColorScheme = PrimaryColor;
+    ColorScheme = (Position == 0)
+        ? (ToggleCursor)
+            ? SelectedColor
+            : PrimaryColor
+        : PrimaryColor;
     CharSize = TMCUFonts::getCharSizes('.', Font);
-    TGrahics::fillRect({ cLeft, cTop , CharSize.width, CharSize.height, (u16)((Position == 0) ? 1 : 0) });
-    TGrahics::putChar('.', (u16&)cLeft, cTop, (Position == 0)?0:1);
+    TGrahics::fillRect({ cLeft, cTop , CharSize.width, CharSize.height, ColorScheme.BackGround });// (u16)((Position == 0) ? 1 : 0)});
+    TGrahics::putChar('.', (u16&)cLeft, cTop, ColorScheme.Color);// (Position == 0) ? 0 : 1);
 
     /*тут выделятся числа после запятой*/
     Count = 0;
@@ -279,6 +301,9 @@ void TNumericEdit::outCaption(TColorScheme& ColorScheme) {
                         ? SelectedColor
                         : PrimaryColor
                     : PrimaryColor;
+            }
+            else {
+                ColorScheme = PrimaryColor;
             }
             CharSize = TMCUFonts::getCharSizes(e.c, Font);
             TGrahics::fillRect({ cLeft, cTop , CharSize.width, CharSize.height, ColorScheme.BackGround });

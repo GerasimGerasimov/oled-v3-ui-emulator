@@ -14,21 +14,22 @@ void TPageEditValue::onOpen() {
     pHeader->setCaption(p->getName());
     //pText->setText(p->getComment());
     pEdit->setCaption(TRouter::PageValueEditEntryData.value);
+    pEdit1->setCaption(TRouter::PageValueEditEntryData.value);
 }
 
 bool TPageEditValue::ProcessMessage(TMessage* m) {
+    for (auto& element : List) {
+       element->ProcessMessage(m);
+    }
+
     switch (m->Event) {
         case (u32)EventSrc::KEYBOARD: {
             switch (m->p1) {
             case (u32)KeyCodes::ESC:
                 TRouter::goBack();
-                break;
+                return true;
             }
         }
-    }
-
-    for (auto& element : List) {
-        element->ProcessMessage(m);
     }
     return false;
 };
@@ -63,16 +64,18 @@ TPageEditValue::TPageEditValue(std::string Name)
     TLabelInitStructure LabelInit;
     LabelInit.style = (LabelsStyle)((u32)LabelsStyle::WIDTH_FIXED | (u32)LabelsStyle::TEXT_ALIGN_CENTER);
     LabelInit.Rect = { 10, 10, 10, VIEW_PORT_MAX_WIDTH };
-    LabelInit.focused = true;
+    LabelInit.focused = false;
 
     LabelInit.caption = "---";
     pHeader = new THeaderLabel(LabelInit);
 
     //pText = new TWrappedText(LabelInit);
-
+    LabelInit.focused = true;
     pEdit = new TNumericEdit(LabelInit);
+    LabelInit.focused = false;
+    pEdit1 = new TNumericEdit(LabelInit);
 
-    MainMenu = new TComponentListVertical({ pHeader, pEdit });
+    MainMenu = new TComponentListVertical({ pHeader, pEdit, pEdit1 });
 
     //pText->ElementRect.Height = MainMenu->ElementRect.Height - pHeader->getHeight() - pEdit->getHeight();
 

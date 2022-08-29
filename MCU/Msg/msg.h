@@ -9,6 +9,7 @@
 
 
 const enum class EventSrc : u32 {
+	NONE,
 	KEYBOARD,
 	REPAINT,
 	TIMER,
