@@ -62,6 +62,7 @@ TPageHome::TPageHome(std::string Name)
     LabelInit.focused = false;
 
     pLTagUref     = new TTagLine("Fgen", "U1/RAM/Fgen/", LabelInit);
+    pLTagUref->inFocus = true;
     pLTagIref     = new TTagLine("Phi", "U1/RAM/Phi/", LabelInit);
     pLTagUoutAve  = new TTagLine("UbusOK", "U1/RAM/UbusOK/", LabelInit);
     pLTagIoutAve  = new TTagLine("DVA", "U1/FLASH/Modbus_RS485_DVA/", LabelInit);
@@ -71,6 +72,8 @@ TPageHome::TPageHome(std::string Name)
     MainMenu = new TComponentListVertical({ pLTagUref    , pLTagIref     , pLTagUoutAve ,
                                             pLTagIoutAve , pLTagSparkFrq , pLTagOut /*,
                                             pLTagIinAve */ });
+    
+    MainMenu->FocusedLine = 0;
 
     AddList({ MainMenu });
 

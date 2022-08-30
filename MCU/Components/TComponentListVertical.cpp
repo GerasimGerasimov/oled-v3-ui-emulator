@@ -33,21 +33,76 @@ bool TComponentListVertical::ProcessMessage(TMessage* m){//обработчик сообщений
 и если их несколько подряд... ну значит несколько и пропускать*/
 
 void TComponentListVertical::goUp(void) {
-    List[FocusLine]->inFocus = false;//расфокусировка предыдущей строки
-    if (FocusLine > 0) FocusLine--;
-    List[FocusLine]->inFocus = true;//фокусировка строки
+    if (ItemsCount() == 0) return;
+    int fl = 0;
+    u16 idx = 0;
+
+    List[FocusedLine]->inFocus = false;//расфокусировка предыдущей строки
+    fl = FocusedLine;
+    //следующих элемент (если не встречу пропускаемые) должен быть:
+    fl--;
+    if (fl < 0) fl = 0;
+    u16 Count = ItemsCount();
+    while (Count--)
+    {
+        if (fl == Count) {
+            if (List[Count]->isSkipped) {
+                if (fl-- <= 0) {//то выделится не нулевой элемент а предыдущий если он там есть
+                    FocusedLine = (ItemsCount() > 1) ? 1 : 0;
+                    List[FocusedLine]->inFocus = true;
+                    break;
+                }
+            }
+            else {
+                FocusedLine = fl;
+                List[Count]->inFocus = true;
+                break;
+            }
+        }
+    }
+
+    //List[FocusLine]->inFocus = false;//расфокусировка предыдущей строки
+    //if (FocusLine > 0) FocusLine--;
+    //List[FocusLine]->inFocus = true;//фокусировка строки
 }
 
 void TComponentListVertical::goDown(void) {
     u16 Count = ItemsCount();
-    List[FocusLine]->inFocus = false;//расфокусировка предыдущей строки
-    if ((FocusLine < (Count - 1)) && (Count != 0)) FocusLine++;
-    List[FocusLine]->inFocus = true;//фокусировка строки
+    if (Count == 0) return;
+
+    u16 fl = 0;
+    u16 idx = 0;
+
+
+    List[FocusedLine]->inFocus = false;//расфокусировка предыдущей строки
+    //найду выделенный элемент (хотя он FocusLine)
+    fl = FocusedLine;
+    //следующих элемент (если не встречу пропускаемые) должен быть:
+    fl++;
+    if (fl == Count) fl = Count - 1;
+    idx = 0;
+    for (auto& e: List) {
+        if (fl == idx) {
+            if (e->isSkipped) {
+                if (fl++ == Count) fl = Count - 1;
+            }
+            else {
+                FocusedLine = fl;
+                e->inFocus = true;
+                break;
+            }
+        }
+        idx++;
+    }
+
+    //List[FocusLine]->inFocus = false;//расфокусировка предыдущей строки
+    //if ((FocusLine < (Count - 1)) && (Count != 0)) FocusLine++;
+    //List[FocusLine]->inFocus = true;//фокусировка строки
 }
 
 TVisualObject* TComponentListVertical::getFocusedElement() {
     if (List.size()) {
-        TVisualObject* p = List.at(FocusLine);
+        TVisualObject* p = List.at(FocusedLine);
         return p;
     }
     
@@ -82,8 +137,8 @@ const u16 TComponentListVertical::getHeight(void) {
 
 u16 TComponentListVertical::GetViewObjectsCount(){//кол-во объектов умещающихся в высоту меню от FirstPosition до нижнего края
 //при этом контролирую границы
-  if (FocusLine <= FirstPosition)  FirstPosition = FocusLine ;//если выше верхней
-  if ((FocusLine >= LastPosition) && (FocusLine < ItemsCount()))  FirstPosition++;//если ниже нижней, но не больше чем есть в списке, то подвинуть строчку
+  if (FocusedLine <= FirstPosition)  FirstPosition = FocusedLine ;//если выше верхней
+  if ((FocusedLine >= LastPosition) && (FocusedLine < ItemsCount()))  FirstPosition++;//если ниже нижней, но не больше чем есть в списке, то подвинуть строчку
   u16 i = FirstPosition;
   u16 c = 0;//счётчик строк
   u16 h = 0; //высота объекта
@@ -106,13 +161,13 @@ u16 TComponentListVertical::GetViewObjectsCount(){//кол-во объектов умещающихся 
 
 void  TComponentListVertical::Clear(){//очистит список
   TComponentsContainer::Clear();
-  FocusLine = LastPosition = FirstPosition = 0;
+  FocusedLine = LastPosition = FirstPosition = 0;
 }
 
 TComponentListVertical::TComponentListVertical (std::vector <TVisualObject*> Source) {//конструктор
   isOpen = false;
   inFocus = false;
-  FocusLine = FirstPosition = 0;
+  FocusedLine = FirstPosition = 0;
   LastPosition = 1;
   ElementRect = { 0, 0, VIEW_PORT_MAX_HEIGHT, VIEW_PORT_MAX_WIDTH };
   AddList(Source);

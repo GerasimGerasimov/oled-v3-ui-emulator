@@ -68,16 +68,14 @@ TPageEditValue::TPageEditValue(std::string Name)
 
     LabelInit.caption = "---";
     pHeader = new THeaderLabel(LabelInit);
+    pHeader1 = new THeaderLabel(LabelInit);
 
-    //pText = new TWrappedText(LabelInit);
     LabelInit.focused = true;
     pEdit = new TNumericEdit(LabelInit);
     LabelInit.focused = false;
     pEdit1 = new TNumericEdit(LabelInit);
 
-    MainMenu = new TComponentListVertical({ pHeader, pEdit, pEdit1 });
-
-    //pText->ElementRect.Height = MainMenu->ElementRect.Height - pHeader->getHeight() - pEdit->getHeight();
+    MainMenu = new TComponentListVertical({ pHeader, pEdit, pHeader1, pEdit1 });
 
     AddList({ MainMenu });
 };

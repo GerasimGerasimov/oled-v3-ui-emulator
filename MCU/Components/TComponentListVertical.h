@@ -11,7 +11,7 @@ class TComponentListVertical : public TComponentsContainer
   public:
     bool isOpen;
     //с какой по какую строку меню выводить, если кол-во строк не помещается на дисплее
-    u16 FocusLine;//строка находящаяся в фокусе
+    u16 FocusedLine;//строка находящаяся в фокусе
     u16 FirstPosition;//первая отображаемая строка начинаю выводить с неё
     u16 LastPosition; //последняя отображаемая строка
     virtual void view(void);//вывести объект на экране
