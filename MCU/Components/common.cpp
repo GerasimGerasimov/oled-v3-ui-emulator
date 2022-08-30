@@ -2,6 +2,7 @@
 //бaзовый класс визуальных объектов
 TVisualObject::TVisualObject()
 	: inFocus(false)
+	, isSkipped(false)
 	, ElementRect({0,0,0,0})
 	, DataSrc(NULL) {
 };

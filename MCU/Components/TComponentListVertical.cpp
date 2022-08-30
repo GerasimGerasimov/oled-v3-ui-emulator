@@ -29,6 +29,9 @@ bool TComponentListVertical::ProcessMessage(TMessage* m){//обработчик сообщений
     return false;
 }
 
+/*TODO сделать стиль у компонента что если он в этом стиле, то Список его пропускает и даёт следующий (если есть элемент)
+и если их несколько подряд... ну значит несколько и пропускать*/
+
 void TComponentListVertical::goUp(void) {
     List[FocusLine]->inFocus = false;//расфокусировка предыдущей строки
     if (FocusLine > 0) FocusLine--;

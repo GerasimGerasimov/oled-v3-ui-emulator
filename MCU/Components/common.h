@@ -20,7 +20,8 @@ struct TVisualObjectInitStructure {
 class TVisualObject {//базовый класс визуальных объектов
 public:
     //нахождение визуального объекта в фокусе
-    bool inFocus = false;//false-не в фокусе true-в фокусе
+    bool inFocus;//false-не в фокусе true-в фокусе
+    bool isSkipped;//truе - будет пропускаться при переключении между компонентами
     //область вывода (откуда начинать и контроль границ)
     TElementRect ElementRect;
     virtual void view(void) = 0;//вывести объект на экране

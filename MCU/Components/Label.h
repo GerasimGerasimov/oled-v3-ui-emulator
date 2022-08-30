@@ -18,7 +18,6 @@ enum class LabelsStyle : u32 {
     HOLD_SELECTED_STYLE = 16
 };
 
-
 struct TLabelInitStructure {
     bool focused = false;
     std::string caption = "";

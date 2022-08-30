@@ -13,6 +13,7 @@ void  THeaderLabel::view(void) {//вывести строку на экране
 THeaderLabel::THeaderLabel(TLabelInitStructure init)
     : TLabel(init) {
     Style = (int)init.style | (int)LabelsStyle::TEXT_ALIGN_CENTER;
+    isSkipped = true;
 }
 
 THeaderLabel::~THeaderLabel() {//деструктор
