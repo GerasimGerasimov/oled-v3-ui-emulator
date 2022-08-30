@@ -320,11 +320,12 @@ const u16 TNumericEdit::getHeight(void) {
 void TNumericEdit::setCaption(std::string caption) {
     if (Caption != caption) {
         Caption = caption;
+        /*TODO тут надо введЄнное число преоразовать на целую и дробные части
+        и заполнить массивы Integers и Fractions*/
         if (Style & (int)LabelsStyle::TEXT_ALIGN_CENTER) {
             TextSize = TMCUFonts::getTextSizes(Caption, Font);
         }
     }
-    /*TODO найти в строке "зап€тую" и если еЄ нет, то в конец строки додавить зап€тую */
 }
 
 TTextSizes TNumericEdit::getSize(void) {

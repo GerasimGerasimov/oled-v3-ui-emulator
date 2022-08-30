@@ -12,9 +12,7 @@ void TPageEditValue::clear() {
 void TPageEditValue::onOpen() {
     TParameter* p = (TParameter*)TRouter::PageValueEditEntryData.signal;
     pHeader->setCaption(p->getName());
-    //pText->setText(p->getComment());
     pEdit->setCaption(TRouter::PageValueEditEntryData.value);
-    pEdit1->setCaption(TRouter::PageValueEditEntryData.value);
 }
 
 bool TPageEditValue::ProcessMessage(TMessage* m) {
@@ -68,14 +66,11 @@ TPageEditValue::TPageEditValue(std::string Name)
 
     LabelInit.caption = "---";
     pHeader = new THeaderLabel(LabelInit);
-    pHeader1 = new THeaderLabel(LabelInit);
 
     LabelInit.focused = true;
     pEdit = new TNumericEdit(LabelInit);
-    LabelInit.focused = false;
-    pEdit1 = new TNumericEdit(LabelInit);
 
-    MainMenu = new TComponentListVertical({ pHeader, pEdit, pHeader1, pEdit1 });
+    MainMenu = new TComponentListVertical({ pHeader, pEdit });
 
     AddList({ MainMenu });
 };

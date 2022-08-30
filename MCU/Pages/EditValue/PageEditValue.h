@@ -21,9 +21,7 @@ public:
 private:
     TComponentListVertical* MainMenu;
     THeaderLabel* pHeader;
-    THeaderLabel* pHeader1;
     TNumericEdit* pEdit;
-    TNumericEdit* pEdit1;
 };
 
 #endif
