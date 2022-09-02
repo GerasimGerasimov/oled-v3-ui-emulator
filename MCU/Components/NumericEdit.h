@@ -20,9 +20,11 @@ static const std::array<char, 11> IntPossibleValues = { '0','1','2','3','4','5',
 
 class TNumericEdit : public TVisualObject {
 public:
+    bool isSingle;
     virtual void view(void);//вывести строку на экране
     virtual const u16 getHeight(void);
     void setCaption(std::string caption);
+    std::string getValue(void);
     bool ProcessMessage(TMessage* m);
     TTextSizes getSize(void);
     TNumericEdit(TLabelInitStructure init);//конструктор
@@ -53,6 +55,7 @@ protected:
     std::array<TCharSignificance, NE_INT_SIZE> Integers;
     std::array<TCharSignificance, NE_FRAC_SIZE> Fractions;
     std::array<u8, NE_FRAC_SIZE + NE_INT_SIZE + 1> ResultStr;//+1 потому что есть "запятая"
+    u8 ResultStrLen = 0;
     bool ToggleCursor;
     u16 ToggleCursorDelay;
     void fillIntFracArrays(std::string& cap);

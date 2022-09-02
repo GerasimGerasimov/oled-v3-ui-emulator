@@ -26,7 +26,9 @@ bool TNumericEdit::ProcessMessage(TMessage* m) {
                 /*TODO нельз€ делать самому inFocus = false, требутс€ состо€ние idInEdit (типа редактируетс€ или нет )*/
                 case (u32)KeyCodes::ESC:
                     inFocus = false;
-                    m->Event = (u32)EventSrc::NONE;
+                    if (isSingle == false) {
+                        m->Event = (u32)EventSrc::NONE;
+                    }
                     return true;
                 }
             }
@@ -228,24 +230,24 @@ void  TNumericEdit::view(void) {//вывести строку на экране
 }
 
 s16 TNumericEdit::getCaptionLeftPosition(void) {
-    u8 ResultLen = 0;
+    ResultStrLen = 0;
 
     /*тут выдел€тс€ числа после зап€той*/
     for (auto& e : Integers) {
         if (e.sig) {
-            ResultStr[ResultLen++] = e.c;
+            ResultStr[ResultStrLen++] = e.c;
         }
     }
     /*тут выделитс€ только зап€та€*/
-    ResultStr[ResultLen++] = '.';
+    ResultStr[ResultStrLen++] = '.';
 
     /*тут выдел€тс€ числа после зап€той*/
     for (auto& e : Fractions) {
         if (e.sig) {
-            ResultStr[ResultLen++] = e.c;
+            ResultStr[ResultStrLen++] = e.c;
         }
     }
-    TTextSizes CharSizes = TMCUFonts::getCharArraySizes(ResultStr.data(), ResultLen, Font);
+    TTextSizes CharSizes = TMCUFonts::getCharArraySizes(ResultStr.data(), ResultStrLen, Font);
 
     s16 Left = ElementRect.Left;
     if (Style & (int)LabelsStyle::TEXT_ALIGN_CENTER) {
@@ -367,6 +369,29 @@ void TNumericEdit::fillIntFracArrays(std::string& cap) {
     }
 }
 
+std::string TNumericEdit::getValue(void) {
+    char cs[NE_FRAC_SIZE + NE_INT_SIZE + 1];
+    u16 i = 0;
+
+    u16 Count = NE_INT_SIZE;
+    while (Count--) {
+        TCharSignificance& e = Integers[Count];
+        if (e.sig) {
+            cs[i++] = e.c;
+        }
+    }
+
+    cs[i++] = '.';
+
+    for (auto& e : Fractions) {
+        if (e.sig) {
+            cs[i++] = e.c;
+        }
+    }
+    std::string str(cs, i);
+    return str;
+}
+
 void TNumericEdit::clearIntegers() {
     Integers[0] = { '0', true };
     Integers[1] = { '0', false };
@@ -401,6 +426,7 @@ TNumericEdit::TNumericEdit(TLabelInitStructure init)
     , Position(0)
     , ToggleCursor(false)
     , ToggleCursorDelay(NE_CURSOR_DELAY)
+    , isSingle(true)
     {
     clearIntegers();
     clearFraction();

@@ -16,6 +16,7 @@ public:
     void onOpen();
     void clear();//очистит список
     bool ProcessMessage(TMessage* m);//обработчик сообщений
+    void sendValue(void);
     TPageEditValue(std::string Name);//конструктор
     ~TPageEditValue();//деструктор
 private:

@@ -23,14 +23,22 @@ bool TPageEditValue::ProcessMessage(TMessage* m) {
     switch (m->Event) {
         case (u32)EventSrc::KEYBOARD: {
             switch (m->p1) {
-            case (u32)KeyCodes::ESC:
-                TRouter::goBack();
-                return true;
-            }
+                case (u32)KeyCodes::ESC:
+                    TRouter::goBack();
+                    return true;
+                case (u32)KeyCodes::ENT:
+                    sendValue();
+                    TRouter::goBack();
+                    return true;
+                }
         }
     }
     return false;
 };
+
+void TPageEditValue::sendValue(void) {
+    std::string s = pEdit->getValue();
+}
 
 TPageEditValue::TPageEditValue(std::string Name)
 /*TODO в этом окне
