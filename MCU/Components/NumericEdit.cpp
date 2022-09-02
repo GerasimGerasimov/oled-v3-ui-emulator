@@ -22,6 +22,8 @@ bool TNumericEdit::ProcessMessage(TMessage* m) {
                     valueDown();
                     m->Event = (u32)EventSrc::NONE;
                     return true;
+                /*TODO добавить признак Single (что данный элемент один на странице тогда ESC сразу на выход*/
+                /*TODO нельзя делать самому inFocus = false, требутся состояние idInEdit (типа редактируется или нет )*/
                 case (u32)KeyCodes::ESC:
                     inFocus = false;
                     m->Event = (u32)EventSrc::NONE;
@@ -320,12 +322,68 @@ const u16 TNumericEdit::getHeight(void) {
 void TNumericEdit::setCaption(std::string caption) {
     if (Caption != caption) {
         Caption = caption;
-        /*TODO тут надо введённое число преоразовать на целую и дробные части
-        и заполнить массивы Integers и Fractions*/
+        fillIntFracArrays(caption);
         if (Style & (int)LabelsStyle::TEXT_ALIGN_CENTER) {
             TextSize = TMCUFonts::getTextSizes(Caption, Font);
         }
     }
+}
+
+void TNumericEdit::fillIntFracArrays(std::string& cap) {
+    clearIntegers();
+    clearFraction();
+    //найти позицию запятой, если её нет, то число целое, значит после запятой ноль.
+    std::string::size_type comma = cap.find('.');
+    if (comma != std::string::npos) {//запятая есть
+        int flen = cap.size() - (comma + 1);
+        u16 startpos = comma + 1;
+        u16 idx = 0;
+        char c;
+        if (flen) {
+            while (flen--) {
+                c = cap.at(startpos++);
+                if (findIndex(FracPossibleValues, c) != -1) {
+                    Fractions[idx++] = { c, true };
+                }
+            }
+        }
+        flen = comma;
+        idx = 0;
+        while (flen--) {
+            c = cap.at(flen);
+            if (findIndex(IntPossibleValues, c) != -1) {
+                Integers[idx++] = { c, true };
+            }
+        }
+    } else { //запятой нет
+        int flen = cap.size();
+        u16 idx = 0;
+        while (flen--) {
+            char c = cap.at(flen);
+            if (findIndex(IntPossibleValues, c) != -1) {
+                Integers[idx++] = { c, true };
+            }
+        }
+    }
+}
+
+void TNumericEdit::clearIntegers() {
+    Integers[0] = { '0', true };
+    Integers[1] = { '0', false };
+    Integers[2] = { '0', false };
+    Integers[3] = { '0', false };
+    Integers[4] = { '0', false };
+    Integers[5] = { '0', false };
+    Integers[6] = { '0', false };
+    Integers[7] = { '0', false };
+    Integers[8] = { '0', false };
+}
+void TNumericEdit::clearFraction() {
+    Fractions[0] = { '0', true };
+    Fractions[1] = { '0', false };
+    Fractions[2] = { '0', false };
+    Fractions[3] = { '0', false };
+    Fractions[4] = { '0', false };
 }
 
 TTextSizes TNumericEdit::getSize(void) {
@@ -344,21 +402,8 @@ TNumericEdit::TNumericEdit(TLabelInitStructure init)
     , ToggleCursor(false)
     , ToggleCursorDelay(NE_CURSOR_DELAY)
     {
-    Integers[0] = { '3', true };
-    Integers[1] = { '2', true };
-    Integers[2] = { '1', true };
-    Integers[3] = { '-', true };
-    Integers[4] = { '0', false };
-    Integers[5] = { '0', false };
-    Integers[6] = { '0', false };
-    Integers[7] = { '0', false };
-    Integers[8] = { '0', false };
-
-    Fractions[0] = { '0', true };
-    Fractions[1] = { '1', true };
-    Fractions[2] = { '0', false };
-    Fractions[3] = { '0', false };
-    Fractions[4] = { '0', false };
+    clearIntegers();
+    clearFraction();
 }
 
 TNumericEdit::~TNumericEdit() {//деструктор

@@ -55,6 +55,9 @@ protected:
     std::array<u8, NE_FRAC_SIZE + NE_INT_SIZE + 1> ResultStr;//+1 потому что есть "запятая"
     bool ToggleCursor;
     u16 ToggleCursorDelay;
+    void fillIntFracArrays(std::string& cap);
+    void clearIntegers();
+    void clearFraction();
 };
 
 #endif
