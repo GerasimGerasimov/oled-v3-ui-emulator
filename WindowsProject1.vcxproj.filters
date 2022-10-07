@@ -281,6 +281,9 @@
     <ClCompile Include="MCU\Components\NumericEdit.cpp">
       <Filter>App\Components</Filter>
     </ClCompile>
+    <ClCompile Include="MCU\Modbus\ModbusSlave.cpp">
+      <Filter>App\Modbus</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="WindowsProject1.rc">

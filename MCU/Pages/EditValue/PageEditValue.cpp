@@ -1,6 +1,5 @@
 #include "PageEditValue.h"
 #include "Router.h"
-#include "parameters.h"
 
 void TPageEditValue::view() {
     MainMenu->view();
@@ -10,7 +9,7 @@ void TPageEditValue::clear() {
 }
 
 void TPageEditValue::onOpen() {
-    TParameter* p = (TParameter*)TRouter::PageValueEditEntryData.signal;
+    p = (TParameter*)TRouter::PageValueEditEntryData.signal;
     pHeader->setCaption(p->getName());
     pEdit->setCaption(TRouter::PageValueEditEntryData.value);
 }
@@ -37,7 +36,21 @@ bool TPageEditValue::ProcessMessage(TMessage* m) {
 };
 
 void TPageEditValue::sendValue(void) {
-    std::string s = pEdit->getValue();
+    u8 cmd[11];
+    std::string value = pEdit->getValue();
+    std::string ValueHex = p->getValueHex(value);//получил значение в хексах и сразу длину (так как строка)
+    std::string RegHexAddr = p->getRegHexAddr();//получил номер регистра в хексах
+    /*getWriteCmdType узнаю какой командой отправл€ть данные
+        Write Multiple Registers - 0х10
+        Mask Write Register - 0x16 дл€ манипул€ций с битами и байтами*/
+    const std::string WriteCmdType = p->getWriteCmdType();
+    /*TODO теперь надо узнать на какой јдрес отправл€ть*/
+    /*TODO на основании јдреса,  оманды, Ќомера–егистра, ƒанных - собрать массив команды*/
+    /*TODO в полученную команду добавить CRC16*/
+    /*TODO вы€сник в какой командный слое писать*/
+    /*TODO полученный массив положить в OUT командного слота*/
+    /*TODO активировать слот на передачу и показывать анимацию до завершени€ записи*/
+    /*TODO если запись успешна - показать анимаци успешной записаи, если нет соотв неуспешной*/
 }
 
 TPageEditValue::TPageEditValue(std::string Name)
@@ -66,7 +79,8 @@ TPageEditValue::TPageEditValue(std::string Name)
     Ќули по€вл€ютс€ в пустых местах при продвижении курсора, соотв-но есди юзер не постааит
     значащее значение то все нули обнул€тс€
 */
-    :TPage(Name) {
+    :TPage(Name)
+    , p(NULL) {
     TLabelInitStructure LabelInit;
     LabelInit.style = (LabelsStyle)((u32)LabelsStyle::WIDTH_FIXED | (u32)LabelsStyle::TEXT_ALIGN_CENTER);
     LabelInit.Rect = { 10, 10, 10, VIEW_PORT_MAX_WIDTH };

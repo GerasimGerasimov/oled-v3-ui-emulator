@@ -7,6 +7,7 @@
 #include "HeaderLabel.h"
 #include "WrappedText.h"
 #include "NumericEdit.h"
+#include "parameters.h"
 
 class TPageEditValue : public TPage
 {
@@ -23,6 +24,7 @@ private:
     TComponentListVertical* MainMenu;
     THeaderLabel* pHeader;
     TNumericEdit* pEdit;
+    TParameter* p;
 };
 
 #endif

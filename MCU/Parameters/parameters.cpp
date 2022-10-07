@@ -50,3 +50,15 @@ void TParameter::setValueNotValid() {
 
 void TParameter::setValue() {
 }
+
+const std::string  TParameter::getValueHex(std::string& src) {
+	return "No Value";
+}
+
+const std::string TParameter::getRegHexAddr() {
+	return "No Reg";
+}
+
+const std::string TParameter::getWriteCmdType() {
+	return "No command";
+}

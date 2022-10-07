@@ -20,6 +20,9 @@ public:
 	virtual std::string getMSU();
 	virtual void setValueNotValid();
 	virtual void setValue();
+	virtual const std::string getValueHex(std::string& src);
+	virtual const std::string getRegHexAddr();
+	virtual const std::string getWriteCmdType();
 protected:
 	char* Comment;
 	char* strAddr;
