@@ -25,6 +25,7 @@ private:
     THeaderLabel* pHeader;
     TNumericEdit* pEdit;
     TParameter* p;
+    std::string tag;
 };
 
 #endif

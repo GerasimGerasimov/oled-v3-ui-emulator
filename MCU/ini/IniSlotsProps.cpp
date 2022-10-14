@@ -15,6 +15,14 @@ std::string IniSlotsProps::getSourceOfDev(std::string position) {
 	return "";
 }
 
+u16 IniSlotsProps::getDevNetWorkAddr(std::string position) {
+	if (Devices.count(position)) {
+		u16 a = Devices.at(position).NetworkAddr;
+		return a;
+	}
+	return 0;
+}
+
 //"U1":"DEV1/COM1/1/RAM,0x0000,0х0036,0/FLASH,0x2000,0х2069,1000/CD,0xC000,0xC0037,1000/"
 //      |    |    | |   |      |      |--пауза перед следующим запросом (0-значит запрашивать с макс частотой)
 //      |    |    | |   |      |-конечный регистр

@@ -1,5 +1,6 @@
 #include "PageEditValue.h"
 #include "Router.h"
+#include <IniResources.h>
 
 void TPageEditValue::view() {
     MainMenu->view();
@@ -9,9 +10,10 @@ void TPageEditValue::clear() {
 }
 
 void TPageEditValue::onOpen() {
-    p = (TParameter*)TRouter::PageValueEditEntryData.signal;
+    p = (TParameter*)IniResources::getSignalByTag(TRouter::PageValueEditEntryData.tag);
     pHeader->setCaption(p->getName());
     pEdit->setCaption(TRouter::PageValueEditEntryData.value);
+    tag = TRouter::PageValueEditEntryData.tag;
 }
 
 bool TPageEditValue::ProcessMessage(TMessage* m) {
@@ -35,6 +37,13 @@ bool TPageEditValue::ProcessMessage(TMessage* m) {
     return false;
 };
 
+std::string NetWorkAddrToHex(u16 nwa) {
+    char s[4];
+    sprintf(s, "%.2X", nwa);
+    std::string res(s);
+    return res;
+}
+
 void TPageEditValue::sendValue(void) {
     u8 cmd[11];
     std::string value = pEdit->getValue();
@@ -44,7 +53,12 @@ void TPageEditValue::sendValue(void) {
         Write Multiple Registers - 0х10
         Mask Write Register - 0x16 для манипуляций с битами и байтами*/
     const std::string WriteCmdType = p->getWriteCmdType();
-    /*TODO теперь надо узнать на какой Адрес отправлять*/
+    /*по Tag надо узнаю на какой Адрес отправлять
+    "DEVICES":"U1/", есть список устройств, надо сопостоавить из тега U1
+        "U1":"DEV1/COM1/1 а из U1 найти адрес (он за COM1/)
+    */
+    const u16 DevAddr = IniResources::getDevNetWorkAddrByTag(tag);
+    const std::string DevAddrHex = NetWorkAddrToHex(DevAddr);
     /*TODO на основании Адреса, Команды, НомераРегистра, Данных - собрать массив команды*/
     /*TODO в полученную команду добавить CRC16*/
     /*TODO выясник в какой командный слое писать*/

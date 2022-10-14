@@ -8,8 +8,8 @@
 #include "signal.h"
 
 typedef struct {
-    ISignal* signal;
     std::string value;
+    std::string tag;
 } TPageValueEditEntryData;
 
 typedef struct {

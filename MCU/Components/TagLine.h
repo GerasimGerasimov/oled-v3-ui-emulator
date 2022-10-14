@@ -15,9 +15,11 @@ public:
     ~TTagLine();//деструктор
     void view(void);//вывести строку на экране
     TLabel* Value;
+    const std::string Tag;
+    const std::string ComponentName();
 private:
     TLabel* Caption;
-    TLabel* msu;
+    TLabel* msu; 
 };
 
 #endif

@@ -5,10 +5,15 @@ bool TTagLine::ProcessMessage(TMessage* m) {
     return true;
 }
 
+const std::string TTagLine::ComponentName() {
+    return "TTagLine";
+}
+
 TTagLine::TTagLine(std::string caption, std::string tag, TLabelInitStructure init)
     : Caption(new TLabel(init))
     , Value(new TLabel(init))
-    , msu(new TLabel(init)) {
+    , msu(new TLabel(init))
+    , Tag(tag) {
     Caption->setCaption(caption);
     DataSrc = (TParameter*)IniResources::getSignalByTag(tag);
     Value->setCaption(((TParameter*)DataSrc)->getDefaultValue());

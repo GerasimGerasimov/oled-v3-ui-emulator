@@ -24,6 +24,7 @@ class IniSlotsProps{
 public:
 	static void init(void);
 	static std::string getSourceOfDev(std::string position);
+	static u16 getDevNetWorkAddr(std::string position);
 	static std::map<std::string, TDeviceNetworkProps> Devices;
 private:
 	static bool readDevices(void);

@@ -14,6 +14,10 @@ TVisualObject::TVisualObject(TVisualObjectInitStructure props)
 
 }
 
+const std::string TVisualObject::ComponentName() {
+	return "TVisualObject";
+}
+
 TVisualObject::~TVisualObject() {};
 
 TVisualObject* TVisualObject::getFocusedElement() {

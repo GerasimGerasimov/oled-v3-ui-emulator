@@ -1,5 +1,6 @@
 #include "PageHome.h"
 #include "Router.h"
+#include <IniResources.h>
 
 void TPageHome::view() {
     MainMenu->view();
@@ -10,6 +11,7 @@ void TPageHome::clear() {
 
 bool TPageHome::ProcessMessage(TMessage* m) {
     TSignalOnFocus SoF = { NULL, NULL };
+    TVisualObject* e = { NULL };
     switch (m->Event) {
         case (u32)EventSrc::KEYBOARD: {
             switch (m->p1) {
@@ -17,17 +19,19 @@ bool TPageHome::ProcessMessage(TMessage* m) {
                     TRouter::setTask({ false, "MainMenu", NULL });
                     break;
                 case (u32)KeyCodes::F1:
-                    SoF = getSignalOfFocusedChild();
-                    if (SoF.signal) {
-                        TRouter::setTask({ false, "Help", SoF.signal });
+                    e = getSignalOfFocusedChild();
+                    if (e) {
+                        ISignal* p = IniResources::getSignalByTag(((TTagLine*)(e))->Tag);
+                        TRouter::setTask({ false, "Help", p });
                     }
                     break;
                 case (u32)KeyCodes::ENT:
-                    SoF = getSignalOfFocusedChild();
-                    if (SoF.signal) {
+                    e = getSignalOfFocusedChild();
+                    if (e) {
+                        /*TODO а можно передавать “ег и значение, а там внутри разбиратьс€*/
                         /*TODO насыщать страницу EditValue*/
-                        TRouter::PageValueEditEntryData.signal = SoF.signal;
-                        TRouter::PageValueEditEntryData.value = ((TTagLine*)(SoF.element))->Value->getCaption();
+                        TRouter::PageValueEditEntryData.tag = ((TTagLine*)(e))->Tag;
+                        TRouter::PageValueEditEntryData.value = ((TTagLine*)(e))->Value->getCaption();
                         TRouter::setTask({ false, "EditValue", NULL });
                     }
                     break;
@@ -41,13 +45,13 @@ bool TPageHome::ProcessMessage(TMessage* m) {
     return false;
 };
 
-TSignalOnFocus TPageHome::getSignalOfFocusedChild() {
+TVisualObject* TPageHome::getSignalOfFocusedChild() {
     for (auto& element : List) {
         TVisualObject* e = element->getFocusedElement();
         TParameter* p = (e) ? (TParameter*) e->getDataSrc() : NULL;
-        if (p) return { p , e };
+        if (p) return e;
     }
-    return { NULL, NULL };
+    return NULL;
 }
 
 void TPageHome::goToTagInfoPage(int a) {

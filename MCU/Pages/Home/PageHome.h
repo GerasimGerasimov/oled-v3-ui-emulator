@@ -33,7 +33,7 @@ private:
     void SlotU1RAMUpdate(TSlotHandlerArsg args);
     void SlotU1FLASHUpdate(TSlotHandlerArsg args);
     void SlotU1CDUpdate(TSlotHandlerArsg args);
-    TSignalOnFocus getSignalOfFocusedChild();
+    TVisualObject* getSignalOfFocusedChild();
 };
 
 #endif
