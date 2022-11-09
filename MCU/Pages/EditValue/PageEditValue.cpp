@@ -44,6 +44,29 @@ std::string NetWorkAddrToHex(u16 nwa) {
     return res;
 }
 
+typedef struct {
+    const std::string& Cmd;
+    const std::string& DevAddr;
+    const std::string& RegAddr;
+    const std::string& Value;
+} TWriteCmdSrc;
+
+std::string get0x10WriteRegCmd(TWriteCmdSrc& CmdSrc) {
+    return "Write Multiple Registers";
+}
+
+static const std::map<std::string, std::function<std::string(TWriteCmdSrc&)>> WriteCmdVariants = {
+    {"10", [](TWriteCmdSrc& props) {return "Write Multiple Registers"; }},
+    {"16", [](TWriteCmdSrc& props) {return " Mask Write Register"; }},
+};
+
+std::string CreateWriteCmd(TWriteCmdSrc CmdSrc) {
+    std::string res = (WriteCmdVariants.count(CmdSrc.Cmd))
+        ? WriteCmdVariants.at(CmdSrc.Cmd)(CmdSrc)
+        : "Unknown Reg Write Command";
+    return res;
+}
+
 void TPageEditValue::sendValue(void) {
     u8 cmd[11];
     std::string value = pEdit->getValue();
@@ -52,15 +75,16 @@ void TPageEditValue::sendValue(void) {
     /*getWriteCmdType узнаю какой командой отправлять данные
         Write Multiple Registers - 0х10
         Mask Write Register - 0x16 для манипуляций с битами и байтами*/
-    const std::string WriteCmdType = p->getWriteCmdType();
+    const std::string Cmd = p->getWriteCmdType();
     /*по Tag надо узнаю на какой Адрес отправлять
     "DEVICES":"U1/", есть список устройств, надо сопостоавить из тега U1
         "U1":"DEV1/COM1/1 а из U1 найти адрес (он за COM1/)
     */
     const u16 DevAddr = IniResources::getDevNetWorkAddrByTag(tag);
     const std::string DevAddrHex = NetWorkAddrToHex(DevAddr);
-    /*TODO на основании Адреса, Команды, НомераРегистра, Данных - собрать массив команды*/
+    /*TODO на основании КОМАНДЫ, Адреса, НомераРегистра, Данных - собрать массив команды*/
     /*TODO в полученную команду добавить CRC16*/
+    CreateWriteCmd({ Cmd, DevAddrHex, RegHexAddr, ValueHex });
     /*TODO выясник в какой командный слое писать*/
     /*TODO полученный массив положить в OUT командного слота*/
     /*TODO активировать слот на передачу и показывать анимацию до завершения записи*/
