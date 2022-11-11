@@ -67,6 +67,16 @@ TValueSearchStruct IniResources::TagToValueSearchStruct(const std::string& tag) 
 		return { "", "", "" };
 }
 
+std::string IniResources::getDevicePositionByTag(const std::string& tag) {
+	std::vector<std::string> v = IniParser::getListOfDelimitedString(
+		(const char)'/',
+		(char*)tag.c_str(),
+		tag.size());
+	return (v.size() == 3)
+		? v[0]
+		: "";
+}
+
 u16 IniResources::getDevNetWorkAddrByTag(const std::string& tag) {
 	std::vector<std::string> v = IniParser::getListOfDelimitedString(
 		(const char)'/',

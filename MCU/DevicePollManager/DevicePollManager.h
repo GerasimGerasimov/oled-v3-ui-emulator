@@ -23,6 +23,7 @@ public:
 	static void execute(void);
 	static std::vector <Slot> Slots;
 	static u16 Status;
+	static Slot* getSlotByDevPosAndSection(const std::string& device, const std::string& section);
 private:
 	static void checkRespond(s16 result, u8* reply);
 	static Slot* slot;

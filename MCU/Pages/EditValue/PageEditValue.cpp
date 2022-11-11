@@ -2,6 +2,8 @@
 #include "Router.h"
 #include <IniResources.h>
 #include <crc16.h>
+#include <Slot.h>
+#include <DevicePollManager.h>
 
 void TPageEditValue::view() {
     MainMenu->view();
@@ -117,9 +119,12 @@ void TPageEditValue::sendValue(void) {
         "U1":"DEV1/COM1/1 а из U1 найти адрес (он за COM1/)
     */
     const u16 DevAddr = IniResources::getDevNetWorkAddrByTag(tag);
-    const std::string DevAddrHex = NetWorkAddrToHex(DevAddr);
+    const const std::string DevAddrHex = NetWorkAddrToHex(DevAddr);
     /*TODO выяснить в какой командный слот писать полученную команду
     по позиционному номеру U1 U2 надо выяснить к какому COM они подключены и выдать ссылку на соответсвующий слот*/
+    const std::string DevPos = IniResources::getDevicePositionByTag(tag);
+    const std::string Section = "CmdWrite";
+    Slot* slot = DevicePollManager::getSlotByDevPosAndSection(DevPos, Section);
     /*TODO полученный массив положить в OUT командного слота*/
     CreateWriteCmd({ Cmd, DevAddrHex, RegHexAddr, ValueHex });
     /*TODO активировать слот на передачу и показывать анимацию до завершения записи*/

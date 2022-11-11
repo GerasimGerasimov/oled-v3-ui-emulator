@@ -75,3 +75,12 @@ void DevicePollManager::checkRespond(s16 result, u8* reply) {
 	ReplyResult = result;
 	Status = (u16)DevicePollManagerStatus::PARSE_RESPOND;
 }
+
+Slot* DevicePollManager::getSlotByDevPosAndSection(const std::string& device, const std::string& section) {
+	for (auto& s : Slots) {
+		if ((s.Device == device) && (s.Section == section)) {
+			return &s;
+		}
+	}
+	return NULL;
+}
