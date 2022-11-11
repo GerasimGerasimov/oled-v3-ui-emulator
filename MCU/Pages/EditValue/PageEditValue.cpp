@@ -65,43 +65,50 @@ AD, C, №R(h, l), CW(h, l), CntBytes, Data[0](h, l)..Data[CW](h, l), CRC(h, l)
 └──────(byte)Адрес устройства
 */
 
-std::string get0x10WriteRegCmd(u8* a, TWriteCmdSrc& Src) {
+u16 get0x10WriteRegCmd(u8* a, TWriteCmdSrc& Src) {
     //u8 a[13];
     a[0] = (u8)std::stoi(Src.DevAddr);
     a[1] = 0x10;
     //начальный адрес регистра
     u16 addr = std::stoul(Src.RegAddr, nullptr, 16);
-    a[2] = (u8)(addr & 0xFF00) >> 8;
+    a[2] = (u8)(addr >> 8) & 0x00FF;
     a[3] = (u8)(addr & 0x00FF);
     //кол-во передаваемых регистров
     u8 regscnt = Src.Value.size() / 4;
-    a[4] = (u8)(regscnt & 0xFF00) >> 8;
-    a[5] = (u8)(regscnt & 0x00FF);
-    a[6] = (u8)(regscnt * 2);//кол-во передаваемых байт
+    a[4] = 0;
+    a[5] = regscnt;
+    a[6] = regscnt * 2;//кол-во передаваемых байт
     //данные
     u32 value = std::stol(Src.Value, nullptr, 16);
     (regscnt == 1)
-        ? ( a[7] = (value & 0xFF00) >> 8,
-            a[8] = (value & 0x00FF) >> 0)
+        ? ( a[7] = (value & 0x0000FF00) >> 8,
+            a[8] = (value & 0x000000FF) >> 0)
         : ( a[7] = (value & 0xFF000000) >> 24,
             a[8] = (value & 0x00FF0000) >> 16,
             a[9] = (value & 0x0000FF00) >> 8,
             a[10]= (value & 0x000000FF) >> 0);
     //контрольная сумма 
-    FrameEndCrc16(a, (regscnt == 1)? 11 : 13);
-    return "get0x10WriteRegCmd";
+    u16 cmdLen = (regscnt == 1) ? 11 : 13;
+    FrameEndCrc16(a, cmdLen);
+    return cmdLen;
 }
 
-static const std::map < std::string, std::function <std::string (u8*, TWriteCmdSrc&) >> WriteCmdVariants = {
+static const std::map < std::string, std::function <u16 (u8*, TWriteCmdSrc&) >> WriteCmdVariants = {
     {"10", [](u8* a, TWriteCmdSrc& props) {return get0x10WriteRegCmd(a, props); }},
-    {"16", [](u8* a, TWriteCmdSrc& props) {return " Mask Write Register"; }},
+    {"16", [](u8* a, TWriteCmdSrc& props) {return 0; }},
 };
 
-std::string CreateWriteCmd(u8* a, TWriteCmdSrc CmdSrc) {
-    std::string res = (WriteCmdVariants.count(CmdSrc.Cmd))
+u16 CreateWriteCmd(u8* a, TWriteCmdSrc CmdSrc) {
+    u16 res = (WriteCmdVariants.count(CmdSrc.Cmd))
         ? WriteCmdVariants.at(CmdSrc.Cmd)(a, CmdSrc)
-        : "Unknown Reg Write Command";
+        : 0;
     return res;
+}
+
+void SlotU1RAMUpdate(Slot& slot, u8* reply) {
+    slot.Flags |= (u16)SlotStateFlags::SKIP_SLOT;
+    //тут бы можно было из массива reply куда-то скопировать результат,
+    //но он не нужен если в slot.RespondLenghtOrErrorCode значение больше нуля
 }
 
 void TPageEditValue::sendValue(void) {
@@ -125,7 +132,9 @@ void TPageEditValue::sendValue(void) {
     const std::string Section = "CmdWrite";
     Slot* slot = DevicePollManager::getSlotByDevPosAndSection(DevPos, Section);
     /*TODO полученный массив положить в OUT командного слота*/
-    CreateWriteCmd(slot->OutBuf, { Cmd, DevAddrHex, RegHexAddr, ValueHex });
+    slot->cmdLen = CreateWriteCmd(slot->OutBuf, { Cmd, DevAddrHex, RegHexAddr, ValueHex });
+    slot->onData = &SlotU1RAMUpdate;
+    slot->Flags &= ~(u16)SlotStateFlags::SKIP_SLOT;
     /*TODO активировать слот на передачу и показывать анимацию до завершения записи*/
     /*TODO если запись успешна - показать анимаци успешной записаи, если нет соотв неуспешной*/
 }
