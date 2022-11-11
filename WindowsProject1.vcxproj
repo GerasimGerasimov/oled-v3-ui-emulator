@@ -206,6 +206,7 @@
     <ClCompile Include="MCU\Resources\resources.cpp" />
     <ClCompile Include="MCU\Router\Router.cpp" />
     <ClCompile Include="MCU\Slots\CommonSlotHandler.cpp" />
+    <ClCompile Include="MCU\Slots\CreateCustomSlot.cpp" />
     <ClCompile Include="MCU\Slots\CreateSlotsByStart.cpp" />
     <ClCompile Include="MCU\Slots\U1RamUpdate.cpp" />
     <ClCompile Include="threads\mcu_main_thread.cpp" />

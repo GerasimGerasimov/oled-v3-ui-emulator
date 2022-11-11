@@ -42,10 +42,13 @@ public:
 	TSlotDataHandler onData;//процедура которая вызывается после получения ответа от устройства, если контрольная сумма сошлась
 	u16 StartAddrOffset;
 	u16 LastAddrOffset;
+	u16 Interval;
 	std::string Device;
 	std::string Section;
+	bool isIntervalDone();
 private:
 	bool isReplyCRCValid(s16 result, u8* reply);
+	u16 TmpInterval;
 };
 
 #endif

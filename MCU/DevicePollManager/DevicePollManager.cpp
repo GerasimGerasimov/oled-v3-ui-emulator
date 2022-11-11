@@ -18,8 +18,6 @@ void DevicePollManager::init(std::vector <Slot> slots) {
 	Slots = slots;//{ SlotU1RAM };
 }
 
-/*TODO обработка интервала считывания (для CD и FLASH)*/
-
 void DevicePollManager::execute(void) {
 	switch ((DevicePollManagerStatus)Status)
 	{
@@ -43,11 +41,15 @@ void DevicePollManager::execute(void) {
 }
 
 DevicePollManagerStatus DevicePollManager::setActionBySlot(void) {
+	if (slot == NULL) return DevicePollManagerStatus::TOGGLE_SLOT;
+
 	if (slot->Flags & (u16)SlotStateFlags::SKIP_SLOT) {
 		return DevicePollManagerStatus::TOGGLE_SLOT;
 	}
 	else {
-		return DevicePollManagerStatus::SEND_REQUEST;
+		return (slot->isIntervalDone())
+			? DevicePollManagerStatus::SEND_REQUEST
+			: DevicePollManagerStatus::TOGGLE_SLOT;
 	}
 }
 

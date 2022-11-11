@@ -11,6 +11,7 @@
 #include "IniSlotsprops.h"
 #include "CreateSlotsByStart.h"
 #include "resources.h"
+#include "CreateCustomSlot.h"
 
 void App::init(void) {
     TInternalResources::init();
@@ -18,7 +19,10 @@ void App::init(void) {
     IniSlotsProps::init();
     /*TODO ещё нужен слот для записи, он просто создаётся и ставится на паузу, ибо его наполненеи будет зависеть от запроса*/
     /*TODO для управления от встроенных DIO нужен слот*/
-    DevicePollManager::init(CreateSlotsByStart::init(IniSlotsProps::Devices));
+
+    std::vector <Slot> slots = CreateSlotsByStart::init(IniSlotsProps::Devices);
+    //slots.push_back(*CreateCustomSlot::init("U1", "CmdWrite"));
+    DevicePollManager::init(slots);
     TRouter::Init();
     Msg::send_message((u32)EventSrc::REPAINT, 0, 0);
 }

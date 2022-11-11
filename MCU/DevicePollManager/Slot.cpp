@@ -1,13 +1,15 @@
 #include "Slot.h"
 #include "crc16.h"
 
-Slot::Slot() 
+Slot::Slot()
 	: Flags(0)
 	, RespondLenghtOrErrorCode(0)
 	, onData(NULL)
 	, cmdLen(0)
 	, StartAddrOffset(0)
 	, LastAddrOffset(0)
+	, Interval(0)
+	, TmpInterval(0)
 	, InputBufValidBytes(0) {
 }
 
@@ -20,6 +22,8 @@ Slot::Slot(std::string device, std::string section, u16 StartAddr, u16 LastAddr)
 	, Section(section)
 	, StartAddrOffset((StartAddr & 0x00FF) << 1)
 	, LastAddrOffset((LastAddr & 0x00FF) << 1)
+	, Interval(0)
+	, TmpInterval(0)
 	, InputBufValidBytes(0)
 {
 
@@ -56,6 +60,14 @@ void Slot::validation(s16 result, u8* reply) {
 	RespondLenghtOrErrorCode = result;
 	if (onData)
 		onData(*this, reply);
+}
+
+bool Slot::isIntervalDone() {
+	if (++TmpInterval > Interval) {
+		TmpInterval = 0;
+		return true;
+	}
+	return false;
 }
 
 Slot::~Slot() {}

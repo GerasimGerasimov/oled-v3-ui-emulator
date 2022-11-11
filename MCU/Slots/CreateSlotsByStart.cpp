@@ -24,6 +24,7 @@ std::vector <Slot> CreateSlotsByStart::init(std::map<std::string, TDeviceNetwork
 			Slot* pSlot = new Slot(devname, section, prop->StartAddr, prop->LastAddr);
 			pSlot->addcmd(getReadCmdFromSettings(slotsprops.NetworkAddr, prop->StartAddr, prop->LastAddr));
 			pSlot->onData = CommonSlotHandler::parseRespond;
+			pSlot->Interval = prop->Interval;
 			res.push_back(*pSlot);
 		}
 	}

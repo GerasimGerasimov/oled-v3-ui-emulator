@@ -118,9 +118,10 @@ void TPageEditValue::sendValue(void) {
     */
     const u16 DevAddr = IniResources::getDevNetWorkAddrByTag(tag);
     const std::string DevAddrHex = NetWorkAddrToHex(DevAddr);
-    CreateWriteCmd({ Cmd, DevAddrHex, RegHexAddr, ValueHex });
-    /*TODO выяснить в какой командный слот писать полученную команду*/
+    /*TODO выяснить в какой командный слот писать полученную команду
+    по позиционному номеру U1 U2 надо выяснить к какому COM они подключены и выдать ссылку на соответсвующий слот*/
     /*TODO полученный массив положить в OUT командного слота*/
+    CreateWriteCmd({ Cmd, DevAddrHex, RegHexAddr, ValueHex });
     /*TODO активировать слот на передачу и показывать анимацию до завершения записи*/
     /*TODO если запись успешна - показать анимаци успешной записаи, если нет соотв неуспешной*/
 }
