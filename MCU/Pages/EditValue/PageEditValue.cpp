@@ -65,8 +65,8 @@ AD, C, №R(h, l), CW(h, l), CntBytes, Data[0](h, l)..Data[CW](h, l), CRC(h, l)
 └──────(byte)Адрес устройства
 */
 
-std::string get0x10WriteRegCmd(TWriteCmdSrc& Src) {
-    u8 a[13];
+std::string get0x10WriteRegCmd(u8* a, TWriteCmdSrc& Src) {
+    //u8 a[13];
     a[0] = (u8)std::stoi(Src.DevAddr);
     a[1] = 0x10;
     //начальный адрес регистра
@@ -89,18 +89,17 @@ std::string get0x10WriteRegCmd(TWriteCmdSrc& Src) {
             a[10]= (value & 0x000000FF) >> 0);
     //контрольная сумма 
     FrameEndCrc16(a, (regscnt == 1)? 11 : 13);
-    /*TODO вернуть подготовленный массив*/
-    return "Write Multiple Registers";
+    return "get0x10WriteRegCmd";
 }
 
-static const std::map<std::string, std::function<std::string(TWriteCmdSrc&)>> WriteCmdVariants = {
-    {"10", [](TWriteCmdSrc& props) {return get0x10WriteRegCmd(props); }},
-    {"16", [](TWriteCmdSrc& props) {return " Mask Write Register"; }},
+static const std::map < std::string, std::function <std::string (u8*, TWriteCmdSrc&) >> WriteCmdVariants = {
+    {"10", [](u8* a, TWriteCmdSrc& props) {return get0x10WriteRegCmd(a, props); }},
+    {"16", [](u8* a, TWriteCmdSrc& props) {return " Mask Write Register"; }},
 };
 
-std::string CreateWriteCmd(TWriteCmdSrc CmdSrc) {
+std::string CreateWriteCmd(u8* a, TWriteCmdSrc CmdSrc) {
     std::string res = (WriteCmdVariants.count(CmdSrc.Cmd))
-        ? WriteCmdVariants.at(CmdSrc.Cmd)(CmdSrc)
+        ? WriteCmdVariants.at(CmdSrc.Cmd)(a, CmdSrc)
         : "Unknown Reg Write Command";
     return res;
 }
@@ -126,7 +125,7 @@ void TPageEditValue::sendValue(void) {
     const std::string Section = "CmdWrite";
     Slot* slot = DevicePollManager::getSlotByDevPosAndSection(DevPos, Section);
     /*TODO полученный массив положить в OUT командного слота*/
-    CreateWriteCmd({ Cmd, DevAddrHex, RegHexAddr, ValueHex });
+    CreateWriteCmd(slot->OutBuf, { Cmd, DevAddrHex, RegHexAddr, ValueHex });
     /*TODO активировать слот на передачу и показывать анимацию до завершения записи*/
     /*TODO если запись успешна - показать анимаци успешной записаи, если нет соотв неуспешной*/
 }
