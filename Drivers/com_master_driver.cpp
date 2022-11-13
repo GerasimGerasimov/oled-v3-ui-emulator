@@ -6,12 +6,14 @@ DWORD  ComMasterDriver::dwComThreadId = 0;
 TDriverComReadEndHandler ComMasterDriver::onReadEdnd = NULL;
 u8* ComMasterDriver::outbuf = NULL;
 u16 ComMasterDriver::OutBufLen = 0;
+u16 ComMasterDriver::DelayAfterWrite = 0;
 u8 ComMasterDriver::reply[256];
 
 void ComMasterDriver::send(TComMasterTask task) {
     onReadEdnd = task.callback;
     outbuf = task.pbuff;
     OutBufLen = task.len;
+    DelayAfterWrite = task.DelayAfterWrite;
     ::ResumeThread(hComThread);
 }
 
@@ -21,6 +23,7 @@ DWORD WINAPI ComMasterDriver::com_thread(LPVOID lpParam) {
     DWORD fSuccess;
     while (true) {
         fSuccess = WriteFile(hCom, outbuf, OutBufLen, &Count, NULL);
+        Sleep(DelayAfterWrite);// p.SleepAfterWrite);
         ButesToRead = 256;
         fSuccess = ReadFile(hCom, &reply, ButesToRead, &Count, NULL);
         s16 result = (fSuccess > 0) ? Count : -1;

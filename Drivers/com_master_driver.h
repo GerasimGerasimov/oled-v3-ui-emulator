@@ -11,6 +11,7 @@
 struct TComMasterTask {
 	u8* pbuff;
 	u16 len;
+	u16 DelayAfterWrite;
 	TDriverComReadEndHandler callback;
 };
 
@@ -28,6 +29,7 @@ private:
 	static TDriverComReadEndHandler onReadEdnd;
 	static u8* outbuf;
 	static u16 OutBufLen;
+	static u16 DelayAfterWrite;
 	static u8 reply[256];
 };
 
