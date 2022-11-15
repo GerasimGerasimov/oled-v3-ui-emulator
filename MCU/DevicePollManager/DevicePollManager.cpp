@@ -1,8 +1,8 @@
 #include "DevicePollManager.h"
 #include "crc16.h"
-#include "consolelog.h"
+//#include "consolelog.h"
 
-#include "U1RamUpdate.h"
+//#include "U1RamUpdate.h"
 
 //static U1RAMSlot SlotU1RAM;
 

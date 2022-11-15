@@ -8,7 +8,7 @@
 // а сделать одни переменные на всех
 static const int RETURN_PAUSE = 10;
 
-struct  {
+static struct  {
     std::string shifted;
     int ReturnPause;
 } TLinkLabelVars = {"", RETURN_PAUSE};

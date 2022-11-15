@@ -5,7 +5,7 @@ void  THeaderLabel::view(void) {//вывести строку на экране
     TTextSizes tsizes = getSize();
     TFillRect rect{ ElementRect.Left, ElementRect.Top, tsizes.width, tsizes.height, 1 };
     TGrahics::fillRect(rect);
-    s16 Left = Left = (ElementRect.Width - TextSize.width) / 2;
+    s16 Left = (ElementRect.Width - TextSize.width) / 2;
     s16 Top = ElementRect.Top;
     TGrahics::outText(Caption, Left, Top, 0, Font);
 }

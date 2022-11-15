@@ -27,7 +27,7 @@ void  TWrappedText::view(void) {//вывести строку на экране
     u16 c = GetViewObjectsCount();//кол-во объектов умещающихся в высоту меню от FirstPosition до нижнего края
                                 //это и есть кол-во объектов выводимых на экран (об их высоте уже можно не волноваться)
     u16 i = FirstPosition;//кол-во объектов выводимых на экран
-    u16 h = ElementRect.Top;//текущая координата Y вывода строки
+    //u16 h = ElementRect.Top;//текущая координата Y вывода строки
     u16 Left = ElementRect.Left;
     u16 Top = ElementRect.Top;
     u16 hf = TMCUFonts::getFontHeight(Font);

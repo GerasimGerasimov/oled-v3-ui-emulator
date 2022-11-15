@@ -16,7 +16,7 @@ void CommonSlotHandler::parseRespond(Slot& slot, u8* reply) {
 	//GIST тип выбрасываемый в throw <T> должен совпадать с catch (<T> e) только тогда исключение обрабатывается!
 	try {
 		if (slot.RespondLenghtOrErrorCode <= 0) throw (int)RespondErrorCodes::LNK;
-		if (slot.Flags & (u16)SlotStateFlags::CRC_ERR) throw (int)RespondErrorCodes::CRC;
+		if (slot.Flags & (u16)SlotStateFlags::CRC_ERR) throw (int)RespondErrorCodes::CRCE;
 		if (isReadCmdGotAnError(reply[(u8)ModbusReadRegsDefs::CMD_POS])) throw (int)RespondErrorCodes::CMD;
 		u8 regs_count = reply[(u8)ModbusReadRegsDefs::ANSW_BYTES_POS] >> 1;
 		Utils::swp_copy_u16((u8*)&reply[(u8)ModbusReadRegsDefs::ANSW_DATA_POS],

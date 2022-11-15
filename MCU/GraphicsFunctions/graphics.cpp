@@ -11,7 +11,7 @@ void TGrahics::fillRect(TFillRect props) {
     TPixel pixel = {
         props.left,
         props.top,
-        props.color
+        (u8)props.color
     };
     u16 w = props.width;
     u16 h = props.height;
@@ -56,7 +56,7 @@ void TGrahics::putChar(u8 Code, u16& x, u16 y, u16 color) {
         while (bitsCnt--) {
             if (x >= VIEW_PORT_MAX_WIDTH) continue;
             if ((bits & mask) == 0) {
-                setPixel(x, y, color);
+                setPixel(x, y, (u8)color);
             }
             bits <<= 1;
             x++;
@@ -85,7 +85,7 @@ void TGrahics::putTextWithSelectedChar(u8* src, u8 len, u16& x, u16 y, u8 Select
             while (bitsCnt--) {
                 if (x >= VIEW_PORT_MAX_WIDTH) continue;
                 if ((bits & mask) == 0) {
-                    setPixel(x, y, Color);
+                    setPixel(x, y, (u8)Color);
                 }
                 bits <<= 1;
                 x++;

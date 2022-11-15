@@ -10,7 +10,6 @@ void TPageHome::clear() {
 }
 
 bool TPageHome::ProcessMessage(TMessage* m) {
-    TSignalOnFocus SoF = { NULL, NULL };
     TVisualObject* e = { NULL };
     switch (m->Event) {
         case (u32)EventSrc::KEYBOARD: {

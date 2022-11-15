@@ -8,7 +8,7 @@
 #define MAXMESSAGE  0xFFFF
 
 
-const enum class EventSrc : u32 {
+enum class EventSrc {
 	NONE,
 	KEYBOARD,
 	REPAINT,
@@ -31,7 +31,7 @@ const enum class ModbusReadRegsDefs {
 	ANSW_DATA_POS = 3
 };*/
 
-const enum class KeyCodes : u32 {
+enum class KeyCodes : u32 {
 	None    = 0, //ниодна клавиша не нажата
 	ESC     = 1, //отмена (и выход на один уровень меню вверх)
 	Up      = 72, //2 //стрелка вверх

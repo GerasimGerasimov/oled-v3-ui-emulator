@@ -17,9 +17,7 @@ void App::init(void) {
     TInternalResources::init();
     IniResources::init();
     IniSlotsProps::init();
-    /*TODO ещё нужен слот для записи, он просто создаётся и ставится на паузу, ибо его наполненеи будет зависеть от запроса*/
     /*TODO для управления от встроенных DIO нужен слот*/
-
     std::vector <Slot> slots = CreateSlotsByStart::init(IniSlotsProps::Devices);
     slots.push_back(*CreateCustomSlot::init("U1", "CmdWrite"));
     DevicePollManager::init(slots);

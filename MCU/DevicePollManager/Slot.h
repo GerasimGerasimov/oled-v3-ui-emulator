@@ -11,7 +11,7 @@
 
 enum class RespondErrorCodes {
 	LNK = -1,
-	CRC = -2,
+	CRCE = -2,
 	CMD = -3
 };
 
