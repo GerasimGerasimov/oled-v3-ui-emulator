@@ -44,7 +44,7 @@ pSignal SignalFactoty::getSignal(const TSignalPropsPointers& props) {
 	std::string pType = IniParser::getElement('/', &_pType, size);
 	pSignal s = (TypeToSignal.count(pType))
 		? TypeToSignal.at(pType)(props)
-		: NULL;
+		: nullptr;
 	return s;
 }
 

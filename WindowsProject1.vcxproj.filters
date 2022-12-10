@@ -73,6 +73,12 @@
     <Filter Include="App\DevicesValues">
       <UniqueIdentifier>{c577d28a-ac74-40fd-9769-dd9980121259}</UniqueIdentifier>
     </Filter>
+    <Filter Include="UserData">
+      <UniqueIdentifier>{f1dfdf42-358d-4037-80e5-75da2e8fd82a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Divers\Keyboard">
+      <UniqueIdentifier>{5a98d625-d2f2-4b0c-99c1-e2c5178431d9}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -286,6 +292,18 @@
     </ClCompile>
     <ClCompile Include="MCU\Slots\CreateCustomSlot.cpp">
       <Filter>App\Slots</Filter>
+    </ClCompile>
+    <ClCompile Include="WinAppPages\livecontrol.c">
+      <Filter>WinAppPages</Filter>
+    </ClCompile>
+    <ClCompile Include="UserData\flashdata.c">
+      <Filter>UserData</Filter>
+    </ClCompile>
+    <ClCompile Include="Drivers\Keyboard\virtualKeyEvents.cpp">
+      <Filter>Divers\Keyboard</Filter>
+    </ClCompile>
+    <ClCompile Include="UserData\ramdata.c">
+      <Filter>UserData</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

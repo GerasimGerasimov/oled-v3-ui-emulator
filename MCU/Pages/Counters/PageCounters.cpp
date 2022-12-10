@@ -1,7 +1,7 @@
 #include "PageCounters.h"
 #include "Router.h"
 
-static u32 COUNT = 0;
+//static u32 COUNT = 0;
 
 void TPageCounters::view() {
     Container->view();

@@ -3,8 +3,6 @@
 
 #include "os_resources.h"
 #include "stm32f4xx.h"
-#include <vector>
-#include <string>
 
 typedef struct ResourceTableItem{
   u32 BinaryDataAddr;
@@ -23,9 +21,9 @@ typedef struct Resources {
 
 typedef TResources* pResources;
 
-#define RESOURCES_ADDRESS 0x08080000
 #define RESOURCES_DATA OSResources::getRes()
 
+/*
 class IResources {
 public:
     virtual void init() = 0;
@@ -34,5 +32,5 @@ public:
   protected:
       virtual ~IResources() = default;
  };
-
+*/
 #endif

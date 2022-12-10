@@ -9,7 +9,7 @@
 #define MB_MASTER_BUF_SIZE  256
 #define MB_MASTER_SLOTS_MAX 24
 
-enum class RespondErrorCodes {
+enum class RespondErrorCodes : s16 {
 	LNK = -1,
 	CRCE = -2,
 	CMD = -3
@@ -43,7 +43,7 @@ public:
 	u16 StartAddrOffset;
 	u16 LastAddrOffset;
 	u16 Interval;
-	u16 DelayAfterWrite;
+	u16 TimeOut;
 	std::string Device;
 	std::string Section;
 	bool isIntervalDone();

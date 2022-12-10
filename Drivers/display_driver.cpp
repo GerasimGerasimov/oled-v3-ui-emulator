@@ -19,7 +19,30 @@ void TDisplayDriver::setDC(HDC _dc) {
     SelectObject(memDC, b);
 }
 
+u8 framebuffer[8][128]; //для передачи по SPI 
+
+const static u8 Mask[] = { 1, 2, 4, 8, 16, 32, 64, 128 };
+
+void TDisplayDriver::prepareFrame(void) {
+    u8 p = 0;
+    u8* f = &framebuffer[0][0];
+    for (int x = 0; x < 128; x++) {
+        for (int y = 0; y < 64; y++) {
+            p = TGrahics::screen[x][y];
+            u16 PixNum = (y << 7) + x; //номер пиксела в одномерном массиве, что переводится как Y*128 + X
+            u16 ByteNum = PixNum >> 3;;//номер байта в двухмерном массиве  что переводится как PixNum/8
+            u8 BitMask = Mask[PixNum - (ByteNum << 3)];//маска для бита
+            u8* a = f + ByteNum;
+            (p)
+                ? (*a |= BitMask)
+                : (*a &= ~BitMask);
+            a = 0;
+        }
+    }
+}
+
 void TDisplayDriver::out(void) {
+    //prepareFrame();
     if (dc == NULL) return;
     RECT r;
     HBRUSH br = Br_Empty;

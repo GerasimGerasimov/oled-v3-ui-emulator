@@ -1,10 +1,11 @@
 #include "resources.h"
 #include "crc16.h"
 #include <string>
+#include "RAMdata.h"
 
 //инициализация статического чдена класса
 std::vector<pItem> TInternalResources::ValidItems = std::vector<pItem>();
-pResources TInternalResources::Root = NULL;
+pResources TInternalResources::Root = nullptr;
 
 void TInternalResources::init() {
   Root = (pResources) RESOURCES_DATA;
@@ -52,13 +53,22 @@ const char * unknown = "unknown";
 
 /*TODO надо не физический адрес в TResourceProps.Addr помещать, а смешение относительно начала ресурсов
 это позволит обращатся к ресурсам безопасно под любой ОС*/
+/* было так в работающей версии
+std::string getStringFormResource(pItem item) {
+  const u32 Addr = item->BinaryDataAddr;
+  const u32 Size = item->BinaryDataSize;
+  std::string str;
+  str.assign((char*) Addr, Size);
+  return str;
+}
+*/
 
 std::string TInternalResources::getStringFormResource(pItem item) {
   const u32 Addr = item->BinaryDataAddr;
   const u32 Size = item->BinaryDataSize;
-  std::string str;
-  u8* p = (u8*) Root+Addr;
-  str.assign((char*) p, Size);
+  std::string str = "unknown  Addr:";
+  u8* p = (u8*) ((unsigned int)Root+Addr);
+  str.assign((char*) p, Size);/*TODO вот на этой строке и сыпется!*/
   return str;
 }
 
@@ -67,6 +77,13 @@ std::string TInternalResources::getID() {
   return (item != NULL)
     ? getStringFormResource(item)
     : "unknown";
+}
+
+char * TInternalResources::getPtrID() {
+  pItem item = getItemByName((char*)"ID");
+  return (item != nullptr)
+    ? (char *) getStringFormResource(item).c_str()
+    : (char *) unknown;
 }
 
 char * TInternalResources::getItemName(u16 idx) {

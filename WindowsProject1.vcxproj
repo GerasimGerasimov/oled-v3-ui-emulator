@@ -89,7 +89,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;WIN32;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(ProjectDir)MCU\Modbus;$(ProjectDir)MCU\DevicesValues;$(ProjectDir)MCU\ini;$(ProjectDir)MCU\IDrivers;$(ProjectDir)MCU\Parameters;$(ProjectDir)MCU\Resources;$(ProjectDir)MCU\Slots;$(ProjectDir)MCU\Helpers;$(ProjectDir)MCU\DevicePollManager;$(ProjectDir)MCU\GraphicsFunctions;$(ProjectDir)WinAppPages;$(ProjectDir)MCU\Events;$(ProjectDir)MCU\Msg;$(ProjectDir)MCU\Components;$(ProjectDir)threads;$(ProjectDir)MCU\Pages\;$(ProjectDir)MCU\Pages\Help;$(ProjectDir)MCU\Pages\Home;$(ProjectDir)MCU\Pages\Counters;$(ProjectDir)MCU\Pages\EditValue;$(ProjectDir)MCU\Pages\MainMenu;$(ProjectDir)MCU\Router;$(ProjectDir)MCU\App;$(ProjectDir)Drivers\Resources;$(ProjectDir)Drivers;$(ProjectDir)MCU\Fonts;$(ProjectDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)MCU\Modbus;$(ProjectDir)MCU\DevicesValues;$(ProjectDir)MCU\ini;$(ProjectDir)MCU\IDrivers;$(ProjectDir)MCU\Parameters;$(ProjectDir)MCU\Resources;$(ProjectDir)MCU\Slots;$(ProjectDir)MCU\Helpers;$(ProjectDir)MCU\DevicePollManager;$(ProjectDir)MCU\GraphicsFunctions;$(ProjectDir)WinAppPages;$(ProjectDir)MCU\Events;$(ProjectDir)MCU\Msg;$(ProjectDir)MCU\Components;$(ProjectDir)threads;$(ProjectDir)MCU\Pages\;$(ProjectDir)MCU\Pages\Help;$(ProjectDir)MCU\Pages\Home;$(ProjectDir)MCU\Pages\Counters;$(ProjectDir)MCU\Pages\EditValue;$(ProjectDir)MCU\Pages\MainMenu;$(ProjectDir)MCU\Router;$(ProjectDir)MCU\App;$(ProjectDir)Drivers\Keyboard;$(ProjectDir)Drivers\Resources;$(ProjectDir)Drivers;$(ProjectDir)MCU\Fonts;$(ProjectDir)UserData;$(ProjectDir)IntmashLib;$(ProjectDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -118,7 +118,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(ProjectDir)MCU\Modbus;$(ProjectDir)MCU\DevicesValues;$(ProjectDir)MCU\ini;$(ProjectDir)MCU\IDrivers;$(ProjectDir)MCU\Parameters;$(ProjectDir)MCU\Resources;$(ProjectDir)MCU\Slots;$(ProjectDir)MCU\Helpers;$(ProjectDir)MCU\DevicePollManager;$(ProjectDir)MCU\GraphicsFunctions;$(ProjectDir)WinAppPages;$(ProjectDir)MCU\Events;$(ProjectDir)MCU\Msg;$(ProjectDir)MCU\Components;$(ProjectDir)threads;$(ProjectDir)MCU\Pages\;$(ProjectDir)MCU\Pages\Help;$(ProjectDir)MCU\Pages\Home;$(ProjectDir)MCU\Pages\Counters;$(ProjectDir)MCU\Pages\EditValue;$(ProjectDir)MCU\Pages\MainMenu;$(ProjectDir)MCU\Router;$(ProjectDir)MCU\App;$(ProjectDir)Drivers\Resources;$(ProjectDir)Drivers;$(ProjectDir)MCU\Fonts;$(ProjectDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)MCU\Modbus;$(ProjectDir)MCU\DevicesValues;$(ProjectDir)MCU\ini;$(ProjectDir)MCU\IDrivers;$(ProjectDir)MCU\Parameters;$(ProjectDir)MCU\Resources;$(ProjectDir)MCU\Slots;$(ProjectDir)MCU\Helpers;$(ProjectDir)MCU\DevicePollManager;$(ProjectDir)MCU\GraphicsFunctions;$(ProjectDir)WinAppPages;$(ProjectDir)MCU\Events;$(ProjectDir)MCU\Msg;$(ProjectDir)MCU\Components;$(ProjectDir)threads;$(ProjectDir)MCU\Pages\;$(ProjectDir)MCU\Pages\Help;$(ProjectDir)MCU\Pages\Home;$(ProjectDir)MCU\Pages\Counters;$(ProjectDir)MCU\Pages\EditValue;$(ProjectDir)MCU\Pages\MainMenu;$(ProjectDir)MCU\Router;$(ProjectDir)MCU\App;$(ProjectDir)Drivers\Keyboard;$(ProjectDir)Drivers\Resources;$(ProjectDir)Drivers;$(ProjectDir)MCU\Fonts;$(ProjectDir)UserData;$(ProjectDir)IntmashLib;$(ProjectDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -156,6 +156,7 @@
   <ItemGroup>
     <ClCompile Include="Drivers\com_master_driver.cpp" />
     <ClCompile Include="Drivers\display_driver.cpp" />
+    <ClCompile Include="Drivers\Keyboard\virtualKeyEvents.cpp" />
     <ClCompile Include="Drivers\Resources\os_resources.cpp" />
     <ClCompile Include="MCU\App\app.cpp" />
     <ClCompile Include="MCU\Components\common.cpp" />
@@ -211,7 +212,10 @@
     <ClCompile Include="MCU\Slots\U1RamUpdate.cpp" />
     <ClCompile Include="threads\mcu_main_thread.cpp" />
     <ClCompile Include="threads\mutexes.cpp" />
+    <ClCompile Include="UserData\flashdata.c" />
+    <ClCompile Include="UserData\ramdata.c" />
     <ClCompile Include="WinAppPages\consolelog.cpp" />
+    <ClCompile Include="WinAppPages\livecontrol.c" />
     <ClCompile Include="WinAppPages\MainPage.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>

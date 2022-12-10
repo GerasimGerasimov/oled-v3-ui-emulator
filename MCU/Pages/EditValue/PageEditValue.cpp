@@ -1,8 +1,11 @@
-﻿#include "PageEditValue.h"
+﻿/*TODO выяснить обстоятельсва при которых курсор при входе в окно не мигает
+и вроде в таком случае не работате OK и ESC*/
+#include "PageEditValue.h"
 #include "Router.h"
 #include <IniResources.h>
 #include <Slot.h>
-#include <ModbusSlave.h>
+#include <AppModbusSlave.h>
+#include "RAMdata.h"
 
 void TPageEditValue::view() {
     MainMenu->view();
@@ -31,7 +34,7 @@ bool TPageEditValue::ProcessMessage(TMessage* m) {
                     return true;
                 case (u32)KeyCodes::ENT:
                     sendValue();
-                    TRouter::goBack();
+                    //TRouter::goBack();
                     return true;
                 }
         }
@@ -40,7 +43,9 @@ bool TPageEditValue::ProcessMessage(TMessage* m) {
 };
 
 void SlotU1RAMUpdate(Slot& slot, u8* reply) {
+  RAM_DATA.var1++;
     slot.Flags |= (u16)SlotStateFlags::SKIP_SLOT;
+    TRouter::goBack();
     //тут бы можно было из массива reply куда-то скопировать результат,
     //но он не нужен если в slot.RespondLenghtOrErrorCode значение больше нуля
 }

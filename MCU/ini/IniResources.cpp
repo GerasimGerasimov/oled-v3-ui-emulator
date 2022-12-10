@@ -23,6 +23,7 @@ U1
 
 void IniResources::init(void) {
 	readSources();
+        //RAM_DATA.var1 = Sources["DEV1"]["CD"].size();
 }
 
 /*TODO Проверить: эта функция ни где не используется?*/

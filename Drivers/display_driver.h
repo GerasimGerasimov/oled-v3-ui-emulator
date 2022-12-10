@@ -22,6 +22,7 @@ struct TDisplayDriver {
 		static HBRUSH Br_Empty;
 		static HBITMAP b;
 		static HDC memDC;
+		static void prepareFrame(void);
 };
 
 #endif
