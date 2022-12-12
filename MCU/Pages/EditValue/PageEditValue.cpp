@@ -52,7 +52,12 @@ void SlotU1RAMUpdate(Slot& slot, u8* reply) {
 
 void TPageEditValue::sendValue(void) {
     std::string value = pEdit->getValue();
-    ModbusSlave::setValue(tag, value, SlotU1RAMUpdate);
+    if (ModbusSlave::setValue(tag, value, SlotU1RAMUpdate)) {
+
+    }
+    else {
+        TRouter::goBack();
+    }
     /*TODO если запись успешна - показать анимаци успешной записаи, если нет соотв неуспешной*/
 }
 

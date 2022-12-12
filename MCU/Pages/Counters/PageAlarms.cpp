@@ -1,16 +1,16 @@
-#include "PageCounters.h"
+#include "PageAlarms.h"
 #include "Router.h"
 
 //static u32 COUNT = 0;
 
-void TPageCounters::view() {
+void TPageAlarms::view() {
     Container->view();
 };
 
-void TPageCounters::clear() {
+void TPageAlarms::clear() {
 }
 
-bool TPageCounters::ProcessMessage(TMessage* m) {
+bool TPageAlarms::ProcessMessage(TMessage* m) {
     switch (m->Event) {
         case (u32)EventSrc::KEYBOARD: {
             switch (m->p1) {
@@ -27,7 +27,7 @@ bool TPageCounters::ProcessMessage(TMessage* m) {
     return false;
 };
 
-TPageCounters::TPageCounters(std::string Name)
+TPageAlarms::TPageAlarms(std::string Name)
     :TPage(Name) {
     TLabelInitStructure LabelInit;
     LabelInit.style = LabelsStyle::WIDTH_DINAMIC;
@@ -43,5 +43,5 @@ TPageCounters::TPageCounters(std::string Name)
     AddList({ Container });
 };
 
-TPageCounters::~TPageCounters() {
+TPageAlarms::~TPageAlarms() {
 };

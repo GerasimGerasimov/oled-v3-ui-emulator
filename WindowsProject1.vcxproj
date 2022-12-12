@@ -184,9 +184,9 @@
     <ClCompile Include="MCU\ini\IniResources.cpp" />
     <ClCompile Include="MCU\ini\IniSlotsProps.cpp" />
     <ClCompile Include="MCU\ini\parser.cpp" />
-    <ClCompile Include="MCU\Modbus\ModbusSlave.cpp" />
+    <ClCompile Include="MCU\Modbus\AppModbusSlave.cpp" />
     <ClCompile Include="MCU\Msg\msg.cpp" />
-    <ClCompile Include="MCU\Pages\Counters\PageCounters.cpp" />
+    <ClCompile Include="MCU\Pages\Counters\PageAlarms.cpp" />
     <ClCompile Include="MCU\Pages\EditValue\PageEditValue.cpp" />
     <ClCompile Include="MCU\Pages\Help\PageHelp.cpp" />
     <ClCompile Include="MCU\Pages\Home\PageHome.cpp" />
