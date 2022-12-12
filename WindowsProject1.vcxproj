@@ -89,7 +89,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;WIN32;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(ProjectDir)MCU\Modbus;$(ProjectDir)MCU\DevicesValues;$(ProjectDir)MCU\ini;$(ProjectDir)MCU\IDrivers;$(ProjectDir)MCU\Parameters;$(ProjectDir)MCU\Resources;$(ProjectDir)MCU\Slots;$(ProjectDir)MCU\Helpers;$(ProjectDir)MCU\DevicePollManager;$(ProjectDir)MCU\GraphicsFunctions;$(ProjectDir)WinAppPages;$(ProjectDir)MCU\Events;$(ProjectDir)MCU\Msg;$(ProjectDir)MCU\Components;$(ProjectDir)threads;$(ProjectDir)MCU\Pages\;$(ProjectDir)MCU\Pages\Help;$(ProjectDir)MCU\Pages\Home;$(ProjectDir)MCU\Pages\Counters;$(ProjectDir)MCU\Pages\EditValue;$(ProjectDir)MCU\Pages\MainMenu;$(ProjectDir)MCU\Router;$(ProjectDir)MCU\App;$(ProjectDir)Drivers\Keyboard;$(ProjectDir)Drivers\Resources;$(ProjectDir)Drivers;$(ProjectDir)MCU\Fonts;$(ProjectDir)UserData;$(ProjectDir)IntmashLib;$(ProjectDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)MCU\Modbus;$(ProjectDir)MCU\Alarms;$(ProjectDir)MCU\DevicesValues;$(ProjectDir)MCU\ini;$(ProjectDir)MCU\IDrivers;$(ProjectDir)MCU\Parameters;$(ProjectDir)MCU\Resources;$(ProjectDir)MCU\Slots;$(ProjectDir)MCU\Helpers;$(ProjectDir)MCU\DevicePollManager;$(ProjectDir)MCU\GraphicsFunctions;$(ProjectDir)WinAppPages;$(ProjectDir)MCU\Events;$(ProjectDir)MCU\Msg;$(ProjectDir)MCU\Components;$(ProjectDir)threads;$(ProjectDir)MCU\Pages\;$(ProjectDir)MCU\Pages\Help;$(ProjectDir)MCU\Pages\Home;$(ProjectDir)MCU\Pages\Counters;$(ProjectDir)MCU\Pages\EditValue;$(ProjectDir)MCU\Pages\MainMenu;$(ProjectDir)MCU\Router;$(ProjectDir)MCU\App;$(ProjectDir)Drivers\Keyboard;$(ProjectDir)Drivers\Resources;$(ProjectDir)Drivers;$(ProjectDir)MCU\Fonts;$(ProjectDir)UserData;$(ProjectDir)IntmashLib;$(ProjectDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -118,7 +118,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(ProjectDir)MCU\Modbus;$(ProjectDir)MCU\DevicesValues;$(ProjectDir)MCU\ini;$(ProjectDir)MCU\IDrivers;$(ProjectDir)MCU\Parameters;$(ProjectDir)MCU\Resources;$(ProjectDir)MCU\Slots;$(ProjectDir)MCU\Helpers;$(ProjectDir)MCU\DevicePollManager;$(ProjectDir)MCU\GraphicsFunctions;$(ProjectDir)WinAppPages;$(ProjectDir)MCU\Events;$(ProjectDir)MCU\Msg;$(ProjectDir)MCU\Components;$(ProjectDir)threads;$(ProjectDir)MCU\Pages\;$(ProjectDir)MCU\Pages\Help;$(ProjectDir)MCU\Pages\Home;$(ProjectDir)MCU\Pages\Counters;$(ProjectDir)MCU\Pages\EditValue;$(ProjectDir)MCU\Pages\MainMenu;$(ProjectDir)MCU\Router;$(ProjectDir)MCU\App;$(ProjectDir)Drivers\Keyboard;$(ProjectDir)Drivers\Resources;$(ProjectDir)Drivers;$(ProjectDir)MCU\Fonts;$(ProjectDir)UserData;$(ProjectDir)IntmashLib;$(ProjectDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)MCU\Modbus;$(ProjectDir)MCU\Alarms;$(ProjectDir)MCU\DevicesValues;$(ProjectDir)MCU\ini;$(ProjectDir)MCU\IDrivers;$(ProjectDir)MCU\Parameters;$(ProjectDir)MCU\Resources;$(ProjectDir)MCU\Slots;$(ProjectDir)MCU\Helpers;$(ProjectDir)MCU\DevicePollManager;$(ProjectDir)MCU\GraphicsFunctions;$(ProjectDir)WinAppPages;$(ProjectDir)MCU\Events;$(ProjectDir)MCU\Msg;$(ProjectDir)MCU\Components;$(ProjectDir)threads;$(ProjectDir)MCU\Pages\;$(ProjectDir)MCU\Pages\Help;$(ProjectDir)MCU\Pages\Home;$(ProjectDir)MCU\Pages\Counters;$(ProjectDir)MCU\Pages\EditValue;$(ProjectDir)MCU\Pages\MainMenu;$(ProjectDir)MCU\Router;$(ProjectDir)MCU\App;$(ProjectDir)Drivers\Keyboard;$(ProjectDir)Drivers\Resources;$(ProjectDir)Drivers;$(ProjectDir)MCU\Fonts;$(ProjectDir)UserData;$(ProjectDir)IntmashLib;$(ProjectDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -158,6 +158,7 @@
     <ClCompile Include="Drivers\display_driver.cpp" />
     <ClCompile Include="Drivers\Keyboard\virtualKeyEvents.cpp" />
     <ClCompile Include="Drivers\Resources\os_resources.cpp" />
+    <ClCompile Include="MCU\Alarms\Alarms.cpp" />
     <ClCompile Include="MCU\App\app.cpp" />
     <ClCompile Include="MCU\Components\common.cpp" />
     <ClCompile Include="MCU\Components\HeaderLabel.cpp" />

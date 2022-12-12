@@ -1,7 +1,14 @@
 #include "PageAlarms.h"
 #include "Router.h"
+#include <utils.h>
 
-//static u32 COUNT = 0;
+static u16 count;
+
+void TPageAlarms::onOpen() {
+    count++;
+    std::string newCaption = Utils::UnSignedintToStr(count);
+    pHeader->setCaption(newCaption);
+}
 
 void TPageAlarms::view() {
     Container->view();
@@ -30,16 +37,14 @@ bool TPageAlarms::ProcessMessage(TMessage* m) {
 TPageAlarms::TPageAlarms(std::string Name)
     :TPage(Name) {
     TLabelInitStructure LabelInit;
-    LabelInit.style = LabelsStyle::WIDTH_DINAMIC;
-    LabelInit.Rect = { 10, 10, 10, 10 };
-    LabelInit.caption = "1 Привет";
+
+    LabelInit.style = (LabelsStyle)((u32)LabelsStyle::WIDTH_FIXED | (u32)LabelsStyle::TEXT_ALIGN_CENTER);
+    LabelInit.Rect = { 10, 10, 10, VIEW_PORT_MAX_WIDTH };
     LabelInit.focused = false;
-    pLabel1 = new TLabel(LabelInit);
-    LabelInit.caption = "2 Привет";
-    pLabel2 = new TLabel(LabelInit);
-    pLabel3 = new TLinkLabel("EditValue", "EditValue", LabelInit);
-    //pLabel3->onEnterPressed = [this](int arg) { goToValueEditPage(arg); };
-    Container = new TComponentListVertical({ pLabel1, pLabel2, pLabel3});
+
+    LabelInit.caption = "Аварии";
+    pHeader = new THeaderLabel(LabelInit);
+    Container = new TComponentListVertical({ pHeader});
     AddList({ Container });
 };
 

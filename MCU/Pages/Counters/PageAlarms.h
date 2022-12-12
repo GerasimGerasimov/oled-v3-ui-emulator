@@ -5,6 +5,7 @@
 #include "TComponentListVertical.h"
 #include "LinkLabel.h"
 #include "Label.h"
+#include <HeaderLabel.h>
 
 class TPageAlarms : public TPage
 {
@@ -15,10 +16,9 @@ public:
     bool ProcessMessage(TMessage* m);//обработчик сообщений
     TPageAlarms(std::string Name);//конструктор
     ~TPageAlarms();//деструктор
+    void onOpen();
 private:
-    TLabel* pLabel1;
-    TLabel* pLabel2;
-    TLinkLabel* pLabel3;
+    THeaderLabel* pHeader;
     TComponentListVertical* Container;
 };
 

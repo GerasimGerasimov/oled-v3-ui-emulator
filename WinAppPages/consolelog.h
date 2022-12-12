@@ -9,6 +9,7 @@ class console {
 	public:
 		static HWND hwnd;
 		static void log(std::wstring text);
+		static void log(std::string text);
 		static void clear(void);
 };
 

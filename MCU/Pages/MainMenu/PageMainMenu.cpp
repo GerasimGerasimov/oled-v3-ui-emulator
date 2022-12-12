@@ -35,7 +35,7 @@ TPageMainMenu::TPageMainMenu(std::string Name)
         MainMenu = new TComponentListVertical({
             new TLinkLabel("Основные параметры", "Home",LabelInit),
             new TLinkLabel("Предупреждения", "Home", LabelInit),
-            new TLinkLabel("Аварии", "Home", LabelInit),
+            new TLinkLabel("Аварии", "Alarms", LabelInit),
             new TLinkLabel("Основные уставки работы", "Home", LabelInit),
             new TLinkLabel("Уставки защит", "Home", LabelInit),
             new TLinkLabel("Уставки режима очистки", "Home", LabelInit),

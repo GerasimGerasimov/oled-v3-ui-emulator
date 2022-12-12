@@ -15,6 +15,7 @@
 #include "CreateCustomSlot.h"
 #include "RAMdata.h"
 #include "virtualKeyEvents.h"
+#include "Alarms.h"
 
 void App::init(void) {
     TInternalResources::init();
@@ -25,6 +26,7 @@ void App::init(void) {
     slots.push_back(*CreateCustomSlot::init("U1", "CmdWrite"));
     DevicePollManager::init(slots);
     TRouter::Init();
+    Alarms::init();
     Msg::send_message((u32)EventSrc::REPAINT, 0, 0);
 }
 
@@ -41,10 +43,6 @@ void App::run(void) {
                 TRouter::Page->view();
             }
         }
-	//sprintf(s, "%i", RAM_DATA.var2);
-	//std::string res(s);
-        //TGrahics::fillRect(fr);
-        //TGrahics::outText(res, 30, 20, 1, "MSSansSerifBold14");
         TDisplayDriver::out();
         DevicePollManager::execute();
         scanVirtualKeyCode();
