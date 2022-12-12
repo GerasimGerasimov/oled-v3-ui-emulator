@@ -17,6 +17,7 @@ public:
     TPageAlarms(std::string Name);//конструктор
     ~TPageAlarms();//деструктор
     void onOpen();
+    void startToClose();
 private:
     THeaderLabel* pHeader;
     TComponentListVertical* Container;

@@ -5,9 +5,19 @@
 static u16 count;
 
 void TPageAlarms::onOpen() {
-    count++;
-    std::string newCaption = Utils::UnSignedintToStr(count);
-    pHeader->setCaption(newCaption);
+    //count++;
+    //std::string newCaption = Utils::UnSignedintToStr(count);
+    //pHeader->setCaption(newCaption);
+    /*TODO 
+    1) удалить всё из списка Container;
+    2) пройтись по карте Alarms::Tags и добавить в контейнер все объекты
+        у которых isValid = true, и State = false*/
+}
+
+void TPageAlarms::startToClose() {
+  //count++;
+  //std::string newCaption = Utils::UnSignedintToStr(count);
+  //pHeader->setCaption(newCaption);
 }
 
 void TPageAlarms::view() {
