@@ -18,9 +18,9 @@ typedef struct TTrackedBit {
 class Alarms {
 	public:
 		static void init(void);
+		static bool isAlarmOnce(void);
 		static std::map < std::string, TTrackedBit > Tags;
 	private:
-		static void openAlarmWindow(void);
 		static void uptate(const std::string PosMem, TSlotHandlerArsg& args);
 		static bool checkState(void);
 		static void SlotU1RAMUpdate(TSlotHandlerArsg args);

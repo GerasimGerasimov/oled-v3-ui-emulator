@@ -50,15 +50,17 @@ bool Alarms::checkState(void) {
 	return res;
 }
 
-void Alarms::openAlarmWindow() {
-
+bool Alarms::isAlarmOnce(void) {
+	bool res = false;
+	if ((State == false) && (prevState == true)) {
+		res = true;
+	}
+	prevState = State;
+	return res;
 }
 
 void Alarms::SlotU1RAMUpdate(TSlotHandlerArsg args) {
 	uptate("U1/RAM/", args);
 	State = Alarms::checkState();
-	if (!State && prevState) {
-		openAlarmWindow();
-		prevState = State;
-	}
+	/*TODO тут можно управлять светодиодом ALARM*/
 }
