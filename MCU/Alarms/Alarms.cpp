@@ -1,6 +1,6 @@
 #include "Alarms.h"
 #include <IniResources.h>
-#include <vector>
+#include "LedAlarms.h"
 
 std::map < std::string, TTrackedBit > Alarms::Tags = {
 	{"UbusOK", {"U1/RAM/UbusOK/", nullptr, false, false}},
@@ -62,5 +62,6 @@ bool Alarms::isAlarmOnce(void) {
 void Alarms::SlotU1RAMUpdate(TSlotHandlerArsg args) {
 	uptate("U1/RAM/", args);
 	State = Alarms::checkState();
+	LedAlarms::setState((State?0:1));
 	/*TODO тут можно управлять светодиодом ALARM*/
 }

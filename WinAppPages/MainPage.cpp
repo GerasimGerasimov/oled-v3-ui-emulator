@@ -5,6 +5,7 @@
 #include "consolelog.h"
 #include "msg.h"
 #include <com_master_driver.h>
+#include "LedAlarms.h"
 
 HINSTANCE MainPage::hInst = NULL;                                // текущий экземпляр
 WCHAR MainPage::szTitle[MAX_LOADSTRING];                  // Текст строки заголовка
@@ -95,6 +96,7 @@ void MainPage::fillHandlersByID(void) {
     HDC hdc_dem = GetDC(hwndDisplayEmulator);
     TDisplayDriver::setDC(hdc_dem);
     console::hwnd = hwndMemoLogger = GetDlgItem(hWndMain, ID_MEMO_LOGGER);
+    LedAlarms::init(hWndMain);
     isHadlersFilled = true;
     ComMasterDriver::open();
 }

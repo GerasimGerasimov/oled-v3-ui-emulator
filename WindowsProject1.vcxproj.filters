@@ -82,6 +82,12 @@
     <Filter Include="MCU\Alarms">
       <UniqueIdentifier>{ae43b80b-0817-4d84-bc4a-d87c9724f406}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Divers\Leds">
+      <UniqueIdentifier>{566b1f77-bd9d-48e3-bcce-07acbffcfa28}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Divers\Leds\Alarm">
+      <UniqueIdentifier>{4d5f0476-f2d5-47e5-961a-49850e21d8b2}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -310,6 +316,9 @@
     </ClCompile>
     <ClCompile Include="MCU\Alarms\Alarms.cpp">
       <Filter>MCU\Alarms</Filter>
+    </ClCompile>
+    <ClCompile Include="Drivers\Leds\Alarm\LedAlarms.cpp">
+      <Filter>Divers\Leds\Alarm</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

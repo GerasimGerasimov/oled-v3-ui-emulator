@@ -17,6 +17,3 @@ void console::log(std::string text) {
 void console::clear(void) {
     SetWindowText(hwnd, 0);
 }
-//How convert std::string to std::wstring in C++?
-//std::string str("Hello world!");
-//std::wstring wstr(str.begin(), str.end());
