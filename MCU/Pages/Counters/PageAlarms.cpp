@@ -54,12 +54,12 @@ bool TPageAlarms::ProcessMessage(TMessage* m) {
 void TPageAlarms::fillPageContainer(void) {
     TLabelInitStructure LabelInit;
 
-    LabelInit.style = (LabelsStyle)((u32)LabelsStyle::WIDTH_FIXED | (u32)LabelsStyle::TEXT_ALIGN_CENTER);
+    LabelInit.style = LabelsStyle::WIDTH_FIXED;
     LabelInit.Rect = { 10, 10, 10, VIEW_PORT_MAX_WIDTH };
-
     LabelInit.caption = "Аварии";
     THeaderLabel* pHeader = new THeaderLabel(LabelInit);
     Container->Add(pHeader);
+
     LabelInit.style = LabelsStyle::WIDTH_DINAMIC;
     for (auto& e : Alarms::Tags) {
         if ((e.second.isValid) && (e.second.State == true)) {
@@ -68,12 +68,11 @@ void TPageAlarms::fillPageContainer(void) {
             TLinkLabel* pLabel = new TLinkLabel(LabelInit.caption, "Home", LabelInit);
             Container->Add(pLabel);
         }
-        Container->Add(new TLinkLabel("Основные параметры", "Home", LabelInit));
-        Container->Add(new TLinkLabel("Предупреждения", "Home", LabelInit));
-        Container->Add(new TLinkLabel("Аварии", "Alarms", LabelInit));
-        Container->Add(new TLinkLabel("Основные уставки работы", "Home", LabelInit));
-        Container->Add(new TLinkLabel("Уставки защит", "Home", LabelInit));
     }
+    Container->Add(new TLinkLabel("Основные параметры", "Home", LabelInit));
+    Container->Add(new TLinkLabel("Предупреждения", "Home", LabelInit));
+    Container->Add(new TLinkLabel("Основные уставки работы", "Home", LabelInit));
+    Container->Add(new TLinkLabel("Уставки защит", "Home", LabelInit));
 }
 
 TPageAlarms::TPageAlarms(std::string Name)
