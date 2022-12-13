@@ -3,9 +3,6 @@
 
 #include "Pages.h"
 #include "TComponentListVertical.h"
-#include "LinkLabel.h"
-#include "Label.h"
-#include <HeaderLabel.h>
 
 class TPageAlarms : public TPage
 {
@@ -19,8 +16,8 @@ public:
     void onOpen();
     void startToClose();
 private:
-    THeaderLabel* pHeader;
     TComponentListVertical* Container;
+    void fillPageContainer(void);
 };
 
 #endif

@@ -1,10 +1,15 @@
 #include "PageAlarms.h"
 #include "Router.h"
 #include <utils.h>
+#include <HeaderLabel.h>
+#include "Alarms.h"
+#include "LinkLabel.h"
 
 static u16 count;
 
 void TPageAlarms::onOpen() {
+    Container->Clear();
+    fillPageContainer();
     //count++;
     //std::string newCaption = Utils::UnSignedintToStr(count);
     //pHeader->setCaption(newCaption);
@@ -44,17 +49,36 @@ bool TPageAlarms::ProcessMessage(TMessage* m) {
     return false;
 };
 
-TPageAlarms::TPageAlarms(std::string Name)
-    :TPage(Name) {
+/*TODO если список, в высоту, не помещается на экране, то при при прокрутке вниз/ввеох
+теряется фиксированный текст THeaderLabel(АВАРИЯ)*/
+void TPageAlarms::fillPageContainer(void) {
     TLabelInitStructure LabelInit;
 
     LabelInit.style = (LabelsStyle)((u32)LabelsStyle::WIDTH_FIXED | (u32)LabelsStyle::TEXT_ALIGN_CENTER);
     LabelInit.Rect = { 10, 10, 10, VIEW_PORT_MAX_WIDTH };
-    LabelInit.focused = false;
 
     LabelInit.caption = "Аварии";
-    pHeader = new THeaderLabel(LabelInit);
-    Container = new TComponentListVertical({ pHeader});
+    THeaderLabel* pHeader = new THeaderLabel(LabelInit);
+    Container->Add(pHeader);
+    LabelInit.style = LabelsStyle::WIDTH_DINAMIC;
+    for (auto& e : Alarms::Tags) {
+        if ((e.second.isValid) && (e.second.State == true)) {
+            TBit* p = e.second.pBit;
+            LabelInit.caption = p->getComment();
+            TLinkLabel* pLabel = new TLinkLabel(LabelInit.caption, "Home", LabelInit);
+            Container->Add(pLabel);
+        }
+        Container->Add(new TLinkLabel("Основные параметры", "Home", LabelInit));
+        Container->Add(new TLinkLabel("Предупреждения", "Home", LabelInit));
+        Container->Add(new TLinkLabel("Аварии", "Alarms", LabelInit));
+        Container->Add(new TLinkLabel("Основные уставки работы", "Home", LabelInit));
+        Container->Add(new TLinkLabel("Уставки защит", "Home", LabelInit));
+    }
+}
+
+TPageAlarms::TPageAlarms(std::string Name)
+    :TPage(Name) {
+    Container = new TComponentListVertical({});
     AddList({ Container });
 };
 

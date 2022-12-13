@@ -4,8 +4,8 @@
 
 std::map < std::string, TTrackedBit > Alarms::Tags = {
 	{"UbusOK", {"U1/RAM/UbusOK/", nullptr, false, false}},
-	//{"UgenOK", {"U1/RAM/UgenOK/", nullptr, false, false}},
-	//{"BusUnpwr", {"U1/RAM/BusUnpwr/", nullptr, false, false}},
+	{"UgenOK", {"U1/RAM/UgenOK/", nullptr, false, false}},
+	{"BusUnpwr", {"U1/RAM/BusUnpwr/", nullptr, false, false}},
 };
 
 bool Alarms::State = true;
