@@ -162,6 +162,8 @@
     <ClCompile Include="MCU\Alarms\Alarms.cpp" />
     <ClCompile Include="MCU\App\app.cpp" />
     <ClCompile Include="MCU\Components\common.cpp" />
+    <ClCompile Include="MCU\Components\FixedFooter.cpp" />
+    <ClCompile Include="MCU\Components\FixedHeader.cpp" />
     <ClCompile Include="MCU\Components\HeaderLabel.cpp" />
     <ClCompile Include="MCU\Components\Label.cpp" />
     <ClCompile Include="MCU\Components\LinkedTagLabel.cpp" />
@@ -171,6 +173,7 @@
     <ClCompile Include="MCU\Components\TagLine.cpp" />
     <ClCompile Include="MCU\Components\TComponentListVertical.cpp" />
     <ClCompile Include="MCU\Components\TComponentsContainer.cpp" />
+    <ClCompile Include="MCU\Components\TVerticalContainer.cpp" />
     <ClCompile Include="MCU\Components\WrappedText.cpp" />
     <ClCompile Include="MCU\DevicePollManager\DevicePollManager.cpp" />
     <ClCompile Include="MCU\DevicePollManager\Slot.cpp" />

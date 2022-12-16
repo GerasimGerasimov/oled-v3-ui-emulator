@@ -1,9 +1,11 @@
 #include "PageAlarms.h"
 #include "Router.h"
 #include <utils.h>
-#include <HeaderLabel.h>
+#include <FixedHeader.h>
+#include <FixedFooter.h>
 #include "Alarms.h"
 #include "LinkLabel.h"
+#include "TVerticalContainer.h"
 
 static u16 count;
 
@@ -54,11 +56,20 @@ bool TPageAlarms::ProcessMessage(TMessage* m) {
 void TPageAlarms::fillPageContainer(void) {
     TLabelInitStructure LabelInit;
 
-    LabelInit.style = LabelsStyle::WIDTH_FIXED;
-    LabelInit.Rect = { 10, 10, 10, VIEW_PORT_MAX_WIDTH };
-    LabelInit.caption = "Аварии";
-    THeaderLabel* pHeader = new THeaderLabel(LabelInit);
+    LabelInit.pOwner = Container;
+    LabelInit.caption = "Header";
+    TFixedHeader* pHeader = new TFixedHeader(LabelInit);
     Container->Add(pHeader);
+    LabelInit.caption = "Footer";
+    TFixedFooter* pFooter = new TFixedFooter(LabelInit);
+
+    TVerticalContainer* pLabels = new TVerticalContainer({});
+    pLabels->ElementRect = { 0, 0,// (s16)(pHeader->getHeight() - 2),
+                                (u16)(VIEW_PORT_MAX_HEIGHT - pFooter->getHeight() - pHeader->getHeight() - 1),
+                                VIEW_PORT_MAX_WIDTH };
+    Container->Add(pLabels);
+    
+    LabelInit.Rect = {0, 0, 0, VIEW_PORT_MAX_WIDTH };
 
     LabelInit.style = LabelsStyle::WIDTH_DINAMIC;
     for (auto& e : Alarms::Tags) {
@@ -66,13 +77,29 @@ void TPageAlarms::fillPageContainer(void) {
             TBit* p = e.second.pBit;
             LabelInit.caption = p->getComment();
             TLinkLabel* pLabel = new TLinkLabel(LabelInit.caption, "Home", LabelInit);
-            Container->Add(pLabel);
+            pLabels->Add(pLabel);
         }
     }
-    Container->Add(new TLinkLabel("Основные параметры", "Home", LabelInit));
-    Container->Add(new TLinkLabel("Предупреждения", "Home", LabelInit));
-    Container->Add(new TLinkLabel("Основные уставки работы", "Home", LabelInit));
-    Container->Add(new TLinkLabel("Уставки защит", "Home", LabelInit));
+    pLabels->Add(new TLinkLabel("1 TLinkLabel TLinkLabel", "Home", LabelInit));
+    pLabels->Add(new TLinkLabel("2 TLinkLabel TLinkLabel", "Home", LabelInit));
+    pLabels->Add(new TLinkLabel("3 TLinkLabel TLinkLabel", "Home", LabelInit));
+    
+    pLabels->Add(new TLinkLabel("4 TLinkLabel", "Home", LabelInit));
+    pLabels->Add(new TLinkLabel("5 TLinkLabel", "Home", LabelInit));
+    
+    pLabels->Add(new TLinkLabel("6", "Home", LabelInit));
+    pLabels->Add(new TLinkLabel("7", "Home", LabelInit));
+    pLabels->Add(new TLinkLabel("8", "Home", LabelInit));
+ 
+    pLabels->Add(new TLinkLabel("9", "Home", LabelInit));
+    pLabels->Add(new TLinkLabel("10", "Home", LabelInit));
+    pLabels->Add(new TLinkLabel("11", "Home", LabelInit));
+    pLabels->Add(new TLinkLabel("12", "Home", LabelInit));
+    pLabels->Add(new TLinkLabel("13", "Home", LabelInit));
+    pLabels->Add(new TLinkLabel("14", "Home", LabelInit));
+    pLabels->Add(new TLinkLabel("15", "Home", LabelInit));
+    pLabels->Add(new TLinkLabel("16", "Home", LabelInit));
+    Container->Add(pFooter);
 }
 
 TPageAlarms::TPageAlarms(std::string Name)
