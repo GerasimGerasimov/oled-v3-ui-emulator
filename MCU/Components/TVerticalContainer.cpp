@@ -1,5 +1,8 @@
 #include "TVerticalContainer.h"
 
+/*TODO у В TVerticalContainer разное поведение с TComponentListVertical на WrappedText
+Дублирование нарушает DRY*/
+
 static const u8 ScrollBarWidth = 2;
 static const u8 MarginBottom = 1;
 bool TVerticalContainer::onEnter(void) {
