@@ -2,7 +2,7 @@
 #define T_PAGE_MAIN_MENU_H
 
 #include "Pages.h"
-#include "TComponentListVertical.h"
+#include "TVerticalContainer.h"
 #include "LinkLabel.h"
 #include "Label.h"
 
@@ -16,7 +16,7 @@ public:
     TPageMainMenu(std::string Name);//конструктор
     ~TPageMainMenu();//деструктор
 private:
-    TComponentListVertical* MainMenu;
+    TVerticalContainer* Container;
 };
 
 #endif

@@ -3,7 +3,7 @@
 #include <functional>
 
 void TPageMainMenu::view() {
-    MainMenu->view();
+    Container->view();
 };
 
 void TPageMainMenu::clear() {
@@ -32,7 +32,7 @@ TPageMainMenu::TPageMainMenu(std::string Name)
     LabelInit.style = LabelsStyle::WIDTH_DINAMIC;
     LabelInit.Rect = { 10, 10, 10, 10 };
     AddList({
-        MainMenu = new TComponentListVertical({
+        Container = new TVerticalContainer({
             new TLinkLabel("Основные параметры", "Home",LabelInit),
             new TLinkLabel("Предупреждения", "Home", LabelInit),
             new TLinkLabel("Аварии", "Alarms", LabelInit),
