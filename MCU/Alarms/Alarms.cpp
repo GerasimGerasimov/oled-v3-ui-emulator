@@ -4,8 +4,8 @@
 
 std::map < std::string, TTrackedBit > Alarms::Tags = {
 	{"UbusOK", {"U1/RAM/UbusOK/", nullptr, false, false}},
-	{"UgenOK", {"U1/RAM/UgenOK/", nullptr, false, false}},
-	{"BusUnpwr", {"U1/RAM/BusUnpwr/", nullptr, false, false}},
+	//{"UgenOK", {"U1/RAM/UgenOK/", nullptr, false, false}},
+	//{"BusUnpwr", {"U1/RAM/BusUnpwr/", nullptr, false, false}},
 };
 
 bool Alarms::State = true;
@@ -59,9 +59,12 @@ bool Alarms::isAlarmOnce(void) {
 	return res;
 }
 
+bool Alarms::isTagAlarmed(TTrackedBit& element) {
+	return (bool)((element.isValid) && (element.State == false));
+}
+
 void Alarms::SlotU1RAMUpdate(TSlotHandlerArsg args) {
 	uptate("U1/RAM/", args);
 	State = Alarms::checkState();
 	LedAlarms::setState((State?0:1));
-	/*TODO тут можно управлять светодиодом ALARM*/
 }

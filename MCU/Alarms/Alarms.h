@@ -18,6 +18,7 @@ typedef struct TTrackedBit {
 class Alarms {
 	public:
 		static void init(void);
+		static bool isTagAlarmed(TTrackedBit& element);
 		static bool isAlarmOnce(void);
 		static std::map < std::string, TTrackedBit > Tags;
 	private:
