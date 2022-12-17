@@ -2,7 +2,7 @@
 #define T_PAGE_HOME_H
 
 #include "Pages.h"
-#include "TComponentListVertical.h"
+#include "TVerticalContainer.h"
 #include "TagLine.h"
 #include "HandleSubscribers.h"
 
@@ -21,7 +21,7 @@ public:
     TPageHome(std::string Name);//конструктор
     ~TPageHome();//деструктор
 private:
-    TComponentListVertical* MainMenu;
+    TVerticalContainer* MainMenu;
     TTagLine* pLTagUref;
     TTagLine* pLTagIref;
     TTagLine* pLTagUoutAve;

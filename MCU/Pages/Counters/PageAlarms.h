@@ -2,7 +2,8 @@
 #define T_PAGE_ALARMS_H
 
 #include "Pages.h"
-#include "TComponentListVertical.h"
+#include "TVerticalContainer.h"
+
 
 class TPageAlarms : public TPage
 {
@@ -16,7 +17,7 @@ public:
     void onOpen();
     void startToClose();
 private:
-    TComponentListVertical* Container;
+    TVerticalContainer* Container;
     void fillPageContainer(void);
 };
 

@@ -41,6 +41,8 @@ bool TPageAlarms::ProcessMessage(TMessage* m) {
 };
 
 void TPageAlarms::fillPageContainer(void) {
+
+    TVerticalContainerProps pLabelsProps = {true};
     TLabelInitStructure LabelInit;
 
     LabelInit.pOwner = Container;
@@ -48,7 +50,7 @@ void TPageAlarms::fillPageContainer(void) {
     TFixedHeader* pHeader = new TFixedHeader(LabelInit);
     Container->Add(pHeader);
 
-    TVerticalContainer* pLabels = new TVerticalContainer({});
+    TVerticalContainer* pLabels = new TVerticalContainer(pLabelsProps, {});
     pLabels->ElementRect = { 0, 0,
                                 (u16)(VIEW_PORT_MAX_HEIGHT - pHeader->getHeight() - 1),
                                 VIEW_PORT_MAX_WIDTH };
@@ -69,7 +71,8 @@ void TPageAlarms::fillPageContainer(void) {
 
 TPageAlarms::TPageAlarms(std::string Name)
     :TPage(Name) {
-    Container = new TComponentListVertical({});
+    TVerticalContainerProps props = { false };
+    Container = new TVerticalContainer(props,{});
     AddList({ Container });
 };
 

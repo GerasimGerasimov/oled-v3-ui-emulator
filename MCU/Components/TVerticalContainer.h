@@ -6,10 +6,15 @@
 #include "msg.h"
 #include "graphics.h"
 
+typedef struct TVerticalContainerProps {
+    bool EnableScrollBar;
+};
+
 class TVerticalContainer : public TComponentsContainer
 {
   public:
     bool isOpen;
+    bool EnableScrollBar;
     //с какой по какую строку меню выводить, если кол-во строк не помещается на дисплее
     u16 FocusedLine;//строка находящаяся в фокусе
     u16 FirstPosition;//первая отображаемая строка начинаю выводить с неё
@@ -19,11 +24,12 @@ class TVerticalContainer : public TComponentsContainer
     virtual void  Clear(void);//очистит список
     bool ProcessMessage(TMessage* m);//обработчик сообщений
     virtual TVisualObject* getFocusedElement();//для контейнеров
-    TVerticalContainer(std::vector <TVisualObject*> Source = {});//конструктор
+    TVerticalContainer(TVerticalContainerProps& props, std::vector <TVisualObject*> Source = {});//конструктор
     ~TVerticalContainer();//деструктор
     virtual bool onEnter(void);
   private:
     u16 GetViewObjectsCount();//кол-во объектов умещающихся в высоту меню от FirstPosition до нижнего края
+    u16 getScrollBarWidth();
     void goUp(void);
     void goDown(void);
     void drawScrollBar(void);

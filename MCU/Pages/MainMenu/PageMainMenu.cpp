@@ -28,11 +28,12 @@ bool TPageMainMenu::ProcessMessage(TMessage* m) {
 
 TPageMainMenu::TPageMainMenu(std::string Name)
     :TPage(Name) {
+    TVerticalContainerProps pLabelsProps = { true };
     TLabelInitStructure LabelInit;
     LabelInit.style = LabelsStyle::WIDTH_DINAMIC;
     LabelInit.Rect = { 10, 10, 10, 10 };
     AddList({
-        Container = new TVerticalContainer({
+        Container = new TVerticalContainer(pLabelsProps, {
             new TLinkLabel("Основные параметры", "Home",LabelInit),
             new TLinkLabel("Предупреждения", "Home", LabelInit),
             new TLinkLabel("Аварии", "Alarms", LabelInit),

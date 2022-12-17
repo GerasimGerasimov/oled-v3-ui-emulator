@@ -59,6 +59,7 @@ void TPageHome::goToTagInfoPage(int a) {
 
 TPageHome::TPageHome(std::string Name)
     :TPage(Name) {
+    TVerticalContainerProps props = { false };
     TLabelInitStructure LabelInit;
     LabelInit.style = LabelsStyle::WIDTH_DINAMIC;
     LabelInit.Rect = { 10, 10, 10, 10 };
@@ -73,7 +74,7 @@ TPageHome::TPageHome(std::string Name)
     pLTagSparkFrq = new TTagLine("Un", "U1/FLASH/Unominal/", LabelInit);
     pLTagOut      = new TTagLine("Ugen", "U1/RAM/Ugen/", LabelInit);
 
-    MainMenu = new TComponentListVertical({ pLTagUref    , pLTagIref     , pLTagUoutAve,
+    MainMenu = new TVerticalContainer(props, { pLTagUref    , pLTagIref     , pLTagUoutAve,
                                             pLTagIoutAve , pLTagSparkFrq , pLTagOut ,
                                             /*pLTagIinAve */ });
     

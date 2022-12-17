@@ -167,9 +167,6 @@
     <ClCompile Include="MCU\Components\Label.cpp">
       <Filter>MCU\Components</Filter>
     </ClCompile>
-    <ClCompile Include="MCU\Components\TComponentListVertical.cpp">
-      <Filter>MCU\Components</Filter>
-    </ClCompile>
     <ClCompile Include="MCU\Components\TComponentsContainer.cpp">
       <Filter>MCU\Components</Filter>
     </ClCompile>
@@ -327,6 +324,9 @@
       <Filter>MCU\Components</Filter>
     </ClCompile>
     <ClCompile Include="MCU\Components\FixedFooter.cpp">
+      <Filter>MCU\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="MCU\Components\TComponentListVertical.cpp">
       <Filter>MCU\Components</Filter>
     </ClCompile>
   </ItemGroup>

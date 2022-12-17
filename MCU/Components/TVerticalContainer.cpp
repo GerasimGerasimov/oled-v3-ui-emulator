@@ -115,7 +115,7 @@ void TVerticalContainer::view(void){//вывести объект на экране
         //перед выводом строки, требуется задать её координаты,
         //меняется координата Top в зависимости от высоты ПРЕДЫДУЩЕГО объекта
         List[i]->ElementRect.Left  = ElementRect.Left;  //задаю координату Х
-        List[i]->ElementRect.Width = ElementRect.Width - ScrollBarWidth; //ширина строки = ширине контейнера
+        List[i]->ElementRect.Width = ElementRect.Width - getScrollBarWidth(); //ширина строки = ширине контейнера
         List[i]->ElementRect.Top  = h + MarginBottom;      //задаю координату Y
         List[i]->ElementRect.Height = List[i]->getHeight();
         h += List[i]->ElementRect.Height;   //подготовка координаты Y для следующей строки
@@ -125,7 +125,12 @@ void TVerticalContainer::view(void){//вывести объект на экране
     drawScrollBar();
 }
 
+inline u16 TVerticalContainer::getScrollBarWidth() {
+    return (EnableScrollBar) ? ScrollBarWidth : 0;
+}
+
 void TVerticalContainer::drawScrollBar(void) {
+    if (!EnableScrollBar) return;
     s16 items = ItemsCount();
     u16 ScrlBarHeight = (items) ? ElementRect.Height / items : ElementRect.Height;
     ScrlBarHeight = (ScrlBarHeight < ScrollBarWidth) ? ScrollBarWidth : ScrlBarHeight;
@@ -171,13 +176,15 @@ void  TVerticalContainer::Clear(){//очистит список
   FocusedLine = LastPosition = FirstPosition = 0;
 }
 
-TVerticalContainer::TVerticalContainer(std::vector <TVisualObject*> Source) {//конструктор
-  isOpen = false;
-  inFocus = false;
-  FocusedLine = FirstPosition = 0;
-  LastPosition = 1;
-  ElementRect = { 0, 0, VIEW_PORT_MAX_HEIGHT, VIEW_PORT_MAX_WIDTH };
-  AddList(Source);
+TVerticalContainer::TVerticalContainer(TVerticalContainerProps& props, std::vector <TVisualObject*> Source)
+    : TComponentsContainer(Source)
+    , EnableScrollBar(props.EnableScrollBar)
+    , FocusedLine(0)
+    , FirstPosition(0)
+    , LastPosition(1)
+    , isOpen(false) {
+      inFocus = false;
+      ElementRect = { 0, 0, VIEW_PORT_MAX_HEIGHT, VIEW_PORT_MAX_WIDTH };
 }
 
 TVerticalContainer::~TVerticalContainer() {
