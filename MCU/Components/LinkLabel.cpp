@@ -3,6 +3,7 @@
 
 static const int BEFORE_PAUSE = 15;
 static const int AFTER_PAUSE = 10;
+static const int SHIFT_DELAY = 4;
 
 static enum class AnimationStage {
     WAIT_BEFORE_SHIFTING,
@@ -12,7 +13,7 @@ static enum class AnimationStage {
 
 static struct {
     std::string shifted;
-    int ReturnPause;
+    int Delay;
     u8 Stage;
 } TLinkLabelVars = { "", BEFORE_PAUSE, (u8)AnimationStage::WAIT_BEFORE_SHIFTING };
 
@@ -44,12 +45,15 @@ void TLinkLabel::doShift(void) {
         медленный сдвиг влево.*/
         switch (TLinkLabelVars.Stage) {
             case (u8)AnimationStage::WAIT_BEFORE_SHIFTING:
-                (TLinkLabelVars.ReturnPause)
-                    ? (TLinkLabelVars.ReturnPause--)
-                    : (TLinkLabelVars.ReturnPause = 0,
+                (TLinkLabelVars.Delay)
+                    ? (TLinkLabelVars.Delay--)
+                    : (TLinkLabelVars.Delay = 0,
                         TLinkLabelVars.Stage = (u8)AnimationStage::SHIFTING);
             break;
             case (u8)AnimationStage::SHIFTING:
+                (TLinkLabelVars.Delay)
+                    ? (TLinkLabelVars.Delay--)
+                    : (TLinkLabelVars.Delay = SHIFT_DELAY);
                 TLinkLabelVars.shifted = SrcCaption.substr(Shift);
                 TextSize = TMCUFonts::getTextSizes(Caption, Font);
                 if (TextSize.width > ElementRect.Width) {
@@ -58,15 +62,15 @@ void TLinkLabel::doShift(void) {
                 }
                 else {
                     if (Shift != 0) {
-                        TLinkLabelVars.ReturnPause = AFTER_PAUSE;
+                        TLinkLabelVars.Delay = AFTER_PAUSE;
                         TLinkLabelVars.Stage = (u8)AnimationStage::WAIT_AFTER_SHIFTING;
                     }
                 }
             break;
             case (u8)AnimationStage::WAIT_AFTER_SHIFTING:
-                (TLinkLabelVars.ReturnPause)
-                    ? (TLinkLabelVars.ReturnPause--)
-                    : (TLinkLabelVars.ReturnPause = BEFORE_PAUSE,
+                (TLinkLabelVars.Delay)
+                    ? (TLinkLabelVars.Delay--)
+                    : (TLinkLabelVars.Delay = BEFORE_PAUSE,
                         TLinkLabelVars.Stage = (u8)AnimationStage::WAIT_BEFORE_SHIFTING,
                         Caption = SrcCaption,
                         Shift = 0);
@@ -78,7 +82,7 @@ void TLinkLabel::doShift(void) {
         if (Caption != SrcCaption) {
             setCaption(SrcCaption);
             Shift = 0;
-            TLinkLabelVars.ReturnPause = BEFORE_PAUSE;
+            TLinkLabelVars.Delay = BEFORE_PAUSE;
             TLinkLabelVars.Stage = (u8)AnimationStage::WAIT_BEFORE_SHIFTING;
         }
     }
