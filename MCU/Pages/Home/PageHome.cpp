@@ -66,13 +66,13 @@ TPageHome::TPageHome(std::string Name)
     LabelInit.focused = false;
 /*TODO SignalFactoty если не находит параметра (BIT, WORD я об этом) то на МК приложение падает
 проверить под WIN*/ 
-    pLTagUref     = new TTagLine("Fgen", "U1/RAM/Fgen/", LabelInit);
+    pLTagUref     = new TTagLine("Uref", "U1/RAM/Uref/", LabelInit);
     pLTagUref->inFocus = true;
-    pLTagIref     = new TTagLine("Phi", "U1/RAM/Phi/", LabelInit);
-    pLTagUoutAve  = new TTagLine("UbusOK", "U1/RAM/UbusOK/", LabelInit);
-    pLTagIoutAve  = new TTagLine("DVA", "U1/FLASH/Modbus_RS485_DVA/", LabelInit);
-    pLTagSparkFrq = new TTagLine("Un", "U1/FLASH/Unominal/", LabelInit);
-    pLTagOut      = new TTagLine("Ugen", "U1/RAM/Ugen/", LabelInit);
+    pLTagIref     = new TTagLine("Iref", "U1/RAM/Iref/", LabelInit);
+    pLTagUoutAve  = new TTagLine("UoutAve", "U1/RAM/UoutAve/", LabelInit);
+    pLTagIoutAve  = new TTagLine("IoutAve", "U1/RAM/IoutAve/", LabelInit);
+    pLTagSparkFrq = new TTagLine("SpReq", "U1/RAM/SparkFrq/", LabelInit);
+    pLTagOut      = new TTagLine("Out", "U1/RAM/Out/", LabelInit);
 
     MainMenu = new TVerticalContainer(props, { pLTagUref    , pLTagIref     , pLTagUoutAve,
                                             pLTagIoutAve , pLTagSparkFrq , pLTagOut ,
@@ -82,9 +82,7 @@ TPageHome::TPageHome(std::string Name)
 
     AddList({ MainMenu });
 
-    HandlerSubscribers::set("U1/RAM/",   [this](TSlotHandlerArsg args) { SlotU1RAMUpdate(args); });
-    HandlerSubscribers::set("U1/FLASH/", [this](TSlotHandlerArsg args) { SlotU1FLASHUpdate(args); });
-    HandlerSubscribers::set("U1/CD/",    [this](TSlotHandlerArsg args) { SlotU1CDUpdate(args); });
+    HandlerSubscribers::set("U1/RAM/", [this](TSlotHandlerArsg args) { SlotU1RAMUpdate(args); });
 };
 
 //        //((TParameter*)DataSrc)
@@ -92,23 +90,11 @@ void TPageHome::SlotU1RAMUpdate(TSlotHandlerArsg args) {
     pLTagUref->Value->setCaption(((TParameter*)pLTagUref->getDataSrc())->getValue(args, "%.2f"));
     pLTagIref->Value->setCaption(((TParameter*)pLTagIref->getDataSrc())->getValue(args, "%.2f"));
     pLTagOut->Value->setCaption(((TParameter*)pLTagOut->getDataSrc())->getValue(args, "%.2f"));
-    pLTagUoutAve->Value->setCaption(((TParameter*)pLTagUoutAve->getDataSrc())->getValue(args, ""));
-
-    Msg::send_message((u32)EventSrc::REPAINT, 0, 0);
-}
-
-void TPageHome::SlotU1FLASHUpdate(TSlotHandlerArsg args) {
-    pLTagSparkFrq->Value->setCaption(((TParameter*)pLTagSparkFrq->getDataSrc())->getValue(args, "%.0f"));
+    pLTagUoutAve->Value->setCaption(((TParameter*)pLTagUoutAve->getDataSrc())->getValue(args, "%.0f"));
     pLTagIoutAve->Value->setCaption(((TParameter*)pLTagIoutAve->getDataSrc())->getValue(args, "%.0f"));
+    pLTagSparkFrq->Value->setCaption(((TParameter*)pLTagSparkFrq->getDataSrc())->getValue(args, "%.0f"));
     Msg::send_message((u32)EventSrc::REPAINT, 0, 0);
 }
-
-void TPageHome::SlotU1CDUpdate(TSlotHandlerArsg args) {
-    //pLTagIoutAve->Value->setCaption(pLTagIoutAve->DataSrc->getValue(args, "%.0f"));
-
-   Msg::send_message((u32)EventSrc::REPAINT, 0, 0);
-}
-
 
 TPageHome::~TPageHome() {
 };
