@@ -31,8 +31,6 @@ private:
     //TLinkedTagLabel* pLTagIinAve;
     void goToTagInfoPage(int a);
     void SlotU1RAMUpdate(TSlotHandlerArsg args);
-    void SlotU1FLASHUpdate(TSlotHandlerArsg args);
-    void SlotU1CDUpdate(TSlotHandlerArsg args);
     TVisualObject* getSignalOfFocusedChild();
 };
 

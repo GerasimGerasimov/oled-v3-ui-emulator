@@ -13,7 +13,7 @@ void TPageAlarms::onOpen() {
 }
 
 void TPageAlarms::startToClose() {
-
+    isOpen = false;
 }
 
 void TPageAlarms::view() {

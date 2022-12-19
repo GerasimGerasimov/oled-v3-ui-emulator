@@ -173,9 +173,6 @@
     <ClCompile Include="MCU\Pages\MainMenu\PageMainMenu.cpp">
       <Filter>MCU\Pages</Filter>
     </ClCompile>
-    <ClCompile Include="MCU\Pages\Counters\PageAlarms.cpp">
-      <Filter>MCU\Pages</Filter>
-    </ClCompile>
     <ClCompile Include="MCU\Components\LinkLabel.cpp">
       <Filter>MCU\Components</Filter>
     </ClCompile>
@@ -328,6 +325,12 @@
     </ClCompile>
     <ClCompile Include="MCU\Components\TComponentListVertical.cpp">
       <Filter>MCU\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="MCU\Pages\OperateStatus\PageOperateStatus.cpp">
+      <Filter>MCU\Pages</Filter>
+    </ClCompile>
+    <ClCompile Include="MCU\Pages\Alarms\PageAlarms.cpp">
+      <Filter>MCU\Pages</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
