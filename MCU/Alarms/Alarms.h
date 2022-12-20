@@ -26,7 +26,8 @@ class Alarms {
 		static bool checkState(void);
 		static void SlotU1RAMUpdate(TSlotHandlerArsg args);
 		static bool State;
-		static bool prevState;
+		static u8 UppedFlags;
+		static u8 PrevUppedFlags;
 };
 
 #endif

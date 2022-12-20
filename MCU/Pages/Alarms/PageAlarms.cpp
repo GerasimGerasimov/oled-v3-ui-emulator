@@ -7,6 +7,8 @@
 #include "LinkLabel.h"
 #include "TVerticalContainer.h"
 
+/*TODO если окно открыто а аварий нет, то перейти на HomePage*/
+
 void TPageAlarms::onOpen() {
     Container->Clear();
     fillPageContainer();

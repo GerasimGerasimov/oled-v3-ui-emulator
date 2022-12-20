@@ -3,13 +3,23 @@
 #include "LedAlarms.h"
 
 std::map < std::string, TTrackedBit > Alarms::Tags = {
-	{"UbusOK", {"U1/RAM/UbusOK/", nullptr, false, false}},
-	//{"UgenOK", {"U1/RAM/UgenOK/", nullptr, false, false}},
-	//{"BusUnpwr", {"U1/RAM/BusUnpwr/", nullptr, false, false}},
+	{"UinLost", {"U1/RAM/UinLostAlm/", nullptr, false, false}},
+	{"UinHi", {"U1/RAM/UinHiAlm/", nullptr, false, false}},
+	{"Sync", {"U1/RAM/SyncAlm/", nullptr, false, false}},
+	{"IinAsym", {"U1/RAM/IinAsymAlm/", nullptr, false, false}},
+	{"IinOvc", {"U1/RAM/IinOvcAlm/", nullptr, false, false}},
+	{"IoutOvc", {"U1/RAM/IoutOvcAlm/", nullptr, false, false}},
+	{"OutOpen", {"U1/RAM/OutOpenAlm/", nullptr, false, false}},
+	{"OutShort", {"U1/RAM/OutShortAlm/", nullptr, false, false}},
+	{"FrqSpark", {"U1/RAM/FrqSparkAlm/", nullptr, false, false}},
+	{"Overheat", {"U1/RAM/OverheatAlm/", nullptr, false, false}},
+	{"Driver", {"U1/RAM/DriverAlarm/", nullptr, false, false}},
+	{"External", {"U1/RAM/ExternalAlarm/", nullptr, false, false}},
 };
 
 bool Alarms::State = true;
-bool Alarms::prevState = true;
+u8 Alarms::UppedFlags = 0;
+u8 Alarms::PrevUppedFlags = 0;
 
 void Alarms::init() {
 	for (auto& e : Tags) {
@@ -52,10 +62,15 @@ bool Alarms::checkState(void) {
 
 bool Alarms::isAlarmOnce(void) {
 	bool res = false;
-	if ((State == false) && (prevState == true)) {
-		res = true;
+	UppedFlags = 0;
+	for (auto& e : Tags) {
+		bool state = (bool)((e.second.isValid == true) && (e.second.State == false));//если все "1" то "1", если кто-то "0" то всё "0"
+		if (state) {//цикл прекращается и возвращает "0" если хоть один из элементов "0"
+			UppedFlags++;
+		}
 	}
-	prevState = State;
+	res = (bool)(PrevUppedFlags != UppedFlags);
+	PrevUppedFlags = UppedFlags;
 	return res;
 }
 
