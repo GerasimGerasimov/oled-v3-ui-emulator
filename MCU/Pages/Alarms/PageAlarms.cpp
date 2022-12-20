@@ -7,11 +7,11 @@
 #include "LinkLabel.h"
 #include "TVerticalContainer.h"
 
-/*TODO если окно открыто а аварий нет, то перейти на HomePage*/
+const u16 EmptyViewDelayTime = 100;
 
 void TPageAlarms::onOpen() {
-    Container->Clear();
     fillPageContainer();
+    EmptyViewDelay = EmptyViewDelayTime;
 }
 
 void TPageAlarms::startToClose() {
@@ -25,6 +25,7 @@ void TPageAlarms::view() {
 void TPageAlarms::clear() {
 }
 
+
 bool TPageAlarms::ProcessMessage(TMessage* m) {
     switch (m->Event) {
         case (u32)EventSrc::KEYBOARD: {
@@ -34,6 +35,19 @@ bool TPageAlarms::ProcessMessage(TMessage* m) {
                     break;
             }
         }
+        break;
+        /*если окно открыто а аварий нет (список очистился), то перейти на HomePage ч/з 10 сек*/
+        case (u32)EventSrc::TIMER: {
+            if (AlarmsList->ItemsCount() == 0) {
+                (EmptyViewDelay)
+                    ? EmptyViewDelay--
+                    : (TRouter::setTask({ false, "Home", nullptr }), 0);
+            }
+            else {
+                EmptyViewDelay = EmptyViewDelayTime;
+            }
+        }
+        break;
     }
 
     for (auto& element : List) {
@@ -43,20 +57,10 @@ bool TPageAlarms::ProcessMessage(TMessage* m) {
 };
 
 void TPageAlarms::fillPageContainer(void) {
+    
+    AlarmsList->Clear();
 
-    TVerticalContainerProps pLabelsProps = {true};
     TLabelInitStructure LabelInit;
-
-    LabelInit.pOwner = Container;
-    LabelInit.caption = "Аварии";
-    TFixedHeader* pHeader = new TFixedHeader(LabelInit);
-    Container->Add(pHeader);
-
-    TVerticalContainer* pLabels = new TVerticalContainer(pLabelsProps, {});
-    pLabels->ElementRect = { 0, 0,
-                                (u16)(VIEW_PORT_MAX_HEIGHT - pHeader->getHeight() - 1),
-                                VIEW_PORT_MAX_WIDTH };
-    Container->Add(pLabels);
     
     LabelInit.Rect = {0, 0, 0, VIEW_PORT_MAX_WIDTH };
 
@@ -66,15 +70,30 @@ void TPageAlarms::fillPageContainer(void) {
             TBit* p = e.second.pBit;
             LabelInit.caption = p->getComment();
             TLinkLabel* pLabel = new TLinkLabel(LabelInit.caption, "Home", LabelInit);
-            pLabels->Add(pLabel);
+            AlarmsList->Add(pLabel);
         }
     }
 }
 
 TPageAlarms::TPageAlarms(std::string Name)
-    :TPage(Name) {
+    : TPage(Name)
+    , EmptyViewDelay(EmptyViewDelayTime) {
     TVerticalContainerProps props = { false };
     Container = new TVerticalContainer(props,{});
+
+    TLabelInitStructure LabelInit;
+    LabelInit.pOwner = Container;
+    LabelInit.caption = "Аварии";
+    TFixedHeader* pHeader = new TFixedHeader(LabelInit);
+    Container->Add(pHeader);
+
+    props = { true };
+    AlarmsList = new TVerticalContainer(props, {});
+    AlarmsList->ElementRect = { 0, 0,
+                            (u16)(VIEW_PORT_MAX_HEIGHT - pHeader->getHeight() - 1),
+                            VIEW_PORT_MAX_WIDTH };
+    Container->Add(AlarmsList);
+
     AddList({ Container });
 };
 

@@ -18,7 +18,9 @@ public:
     void startToClose();
 private:
     TVerticalContainer* Container;
+    TVerticalContainer* AlarmsList;
     void fillPageContainer(void);
+    u16 EmptyViewDelay;
 };
 
 #endif
