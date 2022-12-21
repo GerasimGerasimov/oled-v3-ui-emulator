@@ -81,7 +81,6 @@ TPageHome::TPageHome(std::string Name)
     MainMenu->FocusedLine = 0;
 
     AddList({ MainMenu });
-
     HandlerSubscribers::set("U1/RAM/", [this](TSlotHandlerArsg args) { SlotU1RAMUpdate(args); });
 };
 

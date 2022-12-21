@@ -7,7 +7,13 @@ void TPageOperateStatus::view() {
     Container->view();
 };
 
-void TPageOperateStatus::clear() {
+void TPageOperateStatus::onOpen() {
+    SubscribeID = HandlerSubscribers::set("U1/RAM/", [this](TSlotHandlerArsg args) { SlotU1RAMUpdate(args); });
+}
+
+void TPageOperateStatus::startToClose() {
+    HandlerSubscribers::remove("U1/RAM/", SubscribeID);
+    isOpen = false;
 }
 
 bool TPageOperateStatus::ProcessMessage(TMessage* m) {
@@ -53,7 +59,8 @@ TVisualObject* TPageOperateStatus::getSignalOfFocusedChild() {
 }
 
 TPageOperateStatus::TPageOperateStatus(std::string Name)
-    :TPage(Name) {
+    :TPage(Name)
+    , SubscribeID(0) {
     TVerticalContainerProps props = { true };
     TLabelInitStructure LabelInit;
     LabelInit.style = LabelsStyle::WIDTH_DINAMIC;
@@ -72,8 +79,6 @@ TPageOperateStatus::TPageOperateStatus(std::string Name)
     Container->FocusedLine = 0;
 
     AddList({ Container });
-
-    HandlerSubscribers::set("U1/RAM/", [this](TSlotHandlerArsg args) { SlotU1RAMUpdate(args); });
 };
 
 void TPageOperateStatus::SlotU1RAMUpdate(TSlotHandlerArsg args) {

@@ -15,6 +15,7 @@ void TPageAlarms::onOpen() {
 }
 
 void TPageAlarms::startToClose() {
+    AlarmsList->Clear();
     isOpen = false;
 }
 
