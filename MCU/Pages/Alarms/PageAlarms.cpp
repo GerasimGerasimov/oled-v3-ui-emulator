@@ -23,10 +23,6 @@ void TPageAlarms::view() {
     Container->view();
 };
 
-void TPageAlarms::clear() {
-}
-
-
 bool TPageAlarms::ProcessMessage(TMessage* m) {
     switch (m->Event) {
         case (u32)EventSrc::KEYBOARD: {

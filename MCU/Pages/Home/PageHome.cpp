@@ -6,7 +6,13 @@ void TPageHome::view() {
     MainMenu->view();
 };
 
-void TPageHome::clear() {
+void TPageHome::onOpen() {
+    SubscriberID = HandlerSubscribers::set("U1/RAM/", [this](TSlotHandlerArsg args) { SlotU1RAMUpdate(args); });
+}
+
+void TPageHome::startToClose() {
+    HandlerSubscribers::remove("U1/RAM/", SubscriberID);
+    isOpen = false;
 }
 
 bool TPageHome::ProcessMessage(TMessage* m) {
@@ -27,8 +33,6 @@ bool TPageHome::ProcessMessage(TMessage* m) {
                 case (u32)KeyCodes::ENT:
                     e = getSignalOfFocusedChild();
                     if (e) {
-                        /*TODO а можно передавать “ег и значение, а там внутри разбиратьс€*/
-                        /*TODO насыщать страницу EditValue*/
                         TRouter::PageValueEditEntryData.tag = ((TTagLine*)(e))->Tag;
                         TRouter::PageValueEditEntryData.value = ((TTagLine*)(e))->Value->getCaption();
                         TRouter::setTask({ false, "EditValue", nullptr });
@@ -75,16 +79,13 @@ TPageHome::TPageHome(std::string Name)
     pLTagOut      = new TTagLine("Out", "U1/RAM/Out/", LabelInit);
 
     MainMenu = new TVerticalContainer(props, { pLTagUref    , pLTagIref     , pLTagUoutAve,
-                                            pLTagIoutAve , pLTagSparkFrq , pLTagOut ,
-                                            /*pLTagIinAve */ });
+                                            pLTagIoutAve , pLTagSparkFrq , pLTagOut});
     
     MainMenu->FocusedLine = 0;
 
     AddList({ MainMenu });
-    HandlerSubscribers::set("U1/RAM/", [this](TSlotHandlerArsg args) { SlotU1RAMUpdate(args); });
 };
 
-//        //((TParameter*)DataSrc)
 void TPageHome::SlotU1RAMUpdate(TSlotHandlerArsg args) {
     pLTagUref->Value->setCaption(((TParameter*)pLTagUref->getDataSrc())->getValue(args, "%.2f"));
     pLTagIref->Value->setCaption(((TParameter*)pLTagIref->getDataSrc())->getValue(args, "%.2f"));

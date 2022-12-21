@@ -19,7 +19,7 @@ private:
     TVerticalContainer* Container;
     void SlotU1RAMUpdate(TSlotHandlerArsg args);
     TVisualObject* getSignalOfFocusedChild();
-    int SubscribeID;
+    int SubscriberID;
 };
 
 #endif

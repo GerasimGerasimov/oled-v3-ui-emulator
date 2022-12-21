@@ -16,7 +16,8 @@ class TPageHome : public TPage
 public:
     virtual void view();//вывести объект на экране
     virtual const u16 getHeight(void) { return 0; };
-    void clear();//очистит список
+    void onOpen();
+    void startToClose();
     bool ProcessMessage(TMessage* m);//обработчик сообщений
     TPageHome(std::string Name);//конструктор
     ~TPageHome();//деструктор
@@ -32,6 +33,7 @@ private:
     void goToTagInfoPage(int a);
     void SlotU1RAMUpdate(TSlotHandlerArsg args);
     TVisualObject* getSignalOfFocusedChild();
+    int SubscriberID = 0;
 };
 
 #endif

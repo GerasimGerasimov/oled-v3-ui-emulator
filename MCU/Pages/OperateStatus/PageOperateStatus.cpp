@@ -8,11 +8,11 @@ void TPageOperateStatus::view() {
 };
 
 void TPageOperateStatus::onOpen() {
-    SubscribeID = HandlerSubscribers::set("U1/RAM/", [this](TSlotHandlerArsg args) { SlotU1RAMUpdate(args); });
+    SubscriberID = HandlerSubscribers::set("U1/RAM/", [this](TSlotHandlerArsg args) { SlotU1RAMUpdate(args); });
 }
 
 void TPageOperateStatus::startToClose() {
-    HandlerSubscribers::remove("U1/RAM/", SubscribeID);
+    HandlerSubscribers::remove("U1/RAM/", SubscriberID);
     isOpen = false;
 }
 
@@ -29,14 +29,6 @@ bool TPageOperateStatus::ProcessMessage(TMessage* m) {
                     if (e) {
                         ISignal* p = IniResources::getSignalByTag(((TTagLine*)(e))->Tag);
                         TRouter::setTask({ false, "Help", p });
-                    }
-                    break;
-                case (u32)KeyCodes::ENT:
-                    e = getSignalOfFocusedChild();
-                    if (e) {
-                        TRouter::PageValueEditEntryData.tag = ((TTagLine*)(e))->Tag;
-                        TRouter::PageValueEditEntryData.value = ((TTagLine*)(e))->Value->getCaption();
-                        TRouter::setTask({ false, "EditValue", nullptr });
                     }
                     break;
             }
@@ -60,7 +52,7 @@ TVisualObject* TPageOperateStatus::getSignalOfFocusedChild() {
 
 TPageOperateStatus::TPageOperateStatus(std::string Name)
     :TPage(Name)
-    , SubscribeID(0) {
+    , SubscriberID(0) {
     TVerticalContainerProps props = { true };
     TLabelInitStructure LabelInit;
     LabelInit.style = LabelsStyle::WIDTH_DINAMIC;

@@ -8,6 +8,7 @@
 #include "WrappedText.h"
 #include "NumericEdit.h"
 #include "parameters.h"
+#include <Slot.h>
 
 class TPageEditValue : public TPage
 {
@@ -26,6 +27,8 @@ private:
     TNumericEdit* pEdit;
     TParameter* p;
     std::string tag;
+    bool isDataSent = false;
+    void SlotU1RAMUpdate(Slot& slot, u8* reply);
 };
 
 #endif
