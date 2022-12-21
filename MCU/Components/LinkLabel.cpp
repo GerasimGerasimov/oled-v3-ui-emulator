@@ -24,7 +24,7 @@ bool TLinkLabel::ProcessMessage(TMessage* m) {
                 switch (m->p1) {
                     case (u32)KeyCodes::ENT: {
                         TRouter::setTask({ false, URL, NULL });
-                        break;
+                        return true;
                     }
                 }
             }
@@ -33,7 +33,7 @@ bool TLinkLabel::ProcessMessage(TMessage* m) {
             doShift();
             break;
     }
-    return true;
+    return false;
 }
 
 void TLinkLabel::doShift(void) {

@@ -7,7 +7,7 @@ void TPage::clear() {
 }
 
 bool TPage::ProcessMessage(TMessage* m) {//обработчик сообщений
-	return true;
+	return false;
 }
 
 void TPage::setProps(void* _props) {

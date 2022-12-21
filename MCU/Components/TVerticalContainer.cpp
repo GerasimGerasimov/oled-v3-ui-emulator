@@ -13,7 +13,11 @@ bool TVerticalContainer::ProcessMessage(TMessage* m){//обработчик сообщений
     if (ItemsCount() == 0) return false;//список пуст
 
     for (auto& element : List) {
-        element->ProcessMessage(m);
+        if (element->ProcessMessage(m)) {
+            return false;
+        };
+        //делаю допущение, что если компонет вернул TRUE, значит надо прервать
+        //разбор сообщений 
     }
 
     switch (m->Event) {
@@ -21,11 +25,11 @@ bool TVerticalContainer::ProcessMessage(TMessage* m){//обработчик сообщений
             switch (m->p1) {
                 case (u32)KeyCodes::Up:{//кнопка вверх
                     goUp();
-                    return true;
+                    return false;
                 }
                 case (u32)KeyCodes::Down:{//кнопка вниз
                     goDown();
-                    return true;
+                    return false;
                 }
             }
             return false;

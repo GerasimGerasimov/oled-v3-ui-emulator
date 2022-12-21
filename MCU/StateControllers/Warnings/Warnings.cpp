@@ -53,6 +53,10 @@ bool Warnings::checkState(void) {
 	return res;
 }
 
+bool Warnings::isTagInWarning(TTrackedBit& element) {
+	return (bool)((element.isValid) && (element.State == false));
+}
+
 void Warnings::SlotU1RAMUpdate(TSlotHandlerArsg args) {
 	uptate("U1/RAM/", args);
 	State = checkState();

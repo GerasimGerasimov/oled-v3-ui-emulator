@@ -9,7 +9,7 @@
 class Warnings {
 	public:
 		static void init(void);
-		static bool isTagAlarmed(TTrackedBit& element);
+		static bool isTagInWarning(TTrackedBit& element);
 		static std::map < std::string, TTrackedBit > Tags;
 	private:
 		static void uptate(const std::string PosMem, TSlotHandlerArsg& args);

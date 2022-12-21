@@ -341,6 +341,9 @@
     <ClCompile Include="Drivers\Leds\Warning\LedWarnings.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
+    <ClCompile Include="MCU\Pages\Warning\PageWarnings.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="WindowsProject1.rc">

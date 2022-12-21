@@ -2,7 +2,7 @@
 #include "IniResources.h"
 
 bool TTagLine::ProcessMessage(TMessage* m) {
-    return true;
+    return false;
 }
 
 const std::string TTagLine::ComponentName() {
