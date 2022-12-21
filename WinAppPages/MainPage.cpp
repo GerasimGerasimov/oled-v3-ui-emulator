@@ -6,7 +6,7 @@
 #include "msg.h"
 #include <com_master_driver.h>
 #include "LedAlarms.h"
-
+#include "LedWarnings.h"
 HINSTANCE MainPage::hInst = NULL;                                // текущий экземпляр
 WCHAR MainPage::szTitle[MAX_LOADSTRING];                  // Текст строки заголовка
 WCHAR MainPage::szWindowClass[MAX_LOADSTRING];            // имя класса главного окна
@@ -97,6 +97,7 @@ void MainPage::fillHandlersByID(void) {
     TDisplayDriver::setDC(hdc_dem);
     console::hwnd = hwndMemoLogger = GetDlgItem(hWndMain, ID_MEMO_LOGGER);
     LedAlarms::init(hWndMain);
+    LedWarnings::init(hWndMain);
     isHadlersFilled = true;
     ComMasterDriver::open();
 }

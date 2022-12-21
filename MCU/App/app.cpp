@@ -16,6 +16,7 @@
 #include "RAMdata.h"
 #include "virtualKeyEvents.h"
 #include "Alarms.h"
+#include "Warnings.h"
 
 void App::init(void) {
     TInternalResources::init();
@@ -27,6 +28,7 @@ void App::init(void) {
     DevicePollManager::init(slots);
     TRouter::Init();
     Alarms::init();
+    Warnings::init();
     Msg::send_message((u32)EventSrc::REPAINT, 0, 0);
 }
 

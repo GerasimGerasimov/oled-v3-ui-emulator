@@ -1,28 +1,15 @@
 #include "Warnings.h"
 #include <IniResources.h>
-#include "LedAlarms.h"
+#include <LedWarnings.h>
 
-/*TODO добавл€ть к аварии метку последовательности срабатываени€ 1,2,3 и т.д.
-если аварий нет, то счЄтчик последовательностей сбрасываетс€. готов€сь к новому "циклу"*/
-
-/*TODO зна€ номер последовательности срабатывани€ (далее "Ќѕ—") (с меньшим номером сработала раньше)
-при выводе на PageAlarms сортировать аварии по возрастанию Ќѕ—, т.е. перва€ сработавша€ авари€
-будет первой в списке и т.д.*/
-
-/*TODO когда "раскачаю RTC (по полной, с окном установки времени) то к аварии добавить метку времени"*/
 std::map < std::string, TTrackedBit > Warnings::Tags = {
-	{"UinLost", {"U1/RAM/UinLostAlm/", nullptr, false, false}},
-	{"UinHi", {"U1/RAM/UinHiAlm/", nullptr, false, false}},
-	{"Sync", {"U1/RAM/SyncAlm/", nullptr, false, false}},
-	{"IinAsym", {"U1/RAM/IinAsymAlm/", nullptr, false, false}},
-	{"IinOvc", {"U1/RAM/IinOvcAlm/", nullptr, false, false}},
-	{"IoutOvc", {"U1/RAM/IoutOvcAlm/", nullptr, false, false}},
-	{"OutOpen", {"U1/RAM/OutOpenAlm/", nullptr, false, false}},
-	{"OutShort", {"U1/RAM/OutShortAlm/", nullptr, false, false}},
-	{"FrqSpark", {"U1/RAM/FrqSparkAlm/", nullptr, false, false}},
-	{"Overheat", {"U1/RAM/OverheatAlm/", nullptr, false, false}},
-	{"Driver", {"U1/RAM/DriverAlarm/", nullptr, false, false}},
-	{"External", {"U1/RAM/ExternalAlarm/", nullptr, false, false}},
+	{"UinLost", {"U1/RAM/UinLostFail/", nullptr, false, false}},
+	{"UinHi", {"U1/RAM/UinHiFail/", nullptr, false, false}},
+	{"SyncFail", {"U1/RAM/SyncFail/", nullptr, false, false}},
+	{"OverHeat", {"U1/RAM/OverheatFail/", nullptr, false, false}},
+	{"UinLow", {"U1/RAM/UinLowWrn/", nullptr, false, false}},
+	{"Driver", {"U1/RAM/CheckDriver/", nullptr, false, false}},
+	{"ExtReady", {"U1/RAM/CheckExtReady/", nullptr, false, false}},
 };
 
 bool Warnings::State = true;
@@ -69,5 +56,5 @@ bool Warnings::checkState(void) {
 void Warnings::SlotU1RAMUpdate(TSlotHandlerArsg args) {
 	uptate("U1/RAM/", args);
 	State = checkState();
-	LedAlarms::setState((State?0:1));
+	LedWarnings::setState((State?0:1));
 }
