@@ -120,6 +120,9 @@
     <ClInclude Include="MCU\Slots\SlotHandlerType.h">
       <Filter>MCU\Slots</Filter>
     </ClInclude>
+    <ClInclude Include="MCU\StateControllers\StateControllers.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -308,9 +311,6 @@
     <ClCompile Include="MCU\Modbus\AppModbusSlave.cpp">
       <Filter>MCU\Modbus</Filter>
     </ClCompile>
-    <ClCompile Include="MCU\Alarms\Alarms.cpp">
-      <Filter>MCU\Alarms</Filter>
-    </ClCompile>
     <ClCompile Include="Drivers\Leds\Alarm\LedAlarms.cpp">
       <Filter>Divers\Leds\Alarm</Filter>
     </ClCompile>
@@ -331,6 +331,12 @@
     </ClCompile>
     <ClCompile Include="MCU\Pages\Alarms\PageAlarms.cpp">
       <Filter>MCU\Pages</Filter>
+    </ClCompile>
+    <ClCompile Include="MCU\StateControllers\Alarms\Alarms.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="MCU\StateControllers\Warnings\Warnings.cpp">
+      <Filter>Исходные файлы</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

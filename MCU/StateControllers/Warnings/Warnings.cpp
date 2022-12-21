@@ -1,4 +1,4 @@
-#include "Alarms.h"
+#include "Warnings.h"
 #include <IniResources.h>
 #include "LedAlarms.h"
 
@@ -10,7 +10,7 @@
 будет первой в списке и т.д.*/
 
 /*TODO когда "раскачаю RTC (по полной, с окном установки времени) то к аварии добавить метку времени"*/
-std::map < std::string, TTrackedBit > Alarms::Tags = {
+std::map < std::string, TTrackedBit > Warnings::Tags = {
 	{"UinLost", {"U1/RAM/UinLostAlm/", nullptr, false, false}},
 	{"UinHi", {"U1/RAM/UinHiAlm/", nullptr, false, false}},
 	{"Sync", {"U1/RAM/SyncAlm/", nullptr, false, false}},
@@ -25,11 +25,9 @@ std::map < std::string, TTrackedBit > Alarms::Tags = {
 	{"External", {"U1/RAM/ExternalAlarm/", nullptr, false, false}},
 };
 
-bool Alarms::State = true;
-u8 Alarms::UppedFlags = 0;
-u8 Alarms::PrevUppedFlags = 0;
+bool Warnings::State = true;
 
-void Alarms::init() {
+void Warnings::init() {
 	for (auto& e : Tags) {
 		std::string& tag = (std::string&)e.second.Tag;
 		e.second.pBit = (TBit*)IniResources::getSignalByTag(tag);
@@ -37,7 +35,7 @@ void Alarms::init() {
 	HandlerSubscribers::set("U1/RAM/", SlotU1RAMUpdate);
 }
 
-void Alarms::uptate(const std::string PosMem, TSlotHandlerArsg& args){
+void Warnings::uptate(const std::string PosMem, TSlotHandlerArsg& args){
 	static std::string res = "";
 	for (auto& e : Tags) {
 		std::string& Tag = (std::string&)e.second.Tag;
@@ -56,7 +54,7 @@ void Alarms::uptate(const std::string PosMem, TSlotHandlerArsg& args){
 	}
 }
 
-bool Alarms::checkState(void) {
+bool Warnings::checkState(void) {
 	bool res = true;
 	for (auto& e : Tags) {
 		bool state = e.second.isValid && e.second.State;//если все "1" то "1", если кто-то "0" то всё "0"
@@ -68,26 +66,8 @@ bool Alarms::checkState(void) {
 	return res;
 }
 
-bool Alarms::isAlarmOnce(void) {
-	bool res = false;
-	UppedFlags = 0;
-	for (auto& e : Tags) {
-		bool state = (bool)((e.second.isValid == true) && (e.second.State == false));//если все "1" то "1", если кто-то "0" то всё "0"
-		if (state) {//цикл прекращается и возвращает "0" если хоть один из элементов "0"
-			UppedFlags++;
-		}
-	}
-	res = (bool)(PrevUppedFlags != UppedFlags);
-	PrevUppedFlags = UppedFlags;
-	return res;
-}
-
-bool Alarms::isTagAlarmed(TTrackedBit& element) {
-	return (bool)((element.isValid) && (element.State == false));
-}
-
-void Alarms::SlotU1RAMUpdate(TSlotHandlerArsg args) {
+void Warnings::SlotU1RAMUpdate(TSlotHandlerArsg args) {
 	uptate("U1/RAM/", args);
-	State = Alarms::checkState();
+	State = checkState();
 	LedAlarms::setState((State?0:1));
 }
