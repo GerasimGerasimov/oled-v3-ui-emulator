@@ -6,6 +6,7 @@
 #include "PageHelp.h"
 #include "PageWarnings.h"
 #include "PageOperateStatus.h"
+#include "PageBasicSettings.h"
 
 /*TODO В роутере и страницах можно реализовать переходы на закрытие/открытие окна*/
 TPage* TRouter::Page = nullptr;
@@ -21,6 +22,7 @@ void TRouter::Init(void) {
     Pages["MainMenu"] = new TPageMainMenu("MainMenu");
     Pages["Alarms"] = new TPageAlarms("Alarms");
     Pages["Warnings"] = new TPageWarnings("Warnings");
+    Pages["BasicSettings"] = new TPageBasicSettings("BasicSettings");
     Pages["EditValue"] = new TPageEditValue("EditValue");
     Pages["OperateStatus"] = new TPageOperateStatus("OperateStatus");
     setInitPage();

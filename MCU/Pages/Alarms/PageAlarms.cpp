@@ -2,7 +2,6 @@
 #include "Router.h"
 #include <utils.h>
 #include <FixedHeader.h>
-#include <FixedFooter.h>
 #include "Alarms.h"
 #include "LinkLabel.h"
 #include "TVerticalContainer.h"
