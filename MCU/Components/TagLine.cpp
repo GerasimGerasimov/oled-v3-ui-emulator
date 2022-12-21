@@ -19,7 +19,10 @@ TTagLine::TTagLine(std::string caption, std::string tag, TLabelInitStructure ini
     Value->setCaption(((TParameter*)DataSrc)->getDefaultValue());
 }
 
-TTagLine::~TTagLine() {//деструктор
+TTagLine::~TTagLine() {
+    delete Caption;
+    delete Value;
+    delete msu;
 }
 
 const u16 TTagLine::getHeight(void) {
