@@ -22,7 +22,6 @@ void App::init(void) {
     TInternalResources::init();
     IniResources::init();
     IniSlotsProps::init();
-    /*TODO для управления от встроенных DIO нужен слот*/
     std::vector <Slot> slots = CreateSlotsByStart::init(IniSlotsProps::Devices);
     slots.push_back(*CreateCustomSlot::init("U1", "CmdWrite"));
     DevicePollManager::init(slots);
@@ -34,8 +33,6 @@ void App::init(void) {
 
 void App::run(void) {
     TMessage m;
-    //TFillRect fr = {30, 20, 60, 14, 0};
-    //char s[8];
     while (true) {
       ctrlSysLive();
         TRouter::chekNextPage();

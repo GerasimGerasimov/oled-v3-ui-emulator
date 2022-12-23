@@ -44,7 +44,6 @@ bool TVerticalContainer::ProcessMessage(TMessage* m){//обработчик сообщений
 void TVerticalContainer::goUp(void) {
     if (ItemsCount() == 0) return;
     int fl = 0;
-    u16 idx = 0;
 
     List[FocusedLine]->inFocus = false;//расфокусировка предыдущей строки
     fl = FocusedLine;

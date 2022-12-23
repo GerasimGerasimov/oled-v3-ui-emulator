@@ -5,7 +5,7 @@ static const int BEFORE_PAUSE = 15;
 static const int AFTER_PAUSE = 10;
 static const int SHIFT_DELAY = 4;
 
-static enum class AnimationStage {
+enum class AnimationStage {
     WAIT_BEFORE_SHIFTING,
     SHIFTING,
     WAIT_AFTER_SHIFTING,
