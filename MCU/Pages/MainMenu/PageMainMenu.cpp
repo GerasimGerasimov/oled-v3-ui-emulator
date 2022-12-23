@@ -6,9 +6,6 @@ void TPageMainMenu::view() {
     Container->view();
 };
 
-void TPageMainMenu::clear() {
-}
-
 bool TPageMainMenu::ProcessMessage(TMessage* m) {
     switch (m->Event) {
         case (u32)EventSrc::KEYBOARD: {

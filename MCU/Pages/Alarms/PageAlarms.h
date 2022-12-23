@@ -4,14 +4,13 @@
 #include "Pages.h"
 #include "TVerticalContainer.h"
 
-
 class TPageAlarms : public TPage
 {
 public:
-    virtual void view();//вывести объект на экране
-    bool ProcessMessage(TMessage* m);//обработчик сообщений
-    TPageAlarms(std::string Name);//конструктор
-    ~TPageAlarms();//деструктор
+    virtual void view();
+    bool ProcessMessage(TMessage* m);
+    TPageAlarms(std::string Name);
+    ~TPageAlarms();
     void onOpen();
     void startToClose();
 private:

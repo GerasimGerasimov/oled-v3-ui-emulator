@@ -8,13 +8,13 @@
 class TPageOperateStatus : public TPage
 {
 public:
-    virtual void view();//вывести объект на экране
+    virtual void view();
     virtual const u16 getHeight(void) { return 0; };
     void onOpen();
-    bool ProcessMessage(TMessage* m);//обработчик сообщений
+    bool ProcessMessage(TMessage* m);
     void startToClose();
-    TPageOperateStatus(std::string Name);//конструктор
-    ~TPageOperateStatus();//деструктор
+    TPageOperateStatus(std::string Name);
+    ~TPageOperateStatus();
 private:
     TVerticalContainer* Container;
     void SlotU1RAMUpdate(TSlotHandlerArsg args);

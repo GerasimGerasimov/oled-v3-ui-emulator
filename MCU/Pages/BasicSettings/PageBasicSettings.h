@@ -8,13 +8,13 @@
 class TPageBasicSettings : public TPage
 {
 public:
-    virtual void view();//вывести объект на экране
+    virtual void view();
     virtual const u16 getHeight(void) { return 0; };
     void onOpen();
     void startToClose();
-    bool ProcessMessage(TMessage* m);//обработчик сообщений
-    TPageBasicSettings(std::string Name);//конструктор
-    ~TPageBasicSettings();//деструктор
+    bool ProcessMessage(TMessage* m);
+    TPageBasicSettings(std::string Name);
+    ~TPageBasicSettings();
 private:
     TVerticalContainer* Container;
     TVerticalContainer* TagList;

@@ -13,14 +13,13 @@
 class TPageEditValue : public TPage
 {
 public:
-    virtual void view();//вывести объект на экране
+    virtual void view();
     virtual const u16 getHeight(void) { return 0; };
     void onOpen();
-    void clear();//очистит список
-    bool ProcessMessage(TMessage* m);//обработчик сообщений
+    bool ProcessMessage(TMessage* m);
     void sendValue(void);
-    TPageEditValue(std::string Name);//конструктор
-    ~TPageEditValue();//деструктор
+    TPageEditValue(std::string Name);
+    ~TPageEditValue();
 private:
     TComponentListVertical* MainMenu;
     THeaderLabel* pHeader;
@@ -28,7 +27,7 @@ private:
     TParameter* p;
     std::string tag;
     bool isDataSent = false;
-    void SlotU1RAMUpdate(Slot& slot, u8* reply);
+    void SlotUpdate(Slot& slot, u8* reply);
 };
 
 #endif

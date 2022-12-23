@@ -6,9 +6,6 @@ void TPageHelp::view() {
     MainMenu->view();
 };
 
-void TPageHelp::clear() {
-}
-
 void TPageHelp::onOpen() {
     TParameter* p = (TParameter*)props;
     pHeader->setCaption(p->getName());

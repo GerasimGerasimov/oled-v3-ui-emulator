@@ -1,17 +1,20 @@
 #include "PageHome.h"
 #include "Router.h"
+#include "TagLine.h"
 #include <IniResources.h>
 
 void TPageHome::view() {
-    MainMenu->view();
+    TagList->view();
 };
 
 void TPageHome::onOpen() {
-    SubscriberID = HandlerSubscribers::set("U1/RAM/", [this](TSlotHandlerArsg args) { SlotU1RAMUpdate(args); });
+    fillPageContainer();
+    SubscriberID = HandlerSubscribers::set("U1/RAM/", [this](TSlotHandlerArsg args) { SlotUpdate(args); });
 }
 
 void TPageHome::startToClose() {
     HandlerSubscribers::remove("U1/RAM/", SubscriberID);
+    TagList->Clear();
     isOpen = false;
 }
 
@@ -57,44 +60,39 @@ TVisualObject* TPageHome::getSignalOfFocusedChild() {
     return nullptr;
 }
 
-void TPageHome::goToTagInfoPage(int a) {
-    TRouter::setTask({ false, "Counters", nullptr });
+void TPageHome::fillPageContainer(void) {
+    TagList->Clear();
+    TLabelInitStructure LabelInit;
+    LabelInit.style = LabelsStyle::WIDTH_DINAMIC;
+    LabelInit.Rect = { 10, 10, 10, 10 };
+    LabelInit.focused = false;
+    TagList->AddList({
+        new TTagLine("Uref", "U1/RAM/Uref/", LabelInit),
+        new TTagLine("Iref", "U1/RAM/Iref/", LabelInit),
+        new TTagLine("UoutAve", "U1/RAM/UoutAve/", LabelInit),
+        new TTagLine("IoutAve", "U1/RAM/IoutAve/", LabelInit),
+        new TTagLine("SpReq", "U1/RAM/SparkFrq/", LabelInit),
+        new TTagLine("Out", "U1/RAM/Out/", LabelInit),
+    });
 }
 
 TPageHome::TPageHome(std::string Name)
     :TPage(Name) {
     TVerticalContainerProps props = { false };
-    TLabelInitStructure LabelInit;
-    LabelInit.style = LabelsStyle::WIDTH_DINAMIC;
-    LabelInit.Rect = { 10, 10, 10, 10 };
-    LabelInit.focused = false;
-/*TODO SignalFactoty если не находит параметра (BIT, WORD я об этом) то на МК приложение падает
-проверить под WIN*/ 
-    pLTagUref     = new TTagLine("Uref", "U1/RAM/Uref/", LabelInit);
-    pLTagUref->inFocus = true;
-    pLTagIref     = new TTagLine("Iref", "U1/RAM/Iref/", LabelInit);
-    pLTagUoutAve  = new TTagLine("UoutAve", "U1/RAM/UoutAve/", LabelInit);
-    pLTagIoutAve  = new TTagLine("IoutAve", "U1/RAM/IoutAve/", LabelInit);
-    pLTagSparkFrq = new TTagLine("SpReq", "U1/RAM/SparkFrq/", LabelInit);
-    pLTagOut      = new TTagLine("Out", "U1/RAM/Out/", LabelInit);
-
-    MainMenu = new TVerticalContainer(props, { pLTagUref    , pLTagIref     , pLTagUoutAve,
-                                            pLTagIoutAve , pLTagSparkFrq , pLTagOut});
-    
-    MainMenu->FocusedLine = 0;
-
-    AddList({ MainMenu });
+    TagList = new TVerticalContainer(props, {});
+    AddList({ TagList });
 };
 
-void TPageHome::SlotU1RAMUpdate(TSlotHandlerArsg args) {
-    pLTagUref->Value->setCaption(((TParameter*)pLTagUref->getDataSrc())->getValue(args, ""));
-    pLTagIref->Value->setCaption(((TParameter*)pLTagIref->getDataSrc())->getValue(args, ""));
-    pLTagOut->Value->setCaption(((TParameter*)pLTagOut->getDataSrc())->getValue(args, ""));
-    pLTagUoutAve->Value->setCaption(((TParameter*)pLTagUoutAve->getDataSrc())->getValue(args, ""));
-    pLTagIoutAve->Value->setCaption(((TParameter*)pLTagIoutAve->getDataSrc())->getValue(args, ""));
-    pLTagSparkFrq->Value->setCaption(((TParameter*)pLTagSparkFrq->getDataSrc())->getValue(args, ""));
+void TPageHome::SlotUpdate(TSlotHandlerArsg args) {
+    for (auto& e : TagList->List) {
+        TTagLine* tag = (TTagLine*)e;
+        TParameter* p = (TParameter*)tag->getDataSrc();
+        tag->Value->setCaption(p->getValue(args, ""));
+    }
     Msg::send_message((u32)EventSrc::REPAINT, 0, 0);
 }
 
 TPageHome::~TPageHome() {
+    TagList->Clear();
+    delete TagList;
 };

@@ -12,9 +12,6 @@ void TPageEditValue::view() {
     MainMenu->view();
 };
 
-void TPageEditValue::clear() {
-}
-
 void TPageEditValue::onOpen() {
     tag = TRouter::PageValueEditEntryData.tag;
     p = (TParameter*)IniResources::getSignalByTag(tag);
@@ -46,7 +43,7 @@ bool TPageEditValue::ProcessMessage(TMessage* m) {
     return false;
 };
 
-void TPageEditValue::SlotU1RAMUpdate(Slot& slot, u8* reply) {
+void TPageEditValue::SlotUpdate(Slot& slot, u8* reply) {
     slot.Flags |= (u16)SlotStateFlags::SKIP_SLOT;
     isDataSent = true;
     //тут бы можно было из массива reply куда-то скопировать результат,
@@ -55,7 +52,7 @@ void TPageEditValue::SlotU1RAMUpdate(Slot& slot, u8* reply) {
 
 void TPageEditValue::sendValue(void) {
     std::string value = pEdit->getValue();
-    if (ModbusSlave::setValue(tag, value, [this](Slot& slot, u8* reply) { SlotU1RAMUpdate(slot, reply);})) {
+    if (ModbusSlave::setValue(tag, value, [this](Slot& slot, u8* reply) { SlotUpdate(slot, reply);})) {
 
     }
     else {
