@@ -36,7 +36,6 @@ void TTagLine::view(void) {
     Caption->ElementRect.Left = ElementRect.Left;
     Caption->view();//выводит Coption
 
-    /*TODO надо вывести значение тега*/
     if (DataSrc) {/*TODO 2-й раз пишу нужен пустой объект для отлавливания несуществующих тегов*/
         Value->inFocus = inFocus;
         Value->ElementRect.Top = ElementRect.Top;
@@ -44,7 +43,6 @@ void TTagLine::view(void) {
         Value->view();
     }
 
-    /*TODO надо вывести ед.изм тега*/
     if (DataSrc) {/*TODO 2-й раз пишу нужен пустой объект для отлавливания несуществующих тегов*/
         msu->setCaption(((TParameter*) DataSrc)->getMSU());
         msu->inFocus = inFocus;

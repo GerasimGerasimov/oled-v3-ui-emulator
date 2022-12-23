@@ -131,7 +131,7 @@ void TPageBasicSettings::SlotUpdate(TSlotHandlerArsg args) {
     for (auto& e : TagList->List) {
         TTagLine* tag = (TTagLine*)e;
         TParameter* p = (TParameter*)tag->getDataSrc();
-        tag->Value->setCaption(p->getValue(args, "%.0f"));/*TODO формат для каждого параметра хранить в его TLabel*/
+        tag->Value->setCaption(p->getValue(args, ""));
     }
     Msg::send_message((u32)EventSrc::REPAINT, 0, 0);
 }

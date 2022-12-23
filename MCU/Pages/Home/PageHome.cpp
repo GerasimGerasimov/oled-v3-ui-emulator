@@ -87,12 +87,12 @@ TPageHome::TPageHome(std::string Name)
 };
 
 void TPageHome::SlotU1RAMUpdate(TSlotHandlerArsg args) {
-    pLTagUref->Value->setCaption(((TParameter*)pLTagUref->getDataSrc())->getValue(args, "%.2f"));
-    pLTagIref->Value->setCaption(((TParameter*)pLTagIref->getDataSrc())->getValue(args, "%.2f"));
-    pLTagOut->Value->setCaption(((TParameter*)pLTagOut->getDataSrc())->getValue(args, "%.2f"));
-    pLTagUoutAve->Value->setCaption(((TParameter*)pLTagUoutAve->getDataSrc())->getValue(args, "%.0f"));
-    pLTagIoutAve->Value->setCaption(((TParameter*)pLTagIoutAve->getDataSrc())->getValue(args, "%.0f"));
-    pLTagSparkFrq->Value->setCaption(((TParameter*)pLTagSparkFrq->getDataSrc())->getValue(args, "%.0f"));
+    pLTagUref->Value->setCaption(((TParameter*)pLTagUref->getDataSrc())->getValue(args, ""));
+    pLTagIref->Value->setCaption(((TParameter*)pLTagIref->getDataSrc())->getValue(args, ""));
+    pLTagOut->Value->setCaption(((TParameter*)pLTagOut->getDataSrc())->getValue(args, ""));
+    pLTagUoutAve->Value->setCaption(((TParameter*)pLTagUoutAve->getDataSrc())->getValue(args, ""));
+    pLTagIoutAve->Value->setCaption(((TParameter*)pLTagIoutAve->getDataSrc())->getValue(args, ""));
+    pLTagSparkFrq->Value->setCaption(((TParameter*)pLTagSparkFrq->getDataSrc())->getValue(args, ""));
     Msg::send_message((u32)EventSrc::REPAINT, 0, 0);
 }
 
