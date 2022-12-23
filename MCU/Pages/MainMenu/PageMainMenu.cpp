@@ -36,8 +36,10 @@ TPageMainMenu::TPageMainMenu(std::string Name)
             new TLinkLabel("Аварии", "Alarms", LabelInit),
             new TLinkLabel("Предупреждения", "Warnings", LabelInit),
             new TLinkLabel("Основные уставки", "BasicSettings", LabelInit),
+            new TLinkLabel("защиты. Основные уставки", "BasicProtectionsSettings", LabelInit),
+            new TLinkLabel("Очистка. Уставки", "CleanSettings", LabelInit),
+            
             //new TLinkLabel("Уставки защит", "Home", LabelInit),
-            //new TLinkLabel("Уставки режима очистки", "Home", LabelInit),
             //new TLinkLabel("Уставки ручного режима", "Home", LabelInit),
             //new TLinkLabel("Уставки ВАХ", "Home", LabelInit),
             //new TLinkLabel("Данные прямой ВАХ", "Home", LabelInit),
