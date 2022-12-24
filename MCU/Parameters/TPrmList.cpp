@@ -50,17 +50,14 @@ const std::string TPrmList::value(const TSlotHandlerArsg& args, const char* form
 	//обрататываю строки вида x01#9600, надо выделить число до # (вдс x01 сравнить его с input)
 	//и если совпало, то выдел€ю строку после #, это и будет результат
 	for (auto& e : list) {
-		for (int i = 0; i < TPRM_LIST_PARSE_BUF_SIZE; i++) {
-			if (e[i] == '#') {//дошЄл до # в buf должно накопитс€ какое-то число
-				e[i] = 0;//конец строки
-				u8 firstentry = (e[0] == 'x') ? 1 : 0;
-				int idx = std::stoi(&e.c_str()[firstentry], 0, 16);
-				if (idx == input) {
-					std::string res = std::string(e, i+1);
-					return res;
-				}
-				break;
-			}
+		int index = e.find('#');
+		if (index == std::string::npos) continue;
+		u8 firstentry = (e[0] == 'x') ? 1 : 0;
+		e[index] = 0;//конец строки
+		int value = std::stoi(&e.c_str()[firstentry], 0, 16);
+		if (value == input) {
+			std::string res = std::string(e, index + 1);
+			return res;
 		}
 	}
 	return "?";
