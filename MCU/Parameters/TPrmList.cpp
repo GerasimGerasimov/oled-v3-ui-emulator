@@ -36,7 +36,6 @@ std::string TPrmList::getValue(const TSlotHandlerArsg& args, const char* format)
 
 #define TPRM_LIST_PARSE_BUF_SIZE 10
 const std::string TPrmList::value(const TSlotHandlerArsg& args, const char* format) {
-	static char buf[TPRM_LIST_PARSE_BUF_SIZE];
 	u8 input = getRawValue(args);
 	//найти 7-й слэш
 	// [7+0]            [7+1]                [7+N]
@@ -52,13 +51,10 @@ const std::string TPrmList::value(const TSlotHandlerArsg& args, const char* form
 	//и если совпало, то выделяю строку после #, это и будет результат
 	for (auto& e : list) {
 		for (int i = 0; i < TPRM_LIST_PARSE_BUF_SIZE; i++) {
-			if (e[i] != '#') {
-				buf[i] = e[i];
-			}
-			else {//дошёл до # в buf должно накопится какое-то число
-				buf[i] = 0;//конец строки
-				u8 offset = (buf[0] == 'x') ? 1 : 0;
-				int idx = std::stoi(&buf[offset], 0, 16);
+			if (e[i] == '#') {//дошёл до # в buf должно накопится какое-то число
+				e[i] = 0;//конец строки
+				u8 firstentry = (e[0] == 'x') ? 1 : 0;
+				int idx = std::stoi(&e.c_str()[firstentry], 0, 16);
 				if (idx == input) {
 					std::string res = std::string(e, i+1);
 					return res;
@@ -67,7 +63,7 @@ const std::string TPrmList::value(const TSlotHandlerArsg& args, const char* form
 			}
 		}
 	}
-	return "---";
+	return "?";
 }
 
 u8 TPrmList::getRawValue(const TSlotHandlerArsg& args) {
