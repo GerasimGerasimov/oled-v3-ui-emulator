@@ -80,14 +80,14 @@ void TPageNetworkSettings::fillPageContainer(void) {
     LabelInit.Rect = { 10, 10, 10, 10 };
     LabelInit.focused = false;
     TagList->AddList({
-        new TTagLine("COM1BPS", "U1/FLASH/RS485_1_BPS/", LabelInit),
-        new TTagLine("COM1ADR", "U1/FLASH/RS485_1_DVA/", LabelInit),
-        new TTagLine("COM1PRT", "U1/FLASH/RS485_1_PRTY/", LabelInit),
-        new TTagLine("COM1STP", "U1/FLASH/RS485_1_STOP/", LabelInit),
-        new TTagLine("COM2BPS", "U1/FLASH/RS485_2_BPS/", LabelInit),
-        new TTagLine("COM2ADR", "U1/FLASH/RS485_2_DVA/", LabelInit),
-        new TTagLine("COM2PRT", "U1/FLASH/RS485_2_PRTY/", LabelInit),
-        new TTagLine("COM2STP", "U1/FLASH/RS485_2_STOP/", LabelInit),
+        new TTagLine("#1BPS", "U1/FLASH/RS485_1_BPS/", LabelInit),
+        new TTagLine("#1ADR", "U1/FLASH/RS485_1_DVA/", LabelInit),
+        new TTagLine("#1PRT", "U1/FLASH/RS485_1_PRTY/", LabelInit),
+        new TTagLine("#1STP", "U1/FLASH/RS485_1_STOP/", LabelInit),
+        new TTagLine("#2BPS", "U1/FLASH/RS485_2_BPS/", LabelInit),
+        new TTagLine("#2ADR", "U1/FLASH/RS485_2_DVA/", LabelInit),
+        new TTagLine("#2PRT", "U1/FLASH/RS485_2_PRTY/", LabelInit),
+        new TTagLine("#2STP", "U1/FLASH/RS485_2_STOP/", LabelInit),
     });
 }
 

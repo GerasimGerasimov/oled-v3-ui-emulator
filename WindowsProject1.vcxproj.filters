@@ -362,6 +362,9 @@
     <ClCompile Include="MCU\Pages\NetworkSettings\PageNetworkSettings.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
+    <ClCompile Include="MCU\Parameters\TPrmList.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="WindowsProject1.rc">
