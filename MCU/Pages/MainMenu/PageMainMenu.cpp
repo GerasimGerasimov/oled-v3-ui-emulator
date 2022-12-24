@@ -32,6 +32,7 @@ TPageMainMenu::TPageMainMenu(std::string Name)
     AddList({
         Container = new TVerticalContainer(pLabelsProps, {
             new TLinkLabel("Основные параметры", "Home",LabelInit),
+            new TLinkLabel("Настройки связи EFi", "NetWorkSettings",LabelInit),
             new TLinkLabel("Статус работы", "OperateStatus", LabelInit),
             new TLinkLabel("Аварии", "Alarms", LabelInit),
             new TLinkLabel("Предупреждения", "Warnings", LabelInit),
@@ -44,7 +45,6 @@ TPageMainMenu::TPageMainMenu(std::string Name)
             //new TLinkLabel("Уставки ВАХ", "Home", LabelInit),
             //new TLinkLabel("Данные прямой ВАХ", "Home", LabelInit),
             //new TLinkLabel("Данные обратной ВАХ", "Home", LabelInit),
-            //new TLinkLabel("Уставки интерфейсов", "Home", LabelInit),
             //new TLinkLabel("Данные драйвера", "Home", LabelInit),
             //new TLinkLabel("Настройки панели", "Home", LabelInit)
            })
