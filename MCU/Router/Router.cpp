@@ -9,6 +9,7 @@
 #include "PageBasicSettings.h"
 #include "PageBasicProtectionsSettings.h"
 #include "PageCleanSettings.h"
+#include "PageSensors.h"
 
 /*TODO В роутере и страницах можно реализовать переходы на закрытие/открытие окна*/
 TPage* TRouter::Page = nullptr;
@@ -29,6 +30,7 @@ void TRouter::Init(void) {
     Pages["OperateStatus"] = new TPageOperateStatus("OperateStatus");
     Pages["BasicProtectionsSettings"] = new TPageBasicProtectionsSettings("BasicProtectionsSettings");
     Pages["CleanSettings"] = new TPageCleanSettings("CleanSettings");
+    Pages["Sensors"] = new TPageSensors("Sensors");
     setInitPage();
 }
 

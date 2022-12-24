@@ -356,6 +356,9 @@
     <ClCompile Include="MCU\Pages\CleanSettings\PageCleanSettings.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
+    <ClCompile Include="MCU\Pages\Sensors\PageSensors.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="WindowsProject1.rc">
