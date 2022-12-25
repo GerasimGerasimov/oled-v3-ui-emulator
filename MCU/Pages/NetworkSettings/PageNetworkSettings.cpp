@@ -98,7 +98,7 @@ TPageNetworkSettings::TPageNetworkSettings(std::string Name)
 
     TLabelInitStructure LabelInit;
     LabelInit.pOwner = Container;
-    LabelInit.caption = "Датчики";
+    LabelInit.caption = "Интерфейсы EFi";
     TFixedHeader* pHeader = new TFixedHeader(LabelInit);
     Container->Add(pHeader);
 

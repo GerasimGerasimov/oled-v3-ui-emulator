@@ -34,7 +34,6 @@ std::string TPrmList::getValue(const TSlotHandlerArsg& args, const char* format)
 		: value(args, format);
 }
 
-#define TPRM_LIST_PARSE_BUF_SIZE 10
 const std::string TPrmList::value(const TSlotHandlerArsg& args, const char* format) {
 	u8 input = getRawValue(args);
 	//найти 7-й слэш
@@ -74,7 +73,7 @@ u8 TPrmList::getRawValue(const TSlotHandlerArsg& args) {
 }
 
 const std::string TPrmList::validation(const TSlotHandlerArsg& args) {
-	if (args.InputBufValidBytes == 0) return "**.*";
+	if (args.InputBufValidBytes == 0) return "?";
 	if (ParametersUtils::isAddrInvalid(Addr.Addr)) return "err.addr";
 	if ((Addr.Addr < args.StartAddrOffset) || (Addr.Addr > args.LastAddrOffset)) return "out.addr";
 	return "";
