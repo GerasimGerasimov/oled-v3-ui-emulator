@@ -12,6 +12,13 @@
 #define IDI_SMALL                       108
 #define IDC_WINDOWSPROJECT1             109
 #define IDR_MAINFRAME                   128
+#define IDC_CHECK_DI0                   1002
+#define IDC_CHECK_DI1                   1003
+#define IDC_CHECK_DI2                   1004
+#define IDC_CHECK_DI3                   1005
+#define IDC_CHECK_DI4                   1006
+#define IDC_CHECK7                      1007
+#define IDC_CHECK_DI5                   1007
 #define ID_BUTTON_LNK                   40001
 #define ID_BUTTON_WRN                   40002
 #define ID_BUTTON_ALR                   40003
@@ -25,7 +32,7 @@
 #define ID_BUTTON_LEFT                  40011
 #define ID_BUTTON_DOWN                  40012
 #define ID_BUTTON_RIGHT                 40013
-#define ID_MEMO_LOGGER		            40014
+#define ID_MEMO_LOGGER                  40014
 #define ID_BUTTON_CLEAR                 40015
 #define IDC_STATIC                      -1
 
@@ -36,7 +43,7 @@
 #define _APS_NO_MFC                     1
 #define _APS_NEXT_RESOURCE_VALUE        129
 #define _APS_NEXT_COMMAND_VALUE         32771
-#define _APS_NEXT_CONTROL_VALUE         1000
+#define _APS_NEXT_CONTROL_VALUE         1005
 #define _APS_NEXT_SYMED_VALUE           110
 #endif
 #endif

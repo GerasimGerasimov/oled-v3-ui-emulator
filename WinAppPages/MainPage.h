@@ -9,6 +9,7 @@ class MainPage {
 		//static void updateEmulatorView(void);
 		static void fillHandlersByID(void);
 		static void keyBoardControlMCU(int cmd);
+		static void DINControlMCU(int cmd);
 
 		static HINSTANCE hInst;                                // текущий экземпляр
 		static WCHAR szTitle[MAX_LOADSTRING];                  // Текст строки заголовка
@@ -32,6 +33,7 @@ class MainPage {
 			UINT idTimer,     // timer identifier 
 			DWORD dwTime);     // current system time 
 		static bool isHadlersFilled;
+		static void setDIN(int ID, int input_number);
 };
 
 #endif

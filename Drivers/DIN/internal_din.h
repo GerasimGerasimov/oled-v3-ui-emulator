@@ -7,6 +7,7 @@ struct InternalDIN {
   public:
     static void init();
     static void update();
+    static u16 DIN;
 };
 
 #endif

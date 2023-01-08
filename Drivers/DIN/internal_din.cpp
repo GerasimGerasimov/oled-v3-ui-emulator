@@ -2,12 +2,14 @@
 #include "RAMdata.h"
 //входы от платы ASM OP.OLED.ADAPTOR REV3.0.0
 
-#define DIN_0_ST   1//GPIOC->IDR & GPIO_Pin_4
-#define DIN_1_ST   1//GPIOC->IDR & GPIO_Pin_10
-#define DIN_2_ST   1//GPIOC->IDR & GPIO_Pin_7
-#define DIN_3_ST   1//GPIOC->IDR & GPIO_Pin_5
-#define DIN_4_ST   1//GPIOC->IDR & GPIO_Pin_3
-#define DIN_5_ST   1//GPIOC->IDR & GPIO_Pin_6
+u16 InternalDIN::DIN = 0;
+
+#define DIN_0_ST   (InternalDIN::DIN & (1 << 0)) 
+#define DIN_1_ST   (InternalDIN::DIN & (1 << 1)) 
+#define DIN_2_ST   (InternalDIN::DIN & (1 << 2)) 
+#define DIN_3_ST   (InternalDIN::DIN & (1 << 3)) 
+#define DIN_4_ST   (InternalDIN::DIN & (1 << 4)) 
+#define DIN_5_ST   (InternalDIN::DIN & (1 << 5)) 
 
 void InternalDIN::init(void){
     RAM_DATA.DIO &= 0xFF00;//младший байт для входов
