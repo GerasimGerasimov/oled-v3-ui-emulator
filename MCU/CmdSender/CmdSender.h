@@ -3,7 +3,7 @@
 #define CMD_SENDER_H
 
 #include "stm32f4xx.h"
-#include "HandleSubscribers.h"
+#include <Slot.h>
 
 class CmdSender {
 	public:
@@ -21,7 +21,9 @@ class CmdSender {
 		static bool cmdSendInProcess;
 		static u16 TryCnt;
 		static void updateKeyRun(const u16 din);
-		static void sendCmd(const u16 cmd);
+		static void updateKeyStop(const u16 din);
+		static void sendCmd(std::string& code);
+		static void SlotUpdate(Slot& slot, u8* reply);
 };
 
 #endif
