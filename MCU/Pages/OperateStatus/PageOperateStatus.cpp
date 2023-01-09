@@ -3,6 +3,8 @@
 #include <IniResources.h>
 #include "TagLine.h"
 
+/*TODO в этом экране переключать режимы работы VAC/CLEAN/NORMAL/TEST */
+
 void TPageOperateStatus::view() {
     Container->view();
 };
