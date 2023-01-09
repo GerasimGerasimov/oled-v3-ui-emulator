@@ -19,7 +19,7 @@ class CmdSender {
 		static u16 keyPrevClean;
 		static u16 keyPrevVAC;
 		static bool cmdSendInProcess;
-		static u16 TryCnt;
+		static u16 TryCount;
 		static void updateKeyRun(const u16 din);
 		static void updateKeyStop(const u16 din);
 		static void sendCmd(std::string& code);

@@ -10,7 +10,7 @@ u16 CmdSender::keyPrevRun = 0;
 u16 CmdSender::keyPrevClean = 0;
 u16 CmdSender::keyPrevVAC = 0;
 bool CmdSender::cmdSendInProcess = false;
-u16 CmdSender::TryCnt = 3;
+u16 CmdSender::TryCount = 3;
 
 /*TODO c Clean VAC сложнее, это переключатель
 в котором если не Clean и не VAC, то NORMAL*/
@@ -60,18 +60,23 @@ void CmdSender::updateKeyRun(const u16 din) {
 
 void CmdSender::sendCmd(std::string& code) {
 	std::string cmd = "U1/RAM/CMD/";
-	TryCnt = 3;
+	TryCount = 3;
 	cmdSendInProcess = true;
 	ModbusSlave::setValue(cmd, code, SlotUpdate);
 }
 
 void CmdSender::SlotUpdate(Slot& slot, u8* reply) {
-	slot.Flags |= (u16)SlotStateFlags::SKIP_SLOT;
-	cmdSendInProcess = false;
-	/*TODO проверить ответ на наличие ошибок или подтверждение правильного приёма
-	в случае ошибки использовать TryCount*/
+	if (slot.RespondLenghtOrErrorCode) {
+		slot.Flags |= (u16)SlotStateFlags::SKIP_SLOT;
+		cmdSendInProcess = false;
+	}
+	else {
+		if (TryCount)
+			TryCount--;
+		else {
+			slot.Flags |= (u16)SlotStateFlags::SKIP_SLOT;
+			cmdSendInProcess = false;
+		}
+	}
 	/*TODO разделить использование слота с PageEditValue*/
-	/*TODO при передаче CMD сделать TimeOut для слота 100мс, перед отправкой*/
-	//тут бы можно было из массива reply куда-то скопировать результат,
-	//но он не нужен если в slot.RespondLenghtOrErrorCode значение больше нуля
 }
