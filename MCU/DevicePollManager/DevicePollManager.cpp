@@ -7,7 +7,7 @@
 //static U1RAMSlot SlotU1RAM;
 
 std::vector <Slot> DevicePollManager::Slots = {};
-Slot* DevicePollManager::slot = NULL;
+Slot* DevicePollManager::slot = nullptr;
 u16 DevicePollManager::idx = 0;
 u16 DevicePollManager::Status = (u16)DevicePollManagerStatus::TOGGLE_SLOT;
 u8 DevicePollManager::Reply[256] = {};
@@ -68,7 +68,7 @@ Slot* DevicePollManager::getNextSlot(void) {
 		return s;
 	}
 	else {
-		return NULL;
+		return nullptr;
 	}
 }
 
@@ -86,5 +86,5 @@ Slot* DevicePollManager::getSlotByDevPosAndSection(const std::string& device, co
 			return &s;
 		}
 	}
-	return NULL;
+	return nullptr;
 }
