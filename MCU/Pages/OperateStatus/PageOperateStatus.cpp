@@ -64,8 +64,8 @@ TPageOperateStatus::TPageOperateStatus(std::string Name)
         new TTagLine("Run", "U1/RAM/Run/", LabelInit),
         new TTagLine("Normal", "U1/RAM/Normal/", LabelInit),
         new TTagLine("Clean", "U1/RAM/Clean/", LabelInit),
+        new TTagLine("VAC", "U1/RAM/VAC/", LabelInit),
         new TTagLine("Manual", "U1/RAM/Manual/", LabelInit),
-        new TTagLine("CMD", "U1/RAM/CMD/", LabelInit),
         });
     
     Container->FocusedLine = 0;

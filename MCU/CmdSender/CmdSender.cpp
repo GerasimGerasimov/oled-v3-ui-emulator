@@ -8,13 +8,10 @@ u16 CmdSender::keyClean = 0;
 u16 CmdSender::keyVAC = 0;
 u16 CmdSender::keyPrevStopReset = 0;
 u16 CmdSender::keyPrevRun = 0;
-u16 CmdSender::keyPrevClean = 0;
-u16 CmdSender::keyPrevVAC = 0;
+u16 CmdSender::keyMode = 0;
+u16 CmdSender::keyPrevMode = 0;
 bool CmdSender::cmdSendInProcess = false;
 u16 CmdSender::TryCount = 3;
-
-/*TODO c Clean VAC сложнее, это переключатель
-в котором если не Clean и не VAC, то NORMAL*/
 
 static const std::string CMD_RUN = "1111";
 static const std::string CMD_STOP = "1000";
@@ -25,6 +22,11 @@ static const std::string CMD_CLEAN = "5311";
 static const std::string CMD_VAC = "5312";
 static const std::string CMD_TEST = "5313";
 
+static const u16 SELECT_CMD_NORMAL = 0;
+static const u16 SELECT_CMD_CLEAN = 1;
+static const u16 SELECT_CMD_VAC = 2;
+static const u16 SELECT_CMD_MANU = 3;
+
 void CmdSender::init() {
 
 }
@@ -32,6 +34,37 @@ void CmdSender::init() {
 void CmdSender::update(const u16 din) {
 	updateKeyRun(din);
 	updateKeyStop(din);
+	updateKeyMode(din);
+}
+
+void CmdSender::updateKeyMode(const u16 din) {
+	keyClean = (din & (1 << 2));
+	keyVAC   = (din & (1 << 3));
+	keyMode = SELECT_CMD_NORMAL;
+	if (keyClean) keyMode = SELECT_CMD_CLEAN;
+	if (keyVAC)   keyMode = SELECT_CMD_VAC;
+	if ((keyClean !=0) && (keyVAC !=0)) keyMode = SELECT_CMD_MANU;
+	if (keyPrevMode != keyMode) {
+		/*TODO тут бы использовать таймер, чтобы чтобы при переключении,
+		  использовать фиксированное (за время) значение*/
+		if (cmdSendInProcess != true) {
+			switch (keyMode) {
+			case SELECT_CMD_NORMAL:
+				sendCmd((std::string&)CMD_NORMAL);
+				break;
+			case SELECT_CMD_CLEAN:
+				sendCmd((std::string&)CMD_CLEAN);
+				break;
+			case SELECT_CMD_VAC:
+				sendCmd((std::string&)CMD_VAC);
+				break;
+			case SELECT_CMD_MANU:
+				sendCmd((std::string&)CMD_TEST);
+				break;
+			}
+			keyPrevMode = keyMode;
+		}
+	}
 }
 
 void CmdSender::updateKeyStop(const u16 din) {

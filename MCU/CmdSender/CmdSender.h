@@ -16,12 +16,13 @@ class CmdSender {
 		static u16 keyVAC;
 		static u16 keyPrevStopReset;
 		static u16 keyPrevRun;
-		static u16 keyPrevClean;
-		static u16 keyPrevVAC;
+		static u16 keyMode;
+		static u16 keyPrevMode;
 		static bool cmdSendInProcess;
 		static u16 TryCount;
 		static void updateKeyRun(const u16 din);
 		static void updateKeyStop(const u16 din);
+		static void updateKeyMode(const u16 din);
 		static void sendCmd(std::string& code);
 		static void SlotUpdate(Slot& slot, u8* reply);
 };
