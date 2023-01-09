@@ -1,5 +1,6 @@
 #include "CmdSender.h"
 #include <AppModbusSlave.h>
+#include "Alarms.h"
 
 u16 CmdSender::keyStopReset = 0;
 u16 CmdSender::keyRun = 0;
@@ -38,8 +39,12 @@ void CmdSender::updateKeyStop(const u16 din) {
 	if (keyPrevStopReset != keyStopReset) {
 		if (keyStopReset) {
 			if (cmdSendInProcess != true) {
-				/*TODO если в Аварии то послать команду RESET*/
-				sendCmd((std::string&)CMD_STOP);
+				if (Alarms::isAlarm()) {
+					sendCmd((std::string&)CMD_RESET);
+				}
+				else {
+					sendCmd((std::string&)CMD_STOP);
+				}
 			}
 		}
 		keyPrevStopReset = keyStopReset;
