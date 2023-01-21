@@ -374,6 +374,9 @@
     <ClCompile Include="MCU\CmdSender\CmdSender.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
+    <ClCompile Include="Drivers\DOUT\internal_dout.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="WindowsProject1.rc">

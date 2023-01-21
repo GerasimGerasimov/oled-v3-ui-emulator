@@ -5,7 +5,8 @@
 
 class App {
 	public:
-		static void init(void);
-		static void run(void);
+        static bool init(void);
+        static void run(void);
+        static void error(void);
 };
 #endif

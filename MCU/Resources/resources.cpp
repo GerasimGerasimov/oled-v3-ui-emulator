@@ -7,18 +7,35 @@
 std::vector<pItem> TInternalResources::ValidItems = std::vector<pItem>();
 pResources TInternalResources::Root = nullptr;
 
-void TInternalResources::init() {
-  Root = (pResources) RESOURCES_DATA;
-  u16 i = 0;
-  while (i < Root->NumberOfItems) {
-    pItem p = &Root->Items[i++];
-    if (crc16((u8*) p, sizeof (TResourceTableItem)) == 0) {
-      ValidItems.push_back(p);
-    } else {
-      ValidItems.clear();
-      return;
+bool TInternalResources::init() {
+    Root = (pResources)RESOURCES_DATA;
+    if (!isHeaderCrcValid()) return false;
+    if (!isTotalCrcValid()) return false;
+    u16 i = 0;
+    while (i < Root->NumberOfItems) {
+        pItem p = &Root->Items[i++];
+        if (crc16((u8*)p, sizeof(TResourceTableItem)) == 0) {
+            ValidItems.push_back(p);
+        }
+        else {
+            ValidItems.clear();
+            return false;
+        }
     }
-  }
+    return true;
+}
+
+bool TInternalResources::isHeaderCrcValid(void) {
+    u8* p = (u8*)&Root->TotalResourceSize;
+    u16 crc = crc16(p, 8);//проверяю первые 8 байт заголовка
+    return (bool)(crc == 0);
+}
+
+bool TInternalResources::isTotalCrcValid(void) {
+    u8* p = (u8*)&Root->TotalResourceSize;
+    u16 crc = crc16(p, Root->TotalResourceSize);
+    RAM_DATA.var1 = crc;
+    return (bool)(crc == 0);
 }
 
 char* TInternalResources::getRoot() {

@@ -159,6 +159,7 @@
     <ClCompile Include="Drivers\com_master_driver.cpp" />
     <ClCompile Include="Drivers\DIN\internal_din.cpp" />
     <ClCompile Include="Drivers\display_driver.cpp" />
+    <ClCompile Include="Drivers\DOUT\internal_dout.cpp" />
     <ClCompile Include="Drivers\Keyboard\virtualKeyEvents.cpp" />
     <ClCompile Include="Drivers\Leds\Alarm\LedAlarms.cpp" />
     <ClCompile Include="Drivers\Leds\Warning\LedWarnings.cpp" />

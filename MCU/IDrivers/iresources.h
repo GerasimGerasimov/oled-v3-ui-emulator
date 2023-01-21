@@ -14,9 +14,10 @@ typedef struct ResourceTableItem{
 typedef TResourceTableItem* pItem;
 
 typedef struct Resources {
-  u16 Size;
-  u16 NumberOfItems;
-  TResourceTableItem Items[];
+    u32 TotalResourceSize;
+    u16 NumberOfItems;
+    u16 HeaderCRC;
+    TResourceTableItem Items[];
 } TResources;
 
 typedef TResources* pResources;

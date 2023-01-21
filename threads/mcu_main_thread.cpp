@@ -10,8 +10,9 @@ static DWORD  dwMCUMainThreadId = 0;
 
 DWORD WINAPI mcu_main_thread(LPVOID lpParam) {
     OSResources::init();
-    App::init();
-    App::run();
+    (App::init())
+        ? (App::run())
+        : (App::error());
     return 0;
 }
 
