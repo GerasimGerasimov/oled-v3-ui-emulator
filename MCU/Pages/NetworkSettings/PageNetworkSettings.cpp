@@ -39,7 +39,7 @@ bool TPageNetworkSettings::ProcessMessage(TMessage* m) {
                     if (e) {
                         TRouter::PageValueEditEntryData.tag = ((TTagLine*)(e))->Tag;
                         TRouter::PageValueEditEntryData.value = ((TTagLine*)(e))->Value->getCaption();
-                        TRouter::setTask({ false, "EditValue", nullptr });
+                        TRouter::setTask({ false, "PrmListEdit", nullptr });
                     }
                     break;
             }

@@ -11,6 +11,7 @@
 #include "PageCleanSettings.h"
 #include "PageSensors.h"
 #include "PageNetworkSettings.h"
+#include "PageParameterListEdit.h"
 
 /*TODO В роутере и страницах можно реализовать переходы на закрытие/открытие окна*/
 TPage* TRouter::Page = nullptr;
@@ -33,6 +34,7 @@ void TRouter::Init(void) {
     Pages["CleanSettings"] = new TPageCleanSettings("CleanSettings");
     Pages["Sensors"] = new TPageSensors("Sensors");
     Pages["NetWorkSettings"] = new TPageNetworkSettings("NetWorkSettings");
+    Pages["PrmListEdit"] = new TPageParameterListEdit("PrmListEdit");
     setInitPage();
 }
 
@@ -67,7 +69,8 @@ void TRouter::ProcessMessage(TMessage* m) {
 };
 
 void TRouter::setInitPage() {
-    setActivePage("Home", nullptr);
+    setActivePage("NetWorkSettings", nullptr);
+    //setActivePage("Home", nullptr);
     RouterTask.isDone = true;
 }
 
