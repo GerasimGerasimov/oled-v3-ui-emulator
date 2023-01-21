@@ -10,7 +10,8 @@ public:
 	~TPrmList();
 	std::string getMSU();
 	virtual std::string getValue(const TSlotHandlerArsg& args, const char* format);
-        std::string getValue(){return "";};
+    std::string getValue(){return "";};
+	std::vector<std::string> getList(void);
 	virtual void setValue();
 private:
 	char* MSU;

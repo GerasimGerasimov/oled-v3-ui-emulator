@@ -34,6 +34,15 @@ std::string TPrmList::getValue(const TSlotHandlerArsg& args, const char* format)
 		: value(args, format);
 }
 
+std::vector<std::string> TPrmList::getList(void) {
+	char* options = optional;//приходитс€ сохран€ть указатели так как метод ниже мен€ет его
+	char* plist = IniParser::getElementPtrByNumber(4, '/', options);
+	char* listAddr = plist;//приходитс€ сохран€ть указатели так как метод ниже мен€ет его
+	int size = IniParser::getStringLenght(&listAddr);
+	std::vector<std::string> list = IniParser::getListOfDelimitedString('/', plist, size);
+	return list;
+}
+
 const std::string TPrmList::value(const TSlotHandlerArsg& args, const char* format) {
 	u8 input = getRawValue(args);
 	//найти 7-й слэш

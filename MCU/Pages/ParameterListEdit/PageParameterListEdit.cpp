@@ -3,7 +3,8 @@
 #include <IniResources.h>
 #include <AppModbusSlave.h>
 #include "RAMdata.h"
-#include <FixedHeader.h>
+#include "Label.h"
+#include "TPrmList.h"
 
 void TPageParameterListEdit::view() {
     Container->view();
@@ -12,7 +13,6 @@ void TPageParameterListEdit::view() {
 void TPageParameterListEdit::onOpen() {
     tag = TRouter::PageValueEditEntryData.tag;
     p = (TParameter*)IniResources::getSignalByTag(tag);
-
     fillPageContainer();
 }
 
@@ -66,13 +66,25 @@ void TPageParameterListEdit::sendValue(void) {
 
 void TPageParameterListEdit::fillPageContainer(void) {
     TagList->Clear();
+    pHeader->setCaption(p->getName());
     TLabelInitStructure LabelInit;
     LabelInit.style = LabelsStyle::WIDTH_DINAMIC;
     LabelInit.Rect = { 10, 10, 10, 10 };
     LabelInit.focused = false;
-    TagList->AddList({
+
+    TPrmList* prm = (TPrmList*)p;
+    std::vector<std::string> ParamList = prm->getList();
+
+    std::vector <TVisualObject*> Source = {};
+    for (auto& e : ParamList) {
+        LabelInit.caption = e;
+        TLabel* lb = new TLabel(LabelInit);
+        TagList->List.push_back(lb);
+    }
+
+    //TagList->AddList({
         //new TTagLine("#1BPS", "U1/FLASH/RS485_1_BPS/", LabelInit),
-        });
+    //    });
 }
 
 TPageParameterListEdit::TPageParameterListEdit(std::string Name)
@@ -84,7 +96,7 @@ TPageParameterListEdit::TPageParameterListEdit(std::string Name)
     TLabelInitStructure LabelInit;
     LabelInit.pOwner = Container;
     LabelInit.caption = "ParamListEdit";
-    TFixedHeader* pHeader = new TFixedHeader(LabelInit);
+    pHeader = new TFixedHeader(LabelInit);
     Container->Add(pHeader);
 
     props = { true };

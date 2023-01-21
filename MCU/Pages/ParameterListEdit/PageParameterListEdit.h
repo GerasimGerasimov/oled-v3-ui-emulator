@@ -3,6 +3,7 @@
 
 #include "Pages.h"
 #include "TVerticalContainer.h"
+#include <FixedHeader.h>
 #include "parameters.h"
 #include <Slot.h>
 
@@ -20,6 +21,7 @@ public:
 private:
     TVerticalContainer* Container;
     TVerticalContainer* TagList;
+    TFixedHeader* pHeader;
     void fillPageContainer(void);
     TParameter* p;
     std::string tag;
