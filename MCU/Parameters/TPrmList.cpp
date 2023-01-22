@@ -40,6 +40,25 @@ std::vector<std::string> TPrmList::getList(void) {
 	char* listAddr = plist;//приходится сохранять указатели так как метод ниже меняет его
 	int size = IniParser::getStringLenght(&listAddr);
 	std::vector<std::string> list = IniParser::getListOfDelimitedString('/', plist, size);
+	std::vector<std::string> res = {};
+	for (auto& e : list) {
+		int index = e.find('#');
+		if (index == std::string::npos) continue;
+		std::string s = e.substr(index+1);
+		res.push_back(s);
+	}
+	return res;
+}
+
+std::vector<std::string> TPrmList::getList(const std::string& val, s16& ValueIndexInList) {
+	std::vector<std::string> list = getList();
+	std::vector<std::string>::iterator it = std::find(list.begin(), list.end(), val);
+	if (it != list.end()) {
+		ValueIndexInList = std::distance(list.begin(), it);
+	}
+	else {
+		ValueIndexInList = -1;
+	}
 	return list;
 }
 

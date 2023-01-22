@@ -12,6 +12,7 @@ public:
 	virtual std::string getValue(const TSlotHandlerArsg& args, const char* format);
     std::string getValue(){return "";};
 	std::vector<std::string> getList(void);
+	std::vector<std::string> getList(const std::string& val, s16& ValueIndexInList);
 	virtual void setValue();
 private:
 	char* MSU;

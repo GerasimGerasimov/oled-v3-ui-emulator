@@ -25,6 +25,7 @@ private:
     void fillPageContainer(void);
     TParameter* p;
     std::string tag;
+    std::string value;
     bool isDataSent = false;
     void SlotUpdate(Slot& slot, u8* reply);
 };

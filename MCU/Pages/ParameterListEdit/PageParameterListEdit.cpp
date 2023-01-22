@@ -12,6 +12,7 @@ void TPageParameterListEdit::view() {
 
 void TPageParameterListEdit::onOpen() {
     tag = TRouter::PageValueEditEntryData.tag;
+    value = TRouter::PageValueEditEntryData.value;
     p = (TParameter*)IniResources::getSignalByTag(tag);
     fillPageContainer();
 }
@@ -30,7 +31,7 @@ bool TPageParameterListEdit::ProcessMessage(TMessage* m) {
         case (u32)EventSrc::KEYBOARD: {
             switch (m->p1) {
                 case (u32)KeyCodes::ESC:
-                    TRouter::setTask({ false, "Home", nullptr });
+                    TRouter::setTask({ false, "NetWorkSettings", nullptr });
                     return true;
                 case (u32)KeyCodes::ENT:
                     sendValue();
@@ -40,7 +41,7 @@ bool TPageParameterListEdit::ProcessMessage(TMessage* m) {
     }
     if (isDataSent) {
         isDataSent = false;
-        TRouter::setTask({ false, "Home", nullptr });
+        TRouter::setTask({ false, "NetWorkSettings", nullptr });
     }
     return false;
 };
@@ -73,23 +74,29 @@ void TPageParameterListEdit::fillPageContainer(void) {
     LabelInit.focused = false;
 
     TPrmList* prm = (TPrmList*)p;
-    std::vector<std::string> ParamList = prm->getList();
+    s16 ValueIndexInList = -1;
+    std::vector<std::string> ParamList = prm->getList(value, ValueIndexInList);
 
-    std::vector <TVisualObject*> Source = {};
+    u16 index = 0;
     for (auto& e : ParamList) {
         LabelInit.caption = e;
         TLabel* lb = new TLabel(LabelInit);
+        if (index++ == ValueIndexInList) {
+            lb->inFocus = true;
+        }
         TagList->List.push_back(lb);
     }
-
-    //TagList->AddList({
-        //new TTagLine("#1BPS", "U1/FLASH/RS485_1_BPS/", LabelInit),
-    //    });
+    TagList->FirstPosition = 0;
+    TagList->FocusedLine = (ValueIndexInList != -1)? ValueIndexInList : 0;
+    TagList->LastPosition = ParamList.size();
+    /*TODO надо передать выбранный параметр на устройство*/
 }
 
 TPageParameterListEdit::TPageParameterListEdit(std::string Name)
     :TPage(Name)
-    , p(nullptr) {
+    , p(nullptr)
+    , value("")
+    , tag("") {
     TVerticalContainerProps props = { false };
     Container = new TVerticalContainer(props, {});
 
