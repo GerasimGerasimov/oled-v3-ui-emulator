@@ -54,15 +54,24 @@ void TPageParameterListEdit::SlotUpdate(Slot& slot, u8* reply) {
 }
 
 void TPageParameterListEdit::sendValue(void) {
-    /*
-    std::string value = pEdit->getValue();
+    std::string value = getValueOfFocusedLine();
     if (ModbusSlave::setValue(tag, value, [this](Slot& slot, u8* reply) { SlotUpdate(slot, reply);})) {
 
     }
     else {
         isDataSent = true;
     }
-    */
+}
+
+std::string TPageParameterListEdit::getValueOfFocusedLine(void) {
+    TLabel* e = (TLabel*)TagList->getFocusedElement();
+    std::string res = "";
+    if (e) {
+        std::string ElementValue = e->getCaption();
+        TPrmList* prm = (TPrmList*)p;
+        res = prm->getKeyByValue(ElementValue);
+    }
+    return res;
 }
 
 void TPageParameterListEdit::fillPageContainer(void) {

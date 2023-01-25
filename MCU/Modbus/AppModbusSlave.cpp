@@ -36,7 +36,7 @@ bool ModbusSlave::setValue(std::string& tag, std::string& value, TSlotDataHandle
 
 const std::map < std::string, std::function <u8(u8*, TWriteCmdSrc&) >> ModbusSlave::WriteCmdVariants = {
     {"10", [](u8* a, TWriteCmdSrc& props) {return get0x10WriteRegCmd(a, props); }},
-    {"16", [](u8* a, TWriteCmdSrc& props) {return 0; }},
+    {"16", [](u8* a, TWriteCmdSrc& props) {return get0x16WriteRegCmd(a, props); }},
 };
 
 u8 ModbusSlave::CreateWriteCmd(u8* a, TWriteCmdSrc CmdSrc) {
@@ -82,6 +82,11 @@ u8 ModbusSlave::get0x10WriteRegCmd(u8* a, TWriteCmdSrc& Src) {
     u8 cmdLen = (regscnt == 1) ? 11 : 13;
     FrameEndCrc16(a, cmdLen);
     return cmdLen;
+}
+
+u8 ModbusSlave::get0x16WriteRegCmd(u8* a, TWriteCmdSrc& Src) {
+    /*TODO надо реализовать запись бит в OLED и в коде объекта */
+    return 0;
 }
 
 std::string ModbusSlave::NetWorkAddrToHex(u16 nwa) {

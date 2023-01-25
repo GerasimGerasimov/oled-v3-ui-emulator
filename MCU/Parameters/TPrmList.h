@@ -13,7 +13,11 @@ public:
     std::string getValue(){return "";};
 	std::vector<std::string> getList(void);
 	std::vector<std::string> getList(const std::string& val, s16& ValueIndexInList);
+	std::string getKeyByValue(const std::string& val);
 	virtual void setValue();
+	const std::string getValueHex(std::string& src);
+	const std::string getRegHexAddr();
+	const std::string getWriteCmdType();
 private:
 	char* MSU;
 	float Scale;

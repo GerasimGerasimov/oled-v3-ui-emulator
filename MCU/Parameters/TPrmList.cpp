@@ -90,6 +90,41 @@ const std::string TPrmList::value(const TSlotHandlerArsg& args, const char* form
 	return "?";
 }
 
+std::string TPrmList::getKeyByValue(const std::string& val) {
+	char* options = optional;//приходится сохранять указатели так как метод ниже меняет его
+	char* plist = IniParser::getElementPtrByNumber(4, '/', options);
+	char* listAddr = plist;//приходится сохранять указатели так как метод ниже меняет его
+	int size = IniParser::getStringLenght(&listAddr);
+	std::vector<std::string> list = IniParser::getListOfDelimitedString('/', plist, size);
+	for (auto& e : list) {
+		int index = e.find('#');
+		if (index == std::string::npos) continue;
+		std::string s = e.substr(index + 1);
+		if (s == val) {
+			std::string res = e.substr(0, index);
+			return res;
+		}
+	}
+	return "";
+}
+
+const std::string TPrmList::getValueHex(std::string& src) {
+	//u16 value = string2raw(src);
+	//char s[8];
+	//GIST "%.4X" преобразование числа в hex с заданным кол-вом значащих нулей
+	//sprintf(s, "%.4X", value);
+	//std::string res(s);
+	int xpos = (src[0] == 'x') ? 1 : 0;
+	std::string res = src.substr(xpos);
+	return res;
+}
+
+const std::string TPrmList::getRegHexAddr() {
+	std::string res(strAddr + 1, 6);
+	return res;
+}
+
+
 u8 TPrmList::getRawValue(const TSlotHandlerArsg& args) {
 	s16 offset = Addr.Addr - args.StartAddrOffset;
 	u8* p = args.InputBuf + offset;//получил указатель на данные
@@ -105,4 +140,8 @@ const std::string TPrmList::validation(const TSlotHandlerArsg& args) {
 	if (ParametersUtils::isAddrInvalid(Addr.Addr)) return "err.addr";
 	if ((Addr.Addr < args.StartAddrOffset) || (Addr.Addr > args.LastAddrOffset)) return "out.addr";
 	return "";
+}
+
+const std::string TPrmList::getWriteCmdType() {
+	return "16";
 }

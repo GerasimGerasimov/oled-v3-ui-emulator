@@ -23,6 +23,7 @@ private:
     TVerticalContainer* TagList;
     TFixedHeader* pHeader;
     void fillPageContainer(void);
+    std::string getValueOfFocusedLine(void);
     TParameter* p;
     std::string tag;
     std::string value;
