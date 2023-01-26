@@ -102,7 +102,7 @@ AD, C, №R(h, l), AND(h, l), OR(h, l), CRC(h, l)
 Результат = (текущее содержимое & маскаAND) | (маскаOR & (^маскаAND))
 */
 
-/*TODO Адрес поступает сюда в виде:
+/*Адрес поступает сюда в виде:
 для байт (старшего/младшего )rrrr.H, rrrr.L,
 для бит rrrr.N, где N-номер бита
 Поэтому, для БАЙТ и БИТ надо сделать немного разную обработку по вычислению маски AND и OR
@@ -119,8 +119,39 @@ AD, C, №R(h, l), AND(h, l), OR(h, l), CRC(h, l)
 */
 
 u8 ModbusSlave::get0x16WriteRegCmd(u8* a, TWriteCmdSrc& Src) {
+    a[0] = (u8)std::stoi(Src.DevAddr);
+    a[1] = 0x16;
+
     /*TODO надо реализовать запись бит в OLED и в коде объекта */
-    return 0;
+    int index = Src.RegAddr.find('.');
+    if (index == std::string::npos) {
+        return 0;//это не адрес БАЙТа или БИТа (rrrr.H/L/N)
+    }
+    //начальный адрес регистра
+    std::string Addr = Src.RegAddr.substr(0, 4);
+    u16 addr = (u16)std::stoul(Addr, nullptr, 16);
+    a[2] = (u8)(addr >> 8) & 0x00FF;
+    a[3] = (u8)(addr & 0x00FF);
+
+    std::string BT = Src.RegAddr.substr(5);
+    u16 value = std::stol(Src.Value, nullptr, 16);
+    u16 AND_MASK = 0;
+    u16 OR_MASK = 0;
+    if (BT == "H") {
+        AND_MASK = 0x00FF;
+        OR_MASK = (value << 8) & 0xFF00;
+    } 
+    if (BT == "L") {
+        AND_MASK = 0xFF00;
+        OR_MASK = (value) & 0x00FF;
+    }
+    a[4] = (u8)(AND_MASK >> 8) & 0x00FF;
+    a[5] = (u8)(AND_MASK & 0x00FF);
+    a[6] = (u8)(OR_MASK >> 8) & 0x00FF;
+    a[7] = (u8)(OR_MASK & 0x00FF);
+    u8 cmdLen = 10;
+    FrameEndCrc16(a, cmdLen);
+    return cmdLen;
 }
 
 std::string ModbusSlave::NetWorkAddrToHex(u16 nwa) {

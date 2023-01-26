@@ -47,10 +47,8 @@ bool TPageParameterListEdit::ProcessMessage(TMessage* m) {
 };
 
 void TPageParameterListEdit::SlotUpdate(Slot& slot, u8* reply) {
-    /*
     slot.Flags |= (u16)SlotStateFlags::SKIP_SLOT;
     isDataSent = true;
-    */
 }
 
 void TPageParameterListEdit::sendValue(void) {
