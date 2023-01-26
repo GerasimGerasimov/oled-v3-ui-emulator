@@ -84,6 +84,40 @@ u8 ModbusSlave::get0x10WriteRegCmd(u8* a, TWriteCmdSrc& Src) {
     return cmdLen;
 }
 
+/*  Mask Write Register
+    (0x16) — запись в один регистр хранения с использованием маски «И» и маски «ИЛИ» (Mask Write Register).
+    http://microsin.net/programming/arm/modbus-application-protocol-specification.html
+    https://forum.segnetics.com/showthread.php?s=4124ffd14c15603d39147d08335ce1cf&t=4654&page=2
+    https://www.manualslib.com/manual/1298275/Mitsubishi-Fx3u-Series.html?page=80
+    https://control.com/forums/threads/modbus-fc22-0x16-mask-write-register.37596/
+
+запрос 0x16 на выходе
+AD, C, №R(h, l), AND(h, l), OR(h, l), CRC(h, l)
+│   │  │          │          │        └─(word)crc16    
+│   │  │          │          └─(word)Маска OR
+│   │  │          └─(word)Маска AND
+│   │  └─(word)Адрес регистра
+│   └────(byte)Команда(16h)
+└──────(byte)Адрес устройства
+Результат = (текущее содержимое & маскаAND) | (маскаOR & (^маскаAND))
+*/
+
+/*TODO Адрес поступает сюда в виде:
+для байт (старшего/младшего )rrrr.H, rrrr.L,
+для бит rrrr.N, где N-номер бита
+Поэтому, для БАЙТ и БИТ надо сделать немного разную обработку по вычислению маски AND и OR
+Для БАЙТ:
+    H, AND=0x00FF (не трогаю младшие 8 бит, старшие 8 обнуляю)
+       OR = (value << 8) & 0xFF00
+    L, AND=0xFF00 (не трогаю станшие 8 бит, младшие 8 обнуляю)
+       OR = value & 0x00FF
+
+Для БИТ:
+ N - номер бита известен
+    AND = !(1<<N) -чищу данные инверсным значением
+    OR = (1<<N)
+*/
+
 u8 ModbusSlave::get0x16WriteRegCmd(u8* a, TWriteCmdSrc& Src) {
     /*TODO надо реализовать запись бит в OLED и в коде объекта */
     return 0;
