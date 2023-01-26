@@ -36,7 +36,7 @@ bool ModbusSlave::setValue(std::string& tag, std::string& value, TSlotDataHandle
 
 const std::map < std::string, std::function <u8(u8*, TWriteCmdSrc&) >> ModbusSlave::WriteCmdVariants = {
     {"10", [](u8* a, TWriteCmdSrc& props) {return get0x10WriteRegCmd(a, props); }},
-    {"16", [](u8* a, TWriteCmdSrc& props) {return get0x16WriteRegCmd(a, props); }},
+    {"16", [](u8* a, TWriteCmdSrc& props) {return get0x16MaskWriteRegisterCmd(a, props); }},
 };
 
 u8 ModbusSlave::CreateWriteCmd(u8* a, TWriteCmdSrc CmdSrc) {
@@ -118,7 +118,7 @@ AD, C, №R(h, l), AND(h, l), OR(h, l), CRC(h, l)
     OR = (1<<N)
 */
 
-u8 ModbusSlave::get0x16WriteRegCmd(u8* a, TWriteCmdSrc& Src) {
+u8 ModbusSlave::get0x16MaskWriteRegisterCmd(u8* a, TWriteCmdSrc& Src) {
     a[0] = (u8)std::stoi(Src.DevAddr);
     a[1] = 0x16;
 
