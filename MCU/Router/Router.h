@@ -33,11 +33,13 @@ public:
     static bool chekNextPage();
     static void setTask(TRouterTask task);
     static TPageValueEditEntryData PageValueEditEntryData;
+    static const std::string selectEditPage(std::string& tag);
 private:
     static TPage* setActivePage(std::string PageName, void* props);
     static void setInitPage();
     static TRouterTask RouterTask;
     static std::map<std::string, TPage*> Pages;
+    static const std::string getEditPageNameBySignalType(const std::string& SignalType);
 };
 
 #endif

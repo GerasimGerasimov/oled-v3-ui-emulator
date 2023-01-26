@@ -48,6 +48,7 @@ std::string TParameter::getMSU()
 void TParameter::setValueNotValid() {
 }
 
+/*TODO проверить, вроде метод TParameter::setValue и его производных ни где не используется */
 void TParameter::setValue() {
 }
 

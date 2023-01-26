@@ -19,29 +19,6 @@ void TPageNetworkSettings::startToClose() {
     isOpen = false;
 }
 
-/* TU8BIT, TU16bit, TS16bit, TFloat  - "EditValue"
-   TPrmList - "PrmListEdit" */
-static const std::map<std::string, std::string> EditPageNameBySignalType = {
-    {"TU8BIT", "EditValue"},
-    {"TU16bit", "EditValue"},
-    {"TS16bit", "EditValue"},
-    {"TFloat", "EditValue"},
-    {"TPrmList", "PrmListEdit"},
-};
-
-const static std::string getEditPageNameBySignalType(const std::string& SignalType) {
-    std::string s = (EditPageNameBySignalType.count(SignalType))
-        ? EditPageNameBySignalType.at(SignalType)
-        : "EditValue";
-    return s;
-}
-
-const static std::string selectEditPage(std::string& tag) {
-    ISignal* p = IniResources::getSignalByTag(tag);
-    std::string SignalType = p->getSignalType();
-    std::string PageName = getEditPageNameBySignalType(SignalType);
-    return PageName;
-}
 
 bool TPageNetworkSettings::ProcessMessage(TMessage* m) {
     TVisualObject* e = { nullptr };
@@ -63,10 +40,8 @@ bool TPageNetworkSettings::ProcessMessage(TMessage* m) {
                     if (e) {
                         TRouter::PageValueEditEntryData.tag = ((TTagLine*)(e))->Tag;
                         TRouter::PageValueEditEntryData.value = ((TTagLine*)(e))->Value->getCaption();
-                        std::string EditPage = selectEditPage(TRouter::PageValueEditEntryData.tag);
+                        std::string EditPage = TRouter::selectEditPage(TRouter::PageValueEditEntryData.tag);
                         TRouter::setTask({ false, EditPage, nullptr });
-                        /*TODO для TPrmList надо вызвать TPageParameterListEdit
-                               для TByte    надо вызывать TPageEditValue*/
                     }
                     break;
             }
