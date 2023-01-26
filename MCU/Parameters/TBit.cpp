@@ -34,6 +34,17 @@ const std::string TBit::value(const TSlotHandlerArsg& args) {
 	return (input)?"1":"0";
 }
 
+const std::string TBit::getValueHex(std::string& src) {
+	float f = std::stof(src);
+	std::string res = (f != 0) ? "1" : "0";
+	return res;
+}
+
+const std::string TBit::getRegHexAddr() {
+	std::string res(strAddr + 1, 6);
+	return res;
+}
+
 bool TBit::getRawValue(const TSlotHandlerArsg& args) {
 	s16 offset = Addr.Addr - args.StartAddrOffset;
 	u8* p = args.InputBuf + offset;//получил указатель на данные
@@ -49,4 +60,8 @@ const std::string TBit::validation(const TSlotHandlerArsg& args) {
 	if (ParametersUtils::isAddrInvalid(Addr.Addr)) return "err.addr";
 	if ((Addr.Addr < args.StartAddrOffset) || (Addr.Addr > args.LastAddrOffset)) return "out.addr";
 	return "";
+}
+
+const std::string TBit::getWriteCmdType() {
+	return "16";
 }

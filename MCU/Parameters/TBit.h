@@ -10,6 +10,9 @@ public:
 	~TBit();
 	virtual std::string getValue(const TSlotHandlerArsg& args, const char* format);
     std::string getValue(){return "";};
+	const std::string getValueHex(std::string& src);
+	const std::string getRegHexAddr();
+	const std::string getWriteCmdType();
 private:
 	TSpecialSignalAddr Addr;
 	const std::string value(const TSlotHandlerArsg& args);

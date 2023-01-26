@@ -114,8 +114,8 @@ AD, C, №R(h, l), AND(h, l), OR(h, l), CRC(h, l)
 
 Для БИТ:
  N - номер бита известен
-    AND = !(1<<N) -чищу данные инверсным значением
-    OR = (1<<N)
+    AND = ~(value<<N) -чищу данные инверсным значением
+    OR = (value<<N) & !AND
 */
 
 u8 ModbusSlave::get0x16MaskWriteRegisterCmd(u8* a, TWriteCmdSrc& Src) {
@@ -140,10 +140,16 @@ u8 ModbusSlave::get0x16MaskWriteRegisterCmd(u8* a, TWriteCmdSrc& Src) {
     if (BT == "H") {
         AND_MASK = 0x00FF;
         OR_MASK = (value << 8) & 0xFF00;
-    } 
-    if (BT == "L") {
+    } else if (BT == "L") {
         AND_MASK = 0xFF00;
         OR_MASK = (value) & 0x00FF;
+    } else {//это БИТы 0123456789ABCDEF
+        /*TODO ПРОВЕРИТЬ!*/
+        bool bitValue = (bool)(value != 0);
+        u16 bitnum = std::stol(BT, nullptr, 16);
+        u16 BIT_MASK = (1 << bitnum);
+        AND_MASK = ~BIT_MASK;
+        OR_MASK = BIT_MASK;
     }
     a[4] = (u8)(AND_MASK >> 8) & 0x00FF;
     a[5] = (u8)(AND_MASK & 0x00FF);
