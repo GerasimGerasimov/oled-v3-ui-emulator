@@ -13,6 +13,7 @@ public:
 	const std::string getValueHex(std::string& src);
 	const std::string getRegHexAddr();
 	const std::string getWriteCmdType();
+	const std::string& getSignalType();
 private:
 	TSpecialSignalAddr Addr;
 	const std::string value(const TSlotHandlerArsg& args);

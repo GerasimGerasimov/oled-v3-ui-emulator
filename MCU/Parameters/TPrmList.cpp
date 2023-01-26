@@ -145,3 +145,8 @@ const std::string TPrmList::validation(const TSlotHandlerArsg& args) {
 const std::string TPrmList::getWriteCmdType() {
 	return "16";
 }
+
+static const std::string SignalType = "TPrmList";
+const std::string& TPrmList::getSignalType() {
+	return SignalType;
+}

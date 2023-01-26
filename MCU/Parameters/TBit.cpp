@@ -65,3 +65,8 @@ const std::string TBit::validation(const TSlotHandlerArsg& args) {
 const std::string TBit::getWriteCmdType() {
 	return "16";
 }
+
+static const std::string SignalType = "TBit";
+const std::string& TBit::getSignalType() {
+	return SignalType;
+}
