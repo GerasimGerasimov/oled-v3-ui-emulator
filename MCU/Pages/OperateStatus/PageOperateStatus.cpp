@@ -29,6 +29,7 @@ bool TPageOperateStatus::ProcessMessage(TMessage* m) {
                 case (u32)KeyCodes::F1:
                     e = getSignalOfFocusedChild();
                     if (e) {
+                        TRouter::PageValueEditEntryData.backPage = Name;
                         ISignal* p = IniResources::getSignalByTag(((TTagLine*)(e))->Tag);
                         TRouter::setTask({ false, "Help", p });
                     }

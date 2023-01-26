@@ -52,7 +52,7 @@ bool TPageEditValue::ProcessMessage(TMessage* m) {
         case (u32)EventSrc::KEYBOARD: {
             switch (m->p1) {
                 case (u32)KeyCodes::ESC:
-                    TRouter::setTask({ false, "Home", nullptr });
+                    TRouter::setTask({ false, TRouter::getBackPage(), nullptr });
                     return true;
                 case (u32)KeyCodes::ENT:
                     sendValue();
@@ -62,7 +62,7 @@ bool TPageEditValue::ProcessMessage(TMessage* m) {
     }
     if (isDataSent) {
         isDataSent = false;
-        TRouter::setTask({ false, "Home", nullptr });
+        TRouter::setTask({ false, TRouter::getBackPage(), nullptr });
     }
     return false;
 };

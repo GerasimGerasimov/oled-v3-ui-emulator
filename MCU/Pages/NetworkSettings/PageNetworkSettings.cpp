@@ -32,6 +32,7 @@ bool TPageNetworkSettings::ProcessMessage(TMessage* m) {
                     e = getSignalOfFocusedChild();
                     if (e) {
                         ISignal* p = IniResources::getSignalByTag(((TTagLine*)(e))->Tag);
+                        TRouter::PageValueEditEntryData.backPage = Name;
                         TRouter::setTask({ false, "Help", p });
                     }
                     break;
@@ -40,6 +41,7 @@ bool TPageNetworkSettings::ProcessMessage(TMessage* m) {
                     if (e) {
                         TRouter::PageValueEditEntryData.tag = ((TTagLine*)(e))->Tag;
                         TRouter::PageValueEditEntryData.value = ((TTagLine*)(e))->Value->getCaption();
+                        TRouter::PageValueEditEntryData.backPage = Name;
                         std::string EditPage = TRouter::selectEditPage(TRouter::PageValueEditEntryData.tag);
                         TRouter::setTask({ false, EditPage, nullptr });
                     }

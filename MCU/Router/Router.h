@@ -10,6 +10,7 @@
 typedef struct {
     std::string value;
     std::string tag;
+    std::string backPage;
 } TPageValueEditEntryData;
 
 typedef struct {
@@ -34,6 +35,7 @@ public:
     static void setTask(TRouterTask task);
     static TPageValueEditEntryData PageValueEditEntryData;
     static const std::string selectEditPage(std::string& tag);
+    static const std::string getBackPage();
 private:
     static TPage* setActivePage(std::string PageName, void* props);
     static void setInitPage();

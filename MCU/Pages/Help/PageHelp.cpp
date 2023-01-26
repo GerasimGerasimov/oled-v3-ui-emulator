@@ -36,7 +36,7 @@ bool TPageHelp::ProcessMessage(TMessage* m) {
         case (u32)EventSrc::KEYBOARD: {
             switch (m->p1) {
             case (u32)KeyCodes::ESC :
-                TRouter::setTask({ false, "Home", nullptr });
+                TRouter::setTask({ false, TRouter::getBackPage(), nullptr });
                 break;
             }
         }

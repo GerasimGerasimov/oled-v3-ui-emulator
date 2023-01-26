@@ -70,8 +70,7 @@ void TRouter::ProcessMessage(TMessage* m) {
 };
 
 void TRouter::setInitPage() {
-    setActivePage("NetWorkSettings", nullptr);
-    //setActivePage("Home", nullptr);
+    setActivePage("Home", nullptr);
     RouterTask.isDone = true;
 }
 
@@ -114,6 +113,12 @@ const std::string TRouter::selectEditPage(std::string& tag) {
     return PageName;
 }
 
+const std::string TRouter::getBackPage() {
+    std::string s = (Pages.count(PageValueEditEntryData.backPage))
+        ? PageValueEditEntryData.backPage
+        : "Home";
+    return s;
+}
 
 TRouter::TRouter() {
 
