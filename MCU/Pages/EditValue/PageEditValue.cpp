@@ -5,7 +5,7 @@
 #include "PageEditValue.h"
 #include "Router.h"
 #include <IniResources.h>
-#include <AppModbusSlave.h>
+#include "SetValueSelector.h"
 #include "RAMdata.h"
 #include "NumericEdit.h"
 
@@ -67,8 +67,10 @@ bool TPageEditValue::ProcessMessage(TMessage* m) {
     return false;
 };
 
-void TPageEditValue::SlotUpdate(Slot& slot, u8* reply) {
-    slot.Flags |= (u16)SlotStateFlags::SKIP_SLOT;
+void TPageEditValue::SlotUpdate(Slot* slot, u8* reply) {
+    if (slot) {
+        slot->Flags |= (u16)SlotStateFlags::SKIP_SLOT;
+    }
     isDataSent = true;
     //тут бы можно было из массива reply куда-то скопировать результат,
     //но он не нужен если в slot.RespondLenghtOrErrorCode значение больше нуля
@@ -76,7 +78,7 @@ void TPageEditValue::SlotUpdate(Slot& slot, u8* reply) {
 
 void TPageEditValue::sendValue(void) {
     std::string value = pEdit->getValue();
-    if (ModbusSlave::setValue(tag, value, [this](Slot& slot, u8* reply) { SlotUpdate(slot, reply);})) {
+    if (SetValueSelector::setValue(tag, value, [this](Slot* slot, u8* reply) { SlotUpdate(slot, reply);})) {
 
     }
     else {

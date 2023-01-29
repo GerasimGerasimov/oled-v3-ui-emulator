@@ -1,7 +1,7 @@
 ﻿#include "PageParameterListEdit.h"
 #include "Router.h"
 #include <IniResources.h>
-#include <AppModbusSlave.h>
+#include "SetValueSelector.h"
 #include "RAMdata.h"
 #include "Label.h"
 #include "TPrmList.h"
@@ -46,14 +46,16 @@ bool TPageParameterListEdit::ProcessMessage(TMessage* m) {
     return false;
 };
 
-void TPageParameterListEdit::SlotUpdate(Slot& slot, u8* reply) {
-    slot.Flags |= (u16)SlotStateFlags::SKIP_SLOT;
+void TPageParameterListEdit::SlotUpdate(Slot* slot, u8* reply) {
+    if (slot) {
+        slot->Flags |= (u16)SlotStateFlags::SKIP_SLOT;
+    }
     isDataSent = true;
 }
 
 void TPageParameterListEdit::sendValue(void) {
     std::string value = getValueOfFocusedLine();
-    if (ModbusSlave::setValue(tag, value, [this](Slot& slot, u8* reply) { SlotUpdate(slot, reply);})) {
+    if (SetValueSelector::setValue(tag, value, [this](Slot* slot, u8* reply) { SlotUpdate(slot, reply);})) {
 
     }
     else {

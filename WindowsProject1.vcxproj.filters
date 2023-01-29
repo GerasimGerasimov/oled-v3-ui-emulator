@@ -209,9 +209,6 @@
     <ClCompile Include="MCU\DevicePollManager\Slot.cpp">
       <Filter>MCU\DevicePollManager</Filter>
     </ClCompile>
-    <ClCompile Include="MCU\Slots\U1RamUpdate.cpp">
-      <Filter>MCU\Slots</Filter>
-    </ClCompile>
     <ClCompile Include="MCU\Resources\resources.cpp">
       <Filter>MCU\Resources</Filter>
     </ClCompile>
@@ -384,6 +381,9 @@
       <Filter>Исходные файлы</Filter>
     </ClCompile>
     <ClCompile Include="MCU\Pages\PanelSettings\PagePanelSettings.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="MCU\SetValueSelector\SetValueSelector.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
   </ItemGroup>

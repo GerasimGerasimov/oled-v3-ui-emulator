@@ -36,7 +36,7 @@ bool TPagePanelSettings::ProcessMessage(TMessage* m) {
         case (u32)EventSrc::TIMER:
             (delay)
                 ? (delay--)
-                : (SlotUpdate(FlashDataArg), delay = 20);
+                : (SlotUpdate(FlashDataArg), delay = 10);
             break;
         case (u32)EventSrc::KEYBOARD: {
             switch (m->p1) {

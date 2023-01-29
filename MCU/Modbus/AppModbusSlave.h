@@ -1,3 +1,6 @@
+#ifndef APP_MODBUS_SLAVE_H
+#define APP_MODBUS_SLAVE_H
+
 #include "crc16.h"
 #include "bastypes.h"
 #include <string>
@@ -13,7 +16,7 @@ typedef struct {
 } TWriteCmdSrc;
 
 class ModbusSlave {
-	using TSlotDataHandler = std::function<void(Slot& slot, u8* reply)>;
+	using TSlotDataHandler = std::function<void(Slot* slot, u8* reply)>;
 public:
 	static bool setValue(std::string& tag, std::string& value, TSlotDataHandler callback);
 private:
@@ -23,3 +26,5 @@ private:
 	static std::string NetWorkAddrToHex(u16 nwa);
 	static const std::map < std::string, std::function <u8(u8*, TWriteCmdSrc&) >> WriteCmdVariants;
 };
+
+#endif
