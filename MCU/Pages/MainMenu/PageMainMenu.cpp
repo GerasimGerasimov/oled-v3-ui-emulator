@@ -31,6 +31,7 @@ TPageMainMenu::TPageMainMenu(std::string Name)
     LabelInit.Rect = { 10, 10, 10, 10 };
     AddList({
         Container = new TVerticalContainer(pLabelsProps, {
+            new TLinkLabel("Настройки панели", "PanelSetting", LabelInit),
             new TLinkLabel("Основные параметры", "Home",LabelInit),
             new TLinkLabel("Статус работы", "OperateStatus", LabelInit),
             new TLinkLabel("Аварии", "Alarms", LabelInit),
@@ -46,7 +47,6 @@ TPageMainMenu::TPageMainMenu(std::string Name)
             //new TLinkLabel("Данные прямой ВАХ", "Home", LabelInit),
             //new TLinkLabel("Данные обратной ВАХ", "Home", LabelInit),
             //new TLinkLabel("Данные драйвера", "Home", LabelInit),
-            //new TLinkLabel("Настройки панели", "Home", LabelInit)
            })
     });
 };
