@@ -3,11 +3,17 @@
 #include "TagLine.h"
 #include <IniResources.h>
 #include <FixedHeader.h>
+#include "FlashData.h"
 
-/*TODO ну вот как мне показать данные из FLASH самого процессора ОП?!
-они же не так структурированы как параметры в ini-шнике
-Буду решать эту задачу, жаль не подумал о ней заранее.
-Надо использовать готовый интерфейс но понимать что он не связан с COM-портом*/
+/*TODO надо организовать запись во Flash.
+Для этого страница редактирования должна понимать как работать с такими данными*/
+
+const static TSlotHandlerArsg FlashDataArg = {
+    (u8*)&FLASH_DATA,
+    255,
+    0,
+    255
+};
 
 void TPagePanelSettings::view() {
     Container->view();
@@ -15,19 +21,23 @@ void TPagePanelSettings::view() {
 
 void TPagePanelSettings::onOpen() {
     fillPageContainer();
-    //SubscriberID = HandlerSubscribers::set("U1/FLASH/", [this](TSlotHandlerArsg args) { SlotUpdate(args); });
 }
 
 void TPagePanelSettings::startToClose() {
-    //HandlerSubscribers::remove("U1/FLASH/", SubscriberID);
     TagList->Clear();
     isOpen = false;
 }
 
 
 bool TPagePanelSettings::ProcessMessage(TMessage* m) {
+    static u8 delay = 0;
     TVisualObject* e = { nullptr };
     switch (m->Event) {
+        case (u32)EventSrc::TIMER:
+            (delay)
+                ? (delay--)
+                : (SlotUpdate(FlashDataArg), delay = 20);
+            break;
         case (u32)EventSrc::KEYBOARD: {
             switch (m->p1) {
                 case (u32)KeyCodes::ESC:
@@ -70,31 +80,23 @@ TVisualObject* TPagePanelSettings::getSignalOfFocusedChild() {
     return nullptr;
 }
 
-/*
-; уставки связи - этот уарт выведен на разъем
-p501=RS485_1_BPS/Baudrate/TPrmList/xF001/r2000.H/BPS//x01#9600/x02#19200/x03#57600/x04#115200/x04/
-p502=RS485_1_DVA/Address/TByte/xF000/r2000.L/ /1/1//0/x01/
-p503=RS485_1_PRTY/Parity/TPrmList/xF003/r2001.H/ //x00#None/x01#Odd/x02#Even/x00/
-p504=RS485_1_STOP/Stop bits/TPrmList/xF002/r2001.L/ //x00#1bit/x01#0.5bit/x02#2bit/x03#1.5bit/x00/
-
-p505=RS485_2_BPS/Baudrate/TPrmList/xF005/r2002.H/BPS//x01#9600/x02#19200/x03#57600/x04#115200/x04/
-p506=RS485_2_DVA/Address/TByte/xF004/r2002.L/ /1/1//0/x01/
-p507=RS485_2_PRTY/Parity/TPrmList/xF007/r2003.H/ //x00#None/x01#Odd/x02#Even/x00/
-p508=RS485_2_STOP/Stop bits/TPrmList/xF006/r2003.L/ //x00#1bit/x01#0.5bit/x02#2bit/x03#1.5bit/x00/
-*/
-
 void TPagePanelSettings::fillPageContainer(void) {
     TagList->Clear();
     TLabelInitStructure LabelInit;
     LabelInit.style = LabelsStyle::WIDTH_DINAMIC;
     LabelInit.Rect = { 10, 10, 10, 10 };
     LabelInit.focused = false;
-    TParameter* DataSrc = (TParameter*)IniResources::getSignalByTag("SLF/FLASH/ModbusSlaveU1_BPS/");
     TagList->AddList({
-        new TTagLine("#1BPS", "SLF/FLASH/ModbusSlaveU1_BPS/", LabelInit),
-        new TTagLine("#1DVA", "SLF/FLASH/ModbusSlaveU1_DVA/", LabelInit),
-        new TTagLine("#1PRTY", "SLF/FLASH/ModbusSlaveU1_PRTY/", LabelInit),
-        new TTagLine("#1STOP", "SLF/FLASH/ModbusSlaveU1_STOP/", LabelInit),
+        new TTagLine("#S1BPS", "SLF/FLASH/ModbusSlaveU1_BPS/", LabelInit),
+        new TTagLine("#S1DVA", "SLF/FLASH/ModbusSlaveU1_DVA/", LabelInit),
+        new TTagLine("#S1PRTY", "SLF/FLASH/ModbusSlaveU1_PRTY/", LabelInit),
+        new TTagLine("#S1STOP", "SLF/FLASH/ModbusSlaveU1_STOP/", LabelInit),
+        new TTagLine("#M2BPS", "SLF/FLASH/ModbusMasterU2_BPS/", LabelInit),
+        new TTagLine("#M2DVA", "SLF/FLASH/ModbusMasterU2_DVA/", LabelInit),
+        new TTagLine("#M2PRTY", "SLF/FLASH/ModbusMasterU2_PRTY/", LabelInit),
+        new TTagLine("#M2STOP", "SLF/FLASH/ModbusMasterU2_STOP/", LabelInit),
+        new TTagLine("TimeOut", "SLF/FLASH/TIME_OUT_Lnkmngr/", LabelInit),
+        new TTagLine("PASS", "SLF/FLASH/Password/", LabelInit),
     });
 }
 
@@ -120,14 +122,12 @@ TPagePanelSettings::TPagePanelSettings(std::string Name)
 };
 
 void TPagePanelSettings::SlotUpdate(TSlotHandlerArsg args) {
-    /*
     for (auto& e : TagList->List) {
         TTagLine* tag = (TTagLine*)e;
         TParameter* p = (TParameter*)tag->getDataSrc();
         tag->Value->setCaption(p->getValue(args, ""));
     }
     Msg::send_message((u32)EventSrc::REPAINT, 0, 0);
-    */
 }
 
 TPagePanelSettings::~TPagePanelSettings() {
