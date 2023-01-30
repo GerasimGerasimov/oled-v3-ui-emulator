@@ -150,3 +150,9 @@ static const std::string SignalType = "TPrmList";
 const std::string& TPrmList::getSignalType() {
 	return SignalType;
 }
+
+TInternalMemAddress TPrmList::getInternalMemAddr() {
+	s16 offset = Addr.Addr;
+	offset += Addr.Option;//0-L, 1-H byte
+	return { offset,1,-1};
+}

@@ -2,6 +2,7 @@
 #include "parser.h"
 #include "ParametersUtils.h"
 #include "bastypes.h"
+#include <array>
 //Special case Two
 //p13321 = P / C / TBit / xF042 / mask / r2021.1 / 1 / 1 / const / вообще нет MSU
 /*TODO Addr
@@ -69,4 +70,21 @@ const std::string TBit::getWriteCmdType() {
 static const std::string SignalType = "TBit";
 const std::string& TBit::getSignalType() {
 	return SignalType;
+}
+
+static const std::array<u16,16> Mask2BitNumber = {1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024, 2048, 4096, 8192, 16384, 32768};
+TInternalMemAddress TBit::getInternalMemAddr() {
+	s16 offset = Addr.Addr;
+	s16 bitNumber = -1;
+	u16 index = 0;
+	for (auto& e : Mask2BitNumber) {
+		if (e == Addr.Option) {
+			bitNumber = index;
+			break;
+		}
+		index++;
+	}
+	offset += (bitNumber < 7) ? 0 : 1;
+	bitNumber -= (bitNumber < 7) ? 0 : 8;
+	return { offset, 1, bitNumber };
 }

@@ -1,6 +1,6 @@
 #include "FlashData.h"//содержит описания структур данных
 
-const TFLASH_DATA FLASH_DATA =
+TFLASH_DATA FLASH_DATA =
 {     
     0x00000401, //Modbus_RS485;  u32  0-1-2-3
     0x00000401, //Lnkmngr_RS485;u32 4-5-6-7

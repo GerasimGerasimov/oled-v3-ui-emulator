@@ -1,5 +1,7 @@
 #include "SetValueSelector.h"
 #include "IniResources.h"
+#include <parameters.h>
+#include "MemWrite.h"
 
 /*Данные могут размещаться во внутренней памяти МК, или на внешнем устройсве
 Если на внешнем устройсве, будет вызываться ModbusSlave::setValue,
@@ -18,6 +20,12 @@ bool SetValueSelector::setValue(std::string& tag, std::string& value, TSlotDataH
 
 bool SetValueSelector::setInternalValue(std::string& tag, std::string& value) {
 	const TValueSearchStruct Info = IniResources::spliceTagInfo(tag);
+	TParameter* p = (TParameter*)IniResources::getSignalByTag(tag);
+	std::string ValueHex = p->getValueHex(value);//получил значение в хексах и сразу длину (так как строка)
+	TInternalMemAddress Addr = p->getInternalMemAddr();
 	//уже понятно что это SLF
+	if (Info.section == "FLASH") {
+		MemWrite::writeValueToFlash(Addr, ValueHex);
+	}
 	return false;
 }

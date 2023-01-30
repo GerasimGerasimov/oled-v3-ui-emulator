@@ -14,7 +14,6 @@ typedef struct {
 	char* pOptional;
 } TSignalPropsPointers;
 
-
 class ISignal {
 public:
 	ISignal(char* source, int scrLen);

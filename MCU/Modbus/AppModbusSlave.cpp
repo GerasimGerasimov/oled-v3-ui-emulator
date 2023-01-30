@@ -122,7 +122,6 @@ u8 ModbusSlave::get0x16MaskWriteRegisterCmd(u8* a, TWriteCmdSrc& Src) {
     a[0] = (u8)std::stoi(Src.DevAddr);
     a[1] = 0x16;
 
-    /*TODO надо реализовать запись бит в OLED и в коде объекта */
     int index = Src.RegAddr.find('.');
     if (index == std::string::npos) {
         return 0;//это не адрес БАЙТа или БИТа (rrrr.H/L/N)

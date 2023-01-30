@@ -19,6 +19,7 @@ public:
 	const std::string getRegHexAddr();
 	const std::string getWriteCmdType();
 	const std::string& getSignalType();
+	TInternalMemAddress getInternalMemAddr();
 private:
 	char* MSU;
 	float Scale;

@@ -386,6 +386,9 @@
     <ClCompile Include="MCU\SetValueSelector\SetValueSelector.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
+    <ClCompile Include="Drivers\MemWrite\MemWrite.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="WindowsProject1.rc">

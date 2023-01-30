@@ -14,6 +14,7 @@ public:
 	const std::string getRegHexAddr();
 	const std::string getWriteCmdType();
 	const std::string& getSignalType();
+	virtual TInternalMemAddress getInternalMemAddr();
 private:
 	TSpecialSignalAddr Addr;
 	const std::string value(const TSlotHandlerArsg& args);

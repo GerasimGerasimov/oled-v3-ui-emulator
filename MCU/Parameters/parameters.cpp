@@ -63,3 +63,8 @@ const std::string TParameter::getRegHexAddr() {
 const std::string TParameter::getWriteCmdType() {
 	return "No command";
 }
+
+
+TInternalMemAddress TParameter::getInternalMemAddr() {
+	return { -1,0,-1 };
+}

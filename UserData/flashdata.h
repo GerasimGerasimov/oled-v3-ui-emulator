@@ -26,9 +26,9 @@ typedef struct {
  } TFLASH_DATA;
 
 #ifdef __cplusplus
-    extern "C" const TFLASH_DATA FLASH_DATA;
+    extern "C" TFLASH_DATA FLASH_DATA;
 #else
-    extern const TFLASH_DATA FLASH_DATA;
+    extern TFLASH_DATA FLASH_DATA;
 #endif
 //параметры расположеные FLASH
 
