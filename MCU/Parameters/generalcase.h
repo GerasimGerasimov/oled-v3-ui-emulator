@@ -31,6 +31,8 @@ public:
 	virtual std::string getValue(const TSlotHandlerArsg& args, const char* format);
     std::string getValue(){return "";};
 	virtual void setValue();
+	const std::string getRegHexAddr();
+	const std::string getWriteCmdType();
 protected:
 	std::string value(const TSlotHandlerArsg& args, const char* format);
 	virtual TGenaralCaseRawReturn getRawValue(const TSlotHandlerArsg& args);

@@ -6,10 +6,13 @@
 
 class TFloat : public TGeneralCaseSignal {
 public:
+	TInternalMemAddress getInternalMemAddr();
+	const std::string getValueHex(std::string& src);
 	TFloat(TSignalPropsPointers props);
 	~TFloat();
 private:
 	TGenaralCaseRawReturn getRawValue(const TSlotHandlerArsg& args);
+	u32 string2raw(std::string& src);
 };
 
 #endif

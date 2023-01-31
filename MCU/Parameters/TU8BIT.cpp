@@ -84,3 +84,9 @@ static const std::string SignalType = "TU8BIT";
 const std::string& TU8BIT::getSignalType() {
 	return SignalType;
 }
+
+TInternalMemAddress TU8BIT::getInternalMemAddr() {
+	s16 offset = Addr.Addr;
+	offset += Addr.Option;//0-L, 1-H byte
+	return { offset,1,-1 };
+}

@@ -16,6 +16,7 @@ public:
 	const std::string getWriteCmdType();
 	virtual void setValue();
 	const std::string& getSignalType();
+	TInternalMemAddress getInternalMemAddr();
 private:
 	char* MSU;
 	float Scale;

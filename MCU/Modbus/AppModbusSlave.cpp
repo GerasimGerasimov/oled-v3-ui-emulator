@@ -72,12 +72,16 @@ u8 ModbusSlave::get0x10WriteRegCmd(u8* a, TWriteCmdSrc& Src) {
     //данные
     u32 value = std::stol(Src.Value, nullptr, 16);
     (regscnt == 1)
-        ? (a[7] = (value & 0x0000FF00) >> 8,
-            a[8] = (value & 0x000000FF) >> 0)
-        : (a[7] = (value & 0xFF000000) >> 24,
-            a[8] = (value & 0x00FF0000) >> 16,
-            a[9] = (value & 0x0000FF00) >> 8,
-            a[10] = (value & 0x000000FF) >> 0);
+        ? (
+            a[7] = (value & 0x0000FF00) >> 8,
+            a[8] = (value & 0x000000FF) >> 0
+            )
+        : (
+            a[7] = (value & 0x0000FF00) >> 8,
+            a[8] = (value & 0x000000FF) >> 0,
+            a[9] = (value & 0xFF000000) >> 24,
+            a[10] = (value & 0x00FF0000) >> 16
+            );
     //контрольная сумма 
     u8 cmdLen = (regscnt == 1) ? 11 : 13;
     FrameEndCrc16(a, cmdLen);
