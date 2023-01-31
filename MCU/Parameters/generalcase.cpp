@@ -76,6 +76,7 @@ static inline float RawToFloat(TGenaralCaseRawReturn& input) {
 	return res;
 }
 
+//x3EC1B08A 0,3783
 std::string TGeneralCaseSignal::value(const TSlotHandlerArsg& args, const char* format) {
 	TGenaralCaseRawReturn input = getRawValue(args);
 	float res =  RawToFloat(input) * Scale;

@@ -34,7 +34,7 @@ public:
 	const std::string getRegHexAddr();
 	const std::string getWriteCmdType();
 protected:
-	std::string value(const TSlotHandlerArsg& args, const char* format);
+	virtual std::string value(const TSlotHandlerArsg& args, const char* format);
 	virtual TGenaralCaseRawReturn getRawValue(const TSlotHandlerArsg& args);
 	std::string validation(const TSlotHandlerArsg& args);
 	char* MSU;

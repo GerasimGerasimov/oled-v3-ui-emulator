@@ -11,6 +11,7 @@ public:
 	TFloat(TSignalPropsPointers props);
 	~TFloat();
 private:
+	std::string value(const TSlotHandlerArsg& args, const char* format);
 	TGenaralCaseRawReturn getRawValue(const TSlotHandlerArsg& args);
 	u32 string2raw(std::string& src);
 };
