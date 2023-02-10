@@ -74,7 +74,7 @@ void TRouter::ProcessMessage(TMessage* m) {
 };
 
 void TRouter::setInitPage() {
-    setActivePage("CD", nullptr);
+    setActivePage("Home", nullptr);
     RouterTask.isDone = true;
 }
 
