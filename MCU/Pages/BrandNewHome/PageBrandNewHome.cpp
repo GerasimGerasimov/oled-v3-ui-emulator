@@ -1,6 +1,6 @@
 #include "PageBrandNewHome.h"
 #include "Router.h"
-#include "TagLine.h"
+#include "ValueVerticalDiagram.h"
 #include <IniResources.h>
 
 void TPageBrandNewHome::view() {
@@ -29,7 +29,7 @@ bool TPageBrandNewHome::ProcessMessage(TMessage* m) {
                 case (u32)KeyCodes::F1:
                     e = getSignalOfFocusedChild();
                     if (e) {
-                        ISignal* p = IniResources::getSignalByTag(((TTagLine*)(e))->Tag);
+                        ISignal* p = IniResources::getSignalByTag(((TValueVerticalDiagram*)(e))->Tag);
                         TRouter::PageValueEditEntryData.backPage = Name;
                         TRouter::setTask({ false, "Help", p });
                     }
@@ -37,8 +37,8 @@ bool TPageBrandNewHome::ProcessMessage(TMessage* m) {
                 case (u32)KeyCodes::ENT:
                     e = getSignalOfFocusedChild();
                     if (e) {
-                        TRouter::PageValueEditEntryData.tag = ((TTagLine*)(e))->Tag;
-                        TRouter::PageValueEditEntryData.value = ((TTagLine*)(e))->Value->getCaption();
+                        TRouter::PageValueEditEntryData.tag = ((TValueVerticalDiagram*)(e))->Tag;
+                        TRouter::PageValueEditEntryData.value = ((TValueVerticalDiagram*)(e))->Value->getCaption();
                         TRouter::PageValueEditEntryData.backPage = Name;
                         TRouter::setTask({ false, "EditValue", nullptr });
                     }
@@ -69,12 +69,8 @@ void TPageBrandNewHome::fillPageContainer(void) {
     LabelInit.Rect = { 10, 10, 10, 10 };
     LabelInit.focused = false;
     TagList->AddList({
-        new TTagLine("Uref", "U1/RAM/Uref/", LabelInit),
-        new TTagLine("Iref", "U1/RAM/Iref/", LabelInit),
-        new TTagLine("UoutAve", "U1/RAM/UoutAve/", LabelInit),
-        new TTagLine("IoutAve", "U1/RAM/IoutAve/", LabelInit),
-        new TTagLine("SpReq", "U1/RAM/SparkFrq/", LabelInit),
-        new TTagLine("Out", "U1/RAM/Out/", LabelInit),
+        new TValueVerticalDiagram("Iref", "U1/RAM/Iref/", LabelInit),
+
     });
 }
 
@@ -87,7 +83,7 @@ TPageBrandNewHome::TPageBrandNewHome(std::string Name)
 
 void TPageBrandNewHome::SlotUpdate(TSlotHandlerArsg args) {
     for (auto& e : TagList->List) {
-        TTagLine* tag = (TTagLine*)e;
+        TValueVerticalDiagram* tag = (TValueVerticalDiagram*)e;
         TParameter* p = (TParameter*)tag->getDataSrc();
         tag->Value->setCaption(p->getValue(args, ""));
     }
