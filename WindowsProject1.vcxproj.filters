@@ -392,6 +392,9 @@
     <ClCompile Include="MCU\Pages\Calibration\PageCalibration.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
+    <ClCompile Include="MCU\Pages\BrandNewHome\PageBrandNewHome.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="WindowsProject1.rc">
