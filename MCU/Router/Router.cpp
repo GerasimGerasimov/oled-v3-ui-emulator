@@ -3,6 +3,7 @@
 #include "PageAlarms.h"
 #include "PageEditValue.h"
 #include "PageHome.h"
+#include "PageBrandNewHome.h"
 #include "PageHelp.h"
 #include "PageWarnings.h"
 #include "PageOperateStatus.h"
@@ -25,7 +26,7 @@ TPageValueEditEntryData TRouter::PageValueEditEntryData = {"", ""};
 std::map<std::string, TPage*> TRouter::Pages = std::map<std::string, TPage*>();
 
 void TRouter::Init(void) {
-    Pages["Home"] = new TPageHome("Home");
+    Pages["Home"] = new TPageBrandNewHome("Home");
     Pages["Help"] = new TPageHelp("Help");
     Pages["MainMenu"] = new TPageMainMenu("MainMenu");
     Pages["Alarms"] = new TPageAlarms("Alarms");
