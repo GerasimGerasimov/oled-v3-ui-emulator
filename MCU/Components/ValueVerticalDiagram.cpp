@@ -66,8 +66,16 @@ void TValueVerticalDiagram::view(void) {
     rect = { (s16)(ElementRect.Left + 40), (s16)(ElementRect.Top + 10) , 12, 1, 1 };
     TGraphics::fillRect(rect);
 
-    //Dashed line
-    TGraphics::DashedLine( (u8)(ElementRect.Left + 40 - 2 ), (s16)(ElementRect.Top + 30),
-                          (u8)(ElementRect.Left + 40 + 14), (s16)(ElementRect.Top + 30), 1);
+    //FillRect показывает положение Value над Ref
+    rect = { (s16)(ElementRect.Left + 40 + 2), (s16)(ElementRect.Top + 24) , 8, 6, 1 };
+    TGraphics::fillRect(rect);
+
+    //DashedFillRect показывает положение Value под Ref
+    rect = { (s16)(ElementRect.Left + 40 + 2), (s16)(ElementRect.Top + 30) , 8, 22, 1 };
+    TGraphics::DashedfillRect(rect);
+
+    //Dashed line показывает положение Ref
+    TGraphics::DashedLine((u8)(ElementRect.Left + 40 - 2), (s16)(ElementRect.Top + 30),
+        (u8)(ElementRect.Left + 40 + 14), (s16)(ElementRect.Top + 30), 1);
 
 }

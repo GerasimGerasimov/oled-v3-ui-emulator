@@ -27,6 +27,31 @@ void TGraphics::fillRect(TFillRect props) {
         pixel.y++;
     }
 }
+
+void TGraphics::DashedfillRect(TFillRect props) {
+    TPixel pixel = {
+        props.left,
+        props.top,
+        (u8)props.color
+    };
+    u16 w = props.width;
+    u16 h = props.height;
+    u8 color = pixel.color;
+    while (h--) {
+        if (pixel.y >= VIEW_PORT_MAX_HEIGHT) break;
+        w = props.width;
+        pixel.x = props.left;
+        while (w--) {
+            if (pixel.x >= VIEW_PORT_MAX_WIDTH) continue;
+            setPixel(pixel);
+            pixel.color = (pixel.color != 0)? 0 : 1;
+            pixel.x++;
+        }
+        pixel.y++;
+        color = (color == 0) ? 1 : 0;
+        pixel.color = color;
+    }
+}
    
 inline void TGraphics::setPixel(TPixel& props) {
   screen[props.x][props.y] = props.color;

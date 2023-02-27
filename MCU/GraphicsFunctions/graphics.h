@@ -37,6 +37,7 @@ struct TGraphics {
 	public:
 		static void init(void);
 		static void fillRect(TFillRect props);
+		static void DashedfillRect(TFillRect props);
 		static void Line(u8 X1, u8 Y1, u8 X2, u8 Y2, u8 Color);
 		static void DashedLine(u8 X1, u8 Y1, u8 X2, u8 Y2, u8 Color);
 		static void setPixel(TPixel& props);
