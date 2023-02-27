@@ -33,11 +33,12 @@ struct TClipRect {
 	u16 height;
 };
 
-struct TGrahics {
+struct TGraphics {
 	public:
 		static void init(void);
 		static void fillRect(TFillRect props);
 		static void Line(u8 X1, u8 Y1, u8 X2, u8 Y2, u8 Color);
+		static void DashedLine(u8 X1, u8 Y1, u8 X2, u8 Y2, u8 Color);
 		static void setPixel(TPixel& props);
 		static void setPixel(u8 x, u8 y, u8 color);
 		static void outText(std::string text, u16 x, u16 y, u16 color, std::string FontName);

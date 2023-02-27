@@ -9,45 +9,65 @@ const std::string TValueVerticalDiagram::ComponentName() {
     return "TValueVerticalDiagram";
 }
 
-TValueVerticalDiagram::TValueVerticalDiagram(std::string caption, std::string tag, TLabelInitStructure init)
-    : Caption(new TLabel(init))
-    , Value(new TLabel(init))
-    , msu(new TLabel(init))
-    , Tag(tag) {
-    Caption->setCaption(caption);
-    DataSrc = (TParameter*)IniResources::getSignalByTag(tag);
-    Value->setCaption(((TParameter*)DataSrc)->getDefaultValue());
+TValueVerticalDiagram::TValueVerticalDiagram(std::string caption, std::string tag)
+    : Tag(tag) {
+    TLabelInitStructure init;
+    init.style = LabelsStyle::WIDTH_DINAMIC;
+    init.Rect = { 10, 10, 10, 10 };
+    init.focused = false;
+
+    init.font = "Verdana12";
+    Name = new TLabel(init);
+
+    init.font = "MSSansSerifBold14";
+    Value = new TLabel(init);
+
+    init.font = "Verdana12";
+    Ref = new TLabel(init);
+
+    Name->setCaption(caption);
+    Value->setCaption("XXX.X");
+    Ref->setCaption("XXX.X");
 }
 
 TValueVerticalDiagram::~TValueVerticalDiagram() {
-    delete Caption;
+    delete Name;
     delete Value;
-    delete msu;
+    delete Ref;
 }
 
 const u16 TValueVerticalDiagram::getHeight(void) {
-    TTextSizes tsizes = Caption->getSize();
+    TTextSizes tsizes = Name->getSize();
     return tsizes.height;
 }
 
 void TValueVerticalDiagram::view(void) {
-    Caption->inFocus = inFocus;
-    Caption->ElementRect.Top = ElementRect.Top;
-    Caption->ElementRect.Left = ElementRect.Left;
-    Caption->view();//выводит Coption
+    Name->inFocus = inFocus;
+    Name->ElementRect.Top = ElementRect.Top;
+    Name->ElementRect.Left = ElementRect.Left;
+    Name->view();
 
-    if (DataSrc) {/*TODO 2-й раз пишу нужен пустой объект для отлавливания несуществующих тегов*/
-        Value->inFocus = inFocus;
-        Value->ElementRect.Top = ElementRect.Top;
-        Value->ElementRect.Left = 55;//ElementRect.Left;
-        Value->view();
-    }
+    Value->inFocus = inFocus;
+    Value->ElementRect.Top = ElementRect.Top + 50;
+    Value->ElementRect.Left = ElementRect.Left;
+    Value->view();
 
-    if (DataSrc) {/*TODO 2-й раз пишу нужен пустой объект для отлавливания несуществующих тегов*/
-        msu->setCaption(((TParameter*) DataSrc)->getMSU());
-        msu->inFocus = inFocus;
-        msu->ElementRect.Top = ElementRect.Top;
-        msu->ElementRect.Left = 105;//ElementRect.Left;
-        msu->view();
-    }
+    Ref->inFocus = inFocus;
+    Ref->ElementRect.Top = ElementRect.Top + 20;
+    Ref->ElementRect.Left = ElementRect.Left;
+    Ref->view();
+
+
+    TFillRect rect;
+    rect = { (s16)(ElementRect.Left + 40), (s16)(ElementRect.Top + 10) , 1, 42, 1 };
+    TGraphics::fillRect(rect);
+    rect = { (s16)(ElementRect.Left + 40 + 11), (s16)(ElementRect.Top + 10) , 1, 42, 1 };
+    TGraphics::fillRect(rect);
+    rect = { (s16)(ElementRect.Left + 40), (s16)(ElementRect.Top + 10) , 12, 1, 1 };
+    TGraphics::fillRect(rect);
+
+    //Dashed line
+    TGraphics::DashedLine( (u8)(ElementRect.Left + 40 - 2 ), (s16)(ElementRect.Top + 30),
+                          (u8)(ElementRect.Left + 40 + 14), (s16)(ElementRect.Top + 30), 1);
+
 }

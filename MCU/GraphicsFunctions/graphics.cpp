@@ -1,13 +1,13 @@
 #include "graphics.h"
 #include <iostream>
 #include "TMCUFonts.h"
-u8 TGrahics::screen[128][64];
+u8 TGraphics::screen[128][64];
 
-void TGrahics::init(void) {
+void TGraphics::init(void) {
     TMCUFonts::init();
 }
 
-void TGrahics::fillRect(TFillRect props) {
+void TGraphics::fillRect(TFillRect props) {
     TPixel pixel = {
         props.left,
         props.top,
@@ -28,22 +28,22 @@ void TGrahics::fillRect(TFillRect props) {
     }
 }
    
-inline void TGrahics::setPixel(TPixel& props) {
+inline void TGraphics::setPixel(TPixel& props) {
   screen[props.x][props.y] = props.color;
 }
 
-inline void TGrahics::setPixel(u8 x, u8 y, u8 color) {
+inline void TGraphics::setPixel(u8 x, u8 y, u8 color) {
     screen[x][y] = color;
 }
 
-void TGrahics::outText(std::string text, u16 x, u16 y, u16 color, std::string FontName) {
+void TGraphics::outText(std::string text, u16 x, u16 y, u16 color, std::string FontName) {
     u16 height = TMCUText::setFont(FontName);
     for (auto& code : text) {
         putChar(code, x, y, color);
     }
 }
 
-void TGrahics::putChar(u8 Code, u16& x, u16 y, u16 color) {
+void TGraphics::putChar(u8 Code, u16& x, u16 y, u16 color) {
     TCharProps CharProps = TMCUText::setSimbol(Code);
     u16 bitsCnt = 0;
     u32 bits = 0;
@@ -65,14 +65,14 @@ void TGrahics::putChar(u8 Code, u16& x, u16 y, u16 color) {
     };
 }
 
-void TGrahics::outTextClipped(std::string text, u16 x, u16 y, u16 color, std::string FontName, TClipRect& rect) {
+void TGraphics::outTextClipped(std::string text, u16 x, u16 y, u16 color, std::string FontName, TClipRect& rect) {
     u16 height = TMCUText::setFont(FontName);
     for (auto& code : text) {
         putCharClipped(code, x, y, color, rect);
     }
 }
 
-void TGrahics::putCharClipped(u8 Code, u16& x, u16 y, u16 color, TClipRect& rect) {
+void TGraphics::putCharClipped(u8 Code, u16& x, u16 y, u16 color, TClipRect& rect) {
     TCharProps CharProps = TMCUText::setSimbol(Code);
     u16 bitsCnt = 0;
     u32 bits = 0;
@@ -94,7 +94,7 @@ void TGrahics::putCharClipped(u8 Code, u16& x, u16 y, u16 color, TClipRect& rect
     };
 }
 
-void TGrahics::putTextWithSelectedChar(u8* src, u8 len, u16& x, u16 y, u8 Selected, u16 BaseColor, u16 SelectColor) {
+void TGraphics::putTextWithSelectedChar(u8* src, u8 len, u16& x, u16 y, u8 Selected, u16 BaseColor, u16 SelectColor) {
     u16 start_y = y;
     u16 idx = 0;
     u16 Color = BaseColor;
@@ -124,9 +124,7 @@ void TGrahics::putTextWithSelectedChar(u8* src, u8 len, u16& x, u16 y, u8 Select
     }
 }
 
-
-
-void TGrahics::Line(u8 X1, u8 Y1, u8 X2, u8 Y2, u8 Color) {
+void TGraphics::Line(u8 X1, u8 Y1, u8 X2, u8 Y2, u8 Color) {
     int deltaX = abs(X2 - X1);
     int deltaY = abs(Y2 - Y1);
     int signX = X1 < X2 ? 1 : -1;
@@ -137,6 +135,37 @@ void TGrahics::Line(u8 X1, u8 Y1, u8 X2, u8 Y2, u8 Color) {
     for (;;)
     {
         setPixel(X1, Y1, Color);
+        if (X1 == X2 && Y1 == Y2)
+            break;
+
+        error2 = error * 2;
+
+        if (error2 > -deltaY)
+        {
+            error -= deltaY;
+            X1 += signX;
+        }
+
+        if (error2 < deltaX)
+        {
+            error += deltaX;
+            Y1 += signY;
+        }
+    }
+}
+
+void TGraphics::DashedLine(u8 X1, u8 Y1, u8 X2, u8 Y2, u8 Color) {
+    int deltaX = abs(X2 - X1);
+    int deltaY = abs(Y2 - Y1);
+    int signX = X1 < X2 ? 1 : -1;
+    int signY = Y1 < Y2 ? 1 : -1;
+    int error = deltaX - deltaY;
+    int error2;
+
+    for (;;)
+    {
+        setPixel(X1, Y1, Color);
+        Color = (Color == 0) ? 1 : 0;
         if (X1 == X2 && Y1 == Y2)
             break;
 

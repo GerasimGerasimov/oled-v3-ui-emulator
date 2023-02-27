@@ -29,7 +29,7 @@ bool MainPage::isHadlersFilled = false;
 //
 ATOM MainPage::MyRegisterClass(HINSTANCE hInstance)
 {
-    TGrahics::init();
+    TGraphics::init();
     
     WNDCLASSEXW wcex;
 

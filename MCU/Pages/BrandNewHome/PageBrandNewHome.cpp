@@ -4,7 +4,9 @@
 #include <IniResources.h>
 
 void TPageBrandNewHome::view() {
-    TagList->view();
+    for (auto& e : List) {
+        e->view();
+    }
 };
 
 void TPageBrandNewHome::onOpen() {
@@ -14,7 +16,7 @@ void TPageBrandNewHome::onOpen() {
 
 void TPageBrandNewHome::startToClose() {
     HandlerSubscribers::remove("U1/RAM/", SubscriberID);
-    TagList->Clear();
+    Clear();
     isOpen = false;
 }
 
@@ -63,34 +65,27 @@ TVisualObject* TPageBrandNewHome::getSignalOfFocusedChild() {
 }
 
 void TPageBrandNewHome::fillPageContainer(void) {
-    TagList->Clear();
-    TLabelInitStructure LabelInit;
-    LabelInit.style = LabelsStyle::WIDTH_DINAMIC;
-    LabelInit.Rect = { 10, 10, 10, 10 };
-    LabelInit.focused = false;
-    TagList->AddList({
-        new TValueVerticalDiagram("Iref", "U1/RAM/Iref/", LabelInit),
-
+    Clear();
+    AddList({
+        new TValueVerticalDiagram("I, mA", "U1/RAM/Iref/"),
     });
 }
 
 TPageBrandNewHome::TPageBrandNewHome(std::string Name)
     :TPage(Name) {
-    TVerticalContainerProps props = { false };
-    TagList = new TVerticalContainer(props, {});
-    AddList({ TagList });
 };
 
 void TPageBrandNewHome::SlotUpdate(TSlotHandlerArsg args) {
-    for (auto& e : TagList->List) {
+    /*
+    for (auto& e : List) {
         TValueVerticalDiagram* tag = (TValueVerticalDiagram*)e;
         TParameter* p = (TParameter*)tag->getDataSrc();
         tag->Value->setCaption(p->getValue(args, ""));
     }
     Msg::send_message((u32)EventSrc::REPAINT, 0, 0);
+    */
 }
 
 TPageBrandNewHome::~TPageBrandNewHome() {
-    TagList->Clear();
-    delete TagList;
+    Clear();
 };

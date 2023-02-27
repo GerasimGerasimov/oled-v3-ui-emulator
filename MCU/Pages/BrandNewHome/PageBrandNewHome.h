@@ -2,7 +2,6 @@
 #define T_PAGE_BRAND_NEW_HOME_H
 
 #include "Pages.h"
-#include "TVerticalContainer.h"
 #include "HandleSubscribers.h"
 
 class TPageBrandNewHome : public TPage
@@ -16,7 +15,6 @@ public:
     TPageBrandNewHome(std::string Name);
     ~TPageBrandNewHome();
 private:
-    TVerticalContainer* TagList;
     void fillPageContainer(void);
     void SlotUpdate(TSlotHandlerArsg args);
     TVisualObject* getSignalOfFocusedChild();

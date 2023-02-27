@@ -28,7 +28,7 @@ void TDisplayDriver::prepareFrame(void) {
     u8* f = &framebuffer[0][0];
     for (int x = 0; x < 128; x++) {
         for (int y = 0; y < 64; y++) {
-            p = TGrahics::screen[x][y];
+            p = TGraphics::screen[x][y];
             u16 PixNum = (y << 7) + x; //номер пиксела в одномерном массиве, что переводится как Y*128 + X
             u16 ByteNum = PixNum >> 3;;//номер байта в двухмерном массиве  что переводится как PixNum/8
             u8 BitMask = Mask[PixNum - (ByteNum << 3)];//маска для бита
@@ -48,7 +48,7 @@ void TDisplayDriver::out(void) {
     HBRUSH br = Br_Empty;
     for (int y = 0; y < VIEW_PORT_MAX_HEIGHT; y++) {
         for (int x = 0; x < VIEW_PORT_MAX_WIDTH; x++) {
-            br = (TGrahics::screen[x][y] != 0)
+            br = (TGraphics::screen[x][y] != 0)
                 ? Br_Light
                 : Br_Empty;
             r.left = x * DISPLAY_DRRIVER_SCALE;
