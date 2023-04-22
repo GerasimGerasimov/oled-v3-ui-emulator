@@ -28,6 +28,18 @@ void TGraphics::fillRect(TFillRect props) {
     }
 }
 
+void TGraphics::Rect(TFillRect props) {
+    u16 x = props.left;
+    u16 y = props.top;
+    u16 w = props.width;
+    u16 h = props.height;
+    //Line(u8 X1, u8 Y1, u8 X2, u8 Y2, u8 Color) 
+    Line(x, y, x + w, y, props.color);
+    Line(x, y, x, y + h, props.color);
+    Line(x+w, y, x + w, y + h, props.color);
+    Line(x, y+h, x + w, y + h, props.color);
+}
+
 void TGraphics::DashedfillRect(TFillRect props) {
     TPixel pixel = {
         props.left,
@@ -61,18 +73,18 @@ inline void TGraphics::setPixel(u8 x, u8 y, u8 color) {
     screen[x][y] = color;
 }
 
-void TGraphics::outText(std::string text, u16 x, u16 y, u16 color, std::string FontName) {
+void TGraphics::outText(std::string text, s16 x, s16 y, u16 color, std::string FontName) {
     u16 height = TMCUText::setFont(FontName);
     for (auto& code : text) {
         putChar(code, x, y, color);
     }
 }
 
-void TGraphics::putChar(u8 Code, u16& x, u16 y, u16 color) {
+void TGraphics::putChar(u8 Code, s16& x, s16 y, u16 color) {
     TCharProps CharProps = TMCUText::setSimbol(Code);
     u16 bitsCnt = 0;
     u32 bits = 0;
-    u16 start_x = x;
+    s16 start_x = x;
     u32 mask = (1 << (CharProps.BytesByWidth * 8 - 1));
     while (TMCUText::getBitsLine(bits)) {
         if (y >= VIEW_PORT_MAX_HEIGHT) continue;
@@ -81,7 +93,8 @@ void TGraphics::putChar(u8 Code, u16& x, u16 y, u16 color) {
         while (bitsCnt--) {
             if (x >= VIEW_PORT_MAX_WIDTH) continue;
             if ((bits & mask) == 0) {
-                setPixel(x, y, (u8)color);
+                if ((x >= 0) && (y>=0))
+                    setPixel(x, y, (u8)color);
             }
             bits <<= 1;
             x++;
@@ -119,7 +132,7 @@ void TGraphics::putCharClipped(u8 Code, u16& x, u16 y, u16 color, TClipRect& rec
     };
 }
 
-void TGraphics::putTextWithSelectedChar(u8* src, u8 len, u16& x, u16 y, u8 Selected, u16 BaseColor, u16 SelectColor) {
+void TGraphics::putTextWithSelectedChar(u8* src, u8 len, s16& x, s16 y, u8 Selected, u16 BaseColor, u16 SelectColor) {
     u16 start_y = y;
     u16 idx = 0;
     u16 Color = BaseColor;
@@ -207,5 +220,16 @@ void TGraphics::DashedLine(u8 X1, u8 Y1, u8 X2, u8 Y2, u8 Color) {
             error += deltaX;
             Y1 += signY;
         }
+    }
+}
+
+void TGraphics::Path(const std::vector<TPoint>& path, u8 Color) {
+    //первая точка содержит абсолютные координаты, остальные - относительные
+    TPoint firstPoint;
+    TPoint NextPoint;
+    u16 i = 0;
+    for (auto& p : path) {
+        if (i == 0) firstPoint = p;
+        i++;
     }
 }

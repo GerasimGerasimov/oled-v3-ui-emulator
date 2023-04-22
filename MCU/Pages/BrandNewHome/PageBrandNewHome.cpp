@@ -31,7 +31,7 @@ bool TPageBrandNewHome::ProcessMessage(TMessage* m) {
                 case (u32)KeyCodes::F1:
                     e = getSignalOfFocusedChild();
                     if (e) {
-                        ISignal* p = IniResources::getSignalByTag(((TValueVerticalDiagram*)(e))->Tag);
+                        ISignal* p = IniResources::getSignalByTag(((TValueRefVerticalDiagram*)(e))->Tag);
                         TRouter::PageValueEditEntryData.backPage = Name;
                         TRouter::setTask({ false, "Help", p });
                     }
@@ -39,8 +39,8 @@ bool TPageBrandNewHome::ProcessMessage(TMessage* m) {
                 case (u32)KeyCodes::ENT:
                     e = getSignalOfFocusedChild();
                     if (e) {
-                        TRouter::PageValueEditEntryData.tag = ((TValueVerticalDiagram*)(e))->Tag;
-                        TRouter::PageValueEditEntryData.value = ((TValueVerticalDiagram*)(e))->Value->getCaption();
+                        TRouter::PageValueEditEntryData.tag = ((TValueRefVerticalDiagram*)(e))->Tag;
+                        TRouter::PageValueEditEntryData.value = ((TValueRefVerticalDiagram*)(e))->Value->getCaption();
                         TRouter::PageValueEditEntryData.backPage = Name;
                         TRouter::setTask({ false, "EditValue", nullptr });
                     }
@@ -67,7 +67,7 @@ TVisualObject* TPageBrandNewHome::getSignalOfFocusedChild() {
 void TPageBrandNewHome::fillPageContainer(void) {
     Clear();
     AddList({
-        new TValueVerticalDiagram("I, mA", "U1/RAM/Iref/"),
+        new TValueRefVerticalDiagram("I, mA", "U1/RAM/Iref/"),
     });
 }
 
