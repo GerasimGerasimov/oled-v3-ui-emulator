@@ -26,7 +26,7 @@ TPageValueEditEntryData TRouter::PageValueEditEntryData = {"", ""};
 std::map<std::string, TPage*> TRouter::Pages = std::map<std::string, TPage*>();
 
 void TRouter::Init(void) {
-    Pages["Home"] = new TPageBrandNewHome("Home");
+    Pages["Home"] = new TPageHome("Home");//TPageBrandNewHome("Home");
     Pages["Help"] = new TPageHelp("Help");
     Pages["MainMenu"] = new TPageMainMenu("MainMenu");
     Pages["Alarms"] = new TPageAlarms("Alarms");
