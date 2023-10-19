@@ -11,7 +11,7 @@ const u8* OSResources::getRes(void) {
 void OSResources::init() {
     int fSuccess = 0;
     HANDLE fHandle = NULL;
-    fHandle = CreateFile(L"C:\\Users\\info\\source\\repos\\WindowsProject1\\Drivers\\Resources\\res.bin", GENERIC_READ, 0, 0, OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, 0);
+    fHandle = CreateFile(L"Drivers\\Resources\\res.bin", GENERIC_READ, 0, 0, OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, 0);
     if (fHandle != INVALID_HANDLE_VALUE) {
         DWORD FileSize = 0;
         fSuccess = GetFileSize(fHandle, 0);

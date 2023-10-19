@@ -12,8 +12,8 @@ class CmdSender {
 	private:
 		static u16 keyStopReset;
 		static u16 keyRun;
-		static u16 keyClean;
-		static u16 keyVAC;
+		//static u16 keyClean;
+		//static u16 keyVAC;
 		static u16 keyPrevStopReset;
 		static u16 keyPrevRun;
 		static u16 keyMode;
