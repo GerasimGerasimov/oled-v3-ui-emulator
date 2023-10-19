@@ -70,20 +70,20 @@ void TPageBasicProtectionsSettings::fillPageContainer(void) {
     LabelInit.Rect = { 10, 10, 10, 10 };
     LabelInit.focused = false;
     TagList->AddList({
-        new TTagLine("UinLow", "U1/FLASH/UinLow/", LabelInit),
-        new TTagLine("UinHi", "U1/FLASH/UinHi/", LabelInit),
+        new TTagLine("UoutMax", "U1/FLASH/UoutMax/", LabelInit),
+        new TTagLine("tUOutMax", "U1/FLASH/tUOutMax/", LabelInit),
         new TTagLine("FinMin", "U1/FLASH/FinMin/", LabelInit),
         new TTagLine("FinMax", "U1/FLASH/FinMax/", LabelInit),
-        new TTagLine("IinMax", "U1/FLASH/IinMax/", LabelInit),
         new TTagLine("dIinAsym", "U1/FLASH/dIinAsym/", LabelInit),
         new TTagLine("tIinAsym", "U1/FLASH/tIinAsym/", LabelInit),
-        new TTagLine("IoutMax", "U1/FLASH/IoutMax/", LabelInit),
-        new TTagLine("Uopen", "U1/FLASH/Uopen/", LabelInit),
-        new TTagLine("Iopen", "U1/FLASH/Iopen/", LabelInit),
-        new TTagLine("Ushort", "U1/FLASH/Ushort/", LabelInit),
-        new TTagLine("Ishort", "U1/FLASH/Ishort/", LabelInit),
-        new TTagLine("SprFrqMax", "U1/FLASH/SparkFrqMax/", LabelInit),
-        new TTagLine("tBrkPulse", "U1/FLASH/tBreakerPulse/", LabelInit),
+        new TTagLine("dUasym", "U1/FLASH/dUasym/", LabelInit),
+        new TTagLine("tUinAsym", "U1/FLASH/tUinAsym/", LabelInit),
+        new TTagLine("UinMin", "U1/FLASH/UinMin/", LabelInit),
+        new TTagLine("UinMax", "U1/FLASH/UinMax/", LabelInit),
+        new TTagLine("tIinMTZ", "U1/FLASH/tIinMTZ/", LabelInit),
+        new TTagLine("tIoutMTZ", "U1/FLASH/tIoutMTZ/", LabelInit),
+        new TTagLine("tQ1", "U1/FLASH/tQ1/", LabelInit),
+        new TTagLine("tUInMax", "U1/FLASH/tUInMaxPhase/", LabelInit),
     });
 }
 

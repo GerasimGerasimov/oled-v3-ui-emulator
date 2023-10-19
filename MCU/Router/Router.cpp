@@ -34,7 +34,7 @@ void TRouter::Init(void) {
     Pages["EditValue"] = new TPageEditValue("EditValue");
     Pages["OperateStatus"] = new TPageOperateStatus("OperateStatus");
     Pages["BasicProtectionsSettings"] = new TPageBasicProtectionsSettings("BasicProtectionsSettings");
-    Pages["CleanSettings"] = new TPageCleanSettings("CleanSettings");
+    //Pages["CleanSettings"] = new TPageCleanSettings("CleanSettings");
     Pages["Sensors"] = new TPageSensors("Sensors");
     Pages["NetWorkSettings"] = new TPageNetworkSettings("NetWorkSettings");
     Pages["PrmListEdit"] = new TPageParameterListEdit("PrmListEdit");
