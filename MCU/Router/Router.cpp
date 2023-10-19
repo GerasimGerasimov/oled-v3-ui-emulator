@@ -36,9 +36,9 @@ void TRouter::Init(void) {
     Pages["BasicProtectionsSettings"] = new TPageBasicProtectionsSettings("BasicProtectionsSettings");
     //Pages["CleanSettings"] = new TPageCleanSettings("CleanSettings");
     Pages["Sensors"] = new TPageSensors("Sensors");
-    Pages["NetWorkSettings"] = new TPageNetworkSettings("NetWorkSettings");
+    //Pages["NetWorkSettings"] = new TPageNetworkSettings("NetWorkSettings");
     Pages["PrmListEdit"] = new TPageParameterListEdit("PrmListEdit");
-    Pages["PanelSettings"] = new TPagePanelSettings("PanelSettings");
+    //Pages["PanelSettings"] = new TPagePanelSettings("PanelSettings");
     Pages["CD"] = new TPageCalibration("CD");
     setInitPage();
 }
