@@ -4,10 +4,11 @@
 
 std::map < std::string, TTrackedBit > Warnings::Tags = {
 	{"BatteryOFF", {"U1/RAM/BatteryOFF/", nullptr, false, false}},
-	{"KM1", {"U1/RAM/KM1fail/", nullptr, false, false}},
 	{"DExSPWRLNK", {"U1/RAM/DExSPWRLNKFail/", nullptr, false, false}},
 	{"UinFail", {"U1/RAM/UinFailDetect/", nullptr, false, false}},
 	{"NoMode", {"U1/RAM/NoMode/", nullptr, false, false}},
+	{"syncfail", {"U1/RAM/syncfail/", nullptr, false, false}},
+	{"Q1fail", {"U1/RAM/Q1fail/", nullptr, false, false}},
 	//{"Driver", {"U1/RAM/CheckDriver/", nullptr, false, false}},
 	//{"ExtReady", {"U1/RAM/CheckExtReady/", nullptr, false, false}},
 };
