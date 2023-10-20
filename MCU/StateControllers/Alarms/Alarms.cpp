@@ -11,18 +11,19 @@
 
 /*TODO когда "раскачаю RTC (по полной, с окном установки времени) то к аварии добавить метку времени"*/
 std::map < std::string, TTrackedBit > Alarms::Tags = {
-	{"UinLost", {"U1/RAM/UinLostAlm/", nullptr, false, false}},
-	{"UinHi", {"U1/RAM/UinHiAlm/", nullptr, false, false}},
-	{"Sync", {"U1/RAM/SyncAlm/", nullptr, false, false}},
+	{"InMtz", {"U1/RAM/InMtzAlm/", nullptr, false, false}},
+	{"OutMtz", {"U1/RAM/OutMtzAlm/", nullptr, false, false}},
+	{"UoutMax", {"U1/RAM/UoutMaxAlm/", nullptr, false, false}},
+	{"UinAsym", {"U1/RAM/UinAsymFail/", nullptr, false, false}},
 	{"IinAsym", {"U1/RAM/IinAsymAlm/", nullptr, false, false}},
-	{"IinOvc", {"U1/RAM/IinOvcAlm/", nullptr, false, false}},
-	{"IoutOvc", {"U1/RAM/IoutOvcAlm/", nullptr, false, false}},
-	{"OutOpen", {"U1/RAM/OutOpenAlm/", nullptr, false, false}},
-	{"OutShort", {"U1/RAM/OutShortAlm/", nullptr, false, false}},
-	{"FrqSpark", {"U1/RAM/FrqSparkAlm/", nullptr, false, false}},
-	{"Overheat", {"U1/RAM/OverheatAlm/", nullptr, false, false}},
-	{"Driver", {"U1/RAM/DriverAlarm/", nullptr, false, false}},
-	{"External", {"U1/RAM/ExternalAlarm/", nullptr, false, false}},
+	{"UInMaxPhase", {"U1/RAM/UInMaxPhaseFail/", nullptr, false, false}},
+	{"FinFail", {"U1/RAM/FinFail/", nullptr, false, false}},
+	//TODO debug {"syncfail", {"U1/RAM/syncfail/", nullptr, false, false}},
+
+	//{"FrqSpark", {"U1/RAM/FrqSparkAlm/", nullptr, false, false}},
+	//{"Overheat", {"U1/RAM/OverheatAlm/", nullptr, false, false}},
+	//{"Driver", {"U1/RAM/DriverAlarm/", nullptr, false, false}},
+	//{"External", {"U1/RAM/ExternalAlarm/", nullptr, false, false}},
 };
 
 bool Alarms::State = true;

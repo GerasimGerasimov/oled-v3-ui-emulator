@@ -115,10 +115,8 @@ TPageOperateStatus::TPageOperateStatus(std::string Name)
     Container = new TVerticalContainer(props, {
         new TTagLine("Ready", "U1/RAM/Ready/", LabelInit),
         new TTagLine("Run", "U1/RAM/Run/", LabelInit),
-        new TTagLine("Normal", "U1/RAM/Normal/", LabelInit),
-        new TTagLine("Clean", "U1/RAM/Clean/", LabelInit),
-        new TTagLine("VAC", "U1/RAM/VAC/", LabelInit),
-        new TTagLine("Manual", "U1/RAM/Manual/", LabelInit),
+        new TTagLine("Stop", "U1/RAM/stop/", LabelInit),
+        new TTagLine("Режим", "U1/RAM/OperatMode/", LabelInit),
         });
     
     Container->FocusedLine = 0;
