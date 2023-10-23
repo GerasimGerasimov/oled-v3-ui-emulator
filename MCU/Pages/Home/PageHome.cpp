@@ -72,8 +72,8 @@ void TPageHome::fillPageContainer(void) {
     TagList->AddList({
         //new TTagLine("Uref", "U1/RAM/Uref/", LabelInit),
         //new TTagLine("Iref", "U1/RAM/Iref/", LabelInit),
-        new TTagLine("Uout", "U1/RAM/Uout/", LabelInit),
-        new TTagLine("Iout", "U1/RAM/Iout/", LabelInit),
+        new TTagLine("Uout", "U1/RAM/UoutIndication/", LabelInit),
+        new TTagLine("Iout", "U1/RAM/IoutIndication/", LabelInit),
         new TTagLineTime("Время", "U1/RAM/TimeLeft/", LabelInit),
         new TTagLine("отпр. зар", "U1/RAM/TransCharge/", LabelInit),
         new TTagLine("Режим", "U1/RAM/OperatMode/", LabelInit),
