@@ -144,6 +144,8 @@
   <ItemGroup>
     <ClInclude Include="framework.h" />
     <ClInclude Include="MainPage.h" />
+    <ClInclude Include="MCU\Components\LabelTime.h" />
+    <ClInclude Include="MCU\Components\TagLineTime.h" />
     <ClInclude Include="MCU\Events\Events.hpp" />
     <ClInclude Include="MCU\IDrivers\icommastert.h" />
     <ClInclude Include="MCU\IDrivers\iresources.h" />
@@ -172,12 +174,14 @@
     <ClCompile Include="MCU\Components\FixedHeader.cpp" />
     <ClCompile Include="MCU\Components\HeaderLabel.cpp" />
     <ClCompile Include="MCU\Components\Label.cpp" />
+    <ClCompile Include="MCU\Components\LabelTime.cpp" />
     <ClCompile Include="MCU\Components\LinkedTagLabel.cpp" />
     <ClCompile Include="MCU\Components\LinkLabel.cpp" />
     <ClCompile Include="MCU\Components\NumericEdit.cpp" />
     <ClCompile Include="MCU\Components\Pages.cpp" />
     <ClCompile Include="MCU\Components\ParamListSelector.cpp" />
     <ClCompile Include="MCU\Components\TagLine.cpp" />
+    <ClCompile Include="MCU\Components\TagLineTime.cpp" />
     <ClCompile Include="MCU\Components\TComponentListVertical.cpp" />
     <ClCompile Include="MCU\Components\TComponentsContainer.cpp" />
     <ClCompile Include="MCU\Components\TVerticalContainer.cpp" />

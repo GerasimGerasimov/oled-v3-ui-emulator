@@ -51,7 +51,7 @@ protected:
     TColorScheme SelectedColor;//цветовая схема при выделении
     int Style;
     void fillBackGround(TColorScheme& ColorScheme);
-    void outCaption(TColorScheme& ColorScheme);
+    virtual void outCaption(TColorScheme& ColorScheme);
 };
 
 #endif

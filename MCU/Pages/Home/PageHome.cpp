@@ -1,6 +1,7 @@
 #include "PageHome.h"
 #include "Router.h"
 #include "TagLine.h"
+#include "TagLineTime.h"
 #include <IniResources.h>
 
 void TPageHome::view() {
@@ -73,7 +74,7 @@ void TPageHome::fillPageContainer(void) {
         //new TTagLine("Iref", "U1/RAM/Iref/", LabelInit),
         new TTagLine("Uout", "U1/RAM/Uout/", LabelInit),
         new TTagLine("Iout", "U1/RAM/Iout/", LabelInit),
-        new TTagLine("Время", "U1/RAM/TimeLeft/", LabelInit),
+        new TTagLineTime("Время", "U1/RAM/TimeLeft/", LabelInit),
         new TTagLine("отпр. зар", "U1/RAM/TransCharge/", LabelInit),
         new TTagLine("Режим", "U1/RAM/OperatMode/", LabelInit),
     });
