@@ -51,16 +51,16 @@ bool TPageOperateStatus::ProcessMessage(TMessage* m) {
     return false;
 };
 
-static const std::string CMD_NORMAL = "5310";
-static const std::string CMD_CLEAN = "5311";
-static const std::string CMD_VAC = "5312";
-static const std::string CMD_TEST = "5313";
+static const std::string CMD_CHARGE = "3333";
+static const std::string CMD_CHARGE_EQUAL = "4444";
+static const std::string CMD_DISCHARGE = "5555";
+//static const std::string CMD_TEST = "5313";
 
 static const std::map <std::string, std::string> CmdBySignalName = {
-    {"Normal", CMD_NORMAL},
-    {"Clean", CMD_CLEAN},
-    {"VAC", CMD_VAC},
-    {"Manual", CMD_TEST}
+    {"Charge", CMD_CHARGE},
+    {"EqualCharge", CMD_CHARGE_EQUAL},
+    {"Discharge", CMD_DISCHARGE},
+    
 };
 
 void TPageOperateStatus::sendModeCmd(ISignal* signal) {
@@ -116,7 +116,10 @@ TPageOperateStatus::TPageOperateStatus(std::string Name)
         new TTagLine("Ready", "U1/RAM/Ready/", LabelInit),
         new TTagLine("Run", "U1/RAM/Run/", LabelInit),
         new TTagLine("Stop", "U1/RAM/stop/", LabelInit),
-        new TTagLine("Режим", "U1/RAM/OperatMode/", LabelInit),
+        new TTagLine("Charge", "U1/RAM/Charge/", LabelInit),
+        new TTagLine("EqCharge", "U1/RAM/EqualCharge/", LabelInit),
+        new TTagLine("Discharge", "U1/RAM/Discharge/", LabelInit),
+        new TTagLine("Mode", "U1/RAM/OperatMode/", LabelInit),
         });
     
     Container->FocusedLine = 0;

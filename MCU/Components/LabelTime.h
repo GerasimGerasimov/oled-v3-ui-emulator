@@ -4,7 +4,8 @@
 
 class TLabelTime : public TLabel {
 protected:
-	void outCaption(TColorScheme& ColorScheme) override;
+
+	void view() override;
 private:
 	void setTimeToHH_MM();
 	std::string oldCaption = "";
