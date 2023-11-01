@@ -81,7 +81,9 @@ void TPageBasicProtectionsSettings::fillPageContainer(void) {
         new TTagLine("UinMin", "U1/FLASH/UinMin/", LabelInit),
         new TTagLine("UinMax", "U1/FLASH/UinMax/", LabelInit),
         new TTagLine("tIinMTZ", "U1/FLASH/tIinMTZ/", LabelInit),
+        new TTagLine("IinMTZ", "U1/FLASH/IinMTZ/", LabelInit),
         new TTagLine("tIoutMTZ", "U1/FLASH/tIoutMTZ/", LabelInit),
+        new TTagLine("IoutMTZ", "U1/FLASH/IoutMTZ/", LabelInit),
         new TTagLine("tQ1", "U1/FLASH/tQ1/", LabelInit),
         new TTagLine("tUInMax", "U1/FLASH/tUInMaxPhase/", LabelInit),
     });

@@ -20,6 +20,7 @@ std::map < std::string, TTrackedBit > Alarms::Tags = {
 	{"FinFail", {"U1/RAM/FinFail/", nullptr, false, false}},
 	{"KM1", {"U1/RAM/KM1fail/", nullptr, false, false}},
 	{"RevertAKB", {"U1/RAM/ReversBattery/", nullptr, false, false}},
+	{"DOAlarm", {"U1/RAM/DOAlarm/", nullptr, false, false}},
 
 	//{"FrqSpark", {"U1/RAM/FrqSparkAlm/", nullptr, false, false}},
 	//{"Overheat", {"U1/RAM/OverheatAlm/", nullptr, false, false}},
