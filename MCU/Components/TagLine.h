@@ -17,9 +17,12 @@ public:
     TLabel* Value;
     const std::string Tag;
     const std::string ComponentName();
+    virtual void update(const TSlotHandlerArsg& args, const char* format) override;
 private:
+protected:
     TLabel* Caption;
     TLabel* msu; 
+
 };
 
 #endif

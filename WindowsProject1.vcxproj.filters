@@ -132,6 +132,12 @@
     <ClInclude Include="MCU\Components\TagLineTime.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
+    <ClInclude Include="MCU\Components\TwoTagLine.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="TagLineVarSize.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -401,7 +407,13 @@
     <ClCompile Include="MCU\Components\LabelTime.cpp">
       <Filter>MCU\Components</Filter>
     </ClCompile>
+    <ClCompile Include="MCU\Components\TwoTagLine.cpp">
+      <Filter>MCU\Components</Filter>
+    </ClCompile>
     <ClCompile Include="MCU\Components\TagLineTime.cpp">
+      <Filter>MCU\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="TagLineVarSize.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
   </ItemGroup>

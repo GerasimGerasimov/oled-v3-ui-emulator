@@ -3,6 +3,7 @@
 
 #include <stm32f4xx.h>
 #include "msg.h"
+#include "SlotHandlerType.h"
 #include <vector>
 #include <string>
 
@@ -34,6 +35,7 @@ public:
     TVisualObject(TVisualObjectInitStructure props);
     virtual ~TVisualObject();
     void* getDataSrc();
+    virtual void update(const TSlotHandlerArsg& args, const char* format);
 protected:
     void* DataSrc;
 };

@@ -2,6 +2,8 @@
 #include "Router.h"
 #include "TagLine.h"
 #include "TagLineTime.h"
+#include "TagLineVarSize.h"
+#include "TwoTagLine.h"
 #include <IniResources.h>
 
 void TPageHome::view() {
@@ -70,14 +72,16 @@ void TPageHome::fillPageContainer(void) {
     LabelInit.Rect = { 10, 10, 10, 10 };
     LabelInit.focused = false;
     TagList->AddList({
-        new TTagLine("Uout", "U1/RAM/UoutIndication/", LabelInit),
-        new TTagLine("Iout", "U1/RAM/IoutIndication/", LabelInit),
-        new TTagLineTime("Time", "U1/RAM/TimeLeft/", LabelInit),
-        new TTagLine("Trans Cg", "U1/RAM/TransCharge/", LabelInit),
-        new TTagLine("Mode", "U1/RAM/OperatMode/", LabelInit),
+        new TTwoTagLine(new TTagLineVarSize("", "U1/RAM/Uout/", LabelInit, 0), new TTagLineVarSize("", "U1/RAM/Iout/", LabelInit, 60)),
+        new TTagLine("Uout", "U1/RAM/Uout/", LabelInit),
+        new TTagLine("Iout", "U1/RAM/Iout/", LabelInit),
+        new TTagLine("", "U1/RAM/TransCharge/", LabelInit),
+        new TTagLine("Режим", "U1/RAM/OperatMode/", LabelInit),
+        new TTagLineTime("Время", "U1/RAM/TimeLeft/", LabelInit),
         new TTagLine("Iref", "U1/RAM/Iref/", LabelInit),
         new TTagLine("Uref", "U1/RAM/Uref/", LabelInit),
     });
+    
 }
 
 TPageHome::TPageHome(std::string Name)
@@ -89,9 +93,7 @@ TPageHome::TPageHome(std::string Name)
 
 void TPageHome::SlotUpdate(TSlotHandlerArsg args) {
     for (auto& e : TagList->List) {
-        TTagLine* tag = (TTagLine*)e;
-        TParameter* p = (TParameter*)tag->getDataSrc();
-        tag->Value->setCaption(p->getValue(args, ""));
+        e->update(args, "");
     }
     Msg::send_message((u32)EventSrc::REPAINT, 0, 0);
 }

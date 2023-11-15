@@ -51,6 +51,8 @@ bool TPageOperateStatus::ProcessMessage(TMessage* m) {
     return false;
 };
 
+static const std::string CMD_STOP = "1000";
+static const std::string CMD_START = "1111";
 static const std::string CMD_CHARGE = "3333";
 static const std::string CMD_CHARGE_EQUAL = "4444";
 static const std::string CMD_DISCHARGE = "5555";
@@ -60,7 +62,8 @@ static const std::map <std::string, std::string> CmdBySignalName = {
     {"Charge", CMD_CHARGE},
     {"EqualCharge", CMD_CHARGE_EQUAL},
     {"Discharge", CMD_DISCHARGE},
-    
+    {"Run", CMD_START},
+    {"stop", CMD_STOP},
 };
 
 void TPageOperateStatus::sendModeCmd(ISignal* signal) {

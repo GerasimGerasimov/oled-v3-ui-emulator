@@ -28,3 +28,5 @@ TVisualObject* TVisualObject::getFocusedElement() {
 void* TVisualObject::getDataSrc() {
 	return DataSrc;
 }
+
+void TVisualObject::update(const TSlotHandlerArsg& args, const char* format) {}

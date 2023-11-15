@@ -9,6 +9,12 @@ const std::string TTagLine::ComponentName() {
     return "TTagLine";
 }
 
+void TTagLine::update(const TSlotHandlerArsg& args, const char* format) {
+  
+  TParameter* p = static_cast<TParameter*>(DataSrc);
+  Value->setCaption(p->getValue(args, ""));
+}
+
 TTagLine::TTagLine(std::string caption, std::string tag, TLabelInitStructure init)
     : Caption(new TLabel(init))
     , Value(new TLabel(init))
