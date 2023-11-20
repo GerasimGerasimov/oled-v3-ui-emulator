@@ -13,7 +13,7 @@ void TTagLineVarSize::view() {
   if (DataSrc) {
     Value->inFocus = inFocus;
     Value->ElementRect.Top = ElementRect.Top;
-    Value->ElementRect.Left = ((Caption->getCaption() == "") ? ElementRect.Left : Caption->ElementRect.Left + Caption->ElementRect.Width + gap);//ElementRect.Left;
+    Value->ElementRect.Left = ((Caption->getCaption() == "") ? ElementRect.Left : Caption->ElementRect.Left + Caption->getSize().width + gap);//ElementRect.Left;
     Value->view();
   }
 
@@ -21,7 +21,7 @@ void TTagLineVarSize::view() {
     msu->setCaption(((TParameter*)DataSrc)->getMSU());
     msu->inFocus = inFocus;
     msu->ElementRect.Top = ElementRect.Top;
-    msu->ElementRect.Left = Value->ElementRect.Left + Value->ElementRect.Width + gap;//ElementRect.Left;
+    msu->ElementRect.Left = Value->ElementRect.Left + Value->getSize().width + gap;//ElementRect.Left;
     msu->view();
   }
 }
