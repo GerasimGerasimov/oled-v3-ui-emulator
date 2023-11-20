@@ -1,6 +1,6 @@
 #include "IniResources.h"
 #include "TwoTagLine.h"
-#include "TagLine.h"
+#include "TagLineVarSize.h"
 
 
 TTwoTagLine::TTwoTagLine(std::string caption1, std::string tag1, TLabelInitStructure init1, std::string caption2, std::string tag2, TLabelInitStructure init2) {
@@ -33,15 +33,15 @@ const u16 TTwoTagLine::getHeight() {
 	return height;
 }
 
-TTagLine* TTwoTagLine::getFirstTag() {
-	return firstTag;
-}
-
-TTagLine* TTwoTagLine::getSecondTag() {
-	return secondTag;
-}
-
 void TTwoTagLine::update(const TSlotHandlerArsg& args, const char* format) {
 	firstTag->update(args, format);
 	secondTag->update(args, format);
+}
+
+void TTwoTagLine::setLeftFirstTag(u16 left) {
+	static_cast<TTagLineVarSize*>(firstTag)->setLeftSide(left);
+}
+
+void TTwoTagLine::setLeftSecondTag(u16 left) {
+	static_cast<TTagLineVarSize*>(secondTag)->setLeftSide(left);
 }

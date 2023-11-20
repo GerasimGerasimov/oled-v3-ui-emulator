@@ -16,8 +16,8 @@ public:
 	~TTwoTagLine();
 	virtual void view() override;
 	virtual const u16 getHeight() override;
-	TTagLine* getFirstTag();
-	TTagLine* getSecondTag();
 	virtual void update(const TSlotHandlerArsg& args, const char* format) override;
+	void setLeftFirstTag(u16 left);
+	void setLeftSecondTag(u16 left);
 };
 

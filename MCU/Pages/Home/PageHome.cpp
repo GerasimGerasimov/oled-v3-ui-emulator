@@ -72,10 +72,8 @@ void TPageHome::fillPageContainer(void) {
     LabelInit.Rect = { 10, 10, 10, 10 };
     LabelInit.focused = false;
     TagList->AddList({
-        new TTwoTagLine(new TTagLineVarSize("", "U1/RAM/Uout/", LabelInit, 0), new TTagLineVarSize("", "U1/RAM/Iout/", LabelInit, 60)),
-        new TTagLine("Uout", "U1/RAM/Uout/", LabelInit),
-        new TTagLine("Iout", "U1/RAM/Iout/", LabelInit),
-        new TTagLine("", "U1/RAM/TransCharge/", LabelInit),
+        new TTwoTagLine(new TTagLineVarSize("", "U1/RAM/Uout/", LabelInit, 0), new TTagLineVarSize("", "U1/RAM/Iout/", LabelInit, 70)),
+        new TTagLineVarSize("", "U1/RAM/TransCharge/", LabelInit, 0),
         new TTagLine("Режим", "U1/RAM/OperatMode/", LabelInit),
         new TTagLineTime("Время", "U1/RAM/TimeLeft/", LabelInit),
         new TTagLine("Iref", "U1/RAM/Iref/", LabelInit),
