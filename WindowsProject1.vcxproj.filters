@@ -135,11 +135,11 @@
     <ClInclude Include="MCU\Components\TwoTagLine.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="TagLineVarSize.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
     <ClInclude Include="MCU\Parameters\TU32BIT.h">
       <Filter>MCU\Parameters</Filter>
+    </ClInclude>
+    <ClInclude Include="MCU\Components\TagLineVarSize.h">
+      <Filter>MCU\Components</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -416,11 +416,11 @@
     <ClCompile Include="MCU\Components\TagLineTime.cpp">
       <Filter>MCU\Components</Filter>
     </ClCompile>
-    <ClCompile Include="TagLineVarSize.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
     <ClCompile Include="MCU\Parameters\TU32BIT.cpp">
       <Filter>MCU\Parameters</Filter>
+    </ClCompile>
+    <ClCompile Include="MCU\Components\TagLineVarSize.cpp">
+      <Filter>MCU\Components</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

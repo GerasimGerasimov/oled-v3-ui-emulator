@@ -32,6 +32,8 @@ bld/
 [Oo]ut/
 [Ll]og/
 [Ll]ogs/
+CompileOut/
+settings/
 
 # Visual Studio 2015/2017 cache/options directory
 .vs/
@@ -97,6 +99,8 @@ StyleCopReport.xml
 *.pidb
 *.svclog
 *.scc
+*.ewt
+*.dep
 
 # Chutzpah Test files
 _Chutzpah*

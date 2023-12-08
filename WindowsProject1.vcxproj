@@ -146,6 +146,7 @@
     <ClInclude Include="MainPage.h" />
     <ClInclude Include="MCU\Components\LabelTime.h" />
     <ClInclude Include="MCU\Components\TagLineTime.h" />
+    <ClInclude Include="MCU\Components\TagLineVarSize.h" />
     <ClInclude Include="MCU\Components\TwoTagLine.h" />
     <ClInclude Include="MCU\Events\Events.hpp" />
     <ClInclude Include="MCU\IDrivers\icommastert.h" />
@@ -156,7 +157,6 @@
     <ClInclude Include="MCU\StateControllers\StateControllers.h" />
     <ClInclude Include="MCU\TODO.h" />
     <ClInclude Include="Resource.h" />
-    <ClInclude Include="TagLineVarSize.h" />
     <ClInclude Include="targetver.h" />
     <ClInclude Include="WindowsProject1.h" />
   </ItemGroup>
@@ -185,6 +185,7 @@
     <ClCompile Include="MCU\Components\ParamListSelector.cpp" />
     <ClCompile Include="MCU\Components\TagLine.cpp" />
     <ClCompile Include="MCU\Components\TagLineTime.cpp" />
+    <ClCompile Include="MCU\Components\TagLineVarSize.cpp" />
     <ClCompile Include="MCU\Components\TComponentListVertical.cpp" />
     <ClCompile Include="MCU\Components\TComponentsContainer.cpp" />
     <ClCompile Include="MCU\Components\TVerticalContainer.cpp" />
@@ -245,7 +246,6 @@
     <ClCompile Include="MCU\StateControllers\Alarms\Alarms.cpp" />
     <ClCompile Include="MCU\StateControllers\Warnings\Warnings.cpp" />
     <ClCompile Include="Source.cpp" />
-    <ClCompile Include="TagLineVarSize.cpp" />
     <ClCompile Include="threads\mcu_main_thread.cpp" />
     <ClCompile Include="threads\mutexes.cpp" />
     <ClCompile Include="UserData\flashdata.c" />
