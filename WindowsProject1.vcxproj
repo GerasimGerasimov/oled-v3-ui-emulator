@@ -151,6 +151,7 @@
     <ClInclude Include="MCU\IDrivers\icommastert.h" />
     <ClInclude Include="MCU\IDrivers\iresources.h" />
     <ClInclude Include="MCU\Modbus\modbus.h" />
+    <ClInclude Include="MCU\Parameters\TU32BIT.h" />
     <ClInclude Include="MCU\Slots\SlotHandlerType.h" />
     <ClInclude Include="MCU\StateControllers\StateControllers.h" />
     <ClInclude Include="MCU\TODO.h" />
@@ -232,6 +233,7 @@
     <ClCompile Include="MCU\Parameters\TPrmList.cpp" />
     <ClCompile Include="MCU\Parameters\TS16bit.cpp" />
     <ClCompile Include="MCU\Parameters\TU16bit.cpp" />
+    <ClCompile Include="MCU\Parameters\TU32BIT.cpp" />
     <ClCompile Include="MCU\Parameters\TU8BIT.cpp" />
     <ClCompile Include="MCU\Parameters\vars.cpp" />
     <ClCompile Include="MCU\Resources\resources.cpp" />

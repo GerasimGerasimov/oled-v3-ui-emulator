@@ -8,6 +8,7 @@
 #include "TFloat.h"
 #include "TBit.h"
 #include "TPrmList.h"
+#include "TU32BIT.h"
 
 TSignalPropsPointers SignalFactoty::getSignalProps(const char* dev, const char* source, const int srcLen) {
 	TSignalPropsPointers res = { NULL, NULL, NULL, NULL, NULL };
@@ -37,7 +38,8 @@ static const std::map<std::string, std::function<pSignal(TSignalPropsPointers)>>
 	{"TInteger", [](TSignalPropsPointers props) {return new TS16BIT(props); }},
 	{"TBit", [](TSignalPropsPointers props) {return new TBit(props); }},
 	{"TWORD", [](TSignalPropsPointers props) {return new TU16BIT(props); }},
-	{"TPrmList", [](TSignalPropsPointers props) {return new TPrmList(props); }}
+	{"TPrmList", [](TSignalPropsPointers props) {return new TPrmList(props); }},
+	{"TDWORD", [](TSignalPropsPointers props) {return new TU32BIT(props); }}
 };
 
 pSignal SignalFactoty::getSignal(const TSignalPropsPointers& props) {
