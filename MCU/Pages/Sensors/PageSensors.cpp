@@ -92,18 +92,14 @@ void TPageSensors::fillPageContainer(void) {
     LabelInit.Rect = { 10, 10, 10, 10 };
     LabelInit.focused = false;
     TagList->AddList({
-        new TTagLine("Uout", "U1/RAM/UoutIndication/", LabelInit),
-        new TTagLine("Iout", "U1/RAM/IoutIndication/", LabelInit),
-        new TTagLine("Iin", "U1/RAM/Iin/", LabelInit),
+        new TTagLine("Freq", "U1/RAM/Freq/", LabelInit),
+        new TTagLine("Vab", "U1/RAM/Vab/", LabelInit),
+        new TTagLine("Vbc", "U1/RAM/Vbc/", LabelInit),
+        new TTagLine("Vca", "U1/RAM/Vca/", LabelInit),
         new TTagLine("Ia", "U1/RAM/Ia/", LabelInit),
         new TTagLine("Ib", "U1/RAM/Ib/", LabelInit),
         new TTagLine("Ic", "U1/RAM/Ic/", LabelInit),
-        new TTagLine("Uin", "U1/RAM/Uin/", LabelInit),
-        new TTagLine("Ua", "U1/RAM/Ua/", LabelInit),
-        new TTagLine("Ub", "U1/RAM/Ub/", LabelInit),
-        new TTagLine("Uc", "U1/RAM/Uc/", LabelInit),
-        new TTagLine("Fin", "U1/RAM/Fin/", LabelInit),
-        new TTagLine("Alpha", "U1/RAM/Alpha/", LabelInit),
+        new TTagLine("RINSL", "U1/RAM/R/", LabelInit),//TODO 
     });
 }
 
@@ -114,7 +110,7 @@ TPageSensors::TPageSensors(std::string Name)
 
     TLabelInitStructure LabelInit;
     LabelInit.pOwner = Container;
-    LabelInit.caption = "Датчики";
+    LabelInit.caption = "Параметры сети";
     TFixedHeader* pHeader = new TFixedHeader(LabelInit);
     Container->Add(pHeader);
 

@@ -70,25 +70,11 @@ void TPageBasicProtectionsSettings::fillPageContainer(void) {
     LabelInit.Rect = { 10, 10, 10, 10 };
     LabelInit.focused = false;
     TagList->AddList({
-        new TTagLine("UoutMax", "U1/FLASH/UoutMax/", LabelInit),
-        new TTagLine("tUOutMax", "U1/FLASH/tUOutMax/", LabelInit),
-        new TTagLine("FinMin", "U1/FLASH/FinMin/", LabelInit),
-        new TTagLine("FinMax", "U1/FLASH/FinMax/", LabelInit),
-        new TTagLine("dIinAsym", "U1/FLASH/dIinAsym/", LabelInit),
-        new TTagLine("tIinAsym", "U1/FLASH/tIinAsym/", LabelInit),
-        new TTagLine("dUasym", "U1/FLASH/dUasym/", LabelInit),
-        new TTagLine("tUinAsym", "U1/FLASH/tUinAsym/", LabelInit),
-        new TTagLine("UinMin", "U1/FLASH/UinMin/", LabelInit),
-        new TTagLine("UinMax", "U1/FLASH/UinMax/", LabelInit),
-        new TTagLine("tIinMTZ", "U1/FLASH/tIinMTZ/", LabelInit),
-        new TTagLine("IinMTZ", "U1/FLASH/IinMTZ/", LabelInit),
-        new TTagLine("tIoutMTZ", "U1/FLASH/tIoutMTZ/", LabelInit),
-        new TTagLine("IoutMTZ", "U1/FLASH/IoutMTZ/", LabelInit),
-        new TTagLine("tQ1", "U1/FLASH/tQ1/", LabelInit),
-        new TTagLine("tUInMax", "U1/FLASH/tUInMaxPhase/", LabelInit),
-        new TTagLine("tFinFail", "U1/FLASH/tFinFail/", LabelInit),
-        new TTagLine("tKM1", "U1/FLASH/tKM1/", LabelInit),
-        new TTagLine("tsyncfail", "U1/FLASH/tsyncfail/", LabelInit),
+        new TTagLine("Max.I нагрузки", "U1/FLASH/IrMaxFlt/", LabelInit),
+        new TTagLine("Max.I выпрямит", "U1/FLASH/IttMaxFlt/", LabelInit),
+        new TTagLine("Угол обрывОС", "U1/FLASH/fFbSpdAminFlt/", LabelInit),
+        new TTagLine("Топр.обрываОС", "U1/FLASH/fFbSpdTimeFlt/", LabelInit),
+
     });
 }
 
@@ -99,7 +85,7 @@ TPageBasicProtectionsSettings::TPageBasicProtectionsSettings(std::string Name)
 
     TLabelInitStructure LabelInit;
     LabelInit.pOwner = Container;
-    LabelInit.caption = "Защиты. Основные";
+    LabelInit.caption = "Уставки защит";
     TFixedHeader* pHeader = new TFixedHeader(LabelInit);
     Container->Add(pHeader);
 
