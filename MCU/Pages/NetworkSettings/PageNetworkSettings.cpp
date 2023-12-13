@@ -89,7 +89,7 @@ void TPageNetworkSettings::fillPageContainer(void) {
         new TTagLine("Мин.U сети", "U1/FLASH/UminSpRect/", LabelInit),
         new TTagLine("Макс.F сети", "U1/FLASH/FmaxSpRect/", LabelInit),
         new TTagLine("Мин.F сети", "U1/FLASH/FminSpRect/", LabelInit),
-        new TTagLine("T определения", "U1/FLASH/SUPPLFltTime/", LabelInit),
+        new TTagLine("T определ", "U1/FLASH/SUPPLFltTime/", LabelInit),
 
     });
 }
