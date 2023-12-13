@@ -70,10 +70,10 @@ void TPageBasicProtectionsSettings::fillPageContainer(void) {
     LabelInit.Rect = { 10, 10, 10, 10 };
     LabelInit.focused = false;
     TagList->AddList({
-        new TTagLine("Max.I нагрузки", "U1/FLASH/IrMaxFlt/", LabelInit),
-        new TTagLine("Max.I выпрямит", "U1/FLASH/IttMaxFlt/", LabelInit),
-        new TTagLine("Угол обрывОС", "U1/FLASH/fFbSpdAminFlt/", LabelInit),
-        new TTagLine("Топр.обрываОС", "U1/FLASH/fFbSpdTimeFlt/", LabelInit),
+        new TTagLine("Max.I нагр", "U1/FLASH/IrMaxFlt/", LabelInit),
+        new TTagLine("Max.I выпр", "U1/FLASH/IttMaxFlt/", LabelInit),
+        new TTagLine("Угол обр.ОС", "U1/FLASH/fFbSpdAminFlt/", LabelInit),
+        new TTagLine("Топр.обр.ОС", "U1/FLASH/fFbSpdTimeFlt/", LabelInit),
 
     });
 }

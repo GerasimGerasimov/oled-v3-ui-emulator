@@ -19,9 +19,9 @@ void TPageThermalProtection::fillPageContainer(void) {
   LabelInit.focused = false;
 
   TagList->AddList({
-      new TTagLine("Тпост нагрева охл", "U1/FLASH/Ti2tR/", LabelInit),
+      new TTagLine("Тпост нагр охл", "U1/FLASH/Ti2tR/", LabelInit),
       new TTagLine("Нагрев", "U1/FLASH/i2tOV_ON/", LabelInit),
-      new TTagLine("Восстановление", "U1/FLASH/i2tOV_OFF/", LabelInit),
+      new TTagLine("Восстан", "U1/FLASH/i2tOV_OFF/", LabelInit),
       new TTagLine("TEngOVH", "U1/FLASH/TEngOVH/", LabelInit),
     });
 }

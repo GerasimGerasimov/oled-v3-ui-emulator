@@ -70,9 +70,9 @@ void TPageControlSettings::fillPageContainer(void) {
     LabelInit.Rect = { 10, 10, 10, 10 };
     LabelInit.focused = false;
     TagList->AddList({
-        new TTagLine("Предупрежд", "U1/FLASH/RInslLow/", LabelInit),
+        new TTagLine("Предупр", "U1/FLASH/RInslLow/", LabelInit),
         new TTagLine("Авария", "U1/FLASH/RInslFlt/", LabelInit),
-        new TTagLine("Восстановлен", "U1/FLASH/RInslUp/", LabelInit),
+        new TTagLine("Восстан", "U1/FLASH/RInslUp/", LabelInit),
         });
 }
 
