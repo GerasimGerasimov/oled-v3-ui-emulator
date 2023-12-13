@@ -87,18 +87,10 @@ void TPagePanelSettings::fillPageContainer(void) {
     LabelInit.Rect = { 10, 10, 10, 10 };
     LabelInit.focused = false;
     TagList->AddList({
-        new TTagLine("#DI1", "SLF/FLASH/DI_1/", LabelInit),
-        new TTagLine("#DI2", "SLF/FLASH/DI_2/", LabelInit),
-        new TTagLine("#S1BPS", "SLF/FLASH/ModbusSlaveU1_BPS/", LabelInit),
-        new TTagLine("#S1DVA", "SLF/FLASH/ModbusSlaveU1_DVA/", LabelInit),
-        new TTagLine("#S1PRTY", "SLF/FLASH/ModbusSlaveU1_PRTY/", LabelInit),
-        new TTagLine("#S1STOP", "SLF/FLASH/ModbusSlaveU1_STOP/", LabelInit),
-        new TTagLine("#M2BPS", "SLF/FLASH/ModbusMasterU2_BPS/", LabelInit),
-        new TTagLine("#M2DVA", "SLF/FLASH/ModbusMasterU2_DVA/", LabelInit),
-        new TTagLine("#M2PRTY", "SLF/FLASH/ModbusMasterU2_PRTY/", LabelInit),
-        new TTagLine("#M2STOP", "SLF/FLASH/ModbusMasterU2_STOP/", LabelInit),
-        new TTagLine("TimeOut", "SLF/FLASH/TIME_OUT_Lnkmngr/", LabelInit),
-        new TTagLine("PASS", "SLF/FLASH/Password/", LabelInit),
+        new TTagLine("MB_Slave_addr", "SLF/FLASH/ModbusSlaveU1_DVA/", LabelInit),
+        new TTagLine("MB_Slave_dev", "SLF/FLASH/ModbusSlaveU1_BPS/", LabelInit),
+        new TTagLine("MB_Master_addr", "SLF/FLASH/ModbusMasterU2_DVA/", LabelInit),
+        new TTagLine("MB_Master_dev", "SLF/FLASH/ModbusMasterU2_BPS/", LabelInit),
     });
 }
 

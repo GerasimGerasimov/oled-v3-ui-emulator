@@ -85,14 +85,12 @@ void TPageNetworkSettings::fillPageContainer(void) {
     LabelInit.Rect = { 10, 10, 10, 10 };
     LabelInit.focused = false;
     TagList->AddList({
-        new TTagLine("#1BPS", "U1/FLASH/RS485_1_BPS/", LabelInit),
-        new TTagLine("#1ADR", "U1/FLASH/RS485_1_DVA/", LabelInit),
-        new TTagLine("#1PRT", "U1/FLASH/RS485_1_PRTY/", LabelInit),
-        new TTagLine("#1STP", "U1/FLASH/RS485_1_STOP/", LabelInit),
-        new TTagLine("#2BPS", "U1/FLASH/RS485_2_BPS/", LabelInit),
-        new TTagLine("#2ADR", "U1/FLASH/RS485_2_DVA/", LabelInit),
-        new TTagLine("#2PRT", "U1/FLASH/RS485_2_PRTY/", LabelInit),
-        new TTagLine("#2STP", "U1/FLASH/RS485_2_STOP/", LabelInit),
+        new TTagLine("Макс.U сети", "U1/FLASH/UmaxSpRect/", LabelInit),
+        new TTagLine("Мин.U сети", "U1/FLASH/UminSpRect/", LabelInit),
+        new TTagLine("Макс.F сети", "U1/FLASH/FmaxSpRect/", LabelInit),
+        new TTagLine("Мин.F сети", "U1/FLASH/FminSpRect/", LabelInit),
+        new TTagLine("T определения", "U1/FLASH/SUPPLFltTime/", LabelInit),
+
     });
 }
 
@@ -103,7 +101,7 @@ TPageNetworkSettings::TPageNetworkSettings(std::string Name)
 
     TLabelInitStructure LabelInit;
     LabelInit.pOwner = Container;
-    LabelInit.caption = "Интерфейсы EFi";
+    LabelInit.caption = "Уставки качества сети";
     TFixedHeader* pHeader = new TFixedHeader(LabelInit);
     Container->Add(pHeader);
 

@@ -70,24 +70,11 @@ void TPageBasicSettings::fillPageContainer(void) {
     LabelInit.Rect = { 10, 10, 10, 10 };
     LabelInit.focused = false;
     TagList->AddList({
-        new TTagLine("IСgMin", "U1/FLASH/IchargeMin/", LabelInit),
-        new TTagLine("IСgMax", "U1/FLASH/IchargeMax/", LabelInit),
-        new TTagLine("UCgMax", "U1/FLASH/UchargeMax/", LabelInit),
-        new TTagLine("IAddCg", "U1/FLASH/IAddCharge/", LabelInit),
-        new TTagLine("tAddCg", "U1/FLASH/tAddCharge/", LabelInit),
-        new TTagLine("IEqCgMin", "U1/FLASH/IEqualChargeMin/", LabelInit),
-        new TTagLine("IEqCgMax", "U1/FLASH/IEqualChargeMax/", LabelInit),
-        new TTagLine("UEqCgMax", "U1/FLASH/UEqualChargeMax/", LabelInit),
-        new TTagLine("IEqAddCg", "U1/FLASH/IEqualAddCharge/", LabelInit),
-        new TTagLine("tEqAddCg", "U1/FLASH/tEqualAddCharge/", LabelInit),
-        new TTagLine("tEqChg", "U1/FLASH/tEqualCharge/", LabelInit),
-        new TTagLine("UDischarge", "U1/FLASH/UdischargeMin/", LabelInit),
-        new TTagLine("Idischarge", "U1/FLASH/IdischargeMin/", LabelInit),
-        new TTagLine("kRegU", "U1/FLASH/kRegU/", LabelInit),
-        new TTagLine("kRegI", "U1/FLASH/kRegI/", LabelInit),
-        new TTagLine("TiReg", "U1/FLASH/TiReg/", LabelInit),
-        new TTagLine("AKBsize", "U1/FLASH/BatteryCapacity/", LabelInit),
-        new TTagLine("tStart", "U1/FLASH/tSoftStart/", LabelInit),
+        new TTagLine("Max.скорость", "U1/FLASH/SpdMaxLim/", LabelInit),
+        new TTagLine("Max.ток якоря", "U1/FLASH/CurMaxLim/", LabelInit),
+        new TTagLine("Max.напряжение", "U1/FLASH/UrMaxLim/", LabelInit),
+        new TTagLine("Mин.угол упр", "U1/FLASH/Amin/", LabelInit),
+        new TTagLine("Max.угол упр", "U1/FLASH/Amax/", LabelInit),
     });
 }
 
@@ -98,7 +85,7 @@ TPageBasicSettings::TPageBasicSettings(std::string Name)
 
     TLabelInitStructure LabelInit;
     LabelInit.pOwner = Container;
-    LabelInit.caption = "Основные уставки";
+    LabelInit.caption = "Ограничения";
     TFixedHeader* pHeader = new TFixedHeader(LabelInit);
     Container->Add(pHeader);
 

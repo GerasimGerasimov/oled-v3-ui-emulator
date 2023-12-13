@@ -11,17 +11,10 @@
 
 /*TODO когда "раскачаю RTC (по полной, с окном установки времени) то к аварии добавить метку времени"*/
 std::map < std::string, TTrackedBit > Alarms::Tags = {
-	{"InMtz", {"U1/RAM/InMtzAlm/", nullptr, false, false}},
-	{"OutMtz", {"U1/RAM/OutMtzAlm/", nullptr, false, false}},
-	{"UoutMax", {"U1/RAM/UoutMaxAlm/", nullptr, false, false}},
-	{"UinAsym", {"U1/RAM/UinAsymFail/", nullptr, false, false}},
-	{"IinAsym", {"U1/RAM/IinAsymAlm/", nullptr, false, false}},
-	{"UInMaxPhase", {"U1/RAM/UInMaxPhaseFail/", nullptr, false, false}},
-	{"FinFail", {"U1/RAM/FinFail/", nullptr, false, false}},
-	{"KM1", {"U1/RAM/KM1fail/", nullptr, false, false}},
-	{"RevertAKB", {"U1/RAM/ReversBattery/", nullptr, false, false}},
-	{"DOAlarm", {"U1/RAM/DOAlarm/", nullptr, false, false}},
-
+	{"IexcFlt", {"U1/RAM/IexcFlt/", nullptr, false, false}},
+	{"IrMaxFlt", {"U1/RAM/IrMaxFlt/", nullptr, false, false}},
+	{"IttMaxFlt", {"U1/RAM/IttMaxFlt/", nullptr, false, false}},
+	{"FeedBackOpenFlt", {"U1/RAM/FeedBackOpenFlt/", nullptr, false, false}},
 	//{"FrqSpark", {"U1/RAM/FrqSparkAlm/", nullptr, false, false}},
 	//{"Overheat", {"U1/RAM/OverheatAlm/", nullptr, false, false}},
 	//{"Driver", {"U1/RAM/DriverAlarm/", nullptr, false, false}},
