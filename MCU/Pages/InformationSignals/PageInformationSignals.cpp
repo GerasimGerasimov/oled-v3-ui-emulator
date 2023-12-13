@@ -5,7 +5,7 @@
 TPageInformationSignals::TPageInformationSignals(std::string Name) : TPageSensors(Name) {
   TLabelInitStructure LabelInitH;
   LabelInitH.pOwner = Container;
-  LabelInitH.caption = "Информационные сигналы";
+  LabelInitH.caption = "Сигналы";
   TFixedHeader* pHeader = new TFixedHeader(LabelInitH);
   delete Container->List[0];
   Container->List[0] = pHeader;

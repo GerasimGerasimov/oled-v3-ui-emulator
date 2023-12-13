@@ -20,8 +20,8 @@ void TPageReady::fillPageContainer(void) {
   TagList->AddList({
       new TTagLine("SyncRect", "U1/RAM/SyncRect/", LabelInit),
       new TTagLine("IexcReady", "U1/RAM/IexcReady/", LabelInit),
-      new TTagLine("DExS_PWR_LNK", "U1/RAM/DExS_PWR_LNK/", LabelInit),
-      new TTagLine("DExS_PWR_OK", "U1/RAM/DExS_PWR_OK/", LabelInit),
+      new TTagLine("PWR_LNK", "U1/RAM/DExS_PWR_LNK/", LabelInit),
+      new TTagLine("PWR_OK", "U1/RAM/DExS_PWR_OK/", LabelInit),
       
     });
 }

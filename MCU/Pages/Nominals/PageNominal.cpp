@@ -22,9 +22,9 @@ void TPageNominal::fillPageContainer(void) {
   LabelInit.focused = false;
 
   TagList->AddList({
-      new TTagLine("Ном. скорость", "U1/FLASH/SpdNom/", LabelInit),
-      new TTagLine("Ном.ток якоря", "U1/FLASH/CurNom/", LabelInit),
-      new TTagLine("Ном напряжение", "U1/FLASH/UrNom/", LabelInit),
+      new TTagLine("Ном. скор", "U1/FLASH/SpdNom/", LabelInit),
+      new TTagLine("Ном.ток як", "U1/FLASH/CurNom/", LabelInit),
+      new TTagLine("Ном напряж", "U1/FLASH/UrNom/", LabelInit),
       new TTagLine("UrefNulPrc", "U1/FLASH/UrefNulPrc/", LabelInit),
     });
 
