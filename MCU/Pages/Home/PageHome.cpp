@@ -75,10 +75,11 @@ void TPageHome::fillPageContainer(void) {
         
         
         new TTagLine("Скорость", "U1/RAM/Speed/", LabelInit),
-        new TTagLineTime("Задание", "U1/RAM/SpdRef/", LabelInit),
+        new TTagLine("Задание", "U1/RAM/SpdRef/", LabelInit),
         new TTagLine("Ток якоря", "U1/RAM/Idcr/", LabelInit),
         new TTagLine("Напр якоря", "U1/RAM/Udcr/", LabelInit),
         new TTagLine("Огр. тока", "U1/RAM/Ilim/", LabelInit),
+        
     });
     
 }

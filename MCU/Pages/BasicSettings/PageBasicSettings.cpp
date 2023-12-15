@@ -72,9 +72,9 @@ void TPageBasicSettings::fillPageContainer(void) {
     TagList->AddList({
         new TTagLine("Max.скор", "U1/FLASH/SpdMaxLim/", LabelInit),
         new TTagLine("Max.ток як", "U1/FLASH/CurMaxLim/", LabelInit),
-        new TTagLine("Max.напряж", "U1/FLASH/UrMaxLim/", LabelInit),
-        new TTagLine("Mин.угол упр", "U1/FLASH/Amin/", LabelInit),
-        new TTagLine("Max.угол упр", "U1/FLASH/Amax/", LabelInit),
+        new TTagLine("Max.напр", "U1/FLASH/UrMaxLim/", LabelInit),
+        new TTagLine("Mин.уг упр", "U1/FLASH/Amin/", LabelInit),
+        new TTagLine("Max.уг упр", "U1/FLASH/Amax/", LabelInit),
     });
 }
 

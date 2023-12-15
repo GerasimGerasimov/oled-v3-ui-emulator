@@ -33,7 +33,6 @@ TPageMainMenu::TPageMainMenu(std::string Name)
         Container = new TVerticalContainer(pLabelsProps, {
             new TLinkLabel("Главный экран", "Home",LabelInit),
             new TLinkLabel("Готовность", "Ready",LabelInit),
-            //new TLinkLabel("Статус работы", "OperateStatus", LabelInit),
             new TLinkLabel("Аварийные сигналы", "Alarms", LabelInit),
 
             new TLinkLabel("Дискретные входы", "DInput", LabelInit),
@@ -51,7 +50,8 @@ TPageMainMenu::TPageMainMenu(std::string Name)
             new TLinkLabel("Качество сети", "NetWorkSettings",LabelInit),
             new TLinkLabel("Контроль изоляции", "ControlSettings",LabelInit),
             new TLinkLabel("Тепловая защита", "ThermalProtection",LabelInit),
-            new TLinkLabel("Калибровка", "CD", LabelInit),
+            //new TLinkLabel("Калибровки", "OperateStatus", LabelInit),
+            new TLinkLabel("Калибровки", "Calibration",LabelInit),
             new TLinkLabel("Настройки панели", "PanelSettings", LabelInit),
             //new TLinkLabel("Уставки ручного режима", "Home", LabelInit),
             //new TLinkLabel("Уставки ВАХ", "Home", LabelInit),

@@ -60,7 +60,7 @@ void TRouter::Init(void) {
     Pages["ControlSettings"] = new TPageControlSettings("ControlSettings");//Контроль изоляции
     Pages["ThermalProtection"] = new TPageThermalProtection("ThermalProtection");//Тепловая защита
     Pages["PrmListEdit"] = new TPageParameterListEdit("PrmListEdit");
-    Pages["CD"] = new TPageCalibration("CD");//Калибровки
+    Pages["Calibration"] = new TPageCalibration("Calibration");
     Pages["PanelSettings"] = new TPagePanelSettings("PanelSettings");
     setInitPage();
 }
