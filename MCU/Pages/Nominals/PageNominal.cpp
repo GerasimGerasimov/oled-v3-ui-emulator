@@ -24,7 +24,7 @@ void TPageNominal::fillPageContainer(void) {
   TagList->AddList({
       new TTagLine("Ном. скор", "U1/FLASH/SpdNom/", LabelInit),
       new TTagLine("Ном.ток як", "U1/FLASH/CurNom/", LabelInit),
-      new TTagLine("Ном напряж", "U1/FLASH/UrNom/", LabelInit),
+      new TTagLine("Ном напр", "U1/FLASH/UrNom/", LabelInit),
       new TTagLine("UrefNulPrc", "U1/FLASH/UrefNulPrc/", LabelInit),
     });
 
