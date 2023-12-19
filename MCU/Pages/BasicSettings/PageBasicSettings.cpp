@@ -1,6 +1,7 @@
 #include "PageBasicSettings.h"
 #include "Router.h"
 #include "TagLine.h"
+#include "TagLineScrollCaptionComment.h"
 #include <IniResources.h>
 #include <FixedHeader.h>
 
@@ -66,34 +67,35 @@ TVisualObject* TPageBasicSettings::getSignalOfFocusedChild() {
 void TPageBasicSettings::fillPageContainer(void) {
     TagList->Clear();
     TLabelInitStructure LabelInit;
-    LabelInit.style = LabelsStyle::WIDTH_DINAMIC;
-    LabelInit.Rect = { 10, 10, 10, 10 };
+    LabelInit.style = LabelsStyle::WIDTH_FIXED;
+    LabelInit.Rect = { 10, 10, 10, 65};
     LabelInit.focused = false;
+
     TagList->AddList({
-        new TTagLine("IÑgMin", "U1/FLASH/IchargeMin/", LabelInit),
-        new TTagLine("IÑgMax", "U1/FLASH/IchargeMax/", LabelInit),
-        new TTagLine("UCgMax", "U1/FLASH/UchargeMax/", LabelInit),
-        new TTagLine("IAddCg", "U1/FLASH/IAddCharge/", LabelInit),
-        new TTagLine("tAddCg", "U1/FLASH/tAddCharge/", LabelInit),
-        new TTagLine("IEqCgMin", "U1/FLASH/IEqualChargeMin/", LabelInit),
-        new TTagLine("IEqCgMax", "U1/FLASH/IEqualChargeMax/", LabelInit),
-        new TTagLine("UEqCgMax", "U1/FLASH/UEqualChargeMax/", LabelInit),
-        new TTagLine("IEqAddCg", "U1/FLASH/IEqualAddCharge/", LabelInit),
-        new TTagLine("tEqAddCg", "U1/FLASH/tEqualAddCharge/", LabelInit),
-        new TTagLine("tEqChg", "U1/FLASH/tEqualCharge/", LabelInit),
-        new TTagLine("UDischarge", "U1/FLASH/UdischargeMin/", LabelInit),
-        new TTagLine("Idischarge", "U1/FLASH/IdischargeMin/", LabelInit),
+        new TTagLineScrollCaptionComment("U1/FLASH/IchargeMin/", LabelInit),
+        new TTagLineScrollCaptionComment("U1/FLASH/IchargeMax/", LabelInit),
+        new TTagLineScrollCaptionComment("U1/FLASH/UchargeMax/", LabelInit),
+        new TTagLineScrollCaptionComment("U1/FLASH/IAddCharge/", LabelInit),
+        new TTagLineScrollCaptionComment("U1/FLASH/tAddCharge/", LabelInit),
+        new TTagLineScrollCaptionComment("U1/FLASH/IEqualChargeMin/", LabelInit),
+        new TTagLineScrollCaptionComment("U1/FLASH/IEqualChargeMax/", LabelInit),
+        new TTagLineScrollCaptionComment("U1/FLASH/UEqualChargeMax/", LabelInit),
+        new TTagLineScrollCaptionComment("U1/FLASH/IEqualAddCharge/", LabelInit),
+        new TTagLineScrollCaptionComment("U1/FLASH/tEqualAddCharge/", LabelInit),
+        new TTagLineScrollCaptionComment("U1/FLASH/tEqualCharge/", LabelInit),
+        new TTagLineScrollCaptionComment("U1/FLASH/UdischargeMin/", LabelInit),
+        new TTagLineScrollCaptionComment("U1/FLASH/IdischargeMin/", LabelInit),
+        new TTagLineScrollCaptionComment("U1/FLASH/BatteryCapacity/", LabelInit),
+        new TTagLineScrollCaptionComment("U1/FLASH/tSoftStart/", LabelInit),
         new TTagLine("kRegU", "U1/FLASH/kRegU/", LabelInit),
         new TTagLine("kRegI", "U1/FLASH/kRegI/", LabelInit),
         new TTagLine("TiReg", "U1/FLASH/TiReg/", LabelInit),
-        new TTagLine("AKBsize", "U1/FLASH/BatteryCapacity/", LabelInit),
-        new TTagLine("tStart", "U1/FLASH/tSoftStart/", LabelInit),
     });
 }
 
 TPageBasicSettings::TPageBasicSettings(std::string Name)
     :TPage(Name) {
-    TVerticalContainerProps props = { false };
+    TVerticalContainerProps props = { true };
     Container = new TVerticalContainer(props, {});
 
     TLabelInitStructure LabelInit;

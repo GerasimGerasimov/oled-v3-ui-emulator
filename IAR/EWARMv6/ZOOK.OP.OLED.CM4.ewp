@@ -719,7 +719,7 @@
                 </option>
                 <option>
                     <name>OCOutputOverride</name>
-                    <state>1</state>
+                    <state>0</state>
                 </option>
                 <option>
                     <name>OOCOutputFile</name>
@@ -1300,6 +1300,12 @@
             </file>
             <file>
                 <name>$PROJ_DIR$\..\..\MCU\Components\TagLine.cpp</name>
+            </file>
+            <file>
+                <name>$PROJ_DIR$\..\..\MCU\Components\TagLineScrollCaption.cpp</name>
+            </file>
+            <file>
+                <name>$PROJ_DIR$\..\..\MCU\Components\TagLineScrollCaptionComment.cpp</name>
             </file>
             <file>
                 <name>$PROJ_DIR$\..\..\MCU\Components\TagLineTime.cpp</name>
