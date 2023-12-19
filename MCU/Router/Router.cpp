@@ -30,16 +30,16 @@ void TRouter::Init(void) {
     Pages["MainMenu"] = new TPageMainMenu("MainMenu");
     Pages["Alarms"] = new TPageAlarms("Alarms");
     Pages["Warnings"] = new TPageWarnings("Warnings");
-    Pages["BasicSettings"] = new TPageBasicSettings("BasicSettings");
+    Pages["BasicSettings"] = new TPageBasicSettings("BasicSettings"); //Основные уставк
     Pages["EditValue"] = new TPageEditValue("EditValue");
-    Pages["OperateStatus"] = new TPageOperateStatus("OperateStatus");
-    Pages["BasicProtectionsSettings"] = new TPageBasicProtectionsSettings("BasicProtectionsSettings");
+    Pages["OperateStatus"] = new TPageOperateStatus("OperateStatus"); //Статус работы
+    Pages["BasicProtectionsSettings"] = new TPageBasicProtectionsSettings("BasicProtectionsSettings"); //Защиты. Основные уставки
     //Pages["CleanSettings"] = new TPageCleanSettings("CleanSettings");
-    Pages["Sensors"] = new TPageSensors("Sensors");
+    Pages["Sensors"] = new TPageSensors("Sensors"); //Датчики
     //Pages["NetWorkSettings"] = new TPageNetworkSettings("NetWorkSettings");
     Pages["PrmListEdit"] = new TPageParameterListEdit("PrmListEdit");
     //Pages["PanelSettings"] = new TPagePanelSettings("PanelSettings");
-    Pages["CD"] = new TPageCalibration("CD");
+    Pages["CD"] = new TPageCalibration("CD"); //Калибровки
     setInitPage();
 }
 

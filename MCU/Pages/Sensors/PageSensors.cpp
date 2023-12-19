@@ -92,8 +92,8 @@ void TPageSensors::fillPageContainer(void) {
     LabelInit.Rect = { 10, 10, 10, 10 };
     LabelInit.focused = false;
     TagList->AddList({
-        new TTagLine("Uout", "U1/RAM/UoutIndication/", LabelInit),
-        new TTagLine("Iout", "U1/RAM/IoutIndication/", LabelInit),
+        new TTagLine("Uout", "U1/RAM/Uout/", LabelInit),
+        new TTagLine("Iout", "U1/RAM/Iout/", LabelInit),
         new TTagLine("Iin", "U1/RAM/Iin/", LabelInit),
         new TTagLine("Ia", "U1/RAM/Ia/", LabelInit),
         new TTagLine("Ib", "U1/RAM/Ib/", LabelInit),

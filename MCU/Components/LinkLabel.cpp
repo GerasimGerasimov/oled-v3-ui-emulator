@@ -98,3 +98,7 @@ TLinkLabel::TLinkLabel(std::string caption, std::string url, TLabelInitStructure
 
 TLinkLabel::~TLinkLabel() {//деструктор
 }
+
+void TLinkLabel::setSrcCaption(std::string caption) {
+  SrcCaption = caption;
+}
