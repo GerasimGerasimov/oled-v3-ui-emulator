@@ -1458,6 +1458,9 @@
                 <name>$PROJ_DIR$\..\..\MCU\Pages\ParameterListEdit\PageParameterListEdit.h</name>
             </file>
             <file>
+                <name>$PROJ_DIR$\..\..\MCU\Pages\ParameterListEditCMD\PageParameterListEditCMD.cpp</name>
+            </file>
+            <file>
                 <name>$PROJ_DIR$\..\..\MCU\Pages\Sensors\PageSensors.cpp</name>
             </file>
             <file>

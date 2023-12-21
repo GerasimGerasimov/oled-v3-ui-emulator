@@ -2,6 +2,7 @@
 #include "Router.h"
 #include <IniResources.h>
 #include "TagLine.h"
+#include "TagLineVarSize.h"
 #include <map>
 #include <AppModbusSlave.h>
 
@@ -37,8 +38,16 @@ bool TPageOperateStatus::ProcessMessage(TMessage* m) {
                 case (u32)KeyCodes::ENT:
                     e = getSignalOfFocusedChild();
                     if (e) {
-                        ISignal* p = IniResources::getSignalByTag(((TTagLine*)(e))->Tag);
-                        sendModeCmd(p);
+                        TRouter::PageValueEditEntryData.tag = ((TTagLine*)(e))->Tag;
+                        std::string EditPage = TRouter::selectEditPage(TRouter::PageValueEditEntryData.tag);
+                        if (EditPage == "PrmListEdit") {
+                          EditPage = "PrmListEditCMD";
+                           TRouter::setTask({ false, EditPage, nullptr });
+                        }
+                        else {
+                          ISignal* p = IniResources::getSignalByTag(((TTagLine*)(e))->Tag);
+                          sendModeCmd(p);
+                        }
                     }
                     break;
             }
@@ -53,15 +62,9 @@ bool TPageOperateStatus::ProcessMessage(TMessage* m) {
 
 static const std::string CMD_STOP = "1000";
 static const std::string CMD_START = "1111";
-static const std::string CMD_CHARGE = "3333";
-static const std::string CMD_CHARGE_EQUAL = "4444";
-static const std::string CMD_DISCHARGE = "5555";
 //static const std::string CMD_TEST = "5313";
 
 static const std::map <std::string, std::string> CmdBySignalName = {
-    {"Charge", CMD_CHARGE},
-    {"EqualCharge", CMD_CHARGE_EQUAL},
-    {"Discharge", CMD_DISCHARGE},
     {"Run", CMD_START},
     {"stop", CMD_STOP},
 };
@@ -117,12 +120,9 @@ TPageOperateStatus::TPageOperateStatus(std::string Name)
 
     Container = new TVerticalContainer(props, {
         new TTagLine("Готовность", "U1/RAM/Ready/", LabelInit),
-        new TTagLine("Пуск/Работа", "U1/RAM/Run/", LabelInit),
+        new TTagLine("Пуск/Работ", "U1/RAM/Run/", LabelInit),
         new TTagLine("Стоп", "U1/RAM/stop/", LabelInit),
-        new TTagLine("Заряд", "U1/RAM/Charge/", LabelInit),
-        new TTagLine("Выр.Заряд", "U1/RAM/EqualCharge/", LabelInit),
-        new TTagLine("Разряд", "U1/RAM/Discharge/", LabelInit),
-        new TTagLine("Режим", "U1/RAM/OperatMode/", LabelInit),
+        new TTagLineVarSize("", "U1/RAM/OperatMode/", LabelInit, 0),
         });
     
     Container->FocusedLine = 0;
