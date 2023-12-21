@@ -14,6 +14,7 @@
 #include "PageParameterListEdit.h"
 #include "PagePanelSettings.h"
 #include "PageCalibration.h"
+#include "ParameterListEditCMD/PageParameterListEditCMD.h"
 #include <IniResources.h>
 
 /*TODO В роутере и страницах можно реализовать переходы на закрытие/открытие окна*/
@@ -37,7 +38,8 @@ void TRouter::Init(void) {
     //Pages["CleanSettings"] = new TPageCleanSettings("CleanSettings");
     Pages["Sensors"] = new TPageSensors("Sensors"); //Датчики
     //Pages["NetWorkSettings"] = new TPageNetworkSettings("NetWorkSettings");
-    Pages["PrmListEdit"] = new TPageParameterListEdit("PrmListEdit");
+    //Pages["PrmListEdit"] = new TPageParameterListEdit("PrmListEdit");
+    Pages["PrmListEditCMD"] = new TPageParameterListEditCMD("PrmListEditCMD");
     //Pages["PanelSettings"] = new TPagePanelSettings("PanelSettings");
     Pages["CD"] = new TPageCalibration("CD"); //Калибровки
     setInitPage();
@@ -98,6 +100,7 @@ TPage* TRouter::goBack(void) {
 static const std::map<std::string, std::string> EditPageNameBySignalType = {
     {"TU8BIT", "EditValue"},
     {"TU16bit", "EditValue"},
+    {"TU32bit", "EditValue"},
     {"TS16bit", "EditValue"},
     {"TFloat", "EditValue"},
     {"TPrmList", "PrmListEdit"},

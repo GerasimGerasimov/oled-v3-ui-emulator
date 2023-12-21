@@ -154,6 +154,7 @@
     <ClInclude Include="MCU\IDrivers\icommastert.h" />
     <ClInclude Include="MCU\IDrivers\iresources.h" />
     <ClInclude Include="MCU\Modbus\modbus.h" />
+    <ClInclude Include="MCU\Pages\ParameterListEditCMD\PageParameterListEditCMD.h" />
     <ClInclude Include="MCU\Parameters\TU32BIT.h" />
     <ClInclude Include="MCU\Slots\SlotHandlerType.h" />
     <ClInclude Include="MCU\StateControllers\StateControllers.h" />
@@ -223,6 +224,7 @@
     <ClCompile Include="MCU\Pages\NetworkSettings\PageNetworkSettings.cpp" />
     <ClCompile Include="MCU\Pages\OperateStatus\PageOperateStatus.cpp" />
     <ClCompile Include="MCU\Pages\PanelSettings\PagePanelSettings.cpp" />
+    <ClCompile Include="MCU\Pages\ParameterListEditCMD\PageParameterListEditCMD.cpp" />
     <ClCompile Include="MCU\Pages\ParameterListEdit\PageParameterListEdit.cpp" />
     <ClCompile Include="MCU\Pages\Sensors\PageSensors.cpp" />
     <ClCompile Include="MCU\Pages\Warning\PageWarnings.cpp" />

@@ -15,7 +15,7 @@ public:
     void onOpen();
     void startToClose();
     bool ProcessMessage(TMessage* m);
-    void sendValue(void);
+    virtual void sendValue(void);
     TPageParameterListEdit(std::string Name);
     ~TPageParameterListEdit();
 private:
@@ -23,12 +23,14 @@ private:
     TVerticalContainer* TagList;
     TFixedHeader* pHeader;
     void fillPageContainer(void);
-    std::string getValueOfFocusedLine(void);
     TParameter* p;
     std::string tag;
     std::string value;
-    bool isDataSent = false;
     void SlotUpdate(Slot* slot, u8* reply);
+protected:
+    bool isDataSent = false;
+    std::string getValueOfFocusedLine(void);
+
 };
 
 #endif

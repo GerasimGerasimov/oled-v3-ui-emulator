@@ -51,6 +51,22 @@ void CmdSender::update(const u16 din) {
 	updateKeyMode(din);
 }
 
+bool CmdSender::sendCmdPrimList(std::string value) {
+	if (value == "x00") {
+		sendCmd((std::string&)CMD_CHARGE);
+		return true;
+	}
+	if (value == "x01") {
+		sendCmd((std::string&)CMD_CHARGE_EQUAL);
+		return true;
+	}
+	if (value == "x02") {
+		sendCmd((std::string&)CMD_DISCHARGE);
+		return true;
+	}
+	return false;
+}
+
 void CmdSender::updateKeyMode(const u16 din) {
 	//keyClean = (din & (1 << 2));
 	//keyVAC   = (din & (1 << 3));
