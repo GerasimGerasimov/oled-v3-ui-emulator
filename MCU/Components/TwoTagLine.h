@@ -5,6 +5,7 @@
 
 class TTagLine;
 
+//класс содержит 2 TTagLine, отображает в 1 строке
 class TTwoTagLine : public TVisualObject
 {
 private:

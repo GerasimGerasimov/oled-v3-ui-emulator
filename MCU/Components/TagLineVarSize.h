@@ -2,6 +2,7 @@
 
 #include <TagLine.h>
 
+//класс с возможностью меня расстояние между компонентами
 class TTagLineVarSize : public TTagLine
 {
 private:

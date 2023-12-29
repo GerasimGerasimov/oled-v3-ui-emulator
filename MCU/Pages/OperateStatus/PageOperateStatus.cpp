@@ -42,6 +42,7 @@ bool TPageOperateStatus::ProcessMessage(TMessage* m) {
                         std::string EditPage = TRouter::selectEditPage(TRouter::PageValueEditEntryData.tag);
                         if (EditPage == "PrmListEdit") {
                           EditPage = "PrmListEditCMD";
+                          TRouter::PageValueEditEntryData.backPage = Name;
                            TRouter::setTask({ false, EditPage, nullptr });
                         }
                         else {
