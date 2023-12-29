@@ -2,6 +2,7 @@
 
 #include "TagLineScrollCaption.h"
 
+//класс TTagLine с автоматической прокруткой текста, текст из комментария .ini файла
 class TTagLineScrollCaptionComment : public TTagLineScrollCaption
 {
 public:

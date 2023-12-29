@@ -3,9 +3,7 @@
 #include "TPrmList.h"
 #include "CmdSender.h"
 
-TPageParameterListEditCMD::TPageParameterListEditCMD(std::string Name) : TPageParameterListEdit(Name){
-  
-}
+TPageParameterListEditCMD::TPageParameterListEditCMD(std::string Name) : TPageParameterListEdit(Name){}
 
 void TPageParameterListEditCMD::sendValue(void) {
   std::string value = getValueOfFocusedLine();

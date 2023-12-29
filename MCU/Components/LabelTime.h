@@ -2,6 +2,7 @@
 
 #include <Label.h>
 
+//класс отображает параметр время в формате ЧЧ:ММ
 class TLabelTime : public TLabel {
 protected:
 

@@ -89,6 +89,7 @@ void TPageBasicProtectionsSettings::fillPageContainer(void) {
         new TTagLine("tFinFail", "U1/FLASH/tFinFail/", LabelInit),
         new TTagLine("tKM1", "U1/FLASH/tKM1/", LabelInit),
         new TTagLine("tsyncfail", "U1/FLASH/tsyncfail/", LabelInit),
+        new TTagLine("tILongKM1", "U1/FLASH/tILongKM1/", LabelInit),
     });
 }
 

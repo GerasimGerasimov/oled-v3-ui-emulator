@@ -147,6 +147,9 @@
     <ClInclude Include="MCU\Components\TagLineScrollCaptionComment.h">
       <Filter>MCU\Components</Filter>
     </ClInclude>
+    <ClInclude Include="MCU\Pages\ParameterListEditCMD\PageParameterListEditCMD.h">
+      <Filter>MCU\Pages</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -433,6 +436,9 @@
     </ClCompile>
     <ClCompile Include="MCU\Components\TagLineScrollCaptionComment.cpp">
       <Filter>MCU\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="MCU\Pages\ParameterListEditCMD\PageParameterListEditCMD.cpp">
+      <Filter>MCU\Pages</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

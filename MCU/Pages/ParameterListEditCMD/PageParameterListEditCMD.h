@@ -3,6 +3,7 @@
 #include <map>
 #include <PageParameterListEdit.h>
 
+//класс разобранное значение TPrmList отправляет для обработки TPageParameterListEditCMD
 class TPageParameterListEditCMD : public TPageParameterListEdit
 {
 private:
