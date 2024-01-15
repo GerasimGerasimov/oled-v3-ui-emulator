@@ -21,15 +21,15 @@ public:
 private:
     TVerticalContainer* Container;
     TVerticalContainer* TagList;
-    TFixedHeader* pHeader;
-    void fillPageContainer(void);
-    TParameter* p;
     std::string tag;
     std::string value;
     void SlotUpdate(Slot* slot, u8* reply);
 protected:
+    TFixedHeader* pHeader;
+    TParameter* p;
     bool isDataSent = false;
     std::string getValueOfFocusedLine(void);
+    virtual void fillPageContainer(void);
 
 };
 
