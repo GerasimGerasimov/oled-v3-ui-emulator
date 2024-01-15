@@ -11,5 +11,6 @@ private:
 public:
 	TPageParameterListEditCMD(std::string Name);
 	virtual void sendValue(void) override;
+	virtual void fillPageContainer(void) override;
 };
 

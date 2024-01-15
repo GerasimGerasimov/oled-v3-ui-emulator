@@ -12,4 +12,9 @@ void TPageParameterListEditCMD::sendValue(void) {
   }
 }
 
+void TPageParameterListEditCMD::fillPageContainer(void) {
+    TPageParameterListEdit::fillPageContainer();
+    pHeader->setCaption(p->getComment());
+}
+
 
