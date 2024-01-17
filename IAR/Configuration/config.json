@@ -1,0 +1,36 @@
+{
+  "App1": "E:/ProjectGit/oled-v3-ui-emulator/IAR/out/TPRDCM.OP.OLED.CM4.hex",
+  "App": "C:/HexReader/exe/TPRDCM.OP.OLED.CM4.hex",      
+  "SkipSectors1":["0x080A0000", "0x080C0000", "0x080E0000","0x08080000"],
+  "SkipSectors":[],
+  "COM":{
+    "port":"COM3",
+  "settings": {
+        "baudRate": 115200,
+        "dataBits": 8,
+        "parity": "none",
+        "stopBits": 1,
+        "flowControl": false
+    }
+  },
+  "FirmwareCheckInfo": {
+    "info": "0x08008200",
+    "infoSize": 8,
+    "CheckFrom": "0x08008000",
+    "CheckTo":   "0x0805C600"
+  },
+  "resources": {
+    "start": "0x08080000",
+    "items": {
+	  "ID" : "TPRDCM  v1.02.0 12.12.2023 www.intmash.ru",
+	  "URL" : "www.intmash.ru",
+	  "SOURCES":"DEV1/SLF1/",
+      "DEV1" : {"file":"C:/HexReader/Ajuster/TPRDCM.ini"},
+	  "SLF1": {"file": "C:/HexReader/OLED_SETTINGS.ini"},	  
+	  "DEVICES":"U1/SLF/",
+	  "U1":"DEV1/COM1/1/RAM,0x0000,0x0060,0,/FLASH,0x2000,0x2042,10,/CD,0xC000,0xC050,10,/",
+	  "SLF": "SLF1//0/"
+    }
+  }
+}
+
