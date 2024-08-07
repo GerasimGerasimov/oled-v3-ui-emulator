@@ -2,10 +2,10 @@
 #include "TagLine.h"
 #include <FixedHeader.h>
 
-TPageExcitation::TPageExcitation(std::string Name) : TPageSensors(Name) {
+TPageExcitation::TPageExcitation(std::string Name) : TPageBasicSettings(Name){
   TLabelInitStructure LabelInitH;
   LabelInitH.pOwner = Container;
-  LabelInitH.caption = "Возбуждение";
+  LabelInitH.caption = "Подача возбуждения";
   TFixedHeader* pHeader = new TFixedHeader(LabelInitH);
   delete Container->List[0];
   Container->List[0] = pHeader;

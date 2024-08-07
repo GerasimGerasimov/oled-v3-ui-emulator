@@ -153,28 +153,49 @@
     <ClInclude Include="MCU\Pages\Discretes\PageDIn.h">
       <Filter>MCU\Pages\Discretes</Filter>
     </ClInclude>
-    <ClInclude Include="MCU\Pages\Nominals\PageNominal.h">
-      <Filter>MCU\Pages</Filter>
-    </ClInclude>
     <ClInclude Include="MCU\Pages\RegulatorSettings\PageRegulatorSettings.h">
       <Filter>MCU\Pages</Filter>
     </ClInclude>
     <ClInclude Include="MCU\Pages\ControlSettings\PageControlSettings.h">
       <Filter>MCU\Pages</Filter>
     </ClInclude>
-    <ClInclude Include="MCU\Pages\ThermalProtection\PageThermalProtection.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
     <ClInclude Include="MCU\Pages\Excitation\PageExcitation.h">
       <Filter>MCU\Pages</Filter>
     </ClInclude>
-    <ClInclude Include="MCU\Pages\InformationSignals\PageInformationSignals.h">
+    <ClInclude Include="MCU\Pages\PowerSection\PagePowerSection.h">
       <Filter>MCU\Pages</Filter>
     </ClInclude>
-    <ClInclude Include="MCU\Pages\ControlParameters\PageControlParameters.h">
+    <ClInclude Include="MCU\Pages\GeneratorMode\PageGeneratorMode.h">
       <Filter>MCU\Pages</Filter>
     </ClInclude>
-    <ClInclude Include="MCU\Pages\Ready\PageReady.h">
+    <ClInclude Include="MCU\Pages\StatorCurrent\PageStatorCurrent.h">
+      <Filter>MCU\Pages</Filter>
+    </ClInclude>
+    <ClInclude Include="MCU\Pages\StatorVoltage\PageStatorVoltage.h">
+      <Filter>MCU\Pages</Filter>
+    </ClInclude>
+    <ClInclude Include="MCU\Pages\InsulationControl\PageInsulationControl.h">
+      <Filter>MCU\Pages</Filter>
+    </ClInclude>
+    <ClInclude Include="MCU\Pages\AutoMode\PageAutoMode.h">
+      <Filter>MCU\Pages</Filter>
+    </ClInclude>
+    <ClInclude Include="MCU\Pages\CurrentLimit\PageCurrentLimit.h">
+      <Filter>MCU\Pages</Filter>
+    </ClInclude>
+    <ClInclude Include="MCU\Pages\CosSetting\PageCosSetting.h">
+      <Filter>MCU\Pages</Filter>
+    </ClInclude>
+    <ClInclude Include="MCU\Pages\CurrentProtection\PageCurrentProtection.h">
+      <Filter>MCU\Pages</Filter>
+    </ClInclude>
+    <ClInclude Include="MCU\Pages\FieldBreak\PageFieldBreak.h">
+      <Filter>MCU\Pages</Filter>
+    </ClInclude>
+    <ClInclude Include="MCU\Pages\Sliding\PageSliding.h">
+      <Filter>MCU\Pages</Filter>
+    </ClInclude>
+    <ClInclude Include="MCU\Pages\Testing\PageTesting.h">
       <Filter>MCU\Pages</Filter>
     </ClInclude>
   </ItemGroup>
@@ -389,24 +410,6 @@
     <ClCompile Include="Drivers\Leds\Warning\LedWarnings.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="MCU\Pages\Warning\PageWarnings.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
-    <ClCompile Include="MCU\Pages\BasicSettings\PageBasicSettings.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
-    <ClCompile Include="MCU\Pages\BasicProtectionsSettings\PageBasicProtectionsSettings.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
-    <ClCompile Include="MCU\Pages\CleanSettings\PageCleanSettings.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
-    <ClCompile Include="MCU\Pages\Sensors\PageSensors.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
-    <ClCompile Include="MCU\Pages\NetworkSettings\PageNetworkSettings.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
     <ClCompile Include="MCU\Parameters\TPrmList.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
@@ -425,19 +428,10 @@
     <ClCompile Include="MCU\Components\ParamListSelector.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="MCU\Pages\ParameterListEdit\PageParameterListEdit.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
-    <ClCompile Include="MCU\Pages\PanelSettings\PagePanelSettings.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
     <ClCompile Include="MCU\SetValueSelector\SetValueSelector.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
     <ClCompile Include="Drivers\MemWrite\MemWrite.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
-    <ClCompile Include="MCU\Pages\Calibration\PageCalibration.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
     <ClCompile Include="MCU\Components\LabelTime.cpp">
@@ -467,28 +461,76 @@
     <ClCompile Include="MCU\StateControllers\Alarms\Alarms.cpp">
       <Filter>MCU\Alarms</Filter>
     </ClCompile>
-    <ClCompile Include="MCU\Pages\Nominals\PageNominal.cpp">
-      <Filter>MCU\Pages</Filter>
-    </ClCompile>
     <ClCompile Include="MCU\Pages\RegulatorSettings\PageRegulatorSettings.cpp">
       <Filter>MCU\Pages</Filter>
     </ClCompile>
     <ClCompile Include="MCU\Pages\ControlSettings\PageControlSettings.cpp">
       <Filter>MCU\Pages</Filter>
     </ClCompile>
-    <ClCompile Include="MCU\Pages\ThermalProtection\PageThermalProtection.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
     <ClCompile Include="MCU\Pages\Excitation\PageExcitation.cpp">
       <Filter>MCU\Pages</Filter>
     </ClCompile>
-    <ClCompile Include="MCU\Pages\InformationSignals\PageInformationSignals.cpp">
+    <ClCompile Include="MCU\Pages\PowerSection\PagePowerSection.cpp">
       <Filter>MCU\Pages</Filter>
     </ClCompile>
-    <ClCompile Include="MCU\Pages\ControlParameters\PageControlParameters.cpp">
+    <ClCompile Include="MCU\Pages\BasicProtectionsSettings\PageBasicProtectionsSettings.cpp">
       <Filter>MCU\Pages</Filter>
     </ClCompile>
-    <ClCompile Include="MCU\Pages\Ready\PageReady.cpp">
+    <ClCompile Include="MCU\Pages\PanelSettings\PagePanelSettings.cpp">
+      <Filter>MCU\Pages</Filter>
+    </ClCompile>
+    <ClCompile Include="MCU\Pages\Sensors\PageSensors.cpp">
+      <Filter>MCU\Pages</Filter>
+    </ClCompile>
+    <ClCompile Include="MCU\Pages\Calibration\PageCalibration.cpp">
+      <Filter>MCU\Pages</Filter>
+    </ClCompile>
+    <ClCompile Include="MCU\Pages\BasicSettings\PageBasicSettings.cpp">
+      <Filter>MCU\Pages</Filter>
+    </ClCompile>
+    <ClCompile Include="MCU\Pages\CleanSettings\PageCleanSettings.cpp">
+      <Filter>MCU\Pages</Filter>
+    </ClCompile>
+    <ClCompile Include="MCU\Pages\GeneratorMode\PageGeneratorMode.cpp">
+      <Filter>MCU\Pages</Filter>
+    </ClCompile>
+    <ClCompile Include="MCU\Pages\NetworkSettings\PageNetworkSettings.cpp">
+      <Filter>MCU\Pages</Filter>
+    </ClCompile>
+    <ClCompile Include="MCU\Pages\ParameterListEdit\PageParameterListEdit.cpp">
+      <Filter>MCU\Pages</Filter>
+    </ClCompile>
+    <ClCompile Include="MCU\Pages\Warning\PageWarnings.cpp">
+      <Filter>MCU\Pages</Filter>
+    </ClCompile>
+    <ClCompile Include="MCU\Pages\StatorCurrent\PageStatorCurrent.cpp">
+      <Filter>MCU\Pages</Filter>
+    </ClCompile>
+    <ClCompile Include="MCU\Pages\StatorVoltage\PageStatorVoltage.cpp">
+      <Filter>MCU\Pages</Filter>
+    </ClCompile>
+    <ClCompile Include="MCU\Pages\InsulationControl\PageInsulationControl.cpp">
+      <Filter>MCU\Pages</Filter>
+    </ClCompile>
+    <ClCompile Include="MCU\Pages\AutoMode\PageAutoMode.cpp">
+      <Filter>MCU\Pages</Filter>
+    </ClCompile>
+    <ClCompile Include="MCU\Pages\CurrentLimit\PageCurrentLimit.cpp">
+      <Filter>MCU\Pages</Filter>
+    </ClCompile>
+    <ClCompile Include="MCU\Pages\CosSetting\PageCosSetting.cpp">
+      <Filter>MCU\Pages</Filter>
+    </ClCompile>
+    <ClCompile Include="MCU\Pages\CurrentProtection\PageCurrentProtection.cpp">
+      <Filter>MCU\Pages</Filter>
+    </ClCompile>
+    <ClCompile Include="MCU\Pages\FieldBreak\PageFieldBreak.cpp">
+      <Filter>MCU\Pages</Filter>
+    </ClCompile>
+    <ClCompile Include="MCU\Pages\Sliding\PageSliding.cpp">
+      <Filter>MCU\Pages</Filter>
+    </ClCompile>
+    <ClCompile Include="MCU\Pages\Testing\PageTesting.cpp">
       <Filter>MCU\Pages</Filter>
     </ClCompile>
   </ItemGroup>

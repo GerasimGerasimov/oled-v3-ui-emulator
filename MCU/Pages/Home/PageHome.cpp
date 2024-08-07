@@ -73,12 +73,13 @@ void TPageHome::fillPageContainer(void) {
     LabelInit.focused = false;
     TagList->AddList({
         
-        
-        new TTagLine("Скорость", "U1/RAM/Speed/", LabelInit),
-        new TTagLine("Задание", "U1/RAM/SpdRef/", LabelInit),
-        new TTagLine("Ток якоря", "U1/RAM/Idcr/", LabelInit),
-        new TTagLine("Напр якоря", "U1/RAM/Udcr/", LabelInit),
-        new TTagLine("Огр. тока", "U1/RAM/Ilim/", LabelInit),
+        //TODO регистры
+        new TTagLine("Режим", "U1/RAM/Speed/", LabelInit),
+        new TTagLine("Ток ротора", "U1/RAM/Idcr/", LabelInit),
+        new TTagLine("Ток статора", "U1/RAM/SpdRef/", LabelInit),
+        new TTagLine("Напр возб.", "U1/RAM/Udcr/", LabelInit),
+        new TTagLine("Ток. возб", "U1/RAM/Ilim/", LabelInit),
+        new TTagLine("F", "U1/RAM/Ilim/", LabelInit),
         
     });
     
