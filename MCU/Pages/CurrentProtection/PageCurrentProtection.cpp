@@ -20,7 +20,12 @@ void TPageCurrentProtection::fillPageContainer(void){
     LabelInit.focused = false;
 
     TagList->AddList({
-        new TTagLine("Чтото", "U1/RAM/None/", LabelInit),
-
+        new TTagLine("IExcMaxFlt", "U1/RAM/IExcMaxFlt/", LabelInit),
+        new TTagLine("IttMaxFlt", "U1/RAM/IttMaxFlt/", LabelInit),
+        new TTagLine("IttAsymFlt", "U1/RAM/IttAsymFlt/", LabelInit),
+        new TTagLine("IrMaxFlt", "U1/FLASH/IrMaxFlt/", LabelInit),
+        new TTagLine("IttMaxFlt", "U1/FLASH/IttMaxFlt/", LabelInit),
+        new TTagLine("fIttAsymPrc", "U1/FLASH/fIttAsymPrc/", LabelInit),
+        new TTagLine("fIttAsymTime", "U1/FLASH/fIttAsymTime/", LabelInit),
         });
 }

@@ -85,11 +85,22 @@ void TPageNetworkSettings::fillPageContainer(void) {
     LabelInit.Rect = { 10, 10, 10, 10 };
     LabelInit.focused = false;
     TagList->AddList({
-        new TTagLine("Макс.U сети", "U1/FLASH/UmaxSpRect/", LabelInit),
-        new TTagLine("Мин.U сети", "U1/FLASH/UminSpRect/", LabelInit),
-        new TTagLine("Макс.F сети", "U1/FLASH/FmaxSpRect/", LabelInit),
-        new TTagLine("Мин.F сети", "U1/FLASH/FminSpRect/", LabelInit),
-        new TTagLine("T определ", "U1/FLASH/SUPPLFltTime/", LabelInit),
+        new TTagLine("DExS_PWR_LNK", "U1/RAM/DExS_PWR_LNK/", LabelInit),
+        new TTagLine("tdir_Modbus_RS485", "U1/CD/tdir_Modbus_RS485/", LabelInit),
+        new TTagLine("tdir_Modbus_option", "U1/CD/tdir_Modbus_option/", LabelInit),
+        new TTagLine("Modbus_option_DVA", "U1/CD/Modbus_option_DVA/", LabelInit),
+        new TTagLine("Modbus_option_BPS", "U1/CD/Modbus_option_BPS/", LabelInit),
+        new TTagLine("Modbus_RS485_DVA", "U1/CD/Modbus_RS485_DVA/", LabelInit),
+        new TTagLine("Modbus_RS485_BPS", "U1/CD/Modbus_RS485_BPS/", LabelInit),
+        new TTagLine("COM1DVA", "U1/FLASH/COM1DVA/", LabelInit),
+        new TTagLine("COM1BPS", "U1/FLASH/COM1BPS/", LabelInit),
+        new TTagLine("COM2DVA", "U1/FLASH/COM2DVA/", LabelInit),
+        new TTagLine("COM2BPS", "U1/FLASH/COM2BPS/", LabelInit),
+        new TTagLine("COM3DVA", "U1/FLASH/COM3DVA/", LabelInit),
+        new TTagLine("COM3BPS", "U1/FLASH/COM3BPS/", LabelInit),
+        new TTagLine("COM4_ADR", "U1/FLASH-ICM/COM4_ADR/", LabelInit),
+        new TTagLine("COM4_BPS", "U1/FLASH-ICM/COM4_BPS/", LabelInit),
+        //new TTagLine("iCM_IP_ADDR", "U1/FLASH-ICM/iCM_IP_ADDR/", LabelInit),
 
     });
 }

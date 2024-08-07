@@ -20,7 +20,9 @@ void TPageFieldBreak::fillPageContainer(void){
     LabelInit.focused = false;
 
     TagList->AddList({
-        new TTagLine("Чтото", "U1/RAM/None/", LabelInit),
-
+        new TTagLine("FieldFail", "U1/RAM/FieldFail/", LabelInit),
+        new TTagLine("FieldFailTime", "U1/FLASH/FieldFailTime/", LabelInit),
+        new TTagLine("fIrFieldFail", "U1/FLASH/fIrFieldFail/", LabelInit),
+        new TTagLine("stFieldFltEnable", "U1/FLASH/stFieldFltEnable/", LabelInit),
         });
 }

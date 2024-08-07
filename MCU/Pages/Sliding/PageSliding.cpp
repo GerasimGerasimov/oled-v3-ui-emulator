@@ -20,7 +20,17 @@ void TPageSliding::fillPageContainer(void){
     LabelInit.focused = false;
 
     TagList->AddList({
-        new TTagLine("Чтото", "U1/RAM/None/", LabelInit),
-
+        new TTagLine("cfi_enable", "U1/RAM/cfi_enable/", LabelInit),
+        new TTagLine("cfu_enable", "U1/RAM/cfu_enable/", LabelInit),
+        new TTagLine("SlideFreqRealay", "U1/RAM/SlideFreqRealay/", LabelInit),
+        new TTagLine("FS+", "U1/RAM/FS+/", LabelInit),
+        new TTagLine("FS-", "U1/RAM/FS-/", LabelInit),
+        new TTagLine("HS_freq_passed", "U1/RAM/HS_freq_passed/", LabelInit),
+        new TTagLine("SlideCirctErr", "U1/RAM/SlideCirctErr/", LabelInit),
+        new TTagLine("SlideFreg", "U1/RAM/SlideFreg/", LabelInit),
+        new TTagLine("ExcEnableFreq", "U1/FLASH/ExcEnableFreq/", LabelInit),
+        new TTagLine("HsFreq", "U1/FLASH/HsFreq/", LabelInit),
+        new TTagLine("HsTime", "U1/FLASH/HsTime/", LabelInit),
+        new TTagLine("FSAsyncTime", "U1/FLASH/FSAsyncTime/", LabelInit),
         });
 }

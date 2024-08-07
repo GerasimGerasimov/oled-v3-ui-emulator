@@ -49,7 +49,7 @@ TPageMainMenu::TPageMainMenu(std::string Name)
             new TLinkLabel("Настройки связи", "NetWorkSettings",LabelInit),
             new TLinkLabel("Токовые защиты", "CurrentProtection",LabelInit),
             new TLinkLabel("Обрыв поля", "FieldBreak",LabelInit),
-            new TLinkLabel("Настройки тока", "RegulatorSettings", LabelInit),
+            new TLinkLabel("Настройки рег. тока", "RegulatorSettings", LabelInit),
             new TLinkLabel("Скольжение", "Sliding", LabelInit),
             new TLinkLabel("Опробование", "Testing", LabelInit),
 

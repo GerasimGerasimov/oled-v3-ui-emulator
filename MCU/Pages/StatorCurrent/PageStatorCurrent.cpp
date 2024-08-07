@@ -20,7 +20,15 @@ void TPageStatorCurrent::fillPageContainer(void){
     LabelInit.focused = false;
 
     TagList->AddList({
-        new TTagLine("Чтото", "U1/RAM/None/", LabelInit),
-
+        new TTagLine("IstStartTrig", "U1/RAM/IstStartTrig/", LabelInit),
+        new TTagLine("IstOV", "U1/RAM/IstOV/", LabelInit),
+        new TTagLine("Istat", "U1/RAM/Istat/", LabelInit),
+        new TTagLine("Istat_max", "U1/RAM/Istat_max/", LabelInit),
+        new TTagLine("IstStart", "U1/FLASH/IstStart/", LabelInit),
+        new TTagLine("IstStop", "U1/FLASH/IstStop/", LabelInit),
+        new TTagLine("IstExcEnable", "U1/FLASH/IstExcEnable/", LabelInit),
+        new TTagLine("stIstOVFltEnable", "U1/FLASH/stIstOVFltEnable/", LabelInit),
+        new TTagLine("Ti2tS", "U1/FLASH/Ti2tS/", LabelInit),
+        new TTagLine("IstOVLFlt", "U1/FLASH/IstOVLFlt/", LabelInit),
         });
 }
