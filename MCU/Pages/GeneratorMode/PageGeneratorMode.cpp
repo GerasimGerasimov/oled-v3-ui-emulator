@@ -19,7 +19,10 @@ void TPageGeneratorMode::fillPageContainer(void){
     LabelInit.focused = false;
 
     TagList->AddList({
-        new TTagLine("Чтото", "U1/RAM/None/", LabelInit),
-
+        new TTagLine("GMP", "U1/RAM/GMP/", LabelInit),
+        new TTagLine("stGenMdFltEnable", "U1/FLASH/stGenMdFltEnable/", LabelInit),
+        new TTagLine("stGenModeSelect", "U1/FLASH/stGenModeSelect/", LabelInit),
+        new TTagLine("GMPU", "U1/FLASH/GMPU/", LabelInit),
+        new TTagLine("GMPUFltTime", "U1/FLASH/GMPUFltTime/", LabelInit),
         });
 }
