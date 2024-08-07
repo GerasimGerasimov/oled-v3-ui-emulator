@@ -10,3 +10,16 @@ TPageGeneratorMode::TPageGeneratorMode(std::string Name) : TPageBasicSettings(Na
     delete Container->List[0];
     Container->List[0] = pHeader;
 }
+
+void TPageGeneratorMode::fillPageContainer(void){
+    TagList->Clear();
+    TLabelInitStructure LabelInit;
+    LabelInit.style = LabelsStyle::WIDTH_DINAMIC;
+    LabelInit.Rect = {10, 10, 10, 10};
+    LabelInit.focused = false;
+
+    TagList->AddList({
+        new TTagLine("Чтото", "U1/RAM/None/", LabelInit),
+
+        });
+}

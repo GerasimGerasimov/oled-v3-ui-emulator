@@ -7,6 +7,6 @@ class TPageExcitation : public TPageBasicSettings
 public:
 	TPageExcitation(std::string Name);
 protected:
-	virtual void fillPageContainer(void) override;
+	void fillPageContainer(void) override;
 };
 

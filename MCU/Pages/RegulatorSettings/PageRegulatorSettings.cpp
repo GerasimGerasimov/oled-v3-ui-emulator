@@ -5,7 +5,7 @@
 TPageRegulatorSettings::TPageRegulatorSettings(std::string Name) : TPageBasicSettings(Name) {
   TLabelInitStructure LabelInitH;
   LabelInitH.pOwner = Container;
-  LabelInitH.caption = "Уставки регулятора";
+  LabelInitH.caption = "Настройки тока";
   TFixedHeader* pHeader = new TFixedHeader(LabelInitH);
   delete Container->List[0];
   Container->List[0] = pHeader;

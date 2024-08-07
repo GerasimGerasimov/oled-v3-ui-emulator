@@ -101,7 +101,7 @@ TPageNetworkSettings::TPageNetworkSettings(std::string Name)
 
     TLabelInitStructure LabelInit;
     LabelInit.pOwner = Container;
-    LabelInit.caption = "Уставки качества сети";
+    LabelInit.caption = "Настройки связи";
     TFixedHeader* pHeader = new TFixedHeader(LabelInit);
     Container->Add(pHeader);
 
