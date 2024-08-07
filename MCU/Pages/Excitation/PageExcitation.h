@@ -1,8 +1,8 @@
 #pragma once
 
-#include <PageSensors.h>
+#include <PageBasicSettings.h>
 
-class TPageExcitation : public TPageSensors
+class TPageExcitation : public TPageBasicSettings
 {
 public:
 	TPageExcitation(std::string Name);

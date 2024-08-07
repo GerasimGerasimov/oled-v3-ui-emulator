@@ -70,11 +70,17 @@ void TPageBasicSettings::fillPageContainer(void) {
     LabelInit.Rect = { 10, 10, 10, 10 };
     LabelInit.focused = false;
     TagList->AddList({
-        new TTagLine("Max.скор", "U1/FLASH/SpdMaxLim/", LabelInit),
-        new TTagLine("Max.ток як", "U1/FLASH/CurMaxLim/", LabelInit),
-        new TTagLine("Max.напр", "U1/FLASH/UrMaxLim/", LabelInit),
-        new TTagLine("Mин.уг упр", "U1/FLASH/Amin/", LabelInit),
-        new TTagLine("Max.уг упр", "U1/FLASH/Amax/", LabelInit),
+        //TODO регистры
+        new TTagLine("Принуд. пуск", "U1/FLASH/EnforcedStart/", LabelInit),
+        new TTagLine("t тяж. пуска", "U1/FLASH/CurMaxLim/", LabelInit),
+        new TTagLine("Ток возб.", "U1/FLASH/UrMaxLim/", LabelInit),
+        new TTagLine("Ток форсировки", "U1/FLASH/Amin/", LabelInit),
+        new TTagLine("Част. тяж. пуск", "U1/FLASH/Amax/", LabelInit),
+        new TTagLine("Ток статора", "U1/FLASH/Amax/", LabelInit),
+        new TTagLine("Пуск", "U1/FLASH/Amax/", LabelInit),
+        new TTagLine("Стоп", "U1/FLASH/Amax/", LabelInit),
+        new TTagLine("Частота об.", "U1/FLASH/Amax/", LabelInit),
+        new TTagLine("Част. тяж.", "U1/FLASH/Amax/", LabelInit),
     });
 }
 
@@ -85,7 +91,7 @@ TPageBasicSettings::TPageBasicSettings(std::string Name)
 
     TLabelInitStructure LabelInit;
     LabelInit.pOwner = Container;
-    LabelInit.caption = "Ограничения";
+    LabelInit.caption = "Уставки пуска";
     TFixedHeader* pHeader = new TFixedHeader(LabelInit);
     Container->Add(pHeader);
 
