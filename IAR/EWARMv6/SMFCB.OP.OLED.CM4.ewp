@@ -1434,6 +1434,9 @@
                 <name>$PROJ_DIR$\..\..\MCU\Pages\Alarms\PageAlarms.cpp</name>
             </file>
             <file>
+                <name>$PROJ_DIR$\..\..\MCU\Pages\AutoMode\PageAutoMode.cpp</name>
+            </file>
+            <file>
                 <name>$PROJ_DIR$\..\..\MCU\Pages\BasicProtectionsSettings\PageBasicProtectionsSettings.cpp</name>
             </file>
             <file>
@@ -1446,10 +1449,16 @@
                 <name>$PROJ_DIR$\..\..\MCU\Pages\CleanSettings\PageCleanSettings.cpp</name>
             </file>
             <file>
-                <name>$PROJ_DIR$\..\..\MCU\Pages\ControlParameters\PageControlParameters.cpp</name>
+                <name>$PROJ_DIR$\..\..\MCU\Pages\ControlSettings\PageControlSettings.cpp</name>
             </file>
             <file>
-                <name>$PROJ_DIR$\..\..\MCU\Pages\ControlSettings\PageControlSettings.cpp</name>
+                <name>$PROJ_DIR$\..\..\MCU\Pages\CosSetting\PageCosSetting.cpp</name>
+            </file>
+            <file>
+                <name>$PROJ_DIR$\..\..\MCU\Pages\CurrentLimit\PageCurrentLimit.cpp</name>
+            </file>
+            <file>
+                <name>$PROJ_DIR$\..\..\MCU\Pages\CurrentProtection\PageCurrentProtection.cpp</name>
             </file>
             <file>
                 <name>$PROJ_DIR$\..\..\MCU\Pages\EditValue\PageEditValue.cpp</name>
@@ -1458,22 +1467,25 @@
                 <name>$PROJ_DIR$\..\..\MCU\Pages\Excitation\PageExcitation.cpp</name>
             </file>
             <file>
+                <name>$PROJ_DIR$\..\..\MCU\Pages\FieldBreak\PageFieldBreak.cpp</name>
+            </file>
+            <file>
+                <name>$PROJ_DIR$\..\..\MCU\Pages\GeneratorMode\PageGeneratorMode.cpp</name>
+            </file>
+            <file>
                 <name>$PROJ_DIR$\..\..\MCU\Pages\Help\PageHelp.cpp</name>
             </file>
             <file>
                 <name>$PROJ_DIR$\..\..\MCU\Pages\Home\PageHome.cpp</name>
             </file>
             <file>
-                <name>$PROJ_DIR$\..\..\MCU\Pages\InformationSignals\PageInformationSignals.cpp</name>
+                <name>$PROJ_DIR$\..\..\MCU\Pages\InsulationControl\PageInsulationControl.cpp</name>
             </file>
             <file>
                 <name>$PROJ_DIR$\..\..\MCU\Pages\MainMenu\PageMainMenu.cpp</name>
             </file>
             <file>
                 <name>$PROJ_DIR$\..\..\MCU\Pages\NetworkSettings\PageNetworkSettings.cpp</name>
-            </file>
-            <file>
-                <name>$PROJ_DIR$\..\..\MCU\Pages\Nominals\PageNominal.cpp</name>
             </file>
             <file>
                 <name>$PROJ_DIR$\..\..\MCU\Pages\OperateStatus\PageOperateStatus.cpp</name>
@@ -1488,7 +1500,7 @@
                 <name>$PROJ_DIR$\..\..\MCU\Pages\ParameterListEdit\PageParameterListEdit.h</name>
             </file>
             <file>
-                <name>$PROJ_DIR$\..\..\MCU\Pages\Ready\PageReady.cpp</name>
+                <name>$PROJ_DIR$\..\..\MCU\Pages\PowerSection\PagePowerSection.cpp</name>
             </file>
             <file>
                 <name>$PROJ_DIR$\..\..\MCU\Pages\RegulatorSettings\PageRegulatorSettings.cpp</name>
@@ -1497,7 +1509,16 @@
                 <name>$PROJ_DIR$\..\..\MCU\Pages\Sensors\PageSensors.cpp</name>
             </file>
             <file>
-                <name>$PROJ_DIR$\..\..\MCU\Pages\ThermalProtection\PageThermalProtection.cpp</name>
+                <name>$PROJ_DIR$\..\..\MCU\Pages\Sliding\PageSliding.cpp</name>
+            </file>
+            <file>
+                <name>$PROJ_DIR$\..\..\MCU\Pages\StatorCurrent\PageStatorCurrent.cpp</name>
+            </file>
+            <file>
+                <name>$PROJ_DIR$\..\..\MCU\Pages\StatorVoltage\PageStatorVoltage.cpp</name>
+            </file>
+            <file>
+                <name>$PROJ_DIR$\..\..\MCU\Pages\Testing\PageTesting.cpp</name>
             </file>
             <file>
                 <name>$PROJ_DIR$\..\..\MCU\Pages\Warning\PageWarnings.cpp</name>

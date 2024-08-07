@@ -6,5 +6,7 @@ class TPageStatorVoltage : public TPageBasicSettings
 {
 public:
     TPageStatorVoltage(std::string Name);
+protected:
+    void fillPageContainer(void) override;
 };
 
