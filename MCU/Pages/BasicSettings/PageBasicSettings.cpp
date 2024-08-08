@@ -70,17 +70,14 @@ void TPageBasicSettings::fillPageContainer(void) {
     LabelInit.Rect = { 10, 10, 10, 10 };
     LabelInit.focused = false;
     TagList->AddList({
-        //TODO регистры
         new TTagLine("Принуд. пуск", "U1/FLASH/EnforcedStart/", LabelInit),
-        new TTagLine("t тяж. пуска", "U1/FLASH/CurMaxLim/", LabelInit),
-        new TTagLine("Ток возб.", "U1/FLASH/UrMaxLim/", LabelInit),
-        new TTagLine("Ток форсировки", "U1/FLASH/Amin/", LabelInit),
-        new TTagLine("Част. тяж. пуск", "U1/FLASH/Amax/", LabelInit),
-        new TTagLine("Ток статора", "U1/FLASH/Amax/", LabelInit),
-        new TTagLine("Пуск", "U1/FLASH/Amax/", LabelInit),
-        new TTagLine("Стоп", "U1/FLASH/Amax/", LabelInit),
-        new TTagLine("Частота об.", "U1/FLASH/Amax/", LabelInit),
-        new TTagLine("Част. тяж.", "U1/FLASH/Amax/", LabelInit),
+        new TTagLine("t тяж. пуска", "U1/FLASH/HsTime/", LabelInit),
+        new TTagLine("Ток возб.", "U1/FLASH/IExcRef/", LabelInit),
+        new TTagLine("Ток форсировки", "U1/FLASH/IExcForce/", LabelInit),
+        new TTagLine("Част. тяж. пуск", "U1/FLASH/HsFreq/", LabelInit),
+        new TTagLine("Ток статора", "U1/FLASH/IstExcEnable/", LabelInit),
+        new TTagLine("Пуск по току", "U1/FLASH/IstStart/", LabelInit),
+        new TTagLine("Стоп по току", "U1/FLASH/IstStop/", LabelInit),
     });
 }
 

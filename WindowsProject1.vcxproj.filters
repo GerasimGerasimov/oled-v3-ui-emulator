@@ -79,9 +79,6 @@
     <Filter Include="MCU\DevicesValues">
       <UniqueIdentifier>{c577d28a-ac74-40fd-9769-dd9980121259}</UniqueIdentifier>
     </Filter>
-    <Filter Include="MCU\Alarms">
-      <UniqueIdentifier>{ae43b80b-0817-4d84-bc4a-d87c9724f406}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Divers\Leds">
       <UniqueIdentifier>{566b1f77-bd9d-48e3-bcce-07acbffcfa28}</UniqueIdentifier>
     </Filter>
@@ -90,6 +87,15 @@
     </Filter>
     <Filter Include="MCU\Pages\Discretes">
       <UniqueIdentifier>{13df61e3-f887-41cc-8a84-05a30aacf9a5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MCU\StateControllers">
+      <UniqueIdentifier>{572d320e-1d0a-4fd1-9553-ca62f05b6032}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MCU\StateControllers\Alarms">
+      <UniqueIdentifier>{ae43b80b-0817-4d84-bc4a-d87c9724f406}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MCU\StateControllers\Warnings">
+      <UniqueIdentifier>{834cce58-8d21-4abe-b440-80bda4c97d9c}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -404,9 +410,6 @@
     <ClCompile Include="MCU\Pages\Alarms\PageAlarms.cpp">
       <Filter>MCU\Pages</Filter>
     </ClCompile>
-    <ClCompile Include="MCU\StateControllers\Warnings\Warnings.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
     <ClCompile Include="Drivers\Leds\Warning\LedWarnings.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
@@ -459,7 +462,7 @@
       <Filter>MCU\Pages\Discretes</Filter>
     </ClCompile>
     <ClCompile Include="MCU\StateControllers\Alarms\Alarms.cpp">
-      <Filter>MCU\Alarms</Filter>
+      <Filter>MCU\StateControllers\Alarms</Filter>
     </ClCompile>
     <ClCompile Include="MCU\Pages\RegulatorSettings\PageRegulatorSettings.cpp">
       <Filter>MCU\Pages</Filter>
@@ -532,6 +535,9 @@
     </ClCompile>
     <ClCompile Include="MCU\Pages\Testing\PageTesting.cpp">
       <Filter>MCU\Pages</Filter>
+    </ClCompile>
+    <ClCompile Include="MCU\StateControllers\Warnings\Warnings.cpp">
+      <Filter>MCU\StateControllers\Warnings</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
