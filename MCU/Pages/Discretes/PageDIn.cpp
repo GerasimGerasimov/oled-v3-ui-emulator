@@ -23,13 +23,19 @@ void TPageDIn::fillPageContainer()
     LabelInit.Rect = { 10, 10, 10, 10 };
     LabelInit.focused = false;
     TagList->AddList({
-        new TTagLine("iINSLEXC", "U1/RAM/iINSLEXC/", LabelInit),
-        new TTagLine("iQ2EXC", "U1/RAM/iQ2EXC/", LabelInit),
-        new TTagLine("iKM2EXC", "U1/RAM/iKM2EXC/", LabelInit),
-        new TTagLine("iKM1ANC", "U1/RAM/iKM1ANC/", LabelInit),
-        new TTagLine("iQ1", "U1/RAM/iQ1/", LabelInit),
-        new TTagLine("iReset", "U1/RAM/iReset/", LabelInit),
-        new TTagLine("iEnable", "U1/RAM/iEnable/", LabelInit),
+        new TTagLine("iStartBtn", "U1/RAM/iStartBtn/", LabelInit),
+        new TTagLine("iWindDry", "U1/RAM/iWindDry/", LabelInit),
         new TTagLine("iOVH", "U1/RAM/iOVH/", LabelInit),
+        new TTagLine("iMPSState", "U1/RAM/iMPSState/", LabelInit),
+        new TTagLine("iSPPExFrce", "U1/RAM/iSPPExFrce/", LabelInit),
+        new TTagLine("iSPPExEnbl", "U1/RAM/iSPPExEnbl/", LabelInit),
+        new TTagLine("iRMSState", "U1/RAM/iRMSState/", LabelInit),
+        new TTagLine("iMMSState", "U1/RAM/iMMSState/", LabelInit),
+        new TTagLine("iAuto", "U1/RAM/iAuto/", LabelInit),
+        new TTagLine("iIRm-", "U1/RAM/iIRm-/", LabelInit),
+        new TTagLine("iIRp+", "U1/RAM/iIRp+/", LabelInit),
+        new TTagLine("iReset", "U1/RAM/iReset/", LabelInit),
+        new TTagLine("iTest", "U1/RAM/iTest/", LabelInit),
+        new TTagLine("iReady", "U1/RAM/iReady/", LabelInit),
         });
 }

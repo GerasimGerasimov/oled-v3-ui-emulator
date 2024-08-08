@@ -18,7 +18,7 @@ void TPageCosSetting::fillPageContainer(void){
     LabelInit.style = LabelsStyle::WIDTH_DINAMIC;
     LabelInit.Rect = {10, 10, 10, 10};
     LabelInit.focused = false;
-
+    
     TagList->AddList({
         new TTagLine("Istat", "U1/RAM/Istat/", LabelInit),
         new TTagLine("Ir", "U1/RAM/Ir/", LabelInit),
