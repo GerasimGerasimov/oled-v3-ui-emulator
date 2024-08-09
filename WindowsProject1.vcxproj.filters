@@ -404,9 +404,6 @@
     <ClCompile Include="MCU\Components\TComponentListVertical.cpp">
       <Filter>MCU\Components</Filter>
     </ClCompile>
-    <ClCompile Include="MCU\Pages\OperateStatus\PageOperateStatus.cpp">
-      <Filter>MCU\Pages</Filter>
-    </ClCompile>
     <ClCompile Include="MCU\Pages\Alarms\PageAlarms.cpp">
       <Filter>MCU\Pages</Filter>
     </ClCompile>
@@ -476,22 +473,10 @@
     <ClCompile Include="MCU\Pages\PowerSection\PagePowerSection.cpp">
       <Filter>MCU\Pages</Filter>
     </ClCompile>
-    <ClCompile Include="MCU\Pages\BasicProtectionsSettings\PageBasicProtectionsSettings.cpp">
-      <Filter>MCU\Pages</Filter>
-    </ClCompile>
-    <ClCompile Include="MCU\Pages\PanelSettings\PagePanelSettings.cpp">
-      <Filter>MCU\Pages</Filter>
-    </ClCompile>
     <ClCompile Include="MCU\Pages\Sensors\PageSensors.cpp">
       <Filter>MCU\Pages</Filter>
     </ClCompile>
-    <ClCompile Include="MCU\Pages\Calibration\PageCalibration.cpp">
-      <Filter>MCU\Pages</Filter>
-    </ClCompile>
     <ClCompile Include="MCU\Pages\BasicSettings\PageBasicSettings.cpp">
-      <Filter>MCU\Pages</Filter>
-    </ClCompile>
-    <ClCompile Include="MCU\Pages\CleanSettings\PageCleanSettings.cpp">
       <Filter>MCU\Pages</Filter>
     </ClCompile>
     <ClCompile Include="MCU\Pages\GeneratorMode\PageGeneratorMode.cpp">

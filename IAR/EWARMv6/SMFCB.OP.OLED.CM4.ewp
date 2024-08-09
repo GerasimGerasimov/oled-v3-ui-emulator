@@ -723,7 +723,7 @@
                 </option>
                 <option>
                     <name>OOCOutputFile</name>
-                    <state>TPRDCM.OP.OLED.CM4.hex</state>
+                    <state>SMFCB.OP.OLED.CM4.hex</state>
                 </option>
                 <option>
                     <name>OOCCommandLineProducer</name>
@@ -1437,16 +1437,7 @@
                 <name>$PROJ_DIR$\..\..\MCU\Pages\AutoMode\PageAutoMode.cpp</name>
             </file>
             <file>
-                <name>$PROJ_DIR$\..\..\MCU\Pages\BasicProtectionsSettings\PageBasicProtectionsSettings.cpp</name>
-            </file>
-            <file>
                 <name>$PROJ_DIR$\..\..\MCU\Pages\BasicSettings\PageBasicSettings.cpp</name>
-            </file>
-            <file>
-                <name>$PROJ_DIR$\..\..\MCU\Pages\Calibration\PageCalibration.cpp</name>
-            </file>
-            <file>
-                <name>$PROJ_DIR$\..\..\MCU\Pages\CleanSettings\PageCleanSettings.cpp</name>
             </file>
             <file>
                 <name>$PROJ_DIR$\..\..\MCU\Pages\ControlSettings\PageControlSettings.cpp</name>
@@ -1479,19 +1470,10 @@
                 <name>$PROJ_DIR$\..\..\MCU\Pages\Home\PageHome.cpp</name>
             </file>
             <file>
-                <name>$PROJ_DIR$\..\..\MCU\Pages\InsulationControl\PageInsulationControl.cpp</name>
-            </file>
-            <file>
                 <name>$PROJ_DIR$\..\..\MCU\Pages\MainMenu\PageMainMenu.cpp</name>
             </file>
             <file>
                 <name>$PROJ_DIR$\..\..\MCU\Pages\NetworkSettings\PageNetworkSettings.cpp</name>
-            </file>
-            <file>
-                <name>$PROJ_DIR$\..\..\MCU\Pages\OperateStatus\PageOperateStatus.cpp</name>
-            </file>
-            <file>
-                <name>$PROJ_DIR$\..\..\MCU\Pages\PanelSettings\PagePanelSettings.cpp</name>
             </file>
             <file>
                 <name>$PROJ_DIR$\..\..\MCU\Pages\ParameterListEdit\PageParameterListEdit.cpp</name>
