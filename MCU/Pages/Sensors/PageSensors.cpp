@@ -92,14 +92,14 @@ void TPageSensors::fillPageContainer(void) {
     LabelInit.Rect = { 10, 10, 10, 10 };
     LabelInit.focused = false;
     TagList->AddList({
-        new TTagLine("Freq", "U1/RAM/Freq/", LabelInit),
-        new TTagLine("Vab", "U1/RAM/Vab/", LabelInit),
-        new TTagLine("Vbc", "U1/RAM/Vbc/", LabelInit),
-        new TTagLine("Vca", "U1/RAM/Vca/", LabelInit),
-        new TTagLine("Ia", "U1/RAM/Ia/", LabelInit),
-        new TTagLine("Ib", "U1/RAM/Ib/", LabelInit),
-        new TTagLine("Ic", "U1/RAM/Ic/", LabelInit),
-        new TTagLine("RINSL", "U1/RAM/R/", LabelInit),//TODO 
+//        new TTagLine("Freq", "U1/RAM/Freq/", LabelInit),
+//        new TTagLine("Vab", "U1/RAM/Vab/", LabelInit),
+//        new TTagLine("Vbc", "U1/RAM/Vbc/", LabelInit),
+//        new TTagLine("Vca", "U1/RAM/Vca/", LabelInit),
+//        new TTagLine("Ia", "U1/RAM/Ia/", LabelInit),
+//        new TTagLine("Ib", "U1/RAM/Ib/", LabelInit),
+//        new TTagLine("Ic", "U1/RAM/Ic/", LabelInit),
+//        new TTagLine("RINSL", "U1/RAM/R/", LabelInit),//TODO 
     });
 }
 

@@ -98,8 +98,8 @@ void TPageNetworkSettings::fillPageContainer(void) {
         new TTagLine("COM2BPS", "U1/FLASH/COM2BPS/", LabelInit),
         new TTagLine("COM3DVA", "U1/FLASH/COM3DVA/", LabelInit),
         new TTagLine("COM3BPS", "U1/FLASH/COM3BPS/", LabelInit),
-        new TTagLine("COM4_ADR", "U1/FLASH-ICM/COM4_ADR/", LabelInit),
-        new TTagLine("COM4_BPS", "U1/FLASH-ICM/COM4_BPS/", LabelInit),
+//        new TTagLine("COM4_ADR", "U1/FLASH-ICM/COM4_ADR/", LabelInit),
+//        new TTagLine("COM4_BPS", "U1/FLASH-ICM/COM4_BPS/", LabelInit),
         //new TTagLine("iCM_IP_ADDR", "U1/FLASH-ICM/iCM_IP_ADDR/", LabelInit),
 
     });
