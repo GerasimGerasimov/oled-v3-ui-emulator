@@ -3,8 +3,14 @@
 #include <LedWarnings.h>
 
 std::map < std::string, TTrackedBit > Warnings::Tags = {
-	//{"Driver", {"U1/RAM/CheckDriver/", nullptr, false, false}},
-	//{"ExtReady", {"U1/RAM/CheckExtReady/", nullptr, false, false}},
+	{"R_INSL_LOW", {"U1/RAM/R_INSL_LOW/", nullptr, false, false}},
+	{"i2tR", {"U1/RAM/i2tR/", nullptr, false, false}},
+	{"UstLow", {"U1/RAM/UstLow/", nullptr, false, false}},
+	{"UstFail", {"U1/RAM/UstFail/", nullptr, false, false}},
+	{"SlideCirctErr", {"U1/RAM/SlideCirctErr/", nullptr, false, false}},
+	{"MMS_Error", {"U1/RAM/MMS_Error/", nullptr, false, false}},
+	{"DExS_PWR_LNK", {"U1/RAM/DExS_PWR_LNK/", nullptr, false, false}},
+	{"SyncRect", {"U1/RAM/SyncRect/", nullptr, false, false}},
 };
 
 bool Warnings::State = true;

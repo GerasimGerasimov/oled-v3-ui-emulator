@@ -20,12 +20,10 @@ void TPageTesting::fillPageContainer(void){
     LabelInit.focused = false;
 
     TagList->AddList({
-        new TTagLine("Chop", "U1/RAM/Chop/", LabelInit),
-        new TTagLine("PWR", "U1/RAM/PWR/", LabelInit),
         new TTagLine("Test", "U1/RAM/Test/", LabelInit),
+        new TTagLine("IExcTst", "U1/FLASH/IExcTst/", LabelInit),
+        new TTagLine("TestTime", "U1/FLASH/TestTime/", LabelInit),
         new TTagLine("FS+", "U1/RAM/FS+/", LabelInit),
         new TTagLine("FS-", "U1/RAM/FS-/", LabelInit),
-        new TTagLine("TestTime", "U1/FLASH/TestTime/", LabelInit),
-        new TTagLine("FieldBlankTime", "U1/FLASH/FieldBlankTime/", LabelInit),
         });
 }
