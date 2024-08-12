@@ -25,6 +25,5 @@ void TPagePower::fillPageContainer(void){
         new TTagLine("Qoe", "U1/RAM/Qoe/", LabelInit),
         new TTagLine("QLimMin", "U1/RAM/QLimMin/", LabelInit),
         new TTagLine("QLimMax", "U1/RAM/QLimMax/", LabelInit),
-
         });
 }
