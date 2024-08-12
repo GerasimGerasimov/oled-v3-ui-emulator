@@ -21,5 +21,5 @@ void TPageRectifierProtection::fillPageContainer(void){
         new TTagLine("IttMaxFlt", "U1/FLASH/IttMaxFlt/", LabelInit),
         new TTagLine("fIttAsymPrc", "U1/FLASH/fIttAsymPrc/", LabelInit),
         new TTagLine("fIttAsymTime", "U1/FLASH/fIttAsymTime/", LabelInit),
-        });
+    });
 }

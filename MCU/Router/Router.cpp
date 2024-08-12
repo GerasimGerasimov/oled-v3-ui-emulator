@@ -13,7 +13,6 @@
 #include "ControlSettings/PageControlSettings.h"
 #include "Rectifier/PageRectifier.h"
 #include "StatorVoltage/PageStatorVoltage.h"
-#include "CurrentLimit/PageCurrentLimit.h"
 #include "Testing/PageTesting.h"
 #include "Ready/PageReady.h"
 #include "Power/PagePower.h"

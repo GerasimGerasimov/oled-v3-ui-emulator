@@ -72,13 +72,11 @@ void TPageHome::fillPageContainer(void) {
     LabelInit.Rect = { 10, 10, 10, 10 };
     LabelInit.focused = false;
     TagList->AddList({
-        
         new TTagLine("Ток ротора", "U1/RAM/Ir/", LabelInit),
         new TTagLine("Напр. ротор", "U1/RAM/Ur/", LabelInit),
         new TTagLine("Ток статора", "U1/RAM/Istat/", LabelInit),
         new TTagLine("Напр. стат.", "U1/RAM/Ustat/", LabelInit),
         new TTagLine("cos F", "U1/RAM/F/", LabelInit),
-        
     });
     
 }

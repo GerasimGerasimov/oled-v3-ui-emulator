@@ -168,12 +168,6 @@
     <ClInclude Include="MCU\Pages\StatorVoltage\PageStatorVoltage.h">
       <Filter>MCU\Pages</Filter>
     </ClInclude>
-    <ClInclude Include="MCU\Pages\InsulationControl\PageInsulationControl.h">
-      <Filter>MCU\Pages</Filter>
-    </ClInclude>
-    <ClInclude Include="MCU\Pages\CurrentLimit\PageCurrentLimit.h">
-      <Filter>MCU\Pages</Filter>
-    </ClInclude>
     <ClInclude Include="MCU\Pages\Testing\PageTesting.h">
       <Filter>MCU\Pages</Filter>
     </ClInclude>
@@ -477,12 +471,6 @@
       <Filter>MCU\Pages</Filter>
     </ClCompile>
     <ClCompile Include="MCU\Pages\StatorVoltage\PageStatorVoltage.cpp">
-      <Filter>MCU\Pages</Filter>
-    </ClCompile>
-    <ClCompile Include="MCU\Pages\InsulationControl\PageInsulationControl.cpp">
-      <Filter>MCU\Pages</Filter>
-    </ClCompile>
-    <ClCompile Include="MCU\Pages\CurrentLimit\PageCurrentLimit.cpp">
       <Filter>MCU\Pages</Filter>
     </ClCompile>
     <ClCompile Include="MCU\Pages\Testing\PageTesting.cpp">
