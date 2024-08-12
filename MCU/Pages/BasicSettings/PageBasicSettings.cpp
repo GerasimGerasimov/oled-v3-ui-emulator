@@ -72,12 +72,14 @@ void TPageBasicSettings::fillPageContainer(void) {
     TagList->AddList({
         new TTagLine("Принуд. пуск", "U1/FLASH/EnforcedStart/", LabelInit),
         new TTagLine("t тяж. пуска", "U1/FLASH/HsTime/", LabelInit),
-        new TTagLine("Ток возб.", "U1/FLASH/IExcRef/", LabelInit),
+        new TTagLine("t пуск. форсировки", "U1/FLASH/StartForceTime/", LabelInit),
         new TTagLine("Ток форсировки", "U1/FLASH/IExcForce/", LabelInit),
-        new TTagLine("Част. тяж. пуск", "U1/FLASH/HsFreq/", LabelInit),
-        new TTagLine("Ток статора", "U1/FLASH/IstExcEnable/", LabelInit),
+        new TTagLine("Ток возб.", "U1/FLASH/IExcRef/", LabelInit),
         new TTagLine("Пуск по току", "U1/FLASH/IstStart/", LabelInit),
         new TTagLine("Стоп по току", "U1/FLASH/IstStop/", LabelInit),
+        new TTagLine("Ток статора", "U1/FLASH/IstExcEnable/", LabelInit),
+        new TTagLine("Min частота скольж.", "U1/FLASH/ExcEnableFreq/", LabelInit),
+        new TTagLine("Част. тяж. пуск", "U1/FLASH/HsFreq/", LabelInit),
     });
 }
 
@@ -88,7 +90,7 @@ TPageBasicSettings::TPageBasicSettings(std::string Name)
 
     TLabelInitStructure LabelInit;
     LabelInit.pOwner = Container;
-    LabelInit.caption = "Уставки пуска";
+    LabelInit.caption = "Пуск";
     TFixedHeader* pHeader = new TFixedHeader(LabelInit);
     Container->Add(pHeader);
 

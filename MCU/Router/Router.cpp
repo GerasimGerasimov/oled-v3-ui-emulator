@@ -6,24 +6,22 @@
 #include "PageHelp.h"
 #include "PageWarnings.h"
 #include "PageBasicSettings.h"
-#include "PageNetworkSettings.h"
 #include "PageParameterListEdit.h"
 #include "Discretes/PageDIn.h"
 #include "Discretes/TPageDOut.h"
 #include "RegulatorSettings/PageRegulatorSettings.h"
 #include "ControlSettings/PageControlSettings.h"
-#include "Excitation/PageExcitation.h"
-#include "PowerSection/PagePowerSection.h"
-#include "GeneratorMode/PageGeneratorMode.h"
-#include "StatorCurrent/PageStatorCurrent.h"
+#include "Rectifier/PageRectifier.h"
 #include "StatorVoltage/PageStatorVoltage.h"
 #include "CurrentLimit/PageCurrentLimit.h"
-#include "AutoMode/PageAutoMode.h"
-#include "CosSetting/PageCosSetting.h"
-#include "CurrentProtection/PageCurrentProtection.h"
-#include "FieldBreak/PageFieldBreak.h"
-#include "Sliding/PageSliding.h"
 #include "Testing/PageTesting.h"
+#include "Ready/PageReady.h"
+#include "Power/PagePower.h"
+#include "RectifierProtection/PageRectifierProtection.h"
+#include "RotorProtection/PageRotorProtection.h"
+#include "StatorProtection/PageStatorProtection.h"
+#include "TaskLimit/PageTaskLimit.h"
+#include "ReactPowerLimit/PageReactPowerLimit.h"
 
 #include <IniResources.h>
 
@@ -36,37 +34,28 @@ TPageValueEditEntryData TRouter::PageValueEditEntryData = {"", ""};
 std::map<std::string, TPage*> TRouter::Pages = std::map<std::string, TPage*>();
 
 void TRouter::Init(void) {
-    Pages["Home"] = new TPageHome("Home");//
+    Pages["Home"] = new TPageHome("Home");//Главный экран 
     Pages["Help"] = new TPageHelp("Help");
     Pages["MainMenu"] = new TPageMainMenu("MainMenu");
-
     Pages["Alarms"] = new TPageAlarms("Alarms");//аварии
-    Pages["Warnings"] = new TPageWarnings("Warnings");
-
+    Pages["Warnings"] = new TPageWarnings("Warnings");//Предупреждения
     Pages["DInput"] = new TPageDIn("DInput");//дискретные входы
     Pages["DOutput"] = new TPageDOut("DOutput");//дискретные выходы
-
     Pages["EditValue"] = new TPageEditValue("EditValue");
-
-    Pages["BasicSettings"] = new TPageBasicSettings("BasicSettings");//Уставки пуска
-    Pages["PowerSection"] = new TPagePowerSection("PowerSection");//Силовая часть
-    Pages["GeneratorMode"] = new TPageGeneratorMode("GeneratorMode");//Генераторный режим
-    Pages["StatorCurrent"] = new TPageStatorCurrent("StatorCurrent");//Ток статора
+    Pages["Ready"] = new TPageReady("Ready");//Готовность
+    Pages["Power"] = new TPagePower("Power");//Мощность
+    Pages["BasicSettings"] = new TPageBasicSettings("BasicSettings");//Пуск
     Pages["StatorVoltage"] = new TPageStatorVoltage("StatorVoltage");//Напряжение статора
-    Pages["Excitation"] = new TPageExcitation("Excitation");//Подача возбуждения
+    Pages["Rectifier"] = new TPageRectifier("Rectifier");//Выпрямитель
     Pages["ControlSettings"] = new TPageControlSettings("ControlSettings");//Контроль изоляции
-    Pages["CurrentLimit"] = new TPageCurrentLimit("CurrentLimit");//Ограничение тока
-    Pages["AutoMode"] = new TPageAutoMode("AutoMode"); //Автоматический режим
-    Pages["CosSetting"] = new TPageCosSetting("CosSetting");//cos настройка
-    Pages["NetWorkSettings"] = new TPageNetworkSettings("NetWorkSettings");//Настройки связи
-    Pages["CurrentProtection"] = new TPageCurrentProtection("CurrentProtection");//Токовые защиты возбудителя
-    Pages["FieldBreak"] = new TPageFieldBreak("FieldBreak");//Обрыв поля
-    Pages["RegulatorSettings"] = new TPageRegulatorSettings("RegulatorSettings");//Настройки регулятора тока
-    Pages["Sliding"] = new TPageSliding("Sliding");//Скольжение
+    Pages["RectifierProtection"] = new TPageRectifierProtection("RectifierProtection");//Защиты выпрямителя
+    Pages["RotorProtection"] = new TPageRotorProtection("RotorProtection");//Защиты ротора
+    Pages["StatorProtection"] = new TPageStatorProtection("StatorProtection");//Защиты статора
+    Pages["TaskLimit"] = new TPageTaskLimit("TaskLimit");//Ограничители задания
+    Pages["ReactPowerLimit"] = new TPageReactPowerLimit("ReactPowerLimit");//Ограничители реактивной мощности
+    Pages["RegulatorSettings"] = new TPageRegulatorSettings("RegulatorSettings");//Настройки ПИД регулятора
     Pages["Testing"] = new TPageTesting("Testing");//Опробование
-
     Pages["PrmListEdit"] = new TPageParameterListEdit("PrmListEdit");
-
     setInitPage();
 }
 

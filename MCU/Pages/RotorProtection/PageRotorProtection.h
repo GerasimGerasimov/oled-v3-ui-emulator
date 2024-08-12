@@ -2,10 +2,10 @@
 
 #include <PageBasicSettings.h>
 
-class TPagePowerSection : public TPageBasicSettings
+class TPageRotorProtection : public TPageBasicSettings
 {
 public:
-    TPagePowerSection(std::string Name);
+    TPageRotorProtection(std::string Name);
 protected:
     void fillPageContainer(void) override;
 };

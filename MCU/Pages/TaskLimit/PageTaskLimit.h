@@ -2,10 +2,10 @@
 
 #include <PageBasicSettings.h>
 
-class TPageFieldBreak : public TPageBasicSettings
+class TPageTaskLimit : public TPageBasicSettings
 {
 public:
-    TPageFieldBreak(std::string Name);
+    TPageTaskLimit(std::string Name);
 protected:
     void fillPageContainer(void) override;
 };

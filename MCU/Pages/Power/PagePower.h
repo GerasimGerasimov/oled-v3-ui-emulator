@@ -2,10 +2,10 @@
 
 #include <PageSensors.h>
 
-class TPageSliding : public TPageSensors
+class TPagePower : public TPageSensors
 {
 public:
-    TPageSliding(std::string Name);
+    TPagePower(std::string Name);
 protected:
     void fillPageContainer(void) override;
 };

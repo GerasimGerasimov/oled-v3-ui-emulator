@@ -2,10 +2,10 @@
 
 #include <PageBasicSettings.h>
 
-class TPageCosSetting : public TPageBasicSettings
+class TPageStatorProtection : public TPageBasicSettings
 {
 public:
-    TPageCosSetting(std::string Name);
+    TPageStatorProtection(std::string Name);
 protected:
     void fillPageContainer(void) override;
 };

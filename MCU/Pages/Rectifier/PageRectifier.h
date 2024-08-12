@@ -2,10 +2,10 @@
 
 #include <PageBasicSettings.h>
 
-class TPageExcitation : public TPageBasicSettings
+class TPageRectifier : public TPageBasicSettings
 {
 public:
-	TPageExcitation(std::string Name);
+	TPageRectifier(std::string Name);
 protected:
 	void fillPageContainer(void) override;
 };

@@ -2,10 +2,10 @@
 
 #include <PageBasicSettings.h>
 
-class TPageGeneratorMode : public TPageBasicSettings
+class TPageRectifierProtection : public TPageBasicSettings
 {
 public:
-    TPageGeneratorMode(std::string Name);
+    TPageRectifierProtection(std::string Name);
 protected:
     void fillPageContainer(void) override;
 };
