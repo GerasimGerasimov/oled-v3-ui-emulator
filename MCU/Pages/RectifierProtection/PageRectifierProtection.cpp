@@ -1,5 +1,5 @@
 #include "PageRectifierProtection.h"
-#include "TagLine.h"
+#include "TagLineVarSize.h"
 #include <FixedHeader.h>
 
 TPageRectifierProtection::TPageRectifierProtection(std::string Name) : TPageBasicSettings(Name){
@@ -19,7 +19,7 @@ void TPageRectifierProtection::fillPageContainer(void){
     LabelInit.focused = false;
     TagList->AddList({
         new TTagLine("IttMaxFlt", "U1/FLASH/IttMaxFlt/", LabelInit),
-        new TTagLine("fIttAsymPrc", "U1/FLASH/fIttAsymPrc/", LabelInit),
-        new TTagLine("fIttAsymTime", "U1/FLASH/fIttAsymTime/", LabelInit),
+        new TTagLineVarSize("fIttAsymPrc", "U1/FLASH/fIttAsymPrc/", LabelInit, 0),
+        new TTagLine("fIttAsymT", "U1/FLASH/fIttAsymTime/", LabelInit),
     });
 }

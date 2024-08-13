@@ -1,5 +1,5 @@
 #include "PageTaskLimit.h"
-#include "TagLine.h"
+#include "TagLineVarSize.h"
 #include <FixedHeader.h>
 
 TPageTaskLimit::TPageTaskLimit(std::string Name) : TPageBasicSettings(Name){
@@ -20,7 +20,7 @@ void TPageTaskLimit::fillPageContainer(void){
     TagList->AddList({
         new TTagLine("IExcMin", "U1/FLASH/IExcMin/", LabelInit),
         new TTagLine("IExcMax", "U1/FLASH/IExcMax/", LabelInit),
-        new TTagLine("IExcManuMax", "U1/FLASH/IExcManuMax/", LabelInit),
+        new TTagLineVarSize("IExcManuMax", "U1/FLASH/IExcManuMax/", LabelInit, 0),
         new TTagLine("FLmax", "U1/FLASH/FLmax/", LabelInit),
         new TTagLine("FLmin", "U1/FLASH/FLmin/", LabelInit),
         new TTagLine("dIExcRef", "U1/FLASH/dIExcRef/", LabelInit),

@@ -1,5 +1,5 @@
 #include "TPageDOut.h"
-#include "TagLine.h"
+#include "TagLineVarSize.h"
 #include <FixedHeader.h>
 
 TPageDOut::TPageDOut(std::string Name) : TPageInOut(Name){
@@ -30,8 +30,9 @@ void TPageDOut::fillPageContainer()
         new TTagLine("oUSER_K6", "U1/RAM/oUSER_K6/", LabelInit),
         new TTagLine("oMSS_K5", "U1/RAM/oMSS_K5/", LabelInit),
         new TTagLine("oFAULT_K4", "U1/RAM/oFAULT_K4/", LabelInit),
-        new TTagLine("oWARNING_K3", "U1/RAM/oWARNING_K3/", LabelInit),
-        new TTagLine("oREADY_K2", "U1/RAM/oREADY_K2/", LabelInit),
-        new TTagLine("oCROWBAR_K1", "U1/RAM/oCROWBAR_K1/", LabelInit),
+        new TTagLineVarSize("oWARNING_K3", "U1/RAM/oWARNING_K3/", LabelInit, 0),
+        new TTagLineVarSize("oREADY_K2", "U1/RAM/oREADY_K2/", LabelInit, 0),
+        new TTagLineVarSize("oCROWBAR_K1", "U1/RAM/oCROWBAR_K1/", LabelInit, 0),
         });
+    dynamic_cast<TTagLineVarSize*>(TagList->List[8])->setGap(25);//oREADY_K2
 }
