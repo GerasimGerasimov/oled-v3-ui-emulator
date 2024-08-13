@@ -1,9 +1,6 @@
 #include "PageHome.h"
 #include "Router.h"
-#include "TagLine.h"
-#include "TagLineTime.h"
 #include "TagLineVarSize.h"
-#include "TwoTagLine.h"
 #include <IniResources.h>
 
 void TPageHome::view() {

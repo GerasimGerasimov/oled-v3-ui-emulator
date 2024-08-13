@@ -431,12 +431,6 @@
     <ClCompile Include="MCU\Components\LabelTime.cpp">
       <Filter>MCU\Components</Filter>
     </ClCompile>
-    <ClCompile Include="MCU\Components\TwoTagLine.cpp">
-      <Filter>MCU\Components</Filter>
-    </ClCompile>
-    <ClCompile Include="MCU\Components\TagLineTime.cpp">
-      <Filter>MCU\Components</Filter>
-    </ClCompile>
     <ClCompile Include="MCU\Parameters\TU32BIT.cpp">
       <Filter>MCU\Parameters</Filter>
     </ClCompile>

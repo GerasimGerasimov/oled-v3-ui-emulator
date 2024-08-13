@@ -16,17 +16,16 @@ TPageStatorVoltage::TPageStatorVoltage(std::string Name) : TPageBasicSettings(Na
 void TPageStatorVoltage::fillPageContainer(void){
     TagList->Clear();
     TLabelInitStructure LabelInit;
-    LabelInit.style = LabelsStyle::WIDTH_DINAMIC;
-    LabelInit.Rect = {10, 10, 10, 10};
+    LabelInit.style = LabelsStyle::WIDTH_FIXED;
+    LabelInit.Rect = {10, 10, 10, 70};
     LabelInit.focused = false;
 
     TagList->AddList({
-        new TTagLineScrollCaption("stUstFltReadyEn", "U1/FLASH/stUstFltReadyEnable/", LabelInit),
+        new TTagLineScrollCaption("stUstFltReadyEnable", "U1/FLASH/stUstFltReadyEnable/", LabelInit),
         new TTagLine("UstNom", "U1/FLASH/UstNom/", LabelInit),
-        new TTagLineVarSize("UstLowReset", "U1/FLASH/UstLowReset/", LabelInit, 0),
+        new TTagLineScrollCaption("UstLowReset", "U1/FLASH/UstLowReset/", LabelInit),
         new TTagLine("UstLowSet", "U1/FLASH/UstLowSet/", LabelInit),
         new TTagLineVarSize("UstFailReset", "U1/FLASH/UstFailReset/", LabelInit, 0),
         new TTagLineVarSize("UstFailSet", "U1/FLASH/UstFailSet/", LabelInit, 0)
         });
-    dynamic_cast<TTagLineVarSize*>(TagList->List[2])->setGap(3);//UstLowReset
 }

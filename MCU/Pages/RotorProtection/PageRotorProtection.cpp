@@ -14,12 +14,12 @@ TPageRotorProtection::TPageRotorProtection(std::string Name) : TPageBasicSetting
 void TPageRotorProtection::fillPageContainer(void){
     TagList->Clear();
     TLabelInitStructure LabelInit;
-    LabelInit.style = LabelsStyle::WIDTH_DINAMIC;
-    LabelInit.Rect = {10, 10, 10, 10};
+    LabelInit.style = LabelsStyle::WIDTH_FIXED;
+    LabelInit.Rect = {10, 10, 10, 70};
     LabelInit.focused = false;
     TagList->AddList({
         new TTagLine("IrMaxFlt", "U1/FLASH/IrMaxFlt/", LabelInit),
-        new TTagLine("stFieldFltEn", "U1/FLASH/stFieldFltEnable/", LabelInit),
+        new TTagLineScrollCaption("stFieldFltEnable", "U1/FLASH/stFieldFltEnable/", LabelInit),
         new TTagLine("FieldFailT", "U1/FLASH/FieldFailTime/", LabelInit),
         new TTagLine("fIrFieldFail", "U1/FLASH/fIrFieldFail/", LabelInit),
         new TTagLine("Ti2tR", "U1/FLASH/Ti2tR/", LabelInit),

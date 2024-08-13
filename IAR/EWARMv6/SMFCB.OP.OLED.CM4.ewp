@@ -1314,9 +1314,6 @@
                 <name>$PROJ_DIR$\..\..\MCU\Components\TVerticalContainer.cpp</name>
             </file>
             <file>
-                <name>$PROJ_DIR$\..\..\MCU\Components\TwoTagLine.cpp</name>
-            </file>
-            <file>
                 <name>$PROJ_DIR$\..\..\MCU\Components\WrappedText.cpp</name>
             </file>
         </group>

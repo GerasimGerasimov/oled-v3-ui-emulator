@@ -1,5 +1,5 @@
 #include "PageRectifierProtection.h"
-#include "TagLineVarSize.h"
+#include "TagLineScrollCaption.h"
 #include <FixedHeader.h>
 
 TPageRectifierProtection::TPageRectifierProtection(std::string Name) : TPageBasicSettings(Name){
@@ -14,12 +14,12 @@ TPageRectifierProtection::TPageRectifierProtection(std::string Name) : TPageBasi
 void TPageRectifierProtection::fillPageContainer(void){
     TagList->Clear();
     TLabelInitStructure LabelInit;
-    LabelInit.style = LabelsStyle::WIDTH_DINAMIC;
-    LabelInit.Rect = {10, 10, 10, 10};
+    LabelInit.style = LabelsStyle::WIDTH_FIXED;
+    LabelInit.Rect = {10, 10, 10, 70};
     LabelInit.focused = false;
     TagList->AddList({
         new TTagLine("IttMaxFlt", "U1/FLASH/IttMaxFlt/", LabelInit),
-        new TTagLineVarSize("fIttAsymPrc", "U1/FLASH/fIttAsymPrc/", LabelInit, 0),
+        new TTagLineScrollCaption("fIttAsymPrc", "U1/FLASH/fIttAsymPrc/", LabelInit),
         new TTagLine("fIttAsymT", "U1/FLASH/fIttAsymTime/", LabelInit),
     });
 }

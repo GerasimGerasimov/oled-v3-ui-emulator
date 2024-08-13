@@ -1,6 +1,7 @@
 #include "PageBasicSettings.h"
 #include "Router.h"
 #include "TagLineScrollCaption.h"
+#include "TagLineVarSize.h"
 #include <IniResources.h>
 #include <FixedHeader.h>
 
@@ -66,20 +67,20 @@ TVisualObject* TPageBasicSettings::getSignalOfFocusedChild() {
 void TPageBasicSettings::fillPageContainer(void) {
     TagList->Clear();
     TLabelInitStructure LabelInit;
-    LabelInit.style = LabelsStyle::WIDTH_DINAMIC;
-    LabelInit.Rect = { 10, 10, 10, 10 };
+    LabelInit.style = LabelsStyle::WIDTH_FIXED;
+    LabelInit.Rect = { 10, 10, 10, 70 };
     LabelInit.focused = false;
     TagList->AddList({
-        new TTagLineScrollCaption("Принуд. пуск", "U1/FLASH/EnforcedStart/", LabelInit),
-        new TTagLineScrollCaption("t тяж. пуска", "U1/FLASH/HsTime/", LabelInit),
-        new TTagLineScrollCaption("t пуск. форсировки", "U1/FLASH/StartForceTime/", LabelInit),
+        new TTagLineScrollCaption("Пуск принудительный", "U1/FLASH/EnforcedStart/", LabelInit),
+        new TTagLineScrollCaption("t тяжелого пуска", "U1/FLASH/HsTime/", LabelInit),
+        new TTagLineScrollCaption("t пуска форсировки", "U1/FLASH/StartForceTime/", LabelInit),
         new TTagLineScrollCaption("Ток форсировки", "U1/FLASH/IExcForce/", LabelInit),
         new TTagLine("Ток возб.", "U1/FLASH/IExcRef/", LabelInit),
-        new TTagLineScrollCaption("Пуск по току", "U1/FLASH/IstStart/", LabelInit),
-        new TTagLineScrollCaption("Стоп по току", "U1/FLASH/IstStop/", LabelInit),
+        new TTagLineVarSize("Пуск по току", "U1/FLASH/IstStart/", LabelInit, 0),
+        new TTagLineVarSize("Стоп по току", "U1/FLASH/IstStop/", LabelInit, 0),
         new TTagLine("Ток статора", "U1/FLASH/IstExcEnable/", LabelInit),
-        new TTagLineScrollCaption("Min частота скольж.", "U1/FLASH/ExcEnableFreq/", LabelInit),
-        new TTagLineScrollCaption("Частота тяж. пуска", "U1/FLASH/HsFreq/", LabelInit),
+        new TTagLineScrollCaption("Min частота скольжения", "U1/FLASH/ExcEnableFreq/", LabelInit),
+        new TTagLineScrollCaption("Частота тяжелого пуска", "U1/FLASH/HsFreq/", LabelInit),
     });
 }
 
