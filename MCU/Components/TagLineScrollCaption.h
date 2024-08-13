@@ -12,3 +12,7 @@ public:
 	virtual bool ProcessMessage(TMessage* m) override;
 };
 
+/*
+	Что бы текст не уходил до последней буквы необходимо указать TLabelInitStructure.Rect.Width лоину отображаемого текста
+	Что бы текст не перекрывал последующие элементы необходимо указать TLabelInitStructure.style = LabelsStyle::WIDTH_FIXED
+*/

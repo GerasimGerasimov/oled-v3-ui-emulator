@@ -201,12 +201,10 @@
     <ClCompile Include="MCU\Components\ParamListSelector.cpp" />
     <ClCompile Include="MCU\Components\TagLine.cpp" />
     <ClCompile Include="MCU\Components\TagLineScrollCaption.cpp" />
-    <ClCompile Include="MCU\Components\TagLineTime.cpp" />
     <ClCompile Include="MCU\Components\TagLineVarSize.cpp" />
     <ClCompile Include="MCU\Components\TComponentListVertical.cpp" />
     <ClCompile Include="MCU\Components\TComponentsContainer.cpp" />
     <ClCompile Include="MCU\Components\TVerticalContainer.cpp" />
-    <ClCompile Include="MCU\Components\TwoTagLine.cpp" />
     <ClCompile Include="MCU\Components\WrappedText.cpp" />
     <ClCompile Include="MCU\DevicePollManager\DevicePollManager.cpp" />
     <ClCompile Include="MCU\DevicePollManager\Slot.cpp" />
