@@ -527,7 +527,7 @@
                 </option>
                 <option>
                     <name>IccRTTI2</name>
-                    <state>0</state>
+                    <state>1</state>
                 </option>
                 <option>
                     <name>OICompilerExtraOption</name>
@@ -1281,9 +1281,6 @@
                 <name>$PROJ_DIR$\..\..\MCU\Components\Label.cpp</name>
             </file>
             <file>
-                <name>$PROJ_DIR$\..\..\MCU\Components\LabelTime.cpp</name>
-            </file>
-            <file>
                 <name>$PROJ_DIR$\..\..\MCU\Components\LinkedTagLabel.cpp</name>
             </file>
             <file>
@@ -1302,7 +1299,7 @@
                 <name>$PROJ_DIR$\..\..\MCU\Components\TagLine.cpp</name>
             </file>
             <file>
-                <name>$PROJ_DIR$\..\..\MCU\Components\TagLineTime.cpp</name>
+                <name>$PROJ_DIR$\..\..\MCU\Components\TagLineScrollCaption.cpp</name>
             </file>
             <file>
                 <name>$PROJ_DIR$\..\..\MCU\Components\TagLineVarSize.cpp</name>

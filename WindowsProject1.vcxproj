@@ -145,6 +145,7 @@
     <ClInclude Include="framework.h" />
     <ClInclude Include="MainPage.h" />
     <ClInclude Include="MCU\Components\LabelTime.h" />
+    <ClInclude Include="MCU\Components\TagLineScrollCaption.h" />
     <ClInclude Include="MCU\Components\TagLineTime.h" />
     <ClInclude Include="MCU\Components\TagLineVarSize.h" />
     <ClInclude Include="MCU\Components\TwoTagLine.h" />
@@ -199,6 +200,7 @@
     <ClCompile Include="MCU\Components\Pages.cpp" />
     <ClCompile Include="MCU\Components\ParamListSelector.cpp" />
     <ClCompile Include="MCU\Components\TagLine.cpp" />
+    <ClCompile Include="MCU\Components\TagLineScrollCaption.cpp" />
     <ClCompile Include="MCU\Components\TagLineTime.cpp" />
     <ClCompile Include="MCU\Components\TagLineVarSize.cpp" />
     <ClCompile Include="MCU\Components\TComponentListVertical.cpp" />

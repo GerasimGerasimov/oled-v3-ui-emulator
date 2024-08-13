@@ -195,6 +195,9 @@
     <ClInclude Include="MCU\Pages\ReactPowerLimit\PageReactPowerLimit.h">
       <Filter>MCU\Pages</Filter>
     </ClInclude>
+    <ClInclude Include="MCU\Components\TagLineScrollCaption.h">
+      <Filter>MCU\Components</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -502,6 +505,9 @@
     </ClCompile>
     <ClCompile Include="MCU\Pages\ReactPowerLimit\PageReactPowerLimit.cpp">
       <Filter>MCU\Pages</Filter>
+    </ClCompile>
+    <ClCompile Include="MCU\Components\TagLineScrollCaption.cpp">
+      <Filter>MCU\Components</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

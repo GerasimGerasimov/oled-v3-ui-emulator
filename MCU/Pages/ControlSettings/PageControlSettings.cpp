@@ -1,6 +1,6 @@
 #include "PageControlSettings.h"
 #include "Router.h"
-#include "TagLine.h"
+#include "TagLineVarSize.h"
 #include <IniResources.h>
 #include <FixedHeader.h>
 
@@ -71,9 +71,9 @@ void TPageControlSettings::fillPageContainer(void) {
     LabelInit.focused = false;
     TagList->AddList({
         new TTagLine("RINSL", "U1/RAM/RINSL/", LabelInit),
-        new TTagLine("R_INSL_LOW", "U1/RAM/R_INSL_LOW/", LabelInit),
-        new TTagLine("R_INSL_FLT", "U1/RAM/R_INSL_FLT/", LabelInit),
-        new TTagLine("stInslFltEnable", "U1/FLASH/stInslFltEnable/", LabelInit),
+        new TTagLineVarSize("R_INSL_LOW", "U1/RAM/R_INSL_LOW/", LabelInit, 0),
+        new TTagLineVarSize("R_INSL_FLT", "U1/RAM/R_INSL_FLT/", LabelInit, 0),
+        new TTagLineVarSize("stInslFltEnable", "U1/FLASH/stInslFltEnable/", LabelInit, 0),
         new TTagLine("RInslLow", "U1/FLASH/RInslLow/", LabelInit),
         new TTagLine("RInslFlt", "U1/FLASH/RInslFlt/", LabelInit),
         new TTagLine("RInslUp", "U1/FLASH/RInslUp/", LabelInit),

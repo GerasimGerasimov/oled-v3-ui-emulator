@@ -1,5 +1,5 @@
 #include "PageStatorProtection.h"
-#include "TagLine.h"
+#include "TagLineVarSize.h"
 #include <FixedHeader.h>
 
 TPageStatorProtection::TPageStatorProtection(std::string Name) : TPageBasicSettings(Name){
@@ -18,12 +18,12 @@ void TPageStatorProtection::fillPageContainer(void){
     LabelInit.Rect = {10, 10, 10, 10};
     LabelInit.focused = false;
     TagList->AddList({
-        new TTagLine("FSAsyncTime", "U1/FLASH/FSAsyncTime/", LabelInit),
+        new TTagLine("FSAsyncT", "U1/FLASH/FSAsyncTime/", LabelInit),
         new TTagLine("UstMax", "U1/FLASH/UstMax/", LabelInit),
-        new TTagLine("UstMaxTime", "U1/FLASH/UstMaxTime/", LabelInit),
-        new TTagLine("stFreqDwnFltEnable", "U1/FLASH/stFreqDwnFltEnable/", LabelInit),
+        new TTagLine("UstMaxT", "U1/FLASH/UstMaxTime/", LabelInit),
+        new TTagLineVarSize("stFreqDwnFltEn", "U1/FLASH/stFreqDwnFltEnable/", LabelInit, 0),
         new TTagLine("FreqMinFlt", "U1/FLASH/FreqMinFlt/", LabelInit),
-        new TTagLine("FreqMinFltTime", "U1/FLASH/FreqMinFltTime/", LabelInit),
+        new TTagLine("FreqMinFltT", "U1/FLASH/FreqMinFltTime/", LabelInit),
         new TTagLine("Ti2tS", "U1/FLASH/Ti2tS/", LabelInit),
         new TTagLine("IstOVLFlt", "U1/FLASH/IstOVLFlt/", LabelInit),
         });
