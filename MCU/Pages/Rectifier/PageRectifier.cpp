@@ -2,7 +2,7 @@
 #include "TagLineScrollCaption.h"
 #include <FixedHeader.h>
 
-TPageRectifier::TPageRectifier(std::string Name) : TPageBasicSettings(Name){
+TPageRectifier::TPageRectifier(std::string Name) : TPageControlSettings(Name){
   TLabelInitStructure LabelInitH;
   LabelInitH.pOwner = Container;
   LabelInitH.caption = "Выпрямитель";

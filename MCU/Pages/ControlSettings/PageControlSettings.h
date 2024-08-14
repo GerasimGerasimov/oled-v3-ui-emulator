@@ -1,5 +1,6 @@
 //#ifndef T_PAGE_CONTROL_SETTINGS_H
 //#define T_PAGE_CONTROL_SETTINGS_H
+#pragma once
 
 #include "Pages.h"
 #include "TVerticalContainer.h"
@@ -16,12 +17,17 @@ public:
     TPageControlSettings(std::string Name);
     ~TPageControlSettings();
 private:
+    void SlotUpdateFLASH(TSlotHandlerArsg args);
+    void SlotUpdateRAM(TSlotHandlerArsg args);
+    void SlotUpdate(const char* sector, TSlotHandlerArsg args);
+    TVisualObject* getSignalOfFocusedChild();
+    int SubscriberIDFLASH = 0;
+    int SubscriberIDRAM = 0;
+protected:
     TVerticalContainer* Container;
     TVerticalContainer* TagList;
-    void fillPageContainer(void);
-    void SlotUpdate(TSlotHandlerArsg args);
-    TVisualObject* getSignalOfFocusedChild();
-    int SubscriberID = 0;
+    virtual void fillPageContainer(void);
+
 };
 
 //#endif

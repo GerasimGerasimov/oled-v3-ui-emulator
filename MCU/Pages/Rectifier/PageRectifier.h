@@ -1,8 +1,8 @@
 #pragma once
 
-#include <PageBasicSettings.h>
+#include "ControlSettings/PageControlSettings.h"
 
-class TPageRectifier : public TPageBasicSettings
+class TPageRectifier : public TPageControlSettings
 {
 public:
 	TPageRectifier(std::string Name);

@@ -3,7 +3,7 @@
 #include "FixedHeader.h"
 
 //Опробование
-TPageTesting::TPageTesting(std::string Name) : TPageSensors(Name){
+TPageTesting::TPageTesting(std::string Name) : TPageControlSettings(Name){
     TLabelInitStructure LabelInitH;
     LabelInitH.pOwner = Container;
     LabelInitH.caption = "Опробование";
