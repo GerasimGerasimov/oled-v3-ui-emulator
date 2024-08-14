@@ -34,6 +34,7 @@
 #define ID_BUTTON_RIGHT                 40013
 #define ID_MEMO_LOGGER                  40014
 #define ID_BUTTON_CLEAR                 40015
+#define ID_BUTTON_PWR                   40016
 #define IDC_STATIC                      -1
 
 // Next default values for new objects

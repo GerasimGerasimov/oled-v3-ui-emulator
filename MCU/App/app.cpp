@@ -17,6 +17,7 @@
 #include "virtualKeyEvents.h"
 #include "Alarms.h"
 #include "Warnings.h"
+#include "RunPWR/RunPWR.h"
 #include "internal_din.h"
 #include "internal_dout.h"
 #include "CmdSender.h"
@@ -35,6 +36,7 @@ bool App::init(void) {
     TRouter::Init();
     Alarms::init();
     Warnings::init();
+    RunPWR::init();
     Msg::send_message((u32)EventSrc::REPAINT, 0, 0);
     return true;
 }

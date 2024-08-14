@@ -26,6 +26,7 @@ std::map < std::string, TTrackedBit > Alarms::Tags = {
 	{"R_INSL_FLT", {"U1/RAM/R_INSL_FLT/", nullptr, false, false}},
 	{"GMP", {"U1/RAM/GMP/", nullptr, false, false}},
 	{"IttAsymFlt", {"U1/RAM/IttAsymFlt/", nullptr, false, false}},
+	{"FAULT", {"U1/RAM/FAULT/", nullptr, false, false}},
 };
 
 bool Alarms::State = true;
@@ -62,17 +63,19 @@ void Alarms::uptate(const std::string PosMem, TSlotHandlerArsg& args){
 bool Alarms::checkState(void) {
 	bool res = false;
 	for (auto& e : Tags) {
-		bool valid = e.second.isValid;
-		bool state = e.second.State;//если все "1" то "1", если кто-то "0" то всё "0"
-		if (valid) {//данные валидны
-			if (!state) {//цикл прекращается и возвращает "0" если хоть один из элементов "0"
-				res = true;
+		if(e.first == "FAULT"){ //красный светодиод загорается только если FAULT == 1
+			bool valid = e.second.isValid;
+			bool state = e.second.State;//если все "1" то "1", если кто-то "0" то всё "0"
+			if(valid){//данные валидны
+				if(!state){//цикл прекращается и возвращает "0" если хоть один из элементов "0"
+					res = true;
+					break;
+				}
+			}
+			else{//что-то НЕ валидное попалось
+				res = false;
 				break;
 			}
-		}
-		else {//что-то НЕ валидное попалось
-			res = false;
-			break;
 		}
 	}
 	return res;

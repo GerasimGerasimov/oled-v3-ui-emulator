@@ -97,6 +97,15 @@
     <Filter Include="MCU\StateControllers\Warnings">
       <UniqueIdentifier>{834cce58-8d21-4abe-b440-80bda4c97d9c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Divers\Leds\Warning">
+      <UniqueIdentifier>{24b26e05-a0d5-47e0-906e-02d3f55a3462}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Divers\Leds\PWR">
+      <UniqueIdentifier>{f6bcd496-b1c8-485f-b58e-4f5a387651cb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MCU\StateControllers\RunPWR">
+      <UniqueIdentifier>{9e7c3976-1689-402f-ba08-25bb45673840}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -197,6 +206,12 @@
     </ClInclude>
     <ClInclude Include="MCU\Components\TagLineScrollCaption.h">
       <Filter>MCU\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="MCU\StateControllers\RunPWR\RunPWR.h">
+      <Filter>MCU\StateControllers\RunPWR</Filter>
+    </ClInclude>
+    <ClInclude Include="Drivers\Leds\PWR\LedPWR.h">
+      <Filter>Divers\Leds\PWR</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -401,9 +416,6 @@
     <ClCompile Include="MCU\Pages\Alarms\PageAlarms.cpp">
       <Filter>MCU\Pages</Filter>
     </ClCompile>
-    <ClCompile Include="Drivers\Leds\Warning\LedWarnings.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
     <ClCompile Include="MCU\Parameters\TPrmList.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
@@ -502,6 +514,15 @@
     </ClCompile>
     <ClCompile Include="MCU\Components\TagLineScrollCaption.cpp">
       <Filter>MCU\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="Drivers\Leds\Warning\LedWarnings.cpp">
+      <Filter>Divers\Leds\Warning</Filter>
+    </ClCompile>
+    <ClCompile Include="MCU\StateControllers\RunPWR\RunPWR.cpp">
+      <Filter>MCU\StateControllers\RunPWR</Filter>
+    </ClCompile>
+    <ClCompile Include="Drivers\Leds\PWR\LedPWR.cpp">
+      <Filter>Divers\Leds\PWR</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

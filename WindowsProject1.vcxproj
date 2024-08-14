@@ -142,6 +142,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Drivers\Leds\PWR\LedPWR.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="MainPage.h" />
     <ClInclude Include="MCU\Components\LabelTime.h" />
@@ -170,6 +171,7 @@
     <ClInclude Include="MCU\Pages\Testing\PageTesting.h" />
     <ClInclude Include="MCU\Parameters\TU32BIT.h" />
     <ClInclude Include="MCU\Slots\SlotHandlerType.h" />
+    <ClInclude Include="MCU\StateControllers\RunPWR\RunPWR.h" />
     <ClInclude Include="MCU\StateControllers\StateControllers.h" />
     <ClInclude Include="MCU\TODO.h" />
     <ClInclude Include="Resource.h" />
@@ -183,6 +185,7 @@
     <ClCompile Include="Drivers\DOUT\internal_dout.cpp" />
     <ClCompile Include="Drivers\Keyboard\virtualKeyEvents.cpp" />
     <ClCompile Include="Drivers\Leds\Alarm\LedAlarms.cpp" />
+    <ClCompile Include="Drivers\Leds\PWR\LedPWR.cpp" />
     <ClCompile Include="Drivers\Leds\Warning\LedWarnings.cpp" />
     <ClCompile Include="Drivers\MemWrite\MemWrite.cpp" />
     <ClCompile Include="Drivers\Resources\os_resources.cpp" />
@@ -268,6 +271,7 @@
     <ClCompile Include="MCU\Slots\CreateCustomSlot.cpp" />
     <ClCompile Include="MCU\Slots\CreateSlotsByStart.cpp" />
     <ClCompile Include="MCU\StateControllers\Alarms\Alarms.cpp" />
+    <ClCompile Include="MCU\StateControllers\RunPWR\RunPWR.cpp" />
     <ClCompile Include="MCU\StateControllers\Warnings\Warnings.cpp" />
     <ClCompile Include="Source.cpp" />
     <ClCompile Include="threads\mcu_main_thread.cpp" />

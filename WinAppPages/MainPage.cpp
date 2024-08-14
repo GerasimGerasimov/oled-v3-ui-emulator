@@ -7,6 +7,7 @@
 #include <com_master_driver.h>
 #include "LedAlarms.h"
 #include "LedWarnings.h"
+#include "Leds/PWR/LedPWR.h"
 #include "internal_din.h"
 
 HINSTANCE MainPage::hInst = NULL;                                // текущий экземпляр
@@ -100,6 +101,7 @@ void MainPage::fillHandlersByID(void) {
     console::hwnd = hwndMemoLogger = GetDlgItem(hWndMain, ID_MEMO_LOGGER);
     LedAlarms::init(hWndMain);
     LedWarnings::init(hWndMain);
+    LedPWR::init(hWndMain);
     InternalDIN::init();
     isHadlersFilled = true;
     ComMasterDriver::open();
