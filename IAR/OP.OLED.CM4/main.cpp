@@ -15,6 +15,7 @@
 #include "link_led.h"
 #include "LedAlarms.h"
 #include "LedWarnings.h"
+#include "PWR/LedPWR.h"
 #include "LEDs.h"
 #include "internal_din.h"
 #include "internal_dout.h"
@@ -42,6 +43,7 @@ int main(void) {
   LinkLED::init();
   LedWarnings::init();
   LedAlarms::init();
+  LedPWR::init();
   InternalDIN::init();
   InternalDOUT::init();
   

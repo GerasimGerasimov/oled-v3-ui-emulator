@@ -11,6 +11,7 @@ std::map < std::string, TTrackedBit > Warnings::Tags = {
 	{"MMS_Error", {"U1/RAM/MMS_Error/", nullptr, false, false}},
 	{"DExS_PWR_LNK", {"U1/RAM/DExS_PWR_LNK/", nullptr, false, false}},
 	{"SyncRect", {"U1/RAM/SyncRect/", nullptr, false, false}},
+	{"oWARNING_K3", {"U1/RAM/oWARNING_K3/", nullptr, false, false}},
 };
 
 bool Warnings::State = true;
@@ -45,10 +46,15 @@ void Warnings::uptate(const std::string PosMem, TSlotHandlerArsg& args){
 bool Warnings::checkState(void) {
 	bool res = true;
 	for (auto& e : Tags) {
-		bool state = e.second.isValid && e.second.State;//если все "1" то "1", если кто-то "0" то всё "0"
-		if (!state) {//цикл прекращается и возвращает "0" если хоть один из элементов "0"
-			res = false;
-			break;
+		if(e.first == "oWARNING_K3"){ //жёлтый светодиод загорается только если oWARNING_K3 == 1
+			bool valid = e.second.isValid;
+			bool state = /*e.second.isValid &&*/ e.second.State;//если все "1" то "1", если кто-то "0" то всё "0"
+			if(valid){
+				if(!state){//цикл прекращается и возвращает "0" если хоть один из элементов "0"
+					res = false;
+					break;
+				}
+			}
 		}
 	}
 	return res;
