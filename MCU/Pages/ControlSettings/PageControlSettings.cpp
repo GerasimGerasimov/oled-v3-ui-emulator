@@ -3,6 +3,7 @@
 #include "TagLineVarSize.h"
 #include <IniResources.h>
 #include <FixedHeader.h>
+#include "parser.h"
 
 void TPageControlSettings::view() {
     Container->view();
@@ -10,11 +11,13 @@ void TPageControlSettings::view() {
 
 void TPageControlSettings::onOpen() {
     fillPageContainer();
-    SubscriberID = HandlerSubscribers::set("U1/FLASH/", [this](TSlotHandlerArsg args) { SlotUpdate(args); });
+    SubscriberIDFLASH = HandlerSubscribers::set("U1/FLASH/", [this](TSlotHandlerArsg args) { SlotUpdateFLASH(args); });
+    SubscriberIDRAM = HandlerSubscribers::set("U1/RAM/", [this](TSlotHandlerArsg args){ SlotUpdateRAM(args); });
 }
 
 void TPageControlSettings::startToClose() {
-    HandlerSubscribers::remove("U1/FLASH/", SubscriberID);
+    HandlerSubscribers::remove("U1/FLASH/", SubscriberIDFLASH);
+    HandlerSubscribers::remove("U1/RAM/", SubscriberIDRAM);
     TagList->Clear();
     isOpen = false;
 }
@@ -101,11 +104,21 @@ TPageControlSettings::TPageControlSettings(std::string Name)
     AddList({ Container });
 };
 
-void TPageControlSettings::SlotUpdate(TSlotHandlerArsg args) {
-    for (auto& e : TagList->List) {
+void TPageControlSettings::SlotUpdateFLASH(TSlotHandlerArsg args) {
+    SlotUpdate("/FLASH", args);
+}
+
+void TPageControlSettings::SlotUpdateRAM(TSlotHandlerArsg args){
+    SlotUpdate("/RAM", args);
+}
+
+void TPageControlSettings::SlotUpdate(const char* sector, TSlotHandlerArsg args){
+    for(auto& e : TagList->List){
         TTagLine* tag = (TTagLine*)e;
-        TParameter* p = (TParameter*)tag->getDataSrc();
-        tag->Value->setCaption(p->getValue(args, ""));
+        if((tag->Tag.find(sector)) != std::string::npos){
+            TParameter* p = (TParameter*)tag->getDataSrc();
+            tag->Value->setCaption(p->getValue(args, ""));
+        }
     }
     Msg::send_message((u32)EventSrc::REPAINT, 0, 0);
 }

@@ -1,8 +1,8 @@
 #pragma once
 
-#include <PageSensors.h>
+#include "ControlSettings/PageControlSettings.h"
 
-class TPageTesting : public TPageSensors
+class TPageTesting : public TPageControlSettings
 {
 public:
     TPageTesting(std::string Name);
