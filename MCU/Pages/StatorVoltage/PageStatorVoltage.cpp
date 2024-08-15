@@ -1,6 +1,5 @@
 #include "PageStatorVoltage.h"
-#include "TagLineVarSize.h"
-#include "TagLineScrollCaption.h"
+#include "TagLineScrollCaptionComment.h"
 #include "FixedHeader.h"
 
 //Напряжение статора
@@ -21,11 +20,11 @@ void TPageStatorVoltage::fillPageContainer(void){
     LabelInit.focused = false;
 
     TagList->AddList({
-        new TTagLineScrollCaption("stUstFltReadyEnable", "U1/FLASH/stUstFltReadyEnable/", LabelInit),
-        new TTagLine("UstNom", "U1/FLASH/UstNom/", LabelInit),
-        new TTagLineScrollCaption("UstLowReset", "U1/FLASH/UstLowReset/", LabelInit),
-        new TTagLine("UstLowSet", "U1/FLASH/UstLowSet/", LabelInit),
-        new TTagLineVarSize("UstFailReset", "U1/FLASH/UstFailReset/", LabelInit, 0),
-        new TTagLineVarSize("UstFailSet", "U1/FLASH/UstFailSet/", LabelInit, 0)
+        new TTagLineScrollCaptionComment("U1/FLASH/stUstFltReadyEnable/", LabelInit),
+        new TTagLineScrollCaptionComment("U1/FLASH/UstNom/", LabelInit),
+        new TTagLineScrollCaptionComment("U1/FLASH/UstLowReset/", LabelInit),
+        new TTagLineScrollCaptionComment("U1/FLASH/UstLowSet/", LabelInit),
+        new TTagLineScrollCaptionComment("U1/FLASH/UstFailReset/", LabelInit),
+        new TTagLineScrollCaptionComment("U1/FLASH/UstFailSet/", LabelInit)
         });
 }

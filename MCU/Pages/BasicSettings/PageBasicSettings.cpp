@@ -1,7 +1,6 @@
 #include "PageBasicSettings.h"
 #include "Router.h"
 #include "TagLineScrollCaption.h"
-#include "TagLineVarSize.h"
 #include <IniResources.h>
 #include <FixedHeader.h>
 
@@ -72,12 +71,12 @@ void TPageBasicSettings::fillPageContainer(void) {
     LabelInit.focused = false;
     TagList->AddList({
         new TTagLineScrollCaption("Пуск принудительный", "U1/FLASH/EnforcedStart/", LabelInit),
-        new TTagLineScrollCaption("t тяжелого пуска", "U1/FLASH/HsTime/", LabelInit),
-        new TTagLineScrollCaption("t пуска форсировки", "U1/FLASH/StartForceTime/", LabelInit),
+        new TTagLineScrollCaption("T тяжелого пуска", "U1/FLASH/HsTime/", LabelInit),
+        new TTagLineScrollCaption("T пуска форсировки", "U1/FLASH/StartForceTime/", LabelInit),
         new TTagLineScrollCaption("Ток форсировки", "U1/FLASH/IExcForce/", LabelInit),
         new TTagLine("Ток возб.", "U1/FLASH/IExcRef/", LabelInit),
-        new TTagLineVarSize("Пуск по току", "U1/FLASH/IstStart/", LabelInit, 0),
-        new TTagLineVarSize("Стоп по току", "U1/FLASH/IstStop/", LabelInit, 0),
+        new TTagLineScrollCaption("Пуск по току", "U1/FLASH/IstStart/", LabelInit),
+        new TTagLineScrollCaption("Стоп по току", "U1/FLASH/IstStop/", LabelInit),
         new TTagLine("Ток статора", "U1/FLASH/IstExcEnable/", LabelInit),
         new TTagLineScrollCaption("Min частота скольжения", "U1/FLASH/ExcEnableFreq/", LabelInit),
         new TTagLineScrollCaption("Частота тяжелого пуска", "U1/FLASH/HsFreq/", LabelInit),

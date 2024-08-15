@@ -213,6 +213,9 @@
     <ClInclude Include="Drivers\Leds\PWR\LedPWR.h">
       <Filter>Divers\Leds\PWR</Filter>
     </ClInclude>
+    <ClInclude Include="MCU\Components\TagLineScrollCaptionComment.h">
+      <Filter>MCU\Components</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -523,6 +526,9 @@
     </ClCompile>
     <ClCompile Include="Drivers\Leds\PWR\LedPWR.cpp">
       <Filter>Divers\Leds\PWR</Filter>
+    </ClCompile>
+    <ClCompile Include="MCU\Components\TagLineScrollCaptionComment.cpp">
+      <Filter>MCU\Components</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

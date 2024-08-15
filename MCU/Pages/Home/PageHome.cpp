@@ -73,7 +73,7 @@ void TPageHome::fillPageContainer(void) {
         new TTagLine("Напр. ротор", "U1/RAM/Ur/", LabelInit),
         new TTagLine("Ток статора", "U1/RAM/Istat/", LabelInit),
         new TTagLine("Напр. стат.", "U1/RAM/Ustat/", LabelInit),
-        new TTagLine("cos F", "U1/RAM/F/", LabelInit),
+        new TTagLine("угол Phi", "U1/RAM/F/", LabelInit),
     });
     
 }

@@ -1,5 +1,5 @@
 #include "PagePower.h"
-#include "TagLine.h"
+#include "TagLineScrollCaptionComment.h"
 #include "FixedHeader.h"
 
 TPagePower::TPagePower(std::string Name) : TPageSensors(Name){
@@ -14,16 +14,16 @@ TPagePower::TPagePower(std::string Name) : TPageSensors(Name){
 void TPagePower::fillPageContainer(void){
     TagList->Clear();
     TLabelInitStructure LabelInit;
-    LabelInit.style = LabelsStyle::WIDTH_DINAMIC;
-    LabelInit.Rect = {10, 10, 10, 10};
+    LabelInit.style = LabelsStyle::WIDTH_FIXED;
+    LabelInit.Rect = {10, 10, 10, 70};
     LabelInit.focused = false;
 
     TagList->AddList({
-        new TTagLine("Ssg", "U1/RAM/Ssg/", LabelInit),
-        new TTagLine("Psg", "U1/RAM/Psg/", LabelInit),
-        new TTagLine("Qsg", "U1/RAM/Qsg/", LabelInit),
-        new TTagLine("Qoe", "U1/RAM/Qoe/", LabelInit),
-        new TTagLine("QLimMin", "U1/RAM/QLimMin/", LabelInit),
-        new TTagLine("QLimMax", "U1/RAM/QLimMax/", LabelInit),
+        new TTagLineScrollCaptionComment("U1/RAM/Ssg/", LabelInit),
+        new TTagLineScrollCaptionComment("U1/RAM/Psg/", LabelInit),
+        new TTagLineScrollCaptionComment("U1/RAM/Qsg/", LabelInit),
+        new TTagLineScrollCaptionComment("U1/RAM/Qoe/", LabelInit),
+        new TTagLineScrollCaptionComment("U1/RAM/QLimMin/", LabelInit),
+        new TTagLineScrollCaptionComment("U1/RAM/QLimMax/", LabelInit),
         });
 }

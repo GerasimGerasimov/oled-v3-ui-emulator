@@ -1,5 +1,5 @@
 #include "PageRectifier.h"
-#include "TagLineScrollCaption.h"
+#include "TagLineScrollCaptionComment.h"
 #include <FixedHeader.h>
 
 TPageRectifier::TPageRectifier(std::string Name) : TPageControlSettings(Name){
@@ -18,22 +18,22 @@ void TPageRectifier::fillPageContainer(void) {
   LabelInit.Rect = { 10, 10, 10, 70 };
   LabelInit.focused = false;
   TagList->AddList({
-      new TTagLine("PWR_OK", "U1/RAM/DExS_PWR_OK/", LabelInit),
-      new TTagLine("PWR_LNK", "U1/RAM/DExS_PWR_LNK/", LabelInit),
-      new TTagLine("SyncRect", "U1/RAM/SyncRect/", LabelInit),
-      new TTagLine("stPWRFltEn", "U1/FLASH/stPWRFltEnable/", LabelInit),
-      new TTagLine("FreqRect", "U1/RAM/FreqRect/", LabelInit),
-      new TTagLine("Vab", "U1/RAM/Vab/", LabelInit),
-      new TTagLine("Vbc", "U1/RAM/Vbc/", LabelInit),
-      new TTagLine("Vca", "U1/RAM/Vca/", LabelInit),
-      new TTagLine("Amax", "U1/FLASH/Amax/", LabelInit),
-      new TTagLine("Amin", "U1/FLASH/Amin/", LabelInit),
-      new TTagLine("Ablank", "U1/FLASH/Ablank/", LabelInit),
-      new TTagLine("FieldBlankT", "U1/FLASH/FieldBlankTime/", LabelInit),
-      new TTagLineScrollCaption("UmaxSpRect", "U1/FLASH/UmaxSpRect/", LabelInit),
-      new TTagLine("UminSpRect", "U1/FLASH/UminSpRect/", LabelInit),
-      new TTagLineScrollCaption("FmaxSpRect", "U1/FLASH/FmaxSpRect/", LabelInit),
-      new TTagLine("FminSpRect", "U1/FLASH/FminSpRect/", LabelInit),
-      new TTagLine("SUPPLFltT", "U1/FLASH/SUPPLFltTime/", LabelInit),
+      new TTagLineScrollCaptionComment("U1/RAM/DExS_PWR_OK/", LabelInit),
+      new TTagLineScrollCaptionComment("U1/RAM/DExS_PWR_LNK/", LabelInit),
+      new TTagLineScrollCaptionComment("U1/RAM/SyncRect/", LabelInit),
+      new TTagLineScrollCaptionComment("U1/FLASH/stPWRFltEnable/", LabelInit),
+      new TTagLineScrollCaptionComment("U1/RAM/FreqRect/", LabelInit),
+      new TTagLineScrollCaptionComment("U1/RAM/Vab/", LabelInit),
+      new TTagLineScrollCaptionComment("U1/RAM/Vbc/", LabelInit),
+      new TTagLineScrollCaptionComment("U1/RAM/Vca/", LabelInit),
+      new TTagLineScrollCaptionComment("U1/FLASH/Amax/", LabelInit),
+      new TTagLineScrollCaptionComment("U1/FLASH/Amin/", LabelInit),
+      new TTagLineScrollCaptionComment("U1/FLASH/Ablank/", LabelInit),
+      new TTagLineScrollCaptionComment("U1/FLASH/FieldBlankTime/", LabelInit),
+      new TTagLineScrollCaptionComment("U1/FLASH/UmaxSpRect/", LabelInit),
+      new TTagLineScrollCaptionComment("U1/FLASH/UminSpRect/", LabelInit),
+      new TTagLineScrollCaptionComment("U1/FLASH/FmaxSpRect/", LabelInit),
+      new TTagLineScrollCaptionComment("U1/FLASH/FminSpRect/", LabelInit),
+      new TTagLineScrollCaptionComment("U1/FLASH/SUPPLFltTime/", LabelInit),
     });
 }
