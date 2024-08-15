@@ -1,5 +1,5 @@
 #include "PageTesting.h"
-#include "TagLine.h"
+#include "TagLineScrollCaptionComment.h"
 #include "FixedHeader.h"
 
 //Опробование
@@ -15,15 +15,15 @@ TPageTesting::TPageTesting(std::string Name) : TPageControlSettings(Name){
 void TPageTesting::fillPageContainer(void){
     TagList->Clear();
     TLabelInitStructure LabelInit;
-    LabelInit.style = LabelsStyle::WIDTH_DINAMIC;
-    LabelInit.Rect = {10, 10, 10, 10};
+    LabelInit.style = LabelsStyle::WIDTH_FIXED;
+    LabelInit.Rect = {10, 10, 10, 70};
     LabelInit.focused = false;
 
     TagList->AddList({
-        new TTagLine("Test", "U1/RAM/Test/", LabelInit),
-        new TTagLine("IExcTst", "U1/FLASH/IExcTst/", LabelInit),
-        new TTagLine("TestTime", "U1/FLASH/TestTime/", LabelInit),
-        new TTagLine("FS+", "U1/RAM/FS+/", LabelInit),
-        new TTagLine("FS-", "U1/RAM/FS-/", LabelInit),
+        new TTagLineScrollCaptionComment("U1/RAM/Test/", LabelInit),
+        new TTagLineScrollCaptionComment("U1/FLASH/IExcTst/", LabelInit),
+        new TTagLineScrollCaptionComment("U1/FLASH/TestTime/", LabelInit),
+        new TTagLineScrollCaptionComment("U1/RAM/FS+/", LabelInit),
+        new TTagLineScrollCaptionComment("U1/RAM/FS-/", LabelInit),
         });
 }

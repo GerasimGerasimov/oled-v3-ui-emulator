@@ -10,6 +10,7 @@ public:
     virtual bool ProcessMessage(TMessage* m);
     TLinkLabel(std::string caption, std::string url, TLabelInitStructure init);//конструктор
     ~TLinkLabel();//деструктор
+    void setSrcCaption(std::string caption);
 private:
     std::string URL;
     std::string SrcCaption;

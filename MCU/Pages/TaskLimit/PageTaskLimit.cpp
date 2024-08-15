@@ -1,5 +1,5 @@
 #include "PageTaskLimit.h"
-#include "TagLineScrollCaption.h"
+#include "TagLineScrollCaptionComment.h"
 #include <FixedHeader.h>
 
 TPageTaskLimit::TPageTaskLimit(std::string Name) : TPageBasicSettings(Name){
@@ -18,12 +18,12 @@ void TPageTaskLimit::fillPageContainer(void){
     LabelInit.Rect = {10, 10, 10, 70};
     LabelInit.focused = false;
     TagList->AddList({
-        new TTagLine("IExcMin", "U1/FLASH/IExcMin/", LabelInit),
-        new TTagLine("IExcMax", "U1/FLASH/IExcMax/", LabelInit),
-        new TTagLineScrollCaption("IExcManuMax", "U1/FLASH/IExcManuMax/", LabelInit),
-        new TTagLine("FLmax", "U1/FLASH/FLmax/", LabelInit),
-        new TTagLine("FLmin", "U1/FLASH/FLmin/", LabelInit),
-        new TTagLine("dIExcRef", "U1/FLASH/dIExcRef/", LabelInit),
-        new TTagLine("dFiRef", "U1/FLASH/dFiRef/", LabelInit),
+        new TTagLineScrollCaptionComment("U1/FLASH/IExcMin/", LabelInit),
+        new TTagLineScrollCaptionComment("U1/FLASH/IExcMax/", LabelInit),
+        new TTagLineScrollCaptionComment("U1/FLASH/IExcManuMax/", LabelInit),
+        new TTagLineScrollCaptionComment("U1/FLASH/FLmax/", LabelInit),
+        new TTagLineScrollCaptionComment("U1/FLASH/FLmin/", LabelInit),
+        new TTagLineScrollCaptionComment("U1/FLASH/dIExcRef/", LabelInit),
+        new TTagLineScrollCaptionComment("U1/FLASH/dFiRef/", LabelInit),
         });
 }

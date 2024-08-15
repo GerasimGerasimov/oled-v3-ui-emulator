@@ -1,5 +1,5 @@
 #include "PageRectifierProtection.h"
-#include "TagLineScrollCaption.h"
+#include "TagLineScrollCaptionComment.h"
 #include <FixedHeader.h>
 
 TPageRectifierProtection::TPageRectifierProtection(std::string Name) : TPageBasicSettings(Name){
@@ -18,8 +18,8 @@ void TPageRectifierProtection::fillPageContainer(void){
     LabelInit.Rect = {10, 10, 10, 70};
     LabelInit.focused = false;
     TagList->AddList({
-        new TTagLine("IttMaxFlt", "U1/FLASH/IttMaxFlt/", LabelInit),
-        new TTagLineScrollCaption("fIttAsymPrc", "U1/FLASH/fIttAsymPrc/", LabelInit),
-        new TTagLine("fIttAsymT", "U1/FLASH/fIttAsymTime/", LabelInit),
+        new TTagLineScrollCaptionComment("U1/FLASH/IttMaxFlt/", LabelInit),
+        new TTagLineScrollCaptionComment("U1/FLASH/fIttAsymPrc/", LabelInit),
+        new TTagLineScrollCaptionComment("U1/FLASH/fIttAsymTime/", LabelInit),
     });
 }

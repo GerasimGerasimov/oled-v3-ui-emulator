@@ -1,5 +1,5 @@
 #include "PageStatorProtection.h"
-#include "TagLineVarSize.h"
+#include "TagLineScrollCaptionComment.h"
 #include <FixedHeader.h>
 
 TPageStatorProtection::TPageStatorProtection(std::string Name) : TPageBasicSettings(Name){
@@ -14,17 +14,17 @@ TPageStatorProtection::TPageStatorProtection(std::string Name) : TPageBasicSetti
 void TPageStatorProtection::fillPageContainer(void){
     TagList->Clear();
     TLabelInitStructure LabelInit;
-    LabelInit.style = LabelsStyle::WIDTH_DINAMIC;
-    LabelInit.Rect = {10, 10, 10, 10};
+    LabelInit.style = LabelsStyle::WIDTH_FIXED;
+    LabelInit.Rect = {10, 10, 10, 70};
     LabelInit.focused = false;
     TagList->AddList({
-        new TTagLine("FSAsyncT", "U1/FLASH/FSAsyncTime/", LabelInit),
-        new TTagLine("UstMax", "U1/FLASH/UstMax/", LabelInit),
-        new TTagLine("UstMaxT", "U1/FLASH/UstMaxTime/", LabelInit),
-        new TTagLineVarSize("stFreqDwnFltEn", "U1/FLASH/stFreqDwnFltEnable/", LabelInit, 0),
-        new TTagLine("FreqMinFlt", "U1/FLASH/FreqMinFlt/", LabelInit),
-        new TTagLine("FreqMinFltT", "U1/FLASH/FreqMinFltTime/", LabelInit),
-        new TTagLine("Ti2tS", "U1/FLASH/Ti2tS/", LabelInit),
-        new TTagLine("IstOVLFlt", "U1/FLASH/IstOVLFlt/", LabelInit),
+        new TTagLineScrollCaptionComment("U1/FLASH/FSAsyncTime/", LabelInit),
+        new TTagLineScrollCaptionComment("U1/FLASH/UstMax/", LabelInit),
+        new TTagLineScrollCaptionComment("U1/FLASH/UstMaxTime/", LabelInit),
+        new TTagLineScrollCaptionComment("U1/FLASH/stFreqDwnFltEnable/", LabelInit),
+        new TTagLineScrollCaptionComment("U1/FLASH/FreqMinFlt/", LabelInit),
+        new TTagLineScrollCaptionComment("U1/FLASH/FreqMinFltTime/", LabelInit),
+        new TTagLineScrollCaptionComment("U1/FLASH/Ti2tS/", LabelInit),
+        new TTagLineScrollCaptionComment("U1/FLASH/IstOVLFlt/", LabelInit),
         });
 }

@@ -1,5 +1,5 @@
 #include "PageRegulatorSettings.h"
-#include "TagLine.h"
+#include "TagLineScrollCaptionComment.h"
 #include <FixedHeader.h>
 
 TPageRegulatorSettings::TPageRegulatorSettings(std::string Name) : TPageBasicSettings(Name) {
@@ -19,8 +19,8 @@ void TPageRegulatorSettings::fillPageContainer(void) {
   LabelInit.focused = false;
 
   TagList->AddList({
-      new TTagLine("Ti", "U1/FLASH/Ti/", LabelInit),
-      new TTagLine("Ku", "U1/FLASH/Ku/", LabelInit),
-      new TTagLine("Td", "U1/FLASH/Td/", LabelInit),
+      new TTagLineScrollCaptionComment("U1/FLASH/Ti/", LabelInit),
+      new TTagLineScrollCaptionComment("U1/FLASH/Ku/", LabelInit),
+      new TTagLineScrollCaptionComment("U1/FLASH/Td/", LabelInit),
     });
 }

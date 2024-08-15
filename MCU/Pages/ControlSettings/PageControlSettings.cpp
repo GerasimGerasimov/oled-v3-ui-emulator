@@ -1,6 +1,6 @@
 #include "PageControlSettings.h"
 #include "Router.h"
-#include "TagLineVarSize.h"
+#include "TagLineScrollCaptionComment.h"
 #include <IniResources.h>
 #include <FixedHeader.h>
 #include "parser.h"
@@ -69,17 +69,17 @@ TVisualObject* TPageControlSettings::getSignalOfFocusedChild() {
 void TPageControlSettings::fillPageContainer(void) {
     TagList->Clear();
     TLabelInitStructure LabelInit;
-    LabelInit.style = LabelsStyle::WIDTH_DINAMIC;
-    LabelInit.Rect = { 10, 10, 10, 10 };
+    LabelInit.style = LabelsStyle::WIDTH_FIXED;
+    LabelInit.Rect = { 10, 10, 10, 70 };
     LabelInit.focused = false;
     TagList->AddList({
-        new TTagLine("RINSL", "U1/RAM/RINSL/", LabelInit),
-        new TTagLineVarSize("R_INSL_LOW", "U1/RAM/R_INSL_LOW/", LabelInit, 0),
-        new TTagLineVarSize("R_INSL_FLT", "U1/RAM/R_INSL_FLT/", LabelInit, 0),
-        new TTagLineVarSize("stInslFltEnable", "U1/FLASH/stInslFltEnable/", LabelInit, 0),
-        new TTagLine("RInslLow", "U1/FLASH/RInslLow/", LabelInit),
-        new TTagLine("RInslFlt", "U1/FLASH/RInslFlt/", LabelInit),
-        new TTagLine("RInslUp", "U1/FLASH/RInslUp/", LabelInit),
+        new TTagLineScrollCaptionComment("U1/RAM/RINSL/", LabelInit),
+        new TTagLineScrollCaptionComment("U1/RAM/R_INSL_LOW/", LabelInit),
+        new TTagLineScrollCaptionComment("U1/RAM/R_INSL_FLT/", LabelInit),
+        new TTagLineScrollCaptionComment("U1/FLASH/stInslFltEnable/", LabelInit),
+        new TTagLineScrollCaptionComment("U1/FLASH/RInslLow/", LabelInit),
+        new TTagLineScrollCaptionComment("U1/FLASH/RInslFlt/", LabelInit),
+        new TTagLineScrollCaptionComment("U1/FLASH/RInslUp/", LabelInit),
         });
 }
 

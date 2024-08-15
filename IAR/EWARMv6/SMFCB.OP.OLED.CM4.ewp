@@ -1308,6 +1308,9 @@
                 <name>$PROJ_DIR$\..\..\MCU\Components\TagLineScrollCaption.cpp</name>
             </file>
             <file>
+                <name>$PROJ_DIR$\..\..\MCU\Components\TagLineScrollCaptionComment.cpp</name>
+            </file>
+            <file>
                 <name>$PROJ_DIR$\..\..\MCU\Components\TagLineVarSize.cpp</name>
             </file>
             <file>

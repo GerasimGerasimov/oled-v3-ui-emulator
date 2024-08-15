@@ -1,5 +1,5 @@
 #include "PageReactPowerLimit.h"
-#include "TagLine.h"
+#include "TagLineScrollCaptionComment.h"
 #include <FixedHeader.h>
 
 TPageReactPowerLimit::TPageReactPowerLimit(std::string Name) : TPageBasicSettings(Name){
@@ -14,15 +14,15 @@ TPageReactPowerLimit::TPageReactPowerLimit(std::string Name) : TPageBasicSetting
 void TPageReactPowerLimit::fillPageContainer(void){
     TagList->Clear();
     TLabelInitStructure LabelInit;
-    LabelInit.style = LabelsStyle::WIDTH_DINAMIC;
-    LabelInit.Rect = {10, 10, 10, 10};
+    LabelInit.style = LabelsStyle::WIDTH_FIXED;
+    LabelInit.Rect = {10, 10, 10, 70};
     LabelInit.focused = false;
     TagList->AddList({
-        new TTagLine("Pnom", "U1/FLASH/Pnom/", LabelInit),
-        new TTagLine("QminP0", "U1/FLASH/QminP0/", LabelInit),
-        new TTagLine("QminP1", "U1/FLASH/QminP1/", LabelInit),
-        new TTagLine("dQmin", "U1/FLASH/dQmin/", LabelInit),
-        new TTagLine("QmaxP0", "U1/FLASH/QmaxP0/", LabelInit),
-        new TTagLine("QmaxP1", "U1/FLASH/QmaxP1/", LabelInit),
+        new TTagLineScrollCaptionComment("U1/FLASH/Pnom/", LabelInit),
+        new TTagLineScrollCaptionComment("U1/FLASH/QminP0/", LabelInit),
+        new TTagLineScrollCaptionComment("U1/FLASH/QminP1/", LabelInit),
+        new TTagLineScrollCaptionComment("U1/FLASH/dQmin/", LabelInit),
+        new TTagLineScrollCaptionComment("U1/FLASH/QmaxP0/", LabelInit),
+        new TTagLineScrollCaptionComment("U1/FLASH/QmaxP1/", LabelInit),
         });
 }
