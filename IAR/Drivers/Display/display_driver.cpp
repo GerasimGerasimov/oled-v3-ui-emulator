@@ -78,7 +78,7 @@ void TDisplayDriver::rotateFrame(void){
   //отзеркаливание обратно в буфер
   for (int i=0; i<8; i++) {
     for (int j=0; j<(MAX_END_X+1); j++) {
-      framebuffer[i][j]=framebuffer_tmp[i][MAX_END_X - j];
+      framebuffer[i][j]=framebuffer_tmp[i][(MAX_END_X-1) - j];
     }
   }
 }
