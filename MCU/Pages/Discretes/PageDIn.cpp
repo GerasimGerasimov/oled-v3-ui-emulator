@@ -1,5 +1,5 @@
 #include "PageDIn.h"
-#include "TagLine.h"
+#include "TagLineScrollCaptionComment.h"
 #include <FixedHeader.h>
 
 TPageDIn::TPageDIn(std::string Name) : TPageInOut(Name)
@@ -19,23 +19,23 @@ void TPageDIn::fillPageContainer()
 {
     TagList->Clear();
     TLabelInitStructure LabelInit;
-    LabelInit.style = LabelsStyle::WIDTH_DINAMIC;
-    LabelInit.Rect = { 10, 10, 10, 10 };
+    LabelInit.style = LabelsStyle::WIDTH_FIXED;
+    LabelInit.Rect = { 10, 10, 10, 70 };
     LabelInit.focused = false;
     TagList->AddList({
-        new TTagLine("iStartBtn", "U1/RAM/iStartBtn/", LabelInit),
-        new TTagLine("iWindDry", "U1/RAM/iWindDry/", LabelInit),
-        new TTagLine("iOVH", "U1/RAM/iOVH/", LabelInit),
-        new TTagLine("iMPSState", "U1/RAM/iMPSState/", LabelInit),
-        new TTagLine("iSPPExFrce", "U1/RAM/iSPPExFrce/", LabelInit),
-        new TTagLine("iSPPExEnbl", "U1/RAM/iSPPExEnbl/", LabelInit),
-        new TTagLine("iRMSState", "U1/RAM/iRMSState/", LabelInit),
-        new TTagLine("iMMSState", "U1/RAM/iMMSState/", LabelInit),
-        new TTagLine("iAuto", "U1/RAM/iAuto/", LabelInit),
-        new TTagLine("iIRm-", "U1/RAM/iIRm-/", LabelInit),
-        new TTagLine("iIRp+", "U1/RAM/iIRp+/", LabelInit),
-        new TTagLine("iReset", "U1/RAM/iReset/", LabelInit),
-        new TTagLine("iTest", "U1/RAM/iTest/", LabelInit),
-        new TTagLine("iReady", "U1/RAM/iReady/", LabelInit),
+        new TTagLineScrollCaptionComment("U1/RAM/iStartBtn/", LabelInit),
+        new TTagLineScrollCaptionComment("U1/RAM/iWindDry/", LabelInit),
+        new TTagLineScrollCaptionComment("U1/RAM/iOVH/", LabelInit),
+        new TTagLineScrollCaptionComment("U1/RAM/iMPSState/", LabelInit),
+        new TTagLineScrollCaptionComment("U1/RAM/iSPPExFrce/", LabelInit),
+        new TTagLineScrollCaptionComment("U1/RAM/iSPPExEnbl/", LabelInit),
+        new TTagLineScrollCaptionComment("U1/RAM/iRMSState/", LabelInit),
+        new TTagLineScrollCaptionComment("U1/RAM/iMMSState/", LabelInit),
+        new TTagLineScrollCaptionComment("U1/RAM/iAuto/", LabelInit),
+        new TTagLineScrollCaptionComment("U1/RAM/iIRm-/", LabelInit),
+        new TTagLineScrollCaptionComment("U1/RAM/iIRp+/", LabelInit),
+        new TTagLineScrollCaptionComment("U1/RAM/iReset/", LabelInit),
+        new TTagLineScrollCaptionComment("U1/RAM/iTest/", LabelInit),
+        new TTagLineScrollCaptionComment("U1/RAM/iReady/", LabelInit),
         });
 }

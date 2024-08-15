@@ -14,8 +14,8 @@ TPageRegulatorSettings::TPageRegulatorSettings(std::string Name) : TPageBasicSet
 void TPageRegulatorSettings::fillPageContainer(void) {
   TagList->Clear();
   TLabelInitStructure LabelInit;
-  LabelInit.style = LabelsStyle::WIDTH_DINAMIC;
-  LabelInit.Rect = { 10, 10, 10, 10 };
+  LabelInit.style = LabelsStyle::WIDTH_FIXED;
+  LabelInit.Rect = { 10, 10, 10, 70 };
   LabelInit.focused = false;
 
   TagList->AddList({
