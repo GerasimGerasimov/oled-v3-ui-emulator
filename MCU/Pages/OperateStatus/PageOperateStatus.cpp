@@ -120,10 +120,10 @@ TPageOperateStatus::TPageOperateStatus(std::string Name)
     LabelInit.focused = false;
 
     Container = new TVerticalContainer(props, {
-        new TTagLine("Готовность", "U1/RAM/Ready/", LabelInit),
-        new TTagLine("Пуск/Работ", "U1/RAM/Run/", LabelInit),
-        new TTagLine("Стоп", "U1/RAM/stop/", LabelInit),
-        new TTagLineVarSize("", "U1/RAM/OperatMode/", LabelInit, 0),
+        //new TTagLine("Готовность", "U1/RAM/Ready/", LabelInit),
+        //new TTagLine("Пуск/Работ", "U1/RAM/Run/", LabelInit),
+        //new TTagLine("Стоп", "U1/RAM/stop/", LabelInit),
+        //new TTagLineVarSize("", "U1/RAM/OperatMode/", LabelInit, 0),
         });
     
     Container->FocusedLine = 0;

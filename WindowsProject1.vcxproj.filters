@@ -88,6 +88,9 @@
     <Filter Include="Divers\Leds\Alarm">
       <UniqueIdentifier>{4d5f0476-f2d5-47e5-961a-49850e21d8b2}</UniqueIdentifier>
     </Filter>
+    <Filter Include="MCU\Warnings">
+      <UniqueIdentifier>{d3fa9019-6964-4d7f-8aee-c65063f03a4a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -356,13 +359,7 @@
     <ClCompile Include="MCU\Pages\Alarms\PageAlarms.cpp">
       <Filter>MCU\Pages</Filter>
     </ClCompile>
-    <ClCompile Include="MCU\StateControllers\Warnings\Warnings.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
     <ClCompile Include="Drivers\Leds\Warning\LedWarnings.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
-    <ClCompile Include="MCU\Parameters\TPrmList.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
     <ClCompile Include="Drivers\DIN\internal_din.cpp">
@@ -439,6 +436,12 @@
     </ClCompile>
     <ClCompile Include="MCU\Pages\ParameterListEditCMD\PageParameterListEditCMD.cpp">
       <Filter>MCU\Pages</Filter>
+    </ClCompile>
+    <ClCompile Include="MCU\StateControllers\Warnings\Warnings.cpp">
+      <Filter>MCU\Warnings</Filter>
+    </ClCompile>
+    <ClCompile Include="MCU\Parameters\TPrmList.cpp">
+      <Filter>MCU\Parameters</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

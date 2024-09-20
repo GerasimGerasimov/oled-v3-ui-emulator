@@ -68,31 +68,31 @@ void TPageBasicSettings::fillPageContainer(void) {
     TagList->Clear();
     TLabelInitStructure LabelInit;
     LabelInit.style = LabelsStyle::WIDTH_FIXED;
-    LabelInit.Rect = { 10, 10, 10, 65};
+    LabelInit.Rect = { 10, 10, 10, 70};
     LabelInit.focused = false;
 
     TagList->AddList({
-        new TTagLineScrollCaptionComment("U1/FLASH/IchargeMin/", LabelInit),
-        new TTagLineScrollCaptionComment("U1/FLASH/IchargeMax/", LabelInit),
-        new TTagLineScrollCaptionComment("U1/FLASH/UchargeMax/", LabelInit),
-        new TTagLineScrollCaptionComment("U1/FLASH/UAddCharge/", LabelInit),
-        new TTagLineScrollCaptionComment("U1/FLASH/IAddCharge/", LabelInit),
-        new TTagLineScrollCaptionComment("U1/FLASH/tAddCharge/", LabelInit),
-        new TTagLineScrollCaptionComment("U1/FLASH/IEqualChargeMin/", LabelInit),
-        new TTagLineScrollCaptionComment("U1/FLASH/IEqualChargeMax/", LabelInit),
-        new TTagLineScrollCaptionComment("U1/FLASH/UEqualChargeMax/", LabelInit),
-        new TTagLineScrollCaptionComment("U1/FLASH/UEqualAddCharge/", LabelInit),
-        new TTagLineScrollCaptionComment("U1/FLASH/UEqualCharge/", LabelInit),
-        new TTagLineScrollCaptionComment("U1/FLASH/IEqualAddCharge/", LabelInit),
-        new TTagLineScrollCaptionComment("U1/FLASH/tEqualAddCharge/", LabelInit),
-        new TTagLineScrollCaptionComment("U1/FLASH/tEqualCharge/", LabelInit),
-        new TTagLineScrollCaptionComment("U1/FLASH/UdischargeMin/", LabelInit),
-        new TTagLineScrollCaptionComment("U1/FLASH/IdischargeMin/", LabelInit),
-        new TTagLineScrollCaptionComment("U1/FLASH/BatteryCapacity/", LabelInit),
-        new TTagLineScrollCaptionComment("U1/FLASH/tSoftStart/", LabelInit),
-        new TTagLine("kRegU", "U1/FLASH/kRegU/", LabelInit),
-        new TTagLine("kRegI", "U1/FLASH/kRegI/", LabelInit),
-        new TTagLine("TiReg", "U1/FLASH/TiReg/", LabelInit),
+        new TTagLineScrollCaptionComment("U1/FLASH/IloadMax/", LabelInit),
+        new TTagLineScrollCaptionComment("U1/FLASH/IdcBusMax/", LabelInit),
+        new TTagLineScrollCaptionComment("U1/FLASH/UloadMax/", LabelInit),
+        new TTagLineScrollCaptionComment("U1/FLASH/IecxMin/", LabelInit),
+        new TTagLineScrollCaptionComment("U1/FLASH/UdcbusMin/", LabelInit),
+        new TTagLineScrollCaptionComment("U1/FLASH/UdcbusMax/", LabelInit),
+        new TTagLineScrollCaptionComment("U1/FLASH/CurNom/", LabelInit),
+        new TTagLineScrollCaptionComment("U1/FLASH/LM19Cold/", LabelInit),
+        new TTagLineScrollCaptionComment("U1/FLASH/dUDCbus/", LabelInit),
+        new TTagLineScrollCaptionComment("U1/FLASH/BreakLM19Min/", LabelInit),
+        new TTagLineScrollCaptionComment("U1/FLASH/UdcbusChargeTime/", LabelInit),
+        new TTagLineScrollCaptionComment("U1/FLASH/IexcUpTime/", LabelInit),
+        //new TTagLineScrollCaptionComment("U1/FLASH/tEqualAddCharge/", LabelInit),
+        //new TTagLineScrollCaptionComment("U1/FLASH/tEqualCharge/", LabelInit),
+        //new TTagLineScrollCaptionComment("U1/FLASH/UdischargeMin/", LabelInit),
+        //new TTagLineScrollCaptionComment("U1/FLASH/IdischargeMin/", LabelInit),
+        //new TTagLineScrollCaptionComment("U1/FLASH/BatteryCapacity/", LabelInit),
+        //new TTagLineScrollCaptionComment("U1/FLASH/tSoftStart/", LabelInit),
+        //new TTagLine("kRegU", "U1/FLASH/kRegU/", LabelInit),
+        //new TTagLine("kRegI", "U1/FLASH/kRegI/", LabelInit),
+        //new TTagLine("TiReg", "U1/FLASH/TiReg/", LabelInit),
     });
 }
 
