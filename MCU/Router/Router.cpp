@@ -5,16 +5,18 @@
 #include "PageHome.h"
 #include "PageHelp.h"
 #include "PageWarnings.h"
-#include "PageOperateStatus.h"
+//#include "PageOperateStatus.h"
 #include "PageBasicSettings.h"
 #include "PageBasicProtectionsSettings.h"
-#include "PageCleanSettings.h"
+//#include "PageCleanSettings.h"
 #include "PageSensors.h"
-#include "PageNetworkSettings.h"
+//#include "PageNetworkSettings.h"
 #include "PageParameterListEdit.h"
-#include "PagePanelSettings.h"
-#include "PageCalibration.h"
-#include "ParameterListEditCMD/PageParameterListEditCMD.h"
+//#include "PagePanelSettings.h"
+//#include "PageCalibration.h"
+#include "DelayProtection/PageDelayProtection.h"
+#include "RegulatorSettings/PageRegulatorSettings.h"
+//#include "ParameterListEditCMD/PageParameterListEditCMD.h"
 #include <IniResources.h>
 
 /*TODO В роутере и страницах можно реализовать переходы на закрытие/открытие окна*/
@@ -32,11 +34,13 @@ void TRouter::Init(void) {
     Pages["Alarms"] = new TPageAlarms("Alarms");
     Pages["Warnings"] = new TPageWarnings("Warnings");
     Pages["BasicSettings"] = new TPageBasicSettings("BasicSettings"); //Основные уставки
+    Pages["RegulatorSettings"] = new TPageRegulatorSettings("RegulatorSettings"); //Настройка регулятора
     Pages["EditValue"] = new TPageEditValue("EditValue");
     //Pages["OperateStatus"] = new TPageOperateStatus("OperateStatus"); //Статус работы
-    //Pages["BasicProtectionsSettings"] = new TPageBasicProtectionsSettings("BasicProtectionsSettings"); //Защиты. Основные уставки
+    Pages["BasicProtectionsSettings"] = new TPageBasicProtectionsSettings("BasicProtectionsSettings"); //Защиты. Основные уставки
+    Pages["DelayProtection"] = new TPageDelayProtection("DelayProtection"); //Уставки задержек защит
     //Pages["CleanSettings"] = new TPageCleanSettings("CleanSettings");
-    //Pages["Sensors"] = new TPageSensors("Sensors"); //Датчики
+    Pages["Sensors"] = new TPageSensors("Sensors"); //Датчики
     //Pages["NetWorkSettings"] = new TPageNetworkSettings("NetWorkSettings");
     Pages["PrmListEdit"] = new TPageParameterListEdit("PrmListEdit");
     //Pages["PrmListEditCMD"] = new TPageParameterListEditCMD("PrmListEditCMD");

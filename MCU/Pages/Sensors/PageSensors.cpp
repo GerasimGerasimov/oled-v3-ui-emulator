@@ -66,17 +66,18 @@ TVisualObject* TPageSensors::getSignalOfFocusedChild() {
 void TPageSensors::fillPageContainer(void) {
     TagList->Clear();
     TLabelInitStructure LabelInit;
-    LabelInit.style = LabelsStyle::WIDTH_DINAMIC;
-    LabelInit.Rect = { 10, 10, 10, 10 };
+    LabelInit.style = LabelsStyle::WIDTH_FIXED;
+    LabelInit.Rect = { 10, 10, 10, 70 };
     LabelInit.focused = false;
     TagList->AddList({
-        //new TTagLineScrollCaptionComment("U1/RAM/UdcBus/", LabelInit),
-        //new TTagLineScrollCaptionComment("U1/RAM/IdcBus/", LabelInit),
-        //new TTagLineScrollCaptionComment("U1/RAM/Uload/", LabelInit),
-        //new TTagLineScrollCaptionComment("U1/RAM/Iload/", LabelInit),
-        //new TTagLineScrollCaptionComment("U1/RAM/Utg/", LabelInit),
-        //new TTagLineScrollCaptionComment("U1/RAM/Iexc/", LabelInit),
-        //new TTagLineScrollCaptionComment("U1/RAM/EngTmp/", LabelInit),
+        new TTagLineScrollCaptionComment("U1/RAM/UdcBus/", LabelInit),
+        new TTagLineScrollCaptionComment("U1/RAM/IdcBus/", LabelInit),
+        new TTagLineScrollCaptionComment("U1/RAM/Uload/", LabelInit),
+        new TTagLineScrollCaptionComment("U1/RAM/Iload/", LabelInit),
+        new TTagLineScrollCaptionComment("U1/RAM/Utg/", LabelInit),
+        new TTagLineScrollCaptionComment("U1/RAM/Iexc/", LabelInit),
+        new TTagLineScrollCaptionComment("U1/RAM/EngTmp/", LabelInit),
+        new TTagLineScrollCaptionComment("U1/RAM/Qpwm/", LabelInit),
     });
 }
 

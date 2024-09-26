@@ -11,21 +11,24 @@
 
 /*TODO когда "раскачаю RTC (по полной, с окном установки времени) то к аварии добавить метку времени"*/
 std::map < std::string, TTrackedBit > Alarms::Tags = {
-	//{"InMtz", {"U1/RAM/InMtzAlm/", nullptr, false, false}},
-	//{"OutMtz", {"U1/RAM/OutMtzAlm/", nullptr, false, false}},
-	//{"UoutMax", {"U1/RAM/UoutMaxAlm/", nullptr, false, false}},
-	//{"UinAsym", {"U1/RAM/UinAsymFail/", nullptr, false, false}},
-	//{"IinAsym", {"U1/RAM/IinAsymAlm/", nullptr, false, false}},
-	//{"UInMaxPhase", {"U1/RAM/UInMaxPhaseFail/", nullptr, false, false}},
-	//{"FinFail", {"U1/RAM/FinFail/", nullptr, false, false}},
-	//{"KM1", {"U1/RAM/KM1fail/", nullptr, false, false}},
-	//{"RevertAKB", {"U1/RAM/ReversBattery/", nullptr, false, false}},
-	//{"DOAlarm", {"U1/RAM/DOAlarm/", nullptr, false, false}},
+	{"Iexc_UP_FAULT", {"U1/RAM/Iexc_UP_FAULT/", nullptr, false, false}},
+	{"Iexc_INPUT_FAULT", {"U1/RAM/Iexc_INPUT_FAULT/", nullptr, false, false}},
+	{"DCINPUT_FAULT", {"U1/RAM/DCINPUT_FAULT/", nullptr, false, false}},
+	{"DCBUS_FAULT", {"U1/RAM/DCBUS_FAULT/", nullptr, false, false}},
+	{"KM1Alarm", {"U1/RAM/KM1Alarm/", nullptr, false, false}},
+	{"KM2Alarm", {"U1/RAM/KM2Alarm/", nullptr, false, false}},
+	{"IexcFlt", {"U1/RAM/IexcFlt/", nullptr, false, false}},
+	{"IdcBusAlarm", {"U1/RAM/IdcBusAlarm/", nullptr, false, false}},
+	{"ExitationLost", {"U1/RAM/ExitationLost/", nullptr, false, false}},
+	{"IloadAlarm", {"U1/RAM/IloadAlarm/", nullptr, false, false}},
 
-	//{"FrqSpark", {"U1/RAM/FrqSparkAlm/", nullptr, false, false}},
-	//{"Overheat", {"U1/RAM/OverheatAlm/", nullptr, false, false}},
-	//{"Driver", {"U1/RAM/DriverAlarm/", nullptr, false, false}},
-	//{"External", {"U1/RAM/ExternalAlarm/", nullptr, false, false}},
+	{"OVERHEAT", {"U1/RAM/OVERHEAT/", nullptr, false, false}},
+	{"OVERHEATLM19", {"U1/RAM/OVERHEATLM19/", nullptr, false, false}},
+	{"DRV_ERROR", {"U1/RAM/DRV_ERROR/", nullptr, false, false}},
+	{"IloadMTZAlm", {"U1/RAM/IloadMTZAlm/", nullptr, false, false}},
+	{"IexcMTZAlm", {"U1/RAM/IexcMTZAlm/", nullptr, false, false}},
+	{"ReversUdcBus", {"U1/RAM/ReversUdcBus/", nullptr, false, false}},
+	{"FUAlarm", {"U1/RAM/FUAlarm/", nullptr, false, false}},
 };
 
 bool Alarms::State = true;

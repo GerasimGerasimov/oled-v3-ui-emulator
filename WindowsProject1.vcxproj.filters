@@ -153,6 +153,12 @@
     <ClInclude Include="MCU\Pages\ParameterListEditCMD\PageParameterListEditCMD.h">
       <Filter>MCU\Pages</Filter>
     </ClInclude>
+    <ClInclude Include="MCU\Pages\DelayProtection\PageDelayProtection.h">
+      <Filter>MCU\Pages</Filter>
+    </ClInclude>
+    <ClInclude Include="MCU\Pages\RegulatorSettings\PageRegulatorSettings.h">
+      <Filter>MCU\Pages</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -442,6 +448,12 @@
     </ClCompile>
     <ClCompile Include="MCU\Parameters\TPrmList.cpp">
       <Filter>MCU\Parameters</Filter>
+    </ClCompile>
+    <ClCompile Include="MCU\Pages\DelayProtection\PageDelayProtection.cpp">
+      <Filter>MCU\Pages</Filter>
+    </ClCompile>
+    <ClCompile Include="MCU\Pages\RegulatorSettings\PageRegulatorSettings.cpp">
+      <Filter>MCU\Pages</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
