@@ -70,12 +70,11 @@ void TPageBasicProtectionsSettings::fillPageContainer(void) {
     LabelInit.Rect = { 10, 10, 10, 70 };
     LabelInit.focused = false;
     TagList->AddList({
-        new TTagLineScrollCaptionComment("U1/FLASH/IexcMTZ/", LabelInit),
-        new TTagLineScrollCaptionComment("U1/FLASH/LM19Max/", LabelInit),
-
-        new TTagLineScrollCaptionComment("U1/FLASH/IloadMax/", LabelInit),
-        new TTagLineScrollCaptionComment("U1/FLASH/IdcBusMax/", LabelInit),
-        new TTagLineScrollCaptionComment("U1/FLASH/UloadMax/", LabelInit),
+        new TTagLineScrollCaptionComment("U1/FLASH/IexcShortCircuit/", LabelInit),
+        new TTagLineScrollCaptionComment("U1/FLASH/ExtOverHeat/", LabelInit),
+        new TTagLineScrollCaptionComment("U1/FLASH/IloadOverload/", LabelInit),
+        new TTagLineScrollCaptionComment("U1/FLASH/IdcShortCircuit/", LabelInit),
+        new TTagLineScrollCaptionComment("U1/FLASH/UloadOverVoltage/", LabelInit),
         new TTagLineScrollCaptionComment("U1/FLASH/IecxMin/", LabelInit),
         new TTagLineScrollCaptionComment("U1/FLASH/UdcbusMin/", LabelInit),
         new TTagLineScrollCaptionComment("U1/FLASH/UdcbusMax/", LabelInit),

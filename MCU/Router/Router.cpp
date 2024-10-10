@@ -5,18 +5,12 @@
 #include "PageHome.h"
 #include "PageHelp.h"
 #include "PageWarnings.h"
-//#include "PageOperateStatus.h"
 #include "PageBasicSettings.h"
 #include "PageBasicProtectionsSettings.h"
-//#include "PageCleanSettings.h"
 #include "PageSensors.h"
-//#include "PageNetworkSettings.h"
 #include "PageParameterListEdit.h"
-//#include "PagePanelSettings.h"
-//#include "PageCalibration.h"
 #include "DelayProtection/PageDelayProtection.h"
 #include "RegulatorSettings/PageRegulatorSettings.h"
-//#include "ParameterListEditCMD/PageParameterListEditCMD.h"
 #include <IniResources.h>
 
 /*TODO В роутере и страницах можно реализовать переходы на закрытие/открытие окна*/

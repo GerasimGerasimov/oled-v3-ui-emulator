@@ -12,21 +12,18 @@
 /*TODO когда "раскачаю RTC (по полной, с окном установки времени) то к аварии добавить метку времени"*/
 std::map < std::string, TTrackedBit > Alarms::Tags = {
 	{"Iexc_UP_FAULT", {"U1/RAM/Iexc_UP_FAULT/", nullptr, false, false}},
-	{"Iexc_INPUT_FAULT", {"U1/RAM/Iexc_INPUT_FAULT/", nullptr, false, false}},
-	{"DCINPUT_FAULT", {"U1/RAM/DCINPUT_FAULT/", nullptr, false, false}},
 	{"DCBUS_FAULT", {"U1/RAM/DCBUS_FAULT/", nullptr, false, false}},
 	{"KM1Alarm", {"U1/RAM/KM1Alarm/", nullptr, false, false}},
 	{"KM2Alarm", {"U1/RAM/KM2Alarm/", nullptr, false, false}},
 	{"IexcFlt", {"U1/RAM/IexcFlt/", nullptr, false, false}},
-	{"IdcBusAlarm", {"U1/RAM/IdcBusAlarm/", nullptr, false, false}},
+	{"IdcShortCircuitAlarm", {"U1/RAM/IdcShortCircuitAlarm/", nullptr, false, false}},
 	{"ExitationLost", {"U1/RAM/ExitationLost/", nullptr, false, false}},
-	{"IloadAlarm", {"U1/RAM/IloadAlarm/", nullptr, false, false}},
-
+	{"IloadOverloadAlarm", {"U1/RAM/IloadOverloadAlarm/", nullptr, false, false}},
 	{"OVERHEAT", {"U1/RAM/OVERHEAT/", nullptr, false, false}},
 	{"OVERHEATLM19", {"U1/RAM/OVERHEATLM19/", nullptr, false, false}},
 	{"DRV_ERROR", {"U1/RAM/DRV_ERROR/", nullptr, false, false}},
-	{"IloadMTZAlm", {"U1/RAM/IloadMTZAlm/", nullptr, false, false}},
-	{"IexcMTZAlm", {"U1/RAM/IexcMTZAlm/", nullptr, false, false}},
+	{"IloadShortCircuitAlm", {"U1/RAM/IloadShortCircuitAlm/", nullptr, false, false}},
+	{"IexcShortCircuitAlm", {"U1/RAM/IexcShortCircuitAlm/", nullptr, false, false}},
 	{"ReversUdcBus", {"U1/RAM/ReversUdcBus/", nullptr, false, false}},
 	{"FUAlarm", {"U1/RAM/FUAlarm/", nullptr, false, false}},
 };
