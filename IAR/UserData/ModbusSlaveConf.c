@@ -21,7 +21,7 @@ ModbusCommandHandlerType ModbusCommands[6]={
   {GetDeviceID, 0x11},
   {StartBootLoader, 0xB0},
   {0, 0},
-}; 
+};
 
 #define INTERFACE_DEFAULT_SETTINGS (u32)(0x00000401)
 

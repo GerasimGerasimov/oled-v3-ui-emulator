@@ -16,6 +16,8 @@ class Alarms {
 		static void uptate(const std::string PosMem, TSlotHandlerArsg& args);
 		static bool checkState(void);
 		static void SlotU1RAMUpdate(TSlotHandlerArsg args);
+		static void SlotU1DIUpdate(TSlotHandlerArsg args);
+		static void SlotU1DOUpdate(TSlotHandlerArsg args);
 		static bool State;
 		static u8 UppedFlags;
 		static u8 PrevUppedFlags;

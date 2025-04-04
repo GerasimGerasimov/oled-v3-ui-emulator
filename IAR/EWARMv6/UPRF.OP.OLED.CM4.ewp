@@ -723,7 +723,7 @@
                 </option>
                 <option>
                     <name>OOCOutputFile</name>
-                    <state>ZOOK.OP.OLED.CM4.hex</state>
+                    <state>UPRF.OP.OLED.CM4.hex</state>
                 </option>
                 <option>
                     <name>OOCCommandLineProducer</name>
@@ -906,7 +906,7 @@
                 </option>
                 <option>
                     <name>DoFill</name>
-                    <state>0</state>
+                    <state>1</state>
                 </option>
                 <option>
                     <name>FillerByte</name>
@@ -1465,6 +1465,9 @@
             </file>
             <file>
                 <name>$PROJ_DIR$\..\..\MCU\Pages\Warning\PageWarnings.cpp</name>
+            </file>
+            <file>
+                <name>$PROJ_DIR$\..\..\MCU\Pages\TimeSettings\TimeSettings.cpp</name>
             </file>
         </group>
         <group>

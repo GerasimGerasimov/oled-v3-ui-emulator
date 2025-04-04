@@ -4,9 +4,9 @@
 #include "signal.h"
 #include <vars.h>
 
-const static std::vector<std::string> SectioNameOrder = { "vars", "RAM", "FLASH", "CD"};
+const static std::vector<std::string> SectioNameOrder = { "vars", "RAM", "FLASH", "DI", "DO"};
 
-const static std::map<std::string, std::string> SectionNameMap = { {"vars","[vars]"}, {"RAM","[RAM]"}, {"FLASH","[FLASH]"},{"CD","[CD]"} };
+const static std::map<std::string, std::string> SectionNameMap = { {"vars","[vars]"}, {"RAM","[RAM]"}, {"FLASH","[FLASH]"},{"DI","[DI]"}, {"DO","[DO]"}};
 
 std::map<std::string, std::map<std::string, std::map<std::string,ISignal*>>> IniResources::Sources = {};
 /*TODO обеспечить такую структуру

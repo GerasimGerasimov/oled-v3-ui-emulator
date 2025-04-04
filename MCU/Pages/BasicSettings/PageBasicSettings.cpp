@@ -72,27 +72,16 @@ void TPageBasicSettings::fillPageContainer(void) {
     LabelInit.focused = false;
 
     TagList->AddList({
-        new TTagLineScrollCaptionComment("U1/FLASH/IchargeMin/", LabelInit),
-        new TTagLineScrollCaptionComment("U1/FLASH/IchargeMax/", LabelInit),
-        new TTagLineScrollCaptionComment("U1/FLASH/UchargeMax/", LabelInit),
-        new TTagLineScrollCaptionComment("U1/FLASH/UAddCharge/", LabelInit),
-        new TTagLineScrollCaptionComment("U1/FLASH/IAddCharge/", LabelInit),
-        new TTagLineScrollCaptionComment("U1/FLASH/tAddCharge/", LabelInit),
-        new TTagLineScrollCaptionComment("U1/FLASH/IEqualChargeMin/", LabelInit),
-        new TTagLineScrollCaptionComment("U1/FLASH/IEqualChargeMax/", LabelInit),
-        new TTagLineScrollCaptionComment("U1/FLASH/UEqualChargeMax/", LabelInit),
-        new TTagLineScrollCaptionComment("U1/FLASH/UEqualAddCharge/", LabelInit),
-        new TTagLineScrollCaptionComment("U1/FLASH/UEqualCharge/", LabelInit),
-        new TTagLineScrollCaptionComment("U1/FLASH/IEqualAddCharge/", LabelInit),
-        new TTagLineScrollCaptionComment("U1/FLASH/tEqualAddCharge/", LabelInit),
-        new TTagLineScrollCaptionComment("U1/FLASH/tEqualCharge/", LabelInit),
-        new TTagLineScrollCaptionComment("U1/FLASH/UdischargeMin/", LabelInit),
-        new TTagLineScrollCaptionComment("U1/FLASH/IdischargeMin/", LabelInit),
-        new TTagLineScrollCaptionComment("U1/FLASH/BatteryCapacity/", LabelInit),
-        new TTagLineScrollCaptionComment("U1/FLASH/tSoftStart/", LabelInit),
-        new TTagLine("kRegU", "U1/FLASH/kRegU/", LabelInit),
-        new TTagLine("kRegI", "U1/FLASH/kRegI/", LabelInit),
-        new TTagLine("TiReg", "U1/FLASH/TiReg/", LabelInit),
+        new TTagLineScrollCaptionComment("U1/FLASH/R1-DT1/", LabelInit),
+        new TTagLineScrollCaptionComment("U1/FLASH/R2-DT2/", LabelInit),
+        new TTagLineScrollCaptionComment("U1/FLASH/tShu-Pr_On/", LabelInit),
+        new TTagLineScrollCaptionComment("U1/FLASH/tShu-Pr_Off/", LabelInit),
+        new TTagLineScrollCaptionComment("U1/FLASH/tShu-Av_On/", LabelInit),
+        new TTagLineScrollCaptionComment("U1/FLASH/tShu-Av_Off/", LabelInit),
+        new TTagLineScrollCaptionComment("U1/FLASH/tR-Pr_On/", LabelInit),
+        new TTagLineScrollCaptionComment("U1/FLASH/tR-Pr_Off/", LabelInit),
+        new TTagLineScrollCaptionComment("U1/FLASH/tR-Av_On/", LabelInit),
+        new TTagLineScrollCaptionComment("U1/FLASH/tR-Av_Off/", LabelInit),
     });
 }
 
@@ -103,7 +92,7 @@ TPageBasicSettings::TPageBasicSettings(std::string Name)
 
     TLabelInitStructure LabelInit;
     LabelInit.pOwner = Container;
-    LabelInit.caption = "Основные уставки";
+    LabelInit.caption = "Уставки температуры";
     TFixedHeader* pHeader = new TFixedHeader(LabelInit);
     Container->Add(pHeader);
 

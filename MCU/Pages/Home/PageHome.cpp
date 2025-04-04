@@ -1,9 +1,6 @@
 #include "PageHome.h"
 #include "Router.h"
-#include "TagLine.h"
-#include "TagLineTime.h"
-#include "TagLineVarSize.h"
-#include "TwoTagLine.h"
+#include "TagLineScrollCaptionComment.h"
 #include <IniResources.h>
 
 void TPageHome::view() {
@@ -68,16 +65,19 @@ TVisualObject* TPageHome::getSignalOfFocusedChild() {
 void TPageHome::fillPageContainer(void) {
     TagList->Clear();
     TLabelInitStructure LabelInit;
-    LabelInit.style = LabelsStyle::WIDTH_DINAMIC;
-    LabelInit.Rect = { 10, 10, 10, 10 };
+    LabelInit.style = LabelsStyle::WIDTH_FIXED;
+    LabelInit.Rect = {10, 10, 10, 70};
     LabelInit.focused = false;
     TagList->AddList({
-        new TTwoTagLine(new TTagLineVarSize("", "U1/RAM/Uout/", LabelInit, 0), new TTagLineVarSize("", "U1/RAM/Iout/", LabelInit, 70)),
-        new TTagLineVarSize("", "U1/RAM/TransCharge/", LabelInit, 0),
-        new TTagLineVarSize("", "U1/RAM/OperatMode/", LabelInit, 0),
-        new TTagLineTime("Время", "U1/RAM/TimeLeft/", LabelInit),
-        new TTagLine("I уставка", "U1/RAM/Iref/", LabelInit),
-        new TTagLine("U уставка", "U1/RAM/Uref/", LabelInit),
+        new TTagLineScrollCaptionComment("U1/RAM/K3/", LabelInit),
+        new TTagLineScrollCaptionComment("U1/RAM/K2/", LabelInit),
+        new TTagLineScrollCaptionComment("U1/RAM/SA2/", LabelInit),
+        new TTagLineScrollCaptionComment("U1/RAM/SA1/", LabelInit),
+        new TTagLineScrollCaptionComment("U1/RAM/K1/", LabelInit),
+        new TTagLineScrollCaptionComment("U1/RAM/KM1/", LabelInit),
+        new TTagLineScrollCaptionComment("U1/RAM/K5/", LabelInit),
+        new TTagLine("Шкаф ШТ t", "U1/RAM/TWardrobe/", LabelInit),
+        new TTagLine("Шкаф ШС t", "U1/RAM/TReststor/", LabelInit)
     });
     
 }

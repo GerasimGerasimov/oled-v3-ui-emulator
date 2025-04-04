@@ -11,20 +11,19 @@
 
 /*TODO когда "раскачаю RTC (по полной, с окном установки времени) то к аварии добавить метку времени"*/
 std::map < std::string, TTrackedBit > Alarms::Tags = {
-	{"InMtz", {"U1/RAM/InMtzAlm/", nullptr, false, false}},
-	{"OutMtz", {"U1/RAM/OutMtzAlm/", nullptr, false, false}},
-	{"UoutMax", {"U1/RAM/UoutMaxAlm/", nullptr, false, false}},
-	{"UinAsym", {"U1/RAM/UinAsymFail/", nullptr, false, false}},
-	{"IinAsym", {"U1/RAM/IinAsymAlm/", nullptr, false, false}},
-	{"UInMaxPhase", {"U1/RAM/UInMaxPhaseFail/", nullptr, false, false}},
-	{"FinFail", {"U1/RAM/FinFail/", nullptr, false, false}},
-	{"KM1", {"U1/RAM/KM1fail/", nullptr, false, false}},
-	{"RevertAKB", {"U1/RAM/ReversBattery/", nullptr, false, false}},
-	{"DOAlarm", {"U1/RAM/DOAlarm/", nullptr, false, false}},
-
-	//{"FrqSpark", {"U1/RAM/FrqSparkAlm/", nullptr, false, false}},
-	//{"Overheat", {"U1/RAM/OverheatAlm/", nullptr, false, false}},
-	//{"Driver", {"U1/RAM/DriverAlarm/", nullptr, false, false}},
+	{"DO_5_3P", {"U1/DO/DO_5_3P/", nullptr, false, false}},
+	{"DI_4_K9", {"U1/DI/DI_4_K9/", nullptr, false, false}},
+	{"DI8_KA1-KA3", {"U1/DI/DI8_KA1-KA3/", nullptr, false, false}},
+	{"DI6_F1-F3", {"U1/DI/DI6_F1-F3/", nullptr, false, false}},
+	{"DO_8_Ct", {"U1/DO/DO_8_Ct/", nullptr, false, false}},
+	{"DO_1_KT", {"U1/DO/DO_1_KT/", nullptr, false, false}},
+	{"SB5", {"U1/RAM/SB5/", nullptr, false, false}},
+	//{"t2", {"U1/RAM/t2/", nullptr, false, false}},
+	{"t3", {"U1/RAM/t3/", nullptr, false, false}},
+	//{"t4", {"U1/RAM/t4/", nullptr, false, false}},
+	{"t5", {"U1/RAM/t5/", nullptr, false, false}},
+	//{"error1", {"U1/RAM/error1/", nullptr, false, false}},
+	//{"error2", {"U1/RAM/error2/", nullptr, false, false}},
 	//{"External", {"U1/RAM/ExternalAlarm/", nullptr, false, false}},
 };
 
@@ -38,6 +37,8 @@ void Alarms::init() {
 		e.second.pBit = (TBit*)IniResources::getSignalByTag(tag);
 	}
 	HandlerSubscribers::set("U1/RAM/", SlotU1RAMUpdate);
+	HandlerSubscribers::set("U1/DI/", SlotU1DIUpdate);
+	HandlerSubscribers::set("U1/DO/", SlotU1DOUpdate);
 }
 
 void Alarms::uptate(const std::string PosMem, TSlotHandlerArsg& args){
@@ -100,6 +101,18 @@ void Alarms::SlotU1RAMUpdate(TSlotHandlerArsg args) {
 	uptate("U1/RAM/", args);
 	State = checkState();
 	LedAlarms::setState((State?1:0));
+}
+
+void Alarms::SlotU1DIUpdate(TSlotHandlerArsg args){
+	uptate("U1/DI/", args);
+	State = checkState();
+	LedAlarms::setState((State ? 1 : 0));
+}
+
+void Alarms::SlotU1DOUpdate(TSlotHandlerArsg args){
+	uptate("U1/DO/", args);
+	State = checkState();
+	LedAlarms::setState((State ? 1 : 0));
 }
 
 bool Alarms::isAlarm(void) {
