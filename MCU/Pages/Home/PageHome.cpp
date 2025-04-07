@@ -71,12 +71,13 @@ void TPageHome::fillPageContainer(void) {
     LabelInit.style = LabelsStyle::WIDTH_DINAMIC;
     LabelInit.Rect = { 10, 10, 10, 10 };
     LabelInit.focused = false;
+    //TLabelInitStructure maxFont = LabelInit;
+    LabelInit.font = "MSSansSerifBold14";
     TagList->AddList({
-        new TTagLine("Напр. якоря", "U1/RAM/Uload/", LabelInit),
-        new TTagLine("Ток якоря", "U1/RAM/Iload/", LabelInit),
-        new TTagLine("Ток возбужд", "U1/RAM/Iexc/", LabelInit),
+        new TTagLine("Напряж.", "U1/RAM/Uout/", LabelInit),
+        new TTagLine("Ток", "U1/RAM/Iout/", LabelInit),
+        new TTagLine("Задание", "U1/RAM/Uref/", LabelInit),
     });
-    
 }
 
 TPageHome::TPageHome(std::string Name)

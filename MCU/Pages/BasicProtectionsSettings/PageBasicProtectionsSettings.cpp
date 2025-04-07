@@ -70,15 +70,31 @@ void TPageBasicProtectionsSettings::fillPageContainer(void) {
     LabelInit.Rect = { 10, 10, 10, 70 };
     LabelInit.focused = false;
     TagList->AddList({
-        new TTagLineScrollCaptionComment("U1/FLASH/IexcShortCircuit/", LabelInit),
-        new TTagLineScrollCaptionComment("U1/FLASH/ExtOverHeat/", LabelInit),
-        new TTagLineScrollCaptionComment("U1/FLASH/IloadOverload/", LabelInit),
-        new TTagLineScrollCaptionComment("U1/FLASH/IdcShortCircuit/", LabelInit),
-        new TTagLineScrollCaptionComment("U1/FLASH/UloadOverVoltage/", LabelInit),
-        new TTagLineScrollCaptionComment("U1/FLASH/IecxMin/", LabelInit),
-        new TTagLineScrollCaptionComment("U1/FLASH/UdcbusMin/", LabelInit),
-        new TTagLineScrollCaptionComment("U1/FLASH/UdcbusMax/", LabelInit),
-        new TTagLineScrollCaptionComment("U1/FLASH/IexcFault/", LabelInit),
+        new TTagLineScrollCaptionComment("U1/FLASH/IinMTZ/", LabelInit),
+        new TTagLineScrollCaptionComment("U1/FLASH/IoutMTZ/", LabelInit),
+        new TTagLineScrollCaptionComment("U1/FLASH/IovrSt1/", LabelInit),
+        new TTagLineScrollCaptionComment("U1/FLASH/IovrSt2/", LabelInit),
+        new TTagLineScrollCaptionComment("U1/FLASH/IovrSt3/", LabelInit),
+        new TTagLineScrollCaptionComment("U1/FLASH/IovrSt4/", LabelInit),
+        new TTagLineScrollCaptionComment("U1/FLASH/tOvrSt1/", LabelInit),
+        new TTagLineScrollCaptionComment("U1/FLASH/tOvrSt2/", LabelInit),
+        new TTagLineScrollCaptionComment("U1/FLASH/tOvrSt3/", LabelInit),
+        new TTagLineScrollCaptionComment("U1/FLASH/tOvrSt4/", LabelInit),
+        new TTagLineScrollCaptionComment("U1/FLASH/dIasym/", LabelInit),
+        new TTagLineScrollCaptionComment("U1/FLASH/dUasym/", LabelInit),
+        new TTagLineScrollCaptionComment("U1/FLASH/tAsym/", LabelInit),
+        new TTagLineScrollCaptionComment("U1/FLASH/UinMin/", LabelInit),
+        new TTagLineScrollCaptionComment("U1/FLASH/UinMax/", LabelInit),
+        new TTagLineScrollCaptionComment("U1/FLASH/FinMin/", LabelInit),
+        new TTagLineScrollCaptionComment("U1/FLASH/FinMax/", LabelInit),
+        new TTagLineScrollCaptionComment("U1/FLASH/UoutMin/", LabelInit),
+        new TTagLineScrollCaptionComment("U1/FLASH/tOutMin/", LabelInit),
+        new TTagLineScrollCaptionComment("U1/FLASH/UoutMax/", LabelInit),
+        new TTagLineScrollCaptionComment("U1/FLASH/tOutMax/", LabelInit),
+        new TTagLineScrollCaptionComment("U1/FLASH/tStartMax/", LabelInit),
+        new TTagLineScrollCaptionComment("U1/FLASH/Tovr/", LabelInit),
+        new TTagLineScrollCaptionComment("U1/FLASH/Tfan2On/", LabelInit),
+        new TTagLineScrollCaptionComment("U1/FLASH/Tfan2Off/", LabelInit),
     });
 }
 
@@ -89,7 +105,7 @@ TPageBasicProtectionsSettings::TPageBasicProtectionsSettings(std::string Name)
 
     TLabelInitStructure LabelInit;
     LabelInit.pOwner = Container;
-    LabelInit.caption = "Защиты. Основные";
+    LabelInit.caption = "Защиты";
     TFixedHeader* pHeader = new TFixedHeader(LabelInit);
     Container->Add(pHeader);
 

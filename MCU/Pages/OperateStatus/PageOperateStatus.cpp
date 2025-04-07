@@ -1,8 +1,8 @@
 #include "PageOperateStatus.h"
 #include "Router.h"
 #include <IniResources.h>
-#include "TagLine.h"
-#include "TagLineVarSize.h"
+//#include "TagLine.h"
+#include "TagLineScrollCaptionComment.h"
 #include <map>
 #include <AppModbusSlave.h>
 
@@ -115,15 +115,17 @@ TPageOperateStatus::TPageOperateStatus(std::string Name)
     , TryCount(3) {
     TVerticalContainerProps props = { true };
     TLabelInitStructure LabelInit;
-    LabelInit.style = LabelsStyle::WIDTH_DINAMIC;
-    LabelInit.Rect = { 10, 10, 10, 10 };
+    LabelInit.style = LabelsStyle::WIDTH_FIXED;
+    LabelInit.Rect = { 10, 10, 10, 70 };
     LabelInit.focused = false;
 
     Container = new TVerticalContainer(props, {
-        //new TTagLine("Готовность", "U1/RAM/Ready/", LabelInit),
-        //new TTagLine("Пуск/Работ", "U1/RAM/Run/", LabelInit),
-        //new TTagLine("Стоп", "U1/RAM/stop/", LabelInit),
-        //new TTagLineVarSize("", "U1/RAM/OperatMode/", LabelInit, 0),
+        new TTagLine("Готовность", "U1/RAM/Ready/", LabelInit),
+        new TTagLine("Работа", "U1/RAM/Run/", LabelInit),
+        new TTagLineScrollCaptionComment("U1/RAM/OutOk/", LabelInit),
+        new TTagLineScrollCaptionComment("U1/RAM/Fan2/", LabelInit),
+        new TTagLineScrollCaptionComment("U1/RAM/SoftStart/", LabelInit),
+        new TTagLineScrollCaptionComment("U1/RAM/Discharge/", LabelInit),
         });
     
     Container->FocusedLine = 0;

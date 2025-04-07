@@ -70,14 +70,22 @@ void TPageSensors::fillPageContainer(void) {
     LabelInit.Rect = { 10, 10, 10, 70 };
     LabelInit.focused = false;
     TagList->AddList({
-        new TTagLineScrollCaptionComment("U1/RAM/UdcBus/", LabelInit),
-        new TTagLineScrollCaptionComment("U1/RAM/IdcBus/", LabelInit),
-        new TTagLineScrollCaptionComment("U1/RAM/Uload/", LabelInit),
-        new TTagLineScrollCaptionComment("U1/RAM/Iload/", LabelInit),
-        new TTagLineScrollCaptionComment("U1/RAM/Utg/", LabelInit),
-        new TTagLineScrollCaptionComment("U1/RAM/Iexc/", LabelInit),
-        new TTagLineScrollCaptionComment("U1/RAM/EngTmp/", LabelInit),
-        new TTagLineScrollCaptionComment("U1/RAM/Qpwm/", LabelInit),
+        new TTagLineScrollCaptionComment("U1/RAM/Uin/", LabelInit),
+        new TTagLineScrollCaptionComment("U1/RAM/Ua/", LabelInit),
+        new TTagLineScrollCaptionComment("U1/RAM/Ub/", LabelInit),
+        new TTagLineScrollCaptionComment("U1/RAM/Uc/", LabelInit),
+        new TTagLineScrollCaptionComment("U1/RAM/Iin/", LabelInit),
+        new TTagLineScrollCaptionComment("U1/RAM/Ia/", LabelInit),
+        new TTagLineScrollCaptionComment("U1/RAM/Ib/", LabelInit),
+        new TTagLineScrollCaptionComment("U1/RAM/Ic/", LabelInit),
+        new TTagLineScrollCaptionComment("U1/RAM/UoutCur/", LabelInit),
+        new TTagLineScrollCaptionComment("U1/RAM/IoutCur/", LabelInit),
+        new TTagLineScrollCaptionComment("U1/RAM/Tradiator1/", LabelInit),
+        new TTagLineScrollCaptionComment("U1/RAM/Tradiator2/", LabelInit),
+        new TTagLineScrollCaptionComment("U1/RAM/Tcabinet/", LabelInit),
+        new TTagLineScrollCaptionComment("U1/RAM/Alpha/", LabelInit),
+        new TTagLineScrollCaptionComment("U1/RAM/Fin/", LabelInit),
+        new TTagLineScrollCaptionComment("U1/RAM/Td_com/", LabelInit),
     });
 }
 

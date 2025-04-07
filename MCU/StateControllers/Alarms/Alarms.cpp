@@ -11,21 +11,19 @@
 
 /*TODO когда "раскачаю RTC (по полной, с окном установки времени) то к аварии добавить метку времени"*/
 std::map < std::string, TTrackedBit > Alarms::Tags = {
-	{"Iexc_UP_FAULT", {"U1/RAM/Iexc_UP_FAULT/", nullptr, false, false}},
-	{"DCBUS_FAULT", {"U1/RAM/DCBUS_FAULT/", nullptr, false, false}},
-	{"KM1Alarm", {"U1/RAM/KM1Alarm/", nullptr, false, false}},
-	{"KM2Alarm", {"U1/RAM/KM2Alarm/", nullptr, false, false}},
-	{"IexcFlt", {"U1/RAM/IexcFlt/", nullptr, false, false}},
-	{"IdcShortCircuitAlarm", {"U1/RAM/IdcShortCircuitAlarm/", nullptr, false, false}},
-	{"ExitationLost", {"U1/RAM/ExitationLost/", nullptr, false, false}},
-	{"IloadOverloadAlarm", {"U1/RAM/IloadOverloadAlarm/", nullptr, false, false}},
-	{"OVERHEAT", {"U1/RAM/OVERHEAT/", nullptr, false, false}},
-	{"OVERHEATLM19", {"U1/RAM/OVERHEATLM19/", nullptr, false, false}},
-	{"DRV_ERROR", {"U1/RAM/DRV_ERROR/", nullptr, false, false}},
-	{"IloadShortCircuitAlm", {"U1/RAM/IloadShortCircuitAlm/", nullptr, false, false}},
-	{"IexcShortCircuitAlm", {"U1/RAM/IexcShortCircuitAlm/", nullptr, false, false}},
-	{"ReversUdcBus", {"U1/RAM/ReversUdcBus/", nullptr, false, false}},
-	{"FUAlarm", {"U1/RAM/FUAlarm/", nullptr, false, false}},
+	{"InMtzAlm", {"U1/RAM/InMtzAlm/", nullptr, false, false}},
+	{"OutMtzAlm", {"U1/RAM/OutMtzAlm/", nullptr, false, false}},
+	{"OverloadAlm", {"U1/RAM/OverloadAlm/", nullptr, false, false}},
+	{"IinAsymAlm", {"U1/RAM/IinAsymAlm/", nullptr, false, false}},
+	{"UinAsymAlm", {"U1/RAM/UinAsymAlm/", nullptr, false, false}},
+	{"UinFailAlm", {"U1/RAM/UinFailAlm/", nullptr, false, false}},
+	{"SyncFailAlm", {"U1/RAM/SyncFailAlm/", nullptr, false, false}},
+	{"UoutMinAlm", {"U1/RAM/UoutMinAlm/", nullptr, false, false}},
+	{"UoutMaxAlm", {"U1/RAM/UoutMaxAlm/", nullptr, false, false}},
+	{"StartFailAlm", {"U1/RAM/StartFailAlm/", nullptr, false, false}},
+	{"eStopAlm", {"U1/RAM/eStopAlm/", nullptr, false, false}},
+	{"OpenDoorAlm", {"U1/RAM/OpenDoorAlm/", nullptr, false, false}},
+	{"ToverheatAlm", {"U1/RAM/ToverheatAlm/", nullptr, false, false}},
 };
 
 bool Alarms::State = true;

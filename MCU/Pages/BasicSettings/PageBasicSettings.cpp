@@ -72,15 +72,15 @@ void TPageBasicSettings::fillPageContainer(void) {
     LabelInit.focused = false;
 
     TagList->AddList({
-        new TTagLineScrollCaptionComment("U1/FLASH/IloadRef/", LabelInit),
-        new TTagLineScrollCaptionComment("U1/FLASH/CurNom/", LabelInit),
-        new TTagLineScrollCaptionComment("U1/FLASH/UNom/", LabelInit),
-        new TTagLineScrollCaptionComment("U1/FLASH/LM19Cold/", LabelInit),
-        new TTagLineScrollCaptionComment("U1/FLASH/dUDCbus/", LabelInit),
-        new TTagLineScrollCaptionComment("U1/FLASH/BreakLM19Min/", LabelInit),
-        new TTagLineScrollCaptionComment("U1/FLASH/UdcbusChargeTime/", LabelInit),
-        new TTagLineScrollCaptionComment("U1/FLASH/IexcUpTime/", LabelInit),
-        new TTagLineScrollCaptionComment("U1/FLASH/TReducTemp/", LabelInit),
+        new TTagLineScrollCaptionComment("U1/FLASH/UrefDefault/", LabelInit),
+        new TTagLineScrollCaptionComment("U1/FLASH/IlimDefault/", LabelInit),
+        new TTagLineScrollCaptionComment("U1/FLASH/UrefMax/", LabelInit),
+        new TTagLineScrollCaptionComment("U1/FLASH/UrefMin/", LabelInit),
+        new TTagLineScrollCaptionComment("U1/FLASH/dU/", LabelInit),
+        new TTagLineScrollCaptionComment("U1/FLASH/Ustep/", LabelInit),
+        new TTagLineScrollCaptionComment("U1/FLASH/Istep/", LabelInit),
+        new TTagLineScrollCaptionComment("U1/FLASH/tSoftStart/", LabelInit),
+        new TTagLineScrollCaptionComment("U1/FLASH/Udischarge/", LabelInit),
     });
 }
 

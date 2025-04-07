@@ -3,10 +3,10 @@
 #include <LedWarnings.h>
 
 std::map < std::string, TTrackedBit > Warnings::Tags = {
-	{"HighTemp", {"U1/RAM/HighTemp/", nullptr, false, false}},
-	{"BreakLM19", {"U1/RAM/BreakLM19/", nullptr, false, false}},
-	{"EmergStop", {"U1/RAM/EmergStop/", nullptr, false, false}},
-	{"ExRS485Flt", {"U1/RAM/ExRS485Flt/", nullptr, false, false}},
+	{"syncfail", {"U1/RAM/syncfail/", nullptr, false, false}},
+	//{"BreakLM19", {"U1/RAM/BreakLM19/", nullptr, false, false}},
+	//{"EmergStop", {"U1/RAM/EmergStop/", nullptr, false, false}},
+	//{"ExRS485Flt", {"U1/RAM/ExRS485Flt/", nullptr, false, false}},
 };
 
 bool Warnings::State = true;
