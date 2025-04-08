@@ -1425,6 +1425,12 @@
                 <name>$PROJ_DIR$\..\..\MCU\Pages\BasicSettings\PageBasicSettings.cpp</name>
             </file>
             <file>
+                <name>$PROJ_DIR$\..\..\MCU\Pages\Discretes\PageDIn.cpp</name>
+            </file>
+            <file>
+                <name>$PROJ_DIR$\..\..\MCU\Pages\Discretes\PageDIn.h</name>
+            </file>
+            <file>
                 <name>$PROJ_DIR$\..\..\MCU\Pages\EditValue\PageEditValue.cpp</name>
             </file>
             <file>
@@ -1432,6 +1438,12 @@
             </file>
             <file>
                 <name>$PROJ_DIR$\..\..\MCU\Pages\Home\PageHome.cpp</name>
+            </file>
+            <file>
+                <name>$PROJ_DIR$\..\..\MCU\Pages\Discretes\PageInOut.cpp</name>
+            </file>
+            <file>
+                <name>$PROJ_DIR$\..\..\MCU\Pages\Discretes\PageInOut.h</name>
             </file>
             <file>
                 <name>$PROJ_DIR$\..\..\MCU\Pages\MainMenu\PageMainMenu.cpp</name>
@@ -1450,6 +1462,12 @@
             </file>
             <file>
                 <name>$PROJ_DIR$\..\..\MCU\Pages\Warning\PageWarnings.cpp</name>
+            </file>
+            <file>
+                <name>$PROJ_DIR$\..\..\MCU\Pages\Discretes\TPageDOut.cpp</name>
+            </file>
+            <file>
+                <name>$PROJ_DIR$\..\..\MCU\Pages\Discretes\TPageDOut.h</name>
             </file>
         </group>
         <group>

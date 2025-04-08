@@ -10,8 +10,8 @@
 #include "PageSensors.h"
 #include "PageParameterListEdit.h"
 #include "PageOperateStatus.h"
-//#include "DelayProtection/PageDelayProtection.h"
-//#include "RegulatorSettings/PageRegulatorSettings.h"
+#include "Discretes/PageDIn.h"
+#include "Discretes/TPageDOut.h"
 #include <IniResources.h>
 
 /*TODO В роутере и страницах можно реализовать переходы на закрытие/открытие окна*/
@@ -29,18 +29,14 @@ void TRouter::Init(void) {
     Pages["Alarms"] = new TPageAlarms("Alarms");
     Pages["Warnings"] = new TPageWarnings("Warnings");
     Pages["BasicSettings"] = new TPageBasicSettings("BasicSettings"); //Основные уставки
-    //Pages["RegulatorSettings"] = new TPageRegulatorSettings("RegulatorSettings"); //Настройка регулятора
     Pages["EditValue"] = new TPageEditValue("EditValue");
     Pages["OperateStatus"] = new TPageOperateStatus("OperateStatus"); //Статус работы
     Pages["BasicProtectionsSettings"] = new TPageBasicProtectionsSettings("BasicProtectionsSettings"); //Защиты. Основные уставки
-    //Pages["DelayProtection"] = new TPageDelayProtection("DelayProtection"); //Уставки задержек защит
-    //Pages["CleanSettings"] = new TPageCleanSettings("CleanSettings");
+
+    Pages["DIn"] = new TPageDIn("DIn"); //Дискретные входы
+    Pages["DOut"] = new TPageDOut("DOut"); //Дискретные выходы
     Pages["Sensors"] = new TPageSensors("Sensors"); //Датчики
-    //Pages["NetWorkSettings"] = new TPageNetworkSettings("NetWorkSettings");
     Pages["PrmListEdit"] = new TPageParameterListEdit("PrmListEdit");
-    //Pages["PrmListEditCMD"] = new TPageParameterListEditCMD("PrmListEditCMD");
-    //Pages["PanelSettings"] = new TPagePanelSettings("PanelSettings");
-    //Pages["CD"] = new TPageCalibration("CD"); //Калибровки
     setInitPage();
 }
 

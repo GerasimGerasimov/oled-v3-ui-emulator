@@ -1,9 +1,7 @@
 #include "PageHome.h"
 #include "Router.h"
 #include "TagLine.h"
-#include "TagLineTime.h"
 #include "TagLineVarSize.h"
-#include "TwoTagLine.h"
 #include <IniResources.h>
 
 void TPageHome::view() {
@@ -71,12 +69,13 @@ void TPageHome::fillPageContainer(void) {
     LabelInit.style = LabelsStyle::WIDTH_DINAMIC;
     LabelInit.Rect = { 10, 10, 10, 10 };
     LabelInit.focused = false;
-    //TLabelInitStructure maxFont = LabelInit;
-    LabelInit.font = "MSSansSerifBold14";
+    TLabelInitStructure maxFont = LabelInit;
+    maxFont.font = "MSSansSerifBold14";
     TagList->AddList({
-        new TTagLine("Напряж.", "U1/RAM/Uout/", LabelInit),
-        new TTagLine("Ток", "U1/RAM/Iout/", LabelInit),
+        new TTagLine("Напряж.", "U1/RAM/Uout/", maxFont),
+        new TTagLine("Ток", "U1/RAM/Iout/", maxFont),
         new TTagLine("Задание", "U1/RAM/Uref/", LabelInit),
+        new TTagLineVarSize("Статус", "U1/RAM/Status/", LabelInit, 0),
     });
 }
 

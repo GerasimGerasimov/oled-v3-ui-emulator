@@ -85,7 +85,6 @@ void TPageSensors::fillPageContainer(void) {
         new TTagLineScrollCaptionComment("U1/RAM/Tcabinet/", LabelInit),
         new TTagLineScrollCaptionComment("U1/RAM/Alpha/", LabelInit),
         new TTagLineScrollCaptionComment("U1/RAM/Fin/", LabelInit),
-        new TTagLineScrollCaptionComment("U1/RAM/Td_com/", LabelInit),
     });
 }
 

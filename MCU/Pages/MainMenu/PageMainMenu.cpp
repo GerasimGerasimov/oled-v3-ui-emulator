@@ -36,13 +36,10 @@ TPageMainMenu::TPageMainMenu(std::string Name)
             new TLinkLabel("Аварии", "Alarms", LabelInit),
             new TLinkLabel("Предупреждения", "Warnings", LabelInit),
             new TLinkLabel("Основные уставки", "BasicSettings", LabelInit),
-            //new TLinkLabel("Настройка регулятора", "RegulatorSettings", LabelInit),
             new TLinkLabel("Датчики", "Sensors", LabelInit),
             new TLinkLabel("Защиты", "BasicProtectionsSettings", LabelInit),
-            //new TLinkLabel("Уставки задержек защит", "DelayProtection", LabelInit),
-            //new TLinkLabel("Настройки связи EFi", "NetWorkSettings",LabelInit),
-            //new TLinkLabel("Настройки панели", "PanelSettings", LabelInit),
-            //new TLinkLabel("Калибровки", "CD", LabelInit),
+            new TLinkLabel("Дискретные входы", "DIn", LabelInit),
+            new TLinkLabel("Дискретные выходы", "DOut",LabelInit),
            })
     });
 };

@@ -1,7 +1,6 @@
 #include "PageOperateStatus.h"
 #include "Router.h"
 #include <IniResources.h>
-//#include "TagLine.h"
 #include "TagLineScrollCaptionComment.h"
 #include <map>
 #include <AppModbusSlave.h>
@@ -35,22 +34,6 @@ bool TPageOperateStatus::ProcessMessage(TMessage* m) {
                         TRouter::setTask({ false, "Help", p });
                     }
                     break;
-                case (u32)KeyCodes::ENT:
-                    e = getSignalOfFocusedChild();
-                    if (e) {
-                        TRouter::PageValueEditEntryData.tag = ((TTagLine*)(e))->Tag;
-                        std::string EditPage = TRouter::selectEditPage(TRouter::PageValueEditEntryData.tag);
-                        if (EditPage == "PrmListEdit") {
-                          EditPage = "PrmListEditCMD";
-                          TRouter::PageValueEditEntryData.backPage = Name;
-                           TRouter::setTask({ false, EditPage, nullptr });
-                        }
-                        else {
-                          ISignal* p = IniResources::getSignalByTag(((TTagLine*)(e))->Tag);
-                          sendModeCmd(p);
-                        }
-                    }
-                    break;
             }
         }
     }
@@ -78,7 +61,7 @@ void TPageOperateStatus::sendModeCmd(ISignal* signal) {
 }
 
 void TPageOperateStatus::sendCmd(std::string& code) {
-    std::string cmd = "U1/RAM/CMD/";
+    std::string cmd = "U1/RAM/RefCmd/";
     TryCount = 3;
     cmdSendInProcess = true;
     ModbusSlave::setValue(cmd, code, [this](Slot* slot, u8* reply) { SlotUpdate(slot, reply); });
@@ -125,7 +108,6 @@ TPageOperateStatus::TPageOperateStatus(std::string Name)
         new TTagLineScrollCaptionComment("U1/RAM/OutOk/", LabelInit),
         new TTagLineScrollCaptionComment("U1/RAM/Fan2/", LabelInit),
         new TTagLineScrollCaptionComment("U1/RAM/SoftStart/", LabelInit),
-        new TTagLineScrollCaptionComment("U1/RAM/Discharge/", LabelInit),
         });
     
     Container->FocusedLine = 0;

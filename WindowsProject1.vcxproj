@@ -155,6 +155,9 @@
     <ClInclude Include="MCU\IDrivers\iresources.h" />
     <ClInclude Include="MCU\Modbus\modbus.h" />
     <ClInclude Include="MCU\Pages\DelayProtection\PageDelayProtection.h" />
+    <ClInclude Include="MCU\Pages\Discretes\PageDIn.h" />
+    <ClInclude Include="MCU\Pages\Discretes\PageInOut.h" />
+    <ClInclude Include="MCU\Pages\Discretes\TPageDOut.h" />
     <ClInclude Include="MCU\Pages\ParameterListEditCMD\PageParameterListEditCMD.h" />
     <ClInclude Include="MCU\Pages\RegulatorSettings\PageRegulatorSettings.h" />
     <ClInclude Include="MCU\Parameters\TU32BIT.h" />
@@ -220,6 +223,9 @@
     <ClCompile Include="MCU\Pages\Calibration\PageCalibration.cpp" />
     <ClCompile Include="MCU\Pages\CleanSettings\PageCleanSettings.cpp" />
     <ClCompile Include="MCU\Pages\DelayProtection\PageDelayProtection.cpp" />
+    <ClCompile Include="MCU\Pages\Discretes\PageDIn.cpp" />
+    <ClCompile Include="MCU\Pages\Discretes\PageInOut.cpp" />
+    <ClCompile Include="MCU\Pages\Discretes\TPageDOut.cpp" />
     <ClCompile Include="MCU\Pages\EditValue\PageEditValue.cpp" />
     <ClCompile Include="MCU\Pages\Help\PageHelp.cpp" />
     <ClCompile Include="MCU\Pages\Home\PageHome.cpp" />

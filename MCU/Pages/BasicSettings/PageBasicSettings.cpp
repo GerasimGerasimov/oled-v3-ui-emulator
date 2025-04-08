@@ -78,7 +78,6 @@ void TPageBasicSettings::fillPageContainer(void) {
         new TTagLineScrollCaptionComment("U1/FLASH/UrefMin/", LabelInit),
         new TTagLineScrollCaptionComment("U1/FLASH/dU/", LabelInit),
         new TTagLineScrollCaptionComment("U1/FLASH/Ustep/", LabelInit),
-        new TTagLineScrollCaptionComment("U1/FLASH/Istep/", LabelInit),
         new TTagLineScrollCaptionComment("U1/FLASH/tSoftStart/", LabelInit),
         new TTagLineScrollCaptionComment("U1/FLASH/Udischarge/", LabelInit),
     });
@@ -91,7 +90,7 @@ TPageBasicSettings::TPageBasicSettings(std::string Name)
 
     TLabelInitStructure LabelInit;
     LabelInit.pOwner = Container;
-    LabelInit.caption = "Основные уставки";
+    LabelInit.caption = "Уставки";
     TFixedHeader* pHeader = new TFixedHeader(LabelInit);
     Container->Add(pHeader);
 
