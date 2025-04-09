@@ -153,6 +153,9 @@
     <ClInclude Include="MCU\Pages\TimeSettings\TimeSettings.h">
       <Filter>MCU\Pages</Filter>
     </ClInclude>
+    <ClInclude Include="MCU\Pages\FactorySettingsEdit\PageFactorySettingsEdit.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -445,6 +448,9 @@
     </ClCompile>
     <ClCompile Include="MCU\Pages\TimeSettings\TimeSettings.cpp">
       <Filter>MCU\Pages</Filter>
+    </ClCompile>
+    <ClCompile Include="MCU\Pages\FactorySettingsEdit\PageFactorySettingsEdit.cpp">
+      <Filter>Исходные файлы</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

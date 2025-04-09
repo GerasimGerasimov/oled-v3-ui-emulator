@@ -1434,6 +1434,12 @@
                 <name>$PROJ_DIR$\..\..\MCU\Pages\EditValue\PageEditValue.cpp</name>
             </file>
             <file>
+                <name>$PROJ_DIR$\..\..\MCU\Pages\FactorySettingsEdit\PageFactorySettingsEdit.cpp</name>
+            </file>
+            <file>
+                <name>$PROJ_DIR$\..\..\MCU\Pages\FactorySettingsEdit\PageFactorySettingsEdit.h</name>
+            </file>
+            <file>
                 <name>$PROJ_DIR$\..\..\MCU\Pages\Help\PageHelp.cpp</name>
             </file>
             <file>

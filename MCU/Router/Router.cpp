@@ -17,6 +17,7 @@
 #include "ParameterListEditCMD/PageParameterListEditCMD.h"
 #include "TimeSettings/TimeSettings.h"
 #include <IniResources.h>
+#include "FactorySettingsEdit/PageFactorySettingsEdit.h"
 
 /*TODO В роутере и страницах можно реализовать переходы на закрытие/открытие окна*/
 TPage* TRouter::Page = nullptr;
@@ -41,6 +42,7 @@ void TRouter::Init(void) {
     // Pages["Sensors"] = new TPageSensors("Sensors"); //Датчики
     //Pages["NetWorkSettings"] = new TPageNetworkSettings("NetWorkSettings");
     Pages["PrmListEdit"] = new TPageParameterListEdit("PrmListEdit");
+    Pages["FactorySettingsEdit"] = new TPageFactorySettingsEdit("FactorySettingsEdit");
     // Pages["PrmListEditCMD"] = new TPageParameterListEditCMD("PrmListEditCMD");
     //Pages["PanelSettings"] = new TPagePanelSettings("PanelSettings");
     // Pages["CD"] = new TPageCalibration("CD"); //Калибровки

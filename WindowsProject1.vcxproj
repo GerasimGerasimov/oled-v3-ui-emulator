@@ -154,6 +154,7 @@
     <ClInclude Include="MCU\IDrivers\icommastert.h" />
     <ClInclude Include="MCU\IDrivers\iresources.h" />
     <ClInclude Include="MCU\Modbus\modbus.h" />
+    <ClInclude Include="MCU\Pages\FactorySettingsEdit\PageFactorySettingsEdit.h" />
     <ClInclude Include="MCU\Pages\ParameterListEditCMD\PageParameterListEditCMD.h" />
     <ClInclude Include="MCU\Pages\TimeSettings\TimeSettings.h" />
     <ClInclude Include="MCU\Parameters\TU32BIT.h" />
@@ -219,6 +220,7 @@
     <ClCompile Include="MCU\Pages\Calibration\PageCalibration.cpp" />
     <ClCompile Include="MCU\Pages\CleanSettings\PageCleanSettings.cpp" />
     <ClCompile Include="MCU\Pages\EditValue\PageEditValue.cpp" />
+    <ClCompile Include="MCU\Pages\FactorySettingsEdit\PageFactorySettingsEdit.cpp" />
     <ClCompile Include="MCU\Pages\Help\PageHelp.cpp" />
     <ClCompile Include="MCU\Pages\Home\PageHome.cpp" />
     <ClCompile Include="MCU\Pages\MainMenu\PageMainMenu.cpp" />

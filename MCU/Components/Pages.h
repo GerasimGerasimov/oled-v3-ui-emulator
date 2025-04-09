@@ -15,7 +15,7 @@ public:
     virtual const u16 getHeight(void) { return 0; };
     virtual void onOpen();
     void clear();//очистит список
-    bool ProcessMessage(TMessage* m);//обработчик сообщений
+    virtual bool ProcessMessage(TMessage* m);//обработчик сообщений
     TPage(std::string name);//конструктор
     TPage(std::string name, bool isOpenState, std::vector <TVisualObject*> Source = {});//конструктор
     ~TPage();//деструктор

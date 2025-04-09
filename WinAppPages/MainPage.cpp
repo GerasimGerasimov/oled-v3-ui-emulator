@@ -212,6 +212,7 @@ void MainPage::keyBoardControlMCU(int cmd) {
             break;
         case ID_BUTTON_F2:
             console::log(L"ID_BUTTON_F2\n");
+            Msg::send_message((u32)EventSrc::KEYBOARD, (u32)KeyCodes::F2, 0);
             break;
         case ID_BUTTON_F3:
             console::log(L"ID_BUTTON_F3\n");
