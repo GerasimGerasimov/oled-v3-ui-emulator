@@ -33,6 +33,7 @@ public:
 	virtual void setValue();
 	const std::string getRegHexAddr();
 	const std::string getWriteCmdType();
+	std::string getValueFactory() override;
 protected:
 	virtual std::string value(const TSlotHandlerArsg& args, const char* format);
 	virtual TGenaralCaseRawReturn getRawValue(const TSlotHandlerArsg& args);
@@ -40,6 +41,7 @@ protected:
 	char* MSU;
 	s16 Addr;
 	float Scale;
+	char* FactoryValue;
 };
 
 #endif

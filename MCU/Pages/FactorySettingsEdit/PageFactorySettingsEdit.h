@@ -3,11 +3,14 @@
 #include <Pages.h>
 #include "TVerticalContainer.h"
 
+class Slot;
+
 class TPageFactorySettingsEdit : public TPage
 {
 private:
     TVisualObject* getSignalOfFocusedChild();
     void sendSetting();
+    void SlotUpdate(Slot* slot, u8* reply);
 public:
     TPageFactorySettingsEdit(std::string Name);
     ~TPageFactorySettingsEdit();

@@ -68,3 +68,7 @@ const std::string TParameter::getWriteCmdType() {
 TInternalMemAddress TParameter::getInternalMemAddr() {
 	return { -1,0,-1 };
 }
+
+std::string TParameter::getValueFactory(){
+	return "No Value";
+}

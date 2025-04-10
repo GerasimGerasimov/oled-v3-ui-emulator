@@ -34,6 +34,45 @@ bool ModbusSlave::setValue(std::string& tag, std::string& value, TSlotDataHandle
         : false;
 }
 
+bool ModbusSlave::setSetting(std::map<u16, std::string>& data, u16 regAddr, std::string device, u16 dataSize, TSlotDataHandler callback){
+    const u8 Cmd = 0x10;
+    const u8 DevAddr = IniResources::getDevNetWorkAddrByDevPos(device);
+    const std::string Section = "CmdWrite";
+    Slot* slot = DevicePollManager::getSlotByDevPosAndSection(device, Section);
+    slot->TimeOut = 2000;
+    u16 regSize = dataSize / 2;
+    u16 index = 0;
+    slot->OutBuf[index++] = DevAddr;
+    slot->OutBuf[index++] = Cmd;
+    slot->OutBuf[index++] = regAddr >> 8;
+    slot->OutBuf[index++] = regAddr;
+    slot->OutBuf[index++] = regSize >> 8;
+    slot->OutBuf[index++] = regSize;
+    slot->OutBuf[index++] = dataSize;
+    for(u16 i = regAddr; i < regAddr + regSize; ++i){
+        if(data.count(i)){
+            u32 value = std::stol(data.at(i), nullptr, 16);
+            u16 valSize = data.at(i).size() / 2;
+            if((data.at(i).size() / 2) == 2){
+                slot->OutBuf[index++] = value >> 8;
+                slot->OutBuf[index++] = value;
+            }
+            else{
+                slot->OutBuf[index++] = value >> 8;
+                slot->OutBuf[index++] = value;
+                slot->OutBuf[index++] = value >> 24;
+                slot->OutBuf[index++] = value >> 16;
+            }
+        }
+    }
+    index += 2;
+    FrameEndCrc16(slot->OutBuf, index);
+    slot->cmdLen = index;
+    slot->Flags &= ~(u16)SlotStateFlags::SKIP_SLOT;
+    //slot->cmdLen = CreateWriteSetting(slot->OutBuf, data, regAddr, DevAddr);
+    return true;
+}
+
 const std::map < std::string, std::function <u8(u8*, TWriteCmdSrc&) >> ModbusSlave::WriteCmdVariants = {
     {"10", [](u8* a, TWriteCmdSrc& props) {return get0x10WriteRegCmd(a, props); }},
     {"16", [](u8* a, TWriteCmdSrc& props) {return get0x16MaskWriteRegisterCmd(a, props); }},

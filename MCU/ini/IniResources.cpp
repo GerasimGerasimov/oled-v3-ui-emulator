@@ -80,6 +80,22 @@ TValueSearchStruct IniResources::spliceTagInfo(const std::string& tag) {
 	}
 }
 
+std::map<std::string, ISignal*>* IniResources::getSectionMap(const std::string& tag){
+	std::vector<std::string> v = IniParser::getListOfDelimitedString(
+		(const char)'/',
+		(char*)tag.c_str(),
+		tag.size());
+	if(v.size()){
+		std::string dev = IniSlotsProps::getSourceOfDev(v[0]);
+		if(Sources.count(dev)){
+			if(Sources.at(dev).count(v[1])){
+				return &(Sources.at(dev).at(v[1]));
+			}
+		}
+	}
+	return nullptr;
+}
+
 std::string IniResources::getDevicePositionByTag(const std::string& tag) {
 	std::vector<std::string> v = IniParser::getListOfDelimitedString(
 		(const char)'/',

@@ -3,6 +3,8 @@
 #include <IniResources.h>
 #include <FixedHeader.h>
 #include "parameters.h"
+#include "AppModbusSlave.h"
+#include "Slot.h"
 
 TVisualObject* TPageFactorySettingsEdit::getSignalOfFocusedChild(){
     for(auto& element : Container->List){
@@ -14,6 +16,34 @@ TVisualObject* TPageFactorySettingsEdit::getSignalOfFocusedChild(){
 }
 
 void TPageFactorySettingsEdit::sendSetting(){
+    std::map<std::string, ISignal*>* sector = IniResources::getSectionMap("U1/FLASH/");
+    std::map<u16, std::string> regData;
+    const u16 DevAddr = IniResources::getDevNetWorkAddrByDevPos("U1");
+    if(sector){
+
+        u16 startAddr = 0xFFFF;
+        u16 regSize = 0;
+        for(auto& n : *sector){
+            std::string str = n.first;
+            TParameter* p = static_cast<TParameter*>(n.second);
+            std::string valueFactory = p->getValueFactory();
+            std::string addrHex = p->getRegHexAddr();
+            u16 addr = static_cast<u16>(std::stoul(addrHex, nullptr, 16));
+            if(startAddr > addr){
+                startAddr = addr;
+            }
+            valueFactory.erase(valueFactory.begin());
+            regSize += valueFactory.size() / 2;
+            regData[addr] = valueFactory;
+        }
+        ModbusSlave::setSetting(regData, startAddr, "U1", regSize, [this](Slot* slot, u8* reply){ SlotUpdate(slot, reply); });
+    }
+}
+
+void TPageFactorySettingsEdit::SlotUpdate(Slot* slot, u8* reply){
+    if(slot){
+        slot->Flags |= (u16)SlotStateFlags::SKIP_SLOT;
+    }
 }
 
 TPageFactorySettingsEdit::TPageFactorySettingsEdit(std::string Name) : TPage(Name){
@@ -62,7 +92,7 @@ bool TPageFactorySettingsEdit::ProcessMessage(TMessage* m){
                     e = getSignalOfFocusedChild();
                     if(e){
                         if(static_cast<TLabel*>(e)->getCaption() == "Да"){
-
+                            sendSetting();
                         }
 
                         TRouter::setTask({false, TRouter::getBackPage(), nullptr});

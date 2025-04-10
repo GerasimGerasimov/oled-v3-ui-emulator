@@ -10,6 +10,7 @@ TGeneralCaseSignal::TGeneralCaseSignal(TSignalPropsPointers props)
 	strAddr = IniParser::getElementPtrByNumber(1, '/', props.pOptional);
 	Addr = ParametersUtils::getByteOffsetFromSlahedAddrStr(strAddr);
 	Scale = ScaleUtils::getScaleFromProps(props.dev, props.pOptional);
+	FactoryValue = IniParser::getElementPtrByNumber(6, '/', props.pOptional);
 }
 
 TGeneralCaseSignal::~TGeneralCaseSignal(){
@@ -96,6 +97,12 @@ std::string TGeneralCaseSignal::validation(const TSlotHandlerArsg& args) {
 
 const std::string TGeneralCaseSignal::getWriteCmdType() {
 	return "10";
+}
+
+std::string TGeneralCaseSignal::getValueFactory(){
+	return (FactoryValue)
+		? IniParser::getElement('/', FactoryValue)
+		: "";
 }
 
 const std::string TGeneralCaseSignal::getRegHexAddr() {

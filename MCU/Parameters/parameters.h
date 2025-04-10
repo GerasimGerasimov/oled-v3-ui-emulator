@@ -25,6 +25,7 @@ public:
 	virtual const std::string getRegHexAddr();
 	virtual const std::string getWriteCmdType();
 	virtual TInternalMemAddress getInternalMemAddr();
+	virtual std::string getValueFactory();
 protected:
 	char* Comment;
 	char* strAddr;
