@@ -154,7 +154,10 @@
       <Filter>MCU\Pages</Filter>
     </ClInclude>
     <ClInclude Include="MCU\Pages\FactorySettingsEdit\PageFactorySettingsEdit.h">
-      <Filter>Файлы заголовков</Filter>
+      <Filter>MCU\Pages</Filter>
+    </ClInclude>
+    <ClInclude Include="MCU\Pages\FactorySettings\PageFactorySettings.h">
+      <Filter>MCU\Pages</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -450,7 +453,10 @@
       <Filter>MCU\Pages</Filter>
     </ClCompile>
     <ClCompile Include="MCU\Pages\FactorySettingsEdit\PageFactorySettingsEdit.cpp">
-      <Filter>Исходные файлы</Filter>
+      <Filter>MCU\Pages</Filter>
+    </ClCompile>
+    <ClCompile Include="MCU\Pages\FactorySettings\PageFactorySettings.cpp">
+      <Filter>MCU\Pages</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

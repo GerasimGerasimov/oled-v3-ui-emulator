@@ -8,6 +8,7 @@ class TFloat : public TGeneralCaseSignal {
 public:
 	TInternalMemAddress getInternalMemAddr();
 	const std::string getValueHex(std::string& src);
+	const std::string getHexToValue(std::string& hex) override;
 	TFloat(TSignalPropsPointers props);
 	~TFloat();
 private:

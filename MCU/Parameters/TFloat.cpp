@@ -42,6 +42,15 @@ const std::string TFloat::getValueHex(std::string& src) {
 	return res;
 }
 
+const std::string TFloat::getHexToValue(std::string& hex){
+	u32 f = std::stol(hex, nullptr, 16);
+	float* ff = (float*)(&f);
+	char s[10];
+
+	sprintf(s, "%.1f", *ff);
+	return s;
+}
+
 u32 TFloat::string2raw(std::string& src) {
 	float f = std::stof(src);
 	f /= Scale;

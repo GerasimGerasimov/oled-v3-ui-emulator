@@ -100,9 +100,12 @@ const std::string TGeneralCaseSignal::getWriteCmdType() {
 }
 
 std::string TGeneralCaseSignal::getValueFactory(){
-	return (FactoryValue)
-		? IniParser::getElement('/', FactoryValue)
-		: "";
+	std::string result = "";
+	if(FactoryValue){
+		result = IniParser::getElement('/', FactoryValue);
+		result.erase(result.begin());
+	}
+	return result;
 }
 
 const std::string TGeneralCaseSignal::getRegHexAddr() {

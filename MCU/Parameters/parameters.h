@@ -24,6 +24,7 @@ public:
 	virtual const std::string getValueHex(std::string& src);
 	virtual const std::string getRegHexAddr();
 	virtual const std::string getWriteCmdType();
+	virtual const std::string getHexToValue(std::string& src);
 	virtual TInternalMemAddress getInternalMemAddr();
 	virtual std::string getValueFactory();
 protected:

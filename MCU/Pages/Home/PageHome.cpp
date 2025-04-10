@@ -34,10 +34,6 @@ bool TPageHome::ProcessMessage(TMessage* m) {
                         TRouter::setTask({ false, "Help", p });
                     }
                     break;
-                case (u32)KeyCodes::F2:
-                        TRouter::PageValueEditEntryData.backPage = Name;
-                        TRouter::setTask({false, "FactorySettingsEdit", nullptr});
-                    break;
                 case (u32)KeyCodes::ENT:
                     e = getSignalOfFocusedChild();
                     if (e) {

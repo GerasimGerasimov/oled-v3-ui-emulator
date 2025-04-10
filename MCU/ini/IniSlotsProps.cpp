@@ -23,6 +23,14 @@ u16 IniSlotsProps::getDevNetWorkAddr(std::string position) {
 	return 0;
 }
 
+u16 IniSlotsProps::getSectionStartAddr(std::string& dev, std::string& section){
+	return isSection(dev, section) ? Devices.at(dev).SlotsMap.at(section)->StartAddr : 0xFFFF;
+}
+
+u16 IniSlotsProps::getSectionLastAddr(std::string& dev, std::string& section){
+	return isSection(dev, section) ? Devices.at(dev).SlotsMap.at(section)->LastAddr : 0xFFFF;
+}
+
 //"U1":"DEV1/COM1/1/RAM,0x0000,0х0036,0/FLASH,0x2000,0х2069,1000/CD,0xC000,0xC0037,1000/"
 //      |    |    | |   |      |      |--пауза перед следующим запросом (0-значит запрашивать с макс частотой)
 //      |    |    | |   |      |-конечный регистр
@@ -31,6 +39,15 @@ u16 IniSlotsProps::getDevNetWorkAddr(std::string position) {
 //		|    |    |-адрес устройства на шине
 //		|    |-на какой UART определить слот
 //      |-ссылка на описание регистров устройства
+
+bool IniSlotsProps::isSection(std::string& dev, std::string& section){
+	if(Devices.count(dev)){
+		if(Devices.at(dev).SlotsMap.count(section)){
+			return true;
+		}
+	}
+	return false;
+}
 
 bool IniSlotsProps::readDevices(void) {
 	TItemLimits itemLimits = TInternalResources::getItemLimitsByName((char*)"DEVICES");

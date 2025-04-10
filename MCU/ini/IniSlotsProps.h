@@ -26,7 +26,10 @@ public:
 	static std::string getSourceOfDev(std::string position);
 	static u16 getDevNetWorkAddr(std::string position);
 	static std::map<std::string, TDeviceNetworkProps> Devices;
+	static u16 getSectionStartAddr(std::string& dev, std::string& section);
+	static u16 getSectionLastAddr(std::string& dev, std::string& section);
 private:
+	static bool isSection(std::string& dev, std::string& section);
 	static bool readDevices(void);
 	static TDeviceNetworkProps getDeviceNetworkProps(char* src, int size);
 };

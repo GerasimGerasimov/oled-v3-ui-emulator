@@ -18,25 +18,16 @@ TVisualObject* TPageFactorySettingsEdit::getSignalOfFocusedChild(){
 void TPageFactorySettingsEdit::sendSetting(){
     std::map<std::string, ISignal*>* sector = IniResources::getSectionMap("U1/FLASH/");
     std::map<u16, std::string> regData;
-    const u16 DevAddr = IniResources::getDevNetWorkAddrByDevPos("U1");
     if(sector){
-
-        u16 startAddr = 0xFFFF;
-        u16 regSize = 0;
         for(auto& n : *sector){
             std::string str = n.first;
             TParameter* p = static_cast<TParameter*>(n.second);
             std::string valueFactory = p->getValueFactory();
             std::string addrHex = p->getRegHexAddr();
             u16 addr = static_cast<u16>(std::stoul(addrHex, nullptr, 16));
-            if(startAddr > addr){
-                startAddr = addr;
-            }
-            valueFactory.erase(valueFactory.begin());
-            regSize += valueFactory.size() / 2;
             regData[addr] = valueFactory;
         }
-        ModbusSlave::setSetting(regData, startAddr, "U1", regSize, [this](Slot* slot, u8* reply){ SlotUpdate(slot, reply); });
+        ModbusSlave::setSetting(regData,  "U1", "FLASH", [this](Slot* slot, u8* reply){ SlotUpdate(slot, reply); });
     }
 }
 
@@ -52,7 +43,7 @@ TPageFactorySettingsEdit::TPageFactorySettingsEdit(std::string Name) : TPage(Nam
 
     TLabelInitStructure LabelInit;
     LabelInit.pOwner = Container;
-    LabelInit.caption = "Переписать уставки";
+    LabelInit.caption = "Сброс всех уставок";
     TFixedHeader* pHeader = new TFixedHeader(LabelInit);
     Container->Add(pHeader);
 

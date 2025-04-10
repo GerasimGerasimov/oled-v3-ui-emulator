@@ -2,6 +2,7 @@
 #include <parameters.h>
 #include <IniResources.h>
 #include <DevicePollManager.h>
+#include "IniSlotsProps.h"
 
 static u16 getTimeOutBySection(const std::string& section) {
     return (section == "RAM")
@@ -34,22 +35,23 @@ bool ModbusSlave::setValue(std::string& tag, std::string& value, TSlotDataHandle
         : false;
 }
 
-bool ModbusSlave::setSetting(std::map<u16, std::string>& data, u16 regAddr, std::string device, u16 dataSize, TSlotDataHandler callback){
+bool ModbusSlave::setSetting(std::map<u16, std::string>& data, std::string device, std::string section, TSlotDataHandler callback){
     const u8 Cmd = 0x10;
     const u8 DevAddr = IniResources::getDevNetWorkAddrByDevPos(device);
-    const std::string Section = "CmdWrite";
-    Slot* slot = DevicePollManager::getSlotByDevPosAndSection(device, Section);
-    slot->TimeOut = 2000;
-    u16 regSize = dataSize / 2;
+    const std::string slotSection = "CmdWrite";
+    Slot* slot = DevicePollManager::getSlotByDevPosAndSection(device, slotSection);
+    slot->TimeOut = getTimeOutBySection(section);
+    u16 regStartAddr = IniSlotsProps::getSectionStartAddr(device, section);
+    u16 regSize = IniSlotsProps::getSectionLastAddr(device, section) - regStartAddr;
     u16 index = 0;
     slot->OutBuf[index++] = DevAddr;
     slot->OutBuf[index++] = Cmd;
-    slot->OutBuf[index++] = regAddr >> 8;
-    slot->OutBuf[index++] = regAddr;
+    slot->OutBuf[index++] = regStartAddr >> 8;
+    slot->OutBuf[index++] = regStartAddr;
     slot->OutBuf[index++] = regSize >> 8;
     slot->OutBuf[index++] = regSize;
-    slot->OutBuf[index++] = dataSize;
-    for(u16 i = regAddr; i < regAddr + regSize; ++i){
+    slot->OutBuf[index++] = regSize * 2;
+    for(u16 i = regStartAddr; i < regStartAddr + regSize; ++i){
         if(data.count(i)){
             u32 value = std::stol(data.at(i), nullptr, 16);
             u16 valSize = data.at(i).size() / 2;

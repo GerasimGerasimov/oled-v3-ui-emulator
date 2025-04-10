@@ -38,6 +38,7 @@ TPageMainMenu::TPageMainMenu(std::string Name)
              new TLinkLabel("Уставки времени", "TimeSettings", LabelInit),
              new TLinkLabel("Аварии", "Alarms", LabelInit),
              new TLinkLabel("Предупреждения", "Warnings", LabelInit),
+             new TLinkLabel("Заводские уставки", "FactorySettings", LabelInit),
             //new TLinkLabel("Очистка. Уставки", "CleanSettings", LabelInit),
             //new TLinkLabel("Настройки связи EFi", "NetWorkSettings",LabelInit),
             //new TLinkLabel("Настройки панели", "PanelSettings", LabelInit),

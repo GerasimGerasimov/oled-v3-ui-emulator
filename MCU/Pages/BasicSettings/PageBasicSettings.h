@@ -16,10 +16,10 @@ public:
     TPageBasicSettings(std::string Name);
     ~TPageBasicSettings();
 private:
-    void SlotUpdate(TSlotHandlerArsg args);
     TVisualObject* getSignalOfFocusedChild();
     int SubscriberID = 0;
 protected:
+    virtual void SlotUpdate(TSlotHandlerArsg args);
     TVerticalContainer* Container;
     TVerticalContainer* TagList;
     virtual void fillPageContainer();
