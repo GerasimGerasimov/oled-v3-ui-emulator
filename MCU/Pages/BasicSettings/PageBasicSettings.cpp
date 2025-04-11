@@ -72,24 +72,7 @@ void TPageBasicSettings::fillPageContainer(void) {
     LabelInit.focused = false;
 
     TagList->AddList({
-        new TTagLineScrollCaptionComment("U1/FLASH/IchargeMin/", LabelInit),
-        new TTagLineScrollCaptionComment("U1/FLASH/IchargeMax/", LabelInit),
-        new TTagLineScrollCaptionComment("U1/FLASH/UchargeMax/", LabelInit),
-        new TTagLineScrollCaptionComment("U1/FLASH/IAddCharge/", LabelInit),
-        new TTagLineScrollCaptionComment("U1/FLASH/tAddCharge/", LabelInit),
-        new TTagLineScrollCaptionComment("U1/FLASH/IEqualChargeMin/", LabelInit),
-        new TTagLineScrollCaptionComment("U1/FLASH/IEqualChargeMax/", LabelInit),
-        new TTagLineScrollCaptionComment("U1/FLASH/UEqualChargeMax/", LabelInit),
-        new TTagLineScrollCaptionComment("U1/FLASH/IEqualAddCharge/", LabelInit),
-        new TTagLineScrollCaptionComment("U1/FLASH/tEqualAddCharge/", LabelInit),
-        new TTagLineScrollCaptionComment("U1/FLASH/tEqualCharge/", LabelInit),
-        new TTagLineScrollCaptionComment("U1/FLASH/UdischargeMin/", LabelInit),
-        new TTagLineScrollCaptionComment("U1/FLASH/IdischargeMin/", LabelInit),
-        new TTagLineScrollCaptionComment("U1/FLASH/BatteryCapacity/", LabelInit),
-        new TTagLineScrollCaptionComment("U1/FLASH/tSoftStart/", LabelInit),
-        new TTagLine("kRegU", "U1/FLASH/kRegU/", LabelInit),
-        new TTagLine("kRegI", "U1/FLASH/kRegI/", LabelInit),
-        new TTagLine("TiReg", "U1/FLASH/TiReg/", LabelInit),
+
     });
 }
 

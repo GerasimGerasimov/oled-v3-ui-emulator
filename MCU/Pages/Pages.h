@@ -18,7 +18,7 @@ public:
     bool ProcessMessage(TMessage* m);//обработчик сообщений
     TPage(std::string name);//конструктор
     TPage(std::string name, bool isOpenState, std::vector <TVisualObject*> Source = {});//конструктор
-    ~TPage();//деструктор
+    virtual ~TPage();//деструктор
     void setProps(void* _props);
     virtual void startToClose();
     virtual void onClose();

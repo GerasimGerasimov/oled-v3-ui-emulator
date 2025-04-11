@@ -1,9 +1,6 @@
 #include "PageHome.h"
 #include "Router.h"
 #include "TagLine.h"
-#include "TagLineTime.h"
-#include "TagLineVarSize.h"
-#include "TwoTagLine.h"
 #include <IniResources.h>
 
 void TPageHome::view() {
@@ -71,13 +68,11 @@ void TPageHome::fillPageContainer(void) {
     LabelInit.style = LabelsStyle::WIDTH_DINAMIC;
     LabelInit.Rect = { 10, 10, 10, 10 };
     LabelInit.focused = false;
+    LabelInit.caption = "Стартовый экран";
     TagList->AddList({
-        new TTwoTagLine(new TTagLineVarSize("", "U1/RAM/Uout/", LabelInit, 0), new TTagLineVarSize("", "U1/RAM/Iout/", LabelInit, 70)),
-        new TTagLineVarSize("", "U1/RAM/TransCharge/", LabelInit, 0),
-        new TTagLineVarSize("", "U1/RAM/OperatMode/", LabelInit, 0),
-        new TTagLineTime("Время", "U1/RAM/TimeLeft/", LabelInit),
-        new TTagLine("I уставка", "U1/RAM/Iref/", LabelInit),
-        new TTagLine("U уставка", "U1/RAM/Uref/", LabelInit),
+        //new TTagLine("TiReg", "U1/FLASH/TiReg/", LabelInit),
+        //new TTagLineScrollCaptionComment("U1/FLASH/tSoftStart/", LabelInit),
+        new TLabel(LabelInit)
     });
     
 }

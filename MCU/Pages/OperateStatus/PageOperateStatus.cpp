@@ -59,11 +59,11 @@ static const std::string CMD_DISCHARGE = "5555";
 //static const std::string CMD_TEST = "5313";
 
 static const std::map <std::string, std::string> CmdBySignalName = {
-    {"Charge", CMD_CHARGE},
-    {"EqualCharge", CMD_CHARGE_EQUAL},
-    {"Discharge", CMD_DISCHARGE},
-    {"Run", CMD_START},
-    {"stop", CMD_STOP},
+    //{"Charge", CMD_CHARGE},
+    //{"EqualCharge", CMD_CHARGE_EQUAL},
+    //{"Discharge", CMD_DISCHARGE},
+    //{"Run", CMD_START},
+    //{"stop", CMD_STOP},
 };
 
 void TPageOperateStatus::sendModeCmd(ISignal* signal) {
@@ -116,13 +116,7 @@ TPageOperateStatus::TPageOperateStatus(std::string Name)
     LabelInit.focused = false;
 
     Container = new TVerticalContainer(props, {
-        new TTagLine("Готовность", "U1/RAM/Ready/", LabelInit),
-        new TTagLine("Пуск/Работа", "U1/RAM/Run/", LabelInit),
-        new TTagLine("Стоп", "U1/RAM/stop/", LabelInit),
-        new TTagLine("Заряд", "U1/RAM/Charge/", LabelInit),
-        new TTagLine("Выр.Заряд", "U1/RAM/EqualCharge/", LabelInit),
-        new TTagLine("Разряд", "U1/RAM/Discharge/", LabelInit),
-        new TTagLine("Режим", "U1/RAM/OperatMode/", LabelInit),
+
         });
     
     Container->FocusedLine = 0;

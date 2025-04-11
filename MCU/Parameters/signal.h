@@ -18,7 +18,7 @@ class ISignal {
 public:
 	ISignal(char* source, int scrLen);
 	ISignal(TSignalPropsPointers props);
-	~ISignal();
+	virtual ~ISignal();
 	virtual std::string getName();
 	virtual std::string getValue(const TSlotHandlerArsg& args, const char* format);
     virtual std::string getValue(){return "";};

@@ -9,19 +9,20 @@ class TPageBasicSettings : public TPage
 {
 public:
     virtual void view();
-    virtual const u16 getHeight(void) { return 0; };
+    virtual const u16 getHeight() { return 0; };
     void onOpen();
     void startToClose();
     bool ProcessMessage(TMessage* m);
     TPageBasicSettings(std::string Name);
     ~TPageBasicSettings();
 private:
-    TVerticalContainer* Container;
-    TVerticalContainer* TagList;
-    void fillPageContainer(void);
     void SlotUpdate(TSlotHandlerArsg args);
     TVisualObject* getSignalOfFocusedChild();
     int SubscriberID = 0;
+protected:
+    TVerticalContainer* Container;
+    TVerticalContainer* TagList;
+    void fillPageContainer();
 };
 
 #endif

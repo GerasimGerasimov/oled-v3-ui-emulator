@@ -63,28 +63,6 @@ TVisualObject* TPageSensors::getSignalOfFocusedChild() {
     return nullptr;
 }
 
-/*
-;Датчик искры
-p114=LastSparkLength/Длительность последней обнаруженной искры/TWORD/x0024/r0012/us/IntegerScale/2//0/0/
-p115=SparkFrq/Частота искр/TWORD/x0026/r0013/pcs/FracHundScale/2//0/0/
-
-;Основные данные датчиков (усредненные за полупериод)   
-p107=Uin/Входное напряжение (сети)/TWORD/x0016/r000B/V/FracDecScale/2//0/0/
-p108=Iin/Входной ток/TWORD/x0018/r000C/A/FracDecScale/2//0/0/
-p109=Fin/Частота входного напряжения (сети)/TWORD/x001A/r000D/Hz/FracHundScale/2//0/0/
-p110=Uout/Выходное напряжение/TWORD/x001C/r000E/kV/FracHundScale/2//0/0/
-p111=Iout/Выходной ток/TWORD/x001E/r000F/mA/FracDecScale/2//0/0/
-p112=U24V/Напряжение внешнего источника питания блока управления (номинал 24 В)/TWORD/x0020/r0010/V/FracHundScale/2//0/0/
-p113=U5V/Напряжения встроенного источника питания блока управления(номинал 5 В)/TWORD/x0022/r0011/V/FracHundScale/2//0/0/
-
-
-	
-;Основные данные датчиков (усредненные за несколько периодов)
-p116=UinAve/Среднее значение входного напряжения (сети)/TWORD/x0028/r0014/V/FracDecScale/2//0/0/
-p117=IinAve/Среднее значение входного тока/TWORD/x002A/r0015/A/FracDecScale/2//0/0/
-p118=UoutAve/Среднее значение выходного напряжения/TWORD/x002C/r0016/kV/FracHundScale/2//0/0/
-p119=IoutAve/Среднее значение выходного напряжения/TWORD/x002E/r0017/mA/FracDecScale/2//0/0/
-*/
 void TPageSensors::fillPageContainer(void) {
     TagList->Clear();
     TLabelInitStructure LabelInit;
@@ -92,18 +70,7 @@ void TPageSensors::fillPageContainer(void) {
     LabelInit.Rect = { 10, 10, 10, 10 };
     LabelInit.focused = false;
     TagList->AddList({
-        new TTagLine("Uout", "U1/RAM/Uout/", LabelInit),
-        new TTagLine("Iout", "U1/RAM/Iout/", LabelInit),
-        new TTagLine("Iin", "U1/RAM/Iin/", LabelInit),
-        new TTagLine("Ia", "U1/RAM/Ia/", LabelInit),
-        new TTagLine("Ib", "U1/RAM/Ib/", LabelInit),
-        new TTagLine("Ic", "U1/RAM/Ic/", LabelInit),
-        new TTagLine("Uin", "U1/RAM/Uin/", LabelInit),
-        new TTagLine("Ua", "U1/RAM/Ua/", LabelInit),
-        new TTagLine("Ub", "U1/RAM/Ub/", LabelInit),
-        new TTagLine("Uc", "U1/RAM/Uc/", LabelInit),
-        new TTagLine("Fin", "U1/RAM/Fin/", LabelInit),
-        new TTagLine("Alpha", "U1/RAM/Alpha/", LabelInit),
+
     });
 }
 
