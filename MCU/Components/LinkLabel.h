@@ -1,21 +1,18 @@
 #ifndef LINK_LABEL_H
 #define LINK_LABEL_H
 
-#include "Label.h"
+#include "ScrollLabel.h"
 #include "Events.hpp"
 
 //строка текста с горизонтальной автоматической прокруткой
-class TLinkLabel : public TLabel {
+class TLinkLabel : public TScrollLabel
+{
 public:
-    virtual bool ProcessMessage(TMessage* m);
+    virtual bool ProcessMessage(TMessage* m) override;
     TLinkLabel(std::string caption, std::string url, TLabelInitStructure init);//конструктор
     ~TLinkLabel();//деструктор
-    void setSrcCaption(std::string caption);
 private:
-    std::string SrcCaption;
     std::string URL;
-    int Shift;
-    void doShift(void);
 };
 
 #endif

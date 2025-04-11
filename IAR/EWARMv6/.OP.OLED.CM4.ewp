@@ -1293,6 +1293,12 @@
                 <name>$PROJ_DIR$\..\..\MCU\Components\ParamListSelector.cpp</name>
             </file>
             <file>
+                <name>$PROJ_DIR$\..\..\MCU\Components\ScrollLabel.cpp</name>
+            </file>
+            <file>
+                <name>$PROJ_DIR$\..\..\MCU\Components\ScrollLabel.h</name>
+            </file>
+            <file>
                 <name>$PROJ_DIR$\..\..\MCU\Components\TagLine.cpp</name>
             </file>
             <file>

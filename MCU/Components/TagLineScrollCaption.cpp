@@ -1,11 +1,11 @@
 #include "TagLineScrollCaption.h"
-#include "LinkLabel.h"
+#include "ScrollLabel.h"
 
 TTagLineScrollCaption::TTagLineScrollCaption(std::string caption, std::string tag, TLabelInitStructure init) : TTagLine(caption, tag, init) {
 	if (Caption) {
 		delete Caption;
 	}
-	Caption = new TLinkLabel(caption, tag, init);
+	Caption = new TScrollLabel(caption, init);
 }
 
 bool TTagLineScrollCaption::ProcessMessage(TMessage* m) {
