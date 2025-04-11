@@ -54,15 +54,15 @@ const char*& Utils::getFormat(float& value) {
     static const char* _3_ = "%.3f";
     static const char* _4_ = "%.4f";
     static const char* _5_ = "%.5f";
-    int f = (int)value;
-    float d = value - f;
-    d = (d < 0) ? -d : d;
-    if (d > 0.90000f) return _0_;
-    if (d > 0.09000f) return _1_;
-    if (d > 0.00900f) return _2_;
-    if (d > 0.00090f) return _3_;
-    if (d > 0.00009f) return _4_;
-    return _0_;
+    //int f = (int)value;
+    //float d = value - f;
+    //d = (d < 0) ? -d : d;
+    //if (d > 0.90000f) return _0_;
+    //if (d > 0.09000f) return _1_;
+    //if (d > 0.00900f) return _2_;
+    //if (d > 0.00090f) return _3_;
+    //if (d > 0.00009f) return _4_;
+    return _1_;
 }
 
 const char*& Utils::getFloatFormat(float& value) {
