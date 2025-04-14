@@ -11,7 +11,19 @@
 
 /*TODO когда "раскачаю RTC (по полной, с окном установки времени) то к аварии добавить метку времени"*/
 std::map < std::string, TTrackedBit > Alarms::Tags = {
-	//{"InMtz", {"U1/RAM/InMtzAlm/", nullptr, false, false}},
+	{"GlobalError", {"U1/RAM/GlobalError/", nullptr, false, false}},
+	{"FieldFail", {"U1/RAM/FieldFail/", nullptr, false, false}},
+	{"UstMaxFlt", {"U1/RAM/UstMaxFlt/", nullptr, false, false}},
+	{"NotUpVoltage", {"U1/RAM/NotUpVoltage/", nullptr, false, false}},
+	{"IttMaxFlt", {"U1/RAM/IttMaxFlt/", nullptr, false, false}},
+	{"IexcMaxFlt", {"U1/RAM/IexcMaxFlt/", nullptr, false, false}},
+	{"FltMPS", {"U1/RAM/FltMPS/", nullptr, false, false}},
+	{"FltCCSB", {"U1/RAM/FltCCSB/", nullptr, false, false}},
+	{"QminAsyncRun", {"U1/RAM/QminAsyncRun/", nullptr, false, false}},
+	{"FLongForce", {"U1/RAM/FLongForce/", nullptr, false, false}},
+	{"FreqMinFlt", {"U1/RAM/FreqMinFlt/", nullptr, false, false}},
+	{"R_INSL_FLT", {"U1/RAM/R_INSL_FLT/", nullptr, false, false}},
+	{"IstOV", {"U1/RAM/IstOV/", nullptr, false, false}},
 };
 
 bool Alarms::State = true;

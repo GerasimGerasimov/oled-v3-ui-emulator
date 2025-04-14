@@ -3,7 +3,10 @@
 #include <LedWarnings.h>
 
 std::map < std::string, TTrackedBit > Warnings::Tags = {
-	//{"BatteryOFF", {"U1/RAM/BatteryOFF/", nullptr, false, false}},
+	{"R_INSL_LOW", {"U1/RAM/R_INSL_LOW/", nullptr, false, false}},
+	{"UstLow", {"U1/RAM/UstLow/", nullptr, false, false}},
+	{"UstFail", {"U1/RAM/UstFail/", nullptr, false, false}},
+	{"i2tR", {"U1/RAM/i2tR/", nullptr, false, false}},
 };
 
 bool Warnings::State = true;

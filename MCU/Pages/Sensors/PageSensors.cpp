@@ -70,7 +70,15 @@ void TPageSensors::fillPageContainer(void) {
     LabelInit.Rect = { 10, 10, 10, 10 };
     LabelInit.focused = false;
     TagList->AddList({
-
+        new TTagLine("Iexc", "U1/RAM/Iexc/", LabelInit),
+        new TTagLine("Ustat", "U1/RAM/Ustat/", LabelInit),
+        new TTagLine("Istat", "U1/RAM/Istat/", LabelInit),
+        new TTagLine("Phi", "U1/RAM/Phi/", LabelInit),
+        new TTagLine("Ssg", "U1/RAM/Ssg/", LabelInit),
+        new TTagLine("Psg", "U1/RAM/Psg/", LabelInit),
+        new TTagLine("Qsg", "U1/RAM/Qsg/", LabelInit),
+        new TTagLine("Freq", "U1/RAM/Freq/", LabelInit),
+        new TTagLine("Usg_ab", "U1/RAM/Usg_ab/", LabelInit),
     });
 }
 
@@ -81,7 +89,7 @@ TPageSensors::TPageSensors(std::string Name)
 
     TLabelInitStructure LabelInit;
     LabelInit.pOwner = Container;
-    LabelInit.caption = "Датчики";
+    LabelInit.caption = "Выходные парам.";
     TFixedHeader* pHeader = new TFixedHeader(LabelInit);
     Container->Add(pHeader);
 

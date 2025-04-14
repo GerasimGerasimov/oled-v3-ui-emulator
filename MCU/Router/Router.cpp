@@ -8,9 +8,11 @@
 //#include "PageOperateStatus.h"
 //#include "PageBasicSettings.h"
 //#include "PageBasicProtectionsSettings.h"
-//#include "PageSensors.h"
+#include "PageSensors.h"
 #include "SelfExc/PageSelfExc.h"
 #include "PageParameterListEdit.h"
+#include "ControlSettings/PageControlSettings.h"
+#include "Ready/PageReady.h"
 #include <IniResources.h>
 
 /*TODO В роутере и страницах можно реализовать переходы на закрытие/открытие окна*/
@@ -29,10 +31,12 @@ void TRouter::Init(void) {
     Pages["Warnings"] = new TPageWarnings("Warnings");
     //Pages["BasicSettings"] = new TPageBasicSettings("BasicSettings"); //Основные уставк
     Pages["SelfExc"] = new TPageSelfExc("SelfExc"); //Самовозбуждение
+    Pages["ControlSettings"] = new TPageControlSettings("ControlSettings"); //Задания авто режима
     Pages["EditValue"] = new TPageEditValue("EditValue");
+    Pages["Ready"] = new TPageReady("Ready");//Готовность
     //Pages["OperateStatus"] = new TPageOperateStatus("OperateStatus"); //Статус работы
     //Pages["BasicProtectionsSettings"] = new TPageBasicProtectionsSettings("BasicProtectionsSettings"); //Защиты. Основные уставки
-    //Pages["Sensors"] = new TPageSensors("Sensors"); //Датчики
+    Pages["Sensors"] = new TPageSensors("Sensors"); //Датчики
     Pages["PrmListEdit"] = new TPageParameterListEdit("PrmListEdit");
     setInitPage();
 }

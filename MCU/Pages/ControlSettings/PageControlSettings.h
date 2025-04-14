@@ -1,11 +1,12 @@
-#ifndef T_PAGE_SENSORS_H
-#define T_PAGE_SENSORS_H
+//#ifndef T_PAGE_CONTROL_SETTINGS_H
+//#define T_PAGE_CONTROL_SETTINGS_H
+#pragma once
 
 #include "Pages.h"
 #include "TVerticalContainer.h"
 #include "HandleSubscribers.h"
 
-class TPageSensors: public TPage
+class TPageControlSettings : public TPage
 {
 public:
     virtual void view();
@@ -13,16 +14,20 @@ public:
     void onOpen();
     void startToClose();
     bool ProcessMessage(TMessage* m);
-    TPageSensors(std::string Name);
-    ~TPageSensors();
+    TPageControlSettings(std::string Name);
+    ~TPageControlSettings();
 private:
-    void SlotUpdate(TSlotHandlerArsg args);
+    void SlotUpdateFLASH(TSlotHandlerArsg args);
+    void SlotUpdateRAM(TSlotHandlerArsg args);
+    void SlotUpdate(const char* sector, TSlotHandlerArsg args);
     TVisualObject* getSignalOfFocusedChild();
-    int SubscriberID = 0;
+    int SubscriberIDFLASH = 0;
+    int SubscriberIDRAM = 0;
 protected:
     TVerticalContainer* Container;
     TVerticalContainer* TagList;
     virtual void fillPageContainer(void);
+
 };
 
-#endif
+//#endif

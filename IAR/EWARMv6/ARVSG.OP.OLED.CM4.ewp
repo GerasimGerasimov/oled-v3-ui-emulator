@@ -1419,6 +1419,12 @@
                 <name>$PROJ_DIR$\..\..\MCU\Pages\BasicSettings\PageBasicSettings.h</name>
             </file>
             <file>
+                <name>$PROJ_DIR$\..\..\MCU\Pages\ControlSettings\PageControlSettings.cpp</name>
+            </file>
+            <file>
+                <name>$PROJ_DIR$\..\..\MCU\Pages\ControlSettings\PageControlSettings.h</name>
+            </file>
+            <file>
                 <name>$PROJ_DIR$\..\..\MCU\Pages\EditValue\PageEditValue.cpp</name>
             </file>
             <file>
@@ -1437,6 +1443,12 @@
                 <name>$PROJ_DIR$\..\..\MCU\Pages\ParameterListEdit\PageParameterListEdit.h</name>
             </file>
             <file>
+                <name>$PROJ_DIR$\..\..\MCU\Pages\Ready\PageReady.cpp</name>
+            </file>
+            <file>
+                <name>$PROJ_DIR$\..\..\MCU\Pages\Ready\PageReady.h</name>
+            </file>
+            <file>
                 <name>$PROJ_DIR$\..\..\MCU\Pages\Pages.cpp</name>
             </file>
             <file>
@@ -1447,6 +1459,12 @@
             </file>
             <file>
                 <name>$PROJ_DIR$\..\..\MCU\Pages\SelfExc\PageSelfExc.h</name>
+            </file>
+            <file>
+                <name>$PROJ_DIR$\..\..\MCU\Pages\Sensors\PageSensors.cpp</name>
+            </file>
+            <file>
+                <name>$PROJ_DIR$\..\..\MCU\Pages\Sensors\PageSensors.h</name>
             </file>
             <file>
                 <name>$PROJ_DIR$\..\..\MCU\Pages\Warning\PageWarnings.cpp</name>
