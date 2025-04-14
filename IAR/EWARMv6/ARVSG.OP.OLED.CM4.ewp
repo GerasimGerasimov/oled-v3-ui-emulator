@@ -723,7 +723,7 @@
                 </option>
                 <option>
                     <name>OOCOutputFile</name>
-                    <state>.OP.OLED.CM4.hex</state>
+                    <state>ARVSG.OP.OLED.CM4.hex</state>
                 </option>
                 <option>
                     <name>OOCCommandLineProducer</name>
@@ -1413,6 +1413,12 @@
                 <name>$PROJ_DIR$\..\..\MCU\Pages\Alarms\PageAlarms.cpp</name>
             </file>
             <file>
+                <name>$PROJ_DIR$\..\..\MCU\Pages\BasicSettings\PageBasicSettings.cpp</name>
+            </file>
+            <file>
+                <name>$PROJ_DIR$\..\..\MCU\Pages\BasicSettings\PageBasicSettings.h</name>
+            </file>
+            <file>
                 <name>$PROJ_DIR$\..\..\MCU\Pages\EditValue\PageEditValue.cpp</name>
             </file>
             <file>
@@ -1435,6 +1441,12 @@
             </file>
             <file>
                 <name>$PROJ_DIR$\..\..\MCU\Pages\Pages.h</name>
+            </file>
+            <file>
+                <name>$PROJ_DIR$\..\..\MCU\Pages\SelfExc\PageSelfExc.cpp</name>
+            </file>
+            <file>
+                <name>$PROJ_DIR$\..\..\MCU\Pages\SelfExc\PageSelfExc.h</name>
             </file>
             <file>
                 <name>$PROJ_DIR$\..\..\MCU\Pages\Warning\PageWarnings.cpp</name>

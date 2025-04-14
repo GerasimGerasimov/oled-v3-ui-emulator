@@ -9,6 +9,7 @@
 //#include "PageBasicSettings.h"
 //#include "PageBasicProtectionsSettings.h"
 //#include "PageSensors.h"
+#include "SelfExc/PageSelfExc.h"
 #include "PageParameterListEdit.h"
 #include <IniResources.h>
 
@@ -27,6 +28,7 @@ void TRouter::Init(void) {
     Pages["Alarms"] = new TPageAlarms("Alarms");
     Pages["Warnings"] = new TPageWarnings("Warnings");
     //Pages["BasicSettings"] = new TPageBasicSettings("BasicSettings"); //Основные уставк
+    Pages["SelfExc"] = new TPageSelfExc("SelfExc"); //Самовозбуждение
     Pages["EditValue"] = new TPageEditValue("EditValue");
     //Pages["OperateStatus"] = new TPageOperateStatus("OperateStatus"); //Статус работы
     //Pages["BasicProtectionsSettings"] = new TPageBasicProtectionsSettings("BasicProtectionsSettings"); //Защиты. Основные уставки
