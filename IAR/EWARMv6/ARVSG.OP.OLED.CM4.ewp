@@ -1425,6 +1425,30 @@
                 <name>$PROJ_DIR$\..\..\MCU\Pages\ControlSettings\PageControlSettings.h</name>
             </file>
             <file>
+                <name>$PROJ_DIR$\..\..\MCU\Pages\ControlVoltageStator\PageControlVoltageStator.cpp</name>
+            </file>
+            <file>
+                <name>$PROJ_DIR$\..\..\MCU\Pages\ControlVoltageStator\PageControlVoltageStator.h</name>
+            </file>
+            <file>
+                <name>$PROJ_DIR$\..\..\MCU\Pages\Converter\PageConverter.cpp</name>
+            </file>
+            <file>
+                <name>$PROJ_DIR$\..\..\MCU\Pages\Converter\PageConverter.h</name>
+            </file>
+            <file>
+                <name>$PROJ_DIR$\..\..\MCU\Pages\CurrentLim\PageCurrentLim.cpp</name>
+            </file>
+            <file>
+                <name>$PROJ_DIR$\..\..\MCU\Pages\CurrentLim\PageCurrentLim.h</name>
+            </file>
+            <file>
+                <name>$PROJ_DIR$\..\..\MCU\Pages\Discretes\PageDIn.cpp</name>
+            </file>
+            <file>
+                <name>$PROJ_DIR$\..\..\MCU\Pages\Discretes\PageDIn.h</name>
+            </file>
+            <file>
                 <name>$PROJ_DIR$\..\..\MCU\Pages\EditValue\PageEditValue.cpp</name>
             </file>
             <file>
@@ -1434,6 +1458,18 @@
                 <name>$PROJ_DIR$\..\..\MCU\Pages\Home\PageHome.cpp</name>
             </file>
             <file>
+                <name>$PROJ_DIR$\..\..\MCU\Pages\InitExcitation\PageInitExcitation.cpp</name>
+            </file>
+            <file>
+                <name>$PROJ_DIR$\..\..\MCU\Pages\InitExcitation\PageInitExcitation.h</name>
+            </file>
+            <file>
+                <name>$PROJ_DIR$\..\..\MCU\Pages\Discretes\PageInOut.cpp</name>
+            </file>
+            <file>
+                <name>$PROJ_DIR$\..\..\MCU\Pages\Discretes\PageInOut.h</name>
+            </file>
+            <file>
                 <name>$PROJ_DIR$\..\..\MCU\Pages\MainMenu\PageMainMenu.cpp</name>
             </file>
             <file>
@@ -1441,6 +1477,18 @@
             </file>
             <file>
                 <name>$PROJ_DIR$\..\..\MCU\Pages\ParameterListEdit\PageParameterListEdit.h</name>
+            </file>
+            <file>
+                <name>$PROJ_DIR$\..\..\MCU\Pages\PowerLim\PagePowerLim.cpp</name>
+            </file>
+            <file>
+                <name>$PROJ_DIR$\..\..\MCU\Pages\PowerLim\PagePowerLim.h</name>
+            </file>
+            <file>
+                <name>$PROJ_DIR$\..\..\MCU\Pages\ReactivePower\PageReactivePower.cpp</name>
+            </file>
+            <file>
+                <name>$PROJ_DIR$\..\..\MCU\Pages\ReactivePower\PageReactivePower.h</name>
             </file>
             <file>
                 <name>$PROJ_DIR$\..\..\MCU\Pages\Ready\PageReady.cpp</name>
@@ -1467,7 +1515,19 @@
                 <name>$PROJ_DIR$\..\..\MCU\Pages\Sensors\PageSensors.h</name>
             </file>
             <file>
+                <name>$PROJ_DIR$\..\..\MCU\Pages\VoltageLim\PageVoltageLim.cpp</name>
+            </file>
+            <file>
+                <name>$PROJ_DIR$\..\..\MCU\Pages\VoltageLim\PageVoltageLim.h</name>
+            </file>
+            <file>
                 <name>$PROJ_DIR$\..\..\MCU\Pages\Warning\PageWarnings.cpp</name>
+            </file>
+            <file>
+                <name>$PROJ_DIR$\..\..\MCU\Pages\Discretes\TPageDOut.cpp</name>
+            </file>
+            <file>
+                <name>$PROJ_DIR$\..\..\MCU\Pages\Discretes\TPageDOut.h</name>
             </file>
         </group>
         <group>

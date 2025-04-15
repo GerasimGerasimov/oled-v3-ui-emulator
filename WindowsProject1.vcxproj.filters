@@ -165,6 +165,36 @@
     <ClInclude Include="MCU\Pages\SelfExc\PageSelfExc.h">
       <Filter>MCU\Pages</Filter>
     </ClInclude>
+    <ClInclude Include="MCU\Pages\Discretes\PageDIn.h">
+      <Filter>MCU\Pages</Filter>
+    </ClInclude>
+    <ClInclude Include="MCU\Pages\Discretes\PageInOut.h">
+      <Filter>MCU\Pages</Filter>
+    </ClInclude>
+    <ClInclude Include="MCU\Pages\Discretes\TPageDOut.h">
+      <Filter>MCU\Pages</Filter>
+    </ClInclude>
+    <ClInclude Include="MCU\Pages\Converter\PageConverter.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="MCU\Pages\ReactivePower\PageReactivePower.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="MCU\Pages\CurrentLim\PageCurrentLim.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="MCU\Pages\VoltageLim\PageVoltageLim.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="MCU\Pages\PowerLim\PagePowerLim.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="MCU\Pages\InitExcitation\PageInitExcitation.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="MCU\Pages\ControlVoltageStator\PageControlVoltageStator.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -457,6 +487,36 @@
     </ClCompile>
     <ClCompile Include="MCU\Pages\SelfExc\PageSelfExc.cpp">
       <Filter>MCU\Pages</Filter>
+    </ClCompile>
+    <ClCompile Include="MCU\Pages\Discretes\PageDIn.cpp">
+      <Filter>MCU\Pages</Filter>
+    </ClCompile>
+    <ClCompile Include="MCU\Pages\Discretes\PageInOut.cpp">
+      <Filter>MCU\Pages</Filter>
+    </ClCompile>
+    <ClCompile Include="MCU\Pages\Discretes\TPageDOut.cpp">
+      <Filter>MCU\Pages</Filter>
+    </ClCompile>
+    <ClCompile Include="MCU\Pages\Converter\PageConverter.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="MCU\Pages\ReactivePower\PageReactivePower.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="MCU\Pages\CurrentLim\PageCurrentLim.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="MCU\Pages\VoltageLim\PageVoltageLim.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="MCU\Pages\PowerLim\PagePowerLim.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="MCU\Pages\InitExcitation\PageInitExcitation.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="MCU\Pages\ControlVoltageStator\PageControlVoltageStator.cpp">
+      <Filter>Исходные файлы</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
