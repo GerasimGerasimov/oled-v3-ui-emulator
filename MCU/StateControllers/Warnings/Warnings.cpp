@@ -5,8 +5,10 @@
 std::map < std::string, TTrackedBit > Warnings::Tags = {
 	{"t2", {"U1/RAM/t2/", nullptr, false, false}},
 	{"t4", {"U1/RAM/t4/", nullptr, false, false}},
-	{"error1", {"U1/RAM/error1/", nullptr, false, false}},
-	{"error2", {"U1/RAM/error2/", nullptr, false, false}},
+	{"error1_break", {"U1/RAM/error1/", nullptr, false, false}},
+	{"error1_contact", {"U1/RAM/error1/", nullptr, false, false}},
+	{"error2_break", {"U1/RAM/error2/", nullptr, false, false}},
+	{"error2_contact", {"U1/RAM/error2/", nullptr, false, false}},
 };
 
 bool Warnings::State = true;
