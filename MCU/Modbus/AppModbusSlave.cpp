@@ -99,7 +99,7 @@ AD, C, №R(h, l), CW(h, l), CntBytes, Data[0](h, l)..Data[CW](h, l), CRC(h, l)
 */
 
 u8 ModbusSlave::get0x10WriteRegCmd(u8* a, TWriteCmdSrc& Src) {
-    a[0] = (u8)std::stoi(Src.DevAddr);
+    a[0] = (u8)std::stoi(Src.DevAddr, nullptr, 16);
     a[1] = 0x10;
     //начальный адрес регистра
     u16 addr = (u16)std::stoul(Src.RegAddr, nullptr, 16);
