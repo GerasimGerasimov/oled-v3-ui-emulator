@@ -66,19 +66,19 @@ TVisualObject* TPageControlSettings::getSignalOfFocusedChild() {
     return nullptr;
 }
 
-void TPageControlSettings::fillPageContainer(void) {
+void TPageControlSettings::fillPageContainer() {
     TagList->Clear();
     TLabelInitStructure LabelInit;
     LabelInit.style = LabelsStyle::WIDTH_FIXED;
     LabelInit.Rect = { 10, 10, 10, 70 };
     LabelInit.focused = false;
     TagList->AddList({
-        new TTagLine("UsgRef", "U1/RAM/UsgRef/", LabelInit),
-        new TTagLine("StRef", "U1/RAM/StRef/", LabelInit),
-        new TTagLine("UstStC", "U1/RAM/UstStC/", LabelInit),
-        new TTagLine("Ustat", "U1/RAM/Ustat/", LabelInit),
-        new TTagLine("fIexcMax", "U1/FLASH/fIexcMax/", LabelInit),
-        new TTagLine("SRef", "U1/FLASH/SRef/", LabelInit),
+        new TTagLineScrollCaptionComment("U1/RAM/UsgRef/", LabelInit),
+        new TTagLineScrollCaptionComment("U1/RAM/StRef/", LabelInit),
+        new TTagLineScrollCaptionComment("U1/RAM/UstStC/", LabelInit),
+        new TTagLineScrollCaptionComment("U1/RAM/Ustat/", LabelInit),
+        new TTagLineScrollCaptionComment("U1/FLASH/fIexcMax/", LabelInit),
+        new TTagLineScrollCaptionComment("U1/FLASH/SRef/", LabelInit),
         //new TTagLine("U1/FLASH/RInslUp/", LabelInit),
         });
 }

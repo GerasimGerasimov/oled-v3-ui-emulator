@@ -163,10 +163,12 @@
     <ClInclude Include="MCU\Pages\Discretes\PageInOut.h" />
     <ClInclude Include="MCU\Pages\Discretes\TPageDOut.h" />
     <ClInclude Include="MCU\Pages\InitExcitation\PageInitExcitation.h" />
+    <ClInclude Include="MCU\Pages\InsulResist\PageInsulResist.h" />
     <ClInclude Include="MCU\Pages\Pages.h" />
     <ClInclude Include="MCU\Pages\PowerLim\PagePowerLim.h" />
     <ClInclude Include="MCU\Pages\ReactivePower\PageReactivePower.h" />
     <ClInclude Include="MCU\Pages\Ready\PageReady.h" />
+    <ClInclude Include="MCU\Pages\RegulatorKoeff\PageRegulatorKoeff.h" />
     <ClInclude Include="MCU\Pages\SelfExc\PageSelfExc.h" />
     <ClInclude Include="MCU\Pages\VoltageLim\PageVoltageLim.h" />
     <ClInclude Include="MCU\Parameters\TU32BIT.h" />
@@ -241,6 +243,7 @@
     <ClCompile Include="MCU\Pages\Help\PageHelp.cpp" />
     <ClCompile Include="MCU\Pages\Home\PageHome.cpp" />
     <ClCompile Include="MCU\Pages\InitExcitation\PageInitExcitation.cpp" />
+    <ClCompile Include="MCU\Pages\InsulResist\PageInsulResist.cpp" />
     <ClCompile Include="MCU\Pages\MainMenu\PageMainMenu.cpp" />
     <ClCompile Include="MCU\Pages\OperateStatus\PageOperateStatus.cpp" />
     <ClCompile Include="MCU\Pages\Pages.cpp" />
@@ -249,6 +252,7 @@
     <ClCompile Include="MCU\Pages\PowerLim\PagePowerLim.cpp" />
     <ClCompile Include="MCU\Pages\ReactivePower\PageReactivePower.cpp" />
     <ClCompile Include="MCU\Pages\Ready\PageReady.cpp" />
+    <ClCompile Include="MCU\Pages\RegulatorKoeff\PageRegulatorKoeff.cpp" />
     <ClCompile Include="MCU\Pages\SelfExc\PageSelfExc.cpp" />
     <ClCompile Include="MCU\Pages\Sensors\PageSensors.cpp" />
     <ClCompile Include="MCU\Pages\VoltageLim\PageVoltageLim.cpp" />

@@ -153,9 +153,6 @@
     <ClInclude Include="MCU\Pages\Pages.h">
       <Filter>MCU\Pages</Filter>
     </ClInclude>
-    <ClInclude Include="MCU\Components\ScrollLabel.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
     <ClInclude Include="MCU\Pages\ControlSettings\PageControlSettings.h">
       <Filter>MCU\Pages</Filter>
     </ClInclude>
@@ -175,25 +172,34 @@
       <Filter>MCU\Pages</Filter>
     </ClInclude>
     <ClInclude Include="MCU\Pages\Converter\PageConverter.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="MCU\Pages\ReactivePower\PageReactivePower.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="MCU\Pages\CurrentLim\PageCurrentLim.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="MCU\Pages\VoltageLim\PageVoltageLim.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="MCU\Pages\PowerLim\PagePowerLim.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="MCU\Pages\InitExcitation\PageInitExcitation.h">
-      <Filter>Файлы заголовков</Filter>
+      <Filter>MCU\Pages</Filter>
     </ClInclude>
     <ClInclude Include="MCU\Pages\ControlVoltageStator\PageControlVoltageStator.h">
-      <Filter>Файлы заголовков</Filter>
+      <Filter>MCU\Pages</Filter>
+    </ClInclude>
+    <ClInclude Include="MCU\Pages\CurrentLim\PageCurrentLim.h">
+      <Filter>MCU\Pages</Filter>
+    </ClInclude>
+    <ClInclude Include="MCU\Pages\InitExcitation\PageInitExcitation.h">
+      <Filter>MCU\Pages</Filter>
+    </ClInclude>
+    <ClInclude Include="MCU\Pages\PowerLim\PagePowerLim.h">
+      <Filter>MCU\Pages</Filter>
+    </ClInclude>
+    <ClInclude Include="MCU\Pages\ReactivePower\PageReactivePower.h">
+      <Filter>MCU\Pages</Filter>
+    </ClInclude>
+    <ClInclude Include="MCU\Pages\VoltageLim\PageVoltageLim.h">
+      <Filter>MCU\Pages</Filter>
+    </ClInclude>
+    <ClInclude Include="MCU\Pages\RegulatorKoeff\PageRegulatorKoeff.h">
+      <Filter>MCU\Pages</Filter>
+    </ClInclude>
+    <ClInclude Include="MCU\Components\ScrollLabel.h">
+      <Filter>MCU\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="MCU\Pages\InsulResist\PageInsulResist.h">
+      <Filter>MCU\Pages</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -476,9 +482,6 @@
     <ClCompile Include="MCU\Pages\Pages.cpp">
       <Filter>MCU\Pages</Filter>
     </ClCompile>
-    <ClCompile Include="MCU\Components\ScrollLabel.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
     <ClCompile Include="MCU\Pages\ControlSettings\PageControlSettings.cpp">
       <Filter>MCU\Pages</Filter>
     </ClCompile>
@@ -497,26 +500,35 @@
     <ClCompile Include="MCU\Pages\Discretes\TPageDOut.cpp">
       <Filter>MCU\Pages</Filter>
     </ClCompile>
-    <ClCompile Include="MCU\Pages\Converter\PageConverter.cpp">
-      <Filter>Исходные файлы</Filter>
+    <ClCompile Include="MCU\Pages\ControlVoltageStator\PageControlVoltageStator.cpp">
+      <Filter>MCU\Pages</Filter>
     </ClCompile>
-    <ClCompile Include="MCU\Pages\ReactivePower\PageReactivePower.cpp">
-      <Filter>Исходные файлы</Filter>
+    <ClCompile Include="MCU\Pages\Converter\PageConverter.cpp">
+      <Filter>MCU\Pages</Filter>
     </ClCompile>
     <ClCompile Include="MCU\Pages\CurrentLim\PageCurrentLim.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
-    <ClCompile Include="MCU\Pages\VoltageLim\PageVoltageLim.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
-    <ClCompile Include="MCU\Pages\PowerLim\PagePowerLim.cpp">
-      <Filter>Исходные файлы</Filter>
+      <Filter>MCU\Pages</Filter>
     </ClCompile>
     <ClCompile Include="MCU\Pages\InitExcitation\PageInitExcitation.cpp">
-      <Filter>Исходные файлы</Filter>
+      <Filter>MCU\Pages</Filter>
     </ClCompile>
-    <ClCompile Include="MCU\Pages\ControlVoltageStator\PageControlVoltageStator.cpp">
-      <Filter>Исходные файлы</Filter>
+    <ClCompile Include="MCU\Pages\PowerLim\PagePowerLim.cpp">
+      <Filter>MCU\Pages</Filter>
+    </ClCompile>
+    <ClCompile Include="MCU\Pages\ReactivePower\PageReactivePower.cpp">
+      <Filter>MCU\Pages</Filter>
+    </ClCompile>
+    <ClCompile Include="MCU\Pages\VoltageLim\PageVoltageLim.cpp">
+      <Filter>MCU\Pages</Filter>
+    </ClCompile>
+    <ClCompile Include="MCU\Pages\RegulatorKoeff\PageRegulatorKoeff.cpp">
+      <Filter>MCU\Pages</Filter>
+    </ClCompile>
+    <ClCompile Include="MCU\Components\ScrollLabel.cpp">
+      <Filter>MCU\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="MCU\Pages\InsulResist\PageInsulResist.cpp">
+      <Filter>MCU\Pages</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

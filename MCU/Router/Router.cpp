@@ -22,6 +22,8 @@
 #include "PowerLim/PagePowerLim.h"
 #include "InitExcitation/PageInitExcitation.h"
 #include "ControlVoltageStator/PageControlVoltageStator.h"
+#include "RegulatorKoeff/PageRegulatorKoeff.h"
+#include "InsulResist/PageInsulResist.h"
 #include <IniResources.h>
 
 /*TODO В роутере и страницах можно реализовать переходы на закрытие/открытие окна*/
@@ -45,7 +47,7 @@ void TRouter::Init(void) {
     Pages["Ready"] = new TPageReady("Ready");//Готовность
     //Pages["OperateStatus"] = new TPageOperateStatus("OperateStatus"); //Статус работы
     //Pages["BasicProtectionsSettings"] = new TPageBasicProtectionsSettings("BasicProtectionsSettings"); //Защиты. Основные уставки
-    Pages["Sensors"] = new TPageSensors("Sensors"); //Датчики
+    Pages["Sensors"] = new TPageSensors("Sensors"); //Выходные параметры
     Pages["DIn"] = new TPageDIn("DIn"); //Дискретные входы
     Pages["DOut"] = new TPageDOut("DOut"); //Дискретные выходы
     Pages["Converter"] = new TPageConverter("Converter"); //Преобразователь
@@ -55,8 +57,8 @@ void TRouter::Init(void) {
     Pages["PowerLim"] = new TPagePowerLim("PowerLim"); //Ограничетели мощности
     Pages["InitExcitation"] = new TPageInitExcitation("InitExcitation"); //Начальное возбуждение
     Pages["ControlVoltageStator"] = new TPageControlVoltageStator("ControlVoltageStator"); //Контроль напр статора
-    //Pages["PowerLim"] = new TPagePowerLim("PowerLim"); //Ограничетели мощности
-    //Pages["InitExcitation"] = new TPageInitExcitation("InitExcitation"); //Начальное возбуждение
+    Pages["RegulatorKoeff"] = new TPageRegulatorKoeff("RegulatorKoeff"); //Коэффициенты регулятора
+    Pages["InsulResist"] = new TPageInsulResist("InsulResist"); //Сопротивление изоляции
 
     Pages["PrmListEdit"] = new TPageParameterListEdit("PrmListEdit");
     setInitPage();

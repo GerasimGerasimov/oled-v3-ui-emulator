@@ -18,12 +18,12 @@ void TPageReady::fillPageContainer(){
     LabelInit.Rect = {10, 10, 10, 70};
     LabelInit.focused = false;
     TagList->AddList({
-        new TTagLine("iReady", "U1/RAM/iReady/", LabelInit),
-        new TTagLine("iPCSB_QF1", "U1/RAM/iPCSB_QF1/", LabelInit),
-        new TTagLine("iCCSB_QF5", "U1/RAM/iCCSB_QF5/", LabelInit),
-        new TTagLine("DExS_PWR_OK", "U1/RAM/DExS_PWR_OK/", LabelInit),
-        new TTagLine("iSwState", "U1/RAM/iSwState/", LabelInit),
-        new TTagLine("FAULT", "U1/RAM/FAULT/", LabelInit),
-        new TTagLine("TestMode", "U1/RAM/TestMode/", LabelInit),
+        new TTagLineScrollCaptionComment("U1/RAM/iReady/", LabelInit),
+        new TTagLineScrollCaptionComment("U1/RAM/iPCSB_QF1/", LabelInit),
+        new TTagLineScrollCaptionComment("U1/RAM/iCCSB_QF5/", LabelInit),
+        new TTagLineScrollCaptionComment("U1/RAM/DExS_PWR_OK/", LabelInit),
+        new TTagLineScrollCaptionComment("U1/RAM/iSwState/", LabelInit),
+        new TTagLineScrollCaptionComment("U1/RAM/FAULT/", LabelInit),
+        new TTagLineScrollCaptionComment("U1/RAM/TestMode/", LabelInit),
         });
 }

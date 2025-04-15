@@ -1470,6 +1470,12 @@
                 <name>$PROJ_DIR$\..\..\MCU\Pages\Discretes\PageInOut.h</name>
             </file>
             <file>
+                <name>$PROJ_DIR$\..\..\MCU\Pages\InsulResist\PageInsulResist.cpp</name>
+            </file>
+            <file>
+                <name>$PROJ_DIR$\..\..\MCU\Pages\InsulResist\PageInsulResist.h</name>
+            </file>
+            <file>
                 <name>$PROJ_DIR$\..\..\MCU\Pages\MainMenu\PageMainMenu.cpp</name>
             </file>
             <file>
@@ -1726,4 +1732,10 @@
             <name>$PROJ_DIR$\..\UserData\ramdata.c</name>
         </file>
     </group>
+    <file>
+        <name>$PROJ_DIR$\..\..\MCU\Pages\RegulatorKoeff\PageRegulatorKoeff.cpp</name>
+    </file>
+    <file>
+        <name>$PROJ_DIR$\..\..\MCU\Pages\RegulatorKoeff\PageRegulatorKoeff.h</name>
+    </file>
 </project>

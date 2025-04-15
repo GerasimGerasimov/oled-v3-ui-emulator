@@ -1,6 +1,6 @@
 #include "PageSensors.h"
 #include "Router.h"
-#include "TagLine.h"
+#include "TagLineScrollCaptionComment.h"
 #include <IniResources.h>
 #include <FixedHeader.h>
 
@@ -66,19 +66,19 @@ TVisualObject* TPageSensors::getSignalOfFocusedChild() {
 void TPageSensors::fillPageContainer(void) {
     TagList->Clear();
     TLabelInitStructure LabelInit;
-    LabelInit.style = LabelsStyle::WIDTH_DINAMIC;
-    LabelInit.Rect = { 10, 10, 10, 10 };
+    LabelInit.style = LabelsStyle::WIDTH_FIXED;
+    LabelInit.Rect = { 10, 10, 10, 70 };
     LabelInit.focused = false;
     TagList->AddList({
-        new TTagLine("Iexc", "U1/RAM/Iexc/", LabelInit),
-        new TTagLine("Ustat", "U1/RAM/Ustat/", LabelInit),
-        new TTagLine("Istat", "U1/RAM/Istat/", LabelInit),
-        new TTagLine("Phi", "U1/RAM/Phi/", LabelInit),
-        new TTagLine("Ssg", "U1/RAM/Ssg/", LabelInit),
-        new TTagLine("Psg", "U1/RAM/Psg/", LabelInit),
-        new TTagLine("Qsg", "U1/RAM/Qsg/", LabelInit),
-        new TTagLine("Freq", "U1/RAM/Freq/", LabelInit),
-        new TTagLine("Usg_ab", "U1/RAM/Usg_ab/", LabelInit),
+        new TTagLineScrollCaptionComment("U1/RAM/Iexc/", LabelInit),
+        new TTagLineScrollCaptionComment("U1/RAM/Ustat/", LabelInit),
+        new TTagLineScrollCaptionComment("U1/RAM/Istat/", LabelInit),
+        new TTagLineScrollCaptionComment("U1/RAM/Phi/", LabelInit),
+        new TTagLineScrollCaptionComment("U1/RAM/Ssg/", LabelInit),
+        new TTagLineScrollCaptionComment("U1/RAM/Psg/", LabelInit),
+        new TTagLineScrollCaptionComment("U1/RAM/Qsg/", LabelInit),
+        new TTagLineScrollCaptionComment("U1/RAM/Freq/", LabelInit),
+        new TTagLineScrollCaptionComment("U1/RAM/Usg_ab/", LabelInit),
     });
 }
 

@@ -48,9 +48,8 @@ TPageMainMenu::TPageMainMenu(std::string Name)
             new TLinkLabel("Ограничетели мощности", "PowerLim", LabelInit),
             new TLinkLabel("Начальное возбуждение", "InitExcitation", LabelInit),
             new TLinkLabel("Контроль напр статора", "ControlVoltageStator", LabelInit),
-            //new TLinkLabel("Основные уставки", "BasicSettings", LabelInit),
-            //new TLinkLabel("защиты. Основные уставки", "BasicProtectionsSettings", LabelInit),
-            //new TLinkLabel("Очистка. Уставки", "CleanSettings", LabelInit),
+            new TLinkLabel("Коэффициенты регулятора", "RegulatorKoeff", LabelInit),
+            new TLinkLabel("Сопротивление изоляции", "InsulResist", LabelInit),
            })
     });
 };

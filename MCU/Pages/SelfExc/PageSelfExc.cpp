@@ -18,7 +18,7 @@ void TPageSelfExc::fillPageContainer(){
     LabelInit.Rect = {10, 10, 10, 70};
     LabelInit.focused = false;
     TagList->AddList({
-        new TTagLine("SelfExciteEnable", "U1/FLASH/SelfExciteEnable/", LabelInit),
-        new TTagLine("Ready_GS_ON", "U1/FLASH/Ready_GS_ON/", LabelInit),
+        new TTagLineScrollCaptionComment("U1/FLASH/SelfExciteEnable/", LabelInit),
+        new TTagLineScrollCaptionComment("U1/FLASH/Ready_GS_ON/", LabelInit),
         });
 }

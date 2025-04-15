@@ -18,11 +18,11 @@ void TPageConverter::fillPageContainer(){
     LabelInit.Rect = {10, 10, 10, 70};
     LabelInit.focused = false;
     TagList->AddList({
-        new TTagLine("Iexc", "U1/RAM/Iexc/", LabelInit),
-        new TTagLine("Uexc", "U1/RAM/Uexc/", LabelInit),
-        new TTagLine("Qpwm", "U1/RAM/Qpwm/", LabelInit),
-        new TTagLine("IttA", "U1/RAM/IttA/", LabelInit),
-        new TTagLine("IttB", "U1/RAM/IttB/", LabelInit),
-        new TTagLine("IttC", "U1/RAM/IttC/", LabelInit),
+        new TTagLineScrollCaptionComment("U1/RAM/Iexc/", LabelInit),
+        new TTagLineScrollCaptionComment("U1/RAM/Uexc/", LabelInit),
+        new TTagLineScrollCaptionComment("U1/RAM/Qpwm/", LabelInit),
+        new TTagLineScrollCaptionComment("U1/RAM/IttA/", LabelInit),
+        new TTagLineScrollCaptionComment("U1/RAM/IttB/", LabelInit),
+        new TTagLineScrollCaptionComment("U1/RAM/IttC/", LabelInit),
         });
 }

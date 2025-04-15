@@ -1,6 +1,6 @@
 #include "PageHome.h"
 #include "Router.h"
-#include "TagLine.h"
+#include "TagLineScrollCaptionComment.h"
 #include <IniResources.h>
 
 void TPageHome::view() {
@@ -65,16 +65,16 @@ TVisualObject* TPageHome::getSignalOfFocusedChild() {
 void TPageHome::fillPageContainer(void) {
     TagList->Clear();
     TLabelInitStructure LabelInit;
-    LabelInit.style = LabelsStyle::WIDTH_DINAMIC;
-    LabelInit.Rect = { 10, 10, 10, 10 };
+    LabelInit.style = LabelsStyle::WIDTH_FIXED;
+    LabelInit.Rect = { 10, 10, 10, 70 };
     LabelInit.focused = false;
     LabelInit.caption = "Стартовый экран";
     TagList->AddList({
-        new TTagLine("UsgRef", "U1/RAM/UsgRef/", LabelInit),
-        new TTagLine("Ustat", "U1/RAM/Ustat/", LabelInit),
-        new TTagLine("Istat", "U1/RAM/Istat/", LabelInit),
-        new TTagLine("Uexc", "U1/RAM/Uexc/", LabelInit),
-        new TTagLine("Iexc", "U1/RAM/Iexc/", LabelInit),
+        new TTagLineScrollCaptionComment("U1/RAM/UsgRef/", LabelInit),
+        new TTagLineScrollCaptionComment("U1/RAM/Ustat/", LabelInit),
+        new TTagLineScrollCaptionComment("U1/RAM/Istat/", LabelInit),
+        new TTagLineScrollCaptionComment("U1/RAM/Uexc/", LabelInit),
+        new TTagLineScrollCaptionComment("U1/RAM/Iexc/", LabelInit),
         //new TTagLineScrollCaptionComment("U1/RAM/tSoftStart/", LabelInit),
     });
     
