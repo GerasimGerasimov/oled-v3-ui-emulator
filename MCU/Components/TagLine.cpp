@@ -45,7 +45,7 @@ void TTagLine::view(void) {
     if (DataSrc) {/*TODO 2-й раз пишу нужен пустой объект для отлавливания несуществующих тегов*/
         Value->inFocus = inFocus;
         Value->ElementRect.Top = ElementRect.Top;
-        Value->ElementRect.Left = 70;//ElementRect.Left;
+        Value->ElementRect.Left = 80;//ElementRect.Left;
         Value->view();
     }
 
@@ -53,7 +53,7 @@ void TTagLine::view(void) {
         msu->setCaption(((TParameter*) DataSrc)->getMSU());
         msu->inFocus = inFocus;
         msu->ElementRect.Top = ElementRect.Top;
-        msu->ElementRect.Left = 105;//ElementRect.Left;
+        msu->ElementRect.Left = 115;//ElementRect.Left;
         msu->view();
     }
 }

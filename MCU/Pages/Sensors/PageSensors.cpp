@@ -67,7 +67,7 @@ void TPageSensors::fillPageContainer(void) {
     TagList->Clear();
     TLabelInitStructure LabelInit;
     LabelInit.style = LabelsStyle::WIDTH_FIXED;
-    LabelInit.Rect = { 10, 10, 10, 70 };
+    LabelInit.Rect = { 10, 10, 10, 80 };
     LabelInit.focused = false;
     TagList->AddList({
         new TTagLineScrollCaptionComment("U1/RAM/Iexc/", LabelInit),
@@ -78,7 +78,6 @@ void TPageSensors::fillPageContainer(void) {
         new TTagLineScrollCaptionComment("U1/RAM/Psg/", LabelInit),
         new TTagLineScrollCaptionComment("U1/RAM/Qsg/", LabelInit),
         new TTagLineScrollCaptionComment("U1/RAM/Freq/", LabelInit),
-        new TTagLineScrollCaptionComment("U1/RAM/Usg_ab/", LabelInit),
     });
 }
 

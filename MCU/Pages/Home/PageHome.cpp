@@ -66,7 +66,7 @@ void TPageHome::fillPageContainer(void) {
     TagList->Clear();
     TLabelInitStructure LabelInit;
     LabelInit.style = LabelsStyle::WIDTH_FIXED;
-    LabelInit.Rect = { 10, 10, 10, 70 };
+    LabelInit.Rect = { 10, 10, 10, 80 };
     LabelInit.focused = false;
     LabelInit.caption = "Стартовый экран";
     TagList->AddList({
@@ -75,7 +75,6 @@ void TPageHome::fillPageContainer(void) {
         new TTagLineScrollCaptionComment("U1/RAM/Istat/", LabelInit),
         new TTagLineScrollCaptionComment("U1/RAM/Uexc/", LabelInit),
         new TTagLineScrollCaptionComment("U1/RAM/Iexc/", LabelInit),
-        //new TTagLineScrollCaptionComment("U1/RAM/tSoftStart/", LabelInit),
     });
     
 }

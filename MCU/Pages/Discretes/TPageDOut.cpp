@@ -20,7 +20,7 @@ void TPageDOut::fillPageContainer()
     TagList->Clear();
     TLabelInitStructure LabelInit;
     LabelInit.style = LabelsStyle::WIDTH_FIXED;
-    LabelInit.Rect = { 10, 10, 10, 70 };
+    LabelInit.Rect = { 10, 10, 10, 80 };
     LabelInit.focused = false;
     TagList->AddList({
         new TTagLineScrollCaptionComment("U1/RAM/oCROWBAR_K1/", LabelInit),
@@ -32,5 +32,10 @@ void TPageDOut::fillPageContainer()
         new TTagLineScrollCaptionComment("U1/RAM/oINSLFlt_K7/", LabelInit),
         new TTagLineScrollCaptionComment("U1/RAM/oReserve_K8/", LabelInit),
         new TTagLineScrollCaptionComment("U1/RAM/oStartExcite/", LabelInit),
+        new TTagLineScrollCaptionComment("U1/RAM/oForce/", LabelInit),
+        new TTagLineScrollCaptionComment("U1/RAM/oRegModeManu/", LabelInit),
+        new TTagLineScrollCaptionComment("U1/RAM/oIstatOverload/", LabelInit),
+        new TTagLineScrollCaptionComment("U1/RAM/oBackPower/", LabelInit),
+        new TTagLineScrollCaptionComment("U1/RAM/oBreakOff/", LabelInit),
         });
 }

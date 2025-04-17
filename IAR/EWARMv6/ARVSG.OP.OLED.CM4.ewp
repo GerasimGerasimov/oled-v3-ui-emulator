@@ -1732,10 +1732,4 @@
             <name>$PROJ_DIR$\..\UserData\ramdata.c</name>
         </file>
     </group>
-    <file>
-        <name>$PROJ_DIR$\..\..\MCU\Pages\RegulatorKoeff\PageRegulatorKoeff.cpp</name>
-    </file>
-    <file>
-        <name>$PROJ_DIR$\..\..\MCU\Pages\RegulatorKoeff\PageRegulatorKoeff.h</name>
-    </file>
 </project>

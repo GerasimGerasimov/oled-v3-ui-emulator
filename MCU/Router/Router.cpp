@@ -22,7 +22,7 @@
 #include "PowerLim/PagePowerLim.h"
 #include "InitExcitation/PageInitExcitation.h"
 #include "ControlVoltageStator/PageControlVoltageStator.h"
-#include "RegulatorKoeff/PageRegulatorKoeff.h"
+//#include "RegulatorKoeff/PageRegulatorKoeff.h"
 #include "InsulResist/PageInsulResist.h"
 #include <IniResources.h>
 
@@ -57,7 +57,7 @@ void TRouter::Init(void) {
     Pages["PowerLim"] = new TPagePowerLim("PowerLim"); //Ограничетели мощности
     Pages["InitExcitation"] = new TPageInitExcitation("InitExcitation"); //Начальное возбуждение
     Pages["ControlVoltageStator"] = new TPageControlVoltageStator("ControlVoltageStator"); //Контроль напр статора
-    Pages["RegulatorKoeff"] = new TPageRegulatorKoeff("RegulatorKoeff"); //Коэффициенты регулятора
+    //Pages["RegulatorKoeff"] = new TPageRegulatorKoeff("RegulatorKoeff"); //Коэффициенты регулятора
     Pages["InsulResist"] = new TPageInsulResist("InsulResist"); //Сопротивление изоляции
 
     Pages["PrmListEdit"] = new TPageParameterListEdit("PrmListEdit");

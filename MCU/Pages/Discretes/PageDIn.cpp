@@ -20,7 +20,7 @@ void TPageDIn::fillPageContainer()
     TagList->Clear();
     TLabelInitStructure LabelInit;
     LabelInit.style = LabelsStyle::WIDTH_FIXED;
-    LabelInit.Rect = { 10, 10, 10, 70 };
+    LabelInit.Rect = { 10, 10, 10, 80 };
     LabelInit.focused = false;
     TagList->AddList({
         new TTagLineScrollCaptionComment("U1/RAM/iReady/", LabelInit),
@@ -36,5 +36,7 @@ void TPageDIn::fillPageContainer()
         new TTagLineScrollCaptionComment("U1/RAM/iPCSB_QF1/", LabelInit),
         new TTagLineScrollCaptionComment("U1/RAM/iCCSB_QF5/", LabelInit),
         new TTagLineScrollCaptionComment("U1/RAM/iLocalMode/", LabelInit),
+        new TTagLineScrollCaptionComment("U1/RAM/iPB_Ready/", LabelInit),
+        new TTagLineScrollCaptionComment("U1/RAM/iPB_Fault/", LabelInit),
         });
 }

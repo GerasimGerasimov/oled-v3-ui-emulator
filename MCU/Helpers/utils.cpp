@@ -33,8 +33,9 @@ void Utils::comma_to_dot(char* input) {
 
 std::string Utils::getValueAsFormatStr(float& value, const char* format) {
     int size = std::snprintf(nullptr, 0, format, value);//"%.2f";
-    std::string output(size + 1, '\0');
-    std::sprintf(&output[0], format, value);
+    std::string output(size + 2, '\0');
+    output[0] = ' ';
+    std::sprintf(&output[1], format, value);
     return output;
 }
 
