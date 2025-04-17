@@ -152,7 +152,9 @@ u8 ModbusSlave::get0x16MaskWriteRegisterCmd(u8* a, TWriteCmdSrc& Src) {
         u16 bitnum = std::stol(BT, nullptr, 16);
         u16 BIT_MASK = (1 << bitnum);
         AND_MASK = ~BIT_MASK;
-        OR_MASK = BIT_MASK;
+        if(bitValue){
+            OR_MASK = BIT_MASK;
+        }
     }
     a[4] = (u8)(AND_MASK >> 8) & 0x00FF;
     a[5] = (u8)(AND_MASK & 0x00FF);
