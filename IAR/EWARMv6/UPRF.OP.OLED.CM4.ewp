@@ -1425,12 +1425,6 @@
                 <name>$PROJ_DIR$\..\..\MCU\Pages\BasicSettings\PageBasicSettings.cpp</name>
             </file>
             <file>
-                <name>$PROJ_DIR$\..\..\MCU\Pages\Calibration\PageCalibration.cpp</name>
-            </file>
-            <file>
-                <name>$PROJ_DIR$\..\..\MCU\Pages\CleanSettings\PageCleanSettings.cpp</name>
-            </file>
-            <file>
                 <name>$PROJ_DIR$\..\..\MCU\Pages\EditValue\PageEditValue.cpp</name>
             </file>
             <file>
@@ -1455,15 +1449,6 @@
                 <name>$PROJ_DIR$\..\..\MCU\Pages\MainMenu\PageMainMenu.cpp</name>
             </file>
             <file>
-                <name>$PROJ_DIR$\..\..\MCU\Pages\NetworkSettings\PageNetworkSettings.cpp</name>
-            </file>
-            <file>
-                <name>$PROJ_DIR$\..\..\MCU\Pages\OperateStatus\PageOperateStatus.cpp</name>
-            </file>
-            <file>
-                <name>$PROJ_DIR$\..\..\MCU\Pages\PanelSettings\PagePanelSettings.cpp</name>
-            </file>
-            <file>
                 <name>$PROJ_DIR$\..\..\MCU\Pages\ParameterListEdit\PageParameterListEdit.cpp</name>
             </file>
             <file>
@@ -1471,9 +1456,6 @@
             </file>
             <file>
                 <name>$PROJ_DIR$\..\..\MCU\Pages\ParameterListEditCMD\PageParameterListEditCMD.cpp</name>
-            </file>
-            <file>
-                <name>$PROJ_DIR$\..\..\MCU\Pages\Sensors\PageSensors.cpp</name>
             </file>
             <file>
                 <name>$PROJ_DIR$\..\..\MCU\Pages\Warning\PageWarnings.cpp</name>

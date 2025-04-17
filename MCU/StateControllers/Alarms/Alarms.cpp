@@ -14,13 +14,12 @@ std::map < std::string, TTrackedBit > Alarms::Tags = {
 	{"DO_5_3P", {"U1/DO/DO_5_3P/", nullptr, false, false}},
 	{"DI_4_K9", {"U1/DI/DI_4_K9/", nullptr, false, false}},
 	{"DI8_KA1-KA3", {"U1/DI/DI8_KA1-KA3/", nullptr, false, false}},
-	{"DI6_F1-F3", {"U1/DI/DI6_F1-F3/", nullptr, false, false}},
+	{"DI6_F1-F3", {"U1/RAM/DI6_F1-F3/", nullptr, false, false}},
 	{"DO_8_Ct", {"U1/DO/DO_8_Ct/", nullptr, false, false}},
-	{"DO_1_KT", {"U1/DO/DO_1_KT/", nullptr, false, false}},
+	{"DO_1_KT", {"U1/RAM/DO_1_KT/", nullptr, false, false}},
 	{"SB5", {"U1/RAM/SB5/", nullptr, false, false}},
 	{"t3", {"U1/RAM/t3/", nullptr, false, false}},
 	{"t5", {"U1/RAM/t5/", nullptr, false, false}},
-
 };
 
 bool Alarms::State = true;
