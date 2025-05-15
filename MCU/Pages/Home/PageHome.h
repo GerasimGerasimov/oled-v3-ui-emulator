@@ -4,6 +4,10 @@
 #include "Pages.h"
 #include "TVerticalContainer.h"
 #include "HandleSubscribers.h"
+#include "FillingBar.h"
+#include <CurrentIndicator.h>
+#include <OperatingMode.h>
+
 
 class TPageHome : public TPage
 {
@@ -21,6 +25,10 @@ private:
     void SlotUpdate(TSlotHandlerArsg args);
     TVisualObject* getSignalOfFocusedChild();
     int SubscriberID = 0;
+    //FillingBar fillingBar;
+    CurrentIndicator currentIndicator1;
+    CurrentIndicator currentIndicator2;
+    OperatingMode operatingMode;
 };
 
 #endif

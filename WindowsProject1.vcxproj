@@ -30,26 +30,26 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
@@ -144,6 +144,8 @@
   <ItemGroup>
     <ClInclude Include="framework.h" />
     <ClInclude Include="MainPage.h" />
+    <ClInclude Include="MCU\Components\CurrentIndicator.h" />
+    <ClInclude Include="MCU\Components\FillingBar.h" />
     <ClInclude Include="MCU\Components\LabelTime.h" />
     <ClInclude Include="MCU\Components\ScrollLabel.h" />
     <ClInclude Include="MCU\Components\TagLineScrollCaption.h" />
@@ -160,6 +162,7 @@
     <ClInclude Include="MCU\Slots\SlotHandlerType.h" />
     <ClInclude Include="MCU\StateControllers\StateControllers.h" />
     <ClInclude Include="MCU\TODO.h" />
+    <ClInclude Include="OperatingMode.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="targetver.h" />
     <ClInclude Include="WindowsProject1.h" />
@@ -177,6 +180,8 @@
     <ClCompile Include="MCU\App\app.cpp" />
     <ClCompile Include="MCU\CmdSender\CmdSender.cpp" />
     <ClCompile Include="MCU\Components\common.cpp" />
+    <ClCompile Include="MCU\Components\CurrentIndicator.cpp" />
+    <ClCompile Include="MCU\Components\FillingBar.cpp" />
     <ClCompile Include="MCU\Components\FixedFooter.cpp" />
     <ClCompile Include="MCU\Components\FixedHeader.cpp" />
     <ClCompile Include="MCU\Components\HeaderLabel.cpp" />
@@ -250,6 +255,7 @@
     <ClCompile Include="MCU\Slots\CreateSlotsByStart.cpp" />
     <ClCompile Include="MCU\StateControllers\Alarms\Alarms.cpp" />
     <ClCompile Include="MCU\StateControllers\Warnings\Warnings.cpp" />
+    <ClCompile Include="OperatingMode.cpp" />
     <ClCompile Include="Source.cpp" />
     <ClCompile Include="threads\mcu_main_thread.cpp" />
     <ClCompile Include="threads\mutexes.cpp" />
