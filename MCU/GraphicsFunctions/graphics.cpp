@@ -40,6 +40,13 @@ void TGrahics::fillCheckeredRect(TFillRect props)
     }
 }
 
+void TGrahics::drawBorder(TFillRect props) {
+    Line(props.left, props.top, props.width + props.left, props.top, props.color);
+    Line(props.left, props.top, props.left, props.height + props.top, props.color);
+    Line(props.width + props.left, props.top, props.width + props.left, props.height + props.top, props.color);
+    Line(props.left, props.height + props.top, props.width + props.left, props.height + props.top, props.color);
+}
+
 void TGrahics::rotateValues(u8 x, u8 y, u8 width, u8 height) {
     /*for (int i = x; i < ) {
         
@@ -49,6 +56,7 @@ void TGrahics::rotateValues(u8 x, u8 y, u8 width, u8 height) {
 inline void TGrahics::setPixel(TPixel& props) {
   screen[props.x][props.y] = props.color;
 }
+
 
 inline void TGrahics::setPixel(u8 x, u8 y, u8 color) {
     screen[x][y] = color;

@@ -38,6 +38,7 @@ struct TGrahics {
 		static void init(void);
 		static void fillRect(TFillRect props);
 		static void fillCheckeredRect(TFillRect props);
+		static void drawBorder(TFillRect props);
 		static void rotateValues(u8 x, u8 y, u8 width, u8 height);
 		static void Line(u8 X1, u8 Y1, u8 X2, u8 Y2, u8 Color);
 		static void setPixel(TPixel& props);
