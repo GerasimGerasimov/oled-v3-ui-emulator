@@ -27,6 +27,24 @@ void TGrahics::fillRect(TFillRect props) {
         pixel.y++;
     }
 }
+
+void TGrahics::fillCheckeredRect(TFillRect props)
+{
+    if ((props.left < 0) && (props.top < 0)) return;
+    for (int i = props.top; i < (props.top + props.height); i++) {
+        if (i >= VIEW_PORT_MAX_HEIGHT) break;
+        for (int j = props.left; j < (props.left + props.width); j++) {
+            if (j >= VIEW_PORT_MAX_WIDTH) continue;
+            setPixel(j, i, (i + j) % 2);
+        }
+    }
+}
+
+void TGrahics::rotateValues(u8 x, u8 y, u8 width, u8 height) {
+    /*for (int i = x; i < ) {
+        
+    }*/
+}
    
 inline void TGrahics::setPixel(TPixel& props) {
   screen[props.x][props.y] = props.color;
