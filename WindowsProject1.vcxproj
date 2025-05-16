@@ -146,7 +146,9 @@
     <ClInclude Include="MainPage.h" />
     <ClInclude Include="MCU\Components\CurrentIndicator.h" />
     <ClInclude Include="MCU\Components\FillingBar.h" />
+    <ClInclude Include="MCU\Components\GroupIndicators.h" />
     <ClInclude Include="MCU\Components\LabelTime.h" />
+    <ClInclude Include="MCU\Components\OperatingMode.h" />
     <ClInclude Include="MCU\Components\ScrollLabel.h" />
     <ClInclude Include="MCU\Components\TagLineScrollCaption.h" />
     <ClInclude Include="MCU\Components\TagLineScrollCaptionComment.h" />
@@ -162,7 +164,6 @@
     <ClInclude Include="MCU\Slots\SlotHandlerType.h" />
     <ClInclude Include="MCU\StateControllers\StateControllers.h" />
     <ClInclude Include="MCU\TODO.h" />
-    <ClInclude Include="OperatingMode.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="targetver.h" />
     <ClInclude Include="WindowsProject1.h" />
@@ -184,12 +185,14 @@
     <ClCompile Include="MCU\Components\FillingBar.cpp" />
     <ClCompile Include="MCU\Components\FixedFooter.cpp" />
     <ClCompile Include="MCU\Components\FixedHeader.cpp" />
+    <ClCompile Include="MCU\Components\GroupIndicators.cpp" />
     <ClCompile Include="MCU\Components\HeaderLabel.cpp" />
     <ClCompile Include="MCU\Components\Label.cpp" />
     <ClCompile Include="MCU\Components\LabelTime.cpp" />
     <ClCompile Include="MCU\Components\LinkedTagLabel.cpp" />
     <ClCompile Include="MCU\Components\LinkLabel.cpp" />
     <ClCompile Include="MCU\Components\NumericEdit.cpp" />
+    <ClCompile Include="MCU\Components\OperatingMode.cpp" />
     <ClCompile Include="MCU\Components\ParamListSelector.cpp" />
     <ClCompile Include="MCU\Components\ScrollLabel.cpp" />
     <ClCompile Include="MCU\Components\TagLine.cpp" />
@@ -255,7 +258,6 @@
     <ClCompile Include="MCU\Slots\CreateSlotsByStart.cpp" />
     <ClCompile Include="MCU\StateControllers\Alarms\Alarms.cpp" />
     <ClCompile Include="MCU\StateControllers\Warnings\Warnings.cpp" />
-    <ClCompile Include="OperatingMode.cpp" />
     <ClCompile Include="Source.cpp" />
     <ClCompile Include="threads\mcu_main_thread.cpp" />
     <ClCompile Include="threads\mutexes.cpp" />
