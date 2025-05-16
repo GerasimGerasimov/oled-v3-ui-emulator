@@ -11,14 +11,15 @@ void TPageHome::view() {
 void TPageHome::onOpen() {
     //fillPageContainer();
   
+    TGrahics::Line(40, 0, 40, 63, 1);
     TGrahics::Line(41, 0, 41, 63, 1);
-    TGrahics::Line(42, 0, 42, 63, 1);
-    TGrahics::Line(83, 0, 83, 63, 1);
-    TGrahics::Line(101, 0, 101, 63, 1);
+    TGrahics::Line(82, 0, 82, 63, 1);
+    TGrahics::Line(100, 0, 100, 63, 1);
     //fillingBar.view();
     currentIndicator1.view();
     currentIndicator2.view();
     operatingMode.view();
+    groupIndicators.view();
     
     SubscriberID = HandlerSubscribers::set("U1/RAM/", [this](TSlotHandlerArsg args) { SlotUpdate(args); });
 }
@@ -88,7 +89,7 @@ void TPageHome::fillPageContainer(void) {
     
 }
 
-TPageHome::TPageHome(std::string Name) :TPage(Name), currentIndicator1(0,0, "I, mA"), currentIndicator2(43, 0, "U, kV"), operatingMode(84, 0)
+TPageHome::TPageHome(std::string Name) :TPage(Name), currentIndicator1(0,0, "I, mA"), currentIndicator2(42, 0, "U, kV"), operatingMode(84, 0), groupIndicators(101,0)
 {
     TVerticalContainerProps props = { false };
     TagList = new TVerticalContainer(props, {});

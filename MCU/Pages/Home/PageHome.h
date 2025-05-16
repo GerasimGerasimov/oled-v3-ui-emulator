@@ -7,6 +7,7 @@
 #include "FillingBar.h"
 #include <CurrentIndicator.h>
 #include <OperatingMode.h>
+#include <GroupIndicators.h>
 
 
 class TPageHome : public TPage
@@ -25,10 +26,10 @@ private:
     void SlotUpdate(TSlotHandlerArsg args);
     TVisualObject* getSignalOfFocusedChild();
     int SubscriberID = 0;
-    //FillingBar fillingBar;
     CurrentIndicator currentIndicator1;
     CurrentIndicator currentIndicator2;
     OperatingMode operatingMode;
+    GroupIndicators groupIndicators;
 };
 
 #endif
