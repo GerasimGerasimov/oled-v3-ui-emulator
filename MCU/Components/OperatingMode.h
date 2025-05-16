@@ -11,7 +11,7 @@ public:
 	OperatingMode(int x, int y);
 	void view() override;
 	const u16 getHeight(void);
-	void drawBorder(int x, int y);
+	void drawBorder(unsigned int yPosition);
 
 };
 
