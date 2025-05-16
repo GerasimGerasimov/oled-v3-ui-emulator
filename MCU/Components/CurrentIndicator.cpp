@@ -23,9 +23,9 @@ const u16 CurrentIndicator::getHeight(void)
 }
 
 void CurrentIndicator::drawBorder(int drawBorderX, int drawBorderY) {
-	TFillRect outerBorder{ drawBorderX + 2, drawBorderY + 17, width - 22, height - 35, 1 };
+	TFillRect outerBorder{ drawBorderX + 1, drawBorderY + 17, width - 22, height - 35, 1 };
 	TGrahics::fillRect(outerBorder);
-	TFillRect intBorder{ drawBorderX + 3, drawBorderY + 18, width - 24, height - 37, 0 };
+	TFillRect intBorder{ drawBorderX + 2, drawBorderY + 18, width - 24, height - 37, 0 };
 	TGrahics::fillRect(intBorder);
 }
 
