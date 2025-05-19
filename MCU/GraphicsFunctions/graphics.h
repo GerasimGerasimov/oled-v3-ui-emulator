@@ -39,12 +39,14 @@ struct TGrahics {
 		static void fillRect(TFillRect props);
 		static void fillCheckeredRect(TFillRect props);
 		static void drawBorder(TFillRect props);
-		static void rotateValues(u8 x, u8 y, u8 width, u8 height);
+		static void outTextVertical(std::string text, u16 x, u16 y, u16 color, std::string FontName);
 		static void Line(u8 X1, u8 Y1, u8 X2, u8 Y2, u8 Color);
 		static void setPixel(TPixel& props);
 		static void setPixel(u8 x, u8 y, u8 color);
 		static void outText(std::string text, u16 x, u16 y, u16 color, std::string FontName);
+		static void putCharVertical(u8 Code, u16& x, u16 y, u16 color);
 		static void putChar(u8 Code, u16& x, u16 y, u16 color);
+		static void InvertArea(TFillRect props);
 		static void outTextClipped(std::string text, u16 x, u16 y, u16 color, std::string FontName, TClipRect& rect);
 		static void putTextWithSelectedChar(u8* src, u8 len, u16& x, u16 y, u8 Selected, u16 BaseColor, u16 SelectColor);
 		static u8 screen[128][64];

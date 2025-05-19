@@ -47,10 +47,12 @@ void TGrahics::drawBorder(TFillRect props) {
     Line(props.left, props.height + props.top, props.width + props.left, props.height + props.top, props.color);
 }
 
-void TGrahics::rotateValues(u8 x, u8 y, u8 width, u8 height) {
-    /*for (int i = x; i < ) {
-        
-    }*/
+void TGrahics::outTextVertical(std::string text, u16 x, u16 y, u16 color, std::string FontName) {
+    u16 height = TMCUText::setFont(FontName);
+    for (auto& code : text) {
+        putCharVertical(code, x, y, color);
+    }
+   
 }
    
 inline void TGrahics::setPixel(TPixel& props) {
@@ -67,6 +69,28 @@ void TGrahics::outText(std::string text, u16 x, u16 y, u16 color, std::string Fo
     for (auto& code : text) {
         putChar(code, x, y, color);
     }
+}
+
+void TGrahics::putCharVertical(u8 Code, u16& x, u16 y, u16 color) {
+    TCharProps CharProps = TMCUText::setSimbol(Code);
+    u16 bitsCnt = 0;
+    u32 bits = 0;
+    u16 start_x = x;
+    u32 mask = (1 << (CharProps.BytesByWidth * 8 - 1));
+    while (TMCUText::getBitsLine(bits)) {
+        if (x >= VIEW_PORT_MAX_HEIGHT) continue;
+        bitsCnt = CharProps.BitsByWidth;
+        x = start_x;
+        while (bitsCnt--) {
+            if (y >= VIEW_PORT_MAX_WIDTH) continue;
+            if ((bits & mask) == 0) {
+                setPixel(y, -x, (u8)color);
+            }
+            bits <<= 1;
+            x++; 
+        }
+        y++;  
+    };
 }
 
 void TGrahics::putChar(u8 Code, u16& x, u16 y, u16 color) {
@@ -91,6 +115,18 @@ void TGrahics::putChar(u8 Code, u16& x, u16 y, u16 color) {
     };
 }
 
+void TGrahics::InvertArea(TFillRect props) {
+   
+    if ((props.left < 0) && (props.top < 0)) return;
+    for (int i = props.top; i < (props.top + props.height); i++) {
+        if (i >= VIEW_PORT_MAX_HEIGHT) break;
+        for (int j = props.left; j < (props.left + props.width); j++) {
+            if (j >= VIEW_PORT_MAX_WIDTH) continue;
+            u8 color = (screen[j][i] == 0) ? 1 : 0;
+            setPixel(j, i, color);
+        }
+    }
+}
 void TGrahics::outTextClipped(std::string text, u16 x, u16 y, u16 color, std::string FontName, TClipRect& rect) {
     u16 height = TMCUText::setFont(FontName);
     for (auto& code : text) {
