@@ -14,6 +14,9 @@ void  OperatingMode::view()
 	TGrahics::outText("î", x + 3, y + 21, 1, "MSSansSerifBold14");
 	TGrahics::outText("â", x + 3, y + 34, 1, "MSSansSerifBold14");
 	TGrahics::outText("ò", x + 3, y + 47, 1, "MSSansSerifBold14");
+
+	TFillRect outerBorder{ x-1, y, 17, 63 };
+	TGrahics::InvertArea(outerBorder);
 	
 }
 
