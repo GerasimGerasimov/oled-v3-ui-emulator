@@ -2,25 +2,22 @@
 #include "Router.h"
 #include "TagLine.h"
 #include <IniResources.h>
-
+#include <iostream>
 
 void TPageHome::view() {
     TagList->view();
-};
-
+}
 void TPageHome::onOpen() {
     //fillPageContainer();
-  
     TGrahics::Line(40, 0, 40, 63, 1);
     TGrahics::Line(41, 0, 41, 63, 1);
     TGrahics::Line(82, 0, 82, 63, 1);
     TGrahics::Line(100, 0, 100, 63, 1);
-    //fillingBar.view();
     currentIndicator1.view();
     currentIndicator2.view();
     operatingMode.view();
     groupIndicators.view();
-    
+    //fillingBar.view();
     SubscriberID = HandlerSubscribers::set("U1/RAM/", [this](TSlotHandlerArsg args) { SlotUpdate(args); });
 }
 
@@ -55,6 +52,23 @@ bool TPageHome::ProcessMessage(TMessage* m) {
                         TRouter::setTask({ false, "EditValue", nullptr });
                     }
                     break;
+                case (u32)KeyCodes::Up:
+                   
+                    currentIndicator1.setValue(currentIndicator1.getValue() + 85);
+                    //currentIndicator2.setValue(currentIndicator1.getValue() + 85);
+                    break;
+
+                case (u32)KeyCodes::Right: 
+                    currentIndicator2.invertArea();
+                    break;
+
+                case (u32)KeyCodes::Left: 
+                    currentIndicator1.invertArea();
+                    break;
+
+                case (u32)KeyCodes::Down: 
+                    currentIndicator1.setValue(currentIndicator1.getValue() - 85);
+
             }
         }
     }

@@ -24,6 +24,9 @@ public:
 	void displayValue();
 
 	void changeValue(std::string current);
+	void invertArea();
 	
+	void setValue(int newValue);
+	int getValue();
 };
 

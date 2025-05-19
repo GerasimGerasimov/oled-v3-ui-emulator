@@ -9,7 +9,7 @@ private:
 	int height = 28;
 	int width = 12;
 	int x, y;
-	//int value;
+	int value = 0;
 	int maxValue = 1800;
 	int limitValue = 1600;
 public:
@@ -18,9 +18,11 @@ public:
 	const u16 getHeight(void) override;
 	void drawBorder();
 	void scaleBarFoam();
-	void scaleBarValue(int value);
+	void scaleBarValue();
 	void pointerH(unsigned int yPosition);
 	void pointerV();
 	void drawThreshold();
+	void setValue(int newValue);
+	int getValue();
 };
 

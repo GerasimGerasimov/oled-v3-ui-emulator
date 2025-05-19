@@ -11,7 +11,7 @@ void FillingBar::view()
 {
 
 	drawBorder();
-	scaleBarValue(1700);
+	//scaleBarValue(300);
 	pointerH(10);
 	drawThreshold();
 }
@@ -30,6 +30,7 @@ void FillingBar::drawBorder()
 	TGrahics::fillRect(intBorder);
 	TFillRect pointLine{ x + 3, y + 6, width - 5, height - 27, 1 };
 	TGrahics::fillCheckeredRect(pointLine);
+	pointerV();
 }
 
 void FillingBar::scaleBarFoam() 
@@ -39,22 +40,22 @@ void FillingBar::scaleBarFoam()
 	
 }
 
-void FillingBar::scaleBarValue(int value)
+void FillingBar::scaleBarValue()
 	{
 	int percent = 0; 
 	int yPosition = 0;
 	percent = (value * 100) / maxValue;
 	yPosition = 25 - (percent * 25) / 100;
 	if (value < limitValue) {
-		TFillRect fillRect{ x + 3, y + yPosition, width - 5, height - yPosition, 1 };
+		TFillRect fillRect{ x + 3, y + yPosition + 3, width - 5, height - 3 - yPosition, 1 };
 		TGrahics::fillCheckeredRect(fillRect);
 		}
-	else if (value > limitValue && value < maxValue) {
-		TFillRect fillRect{ x + 3, y + yPosition, width - 5, height - yPosition, 1 };
+	else if (value >= limitValue && value <= maxValue) {
+		TFillRect fillRect{ x + 3, y + yPosition + 3, width - 5, height - 3 - yPosition, 1 };
 		TGrahics::fillCheckeredRect(fillRect);
 		scaleBarFoam();
 	}
-		pointerV();
+	
 	}
 
 
@@ -77,6 +78,24 @@ void FillingBar::pointerV()
 
 void FillingBar::drawThreshold() {
 	TGrahics::Line(x - 2, y + 6, x + 12, y + 6, 1);
+	TGrahics::Line(x + 2, y + 6, x + 10, y + 6, 0);
 	TFillRect pointLine{ x + 3, y + 6, width - 5, height - 27, 1 };
 	TGrahics::fillCheckeredRect(pointLine);
+}
+
+void FillingBar::setValue(int newValue)
+{
+	if (newValue > maxValue) {
+		newValue = maxValue;
+	}
+	else if (newValue < 0) {
+		newValue = 0;
+	}
+
+	value = newValue;
+}
+
+int FillingBar::getValue()
+{
+	return value;
 }
