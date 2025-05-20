@@ -12,8 +12,9 @@ private:
 	int value = 0;
 	int maxValue = 1800;
 	int limitValue = 1600;
+	u8 colorState;
 public:
-	FillingBar(int x, int y);
+	FillingBar(int x, int y, u8 colorState);
 	void view() override;
 	const u16 getHeight(void) override;
 	void drawBorder();
@@ -24,5 +25,6 @@ public:
 	void drawThreshold();
 	void setValue(int newValue);
 	int getValue();
+	void setColorState(u8 newColor);
 };
 
