@@ -2,6 +2,7 @@
 #include <iostream>
 #include "TMCUFonts.h"
 u8 TGrahics::screen[128][64];
+//enum class InvertAreaTrue : bool { False, True };
 
 void TGrahics::init(void) {
     TMCUFonts::init();
@@ -78,11 +79,11 @@ void TGrahics::putCharVertical(u8 Code, u16& x, u16 y, u16 color) {
     u16 start_x = x;
     u32 mask = (1 << (CharProps.BytesByWidth * 8 - 1));
     while (TMCUText::getBitsLine(bits)) {
-        if (x >= VIEW_PORT_MAX_HEIGHT) continue;
+        if (y >= VIEW_PORT_MAX_WIDTH) continue;
         bitsCnt = CharProps.BitsByWidth;
         x = start_x;
         while (bitsCnt--) {
-            if (y >= VIEW_PORT_MAX_WIDTH) continue;
+            if (x >= VIEW_PORT_MAX_HEIGHT) continue;
             if ((bits & mask) == 0) {
                 setPixel(y, -x, (u8)color);
             }
@@ -116,8 +117,8 @@ void TGrahics::putChar(u8 Code, u16& x, u16 y, u16 color) {
 }
 
 void TGrahics::InvertArea(TFillRect props) {
-   
     if ((props.left < 0) && (props.top < 0)) return;
+ 
     for (int i = props.top; i < (props.top + props.height); i++) {
         if (i >= VIEW_PORT_MAX_HEIGHT) break;
         for (int j = props.left; j < (props.left + props.width); j++) {
@@ -129,6 +130,7 @@ void TGrahics::InvertArea(TFillRect props) {
 }
 void TGrahics::outTextClipped(std::string text, u16 x, u16 y, u16 color, std::string FontName, TClipRect& rect) {
     u16 height = TMCUText::setFont(FontName);
+
     for (auto& code : text) {
         putCharClipped(code, x, y, color, rect);
     }
@@ -140,6 +142,7 @@ void TGrahics::putCharClipped(u8 Code, u16& x, u16 y, u16 color, TClipRect& rect
     u32 bits = 0;
     u16 start_x = x;
     u32 mask = (1 << (CharProps.BytesByWidth * 8 - 1));
+
     while (TMCUText::getBitsLine(bits)) {
         if (y >= rect.height) continue;
         bitsCnt = CharProps.BitsByWidth;
