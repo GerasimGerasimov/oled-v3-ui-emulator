@@ -10,7 +10,8 @@ void TPageHome::view() {
     currentIndicator2.view();
     operatingMode.view();
     groupIndicators.view();
-   // currentIndicator2.stateValue();
+    //currentIndicator1.scaleBar();
+    currentIndicator2.scaleBar();
 }
 void TPageHome::onOpen() {
     //fillPageContainer();
@@ -40,7 +41,6 @@ bool TPageHome::ProcessMessage(TMessage* m) {
                     //TRouter::setTask({ false, "MainMenu", nullptr });
                     currentIndicator1.invertStateColor();
                     
-                   
                     break;
                 case (u32)KeyCodes::F1:
                     e = getSignalOfFocusedChild();
@@ -59,36 +59,35 @@ bool TPageHome::ProcessMessage(TMessage* m) {
                         TRouter::setTask({ false, "EditValue", nullptr });
                     }
                     break;
-                case (u32)KeyCodes::Up:
-                    
-                    currentIndicator1.setValue(currentIndicator1.getValue() + 85);
-                    //currentIndicator2.setValue(currentIndicator1.getValue() + 5);
-                    break;
-
                 case (u32)KeyCodes::Right: 
-                    currentIndicator1.invertStateColor();
-                   // currentIndicator2.invertStateColor(1);
-                   //currentIndicator1.invertStateColor(1);
-                   operatingMode.stateValue(1);
+                    container[currentComponent]->inFocus = false;
+                    if (currentComponent < container.size() - 1) {
+                        currentComponent++;
+                        container[currentComponent]->inFocus = true;
 
+                        //container[currentComponent]->invertStateColor();
+                    }
+                    else {
+                        container[currentComponent]->inFocus = true;
+                    }
                     break;
 
                 case (u32)KeyCodes::Left: 
-                    operatingMode.stateValue(1);
-                    currentIndicator1.invertStateColor();
-                    //currentIndicator1.invertStateColor(1);
-                    //currentIndicator2.invertStateColor(1);
-                    //groupIndicators.invertOut();
-                    break;
-
-                case (u32)KeyCodes::Down: 
-                    currentIndicator1.setValue(currentIndicator1.getValue() - 85);
+                    container[currentComponent]->inFocus = false;
+                    if (currentComponent > 0) {
+                        currentComponent--;
+                        container[currentComponent]->inFocus = true;
+                    }
+                    else {
+                        container[currentComponent]->inFocus = true;
+                    }
+                   break;
 
             }
         }
     }
 
-    for (auto& element : List) {
+    for (auto& element : container) {
         element->ProcessMessage(m);
     }
     return false;
@@ -118,11 +117,17 @@ void TPageHome::fillPageContainer(void) {
     
 }
 
-TPageHome::TPageHome(std::string Name) :TPage(Name), currentIndicator1(0,0, "I, mA", "Iref",  0), currentIndicator2(42, 0, "U, kV", "Uref", 0), operatingMode(83, 0, 0), groupIndicators(100, 0, 0)
+TPageHome::TPageHome(std::string Name) :TPage(Name), 
+currentIndicator1(0, 0, "I, mA", "Iref", 0), 
+currentIndicator2(42, 0, "U, kV", "Uref", 0), 
+operatingMode(83, 0, 0), 
+groupIndicators(100, 0, 0)
 {
+    container = { &currentIndicator1, &currentIndicator2, &operatingMode };
     TVerticalContainerProps props = { false };
     TagList = new TVerticalContainer(props, {});
     AddList({ TagList });
+    
 };
 
 void TPageHome::SlotUpdate(TSlotHandlerArsg args) {
@@ -136,3 +141,4 @@ TPageHome::~TPageHome() {
     TagList->Clear();
     delete TagList;
 };
+

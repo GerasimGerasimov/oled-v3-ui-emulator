@@ -20,6 +20,7 @@ public:
     bool ProcessMessage(TMessage* m);
     TPageHome(std::string Name);
     ~TPageHome();
+    
 private:
     TVerticalContainer* TagList;
     void fillPageContainer(void);
@@ -30,6 +31,8 @@ private:
     CurrentIndicator currentIndicator2;
     OperatingMode operatingMode;
     GroupIndicators groupIndicators;
+    std::vector <TVisualObject*> container;
+    unsigned int currentComponent = 0;
 };
 
 #endif
