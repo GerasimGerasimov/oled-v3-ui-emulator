@@ -7,9 +7,6 @@
 class CurrentIndicator : public TVisualObject
 {
 private:
-	int height = 63;
-	int width = 40;
-	int x, y;
 	std::string msu;
 	std::string ref;
 	std::string current;
@@ -28,5 +25,8 @@ public:
 	void setValue(int newValue);
 	int getValue();
 	void invertStateColor();
+	void scaleBar();
+	bool ProcessMessage(TMessage* m);
+	std::vector <TVisualObject*> List;
 };
 

@@ -5,8 +5,10 @@
 
 FillingBar::FillingBar(int x, int y, u8 colorState)
 {
-	this->x = x + 26;
-	this->y = y + 16;
+	ElementRect.Left = x + 27;
+	ElementRect.Top = y + 16;
+	ElementRect.Height = 28;
+	ElementRect.Width = 12;
 	this->colorState = colorState;
 }
 
@@ -19,68 +21,67 @@ void FillingBar::view()
 
 const u16 FillingBar::getHeight(void)
 {
-	return u16(height);
+	return u16(ElementRect.Height);
 }
 
 void FillingBar::drawBorder()
 {
-	
-	TFillRect outerBorder{ x, y, width, height, std::fabs(colorState - 1) };
+	TFillRect outerBorder{ ElementRect.Left, ElementRect.Top, ElementRect.Width, ElementRect.Height, std::fabs(colorState - 1) };
 	TGrahics::fillRect(outerBorder);
-	TFillRect intBorder{ x + 2, y + 1, width-3, height-1, std::fabs(colorState - 0) };
+	TFillRect intBorder{ ElementRect.Left + 2, ElementRect.Top + 1, ElementRect.Width - 3, ElementRect.Height - 1, std::fabs(colorState - 0) };
 	TGrahics::fillRect(intBorder);
-	TFillRect pointLine{ x + 3, y + 6, width - 5, height - 27, std::fabs(colorState - 1) };
+	TFillRect pointLine{ ElementRect.Left + 3, ElementRect.Top + 6, ElementRect.Width - 5, ElementRect.Height - 27, std::fabs(colorState - 1) };
 	TGrahics::fillCheckeredRect(pointLine);
 	pointerV();
 }
 
 void FillingBar::scaleBarFoam() 
 {
-	TFillRect foam{ x + 3, y + 2, width - 5, height - 24, std::fabs(colorState - 1) };
+	TFillRect foam{ ElementRect.Left + 3, ElementRect.Top + 2, ElementRect.Width - 5, ElementRect.Height - 24, std::fabs(colorState - 1) };
 	TGrahics::fillRect(foam);
-	
 }
 
 void FillingBar::scaleBarValue()
 {
-int percent = 0; 
-int yPosition = 0;
-percent = (value * 100) / maxValue;
-yPosition = 25 - (percent * 25) / 100;
-if (value < limitValue) {
-	TFillRect fillRect{ x + 3, y + yPosition + 3, width - 5, height - 3 - yPosition, std::fabs(colorState - 1) };
-	TGrahics::fillCheckeredRect(fillRect);
+	int percent = 0; 
+	int yPosition = 0;
+	percent = (value * 100) / maxValue;
+	yPosition = 25 - (percent * 25) / 100;
+
+	if (value < limitValue) {
+		TFillRect fillRect{ ElementRect.Left + 3, ElementRect.Top + yPosition + 3, ElementRect.Width - 5, ElementRect.Height - 3 - yPosition, std::fabs(colorState - 1) };
+		TGrahics::fillCheckeredRect(fillRect);
+		}
+	else if (value >= limitValue && value <= maxValue) {
+		TFillRect fillRect{ ElementRect.Left + 3, ElementRect.Top + yPosition + 3, ElementRect.Width - 5, ElementRect.Height - 3 - yPosition, std::fabs(colorState - 1) };
+		TGrahics::fillCheckeredRect(fillRect);
+		scaleBarFoam();
 	}
-else if (value >= limitValue && value <= maxValue) {
-	TFillRect fillRect{ x + 3, y + yPosition + 3, width - 5, height - 3 - yPosition, std::fabs(colorState - 1) };
-	TGrahics::fillCheckeredRect(fillRect);
-	scaleBarFoam();
-}
 
 }
 
 void FillingBar::pointerH(unsigned int yPosition)
 {
-	TGrahics::Line(x - 2, y + 2 + yPosition, x - 4, y + yPosition, std::fabs(colorState - 1));
-	TGrahics::Line(x - 3, y + 2 + yPosition, x - 5, y + yPosition, std::fabs(colorState - 1));
-	TGrahics::Line(x - 2, y + 2 + yPosition, x - 4, y + 4 + yPosition, std::fabs(colorState - 1));
-	TGrahics::Line(x - 3, y + 2 + yPosition, x - 5, y + 4 + yPosition, std::fabs(colorState - 1));
-	TGrahics::Line(x + 1, y + 2 + yPosition, x + 2, y + 2 + yPosition, std::fabs(colorState - 0));
+	TGrahics::Line(ElementRect.Left - 1, ElementRect.Top + 2 + yPosition, ElementRect.Left - 3, ElementRect.Top + yPosition, std::fabs(colorState - 1));
+	TGrahics::Line(ElementRect.Left - 2, ElementRect.Top + 2 + yPosition, ElementRect.Left - 4, ElementRect.Top + yPosition, std::fabs(colorState - 1));
+	TGrahics::Line(ElementRect.Left - 1, ElementRect.Top + 2 + yPosition, ElementRect.Left - 3, ElementRect.Top + 4 + yPosition, std::fabs(colorState - 1));
+	TGrahics::Line(ElementRect.Left - 2, ElementRect.Top + 2 + yPosition, ElementRect.Left - 4, ElementRect.Top + 4 + yPosition, std::fabs(colorState - 1));
+	TGrahics::Line(ElementRect.Left , ElementRect.Top + 2 + yPosition, ElementRect.Left + 1, ElementRect.Top + 2 + yPosition, std::fabs(colorState - 0));
 }
 
 void FillingBar::pointerV() 
 {
-	TGrahics::Line(x + 6, y + 29, x + 8, y + 31, std::fabs(colorState - 1));
-	TGrahics::Line(x + 6, y + 30, x + 8, y + 32, std::fabs(colorState - 1));
-	TGrahics::Line(x + 6, y + 29, x + 4, y + 31, std::fabs(colorState - 1));
-	TGrahics::Line(x + 6, y + 30, x + 4, y + 32, std::fabs(colorState - 1));
+	TGrahics::Line(ElementRect.Left + 6, ElementRect.Top + 29, ElementRect.Left + 8, ElementRect.Top + 31, std::fabs(colorState - 1));
+	TGrahics::Line(ElementRect.Left + 6, ElementRect.Top + 30, ElementRect.Left + 8, ElementRect.Top + 32, std::fabs(colorState - 1));
+	TGrahics::Line(ElementRect.Left + 6, ElementRect.Top + 29, ElementRect.Left + 4, ElementRect.Top + 31, std::fabs(colorState - 1));
+	TGrahics::Line(ElementRect.Left + 6, ElementRect.Top + 30, ElementRect.Left + 4, ElementRect.Top + 32, std::fabs(colorState - 1));
 }
 
 void FillingBar::drawThreshold() 
 {
-	TGrahics::Line(x - 2, y + 6, x + 12, y + 6, std::fabs(colorState - 1));
-	TGrahics::Line(x + 2, y + 6, x + 10, y + 6, std::fabs(colorState - 0));
-	TFillRect pointLine{ x + 3, y + 6, width - 5, height - 27, std::fabs(colorState - 1) };
+	TGrahics::Line(ElementRect.Left - 2, ElementRect.Top + 6, ElementRect.Left + 12, ElementRect.Top + 6, std::fabs(colorState - 1));
+	TGrahics::Line(ElementRect.Left + 2, ElementRect.Top + 6, ElementRect.Left + 10, ElementRect.Top + 6, std::fabs(colorState - 0));
+	TFillRect pointLine{ ElementRect.Left + 3, ElementRect.Top + 6, ElementRect.Width - 5, ElementRect.Height - 27, std::fabs(colorState - 1) };
 	TGrahics::fillCheckeredRect(pointLine);
 }
 
