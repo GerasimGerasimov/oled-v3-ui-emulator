@@ -18,6 +18,5 @@ public:
 	void hidingBorder();
 	bool ProcessMessage(TMessage* m);
 	std::vector <TVisualObject*> List;
-	std::vector <TVisualObject*> modeConteiner;
 };
 

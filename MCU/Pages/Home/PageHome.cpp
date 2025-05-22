@@ -58,6 +58,7 @@ bool TPageHome::ProcessMessage(TMessage* m) {
                         TRouter::PageValueEditEntryData.backPage = Name;
                         TRouter::setTask({ false, "EditValue", nullptr });
                     }
+                    container[currentComponent]->inFocus = false;
                     break;
                 case (u32)KeyCodes::Right: 
                     container[currentComponent]->inFocus = false;
@@ -118,8 +119,8 @@ void TPageHome::fillPageContainer(void) {
 }
 
 TPageHome::TPageHome(std::string Name) :TPage(Name), 
-currentIndicator1(0, 0, "I, mA", "Iref", 0), 
-currentIndicator2(42, 0, "U, kV", "Uref", 0), 
+currentIndicator1(0, 0, "I, mA", "Iref", "1600", 0, 1600, 1800, 1),
+currentIndicator2(42, 0, "U, kV", "Uref", "79,9",  0, 80, 100, 0.047),
 operatingMode(83, 0, 0), 
 groupIndicators(100, 0, 0)
 {

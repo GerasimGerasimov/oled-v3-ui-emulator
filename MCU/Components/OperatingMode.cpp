@@ -9,7 +9,6 @@ OperatingMode::OperatingMode(int x, int y, u8 colorState) {
 	ElementRect.Height = 63;
 	ElementRect.Width = 17;
 	this->colorState = colorState;
-	//modeConteiner = {0, 1, 2, 3};
 }
 
 void  OperatingMode::view()
@@ -29,8 +28,6 @@ void  OperatingMode::view()
 	else {
 		colorState = 0;
 	}
-	//TFillRect outerBorder{ x-1, y, 17, 63 };
-	//TGrahics::InvertArea(outerBorder);
 	
 }
 
