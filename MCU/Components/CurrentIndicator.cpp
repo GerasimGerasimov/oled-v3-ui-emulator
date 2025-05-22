@@ -8,14 +8,18 @@
 #include "parameters.h"
 #include <PageHome.h>
 
-CurrentIndicator::CurrentIndicator(int x, int y, std::string msu, std::string ref, u8 colorState) : fillingBar(x, y, colorState) {
+CurrentIndicator::CurrentIndicator(int x, int y, std::string msu, std::string ref, std::string read, u8 colorState, int limitValue, int maxValue, float ratio) : fillingBar(x, y, colorState, limitValue, maxValue) {
 	ElementRect.Left = x;
 	ElementRect.Top = y;
 	ElementRect.Height = 63;
 	ElementRect.Width = 40;
 	this->msu = msu;
 	this->ref = ref;
+	this->read = read;
 	this->colorState = colorState;
+	this->limitValue = limitValue;
+	this->maxValue = maxValue;
+	this->ratio = ratio;
 }
 
 void CurrentIndicator::view()
@@ -48,7 +52,7 @@ void CurrentIndicator::drawBorder(int drawBorderX, int drawBorderY) {
 	TFillRect intBorder{ drawBorderX + 2, drawBorderY + 16, ElementRect.Width - 22, ElementRect.Height - 36, std::fabs(colorState - 0) };
 	TGrahics::fillRect(intBorder);
 	TGrahics::outTextVertical(ref, ElementRect.Top + 23 , ElementRect.Left , std::fabs(colorState - 1), "Verdana12");
-	TGrahics::outTextVertical("1200", ElementRect.Left + 21, ElementRect.Top + 8, std::fabs(colorState - 1), "Verdana12");
+	TGrahics::outTextVertical(read, ElementRect.Top + 21, ElementRect.Left + 8, std::fabs(colorState - 1), "Verdana12");
 	
 }
 
@@ -57,11 +61,38 @@ void CurrentIndicator::displayValue() {
 }
 
 void CurrentIndicator::changeValue(std::string current) {
-	TFillRect outerBorder{ ElementRect.Left + 3, ElementRect.Top + 50, 32, 10, 0 };
-	TGrahics::fillRect(outerBorder);
-	current = std::to_string(getValue());
-	TGrahics::outText(current, ElementRect.Left + 7, ElementRect.Top + 50, 1, "Verdana12");
+
+	if (fillingBar.getValue() > limitValue) {
+		TFillRect outerBorder{ ElementRect.Left + 6, ElementRect.Top + 50, 30, 9, 1 };
+		TGrahics::fillRect(outerBorder);
+		char s[8];
+		//GIST "%.4X" преобразование числа в hex с заданным кол-вом значащих нулей
+		if (fillingBar.getValue() < 100) {
+			sprintf(s, "%.1f", getValue());
+		}
+		else {
+			sprintf(s, "%.0f", getValue());
+		}
+		current = s;
+		TGrahics::outText(current, ElementRect.Left + 7, ElementRect.Top + 50, 0, "Verdana12");
+	}
+	else {
+		TFillRect outerBorder{ ElementRect.Left + 6, ElementRect.Top + 50, 30, 9, 0 };
+		TGrahics::fillRect(outerBorder);
+		//current = std::to_string(getValue());
+		char s[8];
+		//GIST "%.4X" преобразование числа в hex с заданным кол-вом значащих нулей
+		if (fillingBar.getValue() < 100) {
+			sprintf(s, "%.1f", getValue());
+		}
+		else {
+			sprintf(s, "%.0f", getValue());
+		}
+		current = s;
+		TGrahics::outText( current, ElementRect.Left + 7, ElementRect.Top + 50, 1, "Verdana12");
+	}
 }
+
 
 void CurrentIndicator::invertArea() {
 
@@ -69,12 +100,12 @@ void CurrentIndicator::invertArea() {
 	TGrahics::InvertArea(selectionArea);
 }
 
-void CurrentIndicator::setValue(int newValue)
+void CurrentIndicator::setValue(float newValue)
 {
 	fillingBar.setValue(newValue);
 }
 
-int CurrentIndicator::getValue()
+float CurrentIndicator::getValue()
 {
 	return fillingBar.getValue();
 }
@@ -97,12 +128,12 @@ bool CurrentIndicator::ProcessMessage(TMessage* m)
 		switch (m->p1) {
 		case (u32)KeyCodes::Up:
 			if (inFocus) {
-				setValue(getValue() + 85);
+				setValue(getValue() + 85 * ratio);
 			}
 			break;
 		case (u32)KeyCodes::Down:
 			if (inFocus) {
-				setValue(getValue() - 85);
+				setValue(getValue() - 85 * ratio);
 			}
 			
 			break;

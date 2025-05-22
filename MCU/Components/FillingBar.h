@@ -6,12 +6,12 @@
 class FillingBar : public TVisualObject
 {
 private:
-	int value = 0;
-	int maxValue = 1800;
-	int limitValue = 1600;
+	float value = 0;
+	int maxValue;
+	int limitValue;
 	u8 colorState;
 public:
-	FillingBar(int x, int y, u8 colorState);
+	FillingBar(int x, int y, u8 colorState, int limitValue, int maxValue);
 	void view() override;
 	const u16 getHeight(void) override;
 	void drawBorder();
@@ -20,8 +20,8 @@ public:
 	void pointerH(unsigned int yPosition);
 	void pointerV();
 	void drawThreshold();
-	void setValue(int newValue);
-	int getValue();
+	void setValue(float newValue);
+	float getValue();
 	void setColorState(u8 newColor);
 };
 

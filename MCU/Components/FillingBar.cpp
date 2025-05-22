@@ -3,13 +3,15 @@
 #include <iostream>
 #include <cmath>
 
-FillingBar::FillingBar(int x, int y, u8 colorState)
+FillingBar::FillingBar(int x, int y, u8 colorState, int limitValue, int maxValue)
 {
 	ElementRect.Left = x + 27;
 	ElementRect.Top = y + 16;
 	ElementRect.Height = 28;
 	ElementRect.Width = 12;
 	this->colorState = colorState;
+	this->limitValue = limitValue;
+	this->maxValue = maxValue;
 }
 
 void FillingBar::view()
@@ -85,7 +87,7 @@ void FillingBar::drawThreshold()
 	TGrahics::fillCheckeredRect(pointLine);
 }
 
-void FillingBar::setValue(int newValue)
+void FillingBar::setValue(float newValue)
 {
 	if (newValue > maxValue) {
 		newValue = maxValue;
@@ -93,11 +95,10 @@ void FillingBar::setValue(int newValue)
 	else if (newValue < 0) {
 		newValue = 0;
 	}
-
 	value = newValue;
 }
 
-int FillingBar::getValue()
+float FillingBar::getValue()
 {
 	return value;
 }
