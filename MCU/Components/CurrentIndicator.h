@@ -11,25 +11,31 @@ private:
 	std::string ref;
 	std::string read;
 	std::string current;
+	//std::string reference;
 	FillingBar fillingBar;
 	u8 colorState;
 	int limitValue;
 	int maxValue;
 	float ratio;
+	float value;
+	float valuePoint;
 
 public: 
 
-	CurrentIndicator(int x, int y, std::string msu, std::string ref, std::string read, u8 colorState, int limitValue, int maxValue, float ratio);
+	CurrentIndicator(int x, int y, std::string msu, std::string ref, std::string read, u8 colorState, int limitValue, int maxValue, float ratio, float value);
 	void view() override;
 	const u16 getHeight(void);
 	void drawBorder(int drawBorderX, int drawBorderY);
+	void valueRef();
 	void displayValue();
 	void changeValue(std::string current);
 	void invertArea();
 	void setValue(float newValue);
 	float getValue();
-	void invertStateColor();
 	void scaleBar();
+	void pointerH();
+	void setValueRef(float newValueRef);
+	float getValueRef();
 	bool ProcessMessage(TMessage* m);
 	std::vector <TVisualObject*> List;
 };

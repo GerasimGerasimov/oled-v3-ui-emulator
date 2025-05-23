@@ -3,7 +3,7 @@
 #include <iostream>
 #include <cmath>
 
-FillingBar::FillingBar(int x, int y, u8 colorState, int limitValue, int maxValue)
+FillingBar::FillingBar(int x, int y, u8 colorState, int limitValue, int maxValue, float value)
 {
 	ElementRect.Left = x + 27;
 	ElementRect.Top = y + 16;
@@ -12,12 +12,13 @@ FillingBar::FillingBar(int x, int y, u8 colorState, int limitValue, int maxValue
 	this->colorState = colorState;
 	this->limitValue = limitValue;
 	this->maxValue = maxValue;
+	this->value = value;
 }
 
 void FillingBar::view()
 {
 	drawBorder();
-	pointerH(10);
+	//pointerH(7);
 	drawThreshold();
 }
 
@@ -37,13 +38,13 @@ void FillingBar::drawBorder()
 	pointerV();
 }
 
-void FillingBar::scaleBarFoam() 
+void FillingBar::scaleBarFoam() //эффект пивной кружки
 {
 	TFillRect foam{ ElementRect.Left + 3, ElementRect.Top + 2, ElementRect.Width - 5, ElementRect.Height - 24, std::fabs(colorState - 1) };
 	TGrahics::fillRect(foam);
 }
 
-void FillingBar::scaleBarValue()
+void FillingBar::scaleBarValue() //шкала 
 {
 	int percent = 0; 
 	int yPosition = 0;
@@ -55,23 +56,22 @@ void FillingBar::scaleBarValue()
 		TGrahics::fillCheckeredRect(fillRect);
 		}
 	else if (value >= limitValue && value <= maxValue) {
-		TFillRect fillRect{ ElementRect.Left + 3, ElementRect.Top + yPosition + 3, ElementRect.Width - 5, ElementRect.Height - 3 - yPosition, std::fabs(colorState - 1) };
+		TFillRect fillRect{ ElementRect.Left + 3, ElementRect.Top + yPosition + 2, ElementRect.Width - 5, ElementRect.Height - 2 - yPosition, std::fabs(colorState - 1) };
 		TGrahics::fillCheckeredRect(fillRect);
 		scaleBarFoam();
 	}
-
 }
 
-void FillingBar::pointerH(unsigned int yPosition)
-{
-	TGrahics::Line(ElementRect.Left - 1, ElementRect.Top + 2 + yPosition, ElementRect.Left - 3, ElementRect.Top + yPosition, std::fabs(colorState - 1));
-	TGrahics::Line(ElementRect.Left - 2, ElementRect.Top + 2 + yPosition, ElementRect.Left - 4, ElementRect.Top + yPosition, std::fabs(colorState - 1));
-	TGrahics::Line(ElementRect.Left - 1, ElementRect.Top + 2 + yPosition, ElementRect.Left - 3, ElementRect.Top + 4 + yPosition, std::fabs(colorState - 1));
-	TGrahics::Line(ElementRect.Left - 2, ElementRect.Top + 2 + yPosition, ElementRect.Left - 4, ElementRect.Top + 4 + yPosition, std::fabs(colorState - 1));
-	TGrahics::Line(ElementRect.Left , ElementRect.Top + 2 + yPosition, ElementRect.Left + 1, ElementRect.Top + 2 + yPosition, std::fabs(colorState - 0));
-}
+//void FillingBar::pointerH(unsigned int yPosition) //стрелка горизонтальная
+//{
+//	TGrahics::Line(ElementRect.Left - 2, ElementRect.Top + 2 + yPosition, ElementRect.Left - 4, ElementRect.Top + yPosition, std::fabs(colorState - 1));
+//	TGrahics::Line(ElementRect.Left - 3, ElementRect.Top + 2 + yPosition, ElementRect.Left - 5, ElementRect.Top + yPosition, std::fabs(colorState - 1));
+//	TGrahics::Line(ElementRect.Left - 2, ElementRect.Top + 2 + yPosition, ElementRect.Left - 4, ElementRect.Top + 4 + yPosition, std::fabs(colorState - 1));
+//	TGrahics::Line(ElementRect.Left - 3, ElementRect.Top + 2 + yPosition, ElementRect.Left - 5, ElementRect.Top + 4 + yPosition, std::fabs(colorState - 1));
+//	TGrahics::Line(ElementRect.Left + 1, ElementRect.Top + 2 + yPosition, ElementRect.Left + 2, ElementRect.Top + 2 + yPosition, std::fabs(colorState - 0));
+//}
 
-void FillingBar::pointerV() 
+void FillingBar::pointerV() //стрелка вертикальная
 {
 	TGrahics::Line(ElementRect.Left + 6, ElementRect.Top + 29, ElementRect.Left + 8, ElementRect.Top + 31, std::fabs(colorState - 1));
 	TGrahics::Line(ElementRect.Left + 6, ElementRect.Top + 30, ElementRect.Left + 8, ElementRect.Top + 32, std::fabs(colorState - 1));
