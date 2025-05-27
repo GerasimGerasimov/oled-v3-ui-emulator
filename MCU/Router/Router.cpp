@@ -6,7 +6,7 @@
 #include "PageHelp.h"
 #include "PageWarnings.h"
 //#include "PageOperateStatus.h"
-//#include "PageBasicSettings.h"
+#include "PageBasicSettings.h"
 //#include "PageBasicProtectionsSettings.h"
 //#include "PageSensors.h"
 #include "PageParameterListEdit.h"
@@ -26,7 +26,7 @@ void TRouter::Init(void) {
     Pages["MainMenu"] = new TPageMainMenu("MainMenu");
     Pages["Alarms"] = new TPageAlarms("Alarms");
     Pages["Warnings"] = new TPageWarnings("Warnings");
-    //Pages["BasicSettings"] = new TPageBasicSettings("BasicSettings"); //Основные уставк
+    Pages["BasicSettings"] = new TPageBasicSettings("BasicSettings"); //Основные уставк
     Pages["EditValue"] = new TPageEditValue("EditValue");
     //Pages["OperateStatus"] = new TPageOperateStatus("OperateStatus"); //Статус работы
     //Pages["BasicProtectionsSettings"] = new TPageBasicProtectionsSettings("BasicProtectionsSettings"); //Защиты. Основные уставки

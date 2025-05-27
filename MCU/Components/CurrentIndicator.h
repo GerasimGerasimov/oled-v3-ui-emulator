@@ -4,6 +4,8 @@
 #include <stm32f4xx.h>
 #include <FillingBar.h>
 
+class TParameter;
+
 class CurrentIndicator : public TVisualObject
 {
 private:
@@ -11,7 +13,6 @@ private:
 	std::string ref;
 	std::string read;
 	std::string current;
-	//std::string reference;
 	FillingBar fillingBar;
 	u8 colorState;
 	int limitValue;
@@ -19,16 +20,17 @@ private:
 	float ratio;
 	float value;
 	float valuePoint;
+	TParameter* obj;
 
 public: 
 
-	CurrentIndicator(int x, int y, std::string msu, std::string ref, std::string read, u8 colorState, int limitValue, int maxValue, float ratio, float value);
+	CurrentIndicator(int x, int y, std::string msu, std::string ref, std::string tag, std::string read, u8 colorState, int limitValue, int maxValue, float ratio);
 	void view() override;
 	const u16 getHeight(void);
 	void drawBorder(int drawBorderX, int drawBorderY);
 	void valueRef();
 	void displayValue();
-	void changeValue(std::string current);
+	void changeValue();
 	void invertArea();
 	void setValue(float newValue);
 	float getValue();
@@ -38,5 +40,6 @@ public:
 	float getValueRef();
 	bool ProcessMessage(TMessage* m);
 	std::vector <TVisualObject*> List;
+	void update(const TSlotHandlerArsg& args, const char* format) override;
 };
 

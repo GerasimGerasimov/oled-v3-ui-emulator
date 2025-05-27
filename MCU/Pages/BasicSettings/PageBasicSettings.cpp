@@ -72,7 +72,9 @@ void TPageBasicSettings::fillPageContainer(void) {
     LabelInit.focused = false;
 
     TagList->AddList({
-
+        new TTagLine("UdischargeMin", "U1/FLASH/UdischargeMin/", LabelInit),
+        new TTagLine("TiReg", "U1/FLASH/TiReg/", LabelInit)
+        
     });
 }
 

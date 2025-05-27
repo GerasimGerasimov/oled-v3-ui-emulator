@@ -7,21 +7,26 @@
 #include <Router.h>
 #include "parameters.h"
 #include <PageHome.h>
+#include "IniResources.h"
+#include <string>
 
-CurrentIndicator::CurrentIndicator(int x, int y, std::string msu, std::string ref, std::string read, u8 colorState, int limitValue, int maxValue, float ratio, float value) : fillingBar(x, y, colorState, limitValue, maxValue, value) {
+CurrentIndicator::CurrentIndicator(int x, int y, std::string msu, std::string ref, std::string tag, std::string read, u8 colorState, int limitValue, int maxValue, float ratio) : fillingBar(x, y, colorState, limitValue, maxValue, value) {
 	ElementRect.Left = x;
 	ElementRect.Top = y;
 	ElementRect.Height = 63;
 	ElementRect.Width = 40;
 	this->msu = msu;
-	this->ref = ref;
 	this->read = read;
+	this->ref = ref;
 	this->colorState = colorState; // состояние цвета
 	this->limitValue = limitValue; // пороговое значение
 	this->maxValue = maxValue; // максимальное значение ref
 	this->ratio = ratio; // соотношение, при котором изменяется шкала
-	this->value = value; // значение ref
-	this->valuePoint = std::stoi(read); 
+	//this->valuePoint = valuePoint; // значение ref
+	obj = (TParameter*)IniResources::getSignalByTag(tag);
+	//std::string temp = obj->getValue();
+	this->valuePoint = std::stof(read);//std::stof(read);
+	
 }
 
 void CurrentIndicator::view()
@@ -30,8 +35,9 @@ void CurrentIndicator::view()
 	drawBorder(ElementRect.Left, ElementRect.Top);
 	displayValue();
 	fillingBar.view();
-	changeValue("");
+	changeValue();
 	fillingBar.scaleBarValue();
+	fillingBar.setValue(value);
 	if (inFocus) {
 		colorState = 1;
 	}
@@ -59,7 +65,6 @@ void CurrentIndicator::drawBorder(int drawBorderX, int drawBorderY) {
 
 void CurrentIndicator::valueRef() //значение ref
 {
-	std::string reference = std::to_string(valuePoint);
 	TGrahics::outTextVertical(ref, ElementRect.Top + 22, ElementRect.Left, std::fabs(colorState - 1), "Verdana12");
 	char s[8];
 	//GIST "%.4X" преобразование числа в hex с заданным кол-вом значащих нулей
@@ -69,8 +74,8 @@ void CurrentIndicator::valueRef() //значение ref
 	else {
 		sprintf(s, "%.0f", getValueRef());
 	}
-	reference = s;
-	TGrahics::outTextVertical(reference, ElementRect.Top + 21, ElementRect.Left + 8, std::fabs(colorState - 1), "Verdana12");
+	read = s;
+	TGrahics::outTextVertical(read, ElementRect.Top + 21, ElementRect.Left + 8, std::fabs(colorState - 1), "Verdana12");
 	pointerH();
 }
 void CurrentIndicator::displayValue() //I/U ref
@@ -78,36 +83,35 @@ void CurrentIndicator::displayValue() //I/U ref
 	TGrahics::outText(msu, ElementRect.Left + 3, ElementRect.Top + 2, std::fabs(colorState - 1), "Verdana12");
 }
 
-void CurrentIndicator::changeValue(std::string current) //вывод значения индекатора
+void CurrentIndicator::changeValue() //вывод значения индекатора
 {
-
 	if (fillingBar.getValue() > limitValue) {
 		TFillRect outerBorder{ ElementRect.Left + 6, ElementRect.Top + 50, 30, 9, 1 };
 		TGrahics::fillRect(outerBorder);
-		char s[8];
-		//GIST "%.4X" преобразование числа в hex с заданным кол-вом значащих нулей
-		if (fillingBar.getValue() < 100) {
-			sprintf(s, "%.1f", getValue());
-		}
-		else {
-			sprintf(s, "%.0f", getValue());
-		}
-		current = s;
+		//char s[8];
+		////GIST "%.4X" преобразование числа в hex с заданным кол-вом значащих нулей
+		//if (fillingBar.getValue() < 100) {
+		//	sprintf(s, "%.1f", getValue());
+		//}
+		//else {
+		//	sprintf(s, "%.0f", getValue());
+		//}
+		//current = s;
 		TGrahics::outText(current, ElementRect.Left + 7, ElementRect.Top + 50, 0, "Verdana12");
 	}
 	else {
 		TFillRect outerBorder{ ElementRect.Left + 6, ElementRect.Top + 50, 30, 9, 0 };
 		TGrahics::fillRect(outerBorder);
-		char s[8];
+		//char s[8];
 		//GIST "%.4X" преобразование числа в hex с заданным кол-вом значащих нулей
-		if (fillingBar.getValue() < 100) {
+		/*if (fillingBar.getValue() < 100) {
 			sprintf(s, "%.1f", getValue());
 		}
 		else {
 			sprintf(s, "%.0f", getValue());
 		}
-		current = s;
-		TGrahics::outText( current, ElementRect.Left + 7, ElementRect.Top + 50, 1, "Verdana12");
+		current = s;*/
+		TGrahics::outText(current, ElementRect.Left + 7, ElementRect.Top + 50, 1, "Verdana12");
 	}
 }
 
@@ -170,12 +174,6 @@ bool CurrentIndicator::ProcessMessage(TMessage* m)
 				//setValue(getValue() + 85 * ratio);
 				setValueRef(getValueRef() + 85 * ratio);
 			}
-			//if ((u32)KeyCodes::F3) {
-			//	if (inFocus) {
-			//		setValue(getValue() + 85 * ratio);
-			//		//setValueRef(getValueRef() + 85 * ratio);
-			//	}
-			//}
 			break;
 		case (u32)KeyCodes::Down:
 			if (inFocus) {
@@ -183,6 +181,14 @@ bool CurrentIndicator::ProcessMessage(TMessage* m)
 				setValueRef(getValueRef() - 85 * ratio);
 			}
 			
+			break;
+		case (u32)KeyCodes::F1:
+			if (inFocus) {
+				if (fillingBar.getValue() < value || fillingBar.getValue() > value) {
+					fillingBar.setValue(value);
+				}
+				setValue(getValue());
+			}
 			break;
 		}
 	}
@@ -192,3 +198,33 @@ bool CurrentIndicator::ProcessMessage(TMessage* m)
 	return false;
 	}
 }
+
+void CurrentIndicator::update(const TSlotHandlerArsg& args, const char* format)
+{
+	current = obj->getValue(args, "");
+	try {
+		//char s[8];
+		////GIST "%.4X" преобразование числа в hex с заданным кол-вом значащих нулей
+		/*if (getValueRef() < 100) {
+			sprintf(s, "%.1f", getValueRef());
+		}
+		else {
+			sprintf(s, "%.0f", getValueRef());
+		}*/
+		//read = s;
+		value = std::stof(current);
+		valuePoint = std::stof(read);
+		//read == "unknown";
+		//valuePoint = 0;
+		//current = std::to_string(valuePoint);
+	}
+	catch (...)  {
+		value = 0;
+		valuePoint = 0;
+		//valuePoint = std::stof(read);
+		read = "0.0";
+		current = "**.*";
+	}
+	
+}
+
