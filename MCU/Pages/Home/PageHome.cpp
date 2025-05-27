@@ -10,7 +10,6 @@ void TPageHome::view() {
     currentIndicator2.view();
     operatingMode.view();
     groupIndicators.view();
-    //currentIndicator1.scaleBar();
     currentIndicator2.scaleBar();
 }
 void TPageHome::onOpen() {
@@ -19,14 +18,11 @@ void TPageHome::onOpen() {
     TGrahics::Line(41, 0, 41, 63, 1);
     TGrahics::Line(82, 0, 82, 63, 1);
     TGrahics::Line(99, 0, 99, 63, 1);
-   
-    //TGrahics::outTextVertical("1200", x + 21, y + 8, std::fabs(colorState - 1), "Verdana12");
-    
-    SubscriberID = HandlerSubscribers::set("U1/RAM/", [this](TSlotHandlerArsg args) { SlotUpdate(args); });
+    SubscriberID = HandlerSubscribers::set("U1/FLASH/", [this](TSlotHandlerArsg args) { SlotUpdate(args); });
 }
 
 void TPageHome::startToClose() {
-    HandlerSubscribers::remove("U1/RAM/", SubscriberID);
+    HandlerSubscribers::remove("U1/FLASH/", SubscriberID);
     TagList->Clear();
     isOpen = false;
 }
@@ -38,18 +34,17 @@ bool TPageHome::ProcessMessage(TMessage* m) {
         case (u32)EventSrc::KEYBOARD: {
             switch (m->p1) {
                 case (u32)KeyCodes::ESC:
-                    //TRouter::setTask({ false, "MainMenu", nullptr });
-                    currentIndicator1.invertStateColor();
+                    TRouter::setTask({ false, "MainMenu", nullptr });
                     
                     break;
-                case (u32)KeyCodes::F1:
+                /*case (u32)KeyCodes::F1:
                     e = getSignalOfFocusedChild();
                     if (e) {
                         ISignal* p = IniResources::getSignalByTag(((TTagLine*)(e))->Tag);
                         TRouter::PageValueEditEntryData.backPage = Name;
                         TRouter::setTask({ false, "Help", p });
                     }
-                    break;
+                    break;*/
                 case (u32)KeyCodes::ENT:
                     e = getSignalOfFocusedChild();
                     if (e) {
@@ -65,8 +60,6 @@ bool TPageHome::ProcessMessage(TMessage* m) {
                     if (currentComponent < container.size() - 1) {
                         currentComponent++;
                         container[currentComponent]->inFocus = true;
-
-                        //container[currentComponent]->invertStateColor();
                     }
                     else {
                         container[currentComponent]->inFocus = true;
@@ -83,7 +76,6 @@ bool TPageHome::ProcessMessage(TMessage* m) {
                         container[currentComponent]->inFocus = true;
                     }
                    break;
-
             }
         }
     }
@@ -119,10 +111,10 @@ void TPageHome::fillPageContainer(void) {
 }
 
 TPageHome::TPageHome(std::string Name) :TPage(Name), 
-currentIndicator1(0, 0, "I, mA", "Iref", "1600", 0, 1600, 1800, 1),
-currentIndicator2(42, 0, "U, kV", "Uref", "79,9",  0, 80, 100, 0.047),
-operatingMode(83, 0, 0), 
-groupIndicators(100, 0, 0)
+    currentIndicator1(0, 0, "I, mA", "Iref", "U1/FLASH/UdischargeMin/", "1200", 0, 1600, 1800, 1),
+    currentIndicator2(42, 0, "U, kV", "Uref", "U1/FLASH/TiReg/", "79.9",0, 80, 100, 0.035),
+    operatingMode(83, 0, 0), 
+    groupIndicators(100, 0, 0)
 {
     container = { &currentIndicator1, &currentIndicator2, &operatingMode };
     TVerticalContainerProps props = { false };
@@ -132,7 +124,7 @@ groupIndicators(100, 0, 0)
 };
 
 void TPageHome::SlotUpdate(TSlotHandlerArsg args) {
-    for (auto& e : TagList->List) {
+    for (auto& e : container) {
         e->update(args, "");
     }
     Msg::send_message((u32)EventSrc::REPAINT, 0, 0);
