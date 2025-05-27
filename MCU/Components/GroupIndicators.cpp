@@ -7,19 +7,19 @@ GroupIndicators::GroupIndicators(int x, int y, u8 colorState) {
 	ElementRect.Left = x;
 	ElementRect.Top = y;
 	ElementRect.Height = 63;
-	ElementRect.Width = 17;
+	ElementRect.Width = 29;
 	this->colorState = colorState;
 }
 
 void GroupIndicators::view() 
 {
+	TFillRect background{ ElementRect.Left, ElementRect.Top, ElementRect.Width, ElementRect.Height, std::fabs(colorState - 0) };
+	TGrahics::fillRect(background);
 	TGrahics::Line(ElementRect.Left, ElementRect.Top + 28, ElementRect.Left + 26, ElementRect.Top + 28, std::fabs(colorState - 1));
 	TGrahics::Line(ElementRect.Left, ElementRect.Top + 46, ElementRect.Left + 26, ElementRect.Top + 46, std::fabs(colorState - 1));
 	outValue("100");
 	sparksValue("200");
-	stateValue('o');
-	
-
+	stateValue('p');
 }
 const u16 GroupIndicators::getHeight(void)
 {
@@ -46,7 +46,6 @@ void GroupIndicators::stateValue(char mode)
 		u16 ratio = ElementRect.Left + ((i + 1) * 6);
 		TGrahics::putChar(sparksValue[i], ratio, ElementRect.Top + 52, sparksValue[i] == mode ? 1 : 0);
 	}
-	
 	point();
 }
 void GroupIndicators::point() 
