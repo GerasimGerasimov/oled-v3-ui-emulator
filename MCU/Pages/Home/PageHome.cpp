@@ -10,7 +10,7 @@ void TPageHome::view() {
     currentIndicator2.view();
     operatingMode.view();
     groupIndicators.view();
-    currentIndicator2.scaleBar();
+    //currentIndicator2.scaleBar();
 }
 void TPageHome::onOpen() {
     //fillPageContainer();
@@ -18,11 +18,13 @@ void TPageHome::onOpen() {
     TGrahics::Line(41, 0, 41, 63, 1);
     TGrahics::Line(82, 0, 82, 63, 1);
     TGrahics::Line(99, 0, 99, 63, 1);
-    SubscriberID = HandlerSubscribers::set("U1/FLASH/", [this](TSlotHandlerArsg args) { SlotUpdate(args); });
+    SubscriberID = HandlerSubscribers::set("U1/RAM/", [this](TSlotHandlerArsg args) { SlotUpdate(args); });
+    //SubIDFlash = HandlerSubscribers::set("U1/FLASH/", [this](TSlotHandlerArsg args) { SlotUpdate(args); });
 }
 
 void TPageHome::startToClose() {
-    HandlerSubscribers::remove("U1/FLASH/", SubscriberID);
+    HandlerSubscribers::remove("U1/RAM/", SubscriberID);
+    //HandlerSubscribers::remove("U1/FLASH", SubIDFlash);
     TagList->Clear();
     isOpen = false;
 }
@@ -111,12 +113,12 @@ void TPageHome::fillPageContainer(void) {
 }
 
 TPageHome::TPageHome(std::string Name) :TPage(Name), 
-    currentIndicator1(0, 0, "I, mA", "Iref", "U1/FLASH/UdischargeMin/", "1200", 0, 1600, 1800, 1),
-    currentIndicator2(42, 0, "U, kV", "Uref", "U1/FLASH/TiReg/", "79.9",0, 80, 100, 0.035),
+    currentIndicator1(0, 0, "I, mA", "Iref", "U1/RAM/IoutAve/", "U1/RAM/Iref/", 0, "U1/RAM/IvacUp_2/", "U1/RAM/RefInt/", 1),
+    currentIndicator2(42, 0, "U, kV", "Uref", "U1/RAM/UoutAve/", "U1/RAM/Uref/",0, "U1/RAM/IvacUp_1/", "U1/RAM/RefInt/", 0.035),
     operatingMode(83, 0, 0), 
-    groupIndicators(100, 0, 0)
+    groupIndicators(100, 0, 0, "U1/RAM/Out/", "U1/RAM/SparkFrq/")
 {
-    container = { &currentIndicator1, &currentIndicator2, &operatingMode };
+    container = { &currentIndicator1, &currentIndicator2, &operatingMode};
     TVerticalContainerProps props = { false };
     TagList = new TVerticalContainer(props, {});
     AddList({ TagList });
@@ -127,6 +129,7 @@ void TPageHome::SlotUpdate(TSlotHandlerArsg args) {
     for (auto& e : container) {
         e->update(args, "");
     }
+    groupIndicators.update(args, "");
     Msg::send_message((u32)EventSrc::REPAINT, 0, 0);
 }
 

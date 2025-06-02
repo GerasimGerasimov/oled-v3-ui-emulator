@@ -5,26 +5,38 @@
 #include <FillingBar.h>
 
 class TParameter;
+//class FillingBar;
 
 class CurrentIndicator : public TVisualObject
 {
 private:
 	std::string msu;
 	std::string ref;
-	std::string read;
+	std::string refValue;
 	std::string current;
+	std::string maxValue;
+	std::string limitValue;
+
 	FillingBar fillingBar;
+
 	u8 colorState;
-	int limitValue;
-	int maxValue;
+
+	int limitValueInt;
+	int maxValueInt;
+	int max;
+
 	float ratio;
-	float value;
-	float valuePoint;
-	TParameter* obj;
+	float value;        //хранятся значение из I/U outAve
+	float valuePoint;   //хранятся значения из I/U ref
+
+	TParameter* obj;    //I/U outAve
+	TParameter* objRef; //I/U ref
+	TParameter* refMax; //I/U max
+	TParameter* objLimit; // I/U out Nominal
 
 public: 
 
-	CurrentIndicator(int x, int y, std::string msu, std::string ref, std::string tag, std::string read, u8 colorState, int limitValue, int maxValue, float ratio);
+	CurrentIndicator(int x, int y, std::string msu, std::string ref, std::string tag, std::string refValue, u8 colorState, std::string limitValue, std::string maxValue, float ratio);
 	void view() override;
 	const u16 getHeight(void);
 	void drawBorder(int drawBorderX, int drawBorderY);
@@ -38,6 +50,8 @@ public:
 	void pointerH();
 	void setValueRef(float newValueRef);
 	float getValueRef();
+	void setMaxValue(int newMaxValue);
+	int getMaxValue();
 	bool ProcessMessage(TMessage* m);
 	std::vector <TVisualObject*> List;
 	void update(const TSlotHandlerArsg& args, const char* format) override;

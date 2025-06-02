@@ -39,7 +39,7 @@ void ComMasterDriver::open() {
     DCB dcb;
     COMMTIMEOUTS CommTimeouts;
     DWORD fSuccess = 0;
-    LPCTSTR pcCommPort = TEXT("COM3");
+    LPCTSTR pcCommPort = TEXT("COM4");
 
 	hCom = CreateFile(pcCommPort,
         GENERIC_READ | GENERIC_WRITE,
@@ -85,7 +85,7 @@ void ComMasterDriver::create_com_thread(void) {
         0,            // размер стека используется по умолчанию
         com_thread,   // функция потока
         &dwThrdParam, // аргумент функции потока
-        CREATE_SUSPENDED,            // флажки создания используются по умолчанию
+        CREATE_SUSPENDED, // флажки создания используются по умолчанию
         &dwComThreadId  // возвращает идентификатор потока
     );
 }

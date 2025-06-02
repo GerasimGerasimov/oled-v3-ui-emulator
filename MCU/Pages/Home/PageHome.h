@@ -27,6 +27,7 @@ private:
     void SlotUpdate(TSlotHandlerArsg args);
     TVisualObject* getSignalOfFocusedChild();
     int SubscriberID = 0;
+    int SubIDFlash = 0;
     CurrentIndicator currentIndicator1;
     CurrentIndicator currentIndicator2;
     OperatingMode operatingMode;

@@ -6,12 +6,18 @@
 class FillingBar : public TVisualObject
 {
 private:
+	std::string msu;
+	std::string ref;
+	std::string refValue;
+	std::string tag;
 	float value;
-	int maxValue;
+	float ratio;
+	int maxValueInt;
 	int limitValue;
 	u8 colorState;
+
 public:
-	FillingBar(int x, int y, u8 colorState, int limitValue, int maxValue, float value);
+	FillingBar(int x, int y, u8 colorState);
 	void view() override;
 	const u16 getHeight(void) override;
 	void drawBorder();
@@ -23,5 +29,8 @@ public:
 	void setValue(float newValue);
 	float getValue();
 	void setColorState(u8 newColor);
+	void setMaxValue(int newMaxValue);
+	int getMaxValue();
+	void setLimitValue(int newLimitValue);
 };
 
