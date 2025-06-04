@@ -9,8 +9,10 @@
 #include <PageHome.h>
 #include "IniResources.h"
 #include <string>
+#include <AppModbusSlave.h>
+#include "Slot.h"
 
-CurrentIndicator::CurrentIndicator(int x, int y, std::string msu, std::string ref, 
+CurrentIndicator::CurrentIndicator(int x, int y, std::string msu, std::string ref,
 	std::string tag, std::string refValue, u8 colorState, std::string limitValue, std::string maxValue, float ratio)
 	: fillingBar(x, y, colorState)
 {
@@ -22,14 +24,11 @@ CurrentIndicator::CurrentIndicator(int x, int y, std::string msu, std::string re
 	this->ref = ref;
 	this->colorState = colorState; // состояние цвета
 	this->ratio = ratio; // соотношение, при котором изменяется шкала
-	//this->valuePoint = valuePoint; // значение ref
 	obj = (TParameter*)IniResources::getSignalByTag(tag);
 	objRef = (TParameter*)IniResources::getSignalByTag(refValue);
 	refMax = (TParameter*)IniResources::getSignalByTag(maxValue);
 	objLimit = (TParameter*)IniResources::getSignalByTag(limitValue);
-	//std::string temp = obj->getValue();
-	//this->valuePoint = std::stof(read);//std::stof(read);
-	
+	nameRef = refValue;
 }
 
 void CurrentIndicator::view()
@@ -48,6 +47,7 @@ void CurrentIndicator::view()
 		colorState = 0;
 	}
 	valueRef();
+	pointerH();
 }
 
 const u16 CurrentIndicator::getHeight(void)
@@ -66,12 +66,17 @@ void CurrentIndicator::drawBorder(int drawBorderX, int drawBorderY) {
 }
 
 
-void CurrentIndicator::update(const TSlotHandlerArsg& args, const char* format)
+void CurrentIndicator::updateObj(const char* sector, const TSlotHandlerArsg& args, const char* format)
 {
-	current = obj->getValue(args, "");
-	refValue = objRef->getValue(args, "");
-	maxValue = refMax->getValue(args, "");
-	limitValue = objLimit->getValue(args, "");
+	if (sector == "/RAM") {
+		current = obj->getValue(args, "");
+		
+	}
+	else {
+		refValue = objRef->getValue(args, "");
+		limitValue = objLimit->getValue(args, "");
+		maxValue = refMax->getValue(args, "");
+	}
 
 	try {
 		value = std::stof(current);
@@ -86,7 +91,7 @@ void CurrentIndicator::update(const TSlotHandlerArsg& args, const char* format)
 			sprintf(s, "%.0f", value);
 		}
 		current = s;
-
+		
 		valuePoint = std::stof(refValue);
 		if (valuePoint < 100) {
 			sprintf(s, "%.1f", valuePoint);
@@ -94,8 +99,8 @@ void CurrentIndicator::update(const TSlotHandlerArsg& args, const char* format)
 		else {
 			sprintf(s, "%.0f", valuePoint);
 		}
+		
 		refValue = s;
-
 		maxValueInt = std::stof(maxValue);
 		fillingBar.setMaxValue(maxValueInt);
 
@@ -107,19 +112,19 @@ void CurrentIndicator::update(const TSlotHandlerArsg& args, const char* format)
 		fillingBar.setValue(value);
 		valuePoint = 0;
 		maxValueInt = 0;
-
+		valuePoint = 0;
 		refValue = "0.0";
 		current = "**.*";
-		//maxValue = "**.*";
-	}
 
+	}
 }
 
 void CurrentIndicator::valueRef() //значение ref
 {
 	TGrahics::outTextVertical(ref, ElementRect.Top + 22, ElementRect.Left, abs(colorState - 1), "Verdana12");
+	//refValue = std::to_string(valuePoint);
 	TGrahics::outTextVertical(refValue, ElementRect.Top + 21, ElementRect.Left + 8, abs(colorState - 1), "Verdana12");
-	pointerH();
+	
 }
 void CurrentIndicator::displayValue() //I/U ref
 {
@@ -134,7 +139,7 @@ void CurrentIndicator::changeValue() //вывод значения индекатора
 		TGrahics::outTextRightToLeft(current, ElementRect.Left + 17, ElementRect.Top + 50, 0, "Verdana12");
 	}
 	else {
-		TFillRect outerBorder{ ElementRect.Left + 6, ElementRect.Top + 50, 30, 9, 0 };
+		TFillRect outerBorder{ ElementRect.Left + 9, ElementRect.Top + 50, 30, 9, 0 };
 		TGrahics::fillRect(outerBorder);
 		TGrahics::outText(current, ElementRect.Left + 12, ElementRect.Top + 50, 1, "Verdana12");
 	}
@@ -169,22 +174,10 @@ void CurrentIndicator::setValueRef(float newValueRef)
 		newValueRef = 0;
 	}
 	valuePoint = newValueRef;
-
 }
 
 float CurrentIndicator::getValueRef()
 {
-	
-	refValue = std::to_string(valuePoint);
-
-	char s[8];
-	if (valuePoint < 100) {
-		sprintf(s, "%.1f", valuePoint);
-	}
-	else {
-		sprintf(s, "%.0f", valuePoint);
-	}
-	refValue = s;
 	return valuePoint;
 }
 
@@ -199,31 +192,22 @@ int CurrentIndicator::getMaxValue()
 
 void CurrentIndicator::pointerH() //стрелка горизонтальная 
 {
-	int percent = 0;
-	int yPosition = 0;
 	percent = (valuePoint * 100) / limitValueInt;
-	yPosition = 25 - (percent * 25) / 100;
+	
 	if (valuePoint < limitValueInt) {
-		TGrahics::Line(ElementRect.Left + 25, ElementRect.Top + 18 + yPosition, ElementRect.Left + 23, ElementRect.Top + 16 + yPosition, abs(colorState - 1));
-		TGrahics::Line(ElementRect.Left + 24, ElementRect.Top + 18 + yPosition, ElementRect.Left + 22, ElementRect.Top + 16 + yPosition, abs(colorState - 1));
-		TGrahics::Line(ElementRect.Left + 25, ElementRect.Top + 18 + yPosition, ElementRect.Left + 23, ElementRect.Top + 20 + yPosition, abs(colorState - 1));
-		TGrahics::Line(ElementRect.Left + 24, ElementRect.Top + 18 + yPosition, ElementRect.Left + 22, ElementRect.Top + 20 + yPosition, abs(colorState - 1));
-		TGrahics::Line(ElementRect.Left + 28, ElementRect.Top + 18 + yPosition, ElementRect.Left + 29, ElementRect.Top + 18 + yPosition, abs(colorState - 0));
+		yPosition = 25 - (percent * 25) / 100;
 	}
 	else if (valuePoint > limitValueInt) {
-		TGrahics::Line(ElementRect.Left + 25, ElementRect.Top + 22, ElementRect.Left + 23, ElementRect.Top + 20, abs(colorState - 1));
-		TGrahics::Line(ElementRect.Left + 24, ElementRect.Top + 22, ElementRect.Left + 22, ElementRect.Top + 20, abs(colorState - 1));
-		TGrahics::Line(ElementRect.Left + 25, ElementRect.Top + 22, ElementRect.Left + 23, ElementRect.Top + 24, abs(colorState - 1));
-		TGrahics::Line(ElementRect.Left + 24, ElementRect.Top + 22, ElementRect.Left + 22, ElementRect.Top + 24, abs(colorState - 1));
-		TGrahics::Line(ElementRect.Left + 28, ElementRect.Top + 22, ElementRect.Left + 29, ElementRect.Top + 22, abs(colorState - 0));
+		yPosition = 0;
 	}
 	else {
-		TGrahics::Line(ElementRect.Left + 25, ElementRect.Top + 43, ElementRect.Left + 23, ElementRect.Top + 41, abs(colorState - 1));
-		TGrahics::Line(ElementRect.Left + 24, ElementRect.Top + 43, ElementRect.Left + 22, ElementRect.Top + 41, abs(colorState - 1));
-		TGrahics::Line(ElementRect.Left + 25, ElementRect.Top + 43, ElementRect.Left + 23, ElementRect.Top + 45, abs(colorState - 1));
-		TGrahics::Line(ElementRect.Left + 24, ElementRect.Top + 43, ElementRect.Left + 22, ElementRect.Top + 45, abs(colorState - 1));
-		TGrahics::Line(ElementRect.Left + 28, ElementRect.Top + 43, ElementRect.Left + 29, ElementRect.Top + 43, abs(colorState - 0));
+		yPosition = 25;
 	}
+	TGrahics::Line(ElementRect.Left + 25, ElementRect.Top + 18 + yPosition, ElementRect.Left + 23, ElementRect.Top + 16 + yPosition, abs(colorState - 1));
+	TGrahics::Line(ElementRect.Left + 24, ElementRect.Top + 18 + yPosition, ElementRect.Left + 22, ElementRect.Top + 16 + yPosition, abs(colorState - 1));
+	TGrahics::Line(ElementRect.Left + 25, ElementRect.Top + 18 + yPosition, ElementRect.Left + 23, ElementRect.Top + 20 + yPosition, abs(colorState - 1));
+	TGrahics::Line(ElementRect.Left + 24, ElementRect.Top + 18 + yPosition, ElementRect.Left + 22, ElementRect.Top + 20 + yPosition, abs(colorState - 1));
+	TGrahics::Line(ElementRect.Left + 28, ElementRect.Top + 18 + yPosition, ElementRect.Left + 29, ElementRect.Top + 18 + yPosition, abs(colorState - 0));
 } 
 
 bool CurrentIndicator::ProcessMessage(TMessage* m)
@@ -233,25 +217,14 @@ bool CurrentIndicator::ProcessMessage(TMessage* m)
 		switch (m->p1) {
 		case (u32)KeyCodes::Up:
 			if (inFocus) {
-				//setValue(getValue() + 85 * ratio);
-				setValueRef(getValueRef() + 10 * ratio);
-
+				increase(10);
 			}
 			break;
 		case (u32)KeyCodes::Down:
 			if (inFocus) {
-				//setValue(getValue() - 85 * ratio);
-				setValueRef(getValueRef() - 10 * ratio);
+				decrease(10);
 			}
 			
-			break;
-		case (u32)KeyCodes::F1:
-			if (inFocus) {
-				if (fillingBar.getValue() < valuePoint || fillingBar.getValue() > valuePoint) {
-					fillingBar.setValue(valuePoint);
-				}
-				setValue(getValue());
-			}
 			break;
 		}
 	}
@@ -262,4 +235,66 @@ bool CurrentIndicator::ProcessMessage(TMessage* m)
 	}
 }
 
+void CurrentIndicator::decrease(float step) {
+	/*получить текущее значение Iref, вычесть из него 1A или 5А (в зависимости
+	 однократное это нажатие или автоматический повтор)и передать на EFi
+	значение может быть не числовое а "**.**" когда нет связи, значит
+	1) получить значение 2) убедится что числовое 3) произвести над ним вычисления
+	4) превратить  в строку 5) отправить */
+		
+	valuePoint = valuePoint - step * ratio;
+		char s[8];
+		if (valuePoint < 100) {
+			sprintf(s, "%.1f", valuePoint);
+		}
+		else {
+			sprintf(s, "%.0f", valuePoint);
+		}
+		refValue = s;
+		sendCmd(refValue);
 
+}
+
+void CurrentIndicator::increase(float step) {
+	/*получить текущее значение Iref, вычесть из него 1A или 5А (в зависимости
+	 однократное это нажатие или автоматический повтор)и передать на EFi
+	значение может быть не числовое а "**.**" когда нет связи, значит
+	1) получить значение 2) убедится что числовое 3) произвести над ним вычисления
+	4) превратить  в строку 5) отправить */
+
+		valuePoint = valuePoint + step * ratio;
+		//refValue = std::to_string(valuePoint);
+		char s[8];
+		if (valuePoint < 100) {
+			sprintf(s, "%.1f", valuePoint);
+		}
+		else {
+			sprintf(s, "%.0f", valuePoint);
+		}
+		refValue = s;
+	sendCmd(refValue);
+}
+
+void CurrentIndicator::sendCmd(std::string& refValue) {
+	std::string tag;
+	if (nameRef == "U1/FLASH/Iref/") {
+		tag = "U1/FLASH/Iref/";
+	}
+	else {
+		tag = "U1/FLASH/Uref/";
+	}
+	/*TODO осталос решить куда записывать Iref
+	  Если в RAM то надо переписывать прошивку Efi так как в NormalMode сейчас задание идёт из копии Уставок в RAM
+		   и поэтому во время работы задание от кнопок меняться не будет
+	  Если Flash - тогда задание меняется во время работы (записываются в Копию Уставок а от туда попадает в Регулятор и отображается в RAM)
+		   но при остановке, то что Юзер на задавал, будет записано в реальный Flash
+	*/
+	//TryCount = 1;
+	cmdSendInProcess = true;
+	ModbusSlave::setValue(tag, refValue, [this](Slot* slot, u8* reply) { SlotUpdate(slot, reply); });
+}
+
+void CurrentIndicator::SlotUpdate(Slot* slot, u8* reply) {
+	slot->Flags |= (u16)SlotStateFlags::SKIP_SLOT;
+	cmdSendInProcess = false;
+}

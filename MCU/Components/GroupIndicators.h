@@ -13,6 +13,7 @@ private:
 	float outVal;
 	TParameter* objOut;
 	TParameter* objSparks;
+	char mode;
 
 public:
 
@@ -21,7 +22,8 @@ public:
 	const u16 getHeight(void);
 	void outValue();
 	void sparksValue();
-	void stateValue(char mode);
+	void stateValue();
+	void setStateValue(int newMode);
 	void point();
 	void invertOut();
 	void update(const TSlotHandlerArsg& args, const char* format) override;

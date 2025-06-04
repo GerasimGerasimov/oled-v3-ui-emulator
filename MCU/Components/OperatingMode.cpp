@@ -16,11 +16,11 @@ void  OperatingMode::view()
 	background();
 	drawBorder();
 	hidingBorder();
-	TGrahics::outText("pp", ElementRect.Left + 2, ElementRect.Top, std::fabs(colorState - 1), "Verdana12");
-	TGrahics::outText("í", ElementRect.Left + 4, ElementRect.Top + 8, std::fabs(colorState - 1), "MSSansSerifBold14");
-	TGrahics::outText("î", ElementRect.Left + 4, ElementRect.Top + 21, std::fabs(colorState - 1), "MSSansSerifBold14");
-	TGrahics::outText("â", ElementRect.Left + 4, ElementRect.Top + 34, std::fabs(colorState - 1), "MSSansSerifBold14");
-	TGrahics::outText("ò", ElementRect.Left + 4, ElementRect.Top + 47, std::fabs(colorState - 1), "MSSansSerifBold14");
+	TGrahics::outText("pp", ElementRect.Left + 2, ElementRect.Top, abs(colorState - 1), "Verdana12");
+	TGrahics::outText("í", ElementRect.Left + 4, ElementRect.Top + 8, abs(colorState - 1), "MSSansSerifBold14");
+	TGrahics::outText("î", ElementRect.Left + 4, ElementRect.Top + 21, abs(colorState - 1), "MSSansSerifBold14");
+	TGrahics::outText("â", ElementRect.Left + 4, ElementRect.Top + 34, abs(colorState - 1), "MSSansSerifBold14");
+	TGrahics::outText("ò", ElementRect.Left + 4, ElementRect.Top + 47, abs(colorState - 1), "MSSansSerifBold14");
 	
 	if (inFocus) {
 		colorState = 1;
@@ -37,12 +37,12 @@ const u16 OperatingMode::getHeight(void)
 }
 
 void OperatingMode::background() {
-	TFillRect drawBorder{ ElementRect.Left, ElementRect.Top, ElementRect.Width -1, ElementRect.Height, std::fabs(colorState - 0) };
+	TFillRect drawBorder{ ElementRect.Left, ElementRect.Top, ElementRect.Width -1, ElementRect.Height, abs(colorState - 0) };
 	TGrahics::fillRect(drawBorder);
 }
 
 void OperatingMode::drawBorder() {
-	TFillRect drawBorder{ ElementRect.Left + 1, ElementRect.Top + 12 + (yPosition * 13), 13, 10, std::fabs(colorState - 1)};
+	TFillRect drawBorder{ ElementRect.Left + 1, ElementRect.Top + 12 + (yPosition * 13), 13, 10, abs(colorState - 1)};
 	TGrahics::drawBorder(drawBorder);
 }
 void OperatingMode::stateValue(u8 newColor)
@@ -60,7 +60,7 @@ void OperatingMode::setYPosition(unsigned int newYPosition)
 	yPosition = newYPosition;
 }
 void OperatingMode::hidingBorder() {
-	TFillRect drawB{ ElementRect.Top + 83, ElementRect.Left - 20 + (yPosition * 13), 13, 10, std::fabs(colorState - 0) };
+	TFillRect drawB{ ElementRect.Top + 83, ElementRect.Left - 20 + (yPosition * 13), 13, 10, abs(colorState - 0) };
 	TGrahics::drawBorder(drawB);
 }
 

@@ -3,9 +3,10 @@
 #include "common.h"
 #include <stm32f4xx.h>
 #include <FillingBar.h>
+#include <Label.h>
 
 class TParameter;
-//class FillingBar;
+class Slot;
 
 class CurrentIndicator : public TVisualObject
 {
@@ -16,16 +17,18 @@ private:
 	std::string current;
 	std::string maxValue;
 	std::string limitValue;
+	std::string nameRef;
 
 	FillingBar fillingBar;
 
 	u8 colorState;
 
-	int limitValueInt;
-	int maxValueInt;
-	int max;
+	int limitValueInt;  //I/U outNominal
+	int maxValueInt;    //IOutMax
+	int percent;
+	int yPosition;
 
-	float ratio;
+	float ratio;		//соотношение, при котором рисуется шкала FillingBar
 	float value;        //хранятся значение из I/U outAve
 	float valuePoint;   //хранятся значения из I/U ref
 
@@ -33,6 +36,10 @@ private:
 	TParameter* objRef; //I/U ref
 	TParameter* refMax; //I/U max
 	TParameter* objLimit; // I/U out Nominal
+	
+	bool cmdSendInProcess;
+	bool changeUref = false;
+	//u16 TryCount;
 
 public: 
 
@@ -53,7 +60,11 @@ public:
 	void setMaxValue(int newMaxValue);
 	int getMaxValue();
 	bool ProcessMessage(TMessage* m);
+	void decrease(float step);
+	void sendCmd(std::string& value);
+	void SlotUpdate(Slot* slot, u8* reply);
+	void increase(float step);
 	std::vector <TVisualObject*> List;
-	void update(const TSlotHandlerArsg& args, const char* format) override;
+	void updateObj(const char* sector, const TSlotHandlerArsg& args, const char* format);
 };
 
