@@ -1,7 +1,6 @@
 #include "FillingBar.h"
 #include "graphics.h"
-#include <iostream>
-#include <cmath>
+#include <iostream>#include <cmath>
 //#include <arm_math.h>
 #include <math.h>
 
@@ -12,16 +11,12 @@ FillingBar::FillingBar(int x, int y, u8 colorState)
 	ElementRect.Height = 28;
 	ElementRect.Width = 12;
 	this->colorState = colorState;
-	//this->limitValue = limitValue;
-	//this->maxValueInt = maxValueInt;
 	this->value = value;
-
 }
 
 void FillingBar::view()
 {
 	drawBorder();
-	//pointerH(7);
 	drawThreshold();
 }
 
@@ -36,8 +31,6 @@ void FillingBar::drawBorder()
 	TGrahics::fillRect(outerBorder);
 	TFillRect intBorder{ ElementRect.Left + 2, ElementRect.Top + 1, ElementRect.Width - 3, ElementRect.Height - 1, abs(colorState - 0) };
 	TGrahics::fillRect(intBorder);
-	//TFillRect pointLine{ ElementRect.Left + 3, ElementRect.Top + 6, ElementRect.Width - 4, ElementRect.Height - 27, std::fabs(colorState - 0) };
-	//TGrahics::fillCheckeredRect(pointLine);
 	pointerV();
 }
 
@@ -46,15 +39,6 @@ void FillingBar::scaleBarFoam() //эффект пивной кружки
 	TFillRect foam{ ElementRect.Left + 3, ElementRect.Top + 2, ElementRect.Width - 5, ElementRect.Height - 24, abs(colorState - 1) };
 	TGrahics::fillRect(foam);
 }
-
-//void FillingBar::pointerH(unsigned int yPosition) //стрелка горизонтальная
-//{
-//	TGrahics::Line(ElementRect.Left - 2, ElementRect.Top + 2 + yPosition, ElementRect.Left - 4, ElementRect.Top + yPosition, std::fabs(colorState - 1));
-//	TGrahics::Line(ElementRect.Left - 3, ElementRect.Top + 2 + yPosition, ElementRect.Left - 5, ElementRect.Top + yPosition, std::fabs(colorState - 1));
-//	TGrahics::Line(ElementRect.Left - 2, ElementRect.Top + 2 + yPosition, ElementRect.Left - 4, ElementRect.Top + 4 + yPosition, std::fabs(colorState - 1));
-//	TGrahics::Line(ElementRect.Left - 3, ElementRect.Top + 2 + yPosition, ElementRect.Left - 5, ElementRect.Top + 4 + yPosition, std::fabs(colorState - 1));
-//	TGrahics::Line(ElementRect.Left + 1, ElementRect.Top + 2 + yPosition, ElementRect.Left + 2, ElementRect.Top + 2 + yPosition, std::fabs(colorState - 0));
-//}
 
 void FillingBar::pointerV() //стрелка вертикальная
 {
