@@ -18,13 +18,13 @@ void TPageHome::onOpen() {
     TGrahics::Line(41, 0, 41, 63, 1);
     TGrahics::Line(82, 0, 82, 63, 1);
     TGrahics::Line(99, 0, 99, 63, 1);
-    SubscriberID = HandlerSubscribers::set("U1/RAM/", [this](TSlotHandlerArsg args) { SlotUpdate(args); });
-    //SubIDFlash = HandlerSubscribers::set("U1/FLASH/", [this](TSlotHandlerArsg args) { SlotUpdate(args); });
+    SubscriberID = HandlerSubscribers::set("U1/RAM/", [this](TSlotHandlerArsg args) { SlotUpdateRAM(args); });
+    SubIDFlash = HandlerSubscribers::set("U1/FLASH/", [this](TSlotHandlerArsg args) { SlotUpdateFLASH(args); });
 }
 
 void TPageHome::startToClose() {
     HandlerSubscribers::remove("U1/RAM/", SubscriberID);
-    //HandlerSubscribers::remove("U1/FLASH", SubIDFlash);
+    HandlerSubscribers::remove("U1/FLASH/", SubIDFlash);
     TagList->Clear();
     isOpen = false;
 }
@@ -78,6 +78,7 @@ bool TPageHome::ProcessMessage(TMessage* m) {
                         container[currentComponent]->inFocus = true;
                     }
                    break;
+
             }
         }
     }
@@ -113,8 +114,8 @@ void TPageHome::fillPageContainer(void) {
 }
 
 TPageHome::TPageHome(std::string Name) :TPage(Name), 
-    currentIndicator1(0, 0, "I, mA", "Iref", "U1/RAM/IoutAve/", "U1/RAM/Iref/", 0, "U1/RAM/IvacUp_2/", "U1/RAM/RefInt/", 1),
-    currentIndicator2(42, 0, "U, kV", "Uref", "U1/RAM/UoutAve/", "U1/RAM/Uref/",0, "U1/RAM/IvacUp_1/", "U1/RAM/RefInt/", 0.035),
+    currentIndicator1(0, 0, "I, mA", "Iref", "U1/RAM/IoutAve/", "U1/FLASH/Iref/", 0, "U1/FLASH/IoutNominal/", "U1/FLASH/IoutMax/", 1),
+    currentIndicator2(42, 0, "U, kV", "Uref", "U1/RAM/UoutAve/", "U1/FLASH/Uref/",0, "U1/FLASH/UoutNominal/", "U1/FLASH/IoutMax/", 0.5),
     operatingMode(83, 0, 0), 
     groupIndicators(100, 0, 0, "U1/RAM/Out/", "U1/RAM/SparkFrq/")
 {
@@ -125,14 +126,23 @@ TPageHome::TPageHome(std::string Name) :TPage(Name),
     
 };
 
-void TPageHome::SlotUpdate(TSlotHandlerArsg args) {
+void TPageHome::SlotUpdate(const char* sector, TSlotHandlerArsg args) {
     for (auto& e : container) {
-        e->update(args, "");
+        e->updateObj(sector, args, "");
+        
     }
+    //currentIndicator1.updateValueRef(args, "");
     groupIndicators.update(args, "");
     Msg::send_message((u32)EventSrc::REPAINT, 0, 0);
 }
 
+void TPageHome::SlotUpdateFLASH(TSlotHandlerArsg args) {
+    SlotUpdate("/FLASH", args);
+}
+
+void TPageHome::SlotUpdateRAM(TSlotHandlerArsg args) {
+    SlotUpdate("/RAM", args);
+}
 TPageHome::~TPageHome() {
     TagList->Clear();
     delete TagList;

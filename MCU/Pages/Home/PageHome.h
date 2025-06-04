@@ -19,12 +19,14 @@ public:
     void startToClose();
     bool ProcessMessage(TMessage* m);
     TPageHome(std::string Name);
+    void SlotUpdateRAM(TSlotHandlerArsg args);
     ~TPageHome();
     
 private:
     TVerticalContainer* TagList;
     void fillPageContainer(void);
-    void SlotUpdate(TSlotHandlerArsg args);
+    void SlotUpdate(const char* sector, TSlotHandlerArsg args);
+    void SlotUpdateFLASH(TSlotHandlerArsg args);
     TVisualObject* getSignalOfFocusedChild();
     int SubscriberID = 0;
     int SubIDFlash = 0;
