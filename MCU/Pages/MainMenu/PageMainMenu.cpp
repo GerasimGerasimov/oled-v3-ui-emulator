@@ -14,6 +14,7 @@ bool TPageMainMenu::ProcessMessage(TMessage* m) {
                 TRouter::setTask({ false, "Home", nullptr });
                 break;
             }
+
         }
     }
 
@@ -34,10 +35,12 @@ TPageMainMenu::TPageMainMenu(std::string Name)
             new TLinkLabel("Основные параметры", "Home",LabelInit),
             //new TLinkLabel("Статус работы", "OperateStatus", LabelInit),
             new TLinkLabel("Аварии", "Alarms", LabelInit),
-            new TLinkLabel("Предупреждения", "Warnings", LabelInit),
-            new TLinkLabel("Основные уставки", "BasicSettings", LabelInit),
-            //new TLinkLabel("Датчики", "Sensors", LabelInit),
-            //new TLinkLabel("защиты. Основные уставки", "BasicProtectionsSettings", LabelInit),
+            new TLinkLabel("Дискретные входы", "DiscretesIn", LabelInit),
+            new TLinkLabel("Дискретные выходы", "DiscretesOut", LabelInit),
+            //new TLinkLabel("Предупреждения", "Warnings", LabelInit),
+            new TLinkLabel("Индикаторы", "Sensors", LabelInit),
+            new TLinkLabel("Питание", "PowerSupply", LabelInit),
+            new TLinkLabel("Основные уставки", "BasicSettings", LabelInit)
             //new TLinkLabel("Очистка. Уставки", "CleanSettings", LabelInit),
            })
     });
