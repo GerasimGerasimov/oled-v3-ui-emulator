@@ -4,13 +4,14 @@
 #include <stdlib.h>
 #include <iostream>
 #include <cmath>
-#include <Router.h>
+#include "Router.h"
 #include "parameters.h"
-#include <PageHome.h>
+#include "PageHome.h"
 #include "IniResources.h"
 #include <string>
-#include <AppModbusSlave.h>
+#include "AppModbusSlave.h"
 #include "Slot.h"
+#include "ramdata.h"
 
 CurrentIndicator::CurrentIndicator(int x, int y, std::string msu, std::string ref,
 	std::string tag, std::string refValue, u8 colorState, std::string limitValue, std::string maxValue, float ratio)
@@ -65,64 +66,9 @@ void CurrentIndicator::drawBorder(int drawBorderX, int drawBorderY) {
 	TGrahics::fillRect(intBorder);
 }
 
-
-void CurrentIndicator::updateObj(const char* sector, const TSlotHandlerArsg& args, const char* format)
-{
-	if (sector == "/RAM") {
-		current = obj->getValue(args, "");
-		
-	}
-	else {
-		refValue = objRef->getValue(args, "");
-		limitValue = objLimit->getValue(args, "");
-		maxValue = refMax->getValue(args, "");
-	}
-
-	try {
-		value = std::stof(current);
-		fillingBar.setValue(value);
-
-		char s[8];
-		//GIST "%.4X" преобразование числа в hex с заданным кол-вом значащих нулей
-		if (value < 100) {
-			sprintf(s, "%.1f", value);
-		}
-		else {
-			sprintf(s, "%.0f", value);
-		}
-		current = s;
-		
-		valuePoint = std::stof(refValue);
-		if (valuePoint < 100) {
-			sprintf(s, "%.1f", valuePoint);
-		}
-		else {
-			sprintf(s, "%.0f", valuePoint);
-		}
-		
-		refValue = s;
-		maxValueInt = std::stof(maxValue);
-		fillingBar.setMaxValue(maxValueInt);
-
-		limitValueInt = std::stof(limitValue);
-		fillingBar.setLimitValue(limitValueInt);
-	}
-	catch (...) {
-		value = 0;
-		fillingBar.setValue(value);
-		valuePoint = 0;
-		maxValueInt = 0;
-		valuePoint = 0;
-		refValue = "0.0";
-		current = "**.*";
-
-	}
-}
-
 void CurrentIndicator::valueRef() //значение ref
 {
 	TGrahics::outTextVertical(ref, ElementRect.Top + 22, ElementRect.Left, abs(colorState - 1), "Verdana12");
-	//refValue = std::to_string(valuePoint);
 	TGrahics::outTextVertical(refValue, ElementRect.Top + 21, ElementRect.Left + 8, abs(colorState - 1), "Verdana12");
 	
 }
@@ -133,15 +79,17 @@ void CurrentIndicator::displayValue() //I/U ref
 
 void CurrentIndicator::changeValue() //вывод значения индекатора
 {
+	
 	if (value > limitValueInt) {
 		TFillRect outerBorder{ ElementRect.Left + 9, ElementRect.Top + 50, 30, 9, 1 };
 		TGrahics::fillRect(outerBorder);
-		TGrahics::outTextRightToLeft(current, ElementRect.Left + 17, ElementRect.Top + 50, 0, "Verdana12");
+		TGrahics::outText(currentValue, ElementRect.Left + 13, ElementRect.Top + 50, 0, "Verdana12");
 	}
 	else {
 		TFillRect outerBorder{ ElementRect.Left + 9, ElementRect.Top + 50, 30, 9, 0 };
 		TGrahics::fillRect(outerBorder);
-		TGrahics::outText(current, ElementRect.Left + 12, ElementRect.Top + 50, 1, "Verdana12");
+
+		TGrahics::outText(currentValue, ElementRect.Left + 13, ElementRect.Top + 50, 1, "Verdana12");
 	}
 }
 
@@ -195,9 +143,9 @@ void CurrentIndicator::pointerH() //стрелка горизонтальная
 	percent = (valuePoint * 100) / limitValueInt;
 	
 	if (valuePoint < limitValueInt) {
-		yPosition = 25 - (percent * 25) / 100;
+		yPosition = 25 - (percent * 22) / 100;
 	}
-	else if (valuePoint > limitValueInt) {
+	else if (valuePoint >= limitValueInt) {
 		yPosition = 0;
 	}
 	else {
@@ -217,14 +165,21 @@ bool CurrentIndicator::ProcessMessage(TMessage* m)
 		switch (m->p1) {
 		case (u32)KeyCodes::Up:
 			if (inFocus) {
-				increase(10);
+				increase((m->p2 == (u32)KeyPressFeature::AutoRepeat) ? 10 : 5);
 			}
 			break;
 		case (u32)KeyCodes::Down:
 			if (inFocus) {
-				decrease(10);
+				decrease((m->p2 == (u32)KeyPressFeature::AutoRepeat) ? 10 : 5);
 			}
 			
+			break;
+		case (u32)KeyCodes::F1:
+			if (inFocus) {
+				ISignal* p = IniResources::getSignalByTag(nameRef);
+				TRouter::setTask({ false, "Help", p });
+		
+			}
 			break;
 		}
 	}
@@ -242,7 +197,12 @@ void CurrentIndicator::decrease(float step) {
 	1) получить значение 2) убедится что числовое 3) произвести над ним вычисления
 	4) превратить  в строку 5) отправить */
 		
-	valuePoint = valuePoint - step * ratio;
+	if ((valuePoint - step * ratio) < 0.1) {
+	valuePoint = valuePoint;
+	}
+	else {
+		valuePoint -= step * ratio;
+	}
 		char s[8];
 		if (valuePoint < 100) {
 			sprintf(s, "%.1f", valuePoint);
@@ -252,7 +212,6 @@ void CurrentIndicator::decrease(float step) {
 		}
 		refValue = s;
 		sendCmd(refValue);
-
 }
 
 void CurrentIndicator::increase(float step) {
@@ -262,8 +221,12 @@ void CurrentIndicator::increase(float step) {
 	1) получить значение 2) убедится что числовое 3) произвести над ним вычисления
 	4) превратить  в строку 5) отправить */
 
-		valuePoint = valuePoint + step * ratio;
-		//refValue = std::to_string(valuePoint);
+	if ((valuePoint - step * ratio) > maxValueInt) {
+		valuePoint = maxValueInt;
+	}
+	else {
+		valuePoint += step * ratio;
+	}
 		char s[8];
 		if (valuePoint < 100) {
 			sprintf(s, "%.1f", valuePoint);
@@ -297,4 +260,43 @@ void CurrentIndicator::sendCmd(std::string& refValue) {
 void CurrentIndicator::SlotUpdate(Slot* slot, u8* reply) {
 	slot->Flags |= (u16)SlotStateFlags::SKIP_SLOT;
 	cmdSendInProcess = false;
+}
+
+void CurrentIndicator::updateObj(std::string sector, const TSlotHandlerArsg& args, const char* format)
+{
+
+	if (sector == "RAM") {
+		currentValue = obj->getValue(args, "");
+		//++RAM_DATA.data[0];
+
+	}
+	else {
+		//++RAM_DATA.data[1];
+		refValue = objRef->getValue(args, "");
+		limitValue = objLimit->getValue(args, "");
+		maxValue = refMax->getValue(args, "");
+	}
+
+	try {
+		value = std::stof(currentValue);
+        fillingBar.setValue(value);
+
+		valuePoint = std::stof(refValue);
+
+		maxValueInt = std::stof(maxValue);
+		fillingBar.setMaxValue(maxValueInt);
+
+		limitValueInt = std::stof(limitValue);
+		fillingBar.setLimitValue(limitValueInt);
+	}
+	catch (...) {
+
+		value = 0;
+		fillingBar.setValue(value);
+		valuePoint = 0;
+		maxValueInt = 0;
+		valuePoint = 0;
+		refValue = "0.0";
+		currentValue = "**.*";
+	}
 }

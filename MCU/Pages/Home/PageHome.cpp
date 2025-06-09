@@ -87,6 +87,7 @@ bool TPageHome::ProcessMessage(TMessage* m) {
         element->ProcessMessage(m);
     }
     return false;
+    
 };
 
 TVisualObject* TPageHome::getSignalOfFocusedChild() {
@@ -115,11 +116,11 @@ void TPageHome::fillPageContainer(void) {
 
 TPageHome::TPageHome(std::string Name) :TPage(Name), 
     currentIndicator1(0, 0, "I, mA", "Iref", "U1/RAM/IoutAve/", "U1/FLASH/Iref/", 0, "U1/FLASH/IoutNominal/", "U1/FLASH/IoutMax/", 1),
-    currentIndicator2(42, 0, "U, kV", "Uref", "U1/RAM/UoutAve/", "U1/FLASH/Uref/",0, "U1/FLASH/UoutNominal/", "U1/FLASH/IoutMax/", 0.5),
-    operatingMode(83, 0, 0), 
-    groupIndicators(100, 0, 0, "U1/RAM/Out/", "U1/RAM/SparkFrq/")
+    currentIndicator2(42, 0, "U, kV", "Uref", "U1/RAM/UoutAve/", "U1/FLASH/Uref/",0, "U1/FLASH/UoutNominal/", "U1/FLASH/IoutMax/", 0.25),
+    operatingMode(83, 0, 0, "U1/RAM/Normal/", "U1/RAM/Clean/", "U1/RAM/VAC/", "U1/RAM/Manual/"),
+    groupIndicators(100, 0, 0, "U1/RAM/Out/", "U1/RAM/SparkFrq/", "U1/RAM/Ready/", "U1/RAM/Run/")
 {
-    container = { &currentIndicator1, &currentIndicator2, &operatingMode};
+    container = { &currentIndicator1, &currentIndicator2, &operatingMode, &groupIndicators};
     TVerticalContainerProps props = { false };
     TagList = new TVerticalContainer(props, {});
     AddList({ TagList });
@@ -133,15 +134,16 @@ void TPageHome::SlotUpdate(const char* sector, TSlotHandlerArsg args) {
     }
     //currentIndicator1.updateValueRef(args, "");
     groupIndicators.update(args, "");
+    operatingMode.update(args, "");
     Msg::send_message((u32)EventSrc::REPAINT, 0, 0);
 }
 
 void TPageHome::SlotUpdateFLASH(TSlotHandlerArsg args) {
-    SlotUpdate("/FLASH", args);
+    SlotUpdate("FLASH", args);
 }
 
 void TPageHome::SlotUpdateRAM(TSlotHandlerArsg args) {
-    SlotUpdate("/RAM", args);
+    SlotUpdate("RAM", args);
 }
 TPageHome::~TPageHome() {
     TagList->Clear();

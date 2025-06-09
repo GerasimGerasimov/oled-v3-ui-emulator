@@ -1,6 +1,7 @@
 #include "FillingBar.h"
 #include "graphics.h"
-#include <iostream>#include <cmath>
+#include <iostream>
+#include <cmath>
 //#include <arm_math.h>
 #include <math.h>
 

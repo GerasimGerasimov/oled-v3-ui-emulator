@@ -5,9 +5,9 @@
 #include "TVerticalContainer.h"
 #include "HandleSubscribers.h"
 #include "FillingBar.h"
-#include <CurrentIndicator.h>
-#include <OperatingMode.h>
-#include <GroupIndicators.h>
+#include "CurrentIndicator.h"
+#include "OperatingMode.h"
+#include "GroupIndicators.h"
 
 
 class TPageHome : public TPage

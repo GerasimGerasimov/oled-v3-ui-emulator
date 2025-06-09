@@ -14,7 +14,7 @@ private:
 	std::string msu;
 	std::string ref;
 	std::string refValue;
-	std::string current;
+	std::string currentValue;
 	std::string maxValue;
 	std::string limitValue;
 	std::string nameRef;
@@ -65,6 +65,6 @@ public:
 	void SlotUpdate(Slot* slot, u8* reply);
 	void increase(float step);
 	std::vector <TVisualObject*> List;
-	void updateObj(const char* sector, const TSlotHandlerArsg& args, const char* format);
+	void updateObj(std::string sector, const TSlotHandlerArsg& args, const char* format) override;
 };
 
