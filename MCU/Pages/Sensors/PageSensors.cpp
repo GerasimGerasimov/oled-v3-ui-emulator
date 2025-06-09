@@ -70,7 +70,8 @@ void TPageSensors::fillPageContainer(void) {
     LabelInit.Rect = { 10, 10, 10, 10 };
     LabelInit.focused = false;
     TagList->AddList({
-
+        new TTagLine("DExS_PWR_OK", "U1/RAM/DExS_PWR_OK/", LabelInit),
+        new TTagLine("PWR", "U1/RAM/PWR/", LabelInit),
     });
 }
 
@@ -81,7 +82,7 @@ TPageSensors::TPageSensors(std::string Name)
 
     TLabelInitStructure LabelInit;
     LabelInit.pOwner = Container;
-    LabelInit.caption = "Датчики";
+    LabelInit.caption = "Индикаторы";
     TFixedHeader* pHeader = new TFixedHeader(LabelInit);
     Container->Add(pHeader);
 
