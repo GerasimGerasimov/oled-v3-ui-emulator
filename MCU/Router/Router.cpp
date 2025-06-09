@@ -24,6 +24,7 @@
 #include "ControlVoltageStator/PageControlVoltageStator.h"
 //#include "RegulatorKoeff/PageRegulatorKoeff.h"
 #include "InsulResist/PageInsulResist.h"
+#include "PowerConverter/PagePowerConverter.h"
 #include <IniResources.h>
 
 /*TODO В роутере и страницах можно реализовать переходы на закрытие/открытие окна*/
@@ -51,6 +52,7 @@ void TRouter::Init(void) {
     Pages["DIn"] = new TPageDIn("DIn"); //Дискретные входы
     Pages["DOut"] = new TPageDOut("DOut"); //Дискретные выходы
     Pages["Converter"] = new TPageConverter("Converter"); //Преобразователь
+    Pages["PowerConverter"] = new TPagePowerConverter("PowerConverter"); //Питание преобразователя
     Pages["ReactivePower"] = new TPageReactivePower("ReactivePower"); //Реактивная мощность
     Pages["CurrentLim"] = new TPageCurrentLim("CurrentLim"); //Ограничетели токов
     Pages["VoltageLim"] = new TPageVoltageLim("VoltageLim"); //Ограничетели напряжений

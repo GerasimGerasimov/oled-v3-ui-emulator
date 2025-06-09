@@ -32,7 +32,7 @@ TPageMainMenu::TPageMainMenu(std::string Name)
     AddList({
         Container = new TVerticalContainer(pLabelsProps, {
             new TLinkLabel("Основные параметры", "Home",LabelInit),
-            new TLinkLabel("Самовозбуждение", "SelfExc", LabelInit),
+            new TLinkLabel("Битовые уставки", "SelfExc", LabelInit),
             new TLinkLabel("Задания авто режима", "ControlSettings", LabelInit),
             new TLinkLabel("Выходные параметры", "Sensors", LabelInit),
             new TLinkLabel("Готовность", "Ready", LabelInit),
@@ -41,6 +41,7 @@ TPageMainMenu::TPageMainMenu(std::string Name)
             new TLinkLabel("Дискретные входы", "DIn", LabelInit),
             new TLinkLabel("Дискретные выходы", "DOut", LabelInit),
             new TLinkLabel("Преобразователь", "Converter", LabelInit),
+            new TLinkLabel("Питание преобразователя", "PowerConverter", LabelInit),
             new TLinkLabel("Реактивная мощность", "ReactivePower", LabelInit),
 
             new TLinkLabel("Ограничетели токов", "CurrentLim", LabelInit),

@@ -201,6 +201,9 @@
     <ClInclude Include="MCU\Pages\InsulResist\PageInsulResist.h">
       <Filter>MCU\Pages</Filter>
     </ClInclude>
+    <ClInclude Include="MCU\Pages\PowerConverter\PagePowerConverter.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -529,6 +532,9 @@
     </ClCompile>
     <ClCompile Include="MCU\Pages\InsulResist\PageInsulResist.cpp">
       <Filter>MCU\Pages</Filter>
+    </ClCompile>
+    <ClCompile Include="MCU\Pages\PowerConverter\PagePowerConverter.cpp">
+      <Filter>Исходные файлы</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

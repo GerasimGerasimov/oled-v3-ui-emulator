@@ -1485,6 +1485,12 @@
                 <name>$PROJ_DIR$\..\..\MCU\Pages\ParameterListEdit\PageParameterListEdit.h</name>
             </file>
             <file>
+                <name>$PROJ_DIR$\..\..\MCU\Pages\PowerConverter\PagePowerConverter.cpp</name>
+            </file>
+            <file>
+                <name>$PROJ_DIR$\..\..\MCU\Pages\PowerConverter\PagePowerConverter.h</name>
+            </file>
+            <file>
                 <name>$PROJ_DIR$\..\..\MCU\Pages\PowerLim\PagePowerLim.cpp</name>
             </file>
             <file>
