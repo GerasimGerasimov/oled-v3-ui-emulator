@@ -71,9 +71,9 @@ void TPageHome::fillPageContainer(void) {
     LabelInit.caption = "Стартовый экран";
     TagList->AddList({
         // new TLabel(LabelInit),
-         new TTagLine("Uz, B", "U1/RAM/Uz/", LabelInit),
-         new TTagLine("U, B", "U1/RAM/U/", LabelInit),
-         new TTagLine("I, A", "U1/RAM/I/", LabelInit)
+         new TTagLine("Uz", "U1/RAM/Uz/", LabelInit),
+         new TTagLine("U", "U1/RAM/U/", LabelInit),
+         new TTagLine("I", "U1/RAM/I/", LabelInit)
         //new TTagLineScrollCaptionComment("U1/FLASH/tSoftStart/", LabelInit),
     });
     

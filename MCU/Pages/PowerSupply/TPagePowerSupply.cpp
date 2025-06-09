@@ -20,11 +20,11 @@ void TPagePowerSupply::fillPageContainer() {
     LabelInit.focused = false;
     TagList->AddList({
         new TTagLine("FreqRect", "U1/RAM/FreqRect/", LabelInit),
-        new TTagLine("Vab_sync, V", "U1/RAM/Vab_sync/", LabelInit),
-        new TTagLine("Vbc_sync, V", "U1/RAM/Vbc_sync/", LabelInit),
-        new TTagLine("Vca_sync, V", "U1/RAM/Vca_sync/", LabelInit),
-        new TTagLine("IttA, A", "U1/RAM/IttA/", LabelInit),
-        new TTagLine("IttB, A", "U1/RAM/IttB/", LabelInit),
-        new TTagLine("IttC, A", "U1/RAM/IttC/", LabelInit),
+        new TTagLine("Vab_sync", "U1/RAM/Vab_sync/", LabelInit),
+        new TTagLine("Vbc_sync", "U1/RAM/Vbc_sync/", LabelInit),
+        new TTagLine("Vca_sync", "U1/RAM/Vca_sync/", LabelInit),
+        new TTagLine("IttA", "U1/RAM/IttA/", LabelInit),
+        new TTagLine("IttB", "U1/RAM/IttB/", LabelInit),
+        new TTagLine("IttC", "U1/RAM/IttC/", LabelInit),
         });
 }
