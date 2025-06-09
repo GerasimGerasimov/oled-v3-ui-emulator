@@ -39,7 +39,7 @@ void ComMasterDriver::open() {
     DCB dcb;
     COMMTIMEOUTS CommTimeouts;
     DWORD fSuccess = 0;
-    LPCTSTR pcCommPort = TEXT("COM3");
+    LPCTSTR pcCommPort = TEXT("COM4");
 
 	hCom = CreateFile(pcCommPort,
         GENERIC_READ | GENERIC_WRITE,
