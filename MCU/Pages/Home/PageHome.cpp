@@ -69,6 +69,7 @@ void TPageHome::fillPageContainer(void) {
     LabelInit.Rect = { 10, 10, 10, 10 };
     LabelInit.focused = false;
     LabelInit.caption = "Стартовый экран";
+    LabelInit.font = "MSSansSerifBold14";
     TagList->AddList({
         // new TLabel(LabelInit),
          new TTagLine("Uz", "U1/RAM/Uz/", LabelInit),
