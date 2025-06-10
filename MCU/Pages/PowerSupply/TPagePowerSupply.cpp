@@ -3,7 +3,7 @@
 #include <FixedHeader.h>
 #include "Router.h"
 
-TPagePowerSupply::TPagePowerSupply(std::string Name) : TPageControlSettings(Name) {
+TPagePowerSupply::TPagePowerSupply(std::string Name) : TPageSensors(Name) {
     TLabelInitStructure LabelInitH;
     LabelInitH.pOwner = Container;
     LabelInitH.caption = "Питание";
@@ -16,7 +16,7 @@ void TPagePowerSupply::fillPageContainer() {
     TagList->Clear();
     TLabelInitStructure LabelInit;
     LabelInit.style = LabelsStyle::WIDTH_FIXED;
-    LabelInit.Rect = { 10, 10, 10, 80 };
+    LabelInit.Rect = { 10, 10, 10, 70 };
     LabelInit.focused = false;
     TagList->AddList({
         new TTagLine("FreqRect", "U1/RAM/FreqRect/", LabelInit),

@@ -1,8 +1,7 @@
 #pragma once
-#include "ControlSettings/PageControlSettings.h"
+#include "PageSensors.h"
 
-class TPagePowerSupply :
-    public TPageControlSettings
+class TPagePowerSupply : public TPageSensors
 {
 public:
     TPagePowerSupply(std::string Name);
