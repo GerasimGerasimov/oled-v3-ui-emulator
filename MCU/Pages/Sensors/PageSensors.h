@@ -16,12 +16,13 @@ public:
     TPageSensors(std::string Name);
     ~TPageSensors();
 private:
-    TVerticalContainer* Container;
-    TVerticalContainer* TagList;
-    void fillPageContainer(void);
     void SlotUpdate(TSlotHandlerArsg args);
     TVisualObject* getSignalOfFocusedChild();
     int SubscriberID = 0;
+protected:
+    TVerticalContainer* Container;
+    TVerticalContainer* TagList;
+    virtual void fillPageContainer(void);
 };
 
 #endif
