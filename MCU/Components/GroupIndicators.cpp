@@ -38,12 +38,8 @@ void GroupIndicators::view()
 	TGrahics::outText("OUT", ElementRect.Left + 1, ElementRect.Top, abs(colorState - 1), "Verdana12");
 	TGrahics::outText("иск", ElementRect.Left + 4, ElementRect.Top + 27, abs(colorState - 1), "Verdana12");
 	TGrahics::outText("сост", ElementRect.Left + 2, ElementRect.Top + 45, abs(colorState - 1), "Verdana12");
-	/*editStateValue();
-	TFillRect back{ ElementRect.Left + 6, ElementRect.Top + 53, ElementRect.Width - 5, 9, abs(colorState - 0) };
-	TGrahics::fillRect(back);*/
 	if (inFocus) {
 		areaState(yPos);
-		editStateValue();
 	}
 	else {
 		colorState = 0;
@@ -120,8 +116,6 @@ void GroupIndicators::updateObj(std::string sector, const TSlotHandlerArsg& args
 	}
 	try {
 		outVal = std::stof(outValue1);
-		//setStateValue();
-
 	}
 	catch (...) {
 		outValue1 = "**.*";
@@ -172,7 +166,7 @@ bool GroupIndicators::ProcessMessage(TMessage* m) {
 	}
 }
 void GroupIndicators::areaState(unsigned int yPos) {
-	
+	editStateValue();
 	if (yPos == 0) {
 		TFillRect selectionArea{ ElementRect.Left , ElementRect.Top, ElementRect.Width - 2, 9 };
 		TGrahics::InvertArea(selectionArea);
@@ -182,14 +176,12 @@ void GroupIndicators::areaState(unsigned int yPos) {
 		TGrahics::InvertArea(selectionArea);
 	}
 	else if (yPos == 2) {
-		//editStateValue();
 		TFillRect selectionArea{ ElementRect.Left, ElementRect.Top + 47, ElementRect.Width - 2, 7};
 		TGrahics::InvertArea(selectionArea);
 		TFillRect selState{ ElementRect.Left + 6, ElementRect.Top + 54, ElementRect.Width - 23, 8 };
 		TGrahics::InvertArea(selState);
 	}
 	else if (yPos == 3) {
-		//editStateValue();
 		TFillRect selectionArea{ ElementRect.Left, ElementRect.Top + 47, ElementRect.Width - 2, 7 };
 		TGrahics::InvertArea(selectionArea);
 		TFillRect selState{ ElementRect.Left + 12, ElementRect.Top + 54, ElementRect.Width - 22, 8 };

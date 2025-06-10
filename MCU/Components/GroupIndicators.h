@@ -19,11 +19,12 @@ private:
 	std::string readyValue;
 	std::string runValue;
 
-	float outVal;
 	TParameter* objOut;
 	TParameter* objSparks;
 	TParameter* objReady;
 	TParameter* objRun;
+
+	float outVal;
 	char mode;
 	std::array <ISignal*, 4> container;
 	int component = 0;
@@ -40,7 +41,6 @@ public:
 	void editStateValue();
 	void setStateValue();
 	void point();
-	//void invertOut();
 	void updateObj(std::string sector, const TSlotHandlerArsg& args, const char* format) override;
 	bool ProcessMessage(TMessage* m);
 	void areaState(unsigned int yPos);
