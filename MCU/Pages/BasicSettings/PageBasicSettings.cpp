@@ -67,8 +67,8 @@ TVisualObject* TPageBasicSettings::getSignalOfFocusedChild() {
 void TPageBasicSettings::fillPageContainer(void) {
     TagList->Clear();
     TLabelInitStructure LabelInit;
-    LabelInit.style = LabelsStyle::WIDTH_FIXED;
-    LabelInit.Rect = { 10, 10, 10, 65};
+    LabelInit.style = LabelsStyle::WIDTH_DINAMIC;
+    LabelInit.Rect = { 10, 10, 10, 10};
     LabelInit.focused = false;
 
     TagList->AddList({

@@ -22,7 +22,7 @@ private:
 protected:
     TVerticalContainer* Container;
     TVerticalContainer* TagList;
-    void fillPageContainer();
+    virtual void fillPageContainer();
 };
 
 #endif
