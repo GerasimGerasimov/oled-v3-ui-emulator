@@ -5,6 +5,6 @@ class TPagePowerSupply : public TPageSensors
 public:
     TPagePowerSupply(std::string Name);
 protected:
-    virtual void fillPageContainer() override;
+    void fillPageContainer() override;
 };
 
