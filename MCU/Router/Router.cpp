@@ -6,9 +6,15 @@
 #include "PageHelp.h"
 #include "PageWarnings.h"
 //#include "PageOperateStatus.h"
-//#include "PageBasicSettings.h"
-//#include "PageBasicProtectionsSettings.h"
-//#include "PageSensors.h"
+#include "PageBasicSettings.h"
+#include "PageBasicProtectionsSettings.h"
+#include "PageSensors.h"
+#include "Discretes/PageDIn.h"
+#include "Discretes/TPageDOut.h"
+#include "PowerSupply/PagePowerSupply.h"
+#include "Limiters/PageLimiters.h"
+#include "PowerSettings/PagePowerSettings.h"
+#include "RegulatorSettings/PageRegulatorSettings.h"
 #include "PageParameterListEdit.h"
 #include <IniResources.h>
 
@@ -26,11 +32,17 @@ void TRouter::Init(void) {
     Pages["MainMenu"] = new TPageMainMenu("MainMenu");
     Pages["Alarms"] = new TPageAlarms("Alarms");
     Pages["Warnings"] = new TPageWarnings("Warnings");
-    //Pages["BasicSettings"] = new TPageBasicSettings("BasicSettings"); //Основные уставк
+    Pages["BasicSettings"] = new TPageBasicSettings("BasicSettings"); //Уставки возбуждения
     Pages["EditValue"] = new TPageEditValue("EditValue");
     //Pages["OperateStatus"] = new TPageOperateStatus("OperateStatus"); //Статус работы
-    //Pages["BasicProtectionsSettings"] = new TPageBasicProtectionsSettings("BasicProtectionsSettings"); //Защиты. Основные уставки
-    //Pages["Sensors"] = new TPageSensors("Sensors"); //Датчики
+    Pages["BasicProtectionsSettings"] = new TPageBasicProtectionsSettings("BasicProtectionsSettings"); //Уставки защит
+    Pages["Sensors"] = new TPageSensors("Sensors"); //Индикаторы
+    Pages["DIn"] = new TPageDIn("DIn"); //Дискретные входы
+    Pages["DOut"] = new TPageDOut("DOut"); //Дискретные входы
+    Pages["PowerSupply"] = new TPagePowerSupply("PowerSupply"); //Питающая сеть
+    Pages["Limiters"] = new TPageLimiters("Limiters"); //Ограничители
+    Pages["PowerSettings"] = new TPagePowerSettings("PowerSettings"); //Уставки питания
+    Pages["RegulatorSettings"] = new TPageRegulatorSettings("RegulatorSettings"); //Уставки регулятора
     Pages["PrmListEdit"] = new TPageParameterListEdit("PrmListEdit");
     setInitPage();
 }
