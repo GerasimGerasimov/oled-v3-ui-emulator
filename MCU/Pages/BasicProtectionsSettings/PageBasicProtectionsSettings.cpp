@@ -70,7 +70,14 @@ void TPageBasicProtectionsSettings::fillPageContainer(void) {
     LabelInit.Rect = { 10, 10, 10, 10 };
     LabelInit.focused = false;
     TagList->AddList({
-
+        new TTagLine("IrMaxFlt", "U1/FLASH/IrMaxFlt/", LabelInit),
+        new TTagLine("IttMaxFlt", "U1/FLASH/IttMaxFlt/", LabelInit),
+        new TTagLine("fUloadMax", "U1/FLASH/fUloadMax/", LabelInit),
+        new TTagLine("fUloadMaxT", "U1/FLASH/fUloadMaxTime/", LabelInit),
+        new TTagLine("RInslLow", "U1/FLASH/RInslLow/", LabelInit),
+        new TTagLine("RInslFlt", "U1/FLASH/RInslFlt/", LabelInit),
+        new TTagLine("RInslUp", "U1/FLASH/RInslUp/", LabelInit),
+        new TTagLine("RInslFltEn", "U1/FLASH/RInslFltEnable/", LabelInit),
     });
 }
 
@@ -81,7 +88,7 @@ TPageBasicProtectionsSettings::TPageBasicProtectionsSettings(std::string Name)
 
     TLabelInitStructure LabelInit;
     LabelInit.pOwner = Container;
-    LabelInit.caption = "Защиты. Основные";
+    LabelInit.caption = "Уставки защит";
     TFixedHeader* pHeader = new TFixedHeader(LabelInit);
     Container->Add(pHeader);
 
