@@ -50,7 +50,7 @@ void  OperatingMode::view()
 	}
 	else {
 		colorState = 0;
-		//setYPosition();
+		setYPosition();
 	}
 }
 
@@ -118,7 +118,7 @@ bool OperatingMode::ProcessMessage(TMessage* m)
 					component++;
 				}
 				else {
-					component = 4;//TRouter::setTask({ false, "Help", container[4] });
+					component = 4;
 				}
 			}
 			break;
@@ -154,16 +154,13 @@ void OperatingMode::updateObj(std::string sector, const TSlotHandlerArsg& args, 
 		vacValue = objVac->getValue(args, "");
 		manualValue = objManual->getValue(args, "");
 	}
-	if (inFocus == false) {
-		setYPosition();
-		//colorState = 1;
-		//SubscriberID = HandlerSubscribers::set("U1/RAM/", [this](TSlotHandlerArsg args) { SlotUpdateRAM(args); });
-		//HandlerSubscribers::remove("U1/RAM/", SubscriberID);
-	}
-	else {
-		colorState = 1;
-		//setYPosition();
-	}
+	//if (inFocus == false) {
+	//	/*setYPosition();*/
+	//}
+	//else {
+	//	colorState = 1;
+	//	//setYPosition();
+	//}
 }
 
 void OperatingMode::setYPosition()  
