@@ -72,8 +72,8 @@ void TPageSensors::fillPageContainer(void) {
     TagList->AddList({
         new TTagLine("PWR_OK", "U1/RAM/DExS_PWR_OK/", LabelInit),
         new TTagLine("FORCE", "U1/RAM/FORCE/", LabelInit),
-        new TTagLine("R_INSL_LOW", "U1/RAM/R_INSL_LOW/", LabelInit),
-        new TTagLine("R_INSL_FLT", "U1/RAM/R_INSL_FLT/", LabelInit),
+        new TTagLine("INSL_LOW", "U1/RAM/R_INSL_LOW/", LabelInit),
+        new TTagLine("INSL_FLT", "U1/RAM/R_INSL_FLT/", LabelInit),
         new TTagLine("PWR", "U1/RAM/PWR/", LabelInit),
         new TTagLine("PWR_LNK", "U1/RAM/DExS_PWR_LNK/", LabelInit),
         new TTagLine("FAULT", "U1/RAM/FAULT/", LabelInit),
