@@ -68,7 +68,7 @@ void TPageBasicSettings::fillPageContainer(void) {
     TagList->Clear();
     TLabelInitStructure LabelInit;
     LabelInit.style = LabelsStyle::WIDTH_FIXED;
-    LabelInit.Rect = { 10, 10, 10, 65};
+    LabelInit.Rect = { 10, 10, 10, 70};
     LabelInit.focused = false;
 
     TagList->AddList({
@@ -99,7 +99,7 @@ void TPageBasicSettings::fillPageContainer(void) {
         new TTagLine("fUzMax", "U1/FLASH/fUzMax/", LabelInit),
         new TTagLine("UzBias", "U1/FLASH/UzBias/", LabelInit),
         new TTagLine("fULoadMax", "U1/FLASH/fUloadMax/", LabelInit),
-        new TTagLine("fULMaxTime", "U1/FLASH/fUloadMaxTime/", LabelInit),
+        new TTagLine("fULoadMaxT", "U1/FLASH/fUloadMaxTime/", LabelInit),
     });
 }
 
