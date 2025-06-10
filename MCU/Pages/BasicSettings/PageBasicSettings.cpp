@@ -72,7 +72,10 @@ void TPageBasicSettings::fillPageContainer(void) {
     LabelInit.focused = false;
 
     TagList->AddList({
-
+        new TTagLine("Iz", "U1/FLASH/Iz/", LabelInit),
+        new TTagLine("Iforce", "U1/FLASH/Iforce/", LabelInit),
+        new TTagLine("Iidle", "U1/FLASH/Iidle/", LabelInit),
+        new TTagLine("ForceTime", "U1/FLASH/ForceTime/", LabelInit),
     });
 }
 
@@ -83,7 +86,7 @@ TPageBasicSettings::TPageBasicSettings(std::string Name)
 
     TLabelInitStructure LabelInit;
     LabelInit.pOwner = Container;
-    LabelInit.caption = "Основные уставки";
+    LabelInit.caption = "Уставки возбуждения";
     TFixedHeader* pHeader = new TFixedHeader(LabelInit);
     Container->Add(pHeader);
 
