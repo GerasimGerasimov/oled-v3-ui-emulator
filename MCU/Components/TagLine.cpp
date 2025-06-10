@@ -40,16 +40,16 @@ void TTagLine::view(void) {
     Caption->inFocus = inFocus;
     Caption->ElementRect.Top = ElementRect.Top;
     Caption->ElementRect.Left = ElementRect.Left;
-    Caption->view();//âûâîäèò Coption
+    Caption->view();//˜˜˜˜˜˜˜ Coption
     
-    if (DataSrc) {/*TODO 2-é ðàç ïèøó íóæåí ïóñòîé îáúåêò äëÿ îòëàâëèâàíèÿ íåñóùåñòâóþùèõ òåãîâ*/
+    if (DataSrc) {/*TODO 2-˜ ˜˜˜ ˜˜˜˜ ˜˜˜˜˜ ˜˜˜˜˜˜ ˜˜˜˜˜˜ ˜˜˜ ˜˜˜˜˜˜˜˜˜˜˜˜ ˜˜˜˜˜˜˜˜˜˜˜˜˜˜ ˜˜˜˜˜*/
         Value->inFocus = inFocus;
         Value->ElementRect.Top = ElementRect.Top;
         Value->ElementRect.Left = valueLeft;//ElementRect.Left;
         Value->view();
     }
 
-    if (DataSrc) {/*TODO 2-é ðàç ïèøó íóæåí ïóñòîé îáúåêò äëÿ îòëàâëèâàíèÿ íåñóùåñòâóþùèõ òåãîâ*/
+    if (DataSrc) {/*TODO 2-˜ ˜˜˜ ˜˜˜˜ ˜˜˜˜˜ ˜˜˜˜˜˜ ˜˜˜˜˜˜ ˜˜˜ ˜˜˜˜˜˜˜˜˜˜˜˜ ˜˜˜˜˜˜˜˜˜˜˜˜˜˜ ˜˜˜˜˜*/
         msu->setCaption(((TParameter*) DataSrc)->getMSU());
         msu->inFocus = inFocus;
         msu->ElementRect.Top = ElementRect.Top;
