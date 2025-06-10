@@ -23,6 +23,10 @@ void TPageDIn::fillPageContainer()
     LabelInit.Rect = { 10, 10, 10, 80 };
     LabelInit.focused = false;
     TagList->AddList({
+        new TTagLine("iForce", "U1/RAM/iForce/", LabelInit),
+        new TTagLine("iIDLE", "U1/RAM/iIDLE/", LabelInit),
+        new TTagLine("iStart", "U1/RAM/iStart/", LabelInit),
+        new TTagLine("iQPWR", "U1/RAM/iQPWR/", LabelInit),
         //new TTagLineScrollCaptionComment("U1/RAM/iReady/", LabelInit),
         });
 }

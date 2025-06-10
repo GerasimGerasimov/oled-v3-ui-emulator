@@ -23,6 +23,7 @@ void TPageDOut::fillPageContainer()
     LabelInit.Rect = { 10, 10, 10, 80 };
     LabelInit.focused = false;
     TagList->AddList({
+        new TTagLine("oAlarm", "U1/RAM/oAlarm/", LabelInit),
         //new TTagLineScrollCaptionComment("U1/RAM/oCROWBAR_K1/", LabelInit),
         });
 }
