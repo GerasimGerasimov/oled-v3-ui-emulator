@@ -1,6 +1,6 @@
 #include "PageHome.h"
 #include "Router.h"
-#include "TagLine.h"
+#include "TagLineVarSize.h"
 #include <IniResources.h>
 
 void TPageHome::view() {
@@ -72,9 +72,9 @@ void TPageHome::fillPageContainer(void) {
     LabelInit.font = "MSSansSerifBold14";
     TagList->AddList({
         // new TLabel(LabelInit),
-         new TTagLine("Uz", "U1/RAM/Uz/", LabelInit),
-         new TTagLine("U", "U1/RAM/U/", LabelInit),
-         new TTagLine("I", "U1/RAM/I/", LabelInit)
+         new TTagLineVarSize("Uz", "U1/RAM/Uz/", LabelInit, 0),
+         new TTagLineVarSize("U", "U1/RAM/U/", LabelInit, 0),
+         new TTagLineVarSize("I", "U1/RAM/I/", LabelInit, 0)
         //new TTagLineScrollCaptionComment("U1/FLASH/tSoftStart/", LabelInit),
     });
     
