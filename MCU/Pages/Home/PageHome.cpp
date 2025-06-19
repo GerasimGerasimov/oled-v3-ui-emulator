@@ -69,11 +69,11 @@ void TPageHome::fillPageContainer(void) {
     LabelInit.style = LabelsStyle::WIDTH_DINAMIC;
     LabelInit.Rect = { 10, 10, 10, 10 };
     LabelInit.focused = false;
-    LabelInit.caption = "Стартовый экран";
+    LabelInit.caption = "пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ";
     TagList->AddList({
-        new TTagLineVarSize("Iz", "U1/RAM/Iz/", LabelInit, 0),
-        new TTagLineVarSize("U", "U1/RAM/U/", LabelInit, 0),
-        new TTagLineVarSize("I", "U1/RAM/I/", LabelInit, 0),
+        new TTagLine("Iz", "U1/RAM/Iz/", LabelInit),
+        new TTagLine("U", "U1/RAM/U/", LabelInit),
+        new TTagLine("I", "U1/RAM/I/", LabelInit),
         new TTagLine("FORCE", "U1/RAM/FORCE/", LabelInit),
         new TTagLine("iIDLE", "U1/RAM/iIDLE/", LabelInit),
         //new TTagLineScrollCaptionComment("U1/FLASH/tSoftStart/", LabelInit),
