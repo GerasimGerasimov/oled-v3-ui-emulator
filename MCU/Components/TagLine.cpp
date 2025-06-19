@@ -41,11 +41,11 @@ void TTagLine::view(void) {
     Caption->ElementRect.Top = ElementRect.Top;
     Caption->ElementRect.Left = ElementRect.Left;
     Caption->view();//выводит Coption
-
+    
     if (DataSrc) {/*TODO 2-й раз пишу нужен пустой объект для отлавливания несуществующих тегов*/
         Value->inFocus = inFocus;
         Value->ElementRect.Top = ElementRect.Top;
-        Value->ElementRect.Left = 70;//ElementRect.Left;
+        Value->ElementRect.Left = valueLeft;//ElementRect.Left;
         Value->view();
     }
 
@@ -53,7 +53,15 @@ void TTagLine::view(void) {
         msu->setCaption(((TParameter*) DataSrc)->getMSU());
         msu->inFocus = inFocus;
         msu->ElementRect.Top = ElementRect.Top;
-        msu->ElementRect.Left = 105;//ElementRect.Left;
+        msu->ElementRect.Left = msuLeft;//ElementRect.Left;
         msu->view();
     }
+}
+
+void TTagLine::setValueLeft(int step) {
+    valueLeft = step;
+}
+
+void TTagLine::setMsuLeft(int step) {
+    msuLeft = step;
 }

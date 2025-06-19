@@ -13,16 +13,21 @@ public:
     virtual const u16 getHeight(void);
     TTagLine(std::string caption, std::string tag, TLabelInitStructure init);//конструктор
     ~TTagLine();//деструктор
-    void view(void);//вывести строку на экране
+    void view(void);
+    void setValueLeft(int step);
+    void setMsuLeft(int step);
+
+    //вывести строку на экране
     TLabel* Value;
     const std::string Tag;
     const std::string ComponentName();
     virtual void update(const TSlotHandlerArsg& args, const char* format) override;
 private:
+    int valueLeft = 70;
+    int msuLeft = 105;
 protected:
     TLabel* Caption;
-    TLabel* msu; 
-
+    TLabel* msu;
 };
 
 #endif
