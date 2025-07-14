@@ -159,11 +159,13 @@
     <ClInclude Include="MCU\IDrivers\icommastert.h" />
     <ClInclude Include="MCU\IDrivers\iresources.h" />
     <ClInclude Include="MCU\Modbus\modbus.h" />
+    <ClInclude Include="MCU\Pages\CleanSettings\TPageCleanSettings.h" />
     <ClInclude Include="MCU\Pages\Pages.h" />
     <ClInclude Include="MCU\Parameters\TU32BIT.h" />
     <ClInclude Include="MCU\Slots\SlotHandlerType.h" />
     <ClInclude Include="MCU\StateControllers\StateControllers.h" />
     <ClInclude Include="MCU\TODO.h" />
+    <ClInclude Include="PageShakerSettings.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="targetver.h" />
     <ClInclude Include="WindowsProject1.h" />
@@ -225,6 +227,7 @@
     <ClCompile Include="MCU\Pages\BasicProtectionsSettings\PageBasicProtectionsSettings.cpp" />
     <ClCompile Include="MCU\Pages\BasicSettings\PageBasicSettings.cpp" />
     <ClCompile Include="MCU\Pages\Calibration\PageCalibration.cpp" />
+    <ClCompile Include="MCU\Pages\CleanSettings\TPageCleanSettings.cpp" />
     <ClCompile Include="MCU\Pages\EditValue\PageEditValue.cpp" />
     <ClCompile Include="MCU\Pages\Help\PageHelp.cpp" />
     <ClCompile Include="MCU\Pages\Home\PageHome.cpp" />
@@ -258,6 +261,7 @@
     <ClCompile Include="MCU\Slots\CreateSlotsByStart.cpp" />
     <ClCompile Include="MCU\StateControllers\Alarms\Alarms.cpp" />
     <ClCompile Include="MCU\StateControllers\Warnings\Warnings.cpp" />
+    <ClCompile Include="PageShakerSettings.cpp" />
     <ClCompile Include="Source.cpp" />
     <ClCompile Include="threads\mcu_main_thread.cpp" />
     <ClCompile Include="threads\mutexes.cpp" />
