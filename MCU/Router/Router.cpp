@@ -5,11 +5,13 @@
 #include "PageHome.h"
 #include "PageHelp.h"
 #include "PageWarnings.h"
-//#include "PageOperateStatus.h"
+#include "PageOperateStatus.h"
 #include "PageBasicSettings.h"
-//#include "PageBasicProtectionsSettings.h"
-//#include "PageSensors.h"
+#include "PageBasicProtectionsSettings.h"
+#include "PageSensors.h"
 #include "PageParameterListEdit.h"
+#include "TPageCleanSettings.h"
+#include "PageShakerSettings.h"
 #include <IniResources.h>
 
 /*TODO В роутере и страницах можно реализовать переходы на закрытие/открытие окна*/
@@ -28,10 +30,12 @@ void TRouter::Init(void) {
     Pages["Warnings"] = new TPageWarnings("Warnings");
     Pages["BasicSettings"] = new TPageBasicSettings("BasicSettings"); //Основные уставк
     Pages["EditValue"] = new TPageEditValue("EditValue");
-    //Pages["OperateStatus"] = new TPageOperateStatus("OperateStatus"); //Статус работы
-    //Pages["BasicProtectionsSettings"] = new TPageBasicProtectionsSettings("BasicProtectionsSettings"); //Защиты. Основные уставки
-    //Pages["Sensors"] = new TPageSensors("Sensors"); //Датчики
+    Pages["OperateStatus"] = new TPageOperateStatus("OperateStatus"); //Статус работы
+    Pages["BasicProtectionsSettings"] = new TPageBasicProtectionsSettings("BasicProtectionsSettings"); //Защиты. Основные уставки
+    Pages["Sensors"] = new TPageSensors("Sensors"); //Датчики
     Pages["PrmListEdit"] = new TPageParameterListEdit("PrmListEdit");
+    Pages["ClearSetting"] = new TPageCleanSettings("ClearSetting"); //Очистка. Уставки
+    Pages["ShakerSettings"] = new TPageShakerSettings("ShakerSettings"); //Уставки встряхивателя
     setInitPage();
 }
 
