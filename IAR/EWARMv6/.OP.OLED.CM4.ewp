@@ -1437,7 +1437,19 @@
                 <name>$PROJ_DIR$\..\..\MCU\Pages\Alarms\PageAlarms.cpp</name>
             </file>
             <file>
+                <name>$PROJ_DIR$\..\..\MCU\Pages\BasicProtectionsSettings\PageBasicProtectionsSettings.cpp</name>
+            </file>
+            <file>
+                <name>$PROJ_DIR$\..\..\MCU\Pages\BasicProtectionsSettings\PageBasicProtectionsSettings.h</name>
+            </file>
+            <file>
                 <name>$PROJ_DIR$\..\..\MCU\Pages\BasicSettings\PageBasicSettings.cpp</name>
+            </file>
+            <file>
+                <name>$PROJ_DIR$\..\..\MCU\Pages\Calibration\PageCalibration.cpp</name>
+            </file>
+            <file>
+                <name>$PROJ_DIR$\..\..\MCU\Pages\Calibration\PageCalibration.h</name>
             </file>
             <file>
                 <name>$PROJ_DIR$\..\..\MCU\Pages\EditValue\PageEditValue.cpp</name>
@@ -1452,6 +1464,24 @@
                 <name>$PROJ_DIR$\..\..\MCU\Pages\MainMenu\PageMainMenu.cpp</name>
             </file>
             <file>
+                <name>$PROJ_DIR$\..\..\MCU\Pages\OperateStatus\PageOperateStatus.cpp</name>
+            </file>
+            <file>
+                <name>$PROJ_DIR$\..\..\MCU\Pages\OperateStatus\PageOperateStatus.h</name>
+            </file>
+            <file>
+                <name>$PROJ_DIR$\..\..\MCU\Pages\PanelSettings\PagePanelSettings.cpp</name>
+            </file>
+            <file>
+                <name>$PROJ_DIR$\..\..\MCU\Pages\PanelSettings\PagePanelSettings.h</name>
+            </file>
+            <file>
+                <name>$PROJ_DIR$\..\..\MCU\Pages\PanelSettingsEFI\PagePanelSettingsEFI.cpp</name>
+            </file>
+            <file>
+                <name>$PROJ_DIR$\..\..\MCU\Pages\PanelSettingsEFI\PagePanelSettingsEFI.h</name>
+            </file>
+            <file>
                 <name>$PROJ_DIR$\..\..\MCU\Pages\ParameterListEdit\PageParameterListEdit.cpp</name>
             </file>
             <file>
@@ -1464,7 +1494,25 @@
                 <name>$PROJ_DIR$\..\..\MCU\Pages\Pages.h</name>
             </file>
             <file>
+                <name>$PROJ_DIR$\..\..\MCU\Pages\Sensors\PageSensors.cpp</name>
+            </file>
+            <file>
+                <name>$PROJ_DIR$\..\..\MCU\Pages\Sensors\PageSensors.h</name>
+            </file>
+            <file>
+                <name>$PROJ_DIR$\..\..\MCU\Pages\ShakerSettings\PageShakerSettings.cpp</name>
+            </file>
+            <file>
+                <name>$PROJ_DIR$\..\..\MCU\Pages\ShakerSettings\PageShakerSettings.h</name>
+            </file>
+            <file>
                 <name>$PROJ_DIR$\..\..\MCU\Pages\Warning\PageWarnings.cpp</name>
+            </file>
+            <file>
+                <name>$PROJ_DIR$\..\..\MCU\Pages\CleanSettings\TPageCleanSettings.cpp</name>
+            </file>
+            <file>
+                <name>$PROJ_DIR$\..\..\MCU\Pages\CleanSettings\TPageCleanSettings.h</name>
             </file>
         </group>
         <group>
