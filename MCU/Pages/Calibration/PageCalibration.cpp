@@ -70,7 +70,8 @@ void TPageCalibration::fillPageContainer(void) {
     LabelInit.Rect = { 10, 10, 10, 10 };
     LabelInit.focused = false;
     TagList->AddList({
-
+        new TTagLine("KadcUin", "U1/CD/KadcUin/", LabelInit),
+        new TTagLine("KadcIin", "U1/CD/KadcIin/", LabelInit),
     });
 }
 

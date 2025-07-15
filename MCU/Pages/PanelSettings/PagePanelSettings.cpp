@@ -87,7 +87,17 @@ void TPagePanelSettings::fillPageContainer(void) {
     LabelInit.Rect = { 10, 10, 10, 10 };
     LabelInit.focused = false;
     TagList->AddList({
-
+        new TTagLine("S1_BPS", "SLF/FLASH/ModbusSlaveU1_BPS/", LabelInit),
+        new TTagLine("S1_DVA", "SLF/FLASH/ModbusSlaveU1_DVA/", LabelInit),
+        new TTagLine("S1_PRTY", "SLF/FLASH/ModbusSlaveU1_PRTY/", LabelInit),
+        new TTagLine("S1_STOP", "SLF/FLASH/ModbusSlaveU1_STOP/", LabelInit),
+        new TTagLine("M2_BPS", "SLF/FLASH/ModbusMasterU2_BPS/", LabelInit),
+        new TTagLine("M2_DVA", "SLF/FLASH/ModbusMasterU2_DVA/", LabelInit),
+        new TTagLine("M2_PRTY", "SLF/FLASH/ModbusMasterU2_PRTY/", LabelInit),
+        new TTagLine("M2_STOP", "SLF/FLASH/ModbusMasterU2_STOP/", LabelInit),
+        new TTagLine("M2_STOP", "SLF/FLASH/ModbusMasterU2_STOP/", LabelInit),
+        new TTagLine("TimeOut", "SLF/FLASH/TIME_OUT_Lnkmngr/", LabelInit),
+        new TTagLine("PASS", "SLF/FLASH/Password/", LabelInit)
     });
 }
 
