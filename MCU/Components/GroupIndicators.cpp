@@ -81,17 +81,17 @@ void GroupIndicators::stateValue()
 		u16 ratio = ElementRect.Left + ((i + 1) * 6);
 		TGrahics::putChar(sparksValue[i], ratio, ElementRect.Top + 52, sparksValue[i] == mode ? 1 : 0);
 	}
-	
+
 }
 void GroupIndicators::editStateValue() {
 	std::string sparksValue = "opa";
 	TGrahics::outText(sparksValue, ElementRect.Left + 6, ElementRect.Top + 52, abs(colorState - 1), "Verdana12");
 }
 void GroupIndicators::setStateValue() {
-	if (runValue != "0"){
+	 if (runValue == "1") {
 		mode = 'p';
 	}
-	else if (readyValue != "0") {
+	else if (readyValue == "1") {
 		mode = 'o';
 	}
 	else {
