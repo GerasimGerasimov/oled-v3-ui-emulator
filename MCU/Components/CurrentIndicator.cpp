@@ -181,6 +181,11 @@ bool CurrentIndicator::ProcessMessage(TMessage* m)
 		
 			}
 			break;
+		case (u32)KeyCodes::ESC:
+			if (inFocus) {
+				TRouter::setTask({ false, "Home", nullptr });
+			}
+			break;
 		}
 	}
 	for (auto& element : List) {

@@ -160,6 +160,11 @@ bool GroupIndicators::ProcessMessage(TMessage* m) {
 				areaState(yPos);
 			}
 			break;
+		case (u32)KeyCodes::ESC:
+			if (inFocus) {
+				TRouter::setTask({ false, "Home", nullptr });
+			}
+			break;
 		}
 		return false;
 	}
