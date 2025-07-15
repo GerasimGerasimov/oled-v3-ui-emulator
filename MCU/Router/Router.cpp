@@ -11,7 +11,10 @@
 #include "PageSensors.h"
 #include "PageParameterListEdit.h"
 #include "TPageCleanSettings.h"
-#include "PageShakerSettings.h"
+#include "ShakerSettings/PageShakerSettings.h"
+#include "PagePanelSettings.h"
+#include "PageCalibration.h"
+#include "PanelSettingsEFI/PagePanelSettingsEFI.h"
 #include <IniResources.h>
 
 /*TODO В роутере и страницах можно реализовать переходы на закрытие/открытие окна*/
@@ -36,6 +39,9 @@ void TRouter::Init(void) {
     Pages["PrmListEdit"] = new TPageParameterListEdit("PrmListEdit");
     Pages["ClearSetting"] = new TPageCleanSettings("ClearSetting"); //Очистка. Уставки
     Pages["ShakerSettings"] = new TPageShakerSettings("ShakerSettings"); //Уставки встряхивателя
+    Pages["PanelSettings"] = new TPagePanelSettings("PanelSettings");
+    Pages["PanelSettingsEFI"] = new TPagePanelSettingsEFI("PanelSettingsEFI");
+    Pages["Calibration"] = new TPageCalibration("Calibration");
     setInitPage();
 }
 
