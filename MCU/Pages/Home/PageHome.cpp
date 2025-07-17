@@ -39,14 +39,14 @@ bool TPageHome::ProcessMessage(TMessage* m) {
                     TRouter::setTask({ false, "MainMenu", nullptr });
                     
                     break;
-                /*case (u32)KeyCodes::F1:
+                case (u32)KeyCodes::F1:
                     e = getSignalOfFocusedChild();
+                    TRouter::PageValueEditEntryData.backPage = Name;
                     if (e) {
                         ISignal* p = IniResources::getSignalByTag(((TTagLine*)(e))->Tag);
-                        TRouter::PageValueEditEntryData.backPage = Name;
                         TRouter::setTask({ false, "Help", p });
                     }
-                    break;*/
+                    break;
                 case (u32)KeyCodes::ENT:
                     e = getSignalOfFocusedChild();
                     if (e) {
