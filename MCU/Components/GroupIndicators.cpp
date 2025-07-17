@@ -12,7 +12,7 @@
 GroupIndicators::GroupIndicators(int x, int y, u8 colorState, std::string outValue1, std::string sparksV, std::string ready, std::string run) {
 	ElementRect.Left = x;
 	ElementRect.Top = y;
-	ElementRect.Height = 63;
+	ElementRect.Height = 64;
 	ElementRect.Width = 29;
 	this->colorState = colorState;
 	objOut = (TParameter*)IniResources::getSignalByTag(outValue1);

@@ -13,7 +13,7 @@
 OperatingMode::OperatingMode(int x, int y, u8 colorState, std::string normal, std::string clean, std::string vac, std::string manual) {
 	ElementRect.Left = x;
 	ElementRect.Top = y;
-	ElementRect.Height = 63;
+	ElementRect.Height = 64;
 	ElementRect.Width = 17;
 	this->colorState = colorState;
 	objNormal = (TParameter*)IniResources::getSignalByTag(normal);
@@ -36,13 +36,14 @@ void  OperatingMode::view()
 	background();
 	drawBorder();
 	hidingBorder();
-
+	
 	TGrahics::outText("pp", ElementRect.Left + 2, ElementRect.Top, abs(colorState - 1), "Verdana12");
 	TGrahics::outText("í", ElementRect.Left + 4, ElementRect.Top + 8, abs(colorState - 1), "MSSansSerifBold14");
 	TGrahics::outText("î", ElementRect.Left + 4, ElementRect.Top + 21, abs(colorState - 1), "MSSansSerifBold14");
 	TGrahics::outText("â", ElementRect.Left + 4, ElementRect.Top + 34, abs(colorState - 1), "MSSansSerifBold14");
 	TGrahics::outText("ò", ElementRect.Left + 4, ElementRect.Top + 47, abs(colorState - 1), "MSSansSerifBold14");
-	
+
+	//TGrahics::outText(cleanValue, ElementRect.Left + 4, ElementRect.Top + 47, abs(colorState - 1), "MSSansSerifBold14");
 	if (inFocus) {
 		colorState = 1;
 		//SubscriberID = HandlerSubscribers::set("U1/RAM/", [this](TSlotHandlerArsg args) { SlotUpdateRAM(args); });
@@ -103,6 +104,7 @@ bool OperatingMode::ProcessMessage(TMessage* m)
 				else {
 					component = 0;
 				}
+				//sendModeCmd(container[component]);
 			}
 			break;
 		case (u32)KeyCodes::Down:
@@ -120,6 +122,7 @@ bool OperatingMode::ProcessMessage(TMessage* m)
 				else {
 					component = 4;
 				}
+				//sendModeCmd(container[component]);
 			}
 			break;
 		case (u32)KeyCodes::F1:
@@ -154,7 +157,7 @@ bool OperatingMode::ProcessMessage(TMessage* m)
 void OperatingMode::updateObj(std::string sector, const TSlotHandlerArsg& args, const char* format)
 {
 	if (sector == "RAM") {
-		normalValue = objNormal->getValue(args, "");
+		normalValue = objNormal->getValue(args, ""); //sendModeCmd(container[1]);
 		cleanValue = objClean->getValue(args, "");
 		vacValue = objVac->getValue(args, "");
 		manualValue = objManual->getValue(args, "");
@@ -207,6 +210,7 @@ void OperatingMode::sendModeCmd(ISignal* signal) {
 	if (CmdBySignalName.count(name)) {
 		sendCmd((std::string&)CmdBySignalName.at(name));
 	}
+	//normalValue = (std::string&)CmdBySignalName.at(name);
 }
 
 void OperatingMode::sendCmd(std::string& code) {

@@ -19,7 +19,7 @@ CurrentIndicator::CurrentIndicator(int x, int y, std::string msu, std::string re
 {
 	ElementRect.Left = x;
 	ElementRect.Top = y;
-	ElementRect.Height = 63;
+	ElementRect.Height = 64;
 	ElementRect.Width = 40;
 	this->msu = msu;
 	this->ref = ref;
@@ -29,7 +29,7 @@ CurrentIndicator::CurrentIndicator(int x, int y, std::string msu, std::string re
 	objRef = (TParameter*)IniResources::getSignalByTag(refValue);
 	refMax = (TParameter*)IniResources::getSignalByTag(maxValue);
 	objLimit = (TParameter*)IniResources::getSignalByTag(limitValue);
-	nameRef = refValue;
+	nameRef = tag;
 }
 
 void CurrentIndicator::view()
