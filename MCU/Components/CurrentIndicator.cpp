@@ -19,7 +19,7 @@ CurrentIndicator::CurrentIndicator(int x, int y, std::string msu, std::string re
 {
 	ElementRect.Left = x;
 	ElementRect.Top = y;
-	ElementRect.Height = 64;
+	ElementRect.Height = 65;
 	ElementRect.Width = 40;
 	this->msu = msu;
 	this->ref = ref;
@@ -30,6 +30,7 @@ CurrentIndicator::CurrentIndicator(int x, int y, std::string msu, std::string re
 	refMax = (TParameter*)IniResources::getSignalByTag(maxValue);
 	objLimit = (TParameter*)IniResources::getSignalByTag(limitValue);
 	nameRef = tag;
+	refName = refValue;
 }
 
 void CurrentIndicator::view()
@@ -165,12 +166,12 @@ bool CurrentIndicator::ProcessMessage(TMessage* m)
 		switch (m->p1) {
 		case (u32)KeyCodes::Up:
 			if (inFocus) {
-				increase((m->p2 == (u32)KeyPressFeature::AutoRepeat) ? 10 : 5);
+				increase((m->p2 == (u32)KeyPressFeature::AutoRepeat) ? 2 : 1);
 			}
 			break;
 		case (u32)KeyCodes::Down:
 			if (inFocus) {
-				decrease((m->p2 == (u32)KeyPressFeature::AutoRepeat) ? 10 : 5);
+				decrease((m->p2 == (u32)KeyPressFeature::AutoRepeat) ? 2 : 1);
 			}
 			
 			break;
@@ -202,11 +203,11 @@ void CurrentIndicator::decrease(float step) {
 	1) получить значение 2) убедится что числовое 3) произвести над ним вычисления
 	4) превратить  в строку 5) отправить */
 		
-	if ((valuePoint - step * ratio) < 0.1) {
+	if ((valuePoint - step) < 0.1) {
 	valuePoint = valuePoint;
 	}
 	else {
-		valuePoint -= step * ratio;
+		valuePoint -= step;
 	}
 		char s[8];
 		if (valuePoint < 100) {
@@ -226,11 +227,11 @@ void CurrentIndicator::increase(float step) {
 	1) получить значение 2) убедится что числовое 3) произвести над ним вычисления
 	4) превратить  в строку 5) отправить */
 
-	if ((valuePoint - step * ratio) > maxValueInt) {
+	if ((valuePoint - step) > maxValueInt) {
 		valuePoint = maxValueInt;
 	}
 	else {
-		valuePoint += step * ratio;
+		valuePoint += step;
 	}
 		char s[8];
 		if (valuePoint < 100) {
@@ -245,7 +246,7 @@ void CurrentIndicator::increase(float step) {
 
 void CurrentIndicator::sendCmd(std::string& refValue) {
 	std::string tag;
-	if (nameRef == "U1/FLASH/Iref/") {
+	if (refName == "U1/FLASH/Iref/") {
 		tag = "U1/FLASH/Iref/";
 	}
 	else {

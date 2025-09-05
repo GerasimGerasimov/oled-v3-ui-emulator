@@ -18,6 +18,7 @@ private:
 	std::string maxValue;
 	std::string limitValue;
 	std::string nameRef;
+	std::string refName;
 
 	FillingBar fillingBar;
 
