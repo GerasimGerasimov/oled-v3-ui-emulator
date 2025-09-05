@@ -13,7 +13,7 @@
 OperatingMode::OperatingMode(int x, int y, u8 colorState, std::string normal, std::string clean, std::string vac, std::string manual) {
 	ElementRect.Left = x;
 	ElementRect.Top = y;
-	ElementRect.Height = 64;
+	ElementRect.Height = 65;
 	ElementRect.Width = 17;
 	this->colorState = colorState;
 	objNormal = (TParameter*)IniResources::getSignalByTag(normal);
@@ -98,13 +98,13 @@ bool OperatingMode::ProcessMessage(TMessage* m)
 				else {
 					yPosition = 0;
 				}
-				if (component > 0 && component <= 4) {
+				if (component > 0 && component <= 3) {
 					component--;
 				}
 				else {
 					component = 0;
 				}
-				//sendModeCmd(container[component]);
+				sendModeCmd(container[component]);
 			}
 			break;
 		case (u32)KeyCodes::Down:
@@ -116,13 +116,13 @@ bool OperatingMode::ProcessMessage(TMessage* m)
 				else {
 					yPosition = 3;
 				}
-				if (component < 4 && component >= 0) {
+				if (component < 3 && component >= 0) {
 					component++;
 				}
 				else {
-					component = 4;
+					component = 3;
 				}
-				//sendModeCmd(container[component]);
+				sendModeCmd(container[component]);
 			}
 			break;
 		case (u32)KeyCodes::F1:
