@@ -33,7 +33,7 @@ void TRouter::Init(void) {
     Pages["Warnings"] = new TPageWarnings("Warnings");
     Pages["BasicSettings"] = new TPageBasicSettings("BasicSettings"); //Основные уставк
     Pages["EditValue"] = new TPageEditValue("EditValue");
-    Pages["OperateStatus"] = new TPageOperateStatus("OperateStatus"); //Статус работы
+    // Pages["OperateStatus"] = new TPageOperateStatus("OperateStatus"); //Статус работы
     Pages["BasicProtectionsSettings"] = new TPageBasicProtectionsSettings("BasicProtectionsSettings"); //Защиты. Основные уставки
     Pages["Sensors"] = new TPageSensors("Sensors"); //Датчики
     Pages["PrmListEdit"] = new TPageParameterListEdit("PrmListEdit");
