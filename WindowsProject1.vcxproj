@@ -155,6 +155,7 @@
     <ClInclude Include="MCU\IDrivers\icommastert.h" />
     <ClInclude Include="MCU\IDrivers\iresources.h" />
     <ClInclude Include="MCU\Modbus\modbus.h" />
+    <ClInclude Include="MCU\Pages\AdditionalData\PageAdditionalData.h" />
     <ClInclude Include="MCU\Pages\ControlSettings\PageControlSettings.h" />
     <ClInclude Include="MCU\Pages\Discretes\PageDIn.h" />
     <ClInclude Include="MCU\Pages\Discretes\PageInOut.h" />
@@ -218,6 +219,7 @@
     <ClCompile Include="MCU\ini\parser.cpp" />
     <ClCompile Include="MCU\Modbus\AppModbusSlave.cpp" />
     <ClCompile Include="MCU\Msg\msg.cpp" />
+    <ClCompile Include="MCU\Pages\AdditionalData\PageAdditionalData.cpp" />
     <ClCompile Include="MCU\Pages\Alarms\PageAlarms.cpp" />
     <ClCompile Include="MCU\Pages\BasicProtectionsSettings\PageBasicProtectionsSettings.cpp" />
     <ClCompile Include="MCU\Pages\BasicSettings\PageBasicSettings.cpp" />
