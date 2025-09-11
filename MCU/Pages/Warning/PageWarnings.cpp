@@ -64,7 +64,7 @@ TPageWarnings::TPageWarnings(std::string Name)
 
     TLabelInitStructure LabelInit;
     LabelInit.pOwner = Container;
-    LabelInit.caption = "Предупреждения";
+    LabelInit.caption = "Внутренние ошибки";
     TFixedHeader* pHeader = new TFixedHeader(LabelInit);
     Container->Add(pHeader);
 

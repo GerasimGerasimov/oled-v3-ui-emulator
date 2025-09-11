@@ -156,12 +156,14 @@
     <ClInclude Include="MCU\IDrivers\iresources.h" />
     <ClInclude Include="MCU\Modbus\modbus.h" />
     <ClInclude Include="MCU\Pages\AdditionalData\PageAdditionalData.h" />
+    <ClInclude Include="MCU\Pages\CommunicationSettings\PageCommunicationSettings.h" />
     <ClInclude Include="MCU\Pages\ControlSettings\PageControlSettings.h" />
     <ClInclude Include="MCU\Pages\Discretes\PageDIn.h" />
     <ClInclude Include="MCU\Pages\Discretes\PageInOut.h" />
     <ClInclude Include="MCU\Pages\Discretes\TPageDOut.h" />
     <ClInclude Include="MCU\Pages\Pages.h" />
     <ClInclude Include="MCU\Pages\PowerConverter\PagePowerConverter.h" />
+    <ClInclude Include="MCU\Pages\WorkFlags\PageWorkFlags.h" />
     <ClInclude Include="MCU\Parameters\TU32BIT.h" />
     <ClInclude Include="MCU\Slots\SlotHandlerType.h" />
     <ClInclude Include="MCU\StateControllers\StateControllers.h" />
@@ -224,6 +226,7 @@
     <ClCompile Include="MCU\Pages\BasicProtectionsSettings\PageBasicProtectionsSettings.cpp" />
     <ClCompile Include="MCU\Pages\BasicSettings\PageBasicSettings.cpp" />
     <ClCompile Include="MCU\Pages\Calibration\PageCalibration.cpp" />
+    <ClCompile Include="MCU\Pages\CommunicationSettings\PageCommunicationSettings.cpp" />
     <ClCompile Include="MCU\Pages\ControlSettings\PageControlSettings.cpp" />
     <ClCompile Include="MCU\Pages\Discretes\PageDIn.cpp" />
     <ClCompile Include="MCU\Pages\Discretes\PageInOut.cpp" />
@@ -239,6 +242,7 @@
     <ClCompile Include="MCU\Pages\PowerConverter\PagePowerConverter.cpp" />
     <ClCompile Include="MCU\Pages\Sensors\PageSensors.cpp" />
     <ClCompile Include="MCU\Pages\Warning\PageWarnings.cpp" />
+    <ClCompile Include="MCU\Pages\WorkFlags\PageWorkFlags.cpp" />
     <ClCompile Include="MCU\Parameters\generalcase.cpp" />
     <ClCompile Include="MCU\Parameters\inistring.cpp" />
     <ClCompile Include="MCU\Parameters\parameters.cpp" />

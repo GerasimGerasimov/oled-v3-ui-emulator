@@ -6,10 +6,16 @@
 #include "PageHelp.h"
 #include "PageWarnings.h"
 //#include "PageOperateStatus.h"
-//#include "PageBasicSettings.h"
-//#include "PageBasicProtectionsSettings.h"
+#include "PageBasicSettings.h"
+#include "PageBasicProtectionsSettings.h"
 //#include "PageSensors.h"
 #include "PageParameterListEdit.h"
+#include "PagePanelSettings.h"
+#include "AdditionalData/PageAdditionalData.h"
+#include "WorkFlags/PageWorkFlags.h"
+#include "Discretes/PageDIn.h"
+#include "Discretes/TPageDOut.h"
+#include "CommunicationSettings/PageCommunicationSettings.h"
 #include <IniResources.h>
 
 /*TODO В роутере и страницах можно реализовать переходы на закрытие/открытие окна*/
@@ -26,12 +32,19 @@ void TRouter::Init(void) {
     Pages["MainMenu"] = new TPageMainMenu("MainMenu");
     Pages["Alarms"] = new TPageAlarms("Alarms");
     Pages["Warnings"] = new TPageWarnings("Warnings");
-    //Pages["BasicSettings"] = new TPageBasicSettings("BasicSettings"); //Основные уставк
+    Pages["BasicSettings"] = new TPageBasicSettings("BasicSettings"); //Основные уставк
     Pages["EditValue"] = new TPageEditValue("EditValue");
     //Pages["OperateStatus"] = new TPageOperateStatus("OperateStatus"); //Статус работы
-    //Pages["BasicProtectionsSettings"] = new TPageBasicProtectionsSettings("BasicProtectionsSettings"); //Защиты. Основные уставки
+    Pages["BasicProtectionsSettings"] = new TPageBasicProtectionsSettings("BasicProtectionsSettings"); //Защиты. Основные уставки
     //Pages["Sensors"] = new TPageSensors("Sensors"); //Датчики
     Pages["PrmListEdit"] = new TPageParameterListEdit("PrmListEdit");
+    Pages["AdditionalData"] = new TPageAdditionalData("AdditionalData");
+    Pages["WorkFlags"] = new TPageWorkFlags("WorkFlags");
+    Pages["DIn"] = new TPageDIn("DIn");
+    Pages["DOut"] = new TPageDOut("DOut");
+    Pages["CommunicationSettings"] = new TPageCommunicationSettings("CommunicationSettings");
+    Pages["PanelSettings"] = new TPagePanelSettings("PanelSettings");
+
     setInitPage();
 }
 

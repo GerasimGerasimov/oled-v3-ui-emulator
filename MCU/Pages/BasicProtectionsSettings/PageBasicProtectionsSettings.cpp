@@ -70,7 +70,36 @@ void TPageBasicProtectionsSettings::fillPageContainer(void) {
     LabelInit.Rect = { 10, 10, 10, 10 };
     LabelInit.focused = false;
     TagList->AddList({
-
+        new TTagLine("IinMTZ", "U1/FLASH/IinMTZ/", LabelInit),
+        new TTagLine("IoutMTZ", "U1/FLASH/IoutMTZ/", LabelInit),
+        new TTagLine("IovrSt1", "U1/FLASH/IovrSt1/", LabelInit),
+        new TTagLine("IovrSt2", "U1/FLASH/IovrSt2/", LabelInit),
+        new TTagLine("IovrSt3", "U1/FLASH/IovrSt3/", LabelInit),
+        new TTagLine("IovrSt4", "U1/FLASH/IovrSt4/", LabelInit),
+        new TTagLine("tOvrSt1", "U1/FLASH/tOvrSt1/", LabelInit),
+        new TTagLine("tOvrSt2", "U1/FLASH/tOvrSt2/", LabelInit),
+        new TTagLine("tOvrSt3", "U1/FLASH/tOvrSt3/", LabelInit),
+        new TTagLine("tOvrSt4", "U1/FLASH/tOvrSt4/", LabelInit),
+        new TTagLine("dIasym", "U1/FLASH/dIasym/", LabelInit),
+        new TTagLine("dUasym", "U1/FLASH/dUasym/", LabelInit),
+        new TTagLine("tAsym", "U1/FLASH/tAsym/", LabelInit),
+        new TTagLine("Uin_min", "U1/FLASH/Uin_min/", LabelInit),
+        new TTagLine("Uin_max", "U1/FLASH/Uin_max/", LabelInit),
+        new TTagLine("Fin_min", "U1/FLASH/Fin_min/", LabelInit),
+        new TTagLine("Fin_max", "U1/FLASH/Fin_max", LabelInit),
+        new TTagLine("UoutMin", "U1/FLASH/UoutMin/", LabelInit),
+        new TTagLine("tOutMin", "U1/FLASH/tOutMin/", LabelInit),
+        new TTagLine("UoutMax", "U1/FLASH/UoutMax/", LabelInit),
+        new TTagLine("tOutMax", "U1/FLASH/tOutMax/", LabelInit),
+        new TTagLine("tStartMax", "U1/FLASH/tStartMax/", LabelInit),
+        new TTagLine("tContInMax", "U1/FLASH/tContInMax/", LabelInit),
+        new TTagLine("tContBallMax", "U1/FLASH/tContBallMax/", LabelInit),
+        new TTagLine("ContBallIgnore", "U1/FLASH/ContBallIgnore/", LabelInit),
+        new TTagLine("Tfan1On", "U1/FLASH/Tfan1On/", LabelInit),
+        new TTagLine("Tfan1Off", "U1/FLASH/Tfan1Off/", LabelInit),
+        new TTagLine("Tovr", "U1/FLASH/Tovr/", LabelInit),
+        new TTagLine("Tfan2On", "U1/FLASH/Tfan2On/", LabelInit),
+        new TTagLine("Tfan2Off", "U1/FLASH/Tfan2Off/", LabelInit),
     });
 }
 

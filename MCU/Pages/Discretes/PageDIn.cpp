@@ -1,6 +1,7 @@
 #include "PageDIn.h"
 #include "TagLineScrollCaptionComment.h"
 #include <FixedHeader.h>
+#include "TagLine.h"
 
 TPageDIn::TPageDIn(std::string Name) : TPageInOut(Name)
 {
@@ -23,6 +24,13 @@ void TPageDIn::fillPageContainer()
     LabelInit.Rect = { 10, 10, 10, 80 };
     LabelInit.focused = false;
     TagList->AddList({
-        //new TTagLineScrollCaptionComment("U1/RAM/iReady/", LabelInit),
+        new TTagLine("Start", "U1/RAM/DI0_Start/", LabelInit),
+        new TTagLine("Stop", "U1/RAM/DI1_Stop/", LabelInit),
+        new TTagLine("Deblock", "U1/RAM/DI2_Deblock/", LabelInit),
+        new TTagLine("FanRdy", "U1/RAM/DI3_FanRdy/", LabelInit),
+        new TTagLine("Door", "U1/RAM/DI4_Door/", LabelInit),
+        new TTagLine("Estop", "U1/RAM/DI5_Estop/", LabelInit),
+        new TTagLine("PwrCont", "U1/RAM/DI6_PwrCont/", LabelInit),
+        new TTagLine("Ballast", "U1/RAM/DI7_Ballast/", LabelInit)
         });
 }

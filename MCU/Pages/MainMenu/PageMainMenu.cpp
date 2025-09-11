@@ -33,11 +33,17 @@ TPageMainMenu::TPageMainMenu(std::string Name)
         Container = new TVerticalContainer(pLabelsProps, {
             new TLinkLabel("Основные параметры", "Home",LabelInit),
             //new TLinkLabel("Статус работы", "OperateStatus", LabelInit),
-            //new TLinkLabel("Основные уставки", "BasicSettings", LabelInit),
             new TLinkLabel("Аварии", "Alarms", LabelInit),
-            new TLinkLabel("Предупреждения", "Warnings", LabelInit),
+            new TLinkLabel("Внутренние ошибки", "Warnings", LabelInit),
+            new TLinkLabel("Дополнительные данные", "AdditionalData", LabelInit),
+            new TLinkLabel("Флаги работы", "WorkFlags", LabelInit),
+            new TLinkLabel("Дискретные входы", "DIn", LabelInit),
+            new TLinkLabel("Дискретные выходы", "DOut", LabelInit),
             //new TLinkLabel("Датчики", "Sensors", LabelInit),
-            //new TLinkLabel("защиты. Основные уставки", "BasicProtectionsSettings", LabelInit),
+            new TLinkLabel("Уставки связи", "CommunicationSettings", LabelInit),
+            new TLinkLabel("Уставки работы", "BasicSettings", LabelInit),
+            new TLinkLabel("Уставки защиты", "BasicProtectionsSettings", LabelInit),
+            new TLinkLabel("Настройки панели", "PanelSettings", LabelInit),
             //new TLinkLabel("Очистка. Уставки", "CleanSettings", LabelInit),
            })
     });

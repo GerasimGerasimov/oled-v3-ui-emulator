@@ -11,7 +11,21 @@
 
 /*TODO когда "раскачаю RTC (по полной, с окном установки времени) то к аварии добавить метку времени"*/
 std::map < std::string, TTrackedBit > Alarms::Tags = {
-	//{"InMtz", {"U1/RAM/InMtzAlm/", nullptr, false, false}},
+	{"InMtzAlm", {"U1/RAM/InMtzAlm/", nullptr, false, false}},
+	{"OutMtzAlm", {"U1/RAM/OutMtzAlm/", nullptr, false, false}},
+	{"OverloadAlm", {"U1/RAM/OverloadAlm/", nullptr, false, false}},
+	{"IinAsymAlm", {"U1/RAM/IinAsymAlm/", nullptr, false, false}},
+	{"UinAsymAlm", {"U1/RAM/UinAsymAlm/", nullptr, false, false}},
+	{"UinFailAlm", {"U1/RAM/UinFailAlm/", nullptr, false, false}},
+	{"SyncFailAlm", {"U1/RAM/SyncFailAlm/", nullptr, false, false}},
+	{"UoutMinAlm", {"U1/RAM/UoutMinAlm/", nullptr, false, false}},
+	{"UoutMaxAlm", {"U1/RAM/UoutMaxAlm/", nullptr, false, false}},
+	{"StartFailAlm", {"U1/RAM/StartFailAlm/", nullptr, false, false}},
+	{"eStopAlm", {"U1/RAM/eStopAlm/", nullptr, false, false}},
+	{"OpenDoorAlm", {"U1/RAM/OpenDoorAlm/", nullptr, false, false}},
+	{"InContAlm", {"U1/RAM/InContAlm/", nullptr, false, false}},
+	{"BallContAlm", {"U1/RAM/BallContAlm/", nullptr, false, false}},
+	{"ToverheatAlm", {"U1/RAM/ToverheatAlm/", nullptr, false, false}},
 };
 
 bool Alarms::State = true;

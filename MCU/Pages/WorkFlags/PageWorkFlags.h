@@ -1,10 +1,11 @@
 #pragma once
 #include <PageSensors.h>
-class TPageAdditionalData : public TPageSensors
+class TPageWorkFlags : public TPageSensors
 {
 public:
-    TPageAdditionalData(std::string Name);
+    TPageWorkFlags(std::string Name);
 protected:
     void fillPageContainer() override;
 };
+
 
