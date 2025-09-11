@@ -4,7 +4,8 @@
 #include <IniResources.h>
 
 void TPageHome::view() {
-    TagList->view();
+   // TagList->view();
+    IndicatorI.view();
 };
 
 void TPageHome::onOpen() {
@@ -83,7 +84,7 @@ void TPageHome::fillPageContainer(void) {
 }
 
 TPageHome::TPageHome(std::string Name)
-    :TPage(Name) {
+    :TPage(Name), IndicatorI(0, 0, "I, mA", "Iref") {
     TVerticalContainerProps props = { false };
     TagList = new TVerticalContainer(props, {});
     AddList({ TagList });

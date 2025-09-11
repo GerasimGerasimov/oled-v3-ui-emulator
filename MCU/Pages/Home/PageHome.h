@@ -4,6 +4,7 @@
 #include "Pages.h"
 #include "TVerticalContainer.h"
 #include "HandleSubscribers.h"
+#include <Indicator.h>
 
 class TPageHome : public TPage
 {
@@ -21,6 +22,7 @@ private:
     void SlotUpdate(TSlotHandlerArsg args);
     TVisualObject* getSignalOfFocusedChild();
     int SubscriberID = 0;
+    Indicator IndicatorI;
 };
 
 #endif

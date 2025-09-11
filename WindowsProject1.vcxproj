@@ -144,6 +144,7 @@
   <ItemGroup>
     <ClInclude Include="framework.h" />
     <ClInclude Include="MainPage.h" />
+    <ClInclude Include="MCU\Components\Indicator.h" />
     <ClInclude Include="MCU\Components\LabelTime.h" />
     <ClInclude Include="MCU\Components\ScrollLabel.h" />
     <ClInclude Include="MCU\Components\TagLineScrollCaption.h" />
@@ -188,6 +189,7 @@
     <ClCompile Include="MCU\Components\FixedFooter.cpp" />
     <ClCompile Include="MCU\Components\FixedHeader.cpp" />
     <ClCompile Include="MCU\Components\HeaderLabel.cpp" />
+    <ClCompile Include="MCU\Components\Indicator.cpp" />
     <ClCompile Include="MCU\Components\Label.cpp" />
     <ClCompile Include="MCU\Components\LabelTime.cpp" />
     <ClCompile Include="MCU\Components\LinkedTagLabel.cpp" />
