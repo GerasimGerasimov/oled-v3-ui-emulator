@@ -46,16 +46,16 @@ void FillingBar::pointerV() //стрелка вертикальная
 
 void FillingBar::drawThreshold() //линия порогового значения шкалы
 {
-	TGrahics::Line(ElementRect.Left - 2, ElementRect.Top + 6, ElementRect.Left + 12, ElementRect.Top + 6, abs(colorState - 1));
-	TGrahics::Line(ElementRect.Left + 2, ElementRect.Top + 6, ElementRect.Left + 10, ElementRect.Top + 6, abs(colorState - 0));
+	TGrahics::Line(ElementRect.Left - 2, ElementRect.Top + 6, ElementRect.Left + 1, ElementRect.Top + 6, abs(colorState - 1));
+	TGrahics::Line(ElementRect.Left + 11, ElementRect.Top + 6, ElementRect.Left + 12, ElementRect.Top + 6, abs(colorState - 1));
 	TFillRect pointLine{ ElementRect.Left + 2, ElementRect.Top + 6, ElementRect.Width - 3, ElementRect.Height - 27, abs(colorState - 0) };
-	//TGrahics::fillCheckeredRect(pointLine);
+	TGrahics::fillCheckeredRect(pointLine);
 }
 
 void FillingBar::setValue(float newValue)
 {
-	if (newValue > maxValueInt) {
-		newValue = maxValueInt;
+	if (newValue > limitValue) {
+		newValue = limitValue;
 	}
 	else if (newValue < 0) {
 		newValue = 0;
@@ -95,15 +95,15 @@ void FillingBar::scaleBarValue() //шкала
 
 	if (value == 0) {
 		TFillRect fillRect{ ElementRect.Left + 3, ElementRect.Top + 28, ElementRect.Width - 5, ElementRect.Height - 28, abs(colorState - 1) };
-		//TGrahics::fillCheckeredRect(fillRect);
+		TGrahics::fillCheckeredRect(fillRect);
 	}
 	else if (value <= limitValue && value > 0) {
 		TFillRect fillRect{ ElementRect.Left + 3, ElementRect.Top + yPosition + 5, ElementRect.Width - 5, ElementRect.Height - 5 - yPosition, abs(colorState - 1) };
-		//TGrahics::fillCheckeredRect(fillRect);
+		TGrahics::fillCheckeredRect(fillRect);
 	}
 	else if (value > limitValue) {
 		TFillRect fillRect{ ElementRect.Left + 3, ElementRect.Top + 5, ElementRect.Width - 5, ElementRect.Height - 5, abs(colorState - 1) };
-		//TGrahics::fillCheckeredRect(fillRect);
+		TGrahics::fillCheckeredRect(fillRect);
 		scaleBarFoam();
 	}
 

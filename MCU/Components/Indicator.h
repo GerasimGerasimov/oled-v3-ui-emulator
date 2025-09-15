@@ -23,9 +23,10 @@ private:
 
 	int percent;
 	int yPosition = 25;
-	int refMaxInt;
+	int refMaxInt = 200;
 	int limValueInt;
-	int stepInt;
+	int stepInt = 5;
+	int valueMin = 0;
 
 	float ratio;
 	float valuePoint;
@@ -43,6 +44,9 @@ public:
 	void valueRef();
 	void pointerH();
 	bool ProcessMessage(TMessage* m);
+	void setValueFB(float newValue);
+	float getValueFB();
+	void scaleBar();
 	void decrease(int step);
 	void increase(int step);
 	void sendCmd(std::string& refValue);

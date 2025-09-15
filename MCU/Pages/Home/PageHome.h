@@ -5,6 +5,7 @@
 #include "TVerticalContainer.h"
 #include "HandleSubscribers.h"
 #include <Indicator.h>
+#include <GroupIndicators.h>
 
 class TPageHome : public TPage
 {
@@ -22,7 +23,11 @@ private:
     void SlotUpdate(TSlotHandlerArsg args);
     TVisualObject* getSignalOfFocusedChild();
     int SubscriberID = 0;
+    Indicator IndicatorU;
     Indicator IndicatorI;
+    GroupIndicators groupIndicators;
+    std::vector <TVisualObject*> container;
+    unsigned int component = 0;
 };
 
 #endif

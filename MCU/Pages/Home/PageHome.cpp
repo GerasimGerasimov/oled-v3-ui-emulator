@@ -5,11 +5,14 @@
 
 void TPageHome::view() {
    // TagList->view();
+    IndicatorU.view();
     IndicatorI.view();
+    groupIndicators.view();
 };
 
 void TPageHome::onOpen() {
-    TGrahics::Line(41, 0, 41, 63, 1);
+    TGrahics::Line(40, 0, 40, 63, 1);
+    TGrahics::Line(81, 0, 81, 63, 1);
     //fillPageContainer();
     SubscriberID = HandlerSubscribers::set("U1/RAM/", [this](TSlotHandlerArsg args) { SlotUpdate(args); });
 }
@@ -43,6 +46,27 @@ bool TPageHome::ProcessMessage(TMessage* m) {
                         TRouter::PageValueEditEntryData.value = ((TTagLine*)(e))->Value->getCaption();
                         TRouter::PageValueEditEntryData.backPage = Name;
                         TRouter::setTask({ false, "EditValue", nullptr });
+                    }
+                    break;
+                case (u32)KeyCodes::Right:
+                    container[component]->inFocus = false;
+                    if (component < container.size() - 1) {
+                        component++;
+                        container[component]->inFocus = true;
+                    }
+                    else {
+                        container[component]->inFocus = true;
+                    }
+                    break;
+
+                case (u32)KeyCodes::Left:
+                    container[component]->inFocus = false;
+                    if (component > 0) {
+                        component--;
+                        container[component]->inFocus = true;
+                    }
+                    else {
+                        container[component]->inFocus = true;
                     }
                     break;
             }
@@ -85,8 +109,10 @@ void TPageHome::fillPageContainer(void) {
 }
 
 TPageHome::TPageHome(std::string Name)
-    :TPage(Name), IndicatorI(0, 0, "I, mA", "Iref") {
+    :TPage(Name), IndicatorU(0, 0, "U, mV", "Uref"), IndicatorI(41, 0, "I, mA", "Iref"), groupIndicators(82, 0, 0, "1000", "1000", "1000") {
     TVerticalContainerProps props = { false };
+    container = { &IndicatorU, &IndicatorI, &groupIndicators };
+
     TagList = new TVerticalContainer(props, {});
     AddList({ TagList });
 };

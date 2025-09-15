@@ -16,7 +16,11 @@ Indicator::Indicator(int x, int y, std::string msu, std::string ref) : fillingBa
 	ElementRect.Width = 40;
 	this->msu = msu;
 	this->ref = ref;
+	this->value = value;
+	this->stepInt = stepInt;
 	this->colorState = colorState; // состояние цвета
+	valuePoint = 50;
+	refValue = "50";
 }
 
 void Indicator::view() {
@@ -27,9 +31,13 @@ void Indicator::view() {
 	else {
 		colorState = 0;
 	}
+	fillingBar.setColorState(colorState);
 	fillingBar.view();
 	displayValue();
 	valueRef();
+	fillingBar.scaleBarValue();
+	pointerH();
+
 }
 
 const u16 Indicator::getHeight(void)
@@ -48,13 +56,15 @@ void Indicator::drawBorder(int drawBorderX, int drawBorderY) {
 void Indicator::displayValue() //I/U ref
 {
 	TGrahics::outText(msu, ElementRect.Left + 3, ElementRect.Top + 2, abs(colorState - 1), "Verdana12");
+	fillingBar.setValue(valuePoint);
+	limValueInt = 100;
+	fillingBar.setLimitValue(limValueInt);
 }
 
 void Indicator::valueRef() //значение ref
 {
 	TGrahics::outTextVertical(ref, ElementRect.Top + 22, ElementRect.Left, abs(colorState - 1), "Verdana12");
-	TGrahics::outTextVertical("1000", ElementRect.Top + 21, ElementRect.Left + 8, abs(colorState - 1), "Verdana12");
-
+	TGrahics::outTextVertical(refValue, ElementRect.Top + 21, ElementRect.Left + 8, abs(colorState - 1), "Verdana12");
 }
 
 void Indicator::pointerH()
@@ -95,12 +105,12 @@ bool Indicator::ProcessMessage(TMessage* m)
 			break;
 		case (u32)KeyCodes::Up:
 			if (inFocus) {
-				//increase((m->p2 == (u32)KeyPressFeature::AutoRepeat) ? stepInt * 2 : stepInt);
+				increase((m->p2 == (u32)KeyPressFeature::AutoRepeat) ? stepInt * 2 : stepInt);
 			}
 			break;
 		case (u32)KeyCodes::Down:
 			if (inFocus) {
-				//decrease((m->p2 == (u32)KeyPressFeature::AutoRepeat) ? stepInt * 2 : stepInt);
+				decrease((m->p2 == (u32)KeyPressFeature::AutoRepeat) ? stepInt * 2 : stepInt);
 			}
 
 			break;
@@ -118,6 +128,20 @@ bool Indicator::ProcessMessage(TMessage* m)
 	}
 	return false;
 	}
+}
+
+void Indicator::setValueFB(float newValue)
+{
+	fillingBar.setValue(newValue);
+}
+
+float Indicator::getValueFB()
+{
+	return fillingBar.getValue();
+}
+void Indicator::scaleBar()
+{
+	fillingBar.scaleBarValue();
 }
 
 void Indicator::decrease(int step) {
@@ -141,7 +165,7 @@ void Indicator::decrease(int step) {
 		sprintf(s, "%.0f", valuePoint);
 	}
 	refValue = s;
-	sendCmd(refValue);
+	//sendCmd(refValue);
 }
 
 void Indicator::increase(int step) {
@@ -161,7 +185,7 @@ void Indicator::increase(int step) {
 			sprintf(s, "%.0f", valuePoint);
 		}
 		refValue = s;
-		sendCmd(refValue);
+		//sendCmd(refValue);
 	}
 	else {
 		valuePoint += stepInt;
@@ -174,7 +198,7 @@ void Indicator::increase(int step) {
 		sprintf(s, "%.0f", valuePoint);
 	}
 	refValue = s;
-	sendCmd(refValue);
+	//sendCmd(refValue);
 }
 
 void Indicator::sendCmd(std::string& refValue) {
