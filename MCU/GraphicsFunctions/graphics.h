@@ -37,6 +37,10 @@ struct TGrahics {
 	public:
 		static void init(void);
 		static void fillRect(TFillRect props);
+		static void fillCheckeredRect(TFillRect props);
+		static void drawBorder(TFillRect props);
+		static void outTextVertical(std::string text, u16 x, u16 y, u16 color, std::string FontName);
+		static void putCharVertical(u8 Code, u16& x, u16 y, u16 color);
 		static void Line(u8 X1, u8 Y1, u8 X2, u8 Y2, u8 Color);
 		static void setPixel(TPixel& props);
 		static void setPixel(u8 x, u8 y, u8 color);
