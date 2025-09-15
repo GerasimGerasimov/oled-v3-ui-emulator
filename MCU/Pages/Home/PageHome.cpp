@@ -9,7 +9,8 @@ void TPageHome::view() {
 };
 
 void TPageHome::onOpen() {
-    fillPageContainer();
+    TGrahics::Line(41, 0, 41, 63, 1);
+    //fillPageContainer();
     SubscriberID = HandlerSubscribers::set("U1/RAM/", [this](TSlotHandlerArsg args) { SlotUpdate(args); });
 }
 

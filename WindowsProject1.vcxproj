@@ -144,6 +144,7 @@
   <ItemGroup>
     <ClInclude Include="framework.h" />
     <ClInclude Include="MainPage.h" />
+    <ClInclude Include="MCU\Components\FillingBar.h" />
     <ClInclude Include="MCU\Components\Indicator.h" />
     <ClInclude Include="MCU\Components\LabelTime.h" />
     <ClInclude Include="MCU\Components\ScrollLabel.h" />
@@ -186,6 +187,7 @@
     <ClCompile Include="MCU\App\app.cpp" />
     <ClCompile Include="MCU\CmdSender\CmdSender.cpp" />
     <ClCompile Include="MCU\Components\common.cpp" />
+    <ClCompile Include="MCU\Components\FillingBar.cpp" />
     <ClCompile Include="MCU\Components\FixedFooter.cpp" />
     <ClCompile Include="MCU\Components\FixedHeader.cpp" />
     <ClCompile Include="MCU\Components\HeaderLabel.cpp" />

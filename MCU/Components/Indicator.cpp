@@ -2,7 +2,7 @@
 #include <graphics.h>
 
 
-Indicator::Indicator(int x, int y, std::string msu, std::string ref) {
+Indicator::Indicator(int x, int y, std::string msu, std::string ref) : fillingBar(x, y, colorState) {
 	ElementRect.Left = x;
 	ElementRect.Top = y;
 	ElementRect.Height = 63;
@@ -20,6 +20,8 @@ void Indicator::view() {
 	else {
 		colorState = 0;
 	}
+	fillingBar.view();
+	displayValue();
 }
 
 const u16 Indicator::getHeight(void)

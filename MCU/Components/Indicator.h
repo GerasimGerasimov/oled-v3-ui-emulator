@@ -1,5 +1,6 @@
 #pragma once
 #include "common.h"
+#include <FillingBar.h>
 class Indicator : public TVisualObject
 {
 private:
@@ -12,6 +13,8 @@ private:
 	std::string nameRef;
 
 	u8 colorState;
+
+	FillingBar fillingBar;
 
 public:
 	Indicator(int x, int y, std::string msu, std::string ref);
