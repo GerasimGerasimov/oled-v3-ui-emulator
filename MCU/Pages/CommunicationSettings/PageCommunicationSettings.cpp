@@ -15,8 +15,8 @@ TPageCommunicationSettings::TPageCommunicationSettings(std::string Name) : TPage
 void TPageCommunicationSettings::fillPageContainer() {
     TagList->Clear();
     TLabelInitStructure LabelInit;
-    LabelInit.style = LabelsStyle::WIDTH_FIXED;
-    LabelInit.Rect = { 10, 10, 10, 80 };
+    LabelInit.style = LabelsStyle::WIDTH_DINAMIC;
+    LabelInit.Rect = { 10, 10, 10, 10 };
     LabelInit.focused = false;
     TagList->AddList({
         new TTagLine("RS485_BPS", "U1/FLASH/RS485_BPS/", LabelInit),

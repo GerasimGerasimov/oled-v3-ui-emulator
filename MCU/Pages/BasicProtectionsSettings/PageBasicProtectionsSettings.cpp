@@ -110,7 +110,7 @@ TPageBasicProtectionsSettings::TPageBasicProtectionsSettings(std::string Name)
 
     TLabelInitStructure LabelInit;
     LabelInit.pOwner = Container;
-    LabelInit.caption = "Защиты. Основные";
+    LabelInit.caption = "Уставки защит";
     TFixedHeader* pHeader = new TFixedHeader(LabelInit);
     Container->Add(pHeader);
 

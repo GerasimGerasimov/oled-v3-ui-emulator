@@ -68,7 +68,7 @@ void TPageBasicSettings::fillPageContainer(void) {
     TagList->Clear();
     TLabelInitStructure LabelInit;
     LabelInit.style = LabelsStyle::WIDTH_FIXED;
-    LabelInit.Rect = { 10, 10, 10, 65};
+    LabelInit.Rect = { 10, 10, 10, 80};
     LabelInit.focused = false;
 
     TagList->AddList({
@@ -88,7 +88,7 @@ void TPageBasicSettings::fillPageContainer(void) {
 
 TPageBasicSettings::TPageBasicSettings(std::string Name)
     :TPage(Name) {
-    TVerticalContainerProps props = { true };
+    TVerticalContainerProps props = { false };
     Container = new TVerticalContainer(props, {});
 
     TLabelInitStructure LabelInit;

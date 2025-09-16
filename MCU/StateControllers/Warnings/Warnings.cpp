@@ -3,13 +3,7 @@
 #include <LedWarnings.h>
 
 std::map < std::string, TTrackedBit > Warnings::Tags = {
-	{"flash_error", {"U1/RAM/flash_error/", nullptr, false, false}},
-	{"backup_error", {"U1/RAM/backup_error/", nullptr, false, false}},
-	{"fram_error", {"U1/RAM/fram_error/", nullptr, false, false}},
-	{"frambckp_error", {"U1/RAM/frambckp_error/", nullptr, false, false}},
-	{"syncfail", {"U1/RAM/syncfail/", nullptr, false, false}},
-	{"SD_error", {"U1/RAM/SD_error/", nullptr, false, false}},
-	{"LnkError", {"U1/RAM/LnkError/", nullptr, false, false}},
+	{"syncfail", {"U1/RAM/syncfail/", nullptr, false, false}}
 };
 
 bool Warnings::State = true;
