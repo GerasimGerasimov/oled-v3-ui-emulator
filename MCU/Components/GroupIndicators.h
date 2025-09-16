@@ -11,6 +11,8 @@ class GroupIndicators : public TVisualObject
 {
 private:
 	std::string mode;
+	std::string tRunValue;
+	std::string newTime = "";
 	u8 colorState;
 
 	int timeV;
@@ -18,13 +20,21 @@ private:
 
 	TParameter* objRun;
 	TParameter* objWRun;
+	std::array <ISignal*, 3> container;
+	int component = 0;
+	int yPos = 0;
 
-	std::array <ISignal*, 2> container;
 public:
 	GroupIndicators(int x, int y, u8 colorState, std::string mode, std::string tRun, std::string wRun);
 	void view();
 	const u16 getHeight(void);
 	void valueMode();
+
+	void timeValue();
+
+	bool ProcessMessage(TMessage* m);
+
+	void areaState(unsigned int yPos);
 
 };
 

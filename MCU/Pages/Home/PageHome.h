@@ -17,17 +17,21 @@ public:
     bool ProcessMessage(TMessage* m);
     TPageHome(std::string Name);
     ~TPageHome();
+    void SlotUpdateRAM(TSlotHandlerArsg args);
 private:
     TVerticalContainer* TagList;
     void fillPageContainer(void);
-    void SlotUpdate(TSlotHandlerArsg args);
+    void SlotUpdate(const char* sector, TSlotHandlerArsg args);
+    void SlotUpdateFLASH(TSlotHandlerArsg args);
     TVisualObject* getSignalOfFocusedChild();
     int SubscriberID = 0;
+    int SubIDFlash = 0;
     Indicator IndicatorU;
     Indicator IndicatorI;
     GroupIndicators groupIndicators;
     std::vector <TVisualObject*> container;
     unsigned int component = 0;
+    
 };
 
 #endif
