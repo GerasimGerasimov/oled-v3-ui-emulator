@@ -1,5 +1,7 @@
 #include "FillingBar.h"
 #include <graphics.h>
+#include <string>
+
 FillingBar::FillingBar(int x, int y, u8 colorState)
 {
 	ElementRect.Left = x + 27;
@@ -54,12 +56,6 @@ void FillingBar::drawThreshold() //линия порогового значения шкалы
 
 void FillingBar::setValue(float newValue)
 {
-	if (newValue > limitValue) {
-		newValue = limitValue;
-	}
-	else if (newValue < 0) {
-		newValue = 0;
-	}
 	value = newValue;
 }
 
@@ -72,15 +68,6 @@ void FillingBar::setColorState(u8 newColor)
 	colorState = newColor;
 }
 
-void FillingBar::setMaxValue(int newMaxValue)
-{
-	maxValueInt = newMaxValue;
-}
-int FillingBar::getMaxValue()
-{
-	//return currentIndicator.getMaxValue();
-	return maxValueInt;
-}
 void FillingBar::setLimitValue(int newLimitValue)
 {
 	limitValue = newLimitValue;
@@ -97,14 +84,16 @@ void FillingBar::scaleBarValue() //шкала
 		TFillRect fillRect{ ElementRect.Left + 3, ElementRect.Top + 28, ElementRect.Width - 5, ElementRect.Height - 28, abs(colorState - 1) };
 		TGrahics::fillCheckeredRect(fillRect);
 	}
-	else if (value <= limitValue && value > 0) {
-		TFillRect fillRect{ ElementRect.Left + 3, ElementRect.Top + yPosition + 5, ElementRect.Width - 5, ElementRect.Height - 5 - yPosition, abs(colorState - 1) };
-		TGrahics::fillCheckeredRect(fillRect);
-	}
 	else if (value > limitValue) {
 		TFillRect fillRect{ ElementRect.Left + 3, ElementRect.Top + 5, ElementRect.Width - 5, ElementRect.Height - 5, abs(colorState - 1) };
 		TGrahics::fillCheckeredRect(fillRect);
 		scaleBarFoam();
+
 	}
+	else if (value <= limitValue && value > 0) {
+		TFillRect fillRect{ ElementRect.Left + 3, ElementRect.Top + yPosition + 5, ElementRect.Width - 5, ElementRect.Height - 5 - yPosition, abs(colorState - 1) };
+		TGrahics::fillCheckeredRect(fillRect);
+	}
+
 
 }

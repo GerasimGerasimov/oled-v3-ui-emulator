@@ -26,8 +26,6 @@ public:
 	void setValue(float newValue);
 	float getValue();
 	void setColorState(u8 newColor);
-	void setMaxValue(int newMaxValue);
-	int getMaxValue();
 	void setLimitValue(int newLimitValue);
 };
 
