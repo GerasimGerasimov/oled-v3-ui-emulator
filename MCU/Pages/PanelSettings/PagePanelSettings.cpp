@@ -87,7 +87,10 @@ void TPagePanelSettings::fillPageContainer(void) {
     LabelInit.Rect = { 10, 10, 10, 10 };
     LabelInit.focused = false;
     TagList->AddList({
-
+        new TTagLine("SU1_BPS", "SLF/FLASH/ModbusSlaveU1_BPS/", LabelInit),
+        new TTagLine("SU1_DVA", "SLF/FLASH/ModbusSlaveU1_DVA/", LabelInit),
+        new TTagLine("MU2_BPS", "SLF/FLASH/ModbusMasterU2_BPS/", LabelInit),
+        new TTagLine("MU2_DVA", "SLF/FLASH/ModbusMasterU2_DVA/", LabelInit),
     });
 }
 
