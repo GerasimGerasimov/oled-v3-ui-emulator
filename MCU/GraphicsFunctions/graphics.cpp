@@ -28,6 +28,19 @@ void TGrahics::fillRect(TFillRect props) {
     }
 }
 
+void TGrahics::InvertArea(TFillRect props) {
+    if ((props.left < 0) && (props.top < 0)) return;
+
+    for (int i = props.top; i < (props.top + props.height); i++) {
+        if (i >= VIEW_PORT_MAX_HEIGHT) break;
+        for (int j = props.left; j < (props.left + props.width); j++) {
+            if (j >= VIEW_PORT_MAX_WIDTH) continue;
+            u8 color = (screen[j][i] == 0) ? 1 : 0;
+            setPixel(j, i, color);
+        }
+    }
+}
+
 void TGrahics::fillCheckeredRect(TFillRect props)//заполнение в шахматном порядке
 {
     if ((props.left < 0) && (props.top < 0)) return;
