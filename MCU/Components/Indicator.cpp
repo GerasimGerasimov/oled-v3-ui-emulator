@@ -24,6 +24,8 @@ Indicator::Indicator(int x, int y, std::string msu, std::string ref, std::string
 	objValueRefMin = (TParameter*)IniResources::getSignalByTag(valueMin);
 	objStep = (TParameter*)IniResources::getSignalByTag(step);
 	objValueOutMax = (TParameter*)IniResources::getSignalByTag(valueOutMax);
+	nameValue = valueRef;
+	nameRef = valueRef;
 }
 
 void Indicator::view() {
@@ -74,7 +76,7 @@ void Indicator::displayValue() //I/U ref
 	}
 	else {
 		TFillRect outerBorder{ ElementRect.Left + 4, ElementRect.Top + 50, 34, 9, 0 };
-		TGrahics::fillRect(outerBorder);
+		//TGrahics::fillRect(outerBorder);
 		if (valueOut != "**.*") {
 			char s[8];
 			if (valueOutF < 100) {
@@ -84,9 +86,9 @@ void Indicator::displayValue() //I/U ref
 				sprintf(s, "%.0f", valueOutF);
 			}
 			valueOut = s;
-			TGrahics::outText(valueOut, ElementRect.Left + 7, ElementRect.Top + 50, 1, "Verdana12");
+			TGrahics::outText(valueOut, ElementRect.Left + 7, ElementRect.Top + 50, abs(colorState - 1), "Verdana12");
 		}
-		TGrahics::outText(valueOut, ElementRect.Left + 7, ElementRect.Top + 50, 1, "Verdana12");
+		TGrahics::outText(valueOut, ElementRect.Left + 7, ElementRect.Top + 50, abs(colorState - 1), "Verdana12");
 	}
 
 	/*fillingBar.setValue(valuePoint);
@@ -107,7 +109,7 @@ void Indicator::pointerH()
 	if (valueRefF == 0) {
 		yPosition = 25;
 	}
-	else if (valueRefF >= valueOutMaxInt) {
+	 else if (valueRefF >= valueOutMaxInt) {
 		yPosition = 0;
 	}
 	else if (valueRefF < refMaxInt) {
@@ -152,8 +154,8 @@ bool Indicator::ProcessMessage(TMessage* m)
 			break;
 		case (u32)KeyCodes::F1:
 			if (inFocus) {
-				/*ISignal* p = IniResources::getSignalByTag(nameValue);
-				TRouter::setTask({ false, "Help", p });*/
+				ISignal* p = IniResources::getSignalByTag(nameValue);
+				TRouter::setTask({ false, "Help", p });
 
 			}
 			break;
@@ -201,7 +203,7 @@ void Indicator::decrease(int step) {
 		sprintf(s, "%.0f", valueRefF);
 	}
 	refValue = s;
-	//sendCmd(refValue);
+	sendCmd(refValue);
 }
 
 void Indicator::increase(int step) {
@@ -226,7 +228,7 @@ void Indicator::increase(int step) {
 		sprintf(s, "%.0f", valueRefF);
 	}
 	refValue = s;
-	//sendCmd(refValue);
+	sendCmd(refValue);
 }
 
 void Indicator::sendCmd(std::string& refValue) {

@@ -19,6 +19,7 @@ private:
 	std::string valueOutMax;
 
 	std::string nameRef;
+	std::string nameValue;
 
 
 	u8 colorState;

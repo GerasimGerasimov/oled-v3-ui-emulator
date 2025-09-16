@@ -10,14 +10,17 @@ class ISignal;
 class GroupIndicators : public TVisualObject
 {
 private:
-	std::string mode;
+	std::string modeValue;
+	std::string stateRun;
 	std::string tRunValue;
+	std::string wRunValue;
 	std::string newTime = "";
 	u8 colorState;
 
 	int timeV;
 	int hour;
 
+	TParameter* objMode;
 	TParameter* objRun;
 	TParameter* objWRun;
 	std::array <ISignal*, 3> container;
@@ -35,6 +38,8 @@ public:
 	bool ProcessMessage(TMessage* m);
 
 	void areaState(unsigned int yPos);
+
+	void updateObj(std::string sector, const TSlotHandlerArsg& args, const char* format);
 
 };
 

@@ -30,3 +30,4 @@ void* TVisualObject::getDataSrc() {
 }
 
 void TVisualObject::update(const TSlotHandlerArsg& args, const char* format) {}
+void TVisualObject::updateObj(std::string sector, const TSlotHandlerArsg& args, const char* format) {}

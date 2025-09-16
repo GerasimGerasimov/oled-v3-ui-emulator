@@ -19,19 +19,21 @@
 
 #define MIN_IN_HOUR 60
 
-GroupIndicators::GroupIndicators(int x, int y, u8 colorState, std::string mode,std::string tRun, std::string wRun) {
+GroupIndicators::GroupIndicators(int x, int y, u8 colorState, std::string mode, std::string tRun, std::string wRun) {
 	ElementRect.Left = x;
 	ElementRect.Top = y;
 	ElementRect.Height = 63;
 	ElementRect.Width = 47;
 	this->colorState = colorState;
-	this->mode = mode;
+	objMode = (TParameter*)IniResources::getSignalByTag(mode);
 	objRun = (TParameter*)IniResources::getSignalByTag(tRun);
 	objWRun = (TParameter*)IniResources::getSignalByTag(wRun);
+	ISignal* m = IniResources::getSignalByTag(mode);
 	ISignal* t = IniResources::getSignalByTag(tRun);
 	ISignal* w = IniResources::getSignalByTag(wRun);
-	container[0] = t;
-	container[1] = w;
+	container[0] = m;
+	container[1] = t;
+	container[2] = w;
 
 }
 
@@ -60,9 +62,9 @@ const u16 GroupIndicators::getHeight(void)
 }
 
 void GroupIndicators::valueMode() {
-	TGrahics::outText(mode, ElementRect.Left + 1, ElementRect.Top + 10, abs(colorState - 1), "Verdana12");
-	TGrahics::outText("1000", ElementRect.Left + 1, ElementRect.Top + 31, abs(colorState - 1), "Verdana12");
-	TGrahics::outText("1000", ElementRect.Left + 2, ElementRect.Top + 52, abs(colorState - 1), "Verdana12");
+	TGrahics::outText(stateRun, ElementRect.Left + 1, ElementRect.Top + 10, abs(colorState - 1), "Verdana12");
+	TGrahics::outText(tRunValue, ElementRect.Left + 1, ElementRect.Top + 31, abs(colorState - 1), "Verdana12");
+	TGrahics::outText(wRunValue, ElementRect.Left + 2, ElementRect.Top + 52, abs(colorState - 1), "Verdana12");
 }
 
 void GroupIndicators::timeValue() {
@@ -145,6 +147,37 @@ void GroupIndicators::areaState(unsigned int yPos) {
 	else if (yPos == 2) {
 		TFillRect selectionArea{ ElementRect.Left, ElementRect.Top + 42, ElementRect.Width, 9 };
 		TGrahics::InvertArea(selectionArea);
+	}
+
+}
+void GroupIndicators::updateObj(std::string sector, const TSlotHandlerArsg& args, const char* format)
+{
+	if (sector == "RAM") {
+		modeValue = objMode->getValue(args, "");
+		tRunValue = objRun->getValue(args, "");
+		wRunValue = objWRun->getValue(args, "");
+	}
+
+	try {
+		/*tRunValue = "50";
+		timeV = std::stof(tRunValue);
+		timeValue();*/
+		if (tRunValue != newTime) {
+			if (tRunValue != (static_cast<TParameter*>(objRun)->getDefaultValue())) {
+				timeValue();
+			}
+		}
+		if (modeValue == "1") {
+			stateRun = "Работа";
+		}
+		else {
+			stateRun = "Ожид.";
+		}
+	}
+	catch (...) {
+		modeValue = "**.*";
+		tRunValue = "**.*";
+		wRunValue = "**.*";
 	}
 
 }
