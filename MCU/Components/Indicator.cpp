@@ -142,12 +142,12 @@ bool Indicator::ProcessMessage(TMessage* m)
 			}
 			break;
 		case (u32)KeyCodes::Up:
-			if (inFocus) {
+			if (inFocus && nameRef == "U1/RAM/Uref/") {
 				increase((m->p2 == (u32)KeyPressFeature::AutoRepeat) ? stepInt * 2 : stepInt);
 			}
 			break;
 		case (u32)KeyCodes::Down:
-			if (inFocus) {
+			if (inFocus && nameRef == "U1/RAM/Uref/") {
 				decrease((m->p2 == (u32)KeyPressFeature::AutoRepeat) ? stepInt * 2 : stepInt);
 			}
 
@@ -275,15 +275,15 @@ void Indicator::updateObj(std::string sector, const TSlotHandlerArsg& args, cons
 		valueOutF = std::stof(valueOut);
 		fillingBar.setValue(valueOutF);
 
-		valueRefF = std::stof(refValue);
-		stepInt = std::stof(valueStep);
-		//maxValueInt = std::stof(maxValue);
-		//fillingBar.setMaxValue(maxValueInt);
-
 		refMaxInt = std::stof(valueRefMax);
 		refMinInt = std::stof(valueRefMin);
+
 		valueOutMaxInt = std::stof(valueOutMax);
 		fillingBar.setLimitValue(valueOutMaxInt);
+
+		valueRefF = std::stof(refValue);
+		stepInt = std::stof(valueStep);
+
 	}
 	catch (...) {
 
