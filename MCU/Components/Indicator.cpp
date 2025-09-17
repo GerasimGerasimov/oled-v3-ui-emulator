@@ -268,22 +268,26 @@ void Indicator::updateObj(std::string sector, const TSlotHandlerArsg& args, cons
 		valueRefMin = objValueRefMin->getValue(args, "");
 		valueStep = objStep->getValue(args, "");
 		valueOutMax = objValueOutMax->getValue(args, "");
-		//limitValue = objLimit->getValue(args, "");
-		//maxValue = refMax->getValue(args, "");
 	}
 	try {
 		valueOutF = std::stof(valueOut);
 		fillingBar.setValue(valueOutF);
-
+		
 		refMaxInt = std::stof(valueRefMax);
+		
+		
 		refMinInt = std::stof(valueRefMin);
-
+		
+		
 		valueOutMaxInt = std::stof(valueOutMax);
 		fillingBar.setLimitValue(valueOutMaxInt);
-
+		
+		
 		valueRefF = std::stof(refValue);
+		
+		
 		stepInt = std::stof(valueStep);
-
+		
 	}
 	catch (...) {
 
