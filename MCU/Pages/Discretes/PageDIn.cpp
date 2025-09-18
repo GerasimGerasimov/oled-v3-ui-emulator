@@ -24,13 +24,14 @@ void TPageDIn::fillPageContainer()
     LabelInit.Rect = { 10, 10, 10, 80 };
     LabelInit.focused = false;
     TagList->AddList({
-        new TTagLine("Start", "U1/RAM/DI0_Start/", LabelInit),
-        new TTagLine("Stop", "U1/RAM/DI1_Stop/", LabelInit),
-        new TTagLine("Deblock", "U1/RAM/DI2_Deblock/", LabelInit),
-        new TTagLine("FanRdy", "U1/RAM/DI3_FanRdy/", LabelInit),
-        new TTagLine("Door", "U1/RAM/DI4_Door/", LabelInit),
-        new TTagLine("Estop", "U1/RAM/DI5_Estop/", LabelInit),
-        new TTagLine("PwrCont", "U1/RAM/DI6_PwrCont/", LabelInit),
-        new TTagLine("Ballast", "U1/RAM/DI7_Ballast/", LabelInit)
+        new TTagLine("START", "U1/RAM/DI_0_START/", LabelInit),
+        new TTagLine("STOP", "U1/RAM/DI_1_STOP/", LabelInit),
+        new TTagLine("DEBLOCK", "U1/RAM/DI_2_DEBLOCK/", LabelInit),
+        new TTagLine("READY_SW", "U1/RAM/DI_3_READY_SW/", LabelInit),
+        new TTagLine("DOOR", "U1/RAM/DI_4_DOOR_STATE/", LabelInit),
+        new TTagLine("ESTOP", "U1/RAM/DI_5_ESTOP/", LabelInit),
+        new TTagLine("PWR_CONT", "U1/RAM/DI_6_PWR_CONT/", LabelInit),
+        new TTagLine("MINUS", "U1/RAM/DI_7_MINUS/", LabelInit),
+        new TTagLine("PLUS", "U1/RAM/DI_8_PLUS/", LabelInit)
         });
 }

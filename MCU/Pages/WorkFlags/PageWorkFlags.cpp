@@ -22,10 +22,6 @@ void TPageWorkFlags::fillPageContainer() {
         new TTagLine("Ready", "U1/RAM/Ready/", LabelInit),
         new TTagLine("Run", "U1/RAM/Run/", LabelInit),
         new TTagLine("OutOk", "U1/RAM/OutOk/", LabelInit),
-        new TTagLine("Fan1", "U1/RAM/Fan1/", LabelInit),
-        new TTagLine("Fan2", "U1/RAM/Fan2/", LabelInit),
-        new TTagLine("SoftStart", "U1/RAM/SoftStart/", LabelInit),
-        new TTagLine("BallastOn", "U1/RAM/BallastOn/", LabelInit),
-        new TTagLine("Discharge", "U1/RAM/Discharge/", LabelInit)
+        new TTagLine("SoftStart", "U1/RAM/SoftStart/", LabelInit)
         });
 }

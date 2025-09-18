@@ -78,11 +78,7 @@ void TPageBasicSettings::fillPageContainer(void) {
         new TTagLine("UrefMax", "U1/FLASH/UrefMax/", LabelInit),
         new TTagLine("UrefMin", "U1/FLASH/UrefMin/", LabelInit),
         new TTagLine("Ustep", "U1/FLASH/Ustep/", LabelInit),
-        new TTagLine("Istep", "U1/FLASH/Istep/", LabelInit),
-        new TTagLine("tSoftStart", "U1/FLASH/tSoftStart/", LabelInit),
-        new TTagLine("Udischarge", "U1/FLASH/Udischarge/", LabelInit),
-        new TTagLine("IballastOn", "U1/FLASH/IballastOn/", LabelInit),
-        new TTagLine("IballastOff", "U1/FLASH/IballastOff/", LabelInit)
+        new TTagLine("tSoftStart", "U1/FLASH/tSoftStart/", LabelInit)
     });
 }
 

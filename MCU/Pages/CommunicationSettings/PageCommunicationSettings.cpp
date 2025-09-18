@@ -15,13 +15,13 @@ TPageCommunicationSettings::TPageCommunicationSettings(std::string Name) : TPage
 void TPageCommunicationSettings::fillPageContainer() {
     TagList->Clear();
     TLabelInitStructure LabelInit;
-    LabelInit.style = LabelsStyle::WIDTH_DINAMIC;
-    LabelInit.Rect = { 10, 10, 10, 10 };
+    LabelInit.style = LabelsStyle::WIDTH_FIXED;
+    LabelInit.Rect = { 10, 10, 10, 80 };
     LabelInit.focused = false;
     TagList->AddList({
-        new TTagLine("RS485_BPS", "U1/FLASH/RS485_BPS/", LabelInit),
-        new TTagLine("RS485_DVA", "U1/FLASH/RS485_DVA/", LabelInit),
-        new TTagLine("USB_BPS", "U1/FLASH/USB_BPS/", LabelInit),
-        new TTagLine("USB_DVA", "U1/FLASH/USB_DVA/", LabelInit)
+        new TTagLine("RS485BD", "U1/FLASH/RS485_USB_1_Baudrate/", LabelInit),
+        new TTagLine("RS485ADDR", "U1/FLASH/RS485_USB_1_Address/", LabelInit),
+        new TTagLine("RS4853BD", "U1/FLASH/RS485_3_Baudrate/", LabelInit),
+        new TTagLine("RS4853ADDR", "U1/FLASH/RS485_3_Address/", LabelInit)
         });
 }

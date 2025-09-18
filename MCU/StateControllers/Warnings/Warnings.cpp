@@ -3,7 +3,7 @@
 #include <LedWarnings.h>
 
 std::map < std::string, TTrackedBit > Warnings::Tags = {
-	{"syncfail", {"U1/RAM/syncfail/", nullptr, false, false}}
+	//{"syncfail", {"U1/RAM/syncfail/", nullptr, false, false}}
 };
 
 bool Warnings::State = true;
