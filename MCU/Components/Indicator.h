@@ -35,9 +35,9 @@ private:
 
 	int percent;
 	int yPosition = 25;
-	int refMaxInt;
-	int refMinInt;
-	int valueOutMaxInt;
+	float refMaxInt;
+	float refMinInt;
+	float valueOutMaxInt;
 	int stepInt;
 
 	float valueOutF;

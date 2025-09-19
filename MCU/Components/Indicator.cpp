@@ -64,40 +64,47 @@ void Indicator::displayValue() //I/U ref
 	if (valueOutF > valueOutMaxInt) {
 		TFillRect outerBorder{ ElementRect.Left + 4, ElementRect.Top + 50, 34, 9, abs(colorState - 1) };
 		TGrahics::fillRect(outerBorder);
-		char s[8];
+		/*char s[8];
 		if (valueOutF < 100) {
 			sprintf(s, "%.1f", valueOutF);
 		}
 		else {
 			sprintf(s, "%.0f", valueOutF);
 		}
-		valueOut = s;
+		valueOut = s;*/
 		TGrahics::outText(valueOut, ElementRect.Left + 7, ElementRect.Top + 50, abs(colorState - 0), "Verdana12");
 	}
 	else {
 		TFillRect outerBorder{ ElementRect.Left + 4, ElementRect.Top + 50, 34, 9, 0 };
-		//TGrahics::fillRect(outerBorder);
+		TGrahics::fillRect(outerBorder);
 		if (valueOut != "**.*") {
-			char s[8];
+			/*char s[8];
 			if (valueOutF < 100) {
 				sprintf(s, "%.1f", valueOutF);
 			}
 			else {
 				sprintf(s, "%.0f", valueOutF);
 			}
-			valueOut = s;
+			valueOut = s;*/
 			TGrahics::outText(valueOut, ElementRect.Left + 7, ElementRect.Top + 50, abs(colorState - 1), "Verdana12");
 		}
-		TGrahics::outText(valueOut, ElementRect.Left + 7, ElementRect.Top + 50, abs(colorState - 1), "Verdana12");
+		else {
+			TGrahics::outText(valueOut, ElementRect.Left + 7, ElementRect.Top + 50, abs(colorState - 1), "Verdana12");
+		}
+		
 	}
-
-	/*fillingBar.setValue(valuePoint);
-	limValueInt = 100;
-	fillingBar.setLimitValue(limValueInt);*/
 }
 
 void Indicator::valueRef() //значение ref
 {
+	char s[8];
+	if (valueRefF < 100) {
+		sprintf(s, "%.1f", valueRefF);
+	}
+	else {
+		sprintf(s, "%.0f", valueRefF);
+	}
+	refValue = s;
 	TGrahics::outTextVertical(ref, ElementRect.Top + 22, ElementRect.Left, abs(colorState - 1), "Verdana12");
 	TGrahics::outTextVertical(refValue, ElementRect.Top + 21, ElementRect.Left + 8, abs(colorState - 1), "Verdana12");
 }
@@ -109,7 +116,7 @@ void Indicator::pointerH()
 	if (valueRefF == 0) {
 		yPosition = 25;
 	}
-	 else if (valueRefF >= valueOutMaxInt) {
+	else if (valueRefF >= valueOutMaxInt) {
 		yPosition = 0;
 	}
 	else if (valueRefF < refMaxInt) {
@@ -143,7 +150,7 @@ bool Indicator::ProcessMessage(TMessage* m)
 			break;
 		case (u32)KeyCodes::Up:
 			if (inFocus && nameRef == "U1/RAM/Uref/") {
-				increase((m->p2 == (u32)KeyPressFeature::AutoRepeat) ? stepInt * 2 : stepInt);
+				increase((m->p2 == (u32)KeyPressFeature::AutoRepeat) ? stepInt * 2: stepInt);
 			}
 			break;
 		case (u32)KeyCodes::Down:
@@ -215,7 +222,6 @@ void Indicator::increase(int step) {
 
 	if ((valueRefF + step) >= refMaxInt) {
 		valueRefF = refMaxInt;
-		char s[8];
 	}
 	else {
 		valueRefF += step;
@@ -270,24 +276,21 @@ void Indicator::updateObj(std::string sector, const TSlotHandlerArsg& args, cons
 		valueOutMax = objValueOutMax->getValue(args, "");
 	}
 	try {
+
 		valueOutF = std::stof(valueOut);
-		fillingBar.setValue(valueOutF);
-		
-		refMaxInt = std::stof(valueRefMax);
-		
-		
-		refMinInt = std::stof(valueRefMin);
-		
-		
-		valueOutMaxInt = std::stof(valueOutMax);
-		fillingBar.setLimitValue(valueOutMaxInt);
-		
-		
 		valueRefF = std::stof(refValue);
-		
-		
+
+		refMinInt = std::stof(valueRefMin);
+		refMaxInt = std::stof(valueRefMax);
+		valueOutMaxInt = std::stof(valueOutMax);
+
+		fillingBar.setLimitValue(valueOutMaxInt);
+		fillingBar.setValue(valueOutF);
+
+
 		stepInt = std::stof(valueStep);
 		
+
 	}
 	catch (...) {
 
@@ -295,8 +298,6 @@ void Indicator::updateObj(std::string sector, const TSlotHandlerArsg& args, cons
 		valueOut = "**.*";
 		fillingBar.setValue(valueOutF);
 		valueRefF = 0;
-		//maxValueInt = 0;
 		refValue = "0.0";
-		//currentValue = "**.*";
 	}
 }
