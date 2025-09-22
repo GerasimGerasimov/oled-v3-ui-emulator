@@ -9,7 +9,7 @@
 #include "Slot.h"
 
 
-Indicator::Indicator(int x, int y, std::string msu, std::string ref, std::string valueOut, std::string valueRef, std::string valueMax, std::string valueMin, std::string step, std::string valueOutMax) : fillingBar(x, y, colorState) {
+Indicator::Indicator(int x, int y, u8 colorState, std::string msu, std::string ref, std::string valueOut, std::string valueRef, std::string valueMax, std::string valueMin, std::string step, std::string valueOutMax) : fillingBar(x, y, colorState) {
 	ElementRect.Left = x;
 	ElementRect.Top = y;
 	ElementRect.Height = 63;
@@ -29,67 +29,66 @@ Indicator::Indicator(int x, int y, std::string msu, std::string ref, std::string
 }
 
 void Indicator::view() {
-	drawBorder(ElementRect.Left, ElementRect.Top);
+	fillingBar.setColorState(colorState);
+	drawBorder();
+	displayValue();
+	fillingBar.view();
+	fillingBar.scaleBarValue();
+	valueRef();
+	pointerH();
+
 	if (inFocus) {
 		colorState = 1;
 	}
 	else {
 		colorState = 0;
 	}
-	fillingBar.setColorState(colorState);
-	fillingBar.view();
-	displayValue();
-	valueRef();
-	fillingBar.scaleBarValue();
-	pointerH();
-
 }
 
 const u16 Indicator::getHeight(void)
 {
 	return u16(ElementRect.Height);
 }
-void Indicator::drawBorder(int drawBorderX, int drawBorderY) {
-
-	TFillRect background{ drawBorderX, drawBorderY, ElementRect.Width, ElementRect.Height, abs(colorState - 0) };
+void Indicator::drawBorder() {
+	TFillRect background{ ElementRect.Left, ElementRect.Top, ElementRect.Width, ElementRect.Height, abs(colorState - 0) };
 	TGrahics::fillRect(background);
-	TFillRect outerBorder{ drawBorderX + 1, drawBorderY + 15, ElementRect.Width - 20, ElementRect.Height - 33, abs(colorState - 1) };
-	TGrahics::fillRect(outerBorder);
-	TFillRect intBorder{ drawBorderX + 2, drawBorderY + 16, ElementRect.Width - 22, ElementRect.Height - 35, abs(colorState - 0) };
-	TGrahics::fillRect(intBorder);
+	TFillRect border{ ElementRect.Left + 1, ElementRect.Top + 15, ElementRect.Width - 21, ElementRect.Height - 33, abs(colorState - 1) };
+	TGrahics::drawBorder(border);
 }
 void Indicator::displayValue() //I/U ref
 {
 	TGrahics::outText(msu, ElementRect.Left + 1, ElementRect.Top + 2, abs(colorState - 1), "Verdana12");
-	if (valueOutF > valueOutMaxInt) {
+	if (valueOutF > valueOutMaxInt && valueOutMaxInt != 0) {
 		TFillRect outerBorder{ ElementRect.Left + 4, ElementRect.Top + 50, 34, 9, abs(colorState - 1) };
 		TGrahics::fillRect(outerBorder);
-		/*char s[8];
+		char s[8];
 		if (valueOutF < 100) {
 			sprintf(s, "%.1f", valueOutF);
 		}
 		else {
 			sprintf(s, "%.0f", valueOutF);
 		}
-		valueOut = s;*/
+		valueOut = s;
 		TGrahics::outText(valueOut, ElementRect.Left + 7, ElementRect.Top + 50, abs(colorState - 0), "Verdana12");
+	}
+	else if (valueOutF == 0) {
+		TFillRect outerBorder{ ElementRect.Left + 4, ElementRect.Top + 50, 34, 9, abs(colorState - 0) };
+		TGrahics::fillRect(outerBorder);
+		TGrahics::outText("0.0", ElementRect.Left + 7, ElementRect.Top + 50, abs(colorState - 1), "Verdana12");
 	}
 	else {
 		TFillRect outerBorder{ ElementRect.Left + 4, ElementRect.Top + 50, 34, 9, 0 };
 		TGrahics::fillRect(outerBorder);
-		if (valueOut != "**.*") {
-			/*char s[8];
+		if (valueOut != "" ) {
+			char s[8];
 			if (valueOutF < 100) {
 				sprintf(s, "%.1f", valueOutF);
 			}
 			else {
 				sprintf(s, "%.0f", valueOutF);
 			}
-			valueOut = s;*/
-			TGrahics::outText(valueOut, ElementRect.Left + 7, ElementRect.Top + 50, abs(colorState - 1), "Verdana12");
-		}
-		else {
-			TGrahics::outText(valueOut, ElementRect.Left + 7, ElementRect.Top + 50, abs(colorState - 1), "Verdana12");
+			valueOut = s;
+			TGrahics::outText(valueOut, ElementRect.Left + 7, ElementRect.Top + 50, 1, "Verdana12");
 		}
 		
 	}
@@ -294,10 +293,11 @@ void Indicator::updateObj(std::string sector, const TSlotHandlerArsg& args, cons
 	}
 	catch (...) {
 
-		valueOutF = 0;
+		/*valueOutF = 0;
 		valueOut = "**.*";
 		fillingBar.setValue(valueOutF);
 		valueRefF = 0;
 		refValue = "0.0";
+		valueOutMaxInt = 0;*/
 	}
 }

@@ -112,8 +112,8 @@ void TPageHome::fillPageContainer(void) {
 
 TPageHome::TPageHome(std::string Name)
     :TPage(Name), 
-    IndicatorU(0, 0, "Uout,V", "Uref", "U1/RAM/Uout/", "U1/RAM/Uref/", "U1/FLASH/UrefMax/", "U1/FLASH/UrefMin/", "U1/FLASH/Ustep/", "U1/FLASH/UoutMax/"), 
-    IndicatorI(41, 0, "Iout,A", "Ilim", "U1/RAM/Iout/", "U1/RAM/Ilim/", "U1/FLASH/IlimDefault/", "U1/FLASH/IlimDefault/", "U1/FLASH/Istep/", "U1/FLASH/IoutMTZ/"),
+    IndicatorU(0, 0, 0, "Uout,V", "Uref", "U1/RAM/Uout/", "U1/RAM/Uref/", "U1/FLASH/UrefMax/", "U1/FLASH/UrefMin/", "U1/FLASH/Ustep/", "U1/FLASH/UoutMax/"), 
+    IndicatorI(41, 0, 0, "Iout,A", "Ilim", "U1/RAM/Iout/", "U1/RAM/Ilim/", "U1/FLASH/IlimDefault/", "U1/FLASH/IlimDefault/", "U1/FLASH/Istep/", "U1/FLASH/IoutMTZ/"),
     groupIndicators(82, 0, 0, "U1/RAM/Run/", "U1/RAM/tRun/", "U1/RAM/WRun/") {
     TVerticalContainerProps props = { false };
     container = { &IndicatorU, &IndicatorI, &groupIndicators };

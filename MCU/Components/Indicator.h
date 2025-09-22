@@ -37,7 +37,7 @@ private:
 	int yPosition = 25;
 	float refMaxInt;
 	float refMinInt;
-	float valueOutMaxInt;
+	float valueOutMaxInt = 0;
 	int stepInt;
 
 	float valueOutF;
@@ -47,10 +47,10 @@ private:
 	bool changeUref = false;
 
 public:
-	Indicator(int x, int y, std::string msu, std::string ref, std::string valueOut, std::string valueRef, std::string valueMax, std::string valueMin, std::string step, std::string valueOutMax);
-	void view();
+	Indicator(int x, int y, u8 colorState, std::string msu, std::string ref, std::string valueOut, std::string valueRef, std::string valueMax, std::string valueMin, std::string step, std::string valueOutMax);
+	void view() override;
 	const u16 getHeight(void);
-	void drawBorder(int drawBorderX, int drawBorderY);
+	void drawBorder();
 	void displayValue();
 	void valueRef();
 	void pointerH();

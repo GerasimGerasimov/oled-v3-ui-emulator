@@ -71,6 +71,7 @@ void TPageBasicProtectionsSettings::fillPageContainer(void) {
     LabelInit.focused = false;
     TagList->AddList({
         new TTagLine("IoutMTZ", "U1/FLASH/IoutMTZ/", LabelInit),
+        new TTagLine("tIoutMTZ", "U1/FLASH/tIoutMTZ/", LabelInit),
         new TTagLine("IovrSt1", "U1/FLASH/IovrSt1/", LabelInit),
         new TTagLine("IovrSt2", "U1/FLASH/IovrSt2/", LabelInit),
         new TTagLine("IovrSt3", "U1/FLASH/IovrSt3/", LabelInit),
@@ -91,7 +92,8 @@ void TPageBasicProtectionsSettings::fillPageContainer(void) {
         new TTagLine("UoutMax", "U1/FLASH/UoutMax/", LabelInit),
         new TTagLine("tOutMax", "U1/FLASH/tOutMax/", LabelInit),
         new TTagLine("tStartMax", "U1/FLASH/tStartMax/", LabelInit),
-        new TTagLine("tContInMax", "U1/FLASH/tContInMax/", LabelInit)
+        new TTagLine("tContInMax", "U1/FLASH/tContInMax/", LabelInit),
+        new TTagLine("tUinFail", "U1/FLASH/tUinFail/", LabelInit)
     });
 }
 
