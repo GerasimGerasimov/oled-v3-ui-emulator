@@ -227,7 +227,7 @@ void CurrentIndicator::increase(float step) {
 	1) получить значение 2) убедится что числовое 3) произвести над ним вычисления
 	4) превратить  в строку 5) отправить */
 
-	if ((valuePoint - step) > maxValueInt) {
+	if ((valuePoint + step) > maxValueInt) {
 		valuePoint = maxValueInt;
 	}
 	else {
@@ -274,7 +274,6 @@ void CurrentIndicator::updateObj(std::string sector, const TSlotHandlerArsg& arg
 	if (sector == "RAM") {
 		currentValue = obj->getValue(args, "");
 		//++RAM_DATA.data[0];
-
 	}
 	else {
 		//++RAM_DATA.data[1];
