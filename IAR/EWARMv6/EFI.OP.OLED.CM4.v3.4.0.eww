@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <workspace>
     <project>
-        <path>$WS_DIR$\EFI.CPU.OP.OLED.CM4.ewp</path>
+        <path>$WS_DIR$\EFI.OP.OLED.CM4.v3.4.0.ewp</path>
     </project>
     <batchBuild />
 </workspace>
