@@ -74,7 +74,7 @@ void Indicator::displayValue() //I/U ref
 	else if (valueOutF == 0) {
 		TFillRect outerBorder{ ElementRect.Left + 4, ElementRect.Top + 50, 34, 9, abs(colorState - 0) };
 		TGrahics::fillRect(outerBorder);
-		TGrahics::outText("0.0", ElementRect.Left + 7, ElementRect.Top + 50, abs(colorState - 1), "Verdana12");
+		TGrahics::outText(valueOut, ElementRect.Left + 7, ElementRect.Top + 50, abs(colorState - 1), "Verdana12");
 	}
 	else {
 		TFillRect outerBorder{ ElementRect.Left + 4, ElementRect.Top + 50, 34, 9, 0 };
@@ -261,10 +261,15 @@ void Indicator::SlotUpdate(Slot* slot, u8* reply) {
 }
 
 void Indicator::updateObj(std::string sector, const TSlotHandlerArsg& args, const char* format) {
+	++delayUpdate;
 	if (sector == "RAM") {
-		valueOut = objValueOut->getValue(args, "");
-		refValue = objValueRef->getValue(args, "");
-		//++RAM_DATA.data[0];
+		if (delayUpdate == 5) {
+			delayUpdate = 0;
+			valueOut = objValueOut->getValue(args, "");
+			refValue = objValueRef->getValue(args, "");
+			//++RAM_DATA.data[0];
+		}
+		
 
 	}
 	else if (sector == "FLASH") {

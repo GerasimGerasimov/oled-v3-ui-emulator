@@ -20,6 +20,7 @@ void TPageHome::onOpen() {
 
 void TPageHome::startToClose() {
     HandlerSubscribers::remove("U1/RAM/", SubscriberID);
+    HandlerSubscribers::remove("U1/FLASH/", SubIDFlash);
     TagList->Clear();
     isOpen = false;
 }
