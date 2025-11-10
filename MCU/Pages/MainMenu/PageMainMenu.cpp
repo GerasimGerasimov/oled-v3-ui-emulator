@@ -40,7 +40,7 @@ TPageMainMenu::TPageMainMenu(std::string Name)
             new TLinkLabel("Защиты. Основные уставки", "BasicProtectionsSettings", LabelInit),
             new TLinkLabel("Очистка. Уставки", "ClearSetting", LabelInit),
             new TLinkLabel("Датчики", "Sensors", LabelInit),
-            new TLinkLabel("Настройки панели EFI", "PanelSettingsEFI", LabelInit),
+            new TLinkLabel("Настройки EFI", "PanelSettingsEFI", LabelInit),
             new TLinkLabel("Настройки панели", "PanelSettings", LabelInit),
             new TLinkLabel("Калибровки", "Calibration", LabelInit)
             //new TLinkLabel("защиты. Основные уставки", "BasicProtectionsSettings", LabelInit),

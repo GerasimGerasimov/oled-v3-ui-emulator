@@ -85,10 +85,10 @@ void TPageBasicProtectionsSettings::fillPageContainer(void) {
         new TTagLine("SprkFrqMax", "U1/FLASH/SparkFrqMax/", LabelInit),
         new TTagLine("tBrkPulse", "U1/FLASH/tBreakerPulse/", LabelInit),
         new TTagLine("Cyclicity", "U1/FLASH/Cyclicity/", LabelInit),
-        new TTagLine("dDecSprkFq", "U1/FLASH/dDecrSparkFreq/", LabelInit),
-        new TTagLine("tLenDecr", "U1/FLASH/tLenghtDecr/", LabelInit),
-        new TTagLine("TIinMax", "U1/FLASH/TIinMax/", LabelInit),
-        new TTagLine("TIoutMax", "U1/FLASH/TIoutMax/", LabelInit),
+        //new TTagLine("dDecSprkFq", "U1/FLASH/dDecrSparkFreq/", LabelInit),
+        //new TTagLine("tLenDecr", "U1/FLASH/tLenghtDecr/", LabelInit),
+        //new TTagLine("TIinMax", "U1/FLASH/TIinMax/", LabelInit),
+        //new TTagLine("TIoutMax", "U1/FLASH/TIoutMax/", LabelInit),
     });
 }
 

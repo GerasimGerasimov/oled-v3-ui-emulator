@@ -18,8 +18,8 @@ void TPageShakerSettings::fillPageContainer(void) {
         new TTagLine("tShPulse1", "U1/FLASH/tShakerPulse1/", LabelInit),
         new TTagLine("tShPer2", "U1/FLASH/tShakerPeriod2/", LabelInit),
         new TTagLine("tShPulse2", "U1/FLASH/tShakerPulse2/", LabelInit),
-        new TTagLine("TSh1RunStp", "U1/FLASH/TShaker1RunStop/", LabelInit),
-        new TTagLine("TSh2RunStp", "U1/FLASH/TShaker2RunStop/", LabelInit)
+        //new TTagLine("TSh1RunStp", "U1/FLASH/TShaker1RunStop/", LabelInit),
+        //new TTagLine("TSh2RunStp", "U1/FLASH/TShaker2RunStop/", LabelInit)
         });
 }
 
