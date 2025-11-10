@@ -11,6 +11,7 @@ void TPageHome::view() {
 };
 
 void TPageHome::onOpen() {
+    
     TGrahics::Line(40, 0, 40, 63, 1);
     TGrahics::Line(81, 0, 81, 63, 1);
     //fillPageContainer();
@@ -20,7 +21,7 @@ void TPageHome::onOpen() {
 
 void TPageHome::startToClose() {
     HandlerSubscribers::remove("U1/RAM/", SubscriberID);
-    HandlerSubscribers::remove("U1/FLASH/", SubIDFlash);
+    //HandlerSubscribers::remove("U1/FLASH/", SubIDFlash);
     TagList->Clear();
     isOpen = false;
 }
@@ -126,7 +127,6 @@ TPageHome::TPageHome(std::string Name)
 void TPageHome::SlotUpdate(const char* sector, TSlotHandlerArsg args) {
     for (auto& e : container) {
         e->updateObj(sector, args, "");
-
     }
     //currentIndicator1.updateValueRef(args, "");
     //groupIndicators.update(args, "");

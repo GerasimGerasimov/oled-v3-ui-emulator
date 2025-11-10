@@ -4,10 +4,10 @@
 
 FillingBar::FillingBar(int x, int y, u8 colorState)
 {
-	ElementRect.Left = x + 27;
-	ElementRect.Top = y + 16;
-	ElementRect.Height = 28;
-	ElementRect.Width = 12;
+	ElementRect.Left = x + 2;
+	ElementRect.Top = y + 37;
+	ElementRect.Height = 12;
+	ElementRect.Width = 35;
 	this->colorState = colorState;
 	this->value = value;
 }
@@ -25,16 +25,14 @@ const u16 FillingBar::getHeight(void)
 
 void FillingBar::drawBorder()
 {
-	TFillRect outerBorder{ ElementRect.Left, ElementRect.Top, ElementRect.Width, ElementRect.Height, abs(colorState - 1) };
-	TGrahics::fillRect(outerBorder);
-	TFillRect intBorder{ ElementRect.Left + 2, ElementRect.Top + 1, ElementRect.Width - 3, ElementRect.Height - 1, abs(colorState - 0) };
-	TGrahics::fillRect(intBorder);
-	pointerV();
+	TFillRect border{ ElementRect.Left, ElementRect.Top, ElementRect.Width, ElementRect.Height, abs(colorState - 1) };
+	TGrahics::drawBorder(border);
+	//pointerV();
 }
 
 void FillingBar::scaleBarFoam() //эффект пивной кружки
 {
-	TFillRect foam{ ElementRect.Left + 3, ElementRect.Top + 2, ElementRect.Width - 5, ElementRect.Height - 24, abs(colorState - 1) };
+	TFillRect foam{ ElementRect.Left + 29, ElementRect.Top + 2, ElementRect.Width - 30, ElementRect.Height - 3, abs(colorState - 1) };
 	TGrahics::fillRect(foam);
 }
 
@@ -48,9 +46,9 @@ void FillingBar::pointerV() //стрелка вертикальная
 
 void FillingBar::drawThreshold() //линия порогового значения шкалы
 {
-	TGrahics::Line(ElementRect.Left - 2, ElementRect.Top + 6, ElementRect.Left + 1, ElementRect.Top + 6, abs(colorState - 1));
-	TGrahics::Line(ElementRect.Left + 11, ElementRect.Top + 6, ElementRect.Left + 12, ElementRect.Top + 6, abs(colorState - 1));
-	TFillRect pointLine{ ElementRect.Left + 2, ElementRect.Top + 6, ElementRect.Width - 3, ElementRect.Height - 27, abs(colorState - 0) };
+	TGrahics::Line(ElementRect.Left + 28, ElementRect.Top - 1, ElementRect.Left + 28, ElementRect.Top + 13, abs(colorState - 1));
+	//TGrahics::Line(ElementRect.Left + 28, ElementRect.Top, ElementRect.Left + 28, ElementRect.Top + 10, abs(colorState - 1));
+	TFillRect pointLine{ ElementRect.Left + 28, ElementRect.Top + 1, 1, ElementRect.Height - 1, abs(colorState - 0) };
 	TGrahics::fillCheckeredRect(pointLine);
 }
 
@@ -76,24 +74,24 @@ void FillingBar::setLimitValue(int newLimitValue)
 void FillingBar::scaleBarValue() //шкала 
 {
 	int percent = 0;
-	int yPosition = 0;
+	int xPosition = 0;
+	value = -50;
+	limitValue = 200;
+
 	percent = (value * 100) / limitValue;
-	yPosition = 22 - (percent * 22) / 100;
+	xPosition = 22 - (percent * 22) / 100;
 
 	if (value == 0) {
-		TFillRect fillRect{ ElementRect.Left + 3, ElementRect.Top + 28, ElementRect.Width - 5, ElementRect.Height - 28, abs(colorState - 1) };
+		TFillRect fillRect{ ElementRect.Left + 2, ElementRect.Top + 2, 0, ElementRect.Height - 3, abs(colorState - 0) };
 		TGrahics::fillCheckeredRect(fillRect);
 	}
 	else if (value > limitValue) {
-		TFillRect fillRect{ ElementRect.Left + 3, ElementRect.Top + 5, ElementRect.Width - 5, ElementRect.Height - 5, abs(colorState - 1) };
+		TFillRect fillRect{ ElementRect.Left + 2, ElementRect.Top + 2, ElementRect.Width - 8, ElementRect.Height - 3, abs(colorState - 1) };
 		TGrahics::fillCheckeredRect(fillRect);
 		scaleBarFoam();
-
 	}
 	else if (value <= limitValue && value > 0) {
-		TFillRect fillRect{ ElementRect.Left + 3, ElementRect.Top + yPosition + 5, ElementRect.Width - 5, ElementRect.Height - 5 - yPosition, abs(colorState - 1) };
+		TFillRect fillRect{ ElementRect.Left + 2, ElementRect.Top + 2, ElementRect.Width - 10 - xPosition, ElementRect.Height - 3, abs(colorState - 1) };
 		TGrahics::fillCheckeredRect(fillRect);
 	}
-
-
 }

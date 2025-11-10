@@ -34,7 +34,7 @@ private:
 	TParameter* objStep;
 
 	int percent;
-	int yPosition = 25;
+	int xPosition = 25;
 	float refMaxInt;
 	float refMinInt;
 	float valueOutMaxInt = 0;
@@ -47,6 +47,7 @@ private:
 	bool changeUref = false;
 
 	u16 delayUpdate = 0;
+	float last = 0;
 
 public:
 	Indicator(int x, int y, u8 colorState, std::string msu, std::string ref, std::string valueOut, std::string valueRef, std::string valueMax, std::string valueMin, std::string step, std::string valueOutMax);
