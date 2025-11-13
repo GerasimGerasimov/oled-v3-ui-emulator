@@ -41,13 +41,13 @@ bool TPageHome::ProcessMessage(TMessage* m) {
             }
             break;
         case (u32)KeyCodes::ENT:
-            e = getSignalOfFocusedChild();
+            /*e = getSignalOfFocusedChild();
             if (e) {
                 TRouter::PageValueEditEntryData.tag = ((TTagLine*)(e))->Tag;
                 TRouter::PageValueEditEntryData.value = ((TTagLine*)(e))->Value->getCaption();
                 TRouter::PageValueEditEntryData.backPage = Name;
                 TRouter::setTask({ false, "EditValue", nullptr });
-            }
+            }*/
             container[component]->inFocus = false;
             break;
         case (u32)KeyCodes::Right:
@@ -107,7 +107,6 @@ void TPageHome::fillPageContainer(void) {
         //new TTagLineScrollCaptionComment("U1/FLASH/tSoftStart/", LabelInit),
         //new TLabel(LabelInit)
     });
-    
 }
 
 TPageHome::TPageHome(std::string Name)

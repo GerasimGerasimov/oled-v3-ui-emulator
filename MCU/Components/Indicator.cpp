@@ -116,12 +116,10 @@ void Indicator::pointerH()
 		yPosition = 26 - (percent * 22) / 100;
 	}
 	else if (valueRefF >= refMaxInt) {
-		valueRefF = refMaxInt;
 		yPosition = 26 - (percent * 22) / 100;
 		//yPosition = 0;
 	}
 	else if (valueRefF <= refMinInt) {
-		valueRefF = refMinInt;
 		yPosition = 26 - (percent * 22) / 100;
 	}
 	TGrahics::Line(ElementRect.Left + 25, ElementRect.Top + 17 + yPosition, ElementRect.Left + 23, ElementRect.Top + 15 + yPosition, abs(colorState - 1));
@@ -276,8 +274,12 @@ void Indicator::updateObj(std::string sector, const TSlotHandlerArsg& args, cons
 		fillingBar.setValue(valueOutF);
 
 		refMaxInt = std::stof(valueRefMax);
-		refMinInt = std::stof(valueRefMin);
-
+		if (nameRef == "U1/RAM/Ilim/") {
+			refMinInt = 0;
+		}
+		else {
+			refMinInt = std::stof(valueRefMin);
+		}
 		valueOutMaxInt = std::stof(valueOutMax);
 		fillingBar.setLimitValue(valueOutMaxInt);
 
