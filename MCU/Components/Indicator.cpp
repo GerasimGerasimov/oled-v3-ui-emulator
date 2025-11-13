@@ -287,12 +287,12 @@ void Indicator::updateObj(std::string sector, const TSlotHandlerArsg& args, cons
 	}
 	catch (...) {
 
-		valueOutF = 0;
-		valueOut = "**.*";
-		fillingBar.setValue(valueOutF);
-		valueRefF = 0;
+		//valueOutF = 0;
+		//valueOut = "**.*";
+		//fillingBar.setValue(valueOutF);
+		//valueRefF = 0;
 		//maxValueInt = 0;
-		refValue = "0.0";
+		//refValue = "0.0";
 		//currentValue = "**.*";
 	}
 }
