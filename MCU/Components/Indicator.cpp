@@ -51,18 +51,16 @@ const u16 Indicator::getHeight(void)
 }
 void Indicator::drawBorder(int drawBorderX, int drawBorderY) {
 
-	TFillRect background{ drawBorderX, drawBorderY, ElementRect.Width, ElementRect.Height, abs(colorState - 0) };
+	TFillRect background{ ElementRect.Left, ElementRect.Top, ElementRect.Width, ElementRect.Height, abs(colorState - 0) };
 	TGrahics::fillRect(background);
-	TFillRect outerBorder{ drawBorderX + 1, drawBorderY + 15, ElementRect.Width - 20, ElementRect.Height - 33, abs(colorState - 1) };
-	TGrahics::fillRect(outerBorder);
-	TFillRect intBorder{ drawBorderX + 2, drawBorderY + 16, ElementRect.Width - 22, ElementRect.Height - 35, abs(colorState - 0) };
-	TGrahics::fillRect(intBorder);
+	TFillRect border{ ElementRect.Left + 1, ElementRect.Top + 11, ElementRect.Width - 3, ElementRect.Height - 44, abs(colorState - 1) };
+	TGrahics::drawBorder(border);
 }
 void Indicator::displayValue() //I/U ref
 {
 	TGrahics::outText(msu, ElementRect.Left + 1, ElementRect.Top + 2, abs(colorState - 1), "Verdana12");
 	if (valueOutF > valueOutMaxInt) {
-		TFillRect outerBorder{ ElementRect.Left + 4, ElementRect.Top + 50, 34, 9, abs(colorState - 1) };
+		TFillRect outerBorder{ ElementRect.Left + 4, ElementRect.Top + 52, 34, 9, abs(colorState - 1) };
 		TGrahics::fillRect(outerBorder);
 		char s[8];
 		if (valueOutF < 100) {
@@ -72,15 +70,15 @@ void Indicator::displayValue() //I/U ref
 			sprintf(s, "%.0f", valueOutF);
 		}
 		valueOut = s;
-		TGrahics::outText(valueOut, ElementRect.Left + 7, ElementRect.Top + 50, abs(colorState - 0), "Verdana12");
+		TGrahics::outText(valueOut, ElementRect.Left + 7, ElementRect.Top + 52, abs(colorState - 0), "Verdana12");
 	}
 	else {
 		TFillRect outerBorder{ ElementRect.Left + 4, ElementRect.Top + 50, 34, 9, 0 };
 		//TGrahics::fillRect(outerBorder);
 		if (valueOut != "**.*") {
-			TGrahics::outText(valueOut, ElementRect.Left + 7, ElementRect.Top + 50, abs(colorState - 1), "Verdana12");
+			TGrahics::outText(valueOut, ElementRect.Left + 7, ElementRect.Top + 52, abs(colorState - 1), "Verdana12");
 		}
-		TGrahics::outText(valueOut, ElementRect.Left + 7, ElementRect.Top + 50, abs(colorState - 1), "Verdana12");
+		TGrahics::outText(valueOut, ElementRect.Left + 7, ElementRect.Top + 52, abs(colorState - 1), "Verdana12");
 	}
 }
 
@@ -94,35 +92,61 @@ void Indicator::valueRef() //значение ref
 		sprintf(s, "%.0f", valueRefF);
 	}
 	refValue = s;
-	TGrahics::outTextVertical(ref, ElementRect.Top + 22, ElementRect.Left, abs(colorState - 1), "Verdana12");
-	TGrahics::outTextVertical(refValue, ElementRect.Top + 21, ElementRect.Left + 8, abs(colorState - 1), "Verdana12");
+	TGrahics::outText(ref, ElementRect.Left + 3, ElementRect.Top + 13, abs(colorState - 1), "Verdana12");
+	TGrahics::outText(refValue, ElementRect.Left + 3, ElementRect.Top + 21, abs(colorState - 1), "Verdana12");
 }
 
 void Indicator::pointerH()
 {
-	percent = (valueRefF * 100) / valueOutMaxInt;
+	//percent = (valueRefF * 100) / valueOutMaxInt;
+
+	//if (valueRefF == 0) {
+	//	yPosition = 25;
+	//}
+	// else if (valueRefF >= valueOutMaxInt) {
+	//	yPosition = 0;
+	//}
+	//else if (valueRefF < refMaxInt) {
+	//	yPosition = 26 - (percent * 22) / 100;
+	//}
+	//else if (valueRefF >= refMaxInt) {
+	//	yPosition = 26 - (percent * 22) / 100;
+	//	//yPosition = 0;
+	//}
+	//else if (valueRefF <= refMinInt) {
+	//	yPosition = 26 - (percent * 22) / 100;
+	//}
+	//TGrahics::Line(ElementRect.Left + 25, ElementRect.Top + 17 + yPosition, ElementRect.Left + 23, ElementRect.Top + 15 + yPosition, abs(colorState - 1));
+	//TGrahics::Line(ElementRect.Left + 24, ElementRect.Top + 17 + yPosition, ElementRect.Left + 22, ElementRect.Top + 15 + yPosition, abs(colorState - 1));
+	//TGrahics::Line(ElementRect.Left + 25, ElementRect.Top + 17 + yPosition, ElementRect.Left + 23, ElementRect.Top + 19 + yPosition, abs(colorState - 1));
+	//TGrahics::Line(ElementRect.Left + 24, ElementRect.Top + 17 + yPosition, ElementRect.Left + 22, ElementRect.Top + 19 + yPosition, abs(colorState - 1));
+	//TGrahics::Line(ElementRect.Left + 28, ElementRect.Top + 17 + yPosition, ElementRect.Left + 29, ElementRect.Top + 17 + yPosition, abs(colorState - 0));
+	percent = valueRefF * 26 / refMaxInt;
 
 	if (valueRefF == 0) {
-		yPosition = 25;
-	}
-	 else if (valueRefF >= valueOutMaxInt) {
 		yPosition = 0;
 	}
+	else if (valueRefF <= refMinInt) {
+		if (valueRefF < 0) {
+			yPosition = 0;
+		}
+		else {
+			yPosition = 2 + percent;
+		}
+	}
+	else if (valueRefF >= valueOutMaxInt) {
+		yPosition = 31;
+	}
 	else if (valueRefF < refMaxInt) {
-		yPosition = 26 - (percent * 22) / 100;
+		yPosition = percent;
 	}
 	else if (valueRefF >= refMaxInt) {
-		yPosition = 26 - (percent * 22) / 100;
-		//yPosition = 0;
+		yPosition = 26;
 	}
-	else if (valueRefF <= refMinInt) {
-		yPosition = 26 - (percent * 22) / 100;
-	}
-	TGrahics::Line(ElementRect.Left + 25, ElementRect.Top + 17 + yPosition, ElementRect.Left + 23, ElementRect.Top + 15 + yPosition, abs(colorState - 1));
-	TGrahics::Line(ElementRect.Left + 24, ElementRect.Top + 17 + yPosition, ElementRect.Left + 22, ElementRect.Top + 15 + yPosition, abs(colorState - 1));
-	TGrahics::Line(ElementRect.Left + 25, ElementRect.Top + 17 + yPosition, ElementRect.Left + 23, ElementRect.Top + 19 + yPosition, abs(colorState - 1));
-	TGrahics::Line(ElementRect.Left + 24, ElementRect.Top + 17 + yPosition, ElementRect.Left + 22, ElementRect.Top + 19 + yPosition, abs(colorState - 1));
-	TGrahics::Line(ElementRect.Left + 28, ElementRect.Top + 17 + yPosition, ElementRect.Left + 29, ElementRect.Top + 17 + yPosition, abs(colorState - 0));
+	TGrahics::Line(ElementRect.Left + 2 + yPosition, ElementRect.Top + 32, ElementRect.Left + 4 + yPosition, ElementRect.Top + 34, abs(colorState - 1));
+	TGrahics::Line(ElementRect.Left + 2 + yPosition, ElementRect.Top + 33, ElementRect.Left + 4 + yPosition, ElementRect.Top + 35, abs(colorState - 1));
+	TGrahics::Line(ElementRect.Left + 4 + yPosition, ElementRect.Top + 34, ElementRect.Left + 6 + yPosition, ElementRect.Top + 32, abs(colorState - 1));
+	TGrahics::Line(ElementRect.Left + 4 + yPosition, ElementRect.Top + 35, ElementRect.Left + 6 + yPosition, ElementRect.Top + 33, abs(colorState - 1));
 }
 
 bool Indicator::ProcessMessage(TMessage* m)
