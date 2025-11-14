@@ -6,7 +6,7 @@
 TPageCommunicationSettings::TPageCommunicationSettings(std::string Name) : TPageBasicSettings(Name) {
     TLabelInitStructure LabelInitH;
     LabelInitH.pOwner = Container;
-    LabelInitH.caption = "Уставки связи";
+    LabelInitH.caption = "Уставки времени";
     TFixedHeader* pHeader = new TFixedHeader(LabelInitH);
     delete Container->List[0];
     Container->List[0] = pHeader;
@@ -19,9 +19,16 @@ void TPageCommunicationSettings::fillPageContainer() {
     LabelInit.Rect = { 10, 10, 10, 10 };
     LabelInit.focused = false;
     TagList->AddList({
-        new TTagLine("USB_1_Baudrate", "U1/FLASH/RS485_USB_1_Baudrate/", LabelInit),
-        new TTagLine("USB_1_Address", "U1/FLASH/RS485_USB_1_Address/", LabelInit),
-        new TTagLine("USB_1_Parity", "U1/FLASH/RS485_USB_1_Parity/", LabelInit),
-        new TTagLine("USB_1_STOP", "U1/FLASH/RS485_USB_1_STOP/", LabelInit)
+        new TTagLine("tOvrSt1", "U1/FLASH/tOvrSt1/", LabelInit),
+        new TTagLine("tOvrSt2", "U1/FLASH/tOvrSt2/", LabelInit),
+        new TTagLine("tOvrSt3", "U1/FLASH/tOvrSt3/", LabelInit),
+        new TTagLine("tOvrSt4", "U1/FLASH/tOvrSt4/", LabelInit),
+        new TTagLine("tAsym", "U1/FLASH/tAsym/", LabelInit),
+        new TTagLine("tOutMin", "U1/FLASH/tOutMin/", LabelInit),
+        new TTagLine("tOutMax", "U1/FLASH/tOutMax/", LabelInit),
+        new TTagLine("tStartMax", "U1/FLASH/tStartMax/", LabelInit),
+        new TTagLine("tContInMax", "U1/FLASH/tContInMax/", LabelInit),
+        new TTagLine("tContBallMax", "U1/FLASH/tContBallMax/", LabelInit)
+
         });
 }

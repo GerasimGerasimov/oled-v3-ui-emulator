@@ -82,10 +82,6 @@ void Indicator::displayValue() //I/U ref
 		}
 		TGrahics::outText(valueOut, ElementRect.Left + 7, ElementRect.Top + 50, abs(colorState - 1), "Verdana12");
 	}
-
-	/*fillingBar.setValue(valuePoint);
-	limValueInt = 100;
-	fillingBar.setLimitValue(limValueInt);*/
 }
 
 void Indicator::valueRef() //значение ref
@@ -180,7 +176,7 @@ void Indicator::scaleBar()
 	fillingBar.scaleBarValue();
 }
 
-void Indicator::decrease(int step) {
+void Indicator::decrease(float step) {
 	/*получить текущее значение Iref, вычесть из него 1A или 5А (в зависимости
 	 однократное это нажатие или автоматический повтор)и передать на EFi
 	значение может быть не числовое а "**.**" когда нет связи, значит
@@ -199,7 +195,7 @@ void Indicator::decrease(int step) {
 	sendCmd(refValue);
 }
 
-void Indicator::increase(int step) {
+void Indicator::increase(float step) {
 	/*получить текущее значение Iref, вычесть из него 1A или 5А (в зависимости
 	 однократное это нажатие или автоматический повтор)и передать на EFi
 	значение может быть не числовое а "**.**" когда нет связи, значит
@@ -269,6 +265,7 @@ void Indicator::updateObj(std::string sector, const TSlotHandlerArsg& args, cons
 		//valueOutF = 0;
 		//valueOut = "**.*";
 		//fillingBar.setValue(valueOutF);
+		//valueRefF = 0;
 		//valueRefF = 0;
 		//maxValueInt = 0;
 		//refValue = "0.0";

@@ -43,8 +43,7 @@ void TRouter::Init(void) {
     Pages["DIn"] = new TPageDIn("DIn");
     Pages["DOut"] = new TPageDOut("DOut");
     Pages["CommunicationSettings"] = new TPageCommunicationSettings("CommunicationSettings");
-    Pages["PanelSettings"] = new TPagePanelSettings("PanelSettings");
-
+   //Pages["PanelSettings"] = new TPagePanelSettings("PanelSettings");
     setInitPage();
 }
 

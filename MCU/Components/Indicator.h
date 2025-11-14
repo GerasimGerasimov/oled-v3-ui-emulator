@@ -38,7 +38,7 @@ private:
 	int refMaxInt;
 	int refMinInt;
 	int valueOutMaxInt;
-	int stepInt;
+	float stepInt;
 
 	float valueOutF;
 	float valueRefF;//хранятся значения из I/U ref
@@ -58,8 +58,8 @@ public:
 	void setValueFB(float newValue);
 	float getValueFB();
 	void scaleBar();
-	void decrease(int step);
-	void increase(int step);
+	void decrease(float step);
+	void increase(float step);
 	void sendCmd(std::string& refValue);
 	std::vector <TVisualObject*> List;
 	void SlotUpdate(Slot* slot, u8* reply);

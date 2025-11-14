@@ -31,6 +31,6 @@ void TPageDIn::fillPageContainer()
         new TTagLine("DOOR_STATE", "U1/RAM/DI_4_DOOR_STATE/", LabelInit),
         new TTagLine("ESTOP", "U1/RAM/DI_5_ESTOP/", LabelInit),
         new TTagLine("PWR_CONT", "U1/RAM/DI_6_PWR_CONT/", LabelInit),
-        new TTagLine("Ballast", "U1/RAM/DI_7_Ballast/", LabelInit)
+        new TTagLine("BALLAST", "U1/RAM/DI_7_Ballast/", LabelInit)
         });
 }

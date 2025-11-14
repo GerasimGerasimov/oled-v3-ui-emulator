@@ -40,10 +40,10 @@ TPageMainMenu::TPageMainMenu(std::string Name)
             new TLinkLabel("Дискретные входы", "DIn", LabelInit),
             new TLinkLabel("Дискретные выходы", "DOut", LabelInit),
             //new TLinkLabel("Датчики", "Sensors", LabelInit),
-            new TLinkLabel("Уставки связи", "CommunicationSettings", LabelInit),
             new TLinkLabel("Уставки работы", "BasicSettings", LabelInit),
             new TLinkLabel("Уставки защиты", "BasicProtectionsSettings", LabelInit),
-            new TLinkLabel("Настройки панели", "PanelSettings", LabelInit),
+            new TLinkLabel("Уставки времени", "CommunicationSettings", LabelInit),
+            //new TLinkLabel("Настройки панели", "PanelSettings", LabelInit),
             //new TLinkLabel("Очистка. Уставки", "CleanSettings", LabelInit),
            })
     });

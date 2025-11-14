@@ -24,7 +24,7 @@ void TPageDOut::fillPageContainer()
     LabelInit.focused = false;
     TagList->AddList({
         //new TTagLineScrollCaptionComment("U1/RAM/oCROWBAR_K1/", LabelInit),
-        new TTagLine("Alarm", "U1/RAM/DO_4_ALARM/", LabelInit),
+        new TTagLine("ALARM", "U1/RAM/DO_4_ALARM/", LabelInit),
         new TTagLine("PWR", "U1/RAM/DO_1_PWR/", LabelInit),
         new TTagLine("RUN", "U1/RAM/DO_2_RUN/", LabelInit),
         new TTagLine("STOP", "U1/RAM/DO_3_STOP/", LabelInit),
