@@ -81,8 +81,7 @@ void TPageBasicSettings::fillPageContainer(void) {
         new TTagLine("tSoftStart", "U1/FLASH/tSoftStart/", LabelInit),
         new TTagLine("Udischarge", "U1/FLASH/Udischarge/", LabelInit),
         new TTagLine("IballastOn", "U1/FLASH/IballastOn/", LabelInit),
-        new TTagLine("IballastOff", "U1/FLASH/IballastOff/", LabelInit),
-        new TTagLine("TOverheatMax", "U1/FLASH/TOverheatMax/", LabelInit)
+        new TTagLine("IballastOff", "U1/FLASH/IballastOff/", LabelInit)
     });
 }
 

@@ -58,12 +58,12 @@ void Indicator::drawBorder(int drawBorderX, int drawBorderY) {
 }
 void Indicator::displayValue() //I/U ref
 {
-	TGrahics::outText(msu, ElementRect.Left + 1, ElementRect.Top + 2, abs(colorState - 1), "Verdana12");
+	TGrahics::outText(msu, ElementRect.Left + 1, ElementRect.Top, abs(colorState - 1), "Verdana12");
 	if (valueOutF > valueOutMaxInt) {
 		TFillRect outerBorder{ ElementRect.Left + 4, ElementRect.Top + 52, 34, 9, abs(colorState - 1) };
 		TGrahics::fillRect(outerBorder);
 		char s[8];
-		if (valueOutF < 100) {
+		if (nameRef == "U1/RAM/Uref/") {
 			sprintf(s, "%.1f", valueOutF);
 		}
 		else {
@@ -74,10 +74,14 @@ void Indicator::displayValue() //I/U ref
 	}
 	else {
 		TFillRect outerBorder{ ElementRect.Left + 4, ElementRect.Top + 50, 34, 9, 0 };
-		//TGrahics::fillRect(outerBorder);
-		if (valueOut != "**.*") {
-			TGrahics::outText(valueOut, ElementRect.Left + 7, ElementRect.Top + 52, abs(colorState - 1), "Verdana12");
+		char s[8];
+		if (nameRef == "U1/RAM/Uref/") {
+			sprintf(s, "%.1f", valueOutF);
 		}
+		else {
+			sprintf(s, "%.0f", valueOutF);
+		}
+		valueOut = s;
 		TGrahics::outText(valueOut, ElementRect.Left + 7, ElementRect.Top + 52, abs(colorState - 1), "Verdana12");
 	}
 }
@@ -121,7 +125,7 @@ void Indicator::pointerH()
 	//TGrahics::Line(ElementRect.Left + 25, ElementRect.Top + 17 + yPosition, ElementRect.Left + 23, ElementRect.Top + 19 + yPosition, abs(colorState - 1));
 	//TGrahics::Line(ElementRect.Left + 24, ElementRect.Top + 17 + yPosition, ElementRect.Left + 22, ElementRect.Top + 19 + yPosition, abs(colorState - 1));
 	//TGrahics::Line(ElementRect.Left + 28, ElementRect.Top + 17 + yPosition, ElementRect.Left + 29, ElementRect.Top + 17 + yPosition, abs(colorState - 0));
-	percent = valueRefF * 26 / refMaxInt;
+	percent = valueRefF * 26 / valueOutMaxInt;
 
 	if (valueRefF == 0) {
 		yPosition = 0;
@@ -141,12 +145,13 @@ void Indicator::pointerH()
 		yPosition = percent;
 	}
 	else if (valueRefF >= refMaxInt) {
-		yPosition = 26;
+		yPosition = 2 + percent;
 	}
 	TGrahics::Line(ElementRect.Left + 2 + yPosition, ElementRect.Top + 32, ElementRect.Left + 4 + yPosition, ElementRect.Top + 34, abs(colorState - 1));
 	TGrahics::Line(ElementRect.Left + 2 + yPosition, ElementRect.Top + 33, ElementRect.Left + 4 + yPosition, ElementRect.Top + 35, abs(colorState - 1));
 	TGrahics::Line(ElementRect.Left + 4 + yPosition, ElementRect.Top + 34, ElementRect.Left + 6 + yPosition, ElementRect.Top + 32, abs(colorState - 1));
 	TGrahics::Line(ElementRect.Left + 4 + yPosition, ElementRect.Top + 35, ElementRect.Left + 6 + yPosition, ElementRect.Top + 33, abs(colorState - 1));
+	//TGrahics::Line(ElementRect.Left + 4 + yPosition, ElementRect.Top + 37, ElementRect.Left + 4 + yPosition, ElementRect.Top + 40, abs(colorState - 0));
 }
 
 bool Indicator::ProcessMessage(TMessage* m)
@@ -160,12 +165,12 @@ bool Indicator::ProcessMessage(TMessage* m)
 			}
 			break;
 		case (u32)KeyCodes::Up:
-			if (inFocus) {
+			if (inFocus && nameRef == "U1/RAM/Uref/") {
 				increase((m->p2 == (u32)KeyPressFeature::AutoRepeat) ? stepInt * 2 : stepInt);
 			}
 			break;
 		case (u32)KeyCodes::Down:
-			if (inFocus) {
+			if (inFocus && nameRef == "U1/RAM/Uref/") {
 				decrease((m->p2 == (u32)KeyPressFeature::AutoRepeat) ? stepInt * 2 : stepInt);
 			}
 
@@ -174,7 +179,6 @@ bool Indicator::ProcessMessage(TMessage* m)
 			if (inFocus) {
 				ISignal* p = IniResources::getSignalByTag(nameValue);
 				TRouter::setTask({ false, "Help", p });
-
 			}
 			break;
 		}
@@ -257,9 +261,14 @@ void Indicator::SlotUpdate(Slot* slot, u8* reply) {
 }
 
 void Indicator::updateObj(std::string sector, const TSlotHandlerArsg& args, const char* format) {
+	
+	++delayUpdate;
 	if (sector == "RAM") {
-		valueOut = objValueOut->getValue(args, "");
-		refValue = objValueRef->getValue(args, "");
+		if (delayUpdate >= 5) {
+			delayUpdate = 0;
+			valueOut = objValueOut->getValue(args, "");
+			refValue = objValueRef->getValue(args, "");
+		}
 	}
 	else if (sector == "FLASH") {
 		valueRefMax = objValueRefMax->getValue(args, "");

@@ -45,6 +45,7 @@ private:
 
 	bool cmdSendInProcess;
 	bool changeUref = false;
+	u16 delayUpdate = 0;
 
 public:
 	Indicator(int x, int y, std::string msu, std::string ref, std::string valueOut, std::string valueRef, std::string valueMax, std::string valueMin, std::string step, std::string valueOutMax);

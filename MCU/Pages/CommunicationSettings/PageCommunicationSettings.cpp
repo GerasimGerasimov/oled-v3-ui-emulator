@@ -28,7 +28,7 @@ void TPageCommunicationSettings::fillPageContainer() {
         new TTagLine("tOutMax", "U1/FLASH/tOutMax/", LabelInit),
         new TTagLine("tStartMax", "U1/FLASH/tStartMax/", LabelInit),
         new TTagLine("tContInMax", "U1/FLASH/tContInMax/", LabelInit),
-        new TTagLine("tContBallMax", "U1/FLASH/tContBallMax/", LabelInit)
-
+        new TTagLine("tContBallMax", "U1/FLASH/tContBallMax/", LabelInit),
+        new TTagLine("TOverheatMax", "U1/FLASH/TOverheatMax/", LabelInit)
         });
 }
