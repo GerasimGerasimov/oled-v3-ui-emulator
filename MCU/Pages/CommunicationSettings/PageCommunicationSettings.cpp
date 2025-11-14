@@ -19,9 +19,9 @@ void TPageCommunicationSettings::fillPageContainer() {
     LabelInit.Rect = { 10, 10, 10, 10 };
     LabelInit.focused = false;
     TagList->AddList({
-        new TTagLine("RS485_BPS", "U1/FLASH/RS485_BPS/", LabelInit),
-        new TTagLine("RS485_DVA", "U1/FLASH/RS485_DVA/", LabelInit),
-        new TTagLine("USB_BPS", "U1/FLASH/USB_BPS/", LabelInit),
-        new TTagLine("USB_DVA", "U1/FLASH/USB_DVA/", LabelInit)
+        new TTagLine("USB_1_Baudrate", "U1/FLASH/RS485_USB_1_Baudrate/", LabelInit),
+        new TTagLine("USB_1_Address", "U1/FLASH/RS485_USB_1_Address/", LabelInit),
+        new TTagLine("USB_1_Parity", "U1/FLASH/RS485_USB_1_Parity/", LabelInit),
+        new TTagLine("USB_1_STOP", "U1/FLASH/RS485_USB_1_STOP/", LabelInit)
         });
 }

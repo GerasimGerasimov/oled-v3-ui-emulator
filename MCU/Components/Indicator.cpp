@@ -78,14 +78,6 @@ void Indicator::displayValue() //I/U ref
 		TFillRect outerBorder{ ElementRect.Left + 4, ElementRect.Top + 50, 34, 9, 0 };
 		//TGrahics::fillRect(outerBorder);
 		if (valueOut != "**.*") {
-			char s[8];
-			if (valueOutF < 100) {
-				sprintf(s, "%.1f", valueOutF);
-			}
-			else {
-				sprintf(s, "%.0f", valueOutF);
-			}
-			valueOut = s;
 			TGrahics::outText(valueOut, ElementRect.Left + 7, ElementRect.Top + 50, abs(colorState - 1), "Verdana12");
 		}
 		TGrahics::outText(valueOut, ElementRect.Left + 7, ElementRect.Top + 50, abs(colorState - 1), "Verdana12");
@@ -98,6 +90,14 @@ void Indicator::displayValue() //I/U ref
 
 void Indicator::valueRef() //значение ref
 {
+	char s[8];
+	if (valueRefF < 100) {
+		sprintf(s, "%.1f", valueRefF);
+	}
+	else {
+		sprintf(s, "%.0f", valueRefF);
+	}
+	refValue = s;
 	TGrahics::outTextVertical(ref, ElementRect.Top + 22, ElementRect.Left, abs(colorState - 1), "Verdana12");
 	TGrahics::outTextVertical(refValue, ElementRect.Top + 21, ElementRect.Left + 8, abs(colorState - 1), "Verdana12");
 }
@@ -140,12 +140,12 @@ bool Indicator::ProcessMessage(TMessage* m)
 			}
 			break;
 		case (u32)KeyCodes::Up:
-			if (inFocus && nameRef == "U1/RAM/Uref/") {
+			if (inFocus) {
 				increase((m->p2 == (u32)KeyPressFeature::AutoRepeat) ? stepInt * 2 : stepInt);
 			}
 			break;
 		case (u32)KeyCodes::Down:
-			if (inFocus && nameRef == "U1/RAM/Uref/") {
+			if (inFocus) {
 				decrease((m->p2 == (u32)KeyPressFeature::AutoRepeat) ? stepInt * 2 : stepInt);
 			}
 
@@ -194,12 +194,7 @@ void Indicator::decrease(int step) {
 		valueRefF -= step;
 	}
 	char s[8];
-	if (valueRefF < 100) {
-		sprintf(s, "%.1f", valueRefF);
-	}
-	else {
-		sprintf(s, "%.0f", valueRefF);
-	}
+	sprintf(s, "%.1f", valueRefF);
 	refValue = s;
 	sendCmd(refValue);
 }
@@ -213,20 +208,15 @@ void Indicator::increase(int step) {
 
 	if ((valueRefF + step) >= refMaxInt) {
 		valueRefF = refMaxInt;
-		char s[8];
 	}
 	else {
 		valueRefF += step;
 	}
 	char s[8];
-	if (valueRefF < 100) {
-		sprintf(s, "%.1f", valueRefF);
-	}
-	else {
-		sprintf(s, "%.0f", valueRefF);
-	}
+	sprintf(s, "%.1f", valueRefF);
 	refValue = s;
 	sendCmd(refValue);
+
 }
 
 void Indicator::sendCmd(std::string& refValue) {
@@ -237,13 +227,6 @@ void Indicator::sendCmd(std::string& refValue) {
 	else {
 		tag = "U1/RAM/Ilim/";
 	}
-	/*TODO осталос решить куда записывать Iref
-	  ≈сли в RAM то надо переписывать прошивку Efi так как в NormalMode сейчас задание идЄт из копии ”ставок в RAM
-		   и поэтому во врем€ работы задание от кнопок мен€тьс€ не будет
-	  ≈сли Flash - тогда задание мен€етс€ во врем€ работы (записываютс€ в  опию ”ставок а от туда попадает в –егул€тор и отображаетс€ в RAM)
-		   но при остановке, то что ёзер на задавал, будет записано в реальный Flash
-	*/
-	//TryCount = 1;
 	cmdSendInProcess = true;
 	ModbusSlave::setValue(tag, refValue, [this](Slot* slot, u8* reply) { SlotUpdate(slot, reply); });
 }
@@ -257,17 +240,12 @@ void Indicator::updateObj(std::string sector, const TSlotHandlerArsg& args, cons
 	if (sector == "RAM") {
 		valueOut = objValueOut->getValue(args, "");
 		refValue = objValueRef->getValue(args, "");
-		//++RAM_DATA.data[0];
-
 	}
 	else if (sector == "FLASH") {
-		//++RAM_DATA.data[1];
 		valueRefMax = objValueRefMax->getValue(args, "");
 		valueRefMin = objValueRefMin->getValue(args, "");
 		valueStep = objStep->getValue(args, "");
 		valueOutMax = objValueOutMax->getValue(args, "");
-		//limitValue = objLimit->getValue(args, "");
-		//maxValue = refMax->getValue(args, "");
 	}
 	try {
 		valueOutF = std::stof(valueOut);
@@ -280,12 +258,11 @@ void Indicator::updateObj(std::string sector, const TSlotHandlerArsg& args, cons
 		else {
 			refMinInt = std::stof(valueRefMin);
 		}
+		stepInt = std::stof(valueStep);
 		valueOutMaxInt = std::stof(valueOutMax);
 		fillingBar.setLimitValue(valueOutMaxInt);
 
 		valueRefF = std::stof(refValue);
-		stepInt = std::stof(valueStep);
-
 	}
 	catch (...) {
 

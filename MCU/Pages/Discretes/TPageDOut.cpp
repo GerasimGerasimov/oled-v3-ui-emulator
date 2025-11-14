@@ -24,12 +24,12 @@ void TPageDOut::fillPageContainer()
     LabelInit.focused = false;
     TagList->AddList({
         //new TTagLineScrollCaptionComment("U1/RAM/oCROWBAR_K1/", LabelInit),
-        new TTagLine("Alarm", "U1/RAM/DO0_Alarm/", LabelInit),
-        new TTagLine("PwrCont", "U1/RAM/DO1_PwrCont/", LabelInit),
-        new TTagLine("Ballast", "U1/RAM/DO2_Ballast/", LabelInit),
-        new TTagLine("Fan1", "U1/RAM/DO3_Fan1/", LabelInit),
-        new TTagLine("Fan2", "U1/RAM/DO4_Fan2/", LabelInit),
-        new TTagLine("Run", "U1/RAM/DO5_Run/", LabelInit),
-        new TTagLine("Stop", "U1/RAM/DO6_Stop/", LabelInit)
+        new TTagLine("Alarm", "U1/RAM/DO_4_ALARM/", LabelInit),
+        new TTagLine("PWR", "U1/RAM/DO_1_PWR/", LabelInit),
+        new TTagLine("RUN", "U1/RAM/DO_2_RUN/", LabelInit),
+        new TTagLine("STOP", "U1/RAM/DO_3_STOP/", LabelInit),
+        new TTagLine("BALLAST", "U1/RAM/DO_5_BALLAST/", LabelInit),
+        new TTagLine("FAN1", "U1/RAM/DO_6_FAN1/", LabelInit),
+        new TTagLine("FAN2", "U1/RAM/DO_7_FAN2/", LabelInit)
         });
 }
