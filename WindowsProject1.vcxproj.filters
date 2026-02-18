@@ -168,6 +168,18 @@
     <ClInclude Include="MCU\Components\GroupIndicators.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
+    <ClInclude Include="MCU\Pages\CleanSettings\TPageCleanSettings.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="MCU\Pages\PanelSettingsEFI\PagePanelSettingsEFI.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="MCU\Pages\ShakerSettings\PageShakerSettings.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="MCU\Components\SparksIndicator.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -462,6 +474,18 @@
       <Filter>MCU\Components</Filter>
     </ClCompile>
     <ClCompile Include="MCU\Components\GroupIndicators.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="MCU\Pages\CleanSettings\TPageCleanSettings.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="MCU\Pages\PanelSettingsEFI\PagePanelSettingsEFI.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="MCU\Pages\ShakerSettings\PageShakerSettings.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="MCU\Components\SparksIndicator.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
   </ItemGroup>

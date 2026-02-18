@@ -723,7 +723,7 @@
                 </option>
                 <option>
                     <name>OOCOutputFile</name>
-                    <state>.OP.OLED.CM4.hex</state>
+                    <state>EFI.OP.OLED.CM4.v3.4.0.hex</state>
                 </option>
                 <option>
                     <name>OOCCommandLineProducer</name>
@@ -1321,6 +1321,12 @@
             </file>
             <file>
                 <name>$PROJ_DIR$\..\..\MCU\Components\ScrollLabel.h</name>
+            </file>
+            <file>
+                <name>$PROJ_DIR$\..\..\MCU\Components\SparksIndicator.cpp</name>
+            </file>
+            <file>
+                <name>$PROJ_DIR$\..\..\MCU\Components\SparksIndicator.h</name>
             </file>
             <file>
                 <name>$PROJ_DIR$\..\..\MCU\Components\TagLine.cpp</name>

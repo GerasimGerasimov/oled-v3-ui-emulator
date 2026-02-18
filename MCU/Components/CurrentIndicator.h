@@ -40,6 +40,9 @@ private:
 	
 	bool cmdSendInProcess;
 	bool changeUref = false;
+
+	float editValue;   // временное значение для UI
+	bool editMode;
 	//u16 TryCount;
 
 public: 
@@ -47,6 +50,7 @@ public:
 	CurrentIndicator(int x, int y, std::string msu, std::string ref, std::string tag, std::string refValue, u8 colorState, std::string limitValue, std::string maxValue, float ratio);
 	void view() override;
 	const u16 getHeight(void);
+	void startEdit() override;
 	void drawBorder(int drawBorderX, int drawBorderY);
 	void valueRef();
 	void displayValue();

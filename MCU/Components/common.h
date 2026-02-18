@@ -37,6 +37,7 @@ public:
     void* getDataSrc();
     virtual void update(const TSlotHandlerArsg& args, const char* format);
     virtual void updateObj(std::string sector, const TSlotHandlerArsg& args, const char* format);
+    virtual void startEdit();
 protected:
     void* DataSrc;
 };

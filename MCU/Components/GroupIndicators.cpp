@@ -8,48 +8,34 @@
 #include "parameters.h"
 #include "PageHome.h"
 #include "IniResources.h"
+#include <AppModbusSlave.h>
 
-GroupIndicators::GroupIndicators(int x, int y, u8 colorState, std::string outValue1, std::string sparksV, std::string ready, std::string run) {
+GroupIndicators::GroupIndicators(int x, int y, u8 colorState, std::string outValue1, std::string test) {
 	ElementRect.Left = x;
 	ElementRect.Top = y;
-	ElementRect.Height = 64;
+	ElementRect.Height = 35;
 	ElementRect.Width = 29;
 	this->colorState = colorState;
 	objOut = (TParameter*)IniResources::getSignalByTag(outValue1);
-	objSparks = (TParameter*)IniResources::getSignalByTag(sparksV);
-	objReady = (TParameter*)IniResources::getSignalByTag(ready);
-	objRun = (TParameter*)IniResources::getSignalByTag(run);
+	objTest = (TParameter*)IniResources::getSignalByTag(test);
 	ISignal* o = IniResources::getSignalByTag(outValue1);
-	ISignal* s = IniResources::getSignalByTag(sparksV);
-	ISignal* r = IniResources::getSignalByTag(ready);
-	ISignal* n = IniResources::getSignalByTag(run);
-	container[0] = o;
-	container[1] = s;
-	container[2] = r;
-	container[3] = n;
+	nameOut = outValue1;
 }
 
 void GroupIndicators::view() 
 {
 	TFillRect background{ ElementRect.Left, ElementRect.Top, ElementRect.Width, ElementRect.Height, abs(colorState - 0) };
 	TGrahics::fillRect(background);
-	TGrahics::Line(ElementRect.Left, ElementRect.Top + 28, ElementRect.Left + 26, ElementRect.Top + 28, abs(colorState - 1));
-	TGrahics::Line(ElementRect.Left, ElementRect.Top + 46, ElementRect.Left + 26, ElementRect.Top + 46, abs(colorState - 1));
+	TGrahics::Line(ElementRect.Left, ElementRect.Top + 35, ElementRect.Left + 26, ElementRect.Top + 35, abs(colorState - 1));
 	TGrahics::outText("OUT", ElementRect.Left + 1, ElementRect.Top, abs(colorState - 1), "Verdana12");
-	TGrahics::outText("иск", ElementRect.Left + 4, ElementRect.Top + 27, abs(colorState - 1), "Verdana12");
-	TGrahics::outText("сост", ElementRect.Left + 2, ElementRect.Top + 45, abs(colorState - 1), "Verdana12");
+	
 	if (inFocus) {
-		areaState(yPos);
+		areaState();
 	}
 	else {
 		colorState = 0;
-		stateValue();
-		setStateValue();
 	}
-	point();
 	outValue();
-	sparksValue();
-	//stateValue();
 }
 const u16 GroupIndicators::getHeight(void)
 {
@@ -57,70 +43,31 @@ const u16 GroupIndicators::getHeight(void)
 }
 void GroupIndicators::outValue()
 {
-	
-	char s[8];
-	//GIST "%.4X" преобразование числа в hex с заданным кол-вом значащих нулей
-	if (outVal < 100) {
-		sprintf(s, "%.1f", outVal);
+	float val = inFocus ? editVal : outVal;
+	char s[32];
+	if (val < 100) {
+		sprintf(s, "%.1f", val);
 	}
 	else {
-		sprintf(s, "%.0f", outVal);
+		sprintf(s, "%.0f", val);
 	}
 	outValue1 = s;
-	TGrahics::outText(outValue1, ElementRect.Left + 3, ElementRect.Top + 8,abs(colorState - 1), "Verdana12");
-	TGrahics::outText("%", ElementRect.Left + 6, ElementRect.Top + 14, abs(colorState - 1), "MSSansSerifBold14");
+	TGrahics::outText(outValue1, ElementRect.Left + 3, ElementRect.Top + 11, abs(colorState - 1), "Verdana12");
+	TGrahics::outText("%", ElementRect.Left + 6, ElementRect.Top + 20, abs(colorState - 1), "MSSansSerifBold14");
 }
-void GroupIndicators::sparksValue()
-{
-	TGrahics::outText(sparksV, ElementRect.Left + 2, ElementRect.Top + 36, abs(colorState - 1), "Verdana12");
-}
-void GroupIndicators::stateValue()
-{
-	std::string sparksValue = "opa";
-	for (int i = 0; i < sparksValue.size(); i++) {
-		u16 ratio = ElementRect.Left + ((i + 1) * 6);
-		TGrahics::putChar(sparksValue[i], ratio, ElementRect.Top + 52, sparksValue[i] == mode ? 1 : 0);
-	}
 
-}
-void GroupIndicators::editStateValue() {
-	std::string sparksValue = "opa";
-	TGrahics::outText(sparksValue, ElementRect.Left + 6, ElementRect.Top + 52, abs(colorState - 1), "Verdana12");
-}
-void GroupIndicators::setStateValue() {
-	 if (runValue == "1") {
-		mode = 'p';
-	}
-	else if (readyValue == "1") {
-		mode = 'o';
-	}
-	else {
-		mode = 'a';
-	}
-}
-void GroupIndicators::point() 
-{
-	TGrahics::Line(ElementRect.Left + 2, ElementRect.Top + 56, ElementRect.Left + 2, ElementRect.Top + 59, 1);
-	TGrahics::Line(ElementRect.Left + 3, ElementRect.Top + 56, ElementRect.Left + 3, ElementRect.Top + 59, 1);
-	TGrahics::Line(ElementRect.Left + 1, ElementRect.Top + 57, ElementRect.Left + 4, ElementRect.Top + 57, 1);
-	TGrahics::Line(ElementRect.Left + 1, ElementRect.Top + 58, ElementRect.Left + 4, ElementRect.Top + 58, 1);
 
-}
 void GroupIndicators::updateObj(std::string sector, const TSlotHandlerArsg& args, const char* format)
 {
 	if (sector == "RAM") {
 		outValue1 = objOut->getValue(args, "");
-		sparksV = objSparks->getValue(args, "");
-		readyValue = objReady->getValue(args, "");
-		runValue = objRun->getValue(args, "");
+		testValue = objTest->getValue(args, "");
 	}
 	try {
 		outVal = std::stof(outValue1);
 	}
 	catch (...) {
 		outValue1 = "**.*";
-		sparksV = "**.*";
-		mode = 'a';
 	}
 
 }
@@ -131,38 +78,41 @@ bool GroupIndicators::ProcessMessage(TMessage* m) {
 		switch (m->p1) {
 		case (u32)KeyCodes::F1:
 			if (inFocus) {
-				TRouter::setTask({ false, "Help", container[component] });
+				ISignal* p = IniResources::getSignalByTag(nameOut);
+				TRouter::setTask({ false, "Help", p });
 			}
 			break;
 		case (u32)KeyCodes::Up:
 			if (inFocus) {
-				if (component > 0 && component <= 3) {
-					component--;
-					yPos--;
-				}
-				else {
-					component = 0;
-					yPos = 0;
-				}
-				areaState(yPos);
+				increase((m->p2 == (u32)KeyPressFeature::AutoRepeat) ? 2 : 1);
 			}
 			break;
 		case (u32)KeyCodes::Down:
 			if (inFocus) {
-				if(component < 3 && component >= 0) {
-					component++;
-					yPos++;
-				}
-				else {
-					component = 3;
-					yPos = 3;
-				}
-				areaState(yPos);
+				decrease((m->p2 == (u32)KeyPressFeature::AutoRepeat) ? 2 : 1);
 			}
+
 			break;
 		case (u32)KeyCodes::ESC:
 			if (inFocus) {
 				TRouter::setTask({ false, "Home", nullptr });
+				editVal = outVal;
+				inFocus = false;
+			}
+			break;
+		case (u32)KeyCodes::ENT:
+			if (inFocus) {
+				//TRouter::setTask({ false, "Home", nullptr });
+				char s[8];
+				if (editVal < 100) {
+					sprintf(s, "%.1f", editVal);
+				}
+				else {
+					sprintf(s, "%.0f", editVal);
+				}
+				outValue1 = s;
+				sendCmd(outValue1);
+				inFocus = false;
 			}
 			break;
 		}
@@ -170,27 +120,64 @@ bool GroupIndicators::ProcessMessage(TMessage* m) {
 	}
 	}
 }
-void GroupIndicators::areaState(unsigned int yPos) {
-	editStateValue();
-	if (yPos == 0) {
+
+
+void GroupIndicators::decrease(float step) {
+	/*получить текущее значение Iref, вычесть из него 1A или 5А (в зависимости
+	 однократное это нажатие или автоматический повтор)и передать на EFi
+	значение может быть не числовое а "**.**" когда нет связи, значит
+	1) получить значение 2) убедится что числовое 3) произвести над ним вычисления
+	4) превратить  в строку 5) отправить */
+	if (testValue == "1") {
+		if ((editVal - step) <= 0) {
+			editVal = 0;
+		}
+		else {
+			editVal -= step;
+		}
+	}
+	//sendCmd(refValue);
+}
+
+void GroupIndicators::increase(float step) {
+	/*получить текущее значение Iref, вычесть из него 1A или 5А (в зависимости
+	 однократное это нажатие или автоматический повтор)и передать на EFi
+	значение может быть не числовое а "**.**" когда нет связи, значит
+	1) получить значение 2) убедится что числовое 3) произвести над ним вычисления
+	4) превратить  в строку 5) отправить */
+	if (testValue == "1") {
+		editVal += step;
+	}
+	//sendCmd(refValue);
+}
+
+void GroupIndicators::sendCmd(std::string& refValue) {
+	std::string tag;
+	tag = "U1/RAM/Out/";
+	/*TODO осталос решить куда записывать Iref
+	  Если в RAM то надо переписывать прошивку Efi так как в NormalMode сейчас задание идёт из копии Уставок в RAM
+		   и поэтому во время работы задание от кнопок меняться не будет
+	  Если Flash - тогда задание меняется во время работы (записываются в Копию Уставок а от туда попадает в Регулятор и отображается в RAM)
+		   но при остановке, то что Юзер на задавал, будет записано в реальный Flash
+	*/
+	//TryCount = 1;
+	cmdSendInProcess = true;
+	ModbusSlave::setValue(tag, refValue, [this](Slot* slot, u8* reply) { SlotUpdate(slot, reply); });
+}
+
+void GroupIndicators::SlotUpdate(Slot* slot, u8* reply) {
+	slot->Flags |= (u16)SlotStateFlags::SKIP_SLOT;
+	cmdSendInProcess = false;
+}
+
+void GroupIndicators::areaState() {
+
 		TFillRect selectionArea{ ElementRect.Left , ElementRect.Top, ElementRect.Width - 2, 9 };
 		TGrahics::InvertArea(selectionArea);
-	}
-	else  if (yPos == 1) {
-		TFillRect selectionArea{ ElementRect.Left, ElementRect.Top + 29, ElementRect.Width - 2, 7};
-		TGrahics::InvertArea(selectionArea);
-	}
-	else if (yPos == 2) {
-		TFillRect selectionArea{ ElementRect.Left, ElementRect.Top + 47, ElementRect.Width - 2, 7};
-		TGrahics::InvertArea(selectionArea);
-		TFillRect selState{ ElementRect.Left + 6, ElementRect.Top + 54, ElementRect.Width - 23, 8 };
-		TGrahics::InvertArea(selState);
-	}
-	else if (yPos == 3) {
-		TFillRect selectionArea{ ElementRect.Left, ElementRect.Top + 47, ElementRect.Width - 2, 7 };
-		TGrahics::InvertArea(selectionArea);
-		TFillRect selState{ ElementRect.Left + 12, ElementRect.Top + 54, ElementRect.Width - 22, 8 };
-		TGrahics::InvertArea(selState);
-	}
-	
+
+}
+
+void GroupIndicators::startEdit() {
+	editVal = outVal;
+	inFocus = true;
 }

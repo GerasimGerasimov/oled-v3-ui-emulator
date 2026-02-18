@@ -49,6 +49,7 @@ public:
 	void SlotUpdate(Slot* slot, u8* reply);
 	void SlotUpdate(const char* sector, TSlotHandlerArsg args);
 	void SlotUpdateRAM(TSlotHandlerArsg args);
+	void startEdit() override;
 	void hidingBorder();
 	bool ProcessMessage(TMessage* m);
 	void updateObj(std::string sector, const TSlotHandlerArsg& args, const char* format) override;

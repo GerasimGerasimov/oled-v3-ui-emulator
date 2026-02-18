@@ -5,6 +5,7 @@
 
 class TParameter;
 class ISignal;
+class Slot;
 
 class GroupIndicators : public TVisualObject
 {
@@ -12,37 +13,36 @@ private:
 	u8 colorState;
 	std::string outValue1;
 	std::string sparksV;
-	std::string ready;
-	std::string run;
 	std::string ratio;
+	std::string nameOut;
 
-	std::string readyValue;
-	std::string runValue;
+	std::string testValue;
 
 	TParameter* objOut;
 	TParameter* objSparks;
-	TParameter* objReady;
-	TParameter* objRun;
+	TParameter* objTest;
 
 	float outVal;
-	char mode;
-	std::array <ISignal*, 4> container;
-	int component = 0;
-	int yPos = 0;
+	float editVal;
+
+	bool cmdSendInProcess;
+	bool changeUref = false;
+
+
 
 public:
 
-	GroupIndicators(int x, int y, u8 colorState, std::string outValue1, std::string sparksV, std::string ready, std::string run);
+	GroupIndicators(int x, int y, u8 colorState, std::string outValue1, std::string test);
 	void view() override;
 	const u16 getHeight(void);
 	void outValue();
-	void sparksValue();
-	void stateValue();
-	void editStateValue();
-	void setStateValue();
-	void point();
 	void updateObj(std::string sector, const TSlotHandlerArsg& args, const char* format) override;
 	bool ProcessMessage(TMessage* m);
-	void areaState(unsigned int yPos);
+	void decrease(float step);
+	void increase(float step);
+	void sendCmd(std::string& refValue);
+	void SlotUpdate(Slot* slot, u8* reply);
+	void areaState();
+	void startEdit() override;
 };
 

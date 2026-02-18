@@ -41,9 +41,9 @@ void  OperatingMode::view()
 	TGrahics::outText("í", ElementRect.Left + 4, ElementRect.Top + 8, abs(colorState - 1), "MSSansSerifBold14");
 	TGrahics::outText("î", ElementRect.Left + 4, ElementRect.Top + 21, abs(colorState - 1), "MSSansSerifBold14");
 	TGrahics::outText("â", ElementRect.Left + 4, ElementRect.Top + 34, abs(colorState - 1), "MSSansSerifBold14");
-	TGrahics::outText("ò", ElementRect.Left + 4, ElementRect.Top + 47, abs(colorState - 1), "MSSansSerifBold14");
+	TGrahics::outText("p", ElementRect.Left + 4, ElementRect.Top + 47, abs(colorState - 1), "MSSansSerifBold14");
 
-	//TGrahics::outText(cleanValue, ElementRect.Left + 4, ElementRect.Top + 47, abs(colorState - 1), "MSSansSerifBold14");
+
 	if (inFocus) {
 		colorState = 1;
 		//SubscriberID = HandlerSubscribers::set("U1/RAM/", [this](TSlotHandlerArsg args) { SlotUpdateRAM(args); });
@@ -146,6 +146,11 @@ bool OperatingMode::ProcessMessage(TMessage* m)
 				TRouter::setTask({ false, "Home", nullptr });
 			}
 			break;
+		case (u32)KeyCodes::ENT:
+			if (inFocus) {
+				inFocus = false;
+			}
+			break;
 		}
 		for (auto& element : List) {
 			element->ProcessMessage(m);
@@ -162,13 +167,7 @@ void OperatingMode::updateObj(std::string sector, const TSlotHandlerArsg& args, 
 		vacValue = objVac->getValue(args, "");
 		manualValue = objManual->getValue(args, "");
 	}
-	//if (inFocus == false) {
-	//	/*setYPosition();*/
-	//}
-	//else {
-	//	colorState = 1;
-	//	//setYPosition();
-	//}
+
 }
 
 void OperatingMode::setYPosition()  
@@ -189,7 +188,6 @@ void OperatingMode::setYPosition()
 		TFillRect drawBorder{ ElementRect.Left + 1, ElementRect.Top + 12 + (yPosition * 13), 13, 10, abs(colorState - 0) };
 		TGrahics::drawBorder(drawBorder);
 	}
-	
 	
 }
 
@@ -243,4 +241,7 @@ void OperatingMode::SlotUpdate(const char* sector, TSlotHandlerArsg args) {
 
 void OperatingMode::SlotUpdateRAM(TSlotHandlerArsg args) {
 	SlotUpdate("RAM", args);
+}
+void OperatingMode::startEdit() {
+	inFocus = true;
 }

@@ -5,8 +5,6 @@
 std::map < std::string, TTrackedBit > Warnings::Tags = {
 	{"FlashErr", {"U1/RAM/FlashErr/", nullptr, false, false}},
 	{"FlashBckpErr", {"U1/RAM/FlashBckpErr/", nullptr, false, false}},
-	{"KeyErr", {"U1/RAM/KeyErr/", nullptr, false, false}},
-	{"KeyBckpErr", {"U1/RAM/KeyBckpErr/", nullptr, false, false}},
 	{"UinLostFail", {"U1/RAM/UinLostFail/", nullptr, false, false}},
 	{"UinHiFail", {"U1/RAM/UinHiFail/", nullptr, false, false}},
 	{"SyncFail", {"U1/RAM/SyncFail/", nullptr, false, false}},

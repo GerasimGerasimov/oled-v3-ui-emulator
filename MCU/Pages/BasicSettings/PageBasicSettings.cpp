@@ -86,7 +86,7 @@ void TPageBasicSettings::fillPageContainer(void) {
         new TTagLine("AMax", "U1/FLASH/AlphaMax/", LabelInit),
         new TTagLine("IinNominal", "U1/FLASH/IinNominal/", LabelInit),
         new TTagLine("UoutNominal", "U1/FLASH/UoutNominal/", LabelInit),
-        new TTagLine("IoutNominal", "U1/FLASH/IoutNominal/", LabelInit),
+        new TTagLine("IoutNominal", "U1/FLASH/IoutNominal/", LabelInit)
         //new TTagLine("tSoftStart","U1/FLASH/tSoftStart/", LabelInit)
         
     });

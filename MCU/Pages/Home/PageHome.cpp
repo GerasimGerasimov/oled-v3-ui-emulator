@@ -10,6 +10,7 @@ void TPageHome::view() {
     currentIndicator2.view();
     operatingMode.view();
     groupIndicators.view();
+    sparksIndicator.view();
     //currentIndicator2.scaleBar();
 }
 void TPageHome::onOpen() {
@@ -47,7 +48,7 @@ bool TPageHome::ProcessMessage(TMessage* m) {
                         TRouter::setTask({ false, "Help", p });
                     }
                     break;
-                case (u32)KeyCodes::ENT:
+                /*case (u32)KeyCodes::ENT:
                     e = getSignalOfFocusedChild();
                     if (e) {
                         TRouter::PageValueEditEntryData.tag = ((TTagLine*)(e))->Tag;
@@ -56,15 +57,15 @@ bool TPageHome::ProcessMessage(TMessage* m) {
                         TRouter::setTask({ false, "EditValue", nullptr });
                     }
                     container[currentComponent]->inFocus = false;
-                    break;
+                    break;*/
                 case (u32)KeyCodes::Right: 
                     container[currentComponent]->inFocus = false;
                     if (currentComponent < container.size() - 1) {
                         currentComponent++;
-                        container[currentComponent]->inFocus = true;
+                        container[currentComponent]->startEdit();
                     }
                     else {
-                        container[currentComponent]->inFocus = true;
+                        container[currentComponent]->startEdit();
                     }
                     break;
 
@@ -72,10 +73,10 @@ bool TPageHome::ProcessMessage(TMessage* m) {
                     container[currentComponent]->inFocus = false;
                     if (currentComponent > 0) {
                         currentComponent--;
-                        container[currentComponent]->inFocus = true;
+                        container[currentComponent]->startEdit();
                     }
                     else {
-                        container[currentComponent]->inFocus = true;
+                        container[currentComponent]->startEdit();
                     }
                    break;
 
@@ -118,9 +119,10 @@ TPageHome::TPageHome(std::string Name) :TPage(Name),
     currentIndicator1(0, 0, "I, mA", "Iref", "U1/RAM/IoutAve/", "U1/FLASH/Iref/", 0, "U1/FLASH/IoutNominal/", "U1/FLASH/IoutMax/", 1),
     currentIndicator2(42, 0, "U, kV", "Uref", "U1/RAM/UoutAve/", "U1/FLASH/Uref/",0, "U1/FLASH/UoutNominal/", "U1/FLASH/IoutMax/", 0.25),
     operatingMode(83, 0, 0, "U1/RAM/Normal/", "U1/RAM/Clean/", "U1/RAM/VAC/", "U1/RAM/Manual/"),
-    groupIndicators(100, 0, 0, "U1/RAM/Out/", "U1/RAM/SparkFrq/", "U1/RAM/Ready/", "U1/RAM/Run/")
+    groupIndicators(100, 0, 0, "U1/RAM/Out/", "U1/RAM/Manual/"),
+    sparksIndicator(100, 36, 0, "U1/RAM/SparkFrq/")
 {
-    container = { &currentIndicator1, &currentIndicator2, &operatingMode, &groupIndicators};
+    container = { &currentIndicator1, &currentIndicator2, &operatingMode, &groupIndicators, &sparksIndicator};
     TVerticalContainerProps props = { false };
     TagList = new TVerticalContainer(props, {});
     AddList({ TagList });
@@ -134,6 +136,7 @@ void TPageHome::SlotUpdate(const char* sector, TSlotHandlerArsg args) {
     }
     //currentIndicator1.updateValueRef(args, "");
     groupIndicators.update(args, "");
+    sparksIndicator.update(args, "");
     operatingMode.update(args, "");
     Msg::send_message((u32)EventSrc::REPAINT, 0, 0);
 }

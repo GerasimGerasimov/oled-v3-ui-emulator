@@ -57,6 +57,12 @@ const u16 CurrentIndicator::getHeight(void)
 	return u16(ElementRect.Height);
 }
 
+void CurrentIndicator::startEdit()
+{
+	editValue = valuePoint;
+	inFocus = true;
+}
+
 void CurrentIndicator::drawBorder(int drawBorderX, int drawBorderY) {
 
 	TFillRect background{ drawBorderX, drawBorderY, ElementRect.Width, ElementRect.Height, abs(colorState - 0) };
@@ -70,6 +76,15 @@ void CurrentIndicator::drawBorder(int drawBorderX, int drawBorderY) {
 void CurrentIndicator::valueRef() //значение ref
 {
 	TGrahics::outTextVertical(ref, ElementRect.Top + 22, ElementRect.Left, abs(colorState - 1), "Verdana12");
+	float val = inFocus ? editValue : valuePoint;
+	char s[32];
+	if (val < 100) {
+		sprintf(s, "%.1f", val);
+	}
+	else {
+		sprintf(s, "%.0f", val);
+	}
+	refValue = s;
 	TGrahics::outTextVertical(refValue, ElementRect.Top + 21, ElementRect.Left + 8, abs(colorState - 1), "Verdana12");
 	
 }
@@ -185,9 +200,27 @@ bool CurrentIndicator::ProcessMessage(TMessage* m)
 		case (u32)KeyCodes::ESC:
 			if (inFocus) {
 				TRouter::setTask({ false, "Home", nullptr });
+				editValue = valuePoint;
+				inFocus = false;
 			}
 			break;
-		}
+		
+		case (u32)KeyCodes::ENT:
+			if (inFocus) {
+
+				char s[32];
+				if (editValue < 100) {
+					sprintf(s, "%.1f", editValue);
+				}
+				else {
+					sprintf(s, "%.0f", editValue);
+				}
+				refValue = s;
+				sendCmd(refValue);
+				inFocus = false;
+			}
+			break;
+	}
 	}
 	for (auto& element : List) {
 		element->ProcessMessage(m);
@@ -203,21 +236,13 @@ void CurrentIndicator::decrease(float step) {
 	1) получить значение 2) убедится что числовое 3) произвести над ним вычисления
 	4) превратить  в строку 5) отправить */
 		
-	if ((valuePoint - step) < 0.1) {
-	valuePoint = valuePoint;
+	if ((editValue - step) < 0.1) {
+	editValue = 0;
 	}
 	else {
-		valuePoint -= step;
+		editValue -= step;
 	}
-		char s[8];
-		if (valuePoint < 100) {
-			sprintf(s, "%.1f", valuePoint);
-		}
-		else {
-			sprintf(s, "%.0f", valuePoint);
-		}
-		refValue = s;
-		sendCmd(refValue);
+		//sendCmd(refValue);
 }
 
 void CurrentIndicator::increase(float step) {
@@ -227,21 +252,13 @@ void CurrentIndicator::increase(float step) {
 	1) получить значение 2) убедится что числовое 3) произвести над ним вычисления
 	4) превратить  в строку 5) отправить */
 
-	if ((valuePoint + step) > maxValueInt) {
-		valuePoint = maxValueInt;
+	if ((editValue + step) > maxValueInt) {
+		editValue = maxValueInt;
 	}
 	else {
-		valuePoint += step;
+		editValue += step;
 	}
-		char s[8];
-		if (valuePoint < 100) {
-			sprintf(s, "%.1f", valuePoint);
-		}
-		else {
-			sprintf(s, "%.0f", valuePoint);
-		}
-		refValue = s;
-	sendCmd(refValue);
+	//sendCmd(refValue);
 }
 
 void CurrentIndicator::sendCmd(std::string& refValue) {
@@ -296,12 +313,12 @@ void CurrentIndicator::updateObj(std::string sector, const TSlotHandlerArsg& arg
 	}
 	catch (...) {
 
-		value = 0;
-		fillingBar.setValue(value);
-		valuePoint = 0;
-		maxValueInt = 0;
-		valuePoint = 0;
-		refValue = "0.0";
-		currentValue = "**.*";
+		//value = 0;
+		//fillingBar.setValue(value);
+		//valuePoint = 0;
+		//maxValueInt = 0;
+		//valuePoint = 0;
+		//refValue = "0.0";
+		//currentValue = "**.*";
 	}
 }

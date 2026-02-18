@@ -8,6 +8,7 @@
 #include "CurrentIndicator.h"
 #include "OperatingMode.h"
 #include "GroupIndicators.h"
+#include <SparksIndicator.h>
 
 
 class TPageHome : public TPage
@@ -34,6 +35,7 @@ private:
     CurrentIndicator currentIndicator2;
     OperatingMode operatingMode;
     GroupIndicators groupIndicators;
+    SparksIndicator sparksIndicator;
     std::vector <TVisualObject*> container;
     unsigned int currentComponent = 0;
 };

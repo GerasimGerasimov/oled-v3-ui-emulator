@@ -1,6 +1,7 @@
 #include "PageCalibration.h"
 #include "Router.h"
 #include "TagLine.h"
+#include "TagLineScrollCaption.h"
 #include <IniResources.h>
 #include <FixedHeader.h>
 
@@ -72,6 +73,9 @@ void TPageCalibration::fillPageContainer(void) {
     TagList->AddList({
         new TTagLine("KadcUin", "U1/CD/KadcUin/", LabelInit),
         new TTagLine("KadcIin", "U1/CD/KadcIin/", LabelInit),
+        new TTagLineScrollCaption("UoutGapSpark", "U1/CD/UoutGapSpark/", LabelInit),
+        new TTagLineScrollCaption("IoutLevelSpark", "U1/CD/IoutLevelSpark/", LabelInit),
+        new TTagLineScrollCaption("SparkLengthMin", "U1/CD/SparkLengthMin/", LabelInit)
     });
 }
 
