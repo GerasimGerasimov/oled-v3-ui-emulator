@@ -10,38 +10,29 @@
 #include "IniResources.h"
 #include "AppModbusSlave.h"
 
-OperatingMode::OperatingMode(int x, int y, u8 colorState, std::string normal, std::string clean, std::string vac, std::string manual) {
+OperatingMode::OperatingMode(int x, int y, u8 colorState, std::string mode) {
 	ElementRect.Left = x;
 	ElementRect.Top = y;
-	ElementRect.Height = 65;
-	ElementRect.Width = 17;
+	ElementRect.Height = 31;
+	ElementRect.Width = 46;
 	this->colorState = colorState;
-	objNormal = (TParameter*)IniResources::getSignalByTag(normal);
-	objClean = (TParameter*)IniResources::getSignalByTag(clean);
-	objVac = (TParameter*)IniResources::getSignalByTag(vac);
-	objManual = (TParameter*)IniResources::getSignalByTag(manual);
-	ISignal* n = IniResources::getSignalByTag(normal);
-	ISignal* c = IniResources::getSignalByTag(clean);
-	ISignal* v = IniResources::getSignalByTag(vac);
-	ISignal* m = IniResources::getSignalByTag(manual);
-	container[0] = n;
-	container[1] = c;
-	container[2] = v;
-	container[3] = m;
+	objMode = (TParameter*)IniResources::getSignalByTag(mode);
+	ISignal* m = IniResources::getSignalByTag(mode);
+	container[0] = m;
 	SubscriberID = HandlerSubscribers::set("U1/RAM/", [this](TSlotHandlerArsg args) { SlotUpdateRAM(args); });
+	infoMode = mode;
 }
 
 void  OperatingMode::view()
 {
 	background();
 	drawBorder();
-	hidingBorder();
+	//hidingBorder();
 	
-	TGrahics::outText("pp", ElementRect.Left + 2, ElementRect.Top, abs(colorState - 1), "Verdana12");
-	TGrahics::outText("í", ElementRect.Left + 4, ElementRect.Top + 8, abs(colorState - 1), "MSSansSerifBold14");
-	TGrahics::outText("î", ElementRect.Left + 4, ElementRect.Top + 21, abs(colorState - 1), "MSSansSerifBold14");
-	TGrahics::outText("â", ElementRect.Left + 4, ElementRect.Top + 34, abs(colorState - 1), "MSSansSerifBold14");
-	TGrahics::outText("p", ElementRect.Left + 4, ElementRect.Top + 47, abs(colorState - 1), "MSSansSerifBold14");
+	TGrahics::outText("mode", ElementRect.Left + 4, ElementRect.Top, abs(colorState - 1), "Verdana12");
+	TGrahics::outText("U", ElementRect.Left + 3, ElementRect.Top + 15, abs(colorState - 1), "Verdana12");
+	TGrahics::outText("I", ElementRect.Left + 16, ElementRect.Top + 15, abs(colorState - 1), "Verdana12");
+	TGrahics::outText("D", ElementRect.Left + 27, ElementRect.Top + 15, abs(colorState - 1), "Verdana12");
 
 
 	if (inFocus) {
@@ -66,13 +57,13 @@ void OperatingMode::background() {
 }
 
 void OperatingMode::drawBorder() {
-	TFillRect drawBorder{ ElementRect.Left + 1, ElementRect.Top + 12 + (yPosition * 13), 13, 10, abs(colorState - 1)};
+	TFillRect drawBorder{ ElementRect.Left + 1 + (yPosition * 12), ElementRect.Top + 13, 12, 12, abs(colorState - 1)};
 	TGrahics::drawBorder(drawBorder);
 }
 void OperatingMode::stateValue(u8 newColor)
 {
 	colorState = (colorState == 0) ? 1 : 0;
-	TFillRect selectionArea{ ElementRect.Left , ElementRect.Top, ElementRect.Width, ElementRect.Height };
+	TFillRect selectionArea{ ElementRect.Left, ElementRect.Top, ElementRect.Width, ElementRect.Height };
 	TGrahics::InvertArea(selectionArea);
 }
 int OperatingMode::getYPosition()
@@ -90,55 +81,45 @@ bool OperatingMode::ProcessMessage(TMessage* m)
 	switch (m->Event) {
 	case (u32)EventSrc::KEYBOARD: {
 		switch (m->p1) {
-		case (u32)KeyCodes::Up:
+		case (u32)KeyCodes::Down:
 			if (inFocus) {
-				if (yPosition > 0 && yPosition <= 3) {
+				if (yPosition > 0 && yPosition <= 2) {
 					yPosition -= 1;
 				}
 				else {
 					yPosition = 0;
 				}
-				if (component > 0 && component <= 3) {
+				if (component > 0 && component <= 2) {
 					component--;
 				}
 				else {
 					component = 0;
 				}
-				sendModeCmd(container[component]);
+				//sendModeCmd(container[component]);
 			}
 			break;
-		case (u32)KeyCodes::Down:
+		case (u32)KeyCodes::Up:
 			if (inFocus) {
 				//HandlerSubscribers::remove("U1/RAM/", SubscriberID);
-				if (yPosition < 3 && yPosition >= 0) {
+				if (yPosition < 2 && yPosition >= 0) {
 					yPosition += 1;
 				}
 				else {
-					yPosition = 3;
+					yPosition = 2;
 				}
-				if (component < 3 && component >= 0) {
+				if (component < 2 && component >= 0) {
 					component++;
 				}
 				else {
-					component = 3;
+					component = 2;
 				}
-				sendModeCmd(container[component]);
+				//sendModeCmd(container[component]);
 			}
 			break;
 		case (u32)KeyCodes::F1:
 			if (inFocus) {
-				if (yPosition == 0) {
-					TRouter::setTask({ false, "Help", container[0] });
-				}
-				else if (yPosition == 1) {
-					TRouter::setTask({ false, "Help", container[1] });
-				}
-				else if (yPosition == 2) {
-					TRouter::setTask({ false, "Help", container[2] });
-				}
-				else  { 
-					TRouter::setTask({ false, "Help", container[3] });
-				}
+				ISignal* p = IniResources::getSignalByTag(infoMode);
+				TRouter::setTask({ false, "Help", p });
 			}
 			break;
 		case (u32)KeyCodes::ESC:
@@ -162,32 +143,26 @@ bool OperatingMode::ProcessMessage(TMessage* m)
 void OperatingMode::updateObj(std::string sector, const TSlotHandlerArsg& args, const char* format)
 {
 	if (sector == "RAM") {
-		normalValue = objNormal->getValue(args, ""); //sendModeCmd(container[1]);
-		cleanValue = objClean->getValue(args, "");
-		vacValue = objVac->getValue(args, "");
-		manualValue = objManual->getValue(args, "");
+		modeValue = objMode->getValue(args, "");
 	}
-
 }
 
 void OperatingMode::setYPosition()  
 {
-	if (normalValue == "1") {
+	yPosition = 0;
+	if (modeValue == "1" || modeValue == "3") {
 		yPosition = 0;
 	}
-	else if (cleanValue == "1") {
+	else if (modeValue == "2" || modeValue == "4") {
 		yPosition = 1;
 	}
-	else if (vacValue == "1") {
+	else if (modeValue == "5" || modeValue == "6") {
 		yPosition = 2;
 	}
-	else if (manualValue == "1") {
-		yPosition = 3;
-	}
-	else {
+	/*else {
 		TFillRect drawBorder{ ElementRect.Left + 1, ElementRect.Top + 12 + (yPosition * 13), 13, 10, abs(colorState - 0) };
 		TGrahics::drawBorder(drawBorder);
-	}
+	}*/
 	
 }
 

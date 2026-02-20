@@ -10,14 +10,13 @@
 #include "IniResources.h"
 #include <AppModbusSlave.h>
 
-GroupIndicators::GroupIndicators(int x, int y, u8 colorState, std::string outValue1, std::string test) {
+GroupIndicators::GroupIndicators(int x, int y, u8 colorState, std::string outValue1) {
 	ElementRect.Left = x;
 	ElementRect.Top = y;
-	ElementRect.Height = 35;
-	ElementRect.Width = 29;
+	ElementRect.Height = 31;
+	ElementRect.Width = 46;
 	this->colorState = colorState;
 	objOut = (TParameter*)IniResources::getSignalByTag(outValue1);
-	objTest = (TParameter*)IniResources::getSignalByTag(test);
 	ISignal* o = IniResources::getSignalByTag(outValue1);
 	nameOut = outValue1;
 }
@@ -26,11 +25,13 @@ void GroupIndicators::view()
 {
 	TFillRect background{ ElementRect.Left, ElementRect.Top, ElementRect.Width, ElementRect.Height, abs(colorState - 0) };
 	TGrahics::fillRect(background);
-	TGrahics::Line(ElementRect.Left, ElementRect.Top + 35, ElementRect.Left + 26, ElementRect.Top + 35, abs(colorState - 1));
-	TGrahics::outText("OUT", ElementRect.Left + 1, ElementRect.Top, abs(colorState - 1), "Verdana12");
+	//TGrahics::Line(ElementRect.Left, ElementRect.Top + 35, ElementRect.Left + ElementRect.Width, ElementRect.Top + 35, abs(colorState - 1));
+
+	TGrahics::outText("t, min", ElementRect.Left + 4, ElementRect.Top + 2, abs(colorState - 1), "Verdana12");
 	
 	if (inFocus) {
-		areaState();
+		//areaState();
+		colorState = 1;
 	}
 	else {
 		colorState = 0;
@@ -45,15 +46,14 @@ void GroupIndicators::outValue()
 {
 	float val = inFocus ? editVal : outVal;
 	char s[32];
-	if (val < 100) {
-		sprintf(s, "%.1f", val);
+	if (outVal < 100) {
+		sprintf(s, "%.1f", outVal);
 	}
 	else {
-		sprintf(s, "%.0f", val);
+		sprintf(s, "%.0f", outVal);
 	}
 	outValue1 = s;
-	TGrahics::outText(outValue1, ElementRect.Left + 3, ElementRect.Top + 11, abs(colorState - 1), "Verdana12");
-	TGrahics::outText("%", ElementRect.Left + 6, ElementRect.Top + 20, abs(colorState - 1), "MSSansSerifBold14");
+	TGrahics::outText(outValue1, ElementRect.Left + 3, ElementRect.Top + 15, abs(colorState - 1), "Verdana12");
 }
 
 
@@ -61,7 +61,7 @@ void GroupIndicators::updateObj(std::string sector, const TSlotHandlerArsg& args
 {
 	if (sector == "RAM") {
 		outValue1 = objOut->getValue(args, "");
-		testValue = objTest->getValue(args, "");
+		
 	}
 	try {
 		outVal = std::stof(outValue1);
@@ -82,36 +82,15 @@ bool GroupIndicators::ProcessMessage(TMessage* m) {
 				TRouter::setTask({ false, "Help", p });
 			}
 			break;
-		case (u32)KeyCodes::Up:
-			if (inFocus) {
-				increase((m->p2 == (u32)KeyPressFeature::AutoRepeat) ? 2 : 1);
-			}
-			break;
-		case (u32)KeyCodes::Down:
-			if (inFocus) {
-				decrease((m->p2 == (u32)KeyPressFeature::AutoRepeat) ? 2 : 1);
-			}
 
-			break;
 		case (u32)KeyCodes::ESC:
 			if (inFocus) {
 				TRouter::setTask({ false, "Home", nullptr });
-				editVal = outVal;
-				inFocus = false;
 			}
 			break;
 		case (u32)KeyCodes::ENT:
 			if (inFocus) {
 				//TRouter::setTask({ false, "Home", nullptr });
-				char s[8];
-				if (editVal < 100) {
-					sprintf(s, "%.1f", editVal);
-				}
-				else {
-					sprintf(s, "%.0f", editVal);
-				}
-				outValue1 = s;
-				sendCmd(outValue1);
 				inFocus = false;
 			}
 			break;
@@ -122,34 +101,34 @@ bool GroupIndicators::ProcessMessage(TMessage* m) {
 }
 
 
-void GroupIndicators::decrease(float step) {
-	/*получить текущее значение Iref, вычесть из него 1A или 5А (в зависимости
-	 однократное это нажатие или автоматический повтор)и передать на EFi
-	значение может быть не числовое а "**.**" когда нет связи, значит
-	1) получить значение 2) убедится что числовое 3) произвести над ним вычисления
-	4) превратить  в строку 5) отправить */
-	if (testValue == "1") {
-		if ((editVal - step) <= 0) {
-			editVal = 0;
-		}
-		else {
-			editVal -= step;
-		}
-	}
-	//sendCmd(refValue);
-}
+//void GroupIndicators::decrease(float step) {
+//	/*получить текущее значение Iref, вычесть из него 1A или 5А (в зависимости
+//	 однократное это нажатие или автоматический повтор)и передать на EFi
+//	значение может быть не числовое а "**.**" когда нет связи, значит
+//	1) получить значение 2) убедится что числовое 3) произвести над ним вычисления
+//	4) превратить  в строку 5) отправить */
+//	/*if (testValue == "1") {
+//		if ((editVal - step) <= 0) {
+//			editVal = 0;
+//		}
+//		else {
+//			editVal -= step;
+//		}
+//	}*/
+//	//sendCmd(refValue);
+//}
 
-void GroupIndicators::increase(float step) {
-	/*получить текущее значение Iref, вычесть из него 1A или 5А (в зависимости
-	 однократное это нажатие или автоматический повтор)и передать на EFi
-	значение может быть не числовое а "**.**" когда нет связи, значит
-	1) получить значение 2) убедится что числовое 3) произвести над ним вычисления
-	4) превратить  в строку 5) отправить */
-	if (testValue == "1") {
-		editVal += step;
-	}
-	//sendCmd(refValue);
-}
+//void GroupIndicators::increase(float step) {
+//	/*получить текущее значение Iref, вычесть из него 1A или 5А (в зависимости
+//	 однократное это нажатие или автоматический повтор)и передать на EFi
+//	значение может быть не числовое а "**.**" когда нет связи, значит
+//	1) получить значение 2) убедится что числовое 3) произвести над ним вычисления
+//	4) превратить  в строку 5) отправить */
+//	/*if (testValue == "1") {
+//		editVal += step;
+//	}*/
+//	//sendCmd(refValue);
+//}
 
 void GroupIndicators::sendCmd(std::string& refValue) {
 	std::string tag;
@@ -172,12 +151,11 @@ void GroupIndicators::SlotUpdate(Slot* slot, u8* reply) {
 
 void GroupIndicators::areaState() {
 
-		TFillRect selectionArea{ ElementRect.Left , ElementRect.Top, ElementRect.Width - 2, 9 };
-		TGrahics::InvertArea(selectionArea);
-
+	TFillRect selectionArea{ ElementRect.Left , ElementRect.Top, ElementRect.Width - 2, 9 };
+	TGrahics::InvertArea(selectionArea);
 }
 
 void GroupIndicators::startEdit() {
-	editVal = outVal;
+	//editVal = outVal;
 	inFocus = true;
 }

@@ -12,31 +12,22 @@ private:
 	u8 colorState;
 	unsigned int yPosition;
 
-	std::string normalValue;
-	std::string cleanValue;
-	std::string vacValue;
-	std::string manualValue;
+	std::string modeValue;
 
-	std::string normalName;
-	std::string cleanName;
-	std::string vacName;
-	std::string manualName;
+	std::string infoMode;
 
-	TParameter* objNormal;
-	TParameter* objClean;
-	TParameter* objVac;
-	TParameter* objManual;
+	TParameter* objMode;
 
 	bool cmdSendInProcess;
 	u16 TryCount;
 	int SubscriberID = 0;
-	std::array <ISignal*, 4> container;
+	std::array <ISignal*, 3> container;
 	int component = 0;
 	int yPos = 0;
 
 public:
 
-	OperatingMode(int x, int y, u8 colorState, std::string ready, std::string clean, std::string vac, std::string manual);
+	OperatingMode(int x, int y, u8 colorState, std::string mode);
 	void view() override;
 	const u16 getHeight(void);
 	void background();
