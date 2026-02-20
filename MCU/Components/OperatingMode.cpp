@@ -29,10 +29,10 @@ void  OperatingMode::view()
 	drawBorder();
 	//hidingBorder();
 	
-	TGrahics::outText("mode", ElementRect.Left + 4, ElementRect.Top, abs(colorState - 1), "Verdana12");
-	TGrahics::outText("U", ElementRect.Left + 3, ElementRect.Top + 15, abs(colorState - 1), "Verdana12");
-	TGrahics::outText("I", ElementRect.Left + 16, ElementRect.Top + 15, abs(colorState - 1), "Verdana12");
-	TGrahics::outText("D", ElementRect.Left + 27, ElementRect.Top + 15, abs(colorState - 1), "Verdana12");
+	//TGrahics::outText(modeValue, ElementRect.Left + 4, ElementRect.Top, abs(colorState - 1), "Verdana12");
+	TGrahics::outText("Í", ElementRect.Left + 3, ElementRect.Top + 11, abs(colorState - 1), "Verdana12");
+	TGrahics::outText("Ò", ElementRect.Left + 16, ElementRect.Top + 11, abs(colorState - 1), "Verdana12");
+	TGrahics::outText("Ï", ElementRect.Left + 27, ElementRect.Top + 11, abs(colorState - 1), "Verdana12");
 
 
 	if (inFocus) {
@@ -57,7 +57,7 @@ void OperatingMode::background() {
 }
 
 void OperatingMode::drawBorder() {
-	TFillRect drawBorder{ ElementRect.Left + 1 + (yPosition * 12), ElementRect.Top + 13, 12, 12, abs(colorState - 1)};
+	TFillRect drawBorder{ ElementRect.Left + 1 + (yPosition * 12), ElementRect.Top + 8, 12, 15, abs(colorState - 1)};
 	TGrahics::drawBorder(drawBorder);
 }
 void OperatingMode::stateValue(u8 newColor)
@@ -83,7 +83,7 @@ bool OperatingMode::ProcessMessage(TMessage* m)
 		switch (m->p1) {
 		case (u32)KeyCodes::Down:
 			if (inFocus) {
-				if (yPosition > 0 && yPosition <= 2) {
+				/*if (yPosition > 0 && yPosition <= 2) {
 					yPosition -= 1;
 				}
 				else {
@@ -94,14 +94,14 @@ bool OperatingMode::ProcessMessage(TMessage* m)
 				}
 				else {
 					component = 0;
-				}
+				}*/
 				//sendModeCmd(container[component]);
 			}
 			break;
 		case (u32)KeyCodes::Up:
 			if (inFocus) {
 				//HandlerSubscribers::remove("U1/RAM/", SubscriberID);
-				if (yPosition < 2 && yPosition >= 0) {
+				/*if (yPosition < 2 && yPosition >= 0) {
 					yPosition += 1;
 				}
 				else {
@@ -112,7 +112,7 @@ bool OperatingMode::ProcessMessage(TMessage* m)
 				}
 				else {
 					component = 2;
-				}
+				}*/
 				//sendModeCmd(container[component]);
 			}
 			break;
@@ -149,7 +149,7 @@ void OperatingMode::updateObj(std::string sector, const TSlotHandlerArsg& args, 
 
 void OperatingMode::setYPosition()  
 {
-	yPosition = 0;
+	
 	if (modeValue == "1" || modeValue == "3") {
 		yPosition = 0;
 	}
@@ -159,10 +159,11 @@ void OperatingMode::setYPosition()
 	else if (modeValue == "5" || modeValue == "6") {
 		yPosition = 2;
 	}
-	/*else {
-		TFillRect drawBorder{ ElementRect.Left + 1, ElementRect.Top + 12 + (yPosition * 13), 13, 10, abs(colorState - 0) };
+	else {
+		yPosition = 0;
+		TFillRect drawBorder{ ElementRect.Left + 1, ElementRect.Top + 8, 12, 15, abs(colorState - 0) };
 		TGrahics::drawBorder(drawBorder);
-	}*/
+	}
 	
 }
 

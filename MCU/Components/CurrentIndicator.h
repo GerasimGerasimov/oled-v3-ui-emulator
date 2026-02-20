@@ -19,6 +19,7 @@ private:
 	std::string limitValue;
 	std::string nameRef;
 	std::string refName;
+	std::string valueStep;
 
 	FillingBar fillingBar;
 
@@ -37,10 +38,12 @@ private:
 	TParameter* objRef; //I/U ref
 	TParameter* refMax; //I/U max
 	TParameter* objLimit; // I/U out Nominal
+	TParameter* objStep;
 	
 	bool cmdSendInProcess;
 	bool changeUref = false;
 
+	float stepFloat;
 	float editValue;   // временное значение для UI
 	bool editMode;
 	//u16 TryCount;

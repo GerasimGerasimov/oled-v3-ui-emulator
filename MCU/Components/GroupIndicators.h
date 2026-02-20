@@ -11,9 +11,13 @@ class GroupIndicators : public TVisualObject
 {
 private:
 	u8 colorState;
-	std::string outValue1;
 	std::string ratio;
 	std::string nameOut;
+	std::string tRunValue;
+	std::string newTime = "";
+
+	int timeV;
+	int hour;
 
 	TParameter* objOut;
 
@@ -25,17 +29,13 @@ private:
 
 public:
 
-	GroupIndicators(int x, int y, u8 colorState, std::string outValue1);
+	GroupIndicators(int x, int y, u8 colorState, std::string tRun);
 	void view() override;
 	const u16 getHeight(void);
-	void outValue();
+	void tValue();
 	void updateObj(std::string sector, const TSlotHandlerArsg& args, const char* format) override;
+	void timeValue();
 	bool ProcessMessage(TMessage* m);
-	//void decrease(float step);
-	//void increase(float step);
-	void sendCmd(std::string& refValue);
-	void SlotUpdate(Slot* slot, u8* reply);
-	void areaState();
 	void startEdit() override;
 };
 

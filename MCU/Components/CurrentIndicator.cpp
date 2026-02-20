@@ -30,6 +30,7 @@ CurrentIndicator::CurrentIndicator(int x, int y, std::string msu, std::string re
 	objRef = (TParameter*)IniResources::getSignalByTag(refValue);
 	refMax = (TParameter*)IniResources::getSignalByTag(maxValue);
 	objLimit = (TParameter*)IniResources::getSignalByTag(limitValue);
+	objStep = (TParameter*)IniResources::getSignalByTag(step);
 	nameRef = tag;
 	refName = refValue;
 }
@@ -181,12 +182,12 @@ bool CurrentIndicator::ProcessMessage(TMessage* m)
 		switch (m->p1) {
 		case (u32)KeyCodes::Up:
 			if (inFocus) {
-				increase((m->p2 == (u32)KeyPressFeature::AutoRepeat) ? 2 : 1);
+				increase((m->p2 == (u32)KeyPressFeature::AutoRepeat) ? stepFloat * 2 : stepFloat);
 			}
 			break;
 		case (u32)KeyCodes::Down:
 			if (inFocus) {
-				decrease((m->p2 == (u32)KeyPressFeature::AutoRepeat) ? 2 : 1);
+				decrease((m->p2 == (u32)KeyPressFeature::AutoRepeat) ? stepFloat * 2 : stepFloat);
 			}
 			
 			break;
@@ -297,6 +298,7 @@ void CurrentIndicator::updateObj(std::string sector, const TSlotHandlerArsg& arg
 		refValue = objRef->getValue(args, "");
 		limitValue = objLimit->getValue(args, "");
 		maxValue = refMax->getValue(args, "");
+		valueStep = objStep->getValue(args, "");
 	}
 
 	try {
@@ -310,6 +312,8 @@ void CurrentIndicator::updateObj(std::string sector, const TSlotHandlerArsg& arg
 
 		limitValueInt = std::stof(limitValue);
 		fillingBar.setLimitValue(limitValueInt);
+
+		stepFloat = std::stof(valueStep);
 	}
 	catch (...) {
 

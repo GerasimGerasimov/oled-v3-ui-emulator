@@ -10,15 +10,20 @@
 #include "IniResources.h"
 #include <AppModbusSlave.h>
 
-GroupIndicators::GroupIndicators(int x, int y, u8 colorState, std::string outValue1) {
+#include <iomanip>
+#include <sstream>
+
+#define MIN_IN_HOUR 60
+
+GroupIndicators::GroupIndicators(int x, int y, u8 colorState, std::string tRun) {
 	ElementRect.Left = x;
 	ElementRect.Top = y;
 	ElementRect.Height = 31;
 	ElementRect.Width = 46;
 	this->colorState = colorState;
-	objOut = (TParameter*)IniResources::getSignalByTag(outValue1);
-	ISignal* o = IniResources::getSignalByTag(outValue1);
-	nameOut = outValue1;
+	objOut = (TParameter*)IniResources::getSignalByTag(tRun);
+	ISignal* o = IniResources::getSignalByTag(tRun);
+	nameOut = tRun;
 }
 
 void GroupIndicators::view() 
@@ -27,8 +32,10 @@ void GroupIndicators::view()
 	TGrahics::fillRect(background);
 	//TGrahics::Line(ElementRect.Left, ElementRect.Top + 35, ElementRect.Left + ElementRect.Width, ElementRect.Top + 35, abs(colorState - 1));
 
-	TGrahics::outText("t, min", ElementRect.Left + 4, ElementRect.Top + 2, abs(colorState - 1), "Verdana12");
-	
+	TGrahics::outText("Время", ElementRect.Left + 1, ElementRect.Top + 2, abs(colorState - 1), "Verdana12");
+
+	tValue();
+
 	if (inFocus) {
 		//areaState();
 		colorState = 1;
@@ -36,39 +43,55 @@ void GroupIndicators::view()
 	else {
 		colorState = 0;
 	}
-	outValue();
+	
 }
 const u16 GroupIndicators::getHeight(void)
 {
 	return u16(ElementRect.Height);
 }
-void GroupIndicators::outValue()
+void GroupIndicators::tValue()
 {
-	float val = inFocus ? editVal : outVal;
-	char s[32];
-	if (outVal < 100) {
-		sprintf(s, "%.1f", outVal);
-	}
-	else {
-		sprintf(s, "%.0f", outVal);
-	}
-	outValue1 = s;
-	TGrahics::outText(outValue1, ElementRect.Left + 3, ElementRect.Top + 15, abs(colorState - 1), "Verdana12");
+	TGrahics::outText(tRunValue, ElementRect.Left + 1, ElementRect.Top + 15, abs(colorState - 1), "Verdana12");
 }
 
 
 void GroupIndicators::updateObj(std::string sector, const TSlotHandlerArsg& args, const char* format)
 {
 	if (sector == "RAM") {
-		outValue1 = objOut->getValue(args, "");
+		tRunValue = objOut->getValue(args, "");
 		
 	}
 	try {
-		outVal = std::stof(outValue1);
+		if (tRunValue != newTime) {
+			if (tRunValue != (static_cast<TParameter*>(objOut)->getDefaultValue())) {
+				timeValue();
+			}
+		}
 	}
 	catch (...) {
-		outValue1 = "**.*";
+		tRunValue = "**.*";
 	}
+
+}
+
+void GroupIndicators::timeValue() {
+	int time;
+	std::stringstream stream(tRunValue);
+	u16 hour, minut;
+	stream >> time;
+	hour = time / MIN_IN_HOUR;
+	minut = time % MIN_IN_HOUR;
+
+	stream.seekg(0);
+	stream.str("");
+	if (hour <= 99) {
+		stream << std::setfill('0') << std::setw(2) << hour << 'ч' << std::setfill('0') << std::setw(2) << minut << 'м';
+	}
+	else {
+		stream << std::setfill('0') << std::setw(2) << hour << 'ч';
+	}
+	stream >> tRunValue;
+	newTime = tRunValue;
 
 }
 
@@ -100,60 +123,6 @@ bool GroupIndicators::ProcessMessage(TMessage* m) {
 	}
 }
 
-
-//void GroupIndicators::decrease(float step) {
-//	/*получить текущее значение Iref, вычесть из него 1A или 5А (в зависимости
-//	 однократное это нажатие или автоматический повтор)и передать на EFi
-//	значение может быть не числовое а "**.**" когда нет связи, значит
-//	1) получить значение 2) убедится что числовое 3) произвести над ним вычисления
-//	4) превратить  в строку 5) отправить */
-//	/*if (testValue == "1") {
-//		if ((editVal - step) <= 0) {
-//			editVal = 0;
-//		}
-//		else {
-//			editVal -= step;
-//		}
-//	}*/
-//	//sendCmd(refValue);
-//}
-
-//void GroupIndicators::increase(float step) {
-//	/*получить текущее значение Iref, вычесть из него 1A или 5А (в зависимости
-//	 однократное это нажатие или автоматический повтор)и передать на EFi
-//	значение может быть не числовое а "**.**" когда нет связи, значит
-//	1) получить значение 2) убедится что числовое 3) произвести над ним вычисления
-//	4) превратить  в строку 5) отправить */
-//	/*if (testValue == "1") {
-//		editVal += step;
-//	}*/
-//	//sendCmd(refValue);
-//}
-
-void GroupIndicators::sendCmd(std::string& refValue) {
-	std::string tag;
-	tag = "U1/RAM/Out/";
-	/*TODO осталос решить куда записывать Iref
-	  Если в RAM то надо переписывать прошивку Efi так как в NormalMode сейчас задание идёт из копии Уставок в RAM
-		   и поэтому во время работы задание от кнопок меняться не будет
-	  Если Flash - тогда задание меняется во время работы (записываются в Копию Уставок а от туда попадает в Регулятор и отображается в RAM)
-		   но при остановке, то что Юзер на задавал, будет записано в реальный Flash
-	*/
-	//TryCount = 1;
-	cmdSendInProcess = true;
-	ModbusSlave::setValue(tag, refValue, [this](Slot* slot, u8* reply) { SlotUpdate(slot, reply); });
-}
-
-void GroupIndicators::SlotUpdate(Slot* slot, u8* reply) {
-	slot->Flags |= (u16)SlotStateFlags::SKIP_SLOT;
-	cmdSendInProcess = false;
-}
-
-void GroupIndicators::areaState() {
-
-	TFillRect selectionArea{ ElementRect.Left , ElementRect.Top, ElementRect.Width - 2, 9 };
-	TGrahics::InvertArea(selectionArea);
-}
 
 void GroupIndicators::startEdit() {
 	//editVal = outVal;

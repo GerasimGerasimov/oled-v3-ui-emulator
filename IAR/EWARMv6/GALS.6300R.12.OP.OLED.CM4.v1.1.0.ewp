@@ -723,7 +723,7 @@
                 </option>
                 <option>
                     <name>OOCOutputFile</name>
-                    <state>EFI.OP.OLED.CM4.v3.4.0.hex</state>
+                    <state>GALS.6300R.12.OP.OLED.CM4.v1.1.0.hex</state>
                 </option>
                 <option>
                     <name>OOCCommandLineProducer</name>
@@ -1458,13 +1458,49 @@
                 <name>$PROJ_DIR$\..\..\MCU\Pages\Calibration\PageCalibration.h</name>
             </file>
             <file>
+                <name>$PROJ_DIR$\..\..\MCU\Pages\ConnectionSetting\PageConnectionSetting.cpp</name>
+            </file>
+            <file>
+                <name>$PROJ_DIR$\..\..\MCU\Pages\ConnectionSetting\PageConnectionSetting.h</name>
+            </file>
+            <file>
+                <name>$PROJ_DIR$\..\..\MCU\Pages\PageDebugInfo\PageDebugInfo.cpp</name>
+            </file>
+            <file>
+                <name>$PROJ_DIR$\..\..\MCU\Pages\PageDebugInfo\PageDebugInfo.h</name>
+            </file>
+            <file>
+                <name>$PROJ_DIR$\..\..\MCU\Pages\Density\PageDensity.cpp</name>
+            </file>
+            <file>
+                <name>$PROJ_DIR$\..\..\MCU\Pages\Density\PageDensity.h</name>
+            </file>
+            <file>
+                <name>$PROJ_DIR$\..\..\MCU\Pages\Discretes\PageDIn.cpp</name>
+            </file>
+            <file>
+                <name>$PROJ_DIR$\..\..\MCU\Pages\Discretes\PageDIn.h</name>
+            </file>
+            <file>
                 <name>$PROJ_DIR$\..\..\MCU\Pages\EditValue\PageEditValue.cpp</name>
+            </file>
+            <file>
+                <name>$PROJ_DIR$\..\..\MCU\Pages\PageErrorFlags\PageErrorFlags.cpp</name>
+            </file>
+            <file>
+                <name>$PROJ_DIR$\..\..\MCU\Pages\PageErrorFlags\PageErrorFlags.h</name>
             </file>
             <file>
                 <name>$PROJ_DIR$\..\..\MCU\Pages\Help\PageHelp.cpp</name>
             </file>
             <file>
                 <name>$PROJ_DIR$\..\..\MCU\Pages\Home\PageHome.cpp</name>
+            </file>
+            <file>
+                <name>$PROJ_DIR$\..\..\MCU\Pages\Discretes\PageInOut.cpp</name>
+            </file>
+            <file>
+                <name>$PROJ_DIR$\..\..\MCU\Pages\Discretes\PageInOut.h</name>
             </file>
             <file>
                 <name>$PROJ_DIR$\..\..\MCU\Pages\MainMenu\PageMainMenu.cpp</name>
@@ -1474,6 +1510,12 @@
             </file>
             <file>
                 <name>$PROJ_DIR$\..\..\MCU\Pages\OperateStatus\PageOperateStatus.h</name>
+            </file>
+            <file>
+                <name>$PROJ_DIR$\..\..\MCU\Pages\PageOperationFlags\PageOperationFlags.cpp</name>
+            </file>
+            <file>
+                <name>$PROJ_DIR$\..\..\MCU\Pages\PageOperationFlags\PageOperationFlags.h</name>
             </file>
             <file>
                 <name>$PROJ_DIR$\..\..\MCU\Pages\PanelSettings\PagePanelSettings.cpp</name>
@@ -1634,6 +1676,12 @@
         </file>
         <file>
             <name>$PROJ_DIR$\..\OP.OLED.CM4\stm32f4xx_it.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\MCU\Pages\Discretes\TPageDOut.cpp</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\MCU\Pages\Discretes\TPageDOut.h</name>
         </file>
     </group>
     <group>
