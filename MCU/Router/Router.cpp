@@ -15,7 +15,15 @@
 #include "PagePanelSettings.h"
 #include "PageCalibration.h"
 #include "PanelSettingsEFI/PagePanelSettingsEFI.h"
+#include "PageDebugInfo/PageDebugInfo.h"
+#include "PageErrorFlags/PageErrorFlags.h"
+#include "PageOperationFlags/PageOperationFlags.h"
 #include <IniResources.h>
+#include <Discretes/TPageDOut.h>
+#include <Discretes/PageDIn.h>
+#include <Density/PageDensity.h>
+#include <ConnectionSetting/PageConnectionSetting.h>
+
 
 /*TODO В роутере и страницах можно реализовать переходы на закрытие/открытие окна*/
 TPage* TRouter::Page = nullptr;
@@ -40,8 +48,14 @@ void TRouter::Init(void) {
     Pages["ClearSetting"] = new TPageCleanSettings("ClearSetting"); //Очистка. Уставки
     Pages["ShakerSettings"] = new TPageShakerSettings("ShakerSettings"); //Уставки встряхивателя
     Pages["PanelSettings"] = new TPagePanelSettings("PanelSettings");
-    Pages["PanelSettingsEFI"] = new TPagePanelSettingsEFI("PanelSettingsEFI");
     Pages["Calibration"] = new TPageCalibration("Calibration");
+    Pages["OperationFlags"] = new TPageOperationFlags("OperationFlags");
+    Pages["DebugInfo"] = new TPageDebugInfo("DebugInfo");
+    Pages["ErrorFlags"] = new TPageErrorFlags("ErrorFlags");
+    Pages["DIn"] = new TPageDIn("DIn");
+    Pages["DOut"] = new TPageDOut("DOut");
+    Pages["Connection"] = new TPageConnectionSetting("Connection");
+    Pages["Density"] = new TPageDensity("Density");
     setInitPage();
 }
 

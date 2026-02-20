@@ -142,33 +142,62 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="bastypes.h" />
     <ClInclude Include="framework.h" />
+    <ClInclude Include="main.h" />
     <ClInclude Include="MainPage.h" />
+    <ClInclude Include="MCU\Components\common.h" />
     <ClInclude Include="MCU\Components\CurrentIndicator.h" />
     <ClInclude Include="MCU\Components\FillingBar.h" />
+    <ClInclude Include="MCU\Components\FixedFooter.h" />
+    <ClInclude Include="MCU\Components\FixedHeader.h" />
     <ClInclude Include="MCU\Components\GroupIndicators.h" />
+    <ClInclude Include="MCU\Components\HeaderLabel.h" />
+    <ClInclude Include="MCU\Components\Label.h" />
     <ClInclude Include="MCU\Components\LabelTime.h" />
+    <ClInclude Include="MCU\Components\LinkedTagLabel.h" />
+    <ClInclude Include="MCU\Components\LinkLabel.h" />
+    <ClInclude Include="MCU\Components\NumericEdit.h" />
     <ClInclude Include="MCU\Components\OperatingMode.h" />
+    <ClInclude Include="MCU\Components\ParamListSelector.h" />
     <ClInclude Include="MCU\Components\ScrollLabel.h" />
     <ClInclude Include="MCU\Components\SparksIndicator.h" />
+    <ClInclude Include="MCU\Components\TagLine.h" />
     <ClInclude Include="MCU\Components\TagLineScrollCaption.h" />
     <ClInclude Include="MCU\Components\TagLineScrollCaptionComment.h" />
     <ClInclude Include="MCU\Components\TagLineTime.h" />
     <ClInclude Include="MCU\Components\TagLineVarSize.h" />
+    <ClInclude Include="MCU\Components\TComponentListVertical.h" />
+    <ClInclude Include="MCU\Components\TComponentsContainer.h" />
+    <ClInclude Include="MCU\Components\TVerticalContainer.h" />
     <ClInclude Include="MCU\Components\TwoTagLine.h" />
+    <ClInclude Include="MCU\Components\WrappedText.h" />
     <ClInclude Include="MCU\Events\Events.hpp" />
     <ClInclude Include="MCU\IDrivers\icommastert.h" />
     <ClInclude Include="MCU\IDrivers\iresources.h" />
+    <ClInclude Include="MCU\ini\IniResources.h" />
+    <ClInclude Include="MCU\ini\IniSlotsProps.h" />
+    <ClInclude Include="MCU\ini\parser.h" />
     <ClInclude Include="MCU\Modbus\modbus.h" />
+    <ClInclude Include="MCU\Pages\BasicSettings\PageBasicSettings.h" />
+    <ClInclude Include="MCU\Pages\Calibration\PageCalibration.h" />
     <ClInclude Include="MCU\Pages\CleanSettings\TPageCleanSettings.h" />
+    <ClInclude Include="MCU\Pages\Home\PageHome.h" />
+    <ClInclude Include="MCU\Pages\PageDebugInfo\PageDebugInfo.h" />
+    <ClInclude Include="MCU\Pages\PageErrorFlags\PageErrorFlags.h" />
+    <ClInclude Include="MCU\Pages\PageOperationFlags\PageOperationFlags.h" />
     <ClInclude Include="MCU\Pages\Pages.h" />
     <ClInclude Include="MCU\Pages\PanelSettingsEFI\PagePanelSettingsEFI.h" />
+    <ClInclude Include="MCU\Pages\PanelSettings\PagePanelSettings.h" />
+    <ClInclude Include="MCU\Pages\Sensors\PageSensors.h" />
     <ClInclude Include="MCU\Pages\ShakerSettings\PageShakerSettings.h" />
     <ClInclude Include="MCU\Parameters\TU32BIT.h" />
     <ClInclude Include="MCU\Slots\SlotHandlerType.h" />
     <ClInclude Include="MCU\StateControllers\StateControllers.h" />
+    <ClInclude Include="MCU\StateControllers\Warnings\Warnings.h" />
     <ClInclude Include="MCU\TODO.h" />
     <ClInclude Include="Resource.h" />
+    <ClInclude Include="stm32f4xx.h" />
     <ClInclude Include="targetver.h" />
     <ClInclude Include="WindowsProject1.h" />
   </ItemGroup>
@@ -236,6 +265,9 @@
     <ClCompile Include="MCU\Pages\Home\PageHome.cpp" />
     <ClCompile Include="MCU\Pages\MainMenu\PageMainMenu.cpp" />
     <ClCompile Include="MCU\Pages\OperateStatus\PageOperateStatus.cpp" />
+    <ClCompile Include="MCU\Pages\PageDebugInfo\PageDebugInfo.cpp" />
+    <ClCompile Include="MCU\Pages\PageErrorFlags\PageErrorFlags.cpp" />
+    <ClCompile Include="MCU\Pages\PageOperationFlags\PageOperationFlags.cpp" />
     <ClCompile Include="MCU\Pages\Pages.cpp" />
     <ClCompile Include="MCU\Pages\PanelSettingsEFI\PagePanelSettingsEFI.cpp" />
     <ClCompile Include="MCU\Pages\PanelSettings\PagePanelSettings.cpp" />
@@ -282,6 +314,10 @@
   <ItemGroup>
     <Image Include="small.ico" />
     <Image Include="WindowsProject1.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include=".gitattributes" />
+    <None Include=".gitignore" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

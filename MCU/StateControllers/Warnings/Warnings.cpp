@@ -3,16 +3,9 @@
 #include <LedWarnings.h>
 
 std::map < std::string, TTrackedBit > Warnings::Tags = {
-	{"FlashErr", {"U1/RAM/FlashErr/", nullptr, false, false}},
-	{"FlashBckpErr", {"U1/RAM/FlashBckpErr/", nullptr, false, false}},
-	{"UinLostFail", {"U1/RAM/UinLostFail/", nullptr, false, false}},
-	{"UinHiFail", {"U1/RAM/UinHiFail/", nullptr, false, false}},
-	{"SyncFail", {"U1/RAM/SyncFail/", nullptr, false, false}},
-	{"OverheatFail", {"U1/RAM/OverheatFail/", nullptr, false, false}},
-	{"UinLowWrn", {"U1/RAM/UinLowWrn/", nullptr, false, false}},
-	{"FreqSparkWrn", {"U1/RAM/FreqSparkWrn/", nullptr, false, false}},
-	{"CheckDriver", {"U1/RAM/CheckDriver/", nullptr, false, false}},
-	{"CheckExtReady", {"U1/RAM/CheckExtReady/", nullptr, false, false}},
+	{"IoutOvrWrn", {"U1/RAM/IoutOvrWrn/", nullptr, false, false}},
+	{"InslWrn", {"U1/RAM/InslWrn/", nullptr, false, false}},
+	{"Complete", {"U1/RAM/Complete/", nullptr, false, false}}
 };
 
 bool Warnings::State = true;

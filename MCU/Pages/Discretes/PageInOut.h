@@ -1,11 +1,11 @@
-#ifndef T_PAGE_SENSORS_H
-#define T_PAGE_SENSORS_H
+#ifndef T_PAGE_INOUT_H
+#define T_PAGE_INOUT_H
 
 #include "Pages.h"
 #include "TVerticalContainer.h"
 #include "HandleSubscribers.h"
 
-class TPageSensors: public TPage
+class TPageInOut : public TPage
 {
 public:
     virtual void view();
@@ -13,16 +13,19 @@ public:
     void onOpen();
     void startToClose();
     bool ProcessMessage(TMessage* m);
-    TPageSensors(std::string Name);
-    ~TPageSensors();
+    TPageInOut(std::string Name);
+    ~TPageInOut();
 private:
+    
+    
+    
     void SlotUpdate(TSlotHandlerArsg args);
     TVisualObject* getSignalOfFocusedChild();
     int SubscriberID = 0;
 protected:
-    TVerticalContainer* Container;
+    virtual void fillPageContainer();
     TVerticalContainer* TagList;
-    virtual void fillPageContainer(void);
+    TVerticalContainer* Container;
 };
 
 #endif

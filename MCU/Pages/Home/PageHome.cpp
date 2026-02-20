@@ -8,17 +8,14 @@ void TPageHome::view() {
     //TagList->view();
     currentIndicator1.view();
     currentIndicator2.view();
-    operatingMode.view();
     groupIndicators.view();
-    sparksIndicator.view();
-    //currentIndicator2.scaleBar();
+    operatingMode.view();
 }
 void TPageHome::onOpen() {
-    //fillPageContainer();
-    TGrahics::Line(40, 0, 40, 63, 1);
-    TGrahics::Line(41, 0, 41, 63, 1);
-    TGrahics::Line(82, 0, 82, 63, 1);
-    TGrahics::Line(99, 0, 99, 63, 1);
+    TGrahics::Line(42, 0, 42, 63, 1);
+    TGrahics::Line(85, 0, 85, 63, 1);
+    TGrahics::Line(86, 31, 126, 31, 1);
+    //TGrahics::Line(99, 0, 99, 63, 1);
     SubscriberID = HandlerSubscribers::set("U1/RAM/", [this](TSlotHandlerArsg args) { SlotUpdateRAM(args); });
     SubIDFlash = HandlerSubscribers::set("U1/FLASH/", [this](TSlotHandlerArsg args) { SlotUpdateFLASH(args); });
 }
@@ -116,13 +113,13 @@ void TPageHome::fillPageContainer(void) {
 }
 
 TPageHome::TPageHome(std::string Name) :TPage(Name), 
-    currentIndicator1(0, 0, "I, mA", "Iref", "U1/RAM/IoutAve/", "U1/FLASH/Iref/", 0, "U1/FLASH/IoutNominal/", "U1/FLASH/IoutMax/", 1),
-    currentIndicator2(42, 0, "U, kV", "Uref", "U1/RAM/UoutAve/", "U1/FLASH/Uref/",0, "U1/FLASH/UoutNominal/", "U1/FLASH/IoutMax/", 0.25),
-    operatingMode(83, 0, 0, "U1/RAM/Normal/", "U1/RAM/Clean/", "U1/RAM/VAC/", "U1/RAM/Manual/"),
-    groupIndicators(100, 0, 0, "U1/RAM/Out/", "U1/RAM/Manual/"),
-    sparksIndicator(100, 36, 0, "U1/RAM/SparkFrq/")
+    currentIndicator1(0, 0, "I, A", "Iref", "U1/RAM/Iout/", "U1/FLASH/Iref/", 0, "U1/FLASH/Ilimit/", "U1/FLASH/Ioverload/", "U1/FLASH/IrefStep/"),
+    currentIndicator2(43, 0, "U, V", "Uref", "U1/RAM/Uout/", "U1/FLASH/Uref/",0, "U1/FLASH/Ulimit/", "U1/FLASH/Ioverload/", "U1/FLASH/UrefStep/"),
+    operatingMode(86, 0, 0, "U1/RAM/mode/"),
+    groupIndicators(86, 32, 0, "U1/RAM/RunTime/")
+
 {
-    container = { &currentIndicator1, &currentIndicator2, &operatingMode, &groupIndicators, &sparksIndicator};
+    container = { &currentIndicator1, &currentIndicator2, &operatingMode, &groupIndicators};
     TVerticalContainerProps props = { false };
     TagList = new TVerticalContainer(props, {});
     AddList({ TagList });
@@ -132,12 +129,9 @@ TPageHome::TPageHome(std::string Name) :TPage(Name),
 void TPageHome::SlotUpdate(const char* sector, TSlotHandlerArsg args) {
     for (auto& e : container) {
         e->updateObj(sector, args, "");
-        
     }
     //currentIndicator1.updateValueRef(args, "");
     groupIndicators.update(args, "");
-    sparksIndicator.update(args, "");
-    operatingMode.update(args, "");
     Msg::send_message((u32)EventSrc::REPAINT, 0, 0);
 }
 

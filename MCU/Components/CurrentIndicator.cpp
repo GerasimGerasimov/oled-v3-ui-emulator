@@ -14,17 +14,18 @@
 #include "ramdata.h"
 
 CurrentIndicator::CurrentIndicator(int x, int y, std::string msu, std::string ref,
-	std::string tag, std::string refValue, u8 colorState, std::string limitValue, std::string maxValue, float ratio)
+	std::string tag, std::string refValue, u8 colorState, std::string limitValue, std::string maxValue, std::string step)
 	: fillingBar(x, y, colorState)
 {
 	ElementRect.Left = x;
 	ElementRect.Top = y;
 	ElementRect.Height = 65;
-	ElementRect.Width = 40;
+	ElementRect.Width = 42;
 	this->msu = msu;
 	this->ref = ref;
 	this->colorState = colorState; // состояние цвета
-	this->ratio = ratio; // соотношение, при котором изменяется шкала
+
+	//this->ratio = ratio; // соотношение, при котором изменяется шкала
 	obj = (TParameter*)IniResources::getSignalByTag(tag);
 	objRef = (TParameter*)IniResources::getSignalByTag(refValue);
 	refMax = (TParameter*)IniResources::getSignalByTag(maxValue);
@@ -67,9 +68,9 @@ void CurrentIndicator::drawBorder(int drawBorderX, int drawBorderY) {
 
 	TFillRect background{ drawBorderX, drawBorderY, ElementRect.Width, ElementRect.Height, abs(colorState - 0) };
 	TGrahics::fillRect(background);
-	TFillRect outerBorder{ drawBorderX + 1, drawBorderY + 15, ElementRect.Width - 20, ElementRect.Height - 33, abs(colorState - 1)};
+	TFillRect outerBorder{ drawBorderX + 1, drawBorderY + 15, ElementRect.Width - 22, ElementRect.Height - 33, abs(colorState - 1)};
 	TGrahics::fillRect(outerBorder);
-	TFillRect intBorder{ drawBorderX + 2, drawBorderY + 16, ElementRect.Width - 22, ElementRect.Height - 35, abs(colorState - 0) };
+	TFillRect intBorder{ drawBorderX + 2, drawBorderY + 16, ElementRect.Width - 24, ElementRect.Height - 35, abs(colorState - 0) };
 	TGrahics::fillRect(intBorder);
 }
 
@@ -90,7 +91,7 @@ void CurrentIndicator::valueRef() //значение ref
 }
 void CurrentIndicator::displayValue() //I/U ref
 {
-	TGrahics::outText(msu, ElementRect.Left + 3, ElementRect.Top + 2, abs(colorState - 1), "Verdana12");
+	TGrahics::outText(msu, ElementRect.Left + 7, ElementRect.Top + 2, abs(colorState - 1), "Verdana12");
 }
 
 void CurrentIndicator::changeValue() //вывод значения индекатора
@@ -104,7 +105,6 @@ void CurrentIndicator::changeValue() //вывод значения индекатора
 	else {
 		TFillRect outerBorder{ ElementRect.Left + 9, ElementRect.Top + 50, 30, 9, 0 };
 		TGrahics::fillRect(outerBorder);
-
 		TGrahics::outText(currentValue, ElementRect.Left + 13, ElementRect.Top + 50, 1, "Verdana12");
 	}
 }

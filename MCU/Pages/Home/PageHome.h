@@ -35,7 +35,6 @@ private:
     CurrentIndicator currentIndicator2;
     OperatingMode operatingMode;
     GroupIndicators groupIndicators;
-    SparksIndicator sparksIndicator;
     std::vector <TVisualObject*> container;
     unsigned int currentComponent = 0;
 };

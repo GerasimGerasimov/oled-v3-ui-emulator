@@ -29,7 +29,7 @@ private:
 	int percent;
 	int yPosition;
 
-	float ratio;		//соотношение, при котором рисуется шкала FillingBar
+	//float ratio;		//соотношение, при котором рисуется шкала FillingBar
 	float value;        //хранятся значение из I/U outAve
 	float valuePoint;   //хранятся значения из I/U ref
 
@@ -47,7 +47,16 @@ private:
 
 public: 
 
-	CurrentIndicator(int x, int y, std::string msu, std::string ref, std::string tag, std::string refValue, u8 colorState, std::string limitValue, std::string maxValue, float ratio);
+	CurrentIndicator(int x, 
+		int y, 
+		std::string msu, 
+		std::string ref, 
+		std::string tag, 
+		std::string refValue, 
+		u8 colorState, 
+		std::string limitValue, 
+		std::string maxValue, 
+		std::string step);
 	void view() override;
 	const u16 getHeight(void);
 	void startEdit() override;

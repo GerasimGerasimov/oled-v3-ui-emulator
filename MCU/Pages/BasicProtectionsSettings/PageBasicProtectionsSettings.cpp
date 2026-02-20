@@ -70,25 +70,24 @@ void TPageBasicProtectionsSettings::fillPageContainer(void) {
     LabelInit.Rect = { 10, 10, 10, 10 };
     LabelInit.focused = false;
     TagList->AddList({
-        new TTagLine("UinLow", "U1/FLASH/UinLow/", LabelInit),
-        new TTagLine("UinHi", "U1/FLASH/UinHi/", LabelInit),
-        new TTagLine("FinMin", "U1/FLASH/FinMin/", LabelInit),
-        new TTagLine("FinMax", "U1/FLASH/FinMax/", LabelInit),
-        new TTagLine("IinMax", "U1/FLASH/IinMax/", LabelInit),
+        new TTagLine("IinMTZ", "U1/FLASH/IinMTZ/", LabelInit),
+        new TTagLine("IoutMTZ", "U1/FLASH/IoutMTZ/", LabelInit),
+        new TTagLine("Ioverload", "U1/FLASH/Ioverload/", LabelInit),
+        new TTagLine("tOverload", "U1/FLASH/tOverload/", LabelInit),
         new TTagLine("dIinAsym", "U1/FLASH/dIinAsym/", LabelInit),
         new TTagLine("tIinAsym", "U1/FLASH/tIinAsym/", LabelInit),
-        new TTagLine("IoutMax", "U1/FLASH/IoutMax/", LabelInit),
-        new TTagLine("Uopen", "U1/FLASH/Uopen/", LabelInit),
-        new TTagLine("Iopen", "U1/FLASH/Iopen/", LabelInit),
-        new TTagLine("Ushort", "U1/FLASH/Ushort/", LabelInit),
-        new TTagLine("Ishort", "U1/FLASH/Ishort/", LabelInit),
-        new TTagLine("SprkFrqMax", "U1/FLASH/SparkFrqMax/", LabelInit),
-        new TTagLine("tBrkPulse", "U1/FLASH/tBreakerPulse/", LabelInit),
-        new TTagLine("Cyclicity", "U1/FLASH/Cyclicity/", LabelInit),
-        //new TTagLine("dDecSprkFq", "U1/FLASH/dDecrSparkFreq/", LabelInit),
-        //new TTagLine("tLenDecr", "U1/FLASH/tLenghtDecr/", LabelInit),
-        //new TTagLine("TIinMax", "U1/FLASH/TIinMax/", LabelInit),
-        //new TTagLine("TIoutMax", "U1/FLASH/TIoutMax/", LabelInit),
+        new TTagLine("dUasym", "U1/FLASH/dUasym/", LabelInit),
+        new TTagLine("tUinAsym", "U1/FLASH/tUinAsym/", LabelInit),
+        new TTagLine("tOverheat", "U1/FLASH/tOverheat/", LabelInit),
+        new TTagLine("FlowNominal", "U1/FLASH/FlowNominal/", LabelInit),
+        new TTagLine("dFlowMax", "U1/FLASH/dFlowMax/", LabelInit),
+        new TTagLine("dFlowMin", "U1/FLASH/dFlowMin/", LabelInit),
+        new TTagLine("tFlowAlm", "U1/FLASH/tFlowAlm/", LabelInit),
+        new TTagLine("Uin_min", "U1/FLASH/Uin_min/", LabelInit),
+        new TTagLine("Uin_max", "U1/FLASH/Uin_max/", LabelInit),
+        new TTagLine("Fin_min", "U1/FLASH/Fin_min/", LabelInit),
+        new TTagLine("Fin_max", "U1/FLASH/Fin_max/", LabelInit),
+        new TTagLine("tInFail", "U1/FLASH/tInFail/", LabelInit)
     });
 }
 
@@ -99,7 +98,7 @@ TPageBasicProtectionsSettings::TPageBasicProtectionsSettings(std::string Name)
 
     TLabelInitStructure LabelInit;
     LabelInit.pOwner = Container;
-    LabelInit.caption = "Защиты. Основные";
+    LabelInit.caption = "Уставки защиты";
     TFixedHeader* pHeader = new TFixedHeader(LabelInit);
     Container->Add(pHeader);
 

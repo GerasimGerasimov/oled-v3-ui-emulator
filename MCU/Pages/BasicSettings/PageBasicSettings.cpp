@@ -72,22 +72,26 @@ void TPageBasicSettings::fillPageContainer(void) {
     LabelInit.focused = false;
 
     TagList->AddList({
-        new TTagLine("Iref", "U1/FLASH/Iref/", LabelInit),
-        new TTagLine("Uref", "U1/FLASH/Uref/", LabelInit),
-        new TTagLine("dOutRun", "U1/FLASH/dOutRun/", LabelInit),
-        new TTagLine("dOutStop", "U1/FLASH/dOutStop/", LabelInit),
-        new TTagLine("dOutASprk", "U1/FLASH/dOutAfterSpark/", LabelInit),
-        new TTagLine("tHldASprk", "U1/FLASH/tHoldAfterSpark/", LabelInit),
-        new TTagLine("KsprkLen", "U1/FLASH/KsparkLength/", LabelInit),
-        new TTagLine("KsprkFrq", "U1/FLASH/KsparkFrq/", LabelInit),
-        new TTagLine("Ku", "U1/FLASH/Ku/", LabelInit),
-        new TTagLine("Ki", "U1/FLASH/Ki/", LabelInit),
-        new TTagLine("AMin", "U1/FLASH/AlphaMin/", LabelInit),
-        new TTagLine("AMax", "U1/FLASH/AlphaMax/", LabelInit),
-        new TTagLine("IinNominal", "U1/FLASH/IinNominal/", LabelInit),
-        new TTagLine("UoutNominal", "U1/FLASH/UoutNominal/", LabelInit),
-        new TTagLine("IoutNominal", "U1/FLASH/IoutNominal/", LabelInit)
-        //new TTagLine("tSoftStart","U1/FLASH/tSoftStart/", LabelInit)
+        new TTagLine("UrefDefault", "U1/FLASH/UrefDefault/", LabelInit),
+        new TTagLine("UrefDefaultR", "U1/FLASH/UrefDefaultR/", LabelInit),
+        new TTagLine("IrefDefault", "U1/FLASH/IrefDefault/", LabelInit),
+        new TTagLine("IrefDefaultR", "U1/FLASH/IrefDefaultR/", LabelInit),
+        new TTagLine("DIrefDefault", "U1/FLASH/DIrefDefault/", LabelInit),
+        new TTagLine("DIrefDefaultR", "U1/FLASH/DIrefDefaultR/", LabelInit),
+        new TTagLine("Ulimit", "U1/FLASH/Ulimit/", LabelInit),
+        new TTagLine("Ilimit", "U1/FLASH/Ilimit/", LabelInit),
+        new TTagLine("UlimitR", "U1/FLASH/UlimitR/", LabelInit),
+        new TTagLine("IlimitR", "U1/FLASH/IlimitR/", LabelInit),
+        new TTagLine("tSoftStart", "U1/FLASH/tSoftStart/", LabelInit),
+        new TTagLine("TimeLimit", "U1/FLASH/TimeLimit/", LabelInit),
+        new TTagLine("ChargeLimit", "U1/FLASH/ChargeLimit/", LabelInit),
+        new TTagLine("UrefStep", "U1/FLASH/UrefStep/", LabelInit),
+        new TTagLine("IrefStep", "U1/FLASH/IrefStep/", LabelInit),
+        new TTagLine("DIrefStep","U1/FLASH/DIrefStep/", LabelInit),
+        new TTagLine("DensityMode","U1/FLASH/DensityMode/", LabelInit),
+        new TTagLine("ControlMode","U1/FLASH/ControlMode/", LabelInit),
+        new TTagLine("LowInsulateLevel","U1/FLASH/LowInsulateLevel/", LabelInit),
+        new TTagLine("AlarmInsulateLeve","U1/FLASH/AlarmInsulateLeve/", LabelInit)
         
     });
 }
@@ -99,7 +103,7 @@ TPageBasicSettings::TPageBasicSettings(std::string Name)
 
     TLabelInitStructure LabelInit;
     LabelInit.pOwner = Container;
-    LabelInit.caption = "Основные уставки";
+    LabelInit.caption = "Уставки работы";
     TFixedHeader* pHeader = new TFixedHeader(LabelInit);
     Container->Add(pHeader);
 
