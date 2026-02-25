@@ -20,6 +20,8 @@ static const std::string CMD_CHARGE = "3333";
 static const std::string CMD_CHARGE_EQUAL = "4444";
 static const std::string CMD_DISCHARGE = "5555";
 
+#define RECEIVE_COMAND_FLAG 1
+
 //static const std::string CMD_NORMAL = "5310";
 //static const std::string CMD_CLEAN = "5311";
 //static const std::string CMD_VAC = "5312";
@@ -41,14 +43,45 @@ static const u16 SELECT_DISCHARGE = 4;
 #define DION4 (1 << 4)
 #define DION5 (1 << 5)
 
+#define SLAVE_DIN15   0x0001  
+#define SLAVE_DIN14   0x0002   
+#define SLAVE_DIN13   0x0004
+#define SLAVE_DIN12   0x0008
+#define SLAVE_DIN11   0x0010
+#define SLAVE_DIN10   0x0020
+#define SLAVE_DIN9    0x0040
+#define SLAVE_DIN8    0x0080
+#define SLAVE_DIN7    0x0100
+#define SLAVE_DIN6    0x0200
+#define SLAVE_DIN5    0x0400
+#define SLAVE_DIN4    0x0800
+#define SLAVE_DIN3    0x1000
+#define SLAVE_DIN2    0x2000
+#define SLAVE_DIN1    0x4000
+#define SLAVE_DIN0    0x8000
+
+#define DI_DBLCK_BTN            SLAVE_DIN0
+#define DI_DIR_MODE             SLAVE_DIN1
+#define DI_STAB_MODE            SLAVE_DIN2
+#define DI_REF_PLUS             SLAVE_DIN3
+#define DI_REF_MINUS            SLAVE_DIN4
+#define DI_ON                   SLAVE_DIN5
+#define DI_OVERHEAT_AVERS       SLAVE_DIN6
+#define DI_OVERHEAT_REVERS      SLAVE_DIN7
+#define DI_OVERHEAT_COOLIANT    SLAVE_DIN8
+#define DI_PWR_STATE            SLAVE_DIN9
+#define DI_LOW_PRESSURE         SLAVE_DIN10
+#define DI_HI_PRESSURE          SLAVE_DIN11
+#define DI_MODBUS_CONTROL       SLAVE_DIN12
+
 void CmdSender::init() {
 
 }
 
+
+
 void CmdSender::update(const u16 din) {
-	updateKeyRun(din);
-	updateKeyStop(din);
-	updateKeyMode(din);
+    updateSlaveDIN(din);
 }
 
 void CmdSender::updateKeyMode(const u16 din) {
@@ -112,7 +145,7 @@ void CmdSender::updateKeyRun(const u16 din) {
 }
 
 void CmdSender::sendCmd(std::string& code) {
-	std::string cmd = "U1/RAM/CMD/";
+	std::string cmd = "U1/RAM/cmd_DI/";
 	TryCount = 3;
 	cmdSendInProcess = true;
 	ModbusSlave::setValue(cmd, code, &SlotUpdate);
@@ -132,4 +165,25 @@ void CmdSender::SlotUpdate(Slot* slot, u8* reply) {
 		}
 	}
 	/*TODO разделить использование слота с PageEditValue*/
+}
+
+//Массив соответствия DI дисплея и DI устройства
+//Индекс массива соответствует DI дисплея
+u16 MaskSlaveDIN[] = {DI_ON, DI_REF_PLUS, DI_REF_MINUS, DI_STAB_MODE, DI_DBLCK_BTN};
+
+void CmdSender::updateSlaveDIN(const u16 din){
+	u16 result = 0;
+	for(u16 i = 0; i < 5; ++i){
+		//Пробег по используемым DI
+		if(din & (1 << i)){
+			//Если DI включен -> добавить маску DI устройства
+			result |= MaskSlaveDIN[i];
+		}
+	}
+	//Добавляем флаг, сообщающий, что идёт новая посылка
+	result |= RECEIVE_COMAND_FLAG;
+	char s[8];
+	sprintf(s, "%d", result);
+	std::string sendRes(s);
+	sendCmd(sendRes);
 }
