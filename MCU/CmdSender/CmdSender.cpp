@@ -1,6 +1,7 @@
 #include "CmdSender.h"
 #include <AppModbusSlave.h>
 #include "Alarms.h"
+#include "msg.h"
 
 u16 CmdSender::keyStopReset = 0;
 u16 CmdSender::keyRun = 0;
@@ -80,8 +81,10 @@ void CmdSender::init() {
 
 
 
-void CmdSender::update(const u16 din) {
-    updateSlaveDIN(din);
+void CmdSender::update(const u16 din, TMessage* m){
+	if(m->Event == static_cast<u32>(EventSrc::TIMER)){
+		updateSlaveDIN(din);
+	}
 }
 
 void CmdSender::updateKeyMode(const u16 din) {

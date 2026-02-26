@@ -50,12 +50,13 @@ typedef struct {//угу, вдруг мышь подключу ;-)
   u8  Key;
 } TMouseState;
 
-typedef struct {//структура сообщения
+struct TMessage
+{//структура сообщения
   u32 Event;//тип сообщения
   //параметры сообщения
   u32 p1;//первый параметр
   u32 p2;//второй параметр
-} TMessage;
+};
 
 #define msg_buff_size 32 //размер буфера сообщений
 

@@ -5,10 +5,12 @@
 #include "stm32f4xx.h"
 #include <Slot.h>
 
+struct TMessage;
+
 class CmdSender {
 	public:
 		static void init(void);
-		static void update(const u16 din);
+		static void update(const u16 din, TMessage* m);
 	private:
 		static u16 keyStopReset;
 		static u16 keyRun;

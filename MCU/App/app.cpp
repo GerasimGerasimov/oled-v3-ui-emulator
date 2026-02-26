@@ -49,6 +49,7 @@ void App::run(void) {
                 TRouter::Page->ProcessMessage(&m);
                 TRouter::Page->view();
             }
+            CmdSender::update(RAM_DATA.DIO & 0x00FF, &m);
         }
         TDisplayDriver::out();
         DevicePollManager::execute();
@@ -56,7 +57,6 @@ void App::run(void) {
         if (Alarms::isAlarmOnce()) TRouter::setTask({false, "Alarms", nullptr});
         InternalDIN::update();
         InternalDOUT::update();
-        CmdSender::update(RAM_DATA.DIO & 0x00FF);
     }
 }
 
