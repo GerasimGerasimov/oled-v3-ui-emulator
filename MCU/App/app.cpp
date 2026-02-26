@@ -35,6 +35,7 @@ bool App::init(void) {
     TRouter::Init();
     Alarms::init();
     Warnings::init();
+    InternalDOUT::init();
     Msg::send_message((u32)EventSrc::REPAINT, 0, 0);
     return true;
 }

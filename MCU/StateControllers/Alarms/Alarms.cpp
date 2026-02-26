@@ -1,6 +1,7 @@
 #include "Alarms.h"
 #include <IniResources.h>
 #include "LedAlarms.h"
+#include "internal_dout.h"
 
 /*TODO добавлять к аварии метку последовательности срабатываения 1,2,3 и т.д.
 если аварий нет, то счётчик последовательностей сбрасывается. готовясь к новому "циклу"*/
@@ -93,6 +94,7 @@ void Alarms::SlotU1RAMUpdate(TSlotHandlerArsg args) {
 	uptate("U1/RAM/", args);
 	State = checkState();
 	LedAlarms::setState((State?1:0));
+	InternalDOUT::setState(State, DO_ALARM);
 }
 
 bool Alarms::isAlarm(void) {

@@ -43,7 +43,6 @@ int main(void) {
   LedWarnings::init();
   LedAlarms::init();
   InternalDIN::init();
-  InternalDOUT::init();
   
   OSResources::init();
   (App::init()) 
