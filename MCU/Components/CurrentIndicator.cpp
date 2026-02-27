@@ -43,7 +43,6 @@ void CurrentIndicator::view()
 	fillingBar.view();
 	changeValue();
 	fillingBar.scaleBarValue();
-	//fillingBar.setValue(value);
 	if (inFocus) {
 		colorState = 1;
 	}
@@ -69,15 +68,13 @@ void CurrentIndicator::drawBorder(int drawBorderX, int drawBorderY) {
 
 	TFillRect background{ drawBorderX, drawBorderY, ElementRect.Width, ElementRect.Height, abs(colorState - 0) };
 	TGrahics::fillRect(background);
-	TFillRect outerBorder{ drawBorderX + 1, drawBorderY + 15, ElementRect.Width - 22, ElementRect.Height - 33, abs(colorState - 1)};
-	TGrahics::fillRect(outerBorder);
-	TFillRect intBorder{ drawBorderX + 2, drawBorderY + 16, ElementRect.Width - 24, ElementRect.Height - 35, abs(colorState - 0) };
-	TGrahics::fillRect(intBorder);
+	TFillRect drawBorder{ ElementRect.Left + 1, ElementRect.Top + 11, 19, 35, abs(colorState - 1) };
+	TGrahics::drawBorder(drawBorder);
 }
 
 void CurrentIndicator::valueRef() //значение ref
 {
-	TGrahics::outTextVertical(ref, ElementRect.Top + 22, ElementRect.Left, abs(colorState - 1), "Verdana12");
+	TGrahics::outTextVertical(ref, ElementRect.Top + 20, ElementRect.Left, abs(colorState - 1), "Verdana12");
 	float val = inFocus ? editValue : valuePoint;
 	char s[32];
 	if (val < 100) {
@@ -87,26 +84,26 @@ void CurrentIndicator::valueRef() //значение ref
 		sprintf(s, "%.0f", val);
 	}
 	refValue = s;
-	TGrahics::outTextVertical(refValue, ElementRect.Top + 21, ElementRect.Left + 8, abs(colorState - 1), "Verdana12");
+	TGrahics::outTextVertical(refValue, ElementRect.Top + 19, ElementRect.Left + 8, abs(colorState - 1), "Verdana12");
 	
 }
 void CurrentIndicator::displayValue() //I/U ref
 {
-	TGrahics::outText(msu, ElementRect.Left + 7, ElementRect.Top + 2, abs(colorState - 1), "Verdana12");
+	TGrahics::outText(msu, ElementRect.Left + 7, ElementRect.Top, abs(colorState - 1), "Verdana12");
 }
 
 void CurrentIndicator::changeValue() //вывод значения индекатора
 {
 	
 	if (value > limitValueInt) {
-		TFillRect outerBorder{ ElementRect.Left + 9, ElementRect.Top + 50, 30, 9, 1 };
+		TFillRect outerBorder{ ElementRect.Left + 9, ElementRect.Top + 52, 30, 9, 1 };
 		TGrahics::fillRect(outerBorder);
-		TGrahics::outText(currentValue, ElementRect.Left + 13, ElementRect.Top + 50, 0, "Verdana12");
+		TGrahics::outText(currentValue, ElementRect.Left + 13, ElementRect.Top + 52, 0, "Verdana12");
 	}
 	else {
-		TFillRect outerBorder{ ElementRect.Left + 9, ElementRect.Top + 50, 30, 9, 0 };
+		TFillRect outerBorder{ ElementRect.Left + 9, ElementRect.Top + 52, 30, 9, 0 };
 		TGrahics::fillRect(outerBorder);
-		TGrahics::outText(currentValue, ElementRect.Left + 13, ElementRect.Top + 50, 1, "Verdana12");
+		TGrahics::outText(currentValue, ElementRect.Left + 13, ElementRect.Top + 52, 1, "Verdana12");
 	}
 }
 
