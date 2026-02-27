@@ -113,8 +113,8 @@ void TPageHome::fillPageContainer(void) {
 }
 
 TPageHome::TPageHome(std::string Name) :TPage(Name), 
-    currentIndicator1(0, 0, "I, A", "Iref", "U1/RAM/Iout/", "U1/FLASH/Iref/", 0, "U1/FLASH/Ilimit/", "U1/FLASH/Ioverload/", "U1/FLASH/IrefStep/"),
-    currentIndicator2(43, 0, "U, V", "Uref", "U1/RAM/Uout/", "U1/FLASH/Uref/",0, "U1/FLASH/Ulimit/", "U1/FLASH/Ioverload/", "U1/FLASH/UrefStep/"),
+    currentIndicator1(0, 0, "I, A", "Iref", "U1/RAM/Iout/", "U1/RAM/Iref/", 0, "U1/FLASH/Ilimit/", "U1/FLASH/Ioverload/", "U1/FLASH/IrefStep/"),
+    currentIndicator2(43, 0, "U, V", "Uref", "U1/RAM/Uout/", "U1/RAM/Uref/",0, "U1/FLASH/Ulimit/", "U1/FLASH/Ioverload/", "U1/FLASH/UrefStep/"),
     operatingMode(86, 0, 0, "U1/RAM/mode/"),
     groupIndicators(86, 32, 0, "U1/RAM/RunTime/")
 

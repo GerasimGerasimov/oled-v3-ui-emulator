@@ -143,6 +143,9 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="bastypes.h" />
+    <ClInclude Include="Drivers\com_master_driver.h" />
+    <ClInclude Include="Drivers\display_driver.h" />
+    <ClInclude Include="Drivers\Resources\os_resources.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="main.h" />
     <ClInclude Include="MainPage.h" />
@@ -332,6 +335,7 @@
   <ItemGroup>
     <None Include=".gitattributes" />
     <None Include=".gitignore" />
+    <None Include="Drivers\Resources\res.bin" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
