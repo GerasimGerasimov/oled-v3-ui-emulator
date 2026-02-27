@@ -264,11 +264,11 @@ void CurrentIndicator::increase(float step) {
 
 void CurrentIndicator::sendCmd(std::string& refValue) {
 	std::string tag;
-	if (refName == "U1/FLASH/Iref/") {
-		tag = "U1/FLASH/Iref/";
+	if (refName == "U1/RAM/Iref/") {
+		tag = "U1/RAM/Iref/";
 	}
 	else {
-		tag = "U1/FLASH/Uref/";
+		tag = "U1/RAM/Uref/";
 	}
 	/*TODO осталос решить куда записывать Iref
 	  ≈сли в RAM то надо переписывать прошивку Efi так как в NormalMode сейчас задание идЄт из копии ”ставок в RAM
@@ -291,11 +291,11 @@ void CurrentIndicator::updateObj(std::string sector, const TSlotHandlerArsg& arg
 
 	if (sector == "RAM") {
 		currentValue = obj->getValue(args, "");
+		refValue = objRef->getValue(args, "");
 		//++RAM_DATA.data[0];
 	}
 	else {
 		//++RAM_DATA.data[1];
-		refValue = objRef->getValue(args, "");
 		limitValue = objLimit->getValue(args, "");
 		maxValue = refMax->getValue(args, "");
 		valueStep = objStep->getValue(args, "");

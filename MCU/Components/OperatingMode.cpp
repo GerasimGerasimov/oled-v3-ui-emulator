@@ -17,9 +17,6 @@ OperatingMode::OperatingMode(int x, int y, u8 colorState, std::string mode) {
 	ElementRect.Width = 46;
 	this->colorState = colorState;
 	objMode = (TParameter*)IniResources::getSignalByTag(mode);
-	ISignal* m = IniResources::getSignalByTag(mode);
-	container[0] = m;
-	SubscriberID = HandlerSubscribers::set("U1/RAM/", [this](TSlotHandlerArsg args) { SlotUpdateRAM(args); });
 	infoMode = mode;
 }
 
@@ -33,7 +30,7 @@ void  OperatingMode::view()
 	TGrahics::outText("Í", ElementRect.Left + 3, ElementRect.Top + 11, abs(colorState - 1), "Verdana12");
 	TGrahics::outText("Ò", ElementRect.Left + 16, ElementRect.Top + 11, abs(colorState - 1), "Verdana12");
 	TGrahics::outText("Ï", ElementRect.Left + 27, ElementRect.Top + 11, abs(colorState - 1), "Verdana12");
-
+	
 
 	if (inFocus) {
 		colorState = 1;
@@ -149,18 +146,16 @@ void OperatingMode::updateObj(std::string sector, const TSlotHandlerArsg& args, 
 
 void OperatingMode::setYPosition()  
 {
-	
-	if (modeValue == "1" || modeValue == "3") {
+	if (modeValue[0] == '1' || modeValue[0] == '3') {
 		yPosition = 0;
 	}
-	else if (modeValue == "2" || modeValue == "4") {
+	else if (modeValue[0] == '2' || modeValue[0] == '4') {
 		yPosition = 1;
 	}
-	else if (modeValue == "5" || modeValue == "6") {
+	else if (modeValue[0] == '6' || modeValue[0] == '8') {
 		yPosition = 2;
 	}
 	else {
-		yPosition = 0;
 		TFillRect drawBorder{ ElementRect.Left + 1, ElementRect.Top + 8, 12, 15, abs(colorState - 0) };
 		TGrahics::drawBorder(drawBorder);
 	}
@@ -215,9 +210,6 @@ void OperatingMode::SlotUpdate(const char* sector, TSlotHandlerArsg args) {
 	Msg::send_message((u32)EventSrc::REPAINT, 0, 0);
 }
 
-void OperatingMode::SlotUpdateRAM(TSlotHandlerArsg args) {
-	SlotUpdate("RAM", args);
-}
 void OperatingMode::startEdit() {
 	inFocus = true;
 }

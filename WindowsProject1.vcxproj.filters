@@ -91,30 +91,6 @@
     <Filter Include="MCU\Warnings">
       <UniqueIdentifier>{3ac5d553-2fa4-400b-9e2b-55695ef6fbf7}</UniqueIdentifier>
     </Filter>
-    <Filter Include="MCU\Pages\Discretes">
-      <UniqueIdentifier>{b4191d92-74cb-4806-ba32-1647f74ff6b3}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="MCU\CmdSender">
-      <UniqueIdentifier>{9df9f397-844c-484b-8aee-68ef0c3d8ad6}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Divers\DIN">
-      <UniqueIdentifier>{df5ef7de-4222-4a0f-b812-10ccbed6dbb5}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Divers\DOUT">
-      <UniqueIdentifier>{2c548e38-5015-4086-bf56-aea7293c3dab}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Divers\Leds\Warning">
-      <UniqueIdentifier>{27c0ac00-5be3-4847-aa7f-cd1c2d620e21}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Divers\MemWrite">
-      <UniqueIdentifier>{fa05ebbd-2797-4c99-a2fc-dd5a94bb684a}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="MCU\SetValueSelector">
-      <UniqueIdentifier>{8f8aacfe-792b-4519-b2c4-05e6e0c23b61}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="MCU\StateControllers">
-      <UniqueIdentifier>{8ea026b5-44e8-42d3-83c1-709b2eeaf636}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -147,6 +123,9 @@
     <ClInclude Include="MCU\Slots\SlotHandlerType.h">
       <Filter>MCU\Slots</Filter>
     </ClInclude>
+    <ClInclude Include="MCU\StateControllers\StateControllers.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
     <ClInclude Include="MCU\TODO.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
@@ -174,8 +153,86 @@
     <ClInclude Include="MCU\Pages\Pages.h">
       <Filter>MCU\Pages</Filter>
     </ClInclude>
+    <ClInclude Include="MCU\Components\ScrollLabel.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="MCU\Components\FillingBar.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="MCU\Components\CurrentIndicator.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
     <ClInclude Include="MCU\Components\OperatingMode.h">
       <Filter>MCU\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="MCU\Components\GroupIndicators.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="MCU\Pages\CleanSettings\TPageCleanSettings.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="MCU\Pages\PanelSettingsEFI\PagePanelSettingsEFI.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="MCU\Pages\ShakerSettings\PageShakerSettings.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="MCU\Components\SparksIndicator.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="MCU\Components\ParamListSelector.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="MCU\Components\TagLine.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="MCU\Components\NumericEdit.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="MCU\Components\LinkedTagLabel.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="MCU\Components\LinkLabel.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="MCU\Components\common.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="MCU\Components\FixedFooter.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="MCU\Components\FixedHeader.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="MCU\Components\HeaderLabel.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="MCU\Components\Label.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="MCU\Components\TComponentListVertical.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="MCU\Components\TComponentsContainer.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="MCU\Components\TVerticalContainer.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="MCU\Components\WrappedText.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="MCU\Pages\BasicSettings\PageBasicSettings.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="MCU\Pages\Calibration\PageCalibration.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="MCU\Pages\Home\PageHome.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="MCU\StateControllers\Warnings\Warnings.h">
+      <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="bastypes.h">
       <Filter>Файлы заголовков</Filter>
@@ -186,137 +243,65 @@
     <ClInclude Include="stm32f4xx.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="MCU\Pages\Alarms\PageAlarms.h">
-      <Filter>MCU\Pages</Filter>
-    </ClInclude>
-    <ClInclude Include="MCU\Pages\BasicProtectionsSettings\PageBasicProtectionsSettings.h">
-      <Filter>MCU\Pages</Filter>
-    </ClInclude>
-    <ClInclude Include="MCU\Pages\Calibration\PageCalibration.h">
-      <Filter>MCU\Pages</Filter>
-    </ClInclude>
-    <ClInclude Include="MCU\Pages\Discretes\PageDIn.h">
-      <Filter>MCU\Pages\Discretes</Filter>
-    </ClInclude>
-    <ClInclude Include="MCU\Pages\BasicSettings\PageBasicSettings.h">
-      <Filter>MCU\Pages</Filter>
-    </ClInclude>
-    <ClInclude Include="MCU\Pages\ConnectionSetting\PageConnectionSetting.h">
-      <Filter>MCU\Pages</Filter>
-    </ClInclude>
-    <ClInclude Include="MCU\Pages\PageDebugInfo\PageDebugInfo.h">
-      <Filter>MCU\Pages</Filter>
+    <ClInclude Include="MCU\Pages\Sensors\PageSensors.h">
+      <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="MCU\Pages\PageErrorFlags\PageErrorFlags.h">
-      <Filter>MCU\Pages</Filter>
-    </ClInclude>
-    <ClInclude Include="MCU\Pages\Density\PageDensity.h">
-      <Filter>MCU\Pages</Filter>
-    </ClInclude>
-    <ClInclude Include="MCU\Pages\Home\PageHome.h">
-      <Filter>MCU\Pages</Filter>
-    </ClInclude>
-    <ClInclude Include="MCU\Pages\MainMenu\PageMainMenu.h">
-      <Filter>MCU\Pages</Filter>
-    </ClInclude>
-    <ClInclude Include="MCU\Pages\Discretes\PageInOut.h">
-      <Filter>MCU\Pages\Discretes</Filter>
-    </ClInclude>
-    <ClInclude Include="MCU\Pages\PageOperationFlags\PageOperationFlags.h">
-      <Filter>MCU\Pages</Filter>
+      <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="MCU\Pages\PanelSettings\PagePanelSettings.h">
-      <Filter>MCU\Pages</Filter>
+      <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="MCU\Pages\PanelSettingsEFI\PagePanelSettingsEFI.h">
-      <Filter>MCU\Pages</Filter>
+    <ClInclude Include="MCU\Pages\PageOperationFlags\PageOperationFlags.h">
+      <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="MCU\Pages\Sensors\PageSensors.h">
-      <Filter>MCU\Pages</Filter>
-    </ClInclude>
-    <ClInclude Include="MCU\Pages\ShakerSettings\PageShakerSettings.h">
-      <Filter>MCU\Pages</Filter>
-    </ClInclude>
-    <ClInclude Include="MCU\Router\Router.h">
-      <Filter>MCU\Router</Filter>
-    </ClInclude>
-    <ClInclude Include="MCU\Pages\Discretes\TPageDOut.h">
-      <Filter>MCU\Pages\Discretes</Filter>
-    </ClInclude>
-    <ClInclude Include="MCU\Pages\CleanSettings\TPageCleanSettings.h">
-      <Filter>MCU\Pages</Filter>
-    </ClInclude>
-    <ClInclude Include="MCU\Components\common.h">
-      <Filter>MCU\Components</Filter>
-    </ClInclude>
-    <ClInclude Include="MCU\Components\CurrentIndicator.h">
-      <Filter>MCU\Components</Filter>
-    </ClInclude>
-    <ClInclude Include="MCU\Components\FillingBar.h">
-      <Filter>MCU\Components</Filter>
-    </ClInclude>
-    <ClInclude Include="MCU\Components\FixedFooter.h">
-      <Filter>MCU\Components</Filter>
-    </ClInclude>
-    <ClInclude Include="MCU\Components\FixedHeader.h">
-      <Filter>MCU\Components</Filter>
-    </ClInclude>
-    <ClInclude Include="MCU\Components\GroupIndicators.h">
-      <Filter>MCU\Components</Filter>
-    </ClInclude>
-    <ClInclude Include="MCU\Components\HeaderLabel.h">
-      <Filter>MCU\Components</Filter>
+    <ClInclude Include="MCU\Pages\PageDebugInfo\PageDebugInfo.h">
+      <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="MCU\ini\IniResources.h">
-      <Filter>MCU\ini</Filter>
+      <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="MCU\ini\IniSlotsProps.h">
-      <Filter>MCU\ini</Filter>
-    </ClInclude>
-    <ClInclude Include="MCU\Components\Label.h">
-      <Filter>MCU\Components</Filter>
-    </ClInclude>
-    <ClInclude Include="MCU\Components\LinkedTagLabel.h">
-      <Filter>MCU\Components</Filter>
-    </ClInclude>
-    <ClInclude Include="MCU\Components\LinkLabel.h">
-      <Filter>MCU\Components</Filter>
-    </ClInclude>
-    <ClInclude Include="MCU\Components\NumericEdit.h">
-      <Filter>MCU\Components</Filter>
-    </ClInclude>
-    <ClInclude Include="MCU\Components\ParamListSelector.h">
-      <Filter>MCU\Components</Filter>
+      <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="MCU\ini\parser.h">
-      <Filter>MCU\ini</Filter>
+      <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="MCU\Components\ScrollLabel.h">
-      <Filter>MCU\Components</Filter>
+    <ClInclude Include="MCU\Pages\Discretes\PageDIn.h">
+      <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="MCU\Components\SparksIndicator.h">
-      <Filter>MCU\Components</Filter>
+    <ClInclude Include="MCU\Pages\Discretes\PageInOut.h">
+      <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="MCU\StateControllers\StateControllers.h">
-      <Filter>MCU\StateControllers</Filter>
+    <ClInclude Include="MCU\Pages\Discretes\TPageDOut.h">
+      <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="MCU\Components\TagLine.h">
-      <Filter>MCU\Components</Filter>
+    <ClInclude Include="MCU\Pages\MainMenu\PageMainMenu.h">
+      <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="MCU\Components\TComponentListVertical.h">
-      <Filter>MCU\Components</Filter>
+    <ClInclude Include="MCU\Pages\Alarms\PageAlarms.h">
+      <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="MCU\Components\TComponentsContainer.h">
-      <Filter>MCU\Components</Filter>
+    <ClInclude Include="MCU\Pages\ConnectionSetting\PageConnectionSetting.h">
+      <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="MCU\Components\TVerticalContainer.h">
-      <Filter>MCU\Components</Filter>
+    <ClInclude Include="MCU\Pages\BasicProtectionsSettings\PageBasicProtectionsSettings.h">
+      <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="MCU\StateControllers\Warnings\Warnings.h">
-      <Filter>MCU\Warnings</Filter>
+    <ClInclude Include="MCU\Pages\Density\PageDensity.h">
+      <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="MCU\Components\WrappedText.h">
-      <Filter>MCU\Components</Filter>
+    <ClInclude Include="MCU\Router\Router.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="Drivers\com_master_driver.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="Drivers\display_driver.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="Drivers\Resources\os_resources.h">
+      <Filter>Файлы заголовков</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -521,7 +506,28 @@
     <ClCompile Include="MCU\Pages\Alarms\PageAlarms.cpp">
       <Filter>MCU\Pages</Filter>
     </ClCompile>
+    <ClCompile Include="Drivers\Leds\Warning\LedWarnings.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="Drivers\DIN\internal_din.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
     <ClCompile Include="Source.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="MCU\CmdSender\CmdSender.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="Drivers\DOUT\internal_dout.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="MCU\Components\ParamListSelector.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="MCU\SetValueSelector\SetValueSelector.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="Drivers\MemWrite\MemWrite.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
     <ClCompile Include="MCU\Components\LabelTime.cpp">
@@ -578,6 +584,9 @@
     <ClCompile Include="MCU\Pages\Pages.cpp">
       <Filter>MCU\Pages</Filter>
     </ClCompile>
+    <ClCompile Include="MCU\Components\ScrollLabel.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
     <ClCompile Include="MCU\Components\FillingBar.cpp">
       <Filter>MCU\Components</Filter>
     </ClCompile>
@@ -587,68 +596,44 @@
     <ClCompile Include="MCU\Components\OperatingMode.cpp">
       <Filter>MCU\Components</Filter>
     </ClCompile>
-    <ClCompile Include="MCU\Pages\ConnectionSetting\PageConnectionSetting.cpp">
-      <Filter>MCU\Pages</Filter>
-    </ClCompile>
-    <ClCompile Include="MCU\Pages\PageDebugInfo\PageDebugInfo.cpp">
-      <Filter>MCU\Pages</Filter>
-    </ClCompile>
-    <ClCompile Include="MCU\Pages\Density\PageDensity.cpp">
-      <Filter>MCU\Pages</Filter>
-    </ClCompile>
-    <ClCompile Include="MCU\Pages\PageErrorFlags\PageErrorFlags.cpp">
-      <Filter>MCU\Pages</Filter>
-    </ClCompile>
-    <ClCompile Include="MCU\Pages\Discretes\PageDIn.cpp">
-      <Filter>MCU\Pages\Discretes</Filter>
-    </ClCompile>
-    <ClCompile Include="MCU\Pages\Discretes\PageInOut.cpp">
-      <Filter>MCU\Pages\Discretes</Filter>
-    </ClCompile>
-    <ClCompile Include="MCU\Pages\PageOperationFlags\PageOperationFlags.cpp">
-      <Filter>MCU\Pages</Filter>
-    </ClCompile>
-    <ClCompile Include="MCU\Pages\PanelSettingsEFI\PagePanelSettingsEFI.cpp">
-      <Filter>MCU\Pages</Filter>
+    <ClCompile Include="MCU\Components\GroupIndicators.cpp">
+      <Filter>Исходные файлы</Filter>
     </ClCompile>
     <ClCompile Include="MCU\Pages\CleanSettings\TPageCleanSettings.cpp">
-      <Filter>MCU\Pages</Filter>
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="MCU\Pages\PanelSettingsEFI\PagePanelSettingsEFI.cpp">
+      <Filter>Исходные файлы</Filter>
     </ClCompile>
     <ClCompile Include="MCU\Pages\ShakerSettings\PageShakerSettings.cpp">
-      <Filter>MCU\Pages</Filter>
-    </ClCompile>
-    <ClCompile Include="MCU\Components\ParamListSelector.cpp">
-      <Filter>MCU\Pages</Filter>
-    </ClCompile>
-    <ClCompile Include="MCU\Pages\Discretes\TPageDOut.cpp">
-      <Filter>MCU\Pages\Discretes</Filter>
-    </ClCompile>
-    <ClCompile Include="MCU\CmdSender\CmdSender.cpp">
-      <Filter>MCU\CmdSender</Filter>
-    </ClCompile>
-    <ClCompile Include="MCU\Components\GroupIndicators.cpp">
-      <Filter>MCU\Components</Filter>
-    </ClCompile>
-    <ClCompile Include="Drivers\DIN\internal_din.cpp">
-      <Filter>Divers\DIN</Filter>
-    </ClCompile>
-    <ClCompile Include="Drivers\DOUT\internal_dout.cpp">
-      <Filter>Divers\DOUT</Filter>
-    </ClCompile>
-    <ClCompile Include="Drivers\Leds\Warning\LedWarnings.cpp">
-      <Filter>Divers\Leds\Warning</Filter>
-    </ClCompile>
-    <ClCompile Include="Drivers\MemWrite\MemWrite.cpp">
-      <Filter>Divers\MemWrite</Filter>
-    </ClCompile>
-    <ClCompile Include="MCU\Components\ScrollLabel.cpp">
-      <Filter>MCU\Components</Filter>
-    </ClCompile>
-    <ClCompile Include="MCU\SetValueSelector\SetValueSelector.cpp">
-      <Filter>MCU\SetValueSelector</Filter>
+      <Filter>Исходные файлы</Filter>
     </ClCompile>
     <ClCompile Include="MCU\Components\SparksIndicator.cpp">
-      <Filter>MCU\Components</Filter>
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="MCU\Pages\PageErrorFlags\PageErrorFlags.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="MCU\Pages\PageOperationFlags\PageOperationFlags.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="MCU\Pages\PageDebugInfo\PageDebugInfo.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="MCU\Pages\Discretes\PageDIn.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="MCU\Pages\Discretes\PageInOut.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="MCU\Pages\Discretes\TPageDOut.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="MCU\Pages\ConnectionSetting\PageConnectionSetting.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="MCU\Pages\Density\PageDensity.cpp">
+      <Filter>Исходные файлы</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -667,5 +652,8 @@
   <ItemGroup>
     <None Include=".gitattributes" />
     <None Include=".gitignore" />
+    <None Include="Drivers\Resources\res.bin">
+      <Filter>Файлы ресурсов</Filter>
+    </None>
   </ItemGroup>
 </Project>
