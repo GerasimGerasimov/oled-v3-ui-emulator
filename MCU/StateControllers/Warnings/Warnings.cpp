@@ -38,11 +38,11 @@ void Warnings::uptate(const std::string PosMem, TSlotHandlerArsg& args){
 }
 
 bool Warnings::checkState(void) {
-	bool res = true;
+	bool res = false;
 	for (auto& e : Tags) {
 		bool state = e.second.isValid && e.second.State;//если все "1" то "1", если кто-то "0" то всё "0"
 		if (!state) {//цикл прекращается и возвращает "0" если хоть один из элементов "0"
-			res = false;
+			res = true;
 			break;
 		}
 	}
@@ -56,5 +56,5 @@ bool Warnings::isTagInWarning(TTrackedBit& element) {
 void Warnings::SlotU1RAMUpdate(TSlotHandlerArsg args) {
 	uptate("U1/RAM/", args);
 	State = checkState();
-	LedWarnings::setState((State?0:1));
+	LedWarnings::setState((State ? 1 : 0));
 }
