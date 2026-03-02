@@ -96,7 +96,7 @@ void CurrentIndicator::changeValue() //вывод значения индекатора
 {
 	
 	if (value > limitValueInt) {
-		TFillRect outerBorder{ msu == "I, A" ? ElementRect.Left + 1  : ElementRect.Left + 9, ElementRect.Top + 52, 30, 9, 1 };
+		TFillRect outerBorder{ msu == "I, A" ? ElementRect.Left + 1  : ElementRect.Left + 9, ElementRect.Top + 51, msu == "I, A" ? 40 : 30, 10, 1 };
 		TGrahics::fillRect(outerBorder);
 		char s[32];
 		if (currentValue != "***.**") {
@@ -111,7 +111,7 @@ void CurrentIndicator::changeValue() //вывод значения индекатора
 		TGrahics::outText(currentValue, msu == "I, A" ? ElementRect.Left + 3 : ElementRect.Left + 12, ElementRect.Top + 52, 0, "Verdana12");
 	}
 	else {
-		TFillRect outerBorder{ msu == "I, A" ? ElementRect.Left + 1 : ElementRect.Left + 9, ElementRect.Top + 52, 30, 9, 0 };
+		TFillRect outerBorder{ msu == "I, A" ? ElementRect.Left + 1 : ElementRect.Left + 9, ElementRect.Top + 51, msu == "I, A" ? 40 : 30, 10, 0 };
 		TGrahics::fillRect(outerBorder);
 		char s[32];
 		if (currentValue != "***.**") {
