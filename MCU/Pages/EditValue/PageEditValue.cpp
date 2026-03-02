@@ -56,6 +56,7 @@ bool TPageEditValue::ProcessMessage(TMessage* m) {
                     return true;
                 case (u32)KeyCodes::ENT:
                     sendValue();
+                    TRouter::setTask({false, TRouter::getBackPage(), nullptr});
                     return true;
                 }
         }
