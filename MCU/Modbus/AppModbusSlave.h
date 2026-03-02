@@ -19,6 +19,7 @@ class ModbusSlave {
 	using TSlotDataHandler = std::function<void(Slot* slot, u8* reply)>;
 public:
 	static bool setValue(std::string& tag, std::string& value, TSlotDataHandler callback);
+	static bool setValueSector(std::string& tag, std::string& value, TSlotDataHandler callback, const std::string& Section);
 private:
 	static u8 CreateWriteCmd(u8* a, TWriteCmdSrc CmdSrc);
 	static u8 get0x10WriteRegCmd(u8* a, TWriteCmdSrc& Src);

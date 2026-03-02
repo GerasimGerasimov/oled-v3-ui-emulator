@@ -151,7 +151,7 @@ void CmdSender::sendCmd(std::string& code) {
 	std::string cmd = "U1/RAM/cmd_DI/";
 	TryCount = 3;
 	cmdSendInProcess = true;
-	ModbusSlave::setValue(cmd, code, &SlotUpdate);
+	ModbusSlave::setValueSector(cmd, code, &SlotUpdate, "CmdSetDI");
 }
 
 void CmdSender::SlotUpdate(Slot* slot, u8* reply) {

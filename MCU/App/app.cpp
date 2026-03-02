@@ -31,6 +31,7 @@ bool App::init(void) {
     IniSlotsProps::init();
     std::vector <Slot> slots = CreateSlotsByStart::init(IniSlotsProps::Devices);
     slots.push_back(*CreateCustomSlot::init("U1", "CmdWrite"));
+    slots.push_back(*CreateCustomSlot::init("U1", "CmdSetDI"));//Слот для непрерывной записи состояния DI
     DevicePollManager::init(slots);
     TRouter::Init();
     Alarms::init();
