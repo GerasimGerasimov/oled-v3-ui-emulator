@@ -24,9 +24,9 @@ void TPageErrorFlags::fillPageContainer() {
         new TTagLine("PowerFail", "U1/RAM/PowerFail/", LabelInit),
         new TTagLine("PhaseOrderFail", "U1/RAM/PhaseOrderFail/", LabelInit),
         new TTagLine("LnkMngrFail", "U1/RAM/LnkMngrFail/", LabelInit),
-        new TTagLine("FlowFail", "U1/RAM/FlowFail /", LabelInit),
+        new TTagLine("FlowFail", "U1/RAM/FlowFail/", LabelInit),
         new TTagLine("OverheatFail", "U1/RAM/OverheatFail/", LabelInit),
         new TTagLine("PressureFail", "U1/RAM/PressureFail/", LabelInit),
-        new TTagLine("PwrSwitchFail", "U1/RAM/PwrSwitchFail", LabelInit)
+        new TTagLine("PwrSwitchFail", "U1/RAM/PwrSwitchFail/", LabelInit)
         });
 }
