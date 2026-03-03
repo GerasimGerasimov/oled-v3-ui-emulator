@@ -24,6 +24,7 @@
 int main(void) {  
   BootLoadCmdFillZero();  
   Init();
+  LED_RUN_ON;
 
   TDisplayDriver::CleanScreen();
   TGrahics::init();
