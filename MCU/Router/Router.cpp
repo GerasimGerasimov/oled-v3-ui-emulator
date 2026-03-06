@@ -45,10 +45,10 @@ void TRouter::Init(void) {
     Pages["BasicProtectionsSettings"] = new TPageBasicProtectionsSettings("BasicProtectionsSettings"); //Защиты. Основные уставки
     Pages["Sensors"] = new TPageSensors("Sensors"); //Датчики
     Pages["PrmListEdit"] = new TPageParameterListEdit("PrmListEdit");
-    Pages["ClearSetting"] = new TPageCleanSettings("ClearSetting"); //Очистка. Уставки
-    Pages["ShakerSettings"] = new TPageShakerSettings("ShakerSettings"); //Уставки встряхивателя
+    //Pages["ClearSetting"] = new TPageCleanSettings("ClearSetting"); //Очистка. Уставки
+    //Pages["ShakerSettings"] = new TPageShakerSettings("ShakerSettings"); //
     Pages["PanelSettings"] = new TPagePanelSettings("PanelSettings");
-    Pages["Calibration"] = new TPageCalibration("Calibration");
+    //Pages["Calibration"] = new TPageCalibration("Calibration");
     Pages["OperationFlags"] = new TPageOperationFlags("OperationFlags");
     Pages["DebugInfo"] = new TPageDebugInfo("DebugInfo");
     Pages["ErrorFlags"] = new TPageErrorFlags("ErrorFlags");
