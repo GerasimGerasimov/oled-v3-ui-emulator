@@ -19,7 +19,8 @@ std::map < std::string, TTrackedBit > Alarms::Tags = {
 	{"IoutOvrAlm", {"U1/RAM/IoutOvrAlm/", nullptr, false, false}},
 	{"OverheatAlm", {"U1/RAM/OverheatAlm/", nullptr, false, false}},
 	{"ReadyLostAlm", {"U1/RAM/ReadyLostAlm/", nullptr, false, false}},
-	{"InslAlm", {"U1/RAM/InslAlm/", nullptr, false, false}}
+	{"InslAlm", {"U1/RAM/InslAlm/", nullptr, false, false}},
+	{"EstopAlm", {"U1/RAM/EstopAlm/", nullptr, false, false}}
 };
 
 bool Alarms::State = true;

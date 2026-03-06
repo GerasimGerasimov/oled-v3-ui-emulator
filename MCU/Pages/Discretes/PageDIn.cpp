@@ -35,6 +35,7 @@ void TPageDIn::fillPageContainer()
         new TTagLine("OVERHEAT_COOLIANT", "U1/RAM/DI8_OVERHEAT_COOLIANT/", LabelInit),
         new TTagLine("PWR_STATE", "U1/RAM/DI9_PWR_STATE/", LabelInit),
         new TTagLine("LOW_PRESSURE", "U1/RAM/DI10_LOW_PRESSURE/", LabelInit),
-        new TTagLine("HI_PRESSURE", "U1/RAM/DI11_HI_PRESSURE/", LabelInit)
+        new TTagLine("HI_PRESSURE", "U1/RAM/DI11_HI_PRESSURE/", LabelInit),
+        new TTagLine("ESTOP", "U1/RAM/DI13_ESTOP/", LabelInit)
         });
 }
