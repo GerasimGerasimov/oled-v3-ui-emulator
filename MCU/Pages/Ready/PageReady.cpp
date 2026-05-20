@@ -2,7 +2,7 @@
 #include "TagLineScrollCaptionComment.h"
 #include <FixedHeader.h>
 
-TPageReady::TPageReady(std::string Name) : TPageSensors(Name) {
+TPageReady::TPageReady(std::string Name) : TPageControlSettings(Name) {
   TLabelInitStructure LabelInitH;
   LabelInitH.pOwner = Container;
   LabelInitH.caption = "Готовность";
@@ -19,16 +19,18 @@ void TPageReady::fillPageContainer(void) {
   LabelInit.focused = false;
   TagList->AddList({
       new TTagLineScrollCaptionComment("U1/RAM/iReady/", LabelInit),
+      new TTagLineScrollCaptionComment("U1/FLASH/stReadyOnInRun/", LabelInit),
       new TTagLineScrollCaptionComment("U1/RAM/iMPSState/", LabelInit),
-      new TTagLineScrollCaptionComment("U1/RAM/DExS_PWR_OK/", LabelInit),
       new TTagLineScrollCaptionComment("U1/RAM/FAULT/", LabelInit),
-      new TTagLineScrollCaptionComment("U1/RAM/SlideCirctErr/", LabelInit),
+      new TTagLineScrollCaptionComment("U1/RAM/DExS_PWR_OK/", LabelInit),
       new TTagLineScrollCaptionComment("U1/RAM/Test/", LabelInit),
       new TTagLineScrollCaptionComment("U1/RAM/NxtStrtDisable/", LabelInit),
       new TTagLineScrollCaptionComment("U1/RAM/i2tR/", LabelInit),
       new TTagLineScrollCaptionComment("U1/RAM/UstFail/", LabelInit),
+      new TTagLineScrollCaptionComment("U1/FLASH/stUstFltReadyEnable/", LabelInit),
       new TTagLineScrollCaptionComment("U1/RAM/iMMSState/", LabelInit),
       new TTagLineScrollCaptionComment("U1/RAM/IstStartTrig/", LabelInit),
       new TTagLineScrollCaptionComment("U1/RAM/PWR/", LabelInit),
+      new TTagLineScrollCaptionComment("U1/RAM/SspRefLost/", LabelInit),
     });
 }

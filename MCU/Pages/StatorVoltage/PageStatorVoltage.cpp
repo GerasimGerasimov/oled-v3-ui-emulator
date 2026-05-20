@@ -3,7 +3,7 @@
 #include "FixedHeader.h"
 
 //Напряжение статора
-TPageStatorVoltage::TPageStatorVoltage(std::string Name) : TPageBasicSettings(Name){
+TPageStatorVoltage::TPageStatorVoltage(std::string Name) : TPageControlSettings(Name){
     TLabelInitStructure LabelInitH;
     LabelInitH.pOwner = Container;
     LabelInitH.caption = "Напряжение статора";
@@ -20,11 +20,16 @@ void TPageStatorVoltage::fillPageContainer(void){
     LabelInit.focused = false;
 
     TagList->AddList({
+        new TTagLineScrollCaptionComment("U1/RAM/Ustat/", LabelInit),
+        new TTagLineScrollCaptionComment("U1/RAM/UstLow/", LabelInit),
+        new TTagLineScrollCaptionComment("U1/RAM/UstFail/", LabelInit),
         new TTagLineScrollCaptionComment("U1/FLASH/stUstFltReadyEnable/", LabelInit),
         new TTagLineScrollCaptionComment("U1/FLASH/UstNom/", LabelInit),
         new TTagLineScrollCaptionComment("U1/FLASH/UstLowReset/", LabelInit),
         new TTagLineScrollCaptionComment("U1/FLASH/UstLowSet/", LabelInit),
         new TTagLineScrollCaptionComment("U1/FLASH/UstFailReset/", LabelInit),
-        new TTagLineScrollCaptionComment("U1/FLASH/UstFailSet/", LabelInit)
+        new TTagLineScrollCaptionComment("U1/FLASH/UstFailSet/", LabelInit),
+        new TTagLineScrollCaptionComment("U1/FLASH/UstMax/", LabelInit),
+        new TTagLineScrollCaptionComment("U1/FLASH/UstMaxTime/", LabelInit)
         });
 }

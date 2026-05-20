@@ -1,8 +1,8 @@
 #pragma once
 
-#include <PageSensors.h>
+#include "ControlSettings/PageControlSettings.h"
 
-class TPageReady : public TPageSensors
+class TPageReady : public TPageControlSettings
 {
 public:
 	TPageReady(std::string Name);

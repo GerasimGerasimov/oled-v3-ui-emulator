@@ -1,8 +1,8 @@
 #pragma once
 
-#include <PageBasicSettings.h>
+#include <ControlSettings/PageControlSettings.h>
 
-class TPageStatorVoltage : public TPageBasicSettings
+class TPageStatorVoltage : public TPageControlSettings
 {
 public:
     TPageStatorVoltage(std::string Name);

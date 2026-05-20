@@ -11,22 +11,22 @@
 
 /*TODO когда "раскачаю RTC (по полной, с окном установки времени) то к аварии добавить метку времени"*/
 std::map < std::string, TTrackedBit > Alarms::Tags = {
+	{"FAULT", {"U1/RAM/FAULT/", nullptr, false, false}},
 	{"GlobalError", {"U1/RAM/GlobalError/", nullptr, false, false}},
 	{"FSAsyncRun", {"U1/RAM/FSAsyncRun/", nullptr, false, false}},
-	{"QminAsyncRun", {"U1/RAM/QminAsyncRun/", nullptr, false, false}},
-	{"LongStart", {"U1/RAM/LongStart/", nullptr, false, false}},
+	{"AsyncRun", {"U1/RAM/AsyncRun/", nullptr, false, false}},
 	{"FieldFail", {"U1/RAM/FieldFail/", nullptr, false, false}},
 	{"IExcMaxFlt", {"U1/RAM/IExcMaxFlt/", nullptr, false, false}},
 	{"IttMaxFlt", {"U1/RAM/IttMaxFlt/", nullptr, false, false}},
-	{"IstOV", {"U1/RAM/IstOV/", nullptr, false, false}},
 	{"MPSFlt", {"U1/RAM/MPSFlt/", nullptr, false, false}},
 	{"MSSFlt", {"U1/RAM/MSSFlt/", nullptr, false, false}},
 	{"FreqMinFlt", {"U1/RAM/FreqMinFlt/", nullptr, false, false}},
-	{"ThyCtrlFault", {"U1/RAM/ThyCtrlFault/", nullptr, false, false}},
 	{"R_INSL_FLT", {"U1/RAM/R_INSL_FLT/", nullptr, false, false}},
-	{"GMP", {"U1/RAM/GMP/", nullptr, false, false}},
 	{"IttAsymFlt", {"U1/RAM/IttAsymFlt/", nullptr, false, false}},
-	{"FAULT", {"U1/RAM/FAULT/", nullptr, false, false}},
+	{"stFreqDwnFltEnable", {"U1/RAM/stFreqDwnFltEnable/", nullptr, false, false}},
+	{"FreqMinFlt", {"U1/RAM/FreqMinFlt/", nullptr, false, false}},
+	{"IttAsymFlt", {"U1/RAM/IttAsymFlt/", nullptr, false, false}},
+	{"FreqMinFltTime", {"U1/RAM/FreqMinFltTime/", nullptr, false, false}},
 };
 
 bool Alarms::State = true;

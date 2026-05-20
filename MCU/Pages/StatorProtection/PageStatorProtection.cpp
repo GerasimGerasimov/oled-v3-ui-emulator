@@ -24,7 +24,7 @@ void TPageStatorProtection::fillPageContainer(void){
         new TTagLineScrollCaptionComment("U1/FLASH/stFreqDwnFltEnable/", LabelInit),
         new TTagLineScrollCaptionComment("U1/FLASH/FreqMinFlt/", LabelInit),
         new TTagLineScrollCaptionComment("U1/FLASH/FreqMinFltTime/", LabelInit),
-        new TTagLineScrollCaptionComment("U1/FLASH/Ti2tS/", LabelInit),
-        new TTagLineScrollCaptionComment("U1/FLASH/IstOVLFlt/", LabelInit),
+        //new TTagLineScrollCaptionComment("U1/FLASH/Ti2tS/", LabelInit),
+        //new TTagLineScrollCaptionComment("U1/FLASH/IstOVLFlt/", LabelInit),
         });
 }

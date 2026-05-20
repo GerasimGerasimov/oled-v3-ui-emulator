@@ -18,7 +18,6 @@ void TPageRectifier::fillPageContainer(void) {
   LabelInit.Rect = { 10, 10, 10, 70 };
   LabelInit.focused = false;
   TagList->AddList({
-      new TTagLineScrollCaptionComment("U1/RAM/DExS_PWR_OK/", LabelInit),
       new TTagLineScrollCaptionComment("U1/RAM/DExS_PWR_LNK/", LabelInit),
       new TTagLineScrollCaptionComment("U1/RAM/SyncRect/", LabelInit),
       new TTagLineScrollCaptionComment("U1/FLASH/stPWRFltEnable/", LabelInit),

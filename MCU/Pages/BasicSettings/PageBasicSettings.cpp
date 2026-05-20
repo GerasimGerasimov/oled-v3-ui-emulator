@@ -70,16 +70,24 @@ void TPageBasicSettings::fillPageContainer(void) {
     LabelInit.Rect = { 10, 10, 10, 70 };
     LabelInit.focused = false;
     TagList->AddList({
-        new TTagLineScrollCaption("Пуск принудительный", "U1/FLASH/EnforcedStart/", LabelInit),
-        new TTagLineScrollCaption("T тяжелого пуска", "U1/FLASH/HsTime/", LabelInit),
-        new TTagLineScrollCaption("T пуска форсировки", "U1/FLASH/StartForceTime/", LabelInit),
-        new TTagLineScrollCaption("Ток форсировки", "U1/FLASH/IExcForce/", LabelInit),
-        new TTagLine("Ток возб.", "U1/FLASH/IExcRef/", LabelInit),
         new TTagLineScrollCaption("Пуск по току", "U1/FLASH/IstStart/", LabelInit),
         new TTagLineScrollCaption("Стоп по току", "U1/FLASH/IstStop/", LabelInit),
         new TTagLine("Ток статора", "U1/FLASH/IstExcEnable/", LabelInit),
         new TTagLineScrollCaption("Min частота скольжения", "U1/FLASH/ExcEnableFreq/", LabelInit),
+        new TTagLineScrollCaption("T тяжелого пуска", "U1/FLASH/HsTime/", LabelInit),
         new TTagLineScrollCaption("Частота тяжелого пуска", "U1/FLASH/HsFreq/", LabelInit),
+        new TTagLine("Ток возб.", "U1/FLASH/IExcRef/", LabelInit),
+        new TTagLineScrollCaption("T пуска форсировки", "U1/FLASH/StartForceTime/", LabelInit),
+        new TTagLineScrollCaption("Ток форсировки", "U1/FLASH/IExcForce/", LabelInit),
+        new TTagLineScrollCaption("Задержка перед отключением при просадке тока статора", "U1/FLASH/IstOffTime/", LabelInit),
+        new TTagLineScrollCaption("T блокировки повторного пуска", "U1/FLASH/NextStartTime/", LabelInit),
+        new TTagLineScrollCaption("T перехода на авторегулятор при изменениях в работе регулятора", "U1/FLASH/WaitStable/", LabelInit),
+        new TTagLineScrollCaption("Темп изменения тока при смене режимов работы", "U1/FLASH/TIexcRefChangeTime/", LabelInit),
+        new TTagLineScrollCaption("Темп изменения тока при сбросе форсировки", "U1/FLASH/TIexcForceDwnTime/", LabelInit),
+        new TTagLineScrollCaption("Темп изменения тока при сбросе форсировки", "U1/FLASH/TIexcForceUpTime/", LabelInit),
+        new TTagLineScrollCaption("Min ток возб. при работе регулятора", "U1/FLASH/IExcMin/", LabelInit),
+        new TTagLineScrollCaption("Max ток возб. при работе регулятора", "U1/FLASH/IExcMax/", LabelInit),
+        new TTagLineScrollCaption("Max ток возб. при изменении оператором", "U1/FLASH/IExcManuMax/", LabelInit),
     });
 }
 

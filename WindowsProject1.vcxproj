@@ -155,6 +155,7 @@
     <ClInclude Include="MCU\IDrivers\icommastert.h" />
     <ClInclude Include="MCU\IDrivers\iresources.h" />
     <ClInclude Include="MCU\Modbus\modbus.h" />
+    <ClInclude Include="MCU\Pages\Calibration\PageCalibration.h" />
     <ClInclude Include="MCU\Pages\ControlSettings\PageControlSettings.h" />
     <ClInclude Include="MCU\Pages\Discretes\PageDIn.h" />
     <ClInclude Include="MCU\Pages\Discretes\PageInOut.h" />
@@ -229,6 +230,7 @@
     <ClCompile Include="MCU\Msg\msg.cpp" />
     <ClCompile Include="MCU\Pages\Alarms\PageAlarms.cpp" />
     <ClCompile Include="MCU\Pages\BasicSettings\PageBasicSettings.cpp" />
+    <ClCompile Include="MCU\Pages\Calibration\PageCalibration.cpp" />
     <ClCompile Include="MCU\Pages\ControlSettings\PageControlSettings.cpp" />
     <ClCompile Include="MCU\Pages\Discretes\PageDIn.cpp" />
     <ClCompile Include="MCU\Pages\Discretes\PageInOut.cpp" />
@@ -237,6 +239,7 @@
     <ClCompile Include="MCU\Pages\Help\PageHelp.cpp" />
     <ClCompile Include="MCU\Pages\Home\PageHome.cpp" />
     <ClCompile Include="MCU\Pages\MainMenu\PageMainMenu.cpp" />
+    <ClCompile Include="MCU\Pages\PanelSettings\PagePanelSettings.cpp" />
     <ClCompile Include="MCU\Pages\ParameterListEdit\PageParameterListEdit.cpp" />
     <ClCompile Include="MCU\Pages\Power\PagePower.cpp" />
     <ClCompile Include="MCU\Pages\ReactPowerLimit\PageReactPowerLimit.cpp" />
