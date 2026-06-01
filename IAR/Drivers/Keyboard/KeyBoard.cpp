@@ -2,7 +2,7 @@
 #include "msg.h"
 #include "RAMdata.h"
 
-static const u8 BTN_CNT_MAX = 10; //1 = мс сколько раз нужно проверить нажатие кнопки для подавления дребезга контактов
+static const u8 BTN_CNT_MAX = 100; //1 = мс сколько раз нужно проверить нажатие кнопки для подавления дребезга контактов
 
 enum class KeyCtrl : u32 {
         ROW1 = GPIO_Pin_0,
