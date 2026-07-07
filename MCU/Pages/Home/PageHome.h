@@ -33,7 +33,7 @@ private:
     int SubIDFlash = 0;
     CurrentIndicator currentIndicator1;
     CurrentIndicator currentIndicator2;
-    OperatingMode operatingMode;
+    //OperatingMode operatingMode;
     GroupIndicators groupIndicators;
     std::vector <TVisualObject*> container;
     unsigned int currentComponent = 0;

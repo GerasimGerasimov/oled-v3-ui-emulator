@@ -9,7 +9,7 @@ void TPageHome::view() {
     currentIndicator1.view();
     currentIndicator2.view();
     groupIndicators.view();
-    operatingMode.view();
+    //operatingMode.view();
 }
 void TPageHome::onOpen() {
     TGrahics::Line(42, 0, 42, 63, 1);
@@ -45,7 +45,7 @@ bool TPageHome::ProcessMessage(TMessage* m) {
                         TRouter::setTask({ false, "Help", p });
                     }
                     break;
-                /*case (u32)KeyCodes::ENT:
+                case (u32)KeyCodes::ENT:
                     e = getSignalOfFocusedChild();
                     if (e) {
                         TRouter::PageValueEditEntryData.tag = ((TTagLine*)(e))->Tag;
@@ -54,7 +54,7 @@ bool TPageHome::ProcessMessage(TMessage* m) {
                         TRouter::setTask({ false, "EditValue", nullptr });
                     }
                     container[currentComponent]->inFocus = false;
-                    break;*/
+                    break;
                 case (u32)KeyCodes::Right: 
                     container[currentComponent]->inFocus = false;
                     if (currentComponent < container.size() - 1) {
@@ -113,13 +113,13 @@ void TPageHome::fillPageContainer(void) {
 }
 
 TPageHome::TPageHome(std::string Name) :TPage(Name), 
-    currentIndicator1(0, 0, "I, A", "Iref", "U1/RAM/Iout/", "U1/RAM/Iref/", 0, "U1/FLASH/Ilimit/", "U1/FLASH/Ioverload/", "U1/FLASH/IrefStep/"),
-    currentIndicator2(43, 0, "U, V", "Uref", "U1/RAM/Uout/", "U1/RAM/Uref/",0, "U1/FLASH/Ulimit/", "U1/FLASH/Ioverload/", "U1/FLASH/UrefStep/"),
-    operatingMode(86, 0, 0, "U1/RAM/mode/"),
-    groupIndicators(86, 32, 0, "U1/RAM/RunTime/")
+    currentIndicator1(0,  0, "I, A", "Iref", "U1/RAM/Iout/", "U1/RAM/Ilim/", 0, "U1/FLASH/IlimDefault/", "U1/FLASH/Inom/", "U1/FLASH/Ustep/"),
+    currentIndicator2(43, 0, "U, V", "Uref", "U1/RAM/Uout/", "U1/RAM/Uref/", 0, "U1/FLASH/UrefDefault/", "U1/FLASH/Unom/", "U1/FLASH/Ustep/"),
+    //operatingMode(86, 0, 0, "U1/RAM/mode/"),
+    groupIndicators(86, 32, 0, "U1/RAM/tRun/")
 
 {
-    container = { &currentIndicator1, &currentIndicator2, &operatingMode, &groupIndicators};
+    container = { &currentIndicator1, &currentIndicator2, /*&operatingMode,*/ &groupIndicators};
     TVerticalContainerProps props = { false };
     TagList = new TVerticalContainer(props, {});
     AddList({ TagList });
@@ -131,7 +131,7 @@ void TPageHome::SlotUpdate(const char* sector, TSlotHandlerArsg args) {
         e->updateObj(sector, args, "");
     }
     //currentIndicator1.updateValueRef(args, "");
-    groupIndicators.update(args, "");
+    //groupIndicators.update(args, "");
     Msg::send_message((u32)EventSrc::REPAINT, 0, 0);
 }
 

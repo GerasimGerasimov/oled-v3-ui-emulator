@@ -79,6 +79,7 @@ u16 crc16(u8 *puchMsg, u16 DataLen)
 
   CRCHi = 0xFF ; /* high byte of CRC16 initialized */
   CRCLo = 0xFF ; /* low byte of CRC16 initialized */
+  if (puchMsg == 0) return ((u16)CRCHi << 8 | CRCLo);
   while (DataLen--){
     Index = CRCHi ^ *puchMsg++ ; /* calculate the CRC16 */
     CRCHi = CRCLo ^ CRC16Hi[Index] ;
