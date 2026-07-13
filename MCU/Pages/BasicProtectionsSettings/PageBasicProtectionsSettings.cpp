@@ -71,24 +71,24 @@ void TPageBasicProtectionsSettings::fillPageContainer(void) {
     LabelInit.focused = false;
     TagList->AddList({
         new TTagLine("IinMTZ", "U1/FLASH/IinMTZ/", LabelInit),
+        new TTagLine("tIinMTZ", "U1/FLASH/tIinMTZ/", LabelInit),
         new TTagLine("IoutMTZ", "U1/FLASH/IoutMTZ/", LabelInit),
-        new TTagLine("Ioverload", "U1/FLASH/Ioverload/", LabelInit),
-        new TTagLine("tOverload", "U1/FLASH/tOverload/", LabelInit),
-        new TTagLine("dIinAsym", "U1/FLASH/dIinAsym/", LabelInit),
-        new TTagLine("tIinAsym", "U1/FLASH/tIinAsym/", LabelInit),
+        new TTagLine("tIoutMTZ", "U1/FLASH/tIoutMTZ/", LabelInit),
+        new TTagLine("Inom", "U1/FLASH/Inom/", LabelInit),
+        new TTagLine("dIasym", "U1/FLASH/dIasym/", LabelInit),
         new TTagLine("dUasym", "U1/FLASH/dUasym/", LabelInit),
-        new TTagLine("tUinAsym", "U1/FLASH/tUinAsym/", LabelInit),
-        new TTagLine("tOverheat", "U1/FLASH/tOverheat/", LabelInit),
-        new TTagLine("FlowNominal", "U1/FLASH/FlowNominal/", LabelInit),
-        new TTagLine("dFlowMax", "U1/FLASH/dFlowMax/", LabelInit),
-        new TTagLine("dFlowMin", "U1/FLASH/dFlowMin/", LabelInit),
-        new TTagLine("tFlowAlm", "U1/FLASH/tFlowAlm/", LabelInit),
-        new TTagLine("Uin_min", "U1/FLASH/Uin_min/", LabelInit),
-        new TTagLine("Uin_max", "U1/FLASH/Uin_max/", LabelInit),
-        new TTagLine("Fin_min", "U1/FLASH/Fin_min/", LabelInit),
-        new TTagLine("Fin_max", "U1/FLASH/Fin_max/", LabelInit),
-        new TTagLine("tInFail", "U1/FLASH/tInFail/", LabelInit),
-        new TTagLine("TEstop", "U1/FLASH/TEstop/", LabelInit)
+        new TTagLine("tAsym", "U1/FLASH/tAsym/", LabelInit),
+        new TTagLine("UinMin", "U1/FLASH/UinMin/", LabelInit),
+        new TTagLine("UinMax", "U1/FLASH/UinMax/", LabelInit),
+        new TTagLine("FinMin", "U1/FLASH/FinMin/", LabelInit),
+        new TTagLine("FinMax", "U1/FLASH/FinMax/", LabelInit),
+        new TTagLine("UoutMin", "U1/FLASH/UoutMin/", LabelInit),
+        new TTagLine("tOutMin", "U1/FLASH/tOutMin/", LabelInit),
+        new TTagLine("UoutMax", "U1/FLASH/UoutMax/", LabelInit),
+        new TTagLine("tOutMax", "U1/FLASH/tOutMax/", LabelInit),
+        new TTagLine("tStartMax", "U1/FLASH/tStartMax/", LabelInit),
+        new TTagLine("IinMin", "U1/FLASH/IinMin/", LabelInit),
+        new TTagLine("tUinFail", "U1/FLASH/tUinFail/", LabelInit)
     });
 }
 

@@ -70,17 +70,21 @@ void TPageSensors::fillPageContainer(void) {
     LabelInit.Rect = { 10, 10, 10, 10 };
     LabelInit.focused = false;
     TagList->AddList({
-        new TTagLine("Rinsulate", "U1/RAM/Rinsulate/", LabelInit),
+        new TTagLine("TimeSec", "U1/RAM/TimeSec/", LabelInit),
+        new TTagLine("Alpha", "U1/RAM/Alpha/", LabelInit),
+        new TTagLine("WRun", "U1/RAM/WRun/", LabelInit),
+        new TTagLine("i2tSum", "U1/RAM/i2tSum/", LabelInit),
         new TTagLine("Uout", "U1/RAM/Uout/", LabelInit),
         new TTagLine("Iout", "U1/RAM/Iout/", LabelInit),
         new TTagLine("Iin", "U1/RAM/Iin/", LabelInit),
+        new TTagLine("Uin", "U1/RAM/Uin/", LabelInit),
+        new TTagLine("Fin", "U1/RAM/Fin/", LabelInit),
         new TTagLine("Ia", "U1/RAM/Ia/", LabelInit),
         new TTagLine("Ib", "U1/RAM/Ib/", LabelInit),
         new TTagLine("Ic", "U1/RAM/Ic/", LabelInit),
-        new TTagLine("Uin", "U1/RAM/Uin/", LabelInit),
-        new TTagLine("Ua", "U1/RAM/Ua/", LabelInit),
-        new TTagLine("Ub", "U1/RAM/Ub/", LabelInit),
-        new TTagLine("Uc", "U1/RAM/Uc/", LabelInit)
+        new TTagLine("Uab", "U1/RAM/Uab/", LabelInit),
+        new TTagLine("Ubc", "U1/RAM/Ubc/", LabelInit),
+        new TTagLine("Uca", "U1/RAM/Uca/", LabelInit)
     });
 }
 

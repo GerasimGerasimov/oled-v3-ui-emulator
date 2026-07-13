@@ -13,13 +13,14 @@
 std::map < std::string, TTrackedBit > Alarms::Tags = {
 	{"InMtzAlm", {"U1/RAM/InMtzAlm/", nullptr, false, false}},
 	{"OutMtzAlm", {"U1/RAM/OutMtzAlm/", nullptr, false, false}},
-	{"UinAsymAlm", {"U1/RAM/UinAsymAlm/", nullptr, false, false}},
+	{"OverloadAlm", {"U1/RAM/OverloadAlm/", nullptr, false, false}},
 	{"IinAsymAlm", {"U1/RAM/IinAsymAlm/", nullptr, false, false}},
-	{"IoutOvrAlm", {"U1/RAM/IoutOvrAlm/", nullptr, false, false}},
-	{"OverheatAlm", {"U1/RAM/OverheatAlm/", nullptr, false, false}},
-	{"ReadyLostAlm", {"U1/RAM/ReadyLostAlm/", nullptr, false, false}},
-	{"InslAlm", {"U1/RAM/InslAlm/", nullptr, false, false}},
-	{"EstopAlm", {"U1/RAM/EstopAlm/", nullptr, false, false}}
+	{"UinAsymAlm", {"U1/RAM/UinAsymAlm/", nullptr, false, false}},
+	{"UinFailAlm", {"U1/RAM/UinFailAlm/", nullptr, false, false}},
+	{"UoutMinAlm", {"U1/RAM/UoutMinAlm/", nullptr, false, false}},
+	{"UoutMaxAlm", {"U1/RAM/UoutMaxAlm/", nullptr, false, false}},
+	{"StartFailAlm", {"U1/RAM/StartFailAlm/", nullptr, false, false}},
+	{"FAULT", {"U1/RAM/FAULT/", nullptr, false, false}}
 };
 
 bool Alarms::State = true;

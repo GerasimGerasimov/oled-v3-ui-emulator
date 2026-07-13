@@ -20,13 +20,9 @@ void TPageErrorFlags::fillPageContainer() {
     LabelInit.focused = false;
     TagList->AddList({
         new TTagLine("flash_error", "U1/RAM/flash_error/", LabelInit),
-        new TTagLine("SyncFail", "U1/RAM/SyncFail/", LabelInit),
-        new TTagLine("PowerFail", "U1/RAM/PowerFail/", LabelInit),
-        new TTagLine("PhaseOrderFail", "U1/RAM/PhaseOrderFail/", LabelInit),
-        new TTagLine("LnkMngrFail", "U1/RAM/LnkMngrFail/", LabelInit),
-        new TTagLine("FlowFail", "U1/RAM/FlowFail/", LabelInit),
-        new TTagLine("OverheatFail", "U1/RAM/OverheatFail/", LabelInit),
-        new TTagLine("PressureFail", "U1/RAM/PressureFail/", LabelInit),
-        new TTagLine("PwrSwitchFail", "U1/RAM/PwrSwitchFail/", LabelInit)
+        new TTagLine("PWR1", "U1/RAM/PWR1/", LabelInit),
+        new TTagLine("backup_error", "U1/RAM/backup_error/", LabelInit),
+        new TTagLine("fram_error", "U1/RAM/fram_error/", LabelInit),
+        new TTagLine("fram_bkp_error", "U1/RAM/fram_bkp_error/", LabelInit)
         });
 }

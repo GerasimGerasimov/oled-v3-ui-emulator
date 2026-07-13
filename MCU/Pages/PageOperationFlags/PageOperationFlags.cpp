@@ -19,9 +19,11 @@ void TPageOperationFlags::fillPageContainer() {
     LabelInit.Rect = { 10, 10, 10, 80 };
     LabelInit.focused = false;
     TagList->AddList({
-        new TTagLine("OutPolarity", "U1/RAM/OutPolarity/", LabelInit),
+        new TTagLine("limit", "U1/RAM/limit/", LabelInit),
         new TTagLine("Ready", "U1/RAM/Ready/", LabelInit),
         new TTagLine("Run", "U1/RAM/Run/", LabelInit),
-        new TTagLine("Limit", "U1/RAM/Limit/", LabelInit)
+        new TTagLine("OutOk", "U1/RAM/OutOk/", LabelInit),
+        new TTagLine("SoftStart", "U1/RAM/SoftStart/", LabelInit),
+        new TTagLine("CanI2tReset", "U1/RAM/CanI2tReset/", LabelInit)
         });
 }

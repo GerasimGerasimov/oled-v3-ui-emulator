@@ -73,26 +73,14 @@ void TPageBasicSettings::fillPageContainer(void) {
 
     TagList->AddList({
         new TTagLine("UrefDefault", "U1/FLASH/UrefDefault/", LabelInit),
-        new TTagLine("UrefDefaultR", "U1/FLASH/UrefDefaultR/", LabelInit),
-        new TTagLine("IrefDefault", "U1/FLASH/IrefDefault/", LabelInit),
-        new TTagLine("IrefDefaultR", "U1/FLASH/IrefDefaultR/", LabelInit),
-        new TTagLine("DIrefDefault", "U1/FLASH/DIrefDefault/", LabelInit),
-        new TTagLine("DIrefDefaultR", "U1/FLASH/DIrefDefaultR/", LabelInit),
-        new TTagLine("Ulimit", "U1/FLASH/Ulimit/", LabelInit),
-        new TTagLine("Ilimit", "U1/FLASH/Ilimit/", LabelInit),
-        new TTagLine("UlimitR", "U1/FLASH/UlimitR/", LabelInit),
-        new TTagLine("IlimitR", "U1/FLASH/IlimitR/", LabelInit),
-        new TTagLine("tSoftStart", "U1/FLASH/tSoftStart/", LabelInit),
-        new TTagLine("TimeLimit", "U1/FLASH/TimeLimit/", LabelInit),
-        new TTagLine("ChargeLimit", "U1/FLASH/ChargeLimit/", LabelInit),
-        new TTagLine("UrefStep", "U1/FLASH/UrefStep/", LabelInit),
-        new TTagLine("IrefStep", "U1/FLASH/IrefStep/", LabelInit),
-        new TTagLine("DIrefStep","U1/FLASH/DIrefStep/", LabelInit),
-        new TTagLine("DensityMode","U1/FLASH/DensityMode/", LabelInit),
-        new TTagLine("ControlMode","U1/FLASH/ControlMode/", LabelInit),
-        new TTagLine("LowInsulateLevel","U1/FLASH/LowInsulateLevel/", LabelInit),
-        new TTagLine("AlarmInsulateLeve","U1/FLASH/AlarmInsulateLeve/", LabelInit)
-        
+        new TTagLine("IlimDefault", "U1/FLASH/IlimDefault/", LabelInit),
+        new TTagLine("AlphaMin", "U1/FLASH/AlphaMin/", LabelInit),
+        new TTagLine("AlphaMax", "U1/FLASH/AlphaMax/", LabelInit),
+        new TTagLine("Unom", "U1/FLASH/Unom/", LabelInit),
+        new TTagLine("UrefMax", "U1/FLASH/UrefMax/", LabelInit),
+        new TTagLine("UrefMin", "U1/FLASH/UrefMin/", LabelInit),
+        new TTagLine("Ustep", "U1/FLASH/Ustep/", LabelInit),
+        new TTagLine("tSoftStart", "U1/FLASH/tSoftStart/", LabelInit)
     });
 }
 
