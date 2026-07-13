@@ -18,7 +18,7 @@
 GroupIndicators::GroupIndicators(int x, int y, u8 colorState, std::string tRun) {
 	ElementRect.Left = x;
 	ElementRect.Top = y;
-	ElementRect.Height = 31;
+	ElementRect.Height = 63;
 	ElementRect.Width = 46;
 	this->colorState = colorState;
 	objOut = (TParameter*)IniResources::getSignalByTag(tRun);

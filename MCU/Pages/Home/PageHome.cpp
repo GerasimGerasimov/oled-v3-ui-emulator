@@ -14,7 +14,7 @@ void TPageHome::view() {
 void TPageHome::onOpen() {
     TGrahics::Line(42, 0, 42, 63, 1);
     TGrahics::Line(85, 0, 85, 63, 1);
-    TGrahics::Line(86, 31, 126, 31, 1);
+    //TGrahics::Line(86, 31, 126, 31, 1);
     //TGrahics::Line(99, 0, 99, 63, 1);
     SubscriberID = HandlerSubscribers::set("U1/RAM/", [this](TSlotHandlerArsg args) { SlotUpdateRAM(args); });
     SubIDFlash = HandlerSubscribers::set("U1/FLASH/", [this](TSlotHandlerArsg args) { SlotUpdateFLASH(args); });
@@ -113,10 +113,10 @@ void TPageHome::fillPageContainer(void) {
 }
 
 TPageHome::TPageHome(std::string Name) :TPage(Name), 
-    currentIndicator1(0,  0, "I, A", "Iref", "U1/RAM/Iout/", "U1/RAM/Ilim/", 0, "U1/FLASH/IlimDefault/", "U1/FLASH/Inom/", "U1/FLASH/Ustep/"),
+    currentIndicator1(0,  0, "I, A", "Ilim", "U1/RAM/Iout/", "U1/RAM/Ilim/", 0, "U1/FLASH/IlimDefault/", "U1/FLASH/Inom/", "U1/FLASH/Ustep/"),
     currentIndicator2(43, 0, "U, V", "Uref", "U1/RAM/Uout/", "U1/RAM/Uref/", 0, "U1/FLASH/UrefDefault/", "U1/FLASH/Unom/", "U1/FLASH/Ustep/"),
     //operatingMode(86, 0, 0, "U1/RAM/mode/"),
-    groupIndicators(86, 32, 0, "U1/RAM/tRun/")
+    groupIndicators(86, 0, 0, "U1/RAM/tRun/")
 
 {
     container = { &currentIndicator1, &currentIndicator2, /*&operatingMode,*/ &groupIndicators};

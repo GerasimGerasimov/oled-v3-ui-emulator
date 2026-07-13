@@ -281,8 +281,8 @@ void CurrentIndicator::increase(float step) {
 
 void CurrentIndicator::sendCmd(std::string& refValue) {
 	std::string tag;
-	if (refName == "U1/RAM/Iref/") {
-		tag = "U1/RAM/Iref/";
+	if (refName == "U1/RAM/Ilim/") {
+		tag = "U1/RAM/Ilim/";
 	}
 	else {
 		tag = "U1/RAM/Uref/";
