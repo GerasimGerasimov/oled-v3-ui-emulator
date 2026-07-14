@@ -45,16 +45,16 @@ bool TPageHome::ProcessMessage(TMessage* m) {
                         TRouter::setTask({ false, "Help", p });
                     }
                     break;
-                case (u32)KeyCodes::ENT:
-                    e = getSignalOfFocusedChild();
-                    if (e) {
-                        TRouter::PageValueEditEntryData.tag = ((TTagLine*)(e))->Tag;
-                        TRouter::PageValueEditEntryData.value = ((TTagLine*)(e))->Value->getCaption();
-                        TRouter::PageValueEditEntryData.backPage = Name;
-                        TRouter::setTask({ false, "EditValue", nullptr });
-                    }
-                    container[currentComponent]->inFocus = false;
-                    break;
+                //case (u32)KeyCodes::ENT:
+                //    e = getSignalOfFocusedChild();
+                //    if (e) {
+                //        TRouter::PageValueEditEntryData.tag = ((TTagLine*)(e))->Tag;
+                //        TRouter::PageValueEditEntryData.value = ((TTagLine*)(e))->Value->getCaption();
+                //        TRouter::PageValueEditEntryData.backPage = Name;
+                //        TRouter::setTask({ false, "EditValue", nullptr });
+                //    }
+                //    container[currentComponent]->inFocus = false;
+                //    break;
                 case (u32)KeyCodes::Right: 
                     container[currentComponent]->inFocus = false;
                     if (currentComponent < container.size() - 1) {
