@@ -15,13 +15,15 @@
 
 #define MIN_IN_HOUR 60
 
-GroupIndicators::GroupIndicators(int x, int y, u8 colorState, std::string tRun) {
+GroupIndicators::GroupIndicators(int x, int y, u8 colorState, std::string tRun, std::string run, std::string ready) {
 	ElementRect.Left = x;
 	ElementRect.Top = y;
 	ElementRect.Height = 63;
 	ElementRect.Width = 46;
 	this->colorState = colorState;
 	objOut = (TParameter*)IniResources::getSignalByTag(tRun);
+	objRun = (TParameter*)IniResources::getSignalByTag(run);
+	objReady = (TParameter*)IniResources::getSignalByTag(ready);
 	ISignal* o = IniResources::getSignalByTag(tRun);
 	nameOut = tRun;
 }
@@ -30,11 +32,12 @@ void GroupIndicators::view()
 {
 	TFillRect background{ ElementRect.Left, ElementRect.Top, ElementRect.Width, ElementRect.Height, abs(colorState - 0) };
 	TGrahics::fillRect(background);
-	//TGrahics::Line(ElementRect.Left, ElementRect.Top + 35, ElementRect.Left + ElementRect.Width, ElementRect.Top + 35, abs(colorState - 1));
+	TGrahics::Line(ElementRect.Left, ElementRect.Top + 32, ElementRect.Left + ElementRect.Width, ElementRect.Top + 32, abs(colorState - 1));
 
 	TGrahics::outText("Время", ElementRect.Left + 1, ElementRect.Top + 2, abs(colorState - 1), "Verdana12");
 
 	tValue();
+	stateValue();
 
 	if (inFocus) {
 		//areaState();
@@ -54,12 +57,22 @@ void GroupIndicators::tValue()
 	TGrahics::outText(tRunValue, ElementRect.Left + 1, ElementRect.Top + 15, abs(colorState - 1), "Verdana12");
 }
 
+void GroupIndicators::stateValue() 
+{
+	if (runValue == "1") {
+		TGrahics::outText("Работа", ElementRect.Left + 1, ElementRect.Top + 42, abs(colorState - 1), "Verdana12");
+	}
+	else if (readyValue == "1") {
+		TGrahics::outText("Готов.", ElementRect.Left + 1, ElementRect.Top + 42, abs(colorState - 1), "Verdana12");
+	}
+}
 
 void GroupIndicators::updateObj(std::string sector, const TSlotHandlerArsg& args, const char* format)
 {
 	if (sector == "RAM") {
 		tRunValue = objOut->getValue(args, "");
-		
+		runValue = objRun->getValue(args, "");
+		readyValue = objReady->getValue(args, "");
 	}
 	try {
 		if (tRunValue != newTime) {
@@ -71,7 +84,6 @@ void GroupIndicators::updateObj(std::string sector, const TSlotHandlerArsg& args
 	catch (...) {
 		tRunValue = "**.*";
 	}
-
 }
 
 void GroupIndicators::timeValue() {

@@ -3,9 +3,9 @@
 #include <LedWarnings.h>
 
 std::map < std::string, TTrackedBit > Warnings::Tags = {
-	//{"IoutOvrWrn", {"U1/RAM/IoutOvrWrn/", nullptr, false, false}},
-	//{"InslWrn", {"U1/RAM/InslWrn/", nullptr, false, false}},
-	//{"Complete", {"U1/RAM/Complete/", nullptr, false, false}}
+	{"UinLowFail", {"U1/RAM/UinLowFail/", nullptr, false, false}},
+	{"PhaseBreak", {"U1/RAM/PhaseBreak/", nullptr, false, false}},
+	{"CanI2tReset", {"U1/RAM/CanI2tReset/", nullptr, false, false}}
 };
 
 bool Warnings::State = true;
