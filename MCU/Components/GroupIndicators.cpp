@@ -60,10 +60,14 @@ void GroupIndicators::tValue()
 void GroupIndicators::stateValue() 
 {
 	if (runValue == "1") {
-		TGrahics::outText("Работа", ElementRect.Left + 1, ElementRect.Top + 42, abs(colorState - 1), "Verdana12");
+		TGrahics::outText("Работа", ElementRect.Left + 2, ElementRect.Top + 42, abs(colorState - 1), "Verdana12");
 	}
 	else if (readyValue == "1") {
-		TGrahics::outText("Готов.", ElementRect.Left + 1, ElementRect.Top + 42, abs(colorState - 1), "Verdana12");
+		TGrahics::outText("Готов.", ElementRect.Left + 2, ElementRect.Top + 42, abs(colorState - 1), "Verdana12");
+	}
+	else {
+		TGrahics::outText("Не", ElementRect.Left + 2, ElementRect.Top + 37, abs(colorState - 1), "Verdana12");
+		TGrahics::outText("готов.", ElementRect.Left + 2, ElementRect.Top + 47, abs(colorState - 1), "Verdana12");
 	}
 }
 

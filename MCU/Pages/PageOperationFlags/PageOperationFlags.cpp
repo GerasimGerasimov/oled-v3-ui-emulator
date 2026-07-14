@@ -24,6 +24,6 @@ void TPageOperationFlags::fillPageContainer() {
         new TTagLine("Run", "U1/RAM/Run/", LabelInit),
         new TTagLine("OutOk", "U1/RAM/OutOk/", LabelInit),
         new TTagLine("SoftStart", "U1/RAM/SoftStart/", LabelInit),
-        new TTagLine("CanI2tReset", "U1/RAM/CanI2tReset/", LabelInit)
+        new TTagLine("PWR1", "U1/RAM/PWR1/", LabelInit)
         });
 }

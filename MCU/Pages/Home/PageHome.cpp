@@ -116,7 +116,7 @@ TPageHome::TPageHome(std::string Name) :TPage(Name),
     currentIndicator1(0,  0, "I, A", "Ilim", "U1/RAM/Iout/", "U1/RAM/Ilim/", 0, "U1/FLASH/IlimDefault/", "U1/FLASH/Inom/", "U1/FLASH/Ustep/"),
     currentIndicator2(43, 0, "U, V", "Uref", "U1/RAM/Uout/", "U1/RAM/Uref/", 0, "U1/FLASH/UrefDefault/", "U1/FLASH/Unom/", "U1/FLASH/Ustep/"),
     //operatingMode(86, 0, 0, "U1/RAM/mode/"),
-    groupIndicators(86, 0, 0, "U1/RAM/tRun/", "", "")
+    groupIndicators(86, 0, 0, "U1/RAM/tRun/", "U1/RAM/Run/", "U1/RAM/Ready/")
 
 {
     container = { &currentIndicator1, &currentIndicator2, /*&operatingMode,*/ &groupIndicators};

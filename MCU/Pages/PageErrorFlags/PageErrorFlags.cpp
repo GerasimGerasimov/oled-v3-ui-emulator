@@ -19,10 +19,8 @@ void TPageErrorFlags::fillPageContainer() {
     LabelInit.Rect = { 10, 10, 10, 80 };
     LabelInit.focused = false;
     TagList->AddList({
-        new TTagLine("flash_error", "U1/RAM/flash_error/", LabelInit),
-        new TTagLine("PWR1", "U1/RAM/PWR1/", LabelInit),
-        new TTagLine("backup_error", "U1/RAM/backup_error/", LabelInit),
-        new TTagLine("fram_error", "U1/RAM/fram_error/", LabelInit),
-        new TTagLine("fram_bkp_error", "U1/RAM/fram_bkp_error/", LabelInit)
+        new TTagLine("UinLowFail", "U1/RAM/UinLowFail/", LabelInit),
+        new TTagLine("MAIN_SW", "U1/RAM/DI_MAIN_SW/", LabelInit),
+        new TTagLine("FUSE", "U1/RAM/DI_FUSE/", LabelInit)
         });
 }
