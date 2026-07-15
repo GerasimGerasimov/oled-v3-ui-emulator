@@ -66,16 +66,16 @@ TVisualObject* TPageHome::getSignalOfFocusedChild() {
 void TPageHome::fillPageContainer(void) {
     TagList->Clear();
     TLabelInitStructure LabelInit;
-    LabelInit.style = LabelsStyle::WIDTH_DINAMIC;
-    LabelInit.Rect = { 10, 10, 10, 10 };
+    LabelInit.style = LabelsStyle::WIDTH_FIXED;
+    LabelInit.Rect = { 10, 10, 10, 70 };
     LabelInit.focused = false;
     TagList->AddList({
         new TTagLine("Ток ротора", "U1/RAM/Ir/", LabelInit),
-        new TTagLine("Задание", "U1/RAM/Uexc/", LabelInit),
         new TTagLine("Ток статора", "U1/RAM/Istat/", LabelInit),
-        new TTagLine("Напр. стат.", "U1/RAM/Ustat/", LabelInit),
-        new TTagLine("угол Phi", "U1/RAM/F/", LabelInit),
+        new TTagLineScrollCaption("Заданный тока возбуждения", "U1/RAM/IExcRefReg/", LabelInit),
         new TTagLineScrollCaptionComment("U1/RAM/Iq/", LabelInit),
+        new TTagLineScrollCaption("Напряжение статора", "U1/RAM/Ustat/", LabelInit),
+        new TTagLine("угол Phi", "U1/RAM/F/", LabelInit),
         /*new TTagLine("Полная мощность", "U1/RAM/Ssg/", LabelInit),
         new TTagLine("Активная мощность", "U1/RAM/Psg/", LabelInit),
         new TTagLine("Реактивная мощность", "U1/RAM/Qsg/", LabelInit)*/
