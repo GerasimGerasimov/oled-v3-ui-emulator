@@ -1,6 +1,7 @@
 #include "PageHome.h"
 #include "Router.h"
 #include "TagLineVarSize.h"
+#include "TagLineScrollCaptionComment.h"
 #include <IniResources.h>
 
 void TPageHome::view() {
@@ -70,11 +71,11 @@ void TPageHome::fillPageContainer(void) {
     LabelInit.focused = false;
     TagList->AddList({
         new TTagLine("Ток ротора", "U1/RAM/Ir/", LabelInit),
-        new TTagLine("Напр. ротор", "U1/RAM/Uexc/", LabelInit),
+        new TTagLine("Задание", "U1/RAM/Uexc/", LabelInit),
         new TTagLine("Ток статора", "U1/RAM/Istat/", LabelInit),
         new TTagLine("Напр. стат.", "U1/RAM/Ustat/", LabelInit),
         new TTagLine("угол Phi", "U1/RAM/F/", LabelInit),
-        new TTagLine("Реактивный ток статора", "U1/RAM/Iq/", LabelInit),
+        new TTagLineScrollCaptionComment("U1/RAM/Iq/", LabelInit),
         /*new TTagLine("Полная мощность", "U1/RAM/Ssg/", LabelInit),
         new TTagLine("Активная мощность", "U1/RAM/Psg/", LabelInit),
         new TTagLine("Реактивная мощность", "U1/RAM/Qsg/", LabelInit)*/
