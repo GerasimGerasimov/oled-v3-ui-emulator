@@ -21,8 +21,8 @@ void TPageAsynchronousProtection::fillPageContainer(void) {
         new TTagLineScrollCaptionComment("U1/RAM/AsyncRun/", LabelInit),
         new TTagLineScrollCaptionComment("U1/RAM/Istat/", LabelInit),
         new TTagLineScrollCaptionComment("U1/RAM/Iq/", LabelInit),
-        new TTagLineScrollCaption("Отключение Асинхронного хода по реактивному току статора", "U1/FLASH/IstQMaxFlt/", LabelInit),
-        new TTagLineScrollCaption("Отключение Перегруза Статора по полному току статора", "U1/FLASH/IstSMaxFlt/", LabelInit),
+        new TTagLineScrollCaptionComment("U1/FLASH/IstQMaxFlt/", LabelInit),
+        new TTagLineScrollCaptionComment("U1/FLASH/IstSMaxFlt/", LabelInit),
 
         });
 

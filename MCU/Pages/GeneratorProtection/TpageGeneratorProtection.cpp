@@ -22,7 +22,7 @@ void TpageGeneratorProtection::fillPageContainer(void) {
         new TTagLineScrollCaptionComment("U1/RAM/GMP/", LabelInit),
         new TTagLineScrollCaptionComment("U1/FLASH/stGenMdFltEnable/", LabelInit),
         new TTagLineScrollCaptionComment("U1/FLASH/stGenModeSelect/", LabelInit),
-        new TTagLineScrollCaption("Активная мощность генераторного режима", "U1/FLASH/GMPU/", LabelInit),
+        new TTagLineScrollCaptionComment("U1/FLASH/GMPU/", LabelInit),
         new TTagLineScrollCaptionComment("U1/FLASH/GMPUFltTime/", LabelInit),
 
         });
