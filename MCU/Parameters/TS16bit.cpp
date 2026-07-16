@@ -20,6 +20,23 @@ TGenaralCaseRawReturn TS16BIT::getRawValue(const TSlotHandlerArsg& args) {
 	return res;
 }
 
+const std::string TS16BIT::getValueHex(std::string& src) {
+	s16 value = string2raw(src);
+
+	u16 unsignedValue = (u16)value;
+	char s[8];
+	//GIST "%.4X" преобразование числа в hex с заданным кол-вом значащих нулей
+	sprintf(s, "%.4X", unsignedValue);
+	std::string res(s);
+	return res;
+}
+
+u16 TS16BIT::string2raw(std::string& src) {
+	float f = std::stof(src);
+	f /= Scale;
+	return (s16)f;
+}
+
 TInternalMemAddress TS16BIT::getInternalMemAddr() {
 	s16 offset = Addr;
 	return { offset,2,-1 };

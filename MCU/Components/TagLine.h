@@ -11,7 +11,9 @@ class TTagLine : public TVisualObject {
 public:
     virtual bool ProcessMessage(TMessage* m);
     virtual const u16 getHeight(void);
-    TTagLine(std::string caption, std::string tag, TLabelInitStructure init);//конструктор
+    TTagLine(std::string caption, std::string tag, TLabelInitStructure init);
+    TLabel* getValue();
+    //конструктор
     ~TTagLine();//деструктор
     void view(void);
     void setValueLeft(int step);

@@ -9,8 +9,11 @@ public:
 	TS16BIT(TSignalPropsPointers props);
 	~TS16BIT();
 	TInternalMemAddress getInternalMemAddr();
+	const std::string getValueHex(std::string& src);
+	
 private:
 	virtual TGenaralCaseRawReturn getRawValue(const TSlotHandlerArsg& args);
+	u16 string2raw(std::string& src);
 };
 
 #endif

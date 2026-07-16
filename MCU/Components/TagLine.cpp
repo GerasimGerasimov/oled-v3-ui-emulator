@@ -24,6 +24,9 @@ TTagLine::TTagLine(std::string caption, std::string tag, TLabelInitStructure ini
     DataSrc = (TParameter*)IniResources::getSignalByTag(tag);
     Value->setCaption(((TParameter*)DataSrc)->getDefaultValue());
 }
+TLabel* TTagLine::getValue() {
+    return Value;
+}
 
 TTagLine::~TTagLine() {
     delete Caption;

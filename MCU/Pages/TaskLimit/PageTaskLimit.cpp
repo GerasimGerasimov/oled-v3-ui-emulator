@@ -25,5 +25,8 @@ void TPageTaskLimit::fillPageContainer(void){
         new TTagLineScrollCaptionComment("U1/FLASH/FLmin/", LabelInit),
         new TTagLineScrollCaptionComment("U1/FLASH/dIExcRef/", LabelInit),
         new TTagLineScrollCaptionComment("U1/FLASH/dFiRef/", LabelInit),
+        new TTagLineScrollCaption("Min ток возб. при работе регулятора", "U1/FLASH/IExcMin/", LabelInit),
+        new TTagLineScrollCaption("Max ток возб. при работе регулятора", "U1/FLASH/IExcMax/", LabelInit),
+        new TTagLineScrollCaption("Max ток возб. при изменении оператором", "U1/FLASH/IExcManuMax/", LabelInit)
         });
 }
