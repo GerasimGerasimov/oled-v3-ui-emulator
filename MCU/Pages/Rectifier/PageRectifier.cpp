@@ -15,7 +15,7 @@ void TPageRectifier::fillPageContainer(void) {
   TagList->Clear();
   TLabelInitStructure LabelInit;
   LabelInit.style = LabelsStyle::WIDTH_FIXED;
-  LabelInit.Rect = { 10, 10, 10, 70 };
+  LabelInit.Rect = { 10, 10, 10, 90 };
   LabelInit.focused = false;
   TagList->AddList({
       new TTagLineScrollCaptionComment("U1/RAM/DExS_PWR_LNK/", LabelInit),
@@ -35,4 +35,9 @@ void TPageRectifier::fillPageContainer(void) {
       new TTagLineScrollCaptionComment("U1/FLASH/FminSpRect/", LabelInit),
       new TTagLineScrollCaptionComment("U1/FLASH/SUPPLFltTime/", LabelInit),
     });
+
+  dynamic_cast<TTagLine*>(TagList->List[0])->setValueLeft(90);
+  dynamic_cast<TTagLine*>(TagList->List[1])->setValueLeft(90);
+  dynamic_cast<TTagLine*>(TagList->List[2])->setValueLeft(90);
+
 }

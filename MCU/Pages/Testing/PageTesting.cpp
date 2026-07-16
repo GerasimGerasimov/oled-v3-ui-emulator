@@ -16,7 +16,7 @@ void TPageTesting::fillPageContainer(void){
     TagList->Clear();
     TLabelInitStructure LabelInit;
     LabelInit.style = LabelsStyle::WIDTH_FIXED;
-    LabelInit.Rect = {10, 10, 10, 70};
+    LabelInit.Rect = {10, 10, 10, 90};
     LabelInit.focused = false;
 
     TagList->AddList({
@@ -26,4 +26,8 @@ void TPageTesting::fillPageContainer(void){
         new TTagLineScrollCaptionComment("U1/RAM/FS+/", LabelInit),
         new TTagLineScrollCaptionComment("U1/RAM/FS-/", LabelInit),
         });
+
+    dynamic_cast<TTagLine*>(TagList->List[0])->setValueLeft(90);
+    dynamic_cast<TTagLine*>(TagList->List[3])->setValueLeft(90);
+    dynamic_cast<TTagLine*>(TagList->List[4])->setValueLeft(90);
 }

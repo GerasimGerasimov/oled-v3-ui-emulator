@@ -16,7 +16,7 @@ void TPageStatorVoltage::fillPageContainer(void){
     TagList->Clear();
     TLabelInitStructure LabelInit;
     LabelInit.style = LabelsStyle::WIDTH_FIXED;
-    LabelInit.Rect = {10, 10, 10, 70};
+    LabelInit.Rect = {10, 10, 10, 90};
     LabelInit.focused = false;
 
     TagList->AddList({
@@ -32,4 +32,8 @@ void TPageStatorVoltage::fillPageContainer(void){
         new TTagLineScrollCaptionComment("U1/FLASH/UstMax/", LabelInit),
         new TTagLineScrollCaptionComment("U1/FLASH/UstMaxTime/", LabelInit)
         });
+    dynamic_cast<TTagLine*>(TagList->List[1])->setValueLeft(90);
+    dynamic_cast<TTagLine*>(TagList->List[2])->setValueLeft(90);
+    dynamic_cast<TTagLine*>(TagList->List[3])->setValueLeft(90);
+
 }

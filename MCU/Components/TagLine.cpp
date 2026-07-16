@@ -10,9 +10,9 @@ const std::string TTagLine::ComponentName() {
 }
 
 void TTagLine::update(const TSlotHandlerArsg& args, const char* format) {
-  
-  TParameter* p = static_cast<TParameter*>(DataSrc);
-  Value->setCaption(p->getValue(args, ""));
+
+    TParameter* p = static_cast<TParameter*>(DataSrc);
+    Value->setCaption(p->getValue(args, ""));
 }
 
 TTagLine::TTagLine(std::string caption, std::string tag, TLabelInitStructure init)
@@ -40,23 +40,24 @@ void TTagLine::view(void) {
     Caption->inFocus = inFocus;
     Caption->ElementRect.Top = ElementRect.Top;
     Caption->ElementRect.Left = ElementRect.Left;
-    Caption->view();//âûâîäèò Coption
+    Caption->view();//˜˜˜˜˜˜˜ Coption
 
-    if (DataSrc) {/*TODO 2-é ðàç ïèøó íóæåí ïóñòîé îáúåêò äëÿ îòëàâëèâàíèÿ íåñóùåñòâóþùèõ òåãîâ*/
+    if (DataSrc) {/*TODO 2-˜ ˜˜˜ ˜˜˜˜ ˜˜˜˜˜ ˜˜˜˜˜˜ ˜˜˜˜˜˜ ˜˜˜ ˜˜˜˜˜˜˜˜˜˜˜˜ ˜˜˜˜˜˜˜˜˜˜˜˜˜˜ ˜˜˜˜˜*/
         Value->inFocus = inFocus;
         Value->ElementRect.Top = ElementRect.Top;
         Value->ElementRect.Left = valueLeft;//ElementRect.Left;
         Value->view();
     }
 
-    if (DataSrc) {/*TODO 2-é ðàç ïèøó íóæåí ïóñòîé îáúåêò äëÿ îòëàâëèâàíèÿ íåñóùåñòâóþùèõ òåãîâ*/
-        msu->setCaption(((TParameter*) DataSrc)->getMSU());
+    if (DataSrc) {/*TODO 2-˜ ˜˜˜ ˜˜˜˜ ˜˜˜˜˜ ˜˜˜˜˜˜ ˜˜˜˜˜˜ ˜˜˜ ˜˜˜˜˜˜˜˜˜˜˜˜ ˜˜˜˜˜˜˜˜˜˜˜˜˜˜ ˜˜˜˜˜*/
+        msu->setCaption(((TParameter*)DataSrc)->getMSU());
         msu->inFocus = inFocus;
         msu->ElementRect.Top = ElementRect.Top;
-        msu->ElementRect.Left = 105;//ElementRect.Left;
+        msu->ElementRect.Left = msuLeft;//ElementRect.Left;
         msu->view();
     }
 }
+
 void TTagLine::setValueLeft(int step) {
     valueLeft = step;
 }

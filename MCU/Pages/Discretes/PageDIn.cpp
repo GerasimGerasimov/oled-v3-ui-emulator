@@ -20,7 +20,7 @@ void TPageDIn::fillPageContainer()
     TagList->Clear();
     TLabelInitStructure LabelInit;
     LabelInit.style = LabelsStyle::WIDTH_FIXED;
-    LabelInit.Rect = { 10, 10, 10, 70 };
+    LabelInit.Rect = { 10, 10, 10, 110 };
     LabelInit.focused = false;
     TagList->AddList({
         new TTagLineScrollCaptionComment("U1/RAM/iStartBtn/", LabelInit),
@@ -38,4 +38,15 @@ void TPageDIn::fillPageContainer()
         new TTagLineScrollCaptionComment("U1/RAM/iTest/", LabelInit),
         new TTagLineScrollCaptionComment("U1/RAM/iReady/", LabelInit),
         });
+    int const totalTags = 14;
+    for (int i = 0; i < totalTags; i++) {
+        if (TTagLine* tagLine = dynamic_cast<TTagLine*>(TagList->List[i])) {
+            tagLine->setValueLeft(110);
+        }
+    }
+    for (int i = 0; i < totalTags; i++) {
+        if (TTagLine* tagLine = dynamic_cast<TTagLine*>(TagList->List[i])) {
+            tagLine->setMsuLeft(115);
+        }
+    }
 }

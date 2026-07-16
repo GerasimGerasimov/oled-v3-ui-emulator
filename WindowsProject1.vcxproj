@@ -155,11 +155,13 @@
     <ClInclude Include="MCU\IDrivers\icommastert.h" />
     <ClInclude Include="MCU\IDrivers\iresources.h" />
     <ClInclude Include="MCU\Modbus\modbus.h" />
+    <ClInclude Include="MCU\Pages\AsynchronousProtection\PageAsynchronousProtection.h" />
     <ClInclude Include="MCU\Pages\Calibration\PageCalibration.h" />
     <ClInclude Include="MCU\Pages\ControlSettings\PageControlSettings.h" />
     <ClInclude Include="MCU\Pages\Discretes\PageDIn.h" />
     <ClInclude Include="MCU\Pages\Discretes\PageInOut.h" />
     <ClInclude Include="MCU\Pages\Discretes\TPageDOut.h" />
+    <ClInclude Include="MCU\Pages\GeneratorProtection\TpageGeneratorProtection.h" />
     <ClInclude Include="MCU\Pages\Power\PagePower.h" />
     <ClInclude Include="MCU\Pages\ReactPowerLimit\PageReactPowerLimit.h" />
     <ClInclude Include="MCU\Pages\Ready\PageReady.h" />
@@ -171,6 +173,7 @@
     <ClInclude Include="MCU\Pages\StatorVoltage\PageStatorVoltage.h" />
     <ClInclude Include="MCU\Pages\TaskLimit\PageTaskLimit.h" />
     <ClInclude Include="MCU\Pages\Testing\PageTesting.h" />
+    <ClInclude Include="MCU\Pages\UPP\PageUPP.h" />
     <ClInclude Include="MCU\Parameters\TU32BIT.h" />
     <ClInclude Include="MCU\Slots\SlotHandlerType.h" />
     <ClInclude Include="MCU\StateControllers\RunPWR\RunPWR.h" />
@@ -229,6 +232,7 @@
     <ClCompile Include="MCU\Modbus\AppModbusSlave.cpp" />
     <ClCompile Include="MCU\Msg\msg.cpp" />
     <ClCompile Include="MCU\Pages\Alarms\PageAlarms.cpp" />
+    <ClCompile Include="MCU\Pages\AsynchronousProtection\PageAsynchronousProtection.cpp" />
     <ClCompile Include="MCU\Pages\BasicSettings\PageBasicSettings.cpp" />
     <ClCompile Include="MCU\Pages\Calibration\PageCalibration.cpp" />
     <ClCompile Include="MCU\Pages\ControlSettings\PageControlSettings.cpp" />
@@ -236,6 +240,7 @@
     <ClCompile Include="MCU\Pages\Discretes\PageInOut.cpp" />
     <ClCompile Include="MCU\Pages\Discretes\TPageDOut.cpp" />
     <ClCompile Include="MCU\Pages\EditValue\PageEditValue.cpp" />
+    <ClCompile Include="MCU\Pages\GeneratorProtection\TpageGeneratorProtection.cpp" />
     <ClCompile Include="MCU\Pages\Help\PageHelp.cpp" />
     <ClCompile Include="MCU\Pages\Home\PageHome.cpp" />
     <ClCompile Include="MCU\Pages\MainMenu\PageMainMenu.cpp" />
@@ -253,6 +258,7 @@
     <ClCompile Include="MCU\Pages\StatorVoltage\PageStatorVoltage.cpp" />
     <ClCompile Include="MCU\Pages\TaskLimit\PageTaskLimit.cpp" />
     <ClCompile Include="MCU\Pages\Testing\PageTesting.cpp" />
+    <ClCompile Include="MCU\Pages\UPP\PageUPP.cpp" />
     <ClCompile Include="MCU\Pages\Warning\PageWarnings.cpp" />
     <ClCompile Include="MCU\Parameters\generalcase.cpp" />
     <ClCompile Include="MCU\Parameters\inistring.cpp" />

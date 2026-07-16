@@ -219,6 +219,15 @@
     <ClInclude Include="MCU\Pages\Calibration\PageCalibration.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
+    <ClInclude Include="MCU\Pages\GeneratorProtection\TpageGeneratorProtection.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="MCU\Pages\AsynchronousProtection\PageAsynchronousProtection.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="MCU\Pages\UPP\PageUPP.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -537,6 +546,15 @@
       <Filter>Исходные файлы</Filter>
     </ClCompile>
     <ClCompile Include="MCU\Pages\Calibration\PageCalibration.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="MCU\Pages\GeneratorProtection\TpageGeneratorProtection.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="MCU\Pages\AsynchronousProtection\PageAsynchronousProtection.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="MCU\Pages\UPP\PageUPP.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
   </ItemGroup>
