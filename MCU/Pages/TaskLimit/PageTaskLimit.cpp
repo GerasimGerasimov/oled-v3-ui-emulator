@@ -15,18 +15,15 @@ void TPageTaskLimit::fillPageContainer(void){
     TagList->Clear();
     TLabelInitStructure LabelInit;
     LabelInit.style = LabelsStyle::WIDTH_FIXED;
-    LabelInit.Rect = {10, 10, 10, 70};
+    LabelInit.Rect = {10, 10, 10, 80};
     LabelInit.focused = false;
     TagList->AddList({
-        new TTagLineScrollCaptionComment("U1/FLASH/IExcMin/", LabelInit),
-        new TTagLineScrollCaptionComment("U1/FLASH/IExcMax/", LabelInit),
-        new TTagLineScrollCaptionComment("U1/FLASH/IExcManuMax/", LabelInit),
-        new TTagLineScrollCaptionComment("U1/FLASH/FLmax/", LabelInit),
-        new TTagLineScrollCaptionComment("U1/FLASH/FLmin/", LabelInit),
+        new TTagLineScrollCaption("Min ток возбуждения", "U1/FLASH/IExcMin/", LabelInit),
+        new TTagLineScrollCaption("Max ток возбуждения", "U1/FLASH/IExcMax/", LabelInit),
+        new TTagLineScrollCaption("Max ток возб. в ручном режиме", "U1/FLASH/IExcManuMax/", LabelInit),
+        new TTagLineScrollCaption("Max заданный угол Фи", "U1/FLASH/FLmax/", LabelInit),
+        new TTagLineScrollCaption("Min заданный угол Фи", "U1/FLASH/FLmin/", LabelInit),
         new TTagLineScrollCaptionComment("U1/FLASH/dIExcRef/", LabelInit),
-        new TTagLineScrollCaptionComment("U1/FLASH/dFiRef/", LabelInit),
-        new TTagLineScrollCaption("Min ток возб. при работе регулятора", "U1/FLASH/IExcMin/", LabelInit),
-        new TTagLineScrollCaption("Max ток возб. при работе регулятора", "U1/FLASH/IExcMax/", LabelInit),
-        new TTagLineScrollCaption("Max ток возб. при изменении оператором", "U1/FLASH/IExcManuMax/", LabelInit)
+        new TTagLineScrollCaptionComment("U1/FLASH/dFiRef/", LabelInit)
         });
 }

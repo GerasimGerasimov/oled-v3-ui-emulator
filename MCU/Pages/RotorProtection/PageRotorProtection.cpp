@@ -15,7 +15,7 @@ void TPageRotorProtection::fillPageContainer(void){
     TagList->Clear();
     TLabelInitStructure LabelInit;
     LabelInit.style = LabelsStyle::WIDTH_FIXED;
-    LabelInit.Rect = {10, 10, 10, 90};
+    LabelInit.Rect = {10, 10, 10, 80};
     LabelInit.focused = false;
     TagList->AddList({
         new TTagLineScrollCaptionComment("U1/FLASH/IrMaxFlt/", LabelInit),
@@ -27,5 +27,4 @@ void TPageRotorProtection::fillPageContainer(void){
         new TTagLineScrollCaptionComment("U1/FLASH/iIExci2tOvOffR/", LabelInit),
         new TTagLineScrollCaptionComment("U1/FLASH/IExcI2tRef/", LabelInit),
         });
-    dynamic_cast<TTagLine*>(TagList->List[1])->setValueLeft(90);
 }

@@ -18,12 +18,11 @@ public:
 private:
     TVerticalContainer* TagList;
     void fillPageContainer(void);
-    void getCos();
     void SlotUpdate(TSlotHandlerArsg args);
     TVisualObject* getSignalOfFocusedChild();
     int SubscriberID = 0;
 
-    std::string caption;
+    std::string valueCos;
 };
 
 #endif

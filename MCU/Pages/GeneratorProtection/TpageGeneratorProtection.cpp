@@ -16,7 +16,7 @@ void TpageGeneratorProtection::fillPageContainer(void) {
     TagList->Clear();
     TLabelInitStructure LabelInit;
     LabelInit.style = LabelsStyle::WIDTH_FIXED;
-    LabelInit.Rect = { 10, 10, 10, 90 };
+    LabelInit.Rect = { 10, 10, 10, 80 };
     LabelInit.focused = false;
     TagList->AddList({
         new TTagLineScrollCaptionComment("U1/RAM/GMP/", LabelInit),
@@ -26,8 +26,5 @@ void TpageGeneratorProtection::fillPageContainer(void) {
         new TTagLineScrollCaptionComment("U1/FLASH/GMPUFltTime/", LabelInit),
 
         });
-    dynamic_cast<TTagLine*>(TagList->List[0])->setValueLeft(90);
-    dynamic_cast<TTagLine*>(TagList->List[1])->setValueLeft(90);
-    dynamic_cast<TTagLine*>(TagList->List[2])->setValueLeft(90);
 
 }

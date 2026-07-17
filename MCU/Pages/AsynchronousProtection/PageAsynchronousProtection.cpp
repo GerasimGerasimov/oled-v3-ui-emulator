@@ -25,7 +25,4 @@ void TPageAsynchronousProtection::fillPageContainer(void) {
         new TTagLineScrollCaptionComment("U1/FLASH/IstSMaxFlt/", LabelInit),
 
         });
-
-    dynamic_cast<TTagLine*>(TagList->List[0])->setValueLeft(105);
-    dynamic_cast<TTagLine*>(TagList->List[0])->setMsuLeft(115);
 }

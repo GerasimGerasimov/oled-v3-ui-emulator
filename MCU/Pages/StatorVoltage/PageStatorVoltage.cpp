@@ -16,24 +16,22 @@ void TPageStatorVoltage::fillPageContainer(void){
     TagList->Clear();
     TLabelInitStructure LabelInit;
     LabelInit.style = LabelsStyle::WIDTH_FIXED;
-    LabelInit.Rect = {10, 10, 10, 90};
+    LabelInit.Rect = {10, 10, 10, 80};
     LabelInit.focused = false;
 
     TagList->AddList({
         new TTagLineScrollCaptionComment("U1/RAM/Ustat/", LabelInit),
         new TTagLineScrollCaptionComment("U1/RAM/UstLow/", LabelInit),
-        new TTagLineScrollCaptionComment("U1/RAM/UstFail/", LabelInit),
+        new TTagLineScrollCaption("Min уровень напряжения статора", "U1/RAM/UstFail/", LabelInit),
         new TTagLineScrollCaptionComment("U1/FLASH/stUstFltReadyEnable/", LabelInit),
         new TTagLineScrollCaptionComment("U1/FLASH/UstNom/", LabelInit),
         new TTagLineScrollCaptionComment("U1/FLASH/UstLowReset/", LabelInit),
         new TTagLineScrollCaptionComment("U1/FLASH/UstLowSet/", LabelInit),
-        new TTagLineScrollCaptionComment("U1/FLASH/UstFailReset/", LabelInit),
+        new TTagLineScrollCaption("Min уровень напряжения статора", "U1/FLASH/UstFailReset/", LabelInit),
         new TTagLineScrollCaptionComment("U1/FLASH/UstFailSet/", LabelInit),
-        new TTagLineScrollCaptionComment("U1/FLASH/UstMax/", LabelInit),
+        new TTagLineScrollCaption("Max напряжение статора", "U1/FLASH/UstMax/", LabelInit),
         new TTagLineScrollCaptionComment("U1/FLASH/UstMaxTime/", LabelInit)
         });
-    dynamic_cast<TTagLine*>(TagList->List[1])->setValueLeft(90);
-    dynamic_cast<TTagLine*>(TagList->List[2])->setValueLeft(90);
-    dynamic_cast<TTagLine*>(TagList->List[3])->setValueLeft(90);
+
 
 }

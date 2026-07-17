@@ -15,7 +15,7 @@ void TPageRectifier::fillPageContainer(void) {
   TagList->Clear();
   TLabelInitStructure LabelInit;
   LabelInit.style = LabelsStyle::WIDTH_FIXED;
-  LabelInit.Rect = { 10, 10, 10, 90 };
+  LabelInit.Rect = { 10, 10, 10, 80 };
   LabelInit.focused = false;
   TagList->AddList({
       new TTagLineScrollCaptionComment("U1/RAM/DExS_PWR_LNK/", LabelInit),
@@ -25,19 +25,15 @@ void TPageRectifier::fillPageContainer(void) {
       new TTagLineScrollCaptionComment("U1/RAM/Vab/", LabelInit),
       new TTagLineScrollCaptionComment("U1/RAM/Vbc/", LabelInit),
       new TTagLineScrollCaptionComment("U1/RAM/Vca/", LabelInit),
-      new TTagLineScrollCaptionComment("U1/FLASH/Amax/", LabelInit),
-      new TTagLineScrollCaptionComment("U1/FLASH/Amin/", LabelInit),
-      new TTagLineScrollCaptionComment("U1/FLASH/Ablank/", LabelInit),
+      new TTagLineScrollCaption("Max угол управления", "U1/FLASH/Amax/", LabelInit),
+      new TTagLineScrollCaption("Min угол управления", "U1/FLASH/Amin/", LabelInit),
+      new TTagLineScrollCaption("Max угол при гашении поля", "U1/FLASH/Ablank/", LabelInit),
       new TTagLineScrollCaptionComment("U1/FLASH/FieldBlankTime/", LabelInit),
-      new TTagLineScrollCaptionComment("U1/FLASH/UmaxSpRect/", LabelInit),
-      new TTagLineScrollCaptionComment("U1/FLASH/UminSpRect/", LabelInit),
-      new TTagLineScrollCaptionComment("U1/FLASH/FmaxSpRect/", LabelInit),
-      new TTagLineScrollCaptionComment("U1/FLASH/FminSpRect/", LabelInit),
+      new TTagLineScrollCaption("Max напряжение питания выпрямителя", "U1/FLASH/UmaxSpRect/", LabelInit),
+      new TTagLineScrollCaption("Min напряжение питания выпрямителя", "U1/FLASH/UminSpRect/", LabelInit),
+      new TTagLineScrollCaption("Max частота питания выпрямителя", "U1/FLASH/FmaxSpRect/", LabelInit),
+      new TTagLineScrollCaption("Min частота питания выпрямителя", "U1/FLASH/FminSpRect/", LabelInit),
       new TTagLineScrollCaptionComment("U1/FLASH/SUPPLFltTime/", LabelInit),
     });
-
-  dynamic_cast<TTagLine*>(TagList->List[0])->setValueLeft(90);
-  dynamic_cast<TTagLine*>(TagList->List[1])->setValueLeft(90);
-  dynamic_cast<TTagLine*>(TagList->List[2])->setValueLeft(90);
 
 }

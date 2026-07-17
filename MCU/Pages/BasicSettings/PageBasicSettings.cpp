@@ -67,24 +67,24 @@ void TPageBasicSettings::fillPageContainer(void) {
     TagList->Clear();
     TLabelInitStructure LabelInit;
     LabelInit.style = LabelsStyle::WIDTH_FIXED;
-    LabelInit.Rect = { 10, 10, 10, 70 };
+    LabelInit.Rect = { 10, 10, 10, 80 };
     LabelInit.focused = false;
     TagList->AddList({
         new TTagLineScrollCaption("Пуск по току", "U1/FLASH/IstStart/", LabelInit),
         new TTagLineScrollCaption("Стоп по току", "U1/FLASH/IstStop/", LabelInit),
-        new TTagLine("Ток статора", "U1/FLASH/IstExcEnable/", LabelInit),
+        new TTagLineScrollCaption("Ток статора", "U1/FLASH/IstExcEnable/", LabelInit),
         new TTagLineScrollCaption("Min частота скольжения", "U1/FLASH/ExcEnableFreq/", LabelInit),
-        new TTagLineScrollCaption("T тяжелого пуска", "U1/FLASH/HsTime/", LabelInit),
+        new TTagLineScrollCaption("Время тяжелого пуска", "U1/FLASH/HsTime/", LabelInit),
         new TTagLineScrollCaption("Частота тяжелого пуска", "U1/FLASH/HsFreq/", LabelInit),
-        new TTagLine("Ток возб.", "U1/FLASH/IExcRef/", LabelInit),
-        new TTagLineScrollCaption("T пуска форсировки", "U1/FLASH/StartForceTime/", LabelInit),
+        new TTagLineScrollCaption("Ток возбуждения", "U1/FLASH/IExcRef/", LabelInit),
+        new TTagLineScrollCaption("Время пуска форсировки", "U1/FLASH/StartForceTime/", LabelInit),
         new TTagLineScrollCaption("Ток форсировки", "U1/FLASH/IExcForce/", LabelInit),
         new TTagLineScrollCaption("Задержка перед отключением при просадке тока статора", "U1/FLASH/IstOffTime/", LabelInit),
-        new TTagLineScrollCaption("T блокировки повторного пуска", "U1/FLASH/NextStartTime/", LabelInit),
-        new TTagLineScrollCaption("T перехода на авторегулятор при изменениях в работе регулятора", "U1/FLASH/WaitStable/", LabelInit),
+        new TTagLineScrollCaption("Время блокировки повторного пуска", "U1/FLASH/NextStartTime/", LabelInit),
+        new TTagLineScrollCaption("Время перехода на авторегулятор при изменениях", "U1/FLASH/WaitStable/", LabelInit),
         new TTagLineScrollCaption("Темп изменения тока при смене режимов работы", "U1/FLASH/TIexcRefChangeTime/", LabelInit),
         new TTagLineScrollCaption("Темп изменения тока при сбросе форсировки", "U1/FLASH/TIexcForceDwnTime/", LabelInit),
-        new TTagLineScrollCaption("Темп изменения тока при сбросе форсировки", "U1/FLASH/TIexcForceUpTime/", LabelInit)
+        new TTagLineScrollCaption("Темп изменения тока при набросе форсировки", "U1/FLASH/TIexcForceUpTime/", LabelInit)
     });
 }
 

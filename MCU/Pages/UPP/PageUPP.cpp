@@ -16,7 +16,7 @@ void TPageUPP::fillPageContainer(void) {
     TagList->Clear();
     TLabelInitStructure LabelInit;
     LabelInit.style = LabelsStyle::WIDTH_FIXED;
-    LabelInit.Rect = { 10, 10, 10, 90 };
+    LabelInit.Rect = { 10, 10, 10, 80 };
     LabelInit.focused = false;
     TagList->AddList({
         new TTagLineScrollCaptionComment("U1/FLASH/SSPSelect/", LabelInit),

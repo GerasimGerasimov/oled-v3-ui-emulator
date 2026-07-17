@@ -46,7 +46,7 @@ void TPageDIn::fillPageContainer()
     }
     for (int i = 0; i < totalTags; i++) {
         if (TTagLine* tagLine = dynamic_cast<TTagLine*>(TagList->List[i])) {
-            tagLine->setMsuLeft(115);
+            tagLine->setMsuLeft(120);
         }
     }
 }

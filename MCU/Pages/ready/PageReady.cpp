@@ -38,7 +38,7 @@ void TPageReady::fillPageContainer(void) {
 
   for (int i = 0; i < totalTags; i++) {
       if (TTagLine* tagLine = dynamic_cast<TTagLine*>(TagList->List[i])) {
-          tagLine->setValueLeft(110);
+          tagLine->setValueLeft(105);
       }
   }
   for (int i = 0; i < totalTags; i++) {

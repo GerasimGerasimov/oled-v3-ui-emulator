@@ -1,8 +1,13 @@
 #include "PageHome.h"
 #include "Router.h"
 #include "TagLineVarSize.h"
+#include "TagCosLine.h"
 #include "TagLineScrollCaptionComment.h"
 #include <IniResources.h>
+
+#ifndef M_PI
+#define M_PI 3.14159265358979323846
+#endif
 
 void TPageHome::view() {
     TagList->view();
@@ -69,31 +74,29 @@ void TPageHome::fillPageContainer(void) {
     LabelInit.style = LabelsStyle::WIDTH_FIXED;
     LabelInit.Rect = { 10, 10, 10, 70 };
     LabelInit.focused = false;
-    TTagLine* phiTag = new TTagLine("угол Phi", "U1/RAM/F/", LabelInit);
 
-    // 2. Теперь мы можем безопасно прочитать его Caption (например, для отладки или проверок)
-    if (phiTag->Value != nullptr) {
-        caption = phiTag->Value->getCaption();
-        // Используем caption по необходимости...
-    }
 
     TagList->AddList({
         new TTagLine("Ток ротора", "U1/RAM/Ir/", LabelInit),
         new TTagLine("Ток статора", "U1/RAM/Istat/", LabelInit),
         new TTagLineScrollCaption("Напряжение статора", "U1/RAM/Ustat/", LabelInit),
-        //new TTagLine("угол Phi", "U1/RAM/F/", LabelInit)->Value->getCaption(),
+        new TTagCosLine("Cos угла Phi", "U1/RAM/F/", LabelInit),
         new TTagLineScrollCaption("Сопротивление изоляции", "U1/RAM/RINSL/ ", LabelInit),
-        new TTagLineScrollCaptionComment("U1/RAM/Iq/", LabelInit),
-        /*new TTagLine("Полная мощность", "U1/RAM/Ssg/", LabelInit),
-        new TTagLine("Активная мощность", "U1/RAM/Psg/", LabelInit),
-        new TTagLine("Реактивная мощность", "U1/RAM/Qsg/", LabelInit)*/
-    });
-    
+        new TTagLineScrollCaptionComment("U1/RAM/Iq/", LabelInit)
+        });
+    int const totalTags = 6;
+    for (int i = 0; i < totalTags; i++) {
+        if (TTagLine* tagLine = dynamic_cast<TTagLine*>(TagList->List[i])) {
+            tagLine->setValueLeft(70);
+        }
+    }
+    for (int i = 0; i < totalTags; i++) {
+        if (TTagLine* tagLine = dynamic_cast<TTagLine*>(TagList->List[i])) {
+            tagLine->setMsuLeft(105);
+        }
+    }
 }
 
-void TPageHome::getCos() {
-
-}
 
 TPageHome::TPageHome(std::string Name)
     :TPage(Name) {
