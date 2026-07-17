@@ -180,6 +180,7 @@
     <ClInclude Include="MCU\StateControllers\StateControllers.h" />
     <ClInclude Include="MCU\TODO.h" />
     <ClInclude Include="Resource.h" />
+    <ClInclude Include="MCU\Components\TagCosLine.h" />
     <ClInclude Include="targetver.h" />
     <ClInclude Include="WindowsProject1.h" />
   </ItemGroup>
@@ -285,6 +286,7 @@
     <ClCompile Include="MCU\StateControllers\RunPWR\RunPWR.cpp" />
     <ClCompile Include="MCU\StateControllers\Warnings\Warnings.cpp" />
     <ClCompile Include="Source.cpp" />
+    <ClCompile Include="MCU\Components\TagCosLine.cpp" />
     <ClCompile Include="threads\mcu_main_thread.cpp" />
     <ClCompile Include="threads\mutexes.cpp" />
     <ClCompile Include="UserData\flashdata.c" />

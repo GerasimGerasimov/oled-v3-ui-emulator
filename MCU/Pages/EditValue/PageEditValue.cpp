@@ -69,7 +69,9 @@ bool TPageEditValue::ProcessMessage(TMessage* m) {
 
 void TPageEditValue::SlotUpdate(Slot* slot, u8* reply) {
     if (slot) {
-        slot->Flags |= (u16)SlotStateFlags::SKIP_SLOT;
+        if (slot->Section == "CmdWrite") {
+            slot->Flags |= (u16)SlotStateFlags::SKIP_SLOT;
+        }
     }
     isDataSent = true;
     //тут бы можно было из массива reply куда-то скопировать результат,
