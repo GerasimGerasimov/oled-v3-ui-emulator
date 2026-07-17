@@ -10,6 +10,7 @@ typedef struct TTrackedBit {
 	TBit* pBit;
 	bool isValid;
 	bool State;
+	bool prevState;
 };
 
 #endif

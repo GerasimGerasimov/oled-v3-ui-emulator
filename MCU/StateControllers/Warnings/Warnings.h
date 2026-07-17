@@ -12,7 +12,7 @@ class Warnings {
 		static bool isTagInWarning(TTrackedBit& element);
 		static std::map < std::string, TTrackedBit > Tags;
 	private:
-		static void uptate(const std::string PosMem, TSlotHandlerArsg& args);
+		static void update(const std::string& PosMem, const TSlotHandlerArsg& args);
 		static bool checkState(void);
 		static void SlotU1RAMUpdate(TSlotHandlerArsg args);
 		static bool State;

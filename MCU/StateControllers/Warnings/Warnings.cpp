@@ -3,15 +3,15 @@
 #include <LedWarnings.h>
 
 std::map < std::string, TTrackedBit > Warnings::Tags = {
-	{"R_INSL_LOW", {"U1/RAM/R_INSL_LOW/", nullptr, false, false}},
-	{"i2tR", {"U1/RAM/i2tR/", nullptr, false, false}},
-	{"UstLow", {"U1/RAM/UstLow/", nullptr, false, false}},
-	{"UstFail", {"U1/RAM/UstFail/", nullptr, false, false}},
-	{"SlideCirctErr", {"U1/RAM/SlideCirctErr/", nullptr, false, false}},
-	{"MMS_Error", {"U1/RAM/MMS_Error/", nullptr, false, false}},
-	{"DExS_PWR_LNK", {"U1/RAM/DExS_PWR_LNK/", nullptr, false, false}},
-	{"SyncRect", {"U1/RAM/SyncRect/", nullptr, false, false}},
-	{"oWARNING_K3", {"U1/RAM/oWARNING_K3/", nullptr, false, false}},
+	{"R_INSL_LOW", {"U1/RAM/R_INSL_LOW/", nullptr, false, false, false}},
+	{"i2tR", {"U1/RAM/i2tR/", nullptr, false, false, false}},
+	{"UstLow", {"U1/RAM/UstLow/", nullptr, false, false, false}},
+	{"UstFail", {"U1/RAM/UstFail/", nullptr, false, false, false}},
+	{"SlideCirctErr", {"U1/RAM/SlideCirctErr/", nullptr, false, false, false}},
+	{"MMS_Error", {"U1/RAM/MMS_Error/", nullptr, false, false, false}},
+	{"DExS_PWR_LNK", {"U1/RAM/DExS_PWR_LNK/", nullptr, false, false, false}},
+	{"SyncRect", {"U1/RAM/SyncRect/", nullptr, false, false, false}},
+	{"oWARNING_K3", {"U1/RAM/oWARNING_K3/", nullptr, false, false, false}},
 };
 
 bool Warnings::State = true;
@@ -24,48 +24,58 @@ void Warnings::init() {
 	HandlerSubscribers::set("U1/RAM/", SlotU1RAMUpdate);
 }
 
-void Warnings::uptate(const std::string PosMem, TSlotHandlerArsg& args){
-	static std::string res = "";
-	for (auto& e : Tags) {
-		std::string& Tag = (std::string&)e.second.Tag;
-		bool isDeviceTag = Tag.find(PosMem) != std::string::npos;
-		if (isDeviceTag) {
-			TBit* p = e.second.pBit;
-			res = p->getValue(args, "");
-			if ((res == "0") || (res == "1")) {
-				e.second.isValid = true;
-				e.second.State = (res == "0") ? true : false; //0-нет аварий
-			}
-			else {
-				e.second.isValid = false;
-			}
-		}
-	}
+
+void Warnings::update(const std::string& PosMem, const TSlotHandlerArsg& args) {
+    for (auto& e : Tags) {
+        std::string& Tag = (std::string&)e.second.Tag;
+        bool isDeviceTag = Tag.find(PosMem) != std::string::npos;
+
+        if (isDeviceTag) {
+            TBit* p = e.second.pBit;
+            if (p != nullptr) {
+                std::string res = p->getValue(args, "");
+
+                if (res == "0" || res == "1") {
+                    e.second.isValid = true;
+
+                    // ѕровер€ем: это один из тех двух параметров, где "0" Ч это авари€/предупреждение?
+                    if (e.first == "DExS_PWR_LNK" || e.first == "SyncRect") {
+                        // «десь: если пришел "1" -> норма (true), если "0" -> предупреждение (false)
+                        e.second.State = (res == "1") ? true : false;
+                    }
+                    else {
+                        // ≈сли пришел "0" -> норма (true), если "1" -> предупреждение (false)
+                        e.second.State = (res == "0") ? true : false;
+                    }
+                }
+                else {
+                    e.second.isValid = false;
+                }
+            }
+        }
+    }
 }
 
 bool Warnings::checkState(void) {
-	bool res = true;
+	bool hasWarnings = false;
 	for (auto& e : Tags) {
-		if(e.first == "oWARNING_K3"){ //жЄлтый светодиод загораетс€ только если oWARNING_K3 == 1
-			bool valid = e.second.isValid;
-			bool state = /*e.second.isValid &&*/ e.second.State;//если все "1" то "1", если кто-то "0" то всЄ "0"
-			if(valid){
-				if(!state){//цикл прекращаетс€ и возвращает "0" если хоть один из элементов "0"
-					res = false;
-					break;
-				}
+		if (e.second.isValid) {
+			if (!e.second.State) { 
+				hasWarnings = true;
+				break; 
 			}
 		}
 	}
-	return res;
+	return hasWarnings; 
 }
 
 bool Warnings::isTagInWarning(TTrackedBit& element) {
-	return (bool)((element.isValid) && (element.State == false));
+	return (element.isValid && !element.State);
 }
 
 void Warnings::SlotU1RAMUpdate(TSlotHandlerArsg args) {
-	uptate("U1/RAM/", args);
+	update("U1/RAM/", args);
 	State = checkState();
-	LedWarnings::setState((State?0:1));
+
+	LedWarnings::setState(State ? 1 : 0);
 }

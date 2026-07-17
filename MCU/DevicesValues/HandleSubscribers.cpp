@@ -3,50 +3,51 @@
 
 std::map<std::string, std::map<std::string, std::list<TSubscriber>>> HandlerSubscribers::Handlers = {};
 
+static int globalSubscriberCounter = 1;
+
 int HandlerSubscribers::set(std::string source, std::function<void(TSlotHandlerArsg)> handler) {
-	/*source это строка типа "U1/RAM/" тут её распарсю и добавляю в Handlers
-	  чтобы получилось
-	  U1--
-	     |-RAM--
-		       |-function*/
-	/*TODO И вернуть bool чтои что бы знать что добавилось или нет*/
-	std::vector<std::string> v = IniParser::getListOfDelimitedString(
-		(const char)'/',
-		(char*)source.c_str(),
-		source.size());
-	std::string dev = v[0];
-	std::string section = v[1];
-	int id = (int)&handler;
-	TSubscriber subscriber = {id, handler};
-	Handlers[dev][section].push_back(subscriber);
-	return id;
+    std::vector<std::string> v = IniParser::getListOfDelimitedString(
+        (const char)'/',
+        (char*)source.c_str(),
+        source.size());
+
+    if (v.size() < 2) return 0;
+
+    std::string dev = v[0];
+    std::string section = v[1];
+
+    int id = globalSubscriberCounter++;
+
+    TSubscriber subscriber = { id, handler };
+    Handlers[dev][section].push_back(subscriber);
+    return id;
 }
 
-/*TODO удалить из Source "U1/RAM/" обработчик Handler*/
 void HandlerSubscribers::remove(std::string source, int& ID) {
-	std::vector<std::string> v = IniParser::getListOfDelimitedString(
-		(const char)'/',
-		(char*)source.c_str(),
-		source.size());
-	std::string dev = v[0];
-	std::string section = v[1];
-	if (Handlers.count(dev)) {
-		std::map<std::string, std::list<TSubscriber>>& sections = Handlers.at(dev);//через ссылку
-		if (sections.count(section)) {
-			std::list<TSubscriber> & subscribers = sections[section];
-			if (subscribers.size()) {
-				std::list<TSubscriber>::iterator it = subscribers.begin();
-				for (auto& s : subscribers) {
-					if (s.id == ID) {
-						subscribers.erase(it);
-						ID = 0;
-						break;
-					};
-					it++;
-				}
-			}
-		}
-	}
+    if (ID == 0) return;
+
+    std::vector<std::string> v = IniParser::getListOfDelimitedString(
+        (const char)'/',
+        (char*)source.c_str(),
+        source.size());
+
+    if (v.size() < 2) return;
+
+    std::string dev = v[0];
+    std::string section = v[1];
+
+    if (Handlers.count(dev)) {
+        std::map<std::string, std::list<TSubscriber>>& sections = Handlers.at(dev);
+        if (sections.count(section)) {
+            std::list<TSubscriber>& subscribers = sections[section];
+
+            subscribers.remove_if([ID](const TSubscriber& s) {
+                return s.id == ID;
+                });
+
+            ID = 0;
+        }
+    }
 }
 
 void HandlerSubscribers::send(Slot* slot /*TODO аргумент "U1/RAM/"*/) {

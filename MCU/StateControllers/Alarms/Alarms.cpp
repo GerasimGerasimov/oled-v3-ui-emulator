@@ -11,22 +11,19 @@
 
 /*TODO когда "раскачаю RTC (по полной, с окном установки времени) то к аварии добавить метку времени"*/
 std::map < std::string, TTrackedBit > Alarms::Tags = {
-	{"FAULT", {"U1/RAM/FAULT/", nullptr, false, false}},
-	{"GlobalError", {"U1/RAM/GlobalError/", nullptr, false, false}},
-	{"FSAsyncRun", {"U1/RAM/FSAsyncRun/", nullptr, false, false}},
-	{"AsyncRun", {"U1/RAM/AsyncRun/", nullptr, false, false}},
-	{"FieldFail", {"U1/RAM/FieldFail/", nullptr, false, false}},
-	{"IExcMaxFlt", {"U1/RAM/IExcMaxFlt/", nullptr, false, false}},
-	{"IttMaxFlt", {"U1/RAM/IttMaxFlt/", nullptr, false, false}},
-	{"MPSFlt", {"U1/RAM/MPSFlt/", nullptr, false, false}},
-	{"MSSFlt", {"U1/RAM/MSSFlt/", nullptr, false, false}},
-	{"FreqMinFlt", {"U1/RAM/FreqMinFlt/", nullptr, false, false}},
-	{"R_INSL_FLT", {"U1/RAM/R_INSL_FLT/", nullptr, false, false}},
-	{"IttAsymFlt", {"U1/RAM/IttAsymFlt/", nullptr, false, false}},
-	{"stFreqDwnFltEnable", {"U1/RAM/stFreqDwnFltEnable/", nullptr, false, false}},
-	{"FreqMinFlt", {"U1/RAM/FreqMinFlt/", nullptr, false, false}},
-	{"IttAsymFlt", {"U1/RAM/IttAsymFlt/", nullptr, false, false}},
-	{"FreqMinFltTime", {"U1/RAM/FreqMinFltTime/", nullptr, false, false}},
+	{"FAULT", {"U1/RAM/FAULT/", nullptr, false, false, false}},
+	{"GlobalError", {"U1/RAM/GlobalError/", nullptr, false, false, false}},
+	{"FSAsyncRun", {"U1/RAM/FSAsyncRun/", nullptr, false, false, false}},
+	{"AsyncRun", {"U1/RAM/AsyncRun/", nullptr, false, false, false}},
+	{"FieldFail", {"U1/RAM/FieldFail/", nullptr, false, false, false}},
+	{"IExcMaxFlt", {"U1/RAM/IExcMaxFlt/", nullptr, false, false, false}},
+	{"IttMaxFlt", {"U1/RAM/IttMaxFlt/", nullptr, false, false, false}},
+	{"MPSFlt", {"U1/RAM/MPSFlt/", nullptr, false, false, false}},
+	{"R_INSL_FLT", {"U1/RAM/R_INSL_FLT/", nullptr, false, false, false}},
+	{"stFreqDwnFltEnable", {"U1/RAM/stFreqDwnFltEnable/", nullptr, false, false, false}},
+	{"FreqMinFlt", {"U1/RAM/FreqMinFlt/", nullptr, false, false, false}},
+	{"IttAsymFlt", {"U1/RAM/IttAsymFlt/", nullptr, false, false, false}},
+	{"FreqMinFltTime", {"U1/RAM/FreqMinFltTime/", nullptr, false, false, false}},
 };
 
 bool Alarms::State = true;
@@ -63,18 +60,14 @@ void Alarms::uptate(const std::string PosMem, TSlotHandlerArsg& args){
 bool Alarms::checkState(void) {
 	bool res = false;
 	for (auto& e : Tags) {
-		if(e.first == "FAULT"){ //красный светодиод загорается только если FAULT == 1
-			bool valid = e.second.isValid;
-			bool state = e.second.State;//если все "1" то "1", если кто-то "0" то всё "0"
-			if(valid){//данные валидны
-				if(!state){//цикл прекращается и возвращает "0" если хоть один из элементов "0"
-					res = true;
-					break;
-				}
-			}
-			else{//что-то НЕ валидное попалось
-				res = false;
-				break;
+		// Убираем привязку к имени "FAULT". Проверяем абсолютно ВСЕ аварии в карте!
+		bool valid = e.second.isValid;
+		bool state = e.second.State; // true - норма, false - авария
+
+		if (valid) {
+			if (!state) { // Если State == false, значит зафиксирована авария
+				res = true;
+				break; // Одной аварии достаточно, чтобы зажечь светодиод. Выходим из цикла.
 			}
 		}
 	}
@@ -82,17 +75,18 @@ bool Alarms::checkState(void) {
 }
 
 bool Alarms::isAlarmOnce(void) {
-	bool res = false;
-	UppedFlags = 0;
+	bool stateChanged = false;
+
 	for (auto& e : Tags) {
-		bool state = (bool)((e.second.isValid == true) && (e.second.State == false));//если все "1" то "1", если кто-то "0" то всё "0"
-		if (state) {//цикл прекращается и возвращает "0" если хоть один из элементов "0"
-			UppedFlags++;
+		bool currentAlarmState = (e.second.isValid && !e.second.State);
+
+		if (currentAlarmState != e.second.prevState) {
+			stateChanged = true; 
+
+			e.second.prevState = currentAlarmState;
 		}
 	}
-	res = (bool)(PrevUppedFlags != UppedFlags);
-	PrevUppedFlags = UppedFlags;
-	return res;
+	return stateChanged;
 }
 
 bool Alarms::isTagAlarmed(TTrackedBit& element) {
