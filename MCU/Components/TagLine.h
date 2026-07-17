@@ -12,7 +12,7 @@ public:
     virtual bool ProcessMessage(TMessage* m);
     virtual const u16 getHeight(void);
     TTagLine(std::string caption, std::string tag, TLabelInitStructure init);
-    TLabel* getValue();
+    std::string getValue();
     //конструктор
     ~TTagLine();//деструктор
     void view(void);
@@ -24,12 +24,12 @@ public:
     const std::string ComponentName();
     virtual void update(const TSlotHandlerArsg& args, const char* format) override;
 private:
-    int valueLeft = 70;
-    int msuLeft = 105;
+    int valueLeft = 80;
+    int msuLeft = 115;
+
 protected:
     TLabel* Caption;
     TLabel* msu; 
-
 };
 
 #endif

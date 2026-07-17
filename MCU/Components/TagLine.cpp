@@ -24,8 +24,8 @@ TTagLine::TTagLine(std::string caption, std::string tag, TLabelInitStructure ini
     DataSrc = (TParameter*)IniResources::getSignalByTag(tag);
     Value->setCaption(((TParameter*)DataSrc)->getDefaultValue());
 }
-TLabel* TTagLine::getValue() {
-    return Value;
+std::string TTagLine::getValue() {
+    return Value->getCaption();
 }
 
 TTagLine::~TTagLine() {
@@ -45,7 +45,17 @@ void TTagLine::view(void) {
     Caption->ElementRect.Left = ElementRect.Left;
     Caption->view();//˜˜˜˜˜˜˜ Coption
 
+    u16 yStart = ElementRect.Top;
+    u16 yEnd = ElementRect.Top + 16;
+
     if (DataSrc) {/*TODO 2-˜ ˜˜˜ ˜˜˜˜ ˜˜˜˜˜ ˜˜˜˜˜˜ ˜˜˜˜˜˜ ˜˜˜ ˜˜˜˜˜˜˜˜˜˜˜˜ ˜˜˜˜˜˜˜˜˜˜˜˜˜˜ ˜˜˜˜˜*/
+
+        u16 x1 = valueLeft - 10;
+        u16 y = ElementRect.Top;
+        u16 line1_x = valueLeft - 1;
+        TGrahics::Line(line1_x, yStart, line1_x, yEnd, 1);
+        // Âàøà íèçêîóðîâíåâàÿ ôóíêöèÿ âûâîäà òåêñòà, íàïðèìåð:
+        // LCD_DrawText(x1, y, "|", Color);
         Value->inFocus = inFocus;
         Value->ElementRect.Top = ElementRect.Top;
         Value->ElementRect.Left = valueLeft;//ElementRect.Left;
@@ -53,6 +63,9 @@ void TTagLine::view(void) {
     }
 
     if (DataSrc) {/*TODO 2-˜ ˜˜˜ ˜˜˜˜ ˜˜˜˜˜ ˜˜˜˜˜˜ ˜˜˜˜˜˜ ˜˜˜ ˜˜˜˜˜˜˜˜˜˜˜˜ ˜˜˜˜˜˜˜˜˜˜˜˜˜˜ ˜˜˜˜˜*/
+        
+        u16 line2_x = msuLeft - 2;
+        TGrahics::Line(line2_x, yStart, line2_x, yEnd, 1);
         msu->setCaption(((TParameter*)DataSrc)->getMSU());
         msu->inFocus = inFocus;
         msu->ElementRect.Top = ElementRect.Top;
