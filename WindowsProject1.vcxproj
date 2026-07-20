@@ -156,6 +156,7 @@
     <ClInclude Include="MCU\IDrivers\iresources.h" />
     <ClInclude Include="MCU\Modbus\modbus.h" />
     <ClInclude Include="MCU\Pages\AsynchronousProtection\PageAsynchronousProtection.h" />
+    <ClInclude Include="MCU\Pages\AutoMode\PageAutoMode.h" />
     <ClInclude Include="MCU\Pages\Calibration\PageCalibration.h" />
     <ClInclude Include="MCU\Pages\ControlSettings\PageControlSettings.h" />
     <ClInclude Include="MCU\Pages\Discretes\PageDIn.h" />
@@ -234,6 +235,7 @@
     <ClCompile Include="MCU\Msg\msg.cpp" />
     <ClCompile Include="MCU\Pages\Alarms\PageAlarms.cpp" />
     <ClCompile Include="MCU\Pages\AsynchronousProtection\PageAsynchronousProtection.cpp" />
+    <ClCompile Include="MCU\Pages\AutoMode\PageAutoMode.cpp" />
     <ClCompile Include="MCU\Pages\BasicSettings\PageBasicSettings.cpp" />
     <ClCompile Include="MCU\Pages\Calibration\PageCalibration.cpp" />
     <ClCompile Include="MCU\Pages\ControlSettings\PageControlSettings.cpp" />

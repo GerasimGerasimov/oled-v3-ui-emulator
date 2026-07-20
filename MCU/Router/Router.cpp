@@ -23,6 +23,7 @@
 #include "GeneratorProtection/TpageGeneratorProtection.h"
 #include "AsynchronousProtection/PageAsynchronousProtection.h"
 #include "UPP/PageUPP.h"
+#include "AutoMode/PageAutoMode.h"
 #include "ReactPowerLimit/PageReactPowerLimit.h"
 
 #include <IniResources.h>
@@ -61,6 +62,7 @@ void TRouter::Init(void) {
     Pages["GeneratorProtection"] = new TpageGeneratorProtection("GeneratorProtection"); //защита от генераторного режима
     Pages["AsynchronousProtection"] = new TPageAsynchronousProtection("AsynchronousProtection"); //защита от асинхронного хода
     Pages["UPP"] = new TPageUPP("UPP"); //работа с УПП
+    Pages["AutoMode"] = new TPageAutoMode("AutoMode"); //автоматический режим
     setInitPage();
 }
 

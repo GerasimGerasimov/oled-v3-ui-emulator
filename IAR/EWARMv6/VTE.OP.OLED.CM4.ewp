@@ -1449,6 +1449,12 @@
                 <name>$PROJ_DIR$\..\..\MCU\Pages\AsynchronousProtection\PageAsynchronousProtection.h</name>
             </file>
             <file>
+                <name>$PROJ_DIR$\..\..\MCU\Pages\AutoMode\PageAutoMode.cpp</name>
+            </file>
+            <file>
+                <name>$PROJ_DIR$\..\..\MCU\Pages\AutoMode\PageAutoMode.h</name>
+            </file>
+            <file>
                 <name>$PROJ_DIR$\..\..\MCU\Pages\BasicSettings\PageBasicSettings.cpp</name>
             </file>
             <file>

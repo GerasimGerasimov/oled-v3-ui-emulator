@@ -50,6 +50,7 @@ TPageMainMenu::TPageMainMenu(std::string Name)
             new TLinkLabel("Ограничители задания", "TaskLimit",LabelInit),
             new TLinkLabel("Ограничители реактивной мощности", "ReactPowerLimit",LabelInit),
             new TLinkLabel("Настройки ПИД регулятора", "RegulatorSettings", LabelInit),
+            new TLinkLabel("Автоматический режим", "AutoMode", LabelInit),
             new TLinkLabel("Дискретные входы", "DInput", LabelInit),
             new TLinkLabel("Дискретные выходы", "DOutput", LabelInit),
            })
