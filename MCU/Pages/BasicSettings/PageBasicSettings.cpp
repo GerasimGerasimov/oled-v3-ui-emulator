@@ -41,7 +41,8 @@ bool TPageBasicSettings::ProcessMessage(TMessage* m) {
                         TRouter::PageValueEditEntryData.tag = ((TTagLine*)(e))->Tag;
                         TRouter::PageValueEditEntryData.value = ((TTagLine*)(e))->Value->getCaption();
                         TRouter::PageValueEditEntryData.backPage = Name;
-                        TRouter::setTask({ false, "EditValue", nullptr });
+                        std::string EditPage = TRouter::selectEditPage(TRouter::PageValueEditEntryData.tag);
+                        TRouter::setTask({ false, EditPage, nullptr });
                     }
                     break;
             }
