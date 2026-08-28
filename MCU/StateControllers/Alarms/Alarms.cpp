@@ -24,6 +24,7 @@ std::map < std::string, TTrackedBit > Alarms::Tags = {
 	{"FreqMinFlt", {"U1/RAM/FreqMinFlt/", nullptr, false, false, false}},
 	{"IttAsymFlt", {"U1/RAM/IttAsymFlt/", nullptr, false, false, false}},
 	{"FreqMinFltTime", {"U1/RAM/FreqMinFltTime/", nullptr, false, false, false}},
+	{"GMP", {"U1/RAM/GMP/", nullptr, false, false, false}},
 };
 
 bool Alarms::State = true;
